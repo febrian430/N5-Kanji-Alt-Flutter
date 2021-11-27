@@ -1,0 +1,1 @@
+enum GAME_MODE { imageMeaning, reading }
