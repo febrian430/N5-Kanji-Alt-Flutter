@@ -1,27 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/const.dart';
-
-class QuestionSet {
-  const QuestionSet({required this.question, required this.options});
-
-  final Question question;
-  final List<Option> options;
-}
-
-class Question {
-  const Question({required this.value, required this.type, required this.key});
-  
-  final String value;
-  final String type;
-  final int key;
-}
-
-class Option {
-  const Option({required this.value, required this.key});
-
-  final String value;
-  final int key;
-}
+import 'package:kanji_memory_hint/models/multiple_choice.model.dart';
+import 'package:kanji_memory_hint/repository/multiple_choice.repo.dart';
 
 typedef OnOptionSelectCallback = Function(Option option);
 typedef RoundOverCallback = Function(bool isCorrect); 
@@ -33,47 +13,58 @@ class MultipleChoiceGame extends StatefulWidget {
     questionSets = _getQuestionSet();
   } 
 
-  late final List<QuestionSet> questionSets;
+  late final Future<List<QuestionSet>> questionSets;
 
-  List<QuestionSet> _getQuestionSet() {
-    return [
-      const QuestionSet(options: [ 
-          Option(value: "anjay", key: 2), 
-          Option(value: "mabar", key: 4),
-          Option(value: "ayaya", key: 1),
-          Option(value: "mabok", key: 3),
-        ],
-        question: Question(value: "abc", type: "text", key: 1)),
-      const QuestionSet(options: [ 
-          Option(value: "gws", key: 2), 
-          Option(value: "def", key: 4),
-          Option(value: "qwe", key: 1),
-          Option(value: "wqr", key: 3),
-        ],
-        question: Question(value: "mberr", type: "text", key: 2)),
-      const QuestionSet(options: [ 
-          Option(value: "gws", key: 2), 
-          Option(value: "def", key: 4),
-          Option(value: "qwe", key: 1),
-          Option(value: "wqr", key: 3),
-        ],
-        question: Question(value: "mberr", type: "text", key: 2)),
-      const QuestionSet(options: [ 
-          Option(value: "gws", key: 2), 
-          Option(value: "def", key: 4),
-          Option(value: "qwe", key: 1),
-          Option(value: "wqr", key: 3),
-        ],
-        question: Question(value: "mberr", type: "text", key: 2)),
-    ];
+  Future<List<QuestionSet>> _getQuestionSet() async {
+    print("rebuilded qestion");
+     return multipleChoiceQuestionSet(10);
   }
+    
+    // return [
+    //   const QuestionSet(options: [ 
+    //       Option(value: "anjay", key: 2), 
+    //       Option(value: "mabar", key: 4),
+    //       Option(value: "ayaya", key: 1),
+    //       Option(value: "mabok", key: 3),
+    //     ],
+    //     question: Question(value: "abc", type: "text", key: 1)),
+    //   const QuestionSet(options: [ 
+    //       Option(value: "gws", key: 2), 
+    //       Option(value: "def", key: 4),
+    //       Option(value: "qwe", key: 1),
+    //       Option(value: "wqr", key: 3),
+    //     ],
+    //     question: Question(value: "mberr", type: "text", key: 2)),
+    //   const QuestionSet(options: [ 
+    //       Option(value: "gws", key: 2), 
+    //       Option(value: "def", key: 4),
+    //       Option(value: "qwe", key: 1),
+    //       Option(value: "wqr", key: 3),
+    //     ],
+    //     question: Question(value: "mberr", type: "text", key: 2)),
+    //   const QuestionSet(options: [ 
+    //       Option(value: "gws", key: 2), 
+    //       Option(value: "def", key: 4),
+    //       Option(value: "qwe", key: 1),
+    //       Option(value: "wqr", key: 3),
+    //     ],
+    //     question: Question(value: "mberr", type: "text", key: 2)),
+    // ];
 
   @override
   State<StatefulWidget> createState() => _MultipleChoiceGameState();
 }
 
+
 class _MultipleChoiceGameState extends State<MultipleChoiceGame> {
   int score = 0;
+  var _getQuestion;
+
+  @override
+  void initState() {
+    super.initState();
+    _getQuestion = widget._getQuestionSet();
+  }
 
   void _handleOnSelect(bool isCorrect) {
       setState(() {
@@ -86,13 +77,13 @@ class _MultipleChoiceGameState extends State<MultipleChoiceGame> {
       print("current score:" + score.toString());
   }
 
-  Widget _buildRound(BuildContext context, int itemIndex) {
+  Widget _buildRound(BuildContext context, int itemIndex, List<QuestionSet> data) {
     print("rebuild");
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 4.0),
       child: GameRound(
-        question: widget.questionSets[itemIndex].question, 
-        options: widget.questionSets[itemIndex].options, 
+        question: data[itemIndex].question, 
+        options: data[itemIndex].options, 
         mode: GAME_MODE.imageMeaning, 
         onSelect: (bool isCorrect) => _handleOnSelect(isCorrect),)
     );
@@ -114,16 +105,29 @@ class _MultipleChoiceGameState extends State<MultipleChoiceGame> {
       //           scrollDirection: Axis.horizontal,
       //         ),
       //       )
-      body: PageView.builder(
-            // store this controller in a State to save the carousel scroll position
-            controller: PageController(
-              viewportFraction: 1,
-            ),
-            itemCount: widget.questionSets.length,
-            itemBuilder: (BuildContext context, int itemIndex) {
-              return _buildRound(context, itemIndex);
-            },
-          ),
+      body: FutureBuilder(
+        future: _getQuestion,
+        builder: (context, AsyncSnapshot<List<QuestionSet>> snapshot) {
+          if(snapshot.hasData) {
+            return PageView.builder(
+              // store this controller in a State to save the carousel scroll position
+              controller: PageController(
+                viewportFraction: 1,
+              ),
+              itemCount: snapshot.data?.length,
+              itemBuilder: (BuildContext context, int itemIndex) {
+                return _buildRound(context, itemIndex, snapshot.data!);
+              },
+            );
+          } else {
+            return const Center(
+              child: Text(
+                'Loading',
+              ),
+            );
+          }
+        }
+      )
       );
     // return const Text('hi');
   }
@@ -159,9 +163,10 @@ class _GameRoundState extends State<GameRound> with AutomaticKeepAliveClientMixi
   Widget _getQuestionWidget(Question question) {
     if(widget.mode == GAME_MODE.imageMeaning) {
       return Image(
-        image: AssetImage('assets/images/kanji/30kr1n.png'),
+        image: AssetImage(KANJI_IMAGE_FOLDER + question.value),
         height: 300,
-        width: 300,  
+        width: 300,
+        fit: BoxFit.fill,
       );
     } else {
       return Text(question.value);
@@ -171,9 +176,6 @@ class _GameRoundState extends State<GameRound> with AutomaticKeepAliveClientMixi
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
-
 
     return 
     Container( 
@@ -181,8 +183,17 @@ class _GameRoundState extends State<GameRound> with AutomaticKeepAliveClientMixi
         child: Column(
           children: [
             Center(
-              child: _getQuestionWidget(widget.question)
+              child: Container(
+                child: _getQuestionWidget(widget.question),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.black,
+                    width: 3
+                  )
+                ),
+              )
             ),
+            Center(child: Text((widget.question.key.toString())),),
             Column(
                 children: widget.options.map((Option opt) {
                   return GameOption(option: opt, isSelected: selected?.key == opt.key, disabled: gameOver, correctKey: widget.question.key, onSelect: (option) {
@@ -242,7 +253,7 @@ class GameOption extends StatelessWidget {
       child: Container(
         color: _getBackgroundColor(context),
         child: Center(
-          child: Text(option.value, style: _getTextStyle(context),),),
+          child: Text(option.value + '\t' + option.key.toString(), style: _getTextStyle(context),),),
         width: 180,
         height: 60
       ),

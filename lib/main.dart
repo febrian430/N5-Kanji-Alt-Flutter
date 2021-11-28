@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/games/multiple_choice.dart';
+import 'package:kanji_memory_hint/home.dart';
+import 'package:kanji_memory_hint/repository/repo.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter ASD',
+      title: 'N5 Kanji',
       theme: ThemeData( 
         // This is the theme of your application.
         //
@@ -25,8 +27,12 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const Home(),
+        '/game/multiple-choice': (context) => MultipleChoiceGame(),
+      }
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      home: MultipleChoiceGame(key: key,),
     );
   }
 }
