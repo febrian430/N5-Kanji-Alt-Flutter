@@ -18,7 +18,7 @@ Future<List<QuestionSet>> _makeQuestionSetsFrom(List<KanjiExample> kanjis, int n
 }
 
 Future<QuestionSet> _makeQuestionSet(KanjiExample kanji) async {
-  final question = Question(key: kanji.id, isImage: false, value: kanji.image);
+  final question = Question(key: kanji.id.toString(), isImage: false, value: kanji.image);
   final options = await _findOptionsFor(kanji);
   return QuestionSet(question: question, options: options);
 }
@@ -29,8 +29,8 @@ Future<List<Option>> _findOptionsFor(KanjiExample question) async {
   otherOptions.shuffle();
   otherOptions = otherOptions.take(3).toList();
   List<Option> options = [
-    Option(value: question.meaning, key: question.id),
-    ...otherOptions.map((opt) => Option(value: opt.rune, key: opt.id))
+    Option(value: question.meaning, key: question.id.toString()),
+    ...otherOptions.map((opt) => Option(value: opt.rune, key: opt.id.toString()))
   ];
   options.shuffle();
   return options;

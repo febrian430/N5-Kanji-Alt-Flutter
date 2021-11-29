@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/games/multiple_choice.dart';
 import 'package:kanji_memory_hint/home.dart';
+import 'package:kanji_memory_hint/jumble/game.dart';
 import 'package:kanji_memory_hint/mix-match/game.dart';
 import 'package:kanji_memory_hint/pick-drop/game.dart';
-import 'package:kanji_memory_hint/repository/repo.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,12 +32,14 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         backgroundColor: Colors.white,
       ),
-      initialRoute: '/game/mix-match',
+      initialRoute: '/game/jumble',
       routes: {
         '/': (context) => const Home(),
         '/game/multiple-choice': (context) => MultipleChoiceGame(),
-        '/game/pick-drop': (context) => const PickDrop(),
+        '/game/pick-drop': (context) => PickDrop(),
         '/game/mix-match': (context) => MixMatchGame(mode: GAME_MODE.reading),
+        '/game/jumble': (context) => JumbleGame(mode: GAME_MODE.imageMeaning),
+
       }
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );

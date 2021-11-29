@@ -44,6 +44,17 @@ class Home extends StatelessWidget {
             child: const Text('Mix and Match'),
           ),
         ),
+        Center(
+          child: ElevatedButton(
+            // Within the `Home` widget
+            onPressed: () {
+              // Navigate to the second screen using a named route.
+              Navigator.pushNamed(context, '/game/jumble');
+              
+            },
+            child: const Text('Jumble'),
+          ),
+        ),
       ]
     )
     );

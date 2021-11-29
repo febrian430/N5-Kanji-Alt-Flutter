@@ -18,13 +18,13 @@ Future<List<Question>> _makeImageMeaningOptions(int n, int chapter) async {
     var candidates = kanjis.take(n);
 
     List<Question> imageOptions = candidates.mapIndexed((kanji, index) {
-      return Question(id: index, value: kanji.image, key: kanji.id, isImage: true);
+      return Question(id: index, value: kanji.image, key: kanji.id.toString(), isImage: true);
     }).toList();
 
     var last = imageOptions.length;
 
     List<Question> runeOptions = candidates.mapIndexed((kanji, index) {
-      return Question(id: index+last, value: kanji.rune, key: kanji.id);
+      return Question(id: index+last, value: kanji.rune, key: kanji.id.toString());
     }).toList();
 
     final List<Question> options = [...imageOptions, ...runeOptions];
@@ -40,13 +40,13 @@ Future<List<Question>> _makeReadingOptions(int n, int chapter) async {
     var candidates = kanjis.take(n);
 
     List<Question> runeOptions = candidates.mapIndexed((kanji, index) {
-      return Question(id: index, value: kanji.rune, key: kanji.id);
+      return Question(id: index, value: kanji.rune, key: kanji.id.toString());
     }).toList();
 
     var last = runeOptions.length;
 
     List<Question> spellingOptions = candidates.mapIndexed((kanji, index) {
-      return Question(id: index+last, value: kanji.spelling, key: kanji.id);
+      return Question(id: index+last, value: kanji.spelling, key: kanji.id.toString());
     }).toList();
 
     final List<Question> options = [...runeOptions, ...spellingOptions];

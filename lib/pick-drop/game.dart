@@ -6,23 +6,23 @@ import 'package:kanji_memory_hint/models/common.dart';
 import 'package:kanji_memory_hint/models/question_set.dart';
 
 class PickDrop extends StatelessWidget {
-  const PickDrop({Key? key}) : super(key: key);
+  PickDrop({Key? key}) : super(key: key);
 
-  final QuestionSet questionSet = const QuestionSet(
+  final QuestionSet questionSet = QuestionSet(
       question: Question(
         value: '30kr1n.png', 
         isImage: true, 
-        key: 1), 
+        key: 1.toString()), 
       options: [
-        Option(value: 'rune 3', key: 3),
-        Option(value: 'rune 1', key: 1),
-        Option(value: 'rune 2', key: 2),
-        Option(value: 'rune 3', key: 3),
-        Option(value: 'rune 1', key: 1),
-        Option(value: 'rune 2', key: 2),
-        Option(value: 'rune 3', key: 3),
-        Option(value: 'rune 1', key: 1),
-        Option(value: 'rune 2', key: 2),
+        Option(value: 'rune 3', key: 3.toString()),
+        Option(value: 'rune 1', key: 1.toString()),
+        Option(value: 'rune 2', key: 2.toString()),
+        Option(value: 'rune 3', key: 3.toString()),
+        Option(value: 'rune 1', key: 1.toString()),
+        Option(value: 'rune 2', key: 2.toString()),
+        Option(value: 'rune 3', key: 3.toString()),
+        Option(value: 'rune 1', key: 1.toString()),
+        Option(value: 'rune 2', key: 2.toString()),
       ]);
 
   @override
@@ -37,7 +37,7 @@ class PickDrop extends StatelessWidget {
           children: [
             DragTarget<Option>(
               builder: (context, candidateData, rejectedData) {
-                return QuestionWidget(value: q.value, key: key, answerKey: q.key, isImage: true);
+                return QuestionWidget(value: q.value, key: key, answerKey: q.key.toString(), isImage: true);
               },
               onWillAccept: (opt) => opt?.key == q.key,
               onAccept: (opt) {
@@ -110,7 +110,7 @@ class QuestionWidget extends StatelessWidget {
   
   final String value;
   final bool isImage;
-  final int answerKey;
+  final String answerKey;
 
   @override
   Widget build(BuildContext context) {

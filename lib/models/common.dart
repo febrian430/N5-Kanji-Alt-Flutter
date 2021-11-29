@@ -3,12 +3,12 @@ class Question {
   final int id;
   final String value;
   final bool isImage;
-  final int key;
+  final String key;
 }
 
 class Option {
   const Option({this.id = -1, required this.value, required this.key});
   final int id;
   final String value;
-  final int key;
+  final String key;
 }

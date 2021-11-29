@@ -195,7 +195,7 @@ class _GameRoundState extends State<GameRound> with AutomaticKeepAliveClientMixi
             Center(child: Text((widget.question.key.toString())),),
             Column(
                 children: widget.options.map((Option opt) {
-                  return GameOption(option: opt, isSelected: selected?.key == opt.key, disabled: gameOver, correctKey: widget.question.key, onSelect: (option) {
+                  return GameOption(option: opt, isSelected: selected?.key == opt.key, disabled: gameOver, correctKey: widget.question.key.toString(), onSelect: (option) {
                     _handleSelect(opt);
                     print(selected?.value);
                   });
@@ -217,7 +217,7 @@ class GameOption extends StatelessWidget {
   final bool isSelected;
   final bool disabled;
 
-  final int correctKey;
+  final String correctKey;
   final OnOptionSelectCallback onSelect;
 
   Color _getBackgroundColor(BuildContext buildContext) {
