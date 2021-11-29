@@ -1,4 +1,5 @@
-import 'package:kanji_memory_hint/models/multiple_choice.model.dart';
+import 'package:kanji_memory_hint/models/common.dart';
+import 'package:kanji_memory_hint/models/question_set.dart';
 import 'package:kanji_memory_hint/repository/repo.dart';
 
 Future<List<QuestionSet>> multipleChoiceQuestionSet(int n) async {
@@ -17,7 +18,7 @@ Future<List<QuestionSet>> _makeQuestionSetsFrom(List<KanjiExample> kanjis, int n
 }
 
 Future<QuestionSet> _makeQuestionSet(KanjiExample kanji) async {
-  final question = Question(key: kanji.id, type: "abc", value: kanji.image);
+  final question = Question(key: kanji.id, isImage: false, value: kanji.image);
   final options = await _findOptionsFor(kanji);
   return QuestionSet(question: question, options: options);
 }

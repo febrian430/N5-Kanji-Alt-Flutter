@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/const.dart';
-import 'package:kanji_memory_hint/models/multiple_choice.model.dart';
+import 'package:kanji_memory_hint/models/common.dart';
+import 'package:kanji_memory_hint/models/question_set.dart';
 import 'package:kanji_memory_hint/repository/multiple_choice.repo.dart';
 
 typedef OnOptionSelectCallback = Function(Option option);
@@ -9,7 +10,7 @@ typedef RoundOverCallback = Function(bool isCorrect);
 
 
 class MultipleChoiceGame extends StatefulWidget {
-  MultipleChoiceGame({Key? key}) {
+  MultipleChoiceGame({Key? key}) : super(key: key) {
     questionSets = _getQuestionSet();
   } 
 
@@ -78,7 +79,6 @@ class _MultipleChoiceGameState extends State<MultipleChoiceGame> {
   }
 
   Widget _buildRound(BuildContext context, int itemIndex, List<QuestionSet> data) {
-    print("rebuild");
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 4.0),
       child: GameRound(
@@ -93,7 +93,7 @@ class _MultipleChoiceGameState extends State<MultipleChoiceGame> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const  Text('jojo theme'),
+        title: const  Text('Multiple Choice'),
       ),
       // body: SafeArea(child:
       //         ListView(
@@ -177,8 +177,7 @@ class _GameRoundState extends State<GameRound> with AutomaticKeepAliveClientMixi
   Widget build(BuildContext context) {
     super.build(context);
 
-    return 
-    Container( 
+    return Container( 
       child: Center(
         child: Column(
           children: [

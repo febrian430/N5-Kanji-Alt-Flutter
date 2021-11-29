@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'dart:typed_data';
 
 import 'package:flutter/services.dart';
-import 'package:kanji_memory_hint/models/multiple_choice.model.dart';
+import 'package:kanji_memory_hint/models/common.dart';
 
 
 

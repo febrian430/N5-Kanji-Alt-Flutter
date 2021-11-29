@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/games/multiple_choice.dart';
 import 'package:kanji_memory_hint/home.dart';
+import 'package:kanji_memory_hint/mix-match/game.dart';
+import 'package:kanji_memory_hint/pick-drop/game.dart';
 import 'package:kanji_memory_hint/repository/repo.dart';
 
 void main() {
@@ -25,12 +28,16 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
+        scaffoldBackgroundColor: Colors.white,
         primarySwatch: Colors.blue,
+        backgroundColor: Colors.white,
       ),
-      initialRoute: '/',
+      initialRoute: '/game/mix-match',
       routes: {
         '/': (context) => const Home(),
         '/game/multiple-choice': (context) => MultipleChoiceGame(),
+        '/game/pick-drop': (context) => const PickDrop(),
+        '/game/mix-match': (context) => MixMatchGame(mode: GAME_MODE.reading),
       }
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
