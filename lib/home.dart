@@ -10,51 +10,30 @@ class Home extends StatelessWidget {
       appBar: AppBar(
         title: const Text('First Screen'),
       ),
-      body: Column(children: [
-        Center(
-          child: ElevatedButton(
-            // Within the `Home` widget
-            onPressed: () {
-              // Navigate to the second screen using a named route.
-              Navigator.pushNamed(context, '/game/multiple-choice');
-              
-            },
-            child: const Text('Multiple Choice'),
+      body: Column(
+        children: [
+          Center(
+            child: ElevatedButton(
+              // Within the `Home` widget
+              onPressed: () {
+                // Navigate to the second screen using a named route.
+                Navigator.pushNamed(context, '/list');
+                
+              },
+              child: const Text('List'),
+            ),
           ),
-        ),
-        Center(
-          child: ElevatedButton(
-            // Within the `Home` widget
-            onPressed: () {
-              // Navigate to the second screen using a named route.
-              Navigator.pushNamed(context, '/game/pick-drop');
-              
-            },
-            child: const Text('Pick and Drop'),
+          Center(
+            child: ElevatedButton(
+              // Within the `Home` widget
+              onPressed: () {
+                // Navigate to the second screen using a named route.
+                Navigator.pushNamed(context, '/game');
+                
+              },
+              child: const Text('Start'),
+            ),
           ),
-        ),
-        Center(
-          child: ElevatedButton(
-            // Within the `Home` widget
-            onPressed: () {
-              // Navigate to the second screen using a named route.
-              Navigator.pushNamed(context, '/game/mix-match');
-              
-            },
-            child: const Text('Mix and Match'),
-          ),
-        ),
-        Center(
-          child: ElevatedButton(
-            // Within the `Home` widget
-            onPressed: () {
-              // Navigate to the second screen using a named route.
-              Navigator.pushNamed(context, '/game/jumble');
-              
-            },
-            child: const Text('Jumble'),
-          ),
-        ),
       ]
     )
     );
