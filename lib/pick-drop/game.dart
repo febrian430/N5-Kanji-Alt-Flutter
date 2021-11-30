@@ -52,8 +52,8 @@ class PickDrop extends StatelessWidget {
                 child: GridView.count(
                     padding: const EdgeInsets.all(20),
                     crossAxisCount: 3,
-                    crossAxisSpacing: 20,
-                    mainAxisSpacing: 20,
+                    crossAxisSpacing: 30,
+                    mainAxisSpacing: 30,
                     physics: const NeverScrollableScrollPhysics(),
                     primary: false,
                     children: opts.map((opt) {
@@ -74,8 +74,8 @@ class PickDrop extends StatelessWidget {
                           )
                         ),
                         feedback: Container(
-                          height: 50,
-                          width: 50,
+                          height: 97,
+                          width: 97,
                           decoration: BoxDecoration(border: Border.all(width: 3)),
                           child: Center(
                             child: Text(
