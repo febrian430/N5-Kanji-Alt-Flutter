@@ -11,6 +11,7 @@ class Home extends StatelessWidget {
         title: const Text('First Screen'),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Center(
             child: ElevatedButton(

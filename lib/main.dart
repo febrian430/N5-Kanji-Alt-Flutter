@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/const.dart';
-import 'package:kanji_memory_hint/games/multiple_choice.dart';
+import 'package:kanji_memory_hint/multiple-choice/game.dart';
 import 'package:kanji_memory_hint/home.dart';
 import 'package:kanji_memory_hint/jumble/game.dart';
 import 'package:kanji_memory_hint/kanji-list/menu.dart';
@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
         '/game/multiple-choice': (context) => MultipleChoiceGame(),
         '/game/pick-drop': (context) => PickDrop(),
         '/game/mix-match': (context) => MixMatchGame(mode: GAME_MODE.reading),
-        '/game/jumble': (context) => JumbleGame(mode: GAME_MODE.imageMeaning),
+        '/game/jumble': (context) => JumbleGame(mode: GAME_MODE.imageMeaning, chapter: 1),
 
       }
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
