@@ -20,37 +20,6 @@ class MultipleChoiceGame extends StatefulWidget {
     print("rebuilded qestion");
      return multipleChoiceQuestionSet(10);
   }
-    
-    // return [
-    //   const QuestionSet(options: [ 
-    //       Option(value: "anjay", key: 2), 
-    //       Option(value: "mabar", key: 4),
-    //       Option(value: "ayaya", key: 1),
-    //       Option(value: "mabok", key: 3),
-    //     ],
-    //     question: Question(value: "abc", type: "text", key: 1)),
-    //   const QuestionSet(options: [ 
-    //       Option(value: "gws", key: 2), 
-    //       Option(value: "def", key: 4),
-    //       Option(value: "qwe", key: 1),
-    //       Option(value: "wqr", key: 3),
-    //     ],
-    //     question: Question(value: "mberr", type: "text", key: 2)),
-    //   const QuestionSet(options: [ 
-    //       Option(value: "gws", key: 2), 
-    //       Option(value: "def", key: 4),
-    //       Option(value: "qwe", key: 1),
-    //       Option(value: "wqr", key: 3),
-    //     ],
-    //     question: Question(value: "mberr", type: "text", key: 2)),
-    //   const QuestionSet(options: [ 
-    //       Option(value: "gws", key: 2), 
-    //       Option(value: "def", key: 4),
-    //       Option(value: "qwe", key: 1),
-    //       Option(value: "wqr", key: 3),
-    //     ],
-    //     question: Question(value: "mberr", type: "text", key: 2)),
-    // ];
 
   @override
   State<StatefulWidget> createState() => _MultipleChoiceGameState();
@@ -85,7 +54,8 @@ class _MultipleChoiceGameState extends State<MultipleChoiceGame> {
         question: data[itemIndex].question, 
         options: data[itemIndex].options, 
         mode: GAME_MODE.imageMeaning, 
-        onSelect: (bool isCorrect) => _handleOnSelect(isCorrect),)
+        onSelect: (bool isCorrect) => _handleOnSelect(isCorrect),
+      )
     );
   }
 
