@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/models/common.dart';
 import 'package:kanji_memory_hint/models/question_set.dart';
@@ -10,19 +11,16 @@ typedef RoundOverCallback = Function(bool isCorrect);
 
 
 class MultipleChoiceGame extends StatefulWidget {
-  MultipleChoiceGame({Key? key}) : super(key: key) {
-    questionSets = _getQuestionSet();
-  } 
-
-  late final Future<List<QuestionSet>> questionSets;
+  const MultipleChoiceGame({Key? key, required this.mode, required this.chapter}) : super(key: key);
 
   static const route = '/game/multiple-choice';
   static const name ='Multiple Choice';
 
+  final GAME_MODE mode;
+  final int chapter;
 
-  Future<List<QuestionSet>> _getQuestionSet() async {
-    print("rebuilded qestion");
-     return multipleChoiceQuestionSet(10);
+  Future<List<QuestionSet>> _getQuestionSet(int chapter, GAME_MODE mode) async {
+     return multipleChoiceQuestionSet(10, chapter, mode);
   }
 
   @override
@@ -32,14 +30,14 @@ class MultipleChoiceGame extends StatefulWidget {
 
 class _MultipleChoiceGameState extends State<MultipleChoiceGame> {
   int score = 0;
-  var _getQuestion;
+  var _questionSet;
 
   @override
   void initState() {
     super.initState();
-    _getQuestion = widget._getQuestionSet();
+      _questionSet = widget._getQuestionSet(widget.chapter, widget.mode); 
   }
-
+  
   void _handleOnSelect(bool isCorrect) {
       setState(() {
         if(isCorrect){
@@ -57,7 +55,7 @@ class _MultipleChoiceGameState extends State<MultipleChoiceGame> {
       child: GameRound(
         question: data[itemIndex].question, 
         options: data[itemIndex].options, 
-        mode: GAME_MODE.imageMeaning, 
+        mode: widget.mode, 
         onSelect: (bool isCorrect) => _handleOnSelect(isCorrect),
       )
     );
@@ -65,6 +63,7 @@ class _MultipleChoiceGameState extends State<MultipleChoiceGame> {
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       appBar: AppBar(
         title: const  Text('Multiple Choice'),
@@ -80,7 +79,7 @@ class _MultipleChoiceGameState extends State<MultipleChoiceGame> {
       //         ),
       //       )
       body: FutureBuilder(
-        future: _getQuestion,
+        future: _questionSet,
         builder: (context, AsyncSnapshot<List<QuestionSet>> snapshot) {
           if(snapshot.hasData) {
             return PageView.builder(
@@ -143,7 +142,7 @@ class _GameRoundState extends State<GameRound> with AutomaticKeepAliveClientMixi
         fit: BoxFit.fill,
       );
     } else {
-      return Text(question.value);
+      return Center(child: Text(question.value));
     }
   }
 
@@ -157,6 +156,8 @@ class _GameRoundState extends State<GameRound> with AutomaticKeepAliveClientMixi
           children: [
             Center(
               child: Container(
+                width: 200,
+                height: 200,
                 child: _getQuestionWidget(widget.question),
                 decoration: BoxDecoration(
                   border: Border.all(

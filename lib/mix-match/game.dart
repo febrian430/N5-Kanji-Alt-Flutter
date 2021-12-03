@@ -5,7 +5,10 @@ import 'package:kanji_memory_hint/mix-match/repo.dart';
 import 'package:kanji_memory_hint/models/common.dart';
 
 class MixMatchGame extends StatefulWidget {
-  MixMatchGame({Key? key}) : super(key: key);
+  MixMatchGame({Key? key, required this.chapter, required this.mode}) : super(key: key);
+
+  final int chapter;
+  final GAME_MODE mode;
 
   static const route = '/game/mix-match';
   static const name = 'Mix and Match';
@@ -31,8 +34,7 @@ class _MixMatchGameState extends State<MixMatchGame> {
   void initState() {
     super.initState();
     // PracticeGameArguments arg = ModalRoute.of(context)!.settings.arguments as PracticeGameArguments;
-    // _questionSet = widget._getQuestionSet(arg.chapter, arg.mode);
-
+    _questionSet = widget._getQuestionSet(widget.chapter, widget.mode);
   }
 
   Widget _drawQuestionWidget(Question opt) {
@@ -190,8 +192,7 @@ class _MixMatchGameState extends State<MixMatchGame> {
 
   @override
   Widget build(BuildContext context) {
-    PracticeGameArguments arg = ModalRoute.of(context)!.settings.arguments as PracticeGameArguments;
-    _questionSet = widget._getQuestionSet(arg.chapter, arg.mode);
+    // PracticeGameArguments arg = ModalRoute.of(context)!.settings.arguments as PracticeGameArguments;
     
     return Scaffold(
       body: FutureBuilder(

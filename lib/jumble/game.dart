@@ -50,7 +50,7 @@ class _JumbleGameState extends State<JumbleGame> {
       child: JumbleRound(
         question: questionSets[itemIndex].question, 
         options: questionSets[itemIndex].options, 
-        mode: GAME_MODE.imageMeaning, 
+        mode: widget.mode, 
         onRoundOver: _handleRoundOver,
       )
     );

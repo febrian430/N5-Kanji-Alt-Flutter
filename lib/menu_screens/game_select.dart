@@ -25,7 +25,7 @@ class GameSelect extends StatelessWidget {
                     // Navigate to the second screen using a named route.
                     Navigator.pushNamed(context, ModeSelect.route, 
                     arguments: PracticeGameArguments(
-                      selectedGame: MultipleChoiceGame.route
+                      selectedGame: MultipleChoiceGame.route,
                     ));
                   },
                   child: const Text('Multiple Choice'),

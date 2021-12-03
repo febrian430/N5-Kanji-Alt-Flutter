@@ -6,10 +6,13 @@ import 'package:kanji_memory_hint/models/common.dart';
 import 'package:kanji_memory_hint/models/question_set.dart';
 
 class PickDrop extends StatelessWidget {
-  PickDrop({Key? key}) : super(key: key);
+  PickDrop({Key? key, required this.chapter, required this.mode}) : super(key: key);
 
   static const route = '/game/pick-drop';
   static const name = 'Pick and Drop';
+
+  final int chapter;
+  final GAME_MODE mode;
 
 
   final QuestionSet questionSet = QuestionSet(

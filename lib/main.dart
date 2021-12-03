@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/const.dart';
+import 'package:kanji_memory_hint/game.dart';
 import 'package:kanji_memory_hint/menu_screens/chapter_select.dart';
 import 'package:kanji_memory_hint/menu_screens/mode_select.dart';
 import 'package:kanji_memory_hint/multiple-choice/game.dart';
@@ -36,19 +37,47 @@ class MyApp extends StatelessWidget {
         backgroundColor: Colors.white,
       ),
       initialRoute: '/',
-      routes: {
+      routes: { 
         '/': (context) => const Home(),
         '/list': (context) => Menu(),
         '/game': (context) => GameSelect(),
         '/chapter-select': (context) => const ChapterSelect(),
         '/mode-select': (context) => const ModeSelect(),
+      
 
-        '/game/multiple-choice': (context) => MultipleChoiceGame(),
-        '/game/pick-drop': (context) => PickDrop(),
-        '/game/mix-match': (context) => MixMatchGame(),
-        '/game/jumble': (context) => JumbleGame(mode: GAME_MODE.imageMeaning, chapter: 1),
+        // '/game/multiple-choice': (context) => MultipleChoiceGame(chapter: 1, mode: GAME_MODE.imageMeaning),
+        // '/game/pick-drop': (context) => PickDrop(),
+        // '/game/mix-match': (context) => MixMatchGame(),
+        // '/game/jumble': (context) => JumbleGame(mode: GAME_MODE.imageMeaning, chapter: 1),
 
-      }
+      },
+      onGenerateRoute: (settings) {
+        final args = settings.arguments as PracticeGameArguments;
+
+        switch (settings.name) {
+          case MockGame.routeName:
+            return MaterialPageRoute(builder: (context) {
+              return MockGame(args.mode, args.chapter);
+            });
+
+          case MultipleChoiceGame.route:
+            return MaterialPageRoute(builder: (context) {
+                return MultipleChoiceGame(mode: args.mode, chapter: args.chapter);
+            });
+
+          case MixMatchGame.route:
+            return MaterialPageRoute(builder: (context) {
+                return MixMatchGame(mode: args.mode, chapter: args.chapter);
+            });
+
+          case JumbleGame.route:
+            return MaterialPageRoute(builder: (context) {
+                return JumbleGame(mode: args.mode, chapter: args.chapter);
+            });
+          default:
+            
+        }
+      },
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -86,6 +115,22 @@ class Home extends StatelessWidget {
                 
               },
               child: const Text('Start'),
+            ),
+          ),
+          Center(
+            child: ElevatedButton(
+              // Within the `Home` widget
+              onPressed: () {
+                var chapter = 256;
+                var arg = PracticeGameArguments(selectedGame: "/idk");
+                arg.chapter = chapter;
+                arg.mode = GAME_MODE.reading;
+                // Navigate to the second screen using a named route.
+                Navigator.pushNamed(context, '/mock', 
+                arguments: arg);
+                
+              },
+              child: const Text('TRASH CAN'),
             ),
           ),
       ]
