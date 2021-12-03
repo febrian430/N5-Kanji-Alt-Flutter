@@ -16,6 +16,10 @@ class MultipleChoiceGame extends StatefulWidget {
 
   late final Future<List<QuestionSet>> questionSets;
 
+  static const route = '/game/multiple-choice';
+  static const name ='Multiple Choice';
+
+
   Future<List<QuestionSet>> _getQuestionSet() async {
     print("rebuilded qestion");
      return multipleChoiceQuestionSet(10);

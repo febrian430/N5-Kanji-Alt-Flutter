@@ -7,7 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:kanji_memory_hint/games/multiple_choice.dart';
+import 'package:kanji_memory_hint/multiple-choice/game.dart';
 
 import 'package:kanji_memory_hint/main.dart';
 

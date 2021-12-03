@@ -8,6 +8,10 @@ import 'package:kanji_memory_hint/models/question_set.dart';
 class PickDrop extends StatelessWidget {
   PickDrop({Key? key}) : super(key: key);
 
+  static const route = '/game/pick-drop';
+  static const name = 'Pick and Drop';
+
+
   final QuestionSet questionSet = QuestionSet(
       question: Question(
         value: '30kr1n.png', 

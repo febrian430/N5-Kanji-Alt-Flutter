@@ -4,13 +4,15 @@ import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/jumble/model.dart';
 import 'package:kanji_memory_hint/jumble/repo.dart';
 import 'package:kanji_memory_hint/models/common.dart';
-import 'package:kanji_memory_hint/models/question_set.dart';
 import 'package:kanji_memory_hint/map_indexed.dart';
 import 'package:kanji_memory_hint/foreach_indexed.dart';
 
 
 class JumbleGame extends StatefulWidget {
   const JumbleGame({Key? key, required this.mode, required this.chapter}) : super(key: key);
+
+  static const route = '/game/jumble';
+  static const name = 'Jumble';
 
   final GAME_MODE mode;
   final int chapter;
