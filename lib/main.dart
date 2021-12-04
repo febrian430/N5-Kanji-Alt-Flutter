@@ -3,12 +3,14 @@ import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/game.dart';
 import 'package:kanji_memory_hint/menu_screens/chapter_select.dart';
 import 'package:kanji_memory_hint/menu_screens/mode_select.dart';
+import 'package:kanji_memory_hint/menu_screens/result_screen.dart';
 import 'package:kanji_memory_hint/multiple-choice/game.dart';
 import 'package:kanji_memory_hint/jumble/game.dart';
 import 'package:kanji_memory_hint/kanji-list/menu.dart';
 import 'package:kanji_memory_hint/menu_screens/game_select.dart';
 import 'package:kanji_memory_hint/mix-match/game.dart';
 import 'package:kanji_memory_hint/pick-drop/game.dart';
+import 'package:kanji_memory_hint/route_param.dart';
 
 void main() {
   runApp(const MyApp());
@@ -36,14 +38,17 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         backgroundColor: Colors.white,
       ),
-      initialRoute: '/',
+      initialRoute: '/game',
       routes: { 
         '/': (context) => const Home(),
         '/list': (context) => Menu(),
         '/game': (context) => GameSelect(),
         '/chapter-select': (context) => const ChapterSelect(),
         '/mode-select': (context) => const ModeSelect(),
-      
+        '/result': (context) => ResultScreen(),
+
+
+        // '/result': (context) => ResultScreen(wrongCount: 10)
 
         // '/game/multiple-choice': (context) => MultipleChoiceGame(chapter: 1, mode: GAME_MODE.imageMeaning),
         // '/game/pick-drop': (context) => PickDrop(),
@@ -52,28 +57,42 @@ class MyApp extends StatelessWidget {
 
       },
       onGenerateRoute: (settings) {
-        final args = settings.arguments as PracticeGameArguments;
 
         switch (settings.name) {
           case MockGame.routeName:
+            final args = settings.arguments as PracticeGameArguments;
+
             return MaterialPageRoute(builder: (context) {
               return MockGame(args.mode, args.chapter);
             });
 
           case MultipleChoiceGame.route:
+            final args = settings.arguments as PracticeGameArguments;
+
             return MaterialPageRoute(builder: (context) {
                 return MultipleChoiceGame(mode: args.mode, chapter: args.chapter);
             });
 
           case MixMatchGame.route:
+            final args = settings.arguments as PracticeGameArguments;
+
             return MaterialPageRoute(builder: (context) {
                 return MixMatchGame(mode: args.mode, chapter: args.chapter);
             });
 
           case JumbleGame.route:
+            final args = settings.arguments as PracticeGameArguments;
+
             return MaterialPageRoute(builder: (context) {
                 return JumbleGame(mode: args.mode, chapter: args.chapter);
             });
+
+          // case ResultScreen.route:
+          //   final args = settings.arguments as ResultParam;
+
+          //   return MaterialPageRoute(builder: (context) {
+          //       return JumbleGame(mode: args.mode, chapter: args.chapter);
+          //   });
           default:
             
         }

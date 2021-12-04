@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:kanji_memory_hint/components/result_button.dart';
 import 'package:kanji_memory_hint/const.dart';
+import 'package:kanji_memory_hint/menu_screens/result_screen.dart';
 import 'package:kanji_memory_hint/models/common.dart';
 import 'package:kanji_memory_hint/models/question_set.dart';
 import 'package:kanji_memory_hint/repository/multiple_choice.repo.dart';
+import 'package:kanji_memory_hint/route_param.dart';
 
 typedef OnOptionSelectCallback = Function(Option option);
 typedef RoundOverCallback = Function(bool isCorrect); 
@@ -30,7 +33,12 @@ class MultipleChoiceGame extends StatefulWidget {
 
 class _MultipleChoiceGameState extends State<MultipleChoiceGame> {
   int score = 0;
+  int wrong = 0;
+
   var _questionSet;
+  int solved = 0;
+  late int numOfQuestions;
+
 
   @override
   void initState() {
@@ -44,20 +52,47 @@ class _MultipleChoiceGameState extends State<MultipleChoiceGame> {
           score++;
         } else {
           score--;
+          wrong++;
         }
+        solved++;
       });
       print("current score:" + score.toString());
   }
 
   Widget _buildRound(BuildContext context, int itemIndex, List<QuestionSet> data) {
+    
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 4.0),
-      child: GameRound(
-        question: data[itemIndex].question, 
-        options: data[itemIndex].options, 
-        mode: widget.mode, 
-        onSelect: (bool isCorrect) => _handleOnSelect(isCorrect),
-      )
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          GameRound(
+            question: data[itemIndex].question, 
+            options: data[itemIndex].options, 
+            mode: widget.mode, 
+            onSelect: (bool isCorrect) => _handleOnSelect(isCorrect),
+          ),
+          // Visibility(
+          //   visible: solved == numOfQuestions,
+          //   child: ElevatedButton(
+          //     onPressed: () {
+          //       Navigator.pushNamed(context, ResultScreen.route, 
+          //         arguments: ResultParam(wrongCount: wrong, decreaseFactor: 100));
+          //     }, 
+          //     child: const Center(
+          //       child: Text(
+          //         'See result'
+          //       )
+          //     )
+          //   )
+          // )
+          ResultButton(
+            visible: solved == numOfQuestions, 
+            param: ResultParam(wrongCount: wrong, decreaseFactor: 100)
+          )
+      ],) 
+
+      
     );
   }
 
@@ -82,6 +117,8 @@ class _MultipleChoiceGameState extends State<MultipleChoiceGame> {
         future: _questionSet,
         builder: (context, AsyncSnapshot<List<QuestionSet>> snapshot) {
           if(snapshot.hasData) {
+            numOfQuestions = snapshot.data!.length;
+
             return PageView.builder(
               // store this controller in a State to save the carousel scroll position
               controller: PageController(
@@ -172,7 +209,6 @@ class _GameRoundState extends State<GameRound> with AutomaticKeepAliveClientMixi
                 children: widget.options.map((Option opt) {
                   return GameOption(option: opt, isSelected: selected?.key == opt.key, disabled: gameOver, correctKey: widget.question.key.toString(), onSelect: (option) {
                     _handleSelect(opt);
-                    print(selected?.value);
                   });
                 }).toList(),
             )

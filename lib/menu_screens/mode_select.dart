@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/menu_screens/chapter_select.dart';
+import 'package:kanji_memory_hint/route_param.dart';
 
 class ModeSelect extends StatelessWidget {
   const ModeSelect({Key? key}) : super(key: key);

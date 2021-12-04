@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kanji_memory_hint/components/result_button.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/jumble/model.dart';
 import 'package:kanji_memory_hint/jumble/repo.dart';
 import 'package:kanji_memory_hint/models/common.dart';
 import 'package:kanji_memory_hint/map_indexed.dart';
 import 'package:kanji_memory_hint/foreach_indexed.dart';
+import 'package:kanji_memory_hint/route_param.dart';
 
 
 class JumbleGame extends StatefulWidget {
@@ -28,7 +30,9 @@ class JumbleGame extends StatefulWidget {
 class _JumbleGameState extends State<JumbleGame> {
   int score = 0;
   int wrongCount = 0;
-
+  int solved = 0;
+  
+  late int numOfQuestions;
   var _questionSets;
 
   @override
@@ -40,18 +44,32 @@ class _JumbleGameState extends State<JumbleGame> {
   void _handleRoundOver(int wrong) {
     setState(() {
       wrongCount += wrong;
+      solved++;
     });
   }
 
 
   Widget _buildRound(BuildContext context, int itemIndex, List<JumbleQuestionSet> questionSets) {
+    print("SOLVED " + solved.toString());
+    print("WRONG COUNT " + wrongCount.toString());
+    print("NUM Q: " + numOfQuestions.toString());
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 4.0),
-      child: JumbleRound(
-        question: questionSets[itemIndex].question, 
-        options: questionSets[itemIndex].options, 
-        mode: widget.mode, 
-        onRoundOver: _handleRoundOver,
+      child: Column(
+        children: [
+          Container(
+            child: JumbleRound(
+              question: questionSets[itemIndex].question, 
+              options: questionSets[itemIndex].options, 
+              mode: widget.mode, 
+              onRoundOver: _handleRoundOver,
+            )
+          ),
+          ResultButton(
+            param: ResultParam(wrongCount: wrongCount, decreaseFactor: 100),
+            visible: numOfQuestions == solved,
+          ),
+        ]
       )
     );
   }
@@ -76,6 +94,7 @@ class _JumbleGameState extends State<JumbleGame> {
         future: _questionSets,
         builder: (context, AsyncSnapshot<List<JumbleQuestionSet>> snapshot) {
           if(snapshot.hasData) {
+            numOfQuestions = snapshot.data!.length;
             return PageView.builder(
               // store this controller in a State to save the carousel scroll position
               controller: PageController(
@@ -129,7 +148,6 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
   List<Option> selected = [];
   bool isRoundOver = false;
 
-  Function(int wrong)? onRoundOver;
 
 
   Widget _questionWidget() {
@@ -199,6 +217,7 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
       if(diff.length == 0) {
         setState(() {
           isRoundOver = true;
+          widget.onRoundOver(wrongAttempts);
         });
         
       }else {
@@ -219,43 +238,53 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Center(
-          //question
-          child: Column(
-            children: [
-              _questionWidget(),
-              SizedBox(height: 35),
-              //selected box
-              Container(
-                child: Row(
-                   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                   mainAxisSize: MainAxisSize.min,
-                   children: selected.mapIndexed((select, i) {
-                       return SelectWidget(option: select, isRoundOver: isRoundOver, onTap: () { _handleSelectTap(select, i); },);
-                    }).toList(),
-                ),
+    return Center(
+      child: Container(
+        // height: MediaQuery.of(context).size.height - 120,
+        decoration: BoxDecoration(
+          border: Border.all(
+            width: 1,
+          ),
+        ),
+        //question
+        child: Column(
+          children: [
+            _questionWidget(),
+            SizedBox(height: 10),
+            //selected box
+            Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisSize: MainAxisSize.min,
+                children: selected.mapIndexed((select, i) {
+                    return SelectWidget(option: select, isRoundOver: isRoundOver, onTap: () { _handleSelectTap(select, i); },);
+                  }).toList(),
               ),
-              const SizedBox(height: 35),
-              //options
-              // Expanded(
-                Container(
-                  child: GridView.count(
-                    crossAxisCount: 4,
-                    padding: EdgeInsets.all(50),
-                    mainAxisSpacing: 5,
-                    crossAxisSpacing: 5,
-                    shrinkWrap: true,
-                    children: widget.options.map((opt){
-                      //option box
-                      return OptionWidget(option: opt, disabled: selected.contains(opt), onTap: () { _handleOptionTap(opt); },);
-                    }).toList(),
-                  ),
+            ),
+            const SizedBox(height: 10),
+            //options
+            // Expanded(
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  width: 1
                 )
-              // )
-            ],)
-        ) 
+              ),
+              child: GridView.count(
+                crossAxisCount: 4,
+                padding: EdgeInsets.all(25),
+                mainAxisSpacing: 5,
+                crossAxisSpacing: 5,
+                shrinkWrap: true,
+                children: widget.options.map((opt){
+                  //option box
+                  return OptionWidget(option: opt, disabled: selected.contains(opt), onTap: () { _handleOptionTap(opt); },);
+                }).toList(),
+              ),
+            )
+            // )
+          ],
+        )
       )
     );
   }

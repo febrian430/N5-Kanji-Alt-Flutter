@@ -6,6 +6,7 @@ import 'package:kanji_memory_hint/menu_screens/mode_select.dart';
 import 'package:kanji_memory_hint/mix-match/game.dart';
 import 'package:kanji_memory_hint/multiple-choice/game.dart';
 import 'package:kanji_memory_hint/pick-drop/game.dart';
+import 'package:kanji_memory_hint/route_param.dart';
 
 class GameSelect extends StatelessWidget {
 

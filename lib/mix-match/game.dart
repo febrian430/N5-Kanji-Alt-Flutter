@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kanji_memory_hint/components/result_button.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/mix-match/repo.dart';
 import 'package:kanji_memory_hint/models/common.dart';
+import 'package:kanji_memory_hint/route_param.dart';
 
 class MixMatchGame extends StatefulWidget {
   MixMatchGame({Key? key, required this.chapter, required this.mode}) : super(key: key);
@@ -179,13 +181,23 @@ class _MixMatchGameState extends State<MixMatchGame> {
   Widget _getGameUI(List<Question> questions) {
     numOfQuestions = questions.length;
     return Center(
-      child: GridView.count(
-        crossAxisCount: 3,
-        crossAxisSpacing: 10,
-        mainAxisSpacing: 10,
-        children: questions.map((opt) {
-          return _buildQuestion(opt);
-        }).toList(),
+      child: Column(
+        children: [
+          Expanded(
+            child: GridView.count(
+              crossAxisCount: 3,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+              children: questions.map((opt) {
+                return _buildQuestion(opt);
+              }).toList(),
+            )
+          ),
+          ResultButton(
+            visible: numOfQuestions == solved.length,
+            param: ResultParam(wrongCount: wrong, decreaseFactor: 100)
+          )
+        ]
       )
     );
   }
