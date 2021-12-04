@@ -31,7 +31,7 @@ List<KanjiExample> _distincts = [];
 
 
 
-Future<List<KanjiExample>> kanjiExamples() async {
+Future<List<KanjiExample>> _kanjiExamples() async {
   if(_distincts.length > 0) {
     return _distincts;
   }
@@ -48,7 +48,7 @@ Future<List<KanjiExample>> kanjiExamples() async {
 }
 
 Future<List<KanjiExample>> ByChapter(int chapter) async {
-  var data = await kanjiExamples();
+  var data = await _kanjiExamples();
   return data.where((KanjiExample kanji) => kanji.chapter == chapter).toList();
 }
 

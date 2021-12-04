@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/game.dart';
+import 'package:kanji_memory_hint/kanji-list/view.dart';
 import 'package:kanji_memory_hint/menu_screens/chapter_select.dart';
 import 'package:kanji_memory_hint/menu_screens/mode_select.dart';
 import 'package:kanji_memory_hint/menu_screens/result_screen.dart';
@@ -42,6 +43,7 @@ class MyApp extends StatelessWidget {
       routes: { 
         '/': (context) => const Home(),
         '/list': (context) => Menu(),
+        '/list/view': (context) => KanjiScreen(),
         '/game': (context) => GameSelect(),
         '/chapter-select': (context) => const ChapterSelect(),
         '/mode-select': (context) => const ModeSelect(),
@@ -86,7 +88,13 @@ class MyApp extends StatelessWidget {
             return MaterialPageRoute(builder: (context) {
                 return JumbleGame(mode: args.mode, chapter: args.chapter);
             });
+          
+          case PickDrop.route:
+            final args = settings.arguments as PracticeGameArguments;
 
+            return MaterialPageRoute(builder: (context) {
+                return PickDrop(mode: args.mode, chapter: args.chapter);
+            });
           // case ResultScreen.route:
           //   final args = settings.arguments as ResultParam;
 
