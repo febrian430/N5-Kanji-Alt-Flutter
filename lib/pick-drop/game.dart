@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:kanji_memory_hint/components/result_button.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/menu_screens/result_screen.dart';
 import 'package:kanji_memory_hint/models/common.dart';
@@ -47,10 +48,29 @@ class _PickDropState extends State<PickDrop> {
   void _handleOnDrop(bool isCorrect) {
     print(isCorrect);
     setState(() {
-      if (index < total-1) {
+      if (isCorrect && index < total-1) {
         index++;  
+      } else {
+        wrongAttempts++;
       }
     });
+  }
+
+  Widget _buildRound(QuestionSet set) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 4.0),
+      child: Column(
+        children: [
+          Container(
+            child: PickDropRound(question: set.question, options: set.options, onDrop: _handleOnDrop, isLast: index == total-1,)
+          ),
+          ResultButton(
+            param: ResultParam(wrongCount: wrongAttempts, decreaseFactor: 100),
+            visible: index == total-1,
+          ),
+        ]
+      )
+    );
   }
 
   @override
@@ -66,7 +86,7 @@ class _PickDropState extends State<PickDrop> {
             if(snapshot.hasData){
               total = snapshot.data!.length;
               var set = snapshot.data!.elementAt(index);
-              return PickDropRound(question: set.question, options: set.options, onDrop: _handleOnDrop, isLast: index == total-1,);
+              return _buildRound(set);
             } else {
               return Center(child: Text("Loading"),);
             }
@@ -196,7 +216,8 @@ class _PickDropRoundState extends State<PickDropRound> {
                       return _QuestionWidget(value: widget.question.value, answerKey: widget.question.key.toString(), isImage: true);
                     },
                     onWillAccept: (opt) {
-                     return opt?.key == widget.question.key;
+                    //  return opt?.key == widget.question.key;
+                      return true;
                     },
                     onAccept: (opt) {
                       widget.onDrop(opt.key == widget.question.key);
@@ -210,20 +231,6 @@ class _PickDropRoundState extends State<PickDropRound> {
                 height: screen.height*0.3,
                 child: _optionsByColumn(context, widget.options)
               ),
-              Visibility(
-                visible: widget.isLast,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, ResultScreen.route, 
-                      arguments: ResultParam(wrongCount: 5, decreaseFactor: 100));
-                  }, 
-                  child: const Center(
-                    child: Text(
-                      'See result'
-                    )
-                  )
-                )
-              )
             ],
           ),
         );
