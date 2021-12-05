@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:kanji_memory_hint/components/result_button.dart';
 import 'package:kanji_memory_hint/const.dart';
-import 'package:kanji_memory_hint/menu_screens/result_screen.dart';
 import 'package:kanji_memory_hint/models/common.dart';
 import 'package:kanji_memory_hint/models/question_set.dart';
-import 'package:kanji_memory_hint/repository/multiple_choice.repo.dart';
+import 'package:kanji_memory_hint/multiple-choice/repo.dart';
 import 'package:kanji_memory_hint/route_param.dart';
 
 typedef OnOptionSelectCallback = Function(Option option);
