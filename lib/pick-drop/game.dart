@@ -1,11 +1,17 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:kanji_memory_hint/const.dart';
+import 'package:kanji_memory_hint/menu_screens/result_screen.dart';
 import 'package:kanji_memory_hint/models/common.dart';
 import 'package:kanji_memory_hint/models/question_set.dart';
+import 'package:kanji_memory_hint/pick-drop/repo.dart';
+import 'package:kanji_memory_hint/route_param.dart';
 
-class PickDrop extends StatelessWidget {
+//TODO: wrong count, correct result page, 
+class PickDrop extends StatefulWidget {
   PickDrop({Key? key, required this.chapter, required this.mode}) : super(key: key);
 
   static const route = '/game/pick-drop';
@@ -14,43 +20,80 @@ class PickDrop extends StatelessWidget {
   final int chapter;
   final GAME_MODE mode;
 
-
-  final QuestionSet questionSet = QuestionSet(
-      question: Question(
-        value: '30kr1n.png', 
-        isImage: true, 
-        key: 1.toString()), 
-      options: [
-        Option(value: 'rune 3', key: 3.toString()),
-        Option(value: 'rune 1', key: 1.toString()),
-        Option(value: 'rune 2', key: 2.toString()),
-        Option(value: 'rune 3', key: 3.toString()),
-        Option(value: 'rune 1', key: 1.toString()),
-        Option(value: 'rune 2', key: 2.toString()),
-        Option(value: 'rune 3', key: 3.toString()),
-        Option(value: 'rune 1', key: 1.toString()),
-      ]);
-
-  Widget _optionsByGridView(BuildContext context, List<Option> opts) {
-    final size = MediaQuery.of(context).size;
-
-    return Expanded(
-                child: Container(
-                  height: 200,
-                  child: GridView.count(
-                      padding: const EdgeInsets.all(15),
-                      crossAxisCount: 4,
-                      crossAxisSpacing: 15,
-                      mainAxisSpacing: 15,
-                      physics: const NeverScrollableScrollPhysics(),
-                      primary: false,
-                      children: opts.map((opt) {
-                        return _renderOption(context, opt);
-                      }).toList()
-                    )
-                  )
-              );
+  Future<List<QuestionSet>> _getQuestionSets() {
+    return getPickDropQuestionSets(10, chapter, mode);
   }
+
+  @override
+  State<StatefulWidget> createState() => _PickDropState();
+  
+}
+
+class _PickDropState extends State<PickDrop> {
+
+  var sets;
+  int index = 0;
+  int wrongAttempts = 0;
+
+  late int total;
+
+  @override
+  void initState() {
+    super.initState();
+    sets = widget._getQuestionSets();
+  }
+
+
+  void _handleOnDrop(bool isCorrect) {
+    print(isCorrect);
+    setState(() {
+      if (index < total-1) {
+        index++;  
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+
+    final screen = MediaQuery.of(context).size;
+
+    return Scaffold(
+      body: SafeArea(
+        child: FutureBuilder(
+          future: sets,
+          builder: (context, AsyncSnapshot<List<QuestionSet>> snapshot){
+            if(snapshot.hasData){
+              total = snapshot.data!.length;
+              var set = snapshot.data!.elementAt(index);
+              return PickDropRound(question: set.question, options: set.options, onDrop: _handleOnDrop, isLast: index == total-1,);
+            } else {
+              return Center(child: Text("Loading"),);
+            }
+          }
+        )
+      )
+    );
+  }
+}
+
+typedef OnDropCallback = Function(bool isCorrect);
+
+class PickDropRound extends StatefulWidget {
+  const PickDropRound({Key? key, required this.question, required this.options, required this.onDrop, required this.isLast}) : super(key: key);
+
+  final Question question;
+  final List<Option> options;
+  final OnDropCallback onDrop;
+  final bool isLast;
+
+  @override
+  State<StatefulWidget> createState() => _PickDropRoundState();
+}
+
+class _PickDropRoundState extends State<PickDropRound> {
+
+  bool isCorrect = false;
 
   Widget _renderOption(BuildContext context, Option opt) {
     final size = MediaQuery.of(context).size;
@@ -95,38 +138,52 @@ class PickDrop extends StatelessWidget {
             );
   }
 
-  Widget _optionsByColumn(BuildContext context, List<Option> opts) {
-    final screen = MediaQuery.of(context).size;
+  Widget _optionsByGridView(BuildContext context, List<Option> opts) {
+      final size = MediaQuery.of(context).size;
 
-    return Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: opts.take(4).map((opt) {
-                return _renderOption(context, opt);
-              }).toList(),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: opts.skip(4).map((opt) {
-                return _renderOption(context, opt);
-              }).toList(),
-            ),
-          ]
-        );
+      return Expanded(
+                  child: Container(
+                    height: 200,
+                    child: GridView.count(
+                        padding: const EdgeInsets.all(15),
+                        crossAxisCount: 4,
+                        crossAxisSpacing: 15,
+                        mainAxisSpacing: 15,
+                        physics: const NeverScrollableScrollPhysics(),
+                        primary: false,
+                        children: widget.options.map((opt) {
+                          return _renderOption(context, opt);
+                        }).toList()
+                      )
+                    )
+                );
   }
+  Widget _optionsByColumn(BuildContext context, List<Option> opts) {
+      final screen = MediaQuery.of(context).size;
 
+      return Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: opts.take(4).map((opt) {
+                  return _renderOption(context, opt);
+                }).toList(),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: opts.skip(4).map((opt) {
+                  return _renderOption(context, opt);
+                }).toList(),
+              ),
+            ]
+          );
+  }
   @override
   Widget build(BuildContext context) {
-    final q = questionSet.question;
-    final opts = questionSet.options;
-
     final screen = MediaQuery.of(context).size;
 
-    return  Scaffold(
-      body: SafeArea(
-        child: Center(
+    return Center(
           child: Column(
             
             children: [
@@ -136,30 +193,45 @@ class PickDrop extends StatelessWidget {
                   aspectRatio: 1,
                   child: DragTarget<Option>(
                     builder: (context, candidateData, rejectedData) {
-                      return QuestionWidget(value: q.value, key: key, answerKey: q.key.toString(), isImage: true);
+                      return _QuestionWidget(value: widget.question.value, answerKey: widget.question.key.toString(), isImage: true);
                     },
-                    onWillAccept: (opt) => opt?.key == q.key,
+                    onWillAccept: (opt) {
+                     return opt?.key == widget.question.key;
+                    },
                     onAccept: (opt) {
-                      print("ACCEPTED");
+                      widget.onDrop(opt.key == widget.question.key);
                     },
+
                   )
                 ),
               ),  
-              SizedBox(height: screen.height*0.1,),
+              SizedBox(height: screen.height*0.07,),
               Container(
                 height: screen.height*0.3,
-                child: _optionsByColumn(context, opts)
+                child: _optionsByColumn(context, widget.options)
+              ),
+              Visibility(
+                visible: widget.isLast,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, ResultScreen.route, 
+                      arguments: ResultParam(wrongCount: 5, decreaseFactor: 100));
+                  }, 
+                  child: const Center(
+                    child: Text(
+                      'See result'
+                    )
+                  )
+                )
               )
             ],
           ),
-        )
-      )
-    );
+        );
   }
 }
 
-class QuestionWidget extends StatelessWidget {
-  const QuestionWidget({Key? key, required this.value, required this.isImage, required this.answerKey}) : super(key: key);
+class _QuestionWidget extends StatelessWidget {
+  const _QuestionWidget({Key? key, required this.value, required this.isImage, required this.answerKey}) : super(key: key);
   
   final String value;
   final bool isImage;
@@ -198,8 +270,8 @@ class QuestionWidget extends StatelessWidget {
   }
 }
 
-class OptionWidget extends StatelessWidget {
-  const OptionWidget({Key? key, required this.value, required this.answerKey}) : super(key: key);
+class _OptionWidget extends StatelessWidget {
+  const _OptionWidget({Key? key, required this.value, required this.answerKey}) : super(key: key);
   
   final String value;
   final int answerKey;
