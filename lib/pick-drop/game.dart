@@ -29,84 +29,130 @@ class PickDrop extends StatelessWidget {
         Option(value: 'rune 2', key: 2.toString()),
         Option(value: 'rune 3', key: 3.toString()),
         Option(value: 'rune 1', key: 1.toString()),
-        Option(value: 'rune 2', key: 2.toString()),
       ]);
+
+  Widget _optionsByGridView(BuildContext context, List<Option> opts) {
+    final size = MediaQuery.of(context).size;
+
+    return Expanded(
+                child: Container(
+                  height: 200,
+                  child: GridView.count(
+                      padding: const EdgeInsets.all(15),
+                      crossAxisCount: 4,
+                      crossAxisSpacing: 15,
+                      mainAxisSpacing: 15,
+                      physics: const NeverScrollableScrollPhysics(),
+                      primary: false,
+                      children: opts.map((opt) {
+                        return _renderOption(context, opt);
+                      }).toList()
+                    )
+                  )
+              );
+  }
+
+  Widget _renderOption(BuildContext context, Option opt) {
+    final size = MediaQuery.of(context).size;
+
+    return Draggable<Option>(
+            data: opt,
+            maxSimultaneousDrags: 1,
+            child: Container(
+                height: size.height*0.115,
+                width: size.height*0.115,
+                decoration: BoxDecoration(border: Border.all(width: 3)),
+                child: Center(
+                  child: Text(
+                  opt.value,  
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                    ),
+                  )
+                )
+              ),
+              feedback: Container(
+                height: size.height*0.115,
+                width: size.height*0.115,
+                decoration: BoxDecoration(border: Border.all(width: 3)),
+                child: Center(
+                  child: Text(
+                  opt.value,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                    decoration: TextDecoration.none
+                    ),
+                  )
+                )
+              ),
+               
+              childWhenDragging: SizedBox(
+                height: size.height*0.115,
+                width: size.height*0.115,
+              )
+            );
+  }
+
+  Widget _optionsByColumn(BuildContext context, List<Option> opts) {
+    final screen = MediaQuery.of(context).size;
+
+    return Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: opts.take(4).map((opt) {
+                return _renderOption(context, opt);
+              }).toList(),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: opts.skip(4).map((opt) {
+                return _renderOption(context, opt);
+              }).toList(),
+            ),
+          ]
+        );
+  }
 
   @override
   Widget build(BuildContext context) {
     final q = questionSet.question;
     final opts = questionSet.options;
-    print("LENGTH: " + opts.length.toString());
-    return  Scaffold(
-      appBar: AppBar(title: const Text('PICK AND DROP'),),
-      body: Center(
-        child: Column(
-          children: [
-            DragTarget<Option>(
-              builder: (context, candidateData, rejectedData) {
-                return QuestionWidget(value: q.value, key: key, answerKey: q.key.toString(), isImage: true);
-              },
-              onWillAccept: (opt) => opt?.key == q.key,
-              onAccept: (opt) {
-                print("ACCEPTED");
 
-              },
-            ),  
-            Container(height: 30, decoration: BoxDecoration(border: Border.all(width: 3)),),
-            Expanded(
-              child: Container(
-                height: 200,
-                child: GridView.count(
-                    padding: const EdgeInsets.all(20),
-                    crossAxisCount: 3,
-                    crossAxisSpacing: 30,
-                    mainAxisSpacing: 30,
-                    physics: const NeverScrollableScrollPhysics(),
-                    primary: false,
-                    children: opts.map((opt) {
-                      return Draggable<Option>(
-                        data: opt,
-                        child: Container(
-                          height: 50,
-                          width: 50,
-                          decoration: BoxDecoration(border: Border.all(width: 3)),
-                          child: Center(
-                            child: Text(
-                            opt.value,  
-                            style: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 20,
-                              ),
-                            )
-                          )
-                        ),
-                        feedback: Container(
-                          height: 97,
-                          width: 97,
-                          decoration: BoxDecoration(border: Border.all(width: 3)),
-                          child: Center(
-                            child: Text(
-                            opt.value,
-                            style: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 20,
-                              decoration: TextDecoration.none
-                              ),
-                            )
-                          )
-                        ),
-                        
-                        childWhenDragging: const SizedBox(
-                          height: 50, 
-                          width: 50,
-                        )
-                      );
-                    }).toList()
+    final screen = MediaQuery.of(context).size;
+
+    return  Scaffold(
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            
+            children: [
+              Container(
+                height: screen.height*0.5,
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: DragTarget<Option>(
+                    builder: (context, candidateData, rejectedData) {
+                      return QuestionWidget(value: q.value, key: key, answerKey: q.key.toString(), isImage: true);
+                    },
+                    onWillAccept: (opt) => opt?.key == q.key,
+                    onAccept: (opt) {
+                      print("ACCEPTED");
+                    },
                   )
-                )
-            )
-          ],
-        ),
+                ),
+              ),  
+              SizedBox(height: screen.height*0.1,),
+              Container(
+                height: screen.height*0.3,
+                child: _optionsByColumn(context, opts)
+              )
+            ],
+          ),
+        )
       )
     );
   }
