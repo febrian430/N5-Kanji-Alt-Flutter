@@ -1,22 +1,26 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/components/result_button.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/mix-match/repo.dart';
 import 'package:kanji_memory_hint/models/common.dart';
 import 'package:kanji_memory_hint/route_param.dart';
 
+typedef OnRoundOverCallback = Function(bool isCorrect, int correct, int wrongAttempts);
+
 class MixMatchGame extends StatefulWidget {
   MixMatchGame({Key? key, required this.chapter, required this.mode}) : super(key: key);
 
   final int chapter;
   final GAME_MODE mode;
+  final int numOfRounds = 2;
 
   static const route = '/game/mix-match';
   static const name = 'Mix and Match';
 
-  Future<List<Question>> _getQuestionSet(int chapter, GAME_MODE mode) async {
-    return makeOptions(8, chapter, mode);
+  Future<List<List<Question>>> _getQuestionSet(int chapter, GAME_MODE mode) async {
+    return makeOptions(6, chapter, mode);
   }
 
   @override
@@ -24,13 +28,10 @@ class MixMatchGame extends StatefulWidget {
 }
 
 class _MixMatchGameState extends State<MixMatchGame> {
-  int score = 0;
-  int wrong = 0;
   var _questionSet;
-  late int numOfQuestions; 
 
-  Question? selected;
-  List<Question> solved = [];
+  int roundsSolved = 0;
+  int wrong = 0;
 
   @override
   void initState() {
@@ -38,6 +39,86 @@ class _MixMatchGameState extends State<MixMatchGame> {
     // PracticeGameArguments arg = ModalRoute.of(context)!.settings.arguments as PracticeGameArguments;
     _questionSet = widget._getQuestionSet(widget.chapter, widget.mode);
   }
+
+  void _onRoundOver(bool isCorrect, int correct, int wrongAttempts) {
+    setState(() {
+      wrong += wrongAttempts;
+      roundsSolved++;
+    });
+    print("was called");
+  }
+
+  Widget _buildRound(BuildContext context, int index, List<List<Question>> data) {
+    final size = MediaQuery.of(context).size;
+
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 4.0),
+      child: Column(
+        children: [
+          Container(
+            height: size.height*0.85,
+            child: _MixMatchRound( 
+              options: data[index], 
+              onRoundOver: _onRoundOver,
+            )
+          ),
+          ResultButton(
+            param: ResultParam(wrongCount: wrong, decreaseFactor: 100),
+            visible: widget.numOfRounds == roundsSolved,
+          ),
+        ]
+      )
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: FutureBuilder(
+        future: _questionSet,
+        builder: (context, AsyncSnapshot<List<List<Question>>> snapshot) {
+          if(snapshot.hasData) {
+            return PageView.builder(
+              controller: PageController(
+                viewportFraction: 1,
+              ),
+              itemCount: snapshot.data?.length,
+              itemBuilder: (BuildContext context, int itemIndex) {
+                return _buildRound(context, itemIndex, snapshot.data!);
+              }
+            );
+          } else {
+            return LoadingScreen();
+          }
+        }
+      )
+    );    
+  }
+}
+
+class _MixMatchRound extends StatefulWidget {
+  
+  _MixMatchRound({Key? key, required this.options, required this.onRoundOver}): super(key: key);
+
+  final List<Question> options;
+  final OnRoundOverCallback onRoundOver;
+
+  @override
+  State<StatefulWidget> createState() => _MixMatchRoundState();
+}
+
+class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveClientMixin {
+  int score = 0;
+  int wrong = 0;
+  late int numOfQuestions; 
+
+  Question? selected;
+  List<Question> solved = [];
+
+
+  @override
+  bool get wantKeepAlive => true;
+
 
   Widget _drawQuestionWidget(Question opt) {
     bool isSelected = (selected?.id == opt.id);
@@ -117,6 +198,7 @@ class _MixMatchGameState extends State<MixMatchGame> {
 
   void _isGameOver() async {
     if(solved.length == numOfQuestions){
+      widget.onRoundOver(true, score, wrong);
       showDialog<String>(
         context: context,
         builder: (BuildContext context) => AlertDialog(
@@ -178,27 +260,25 @@ class _MixMatchGameState extends State<MixMatchGame> {
           );
   }
 
-  Widget _getGameUI(List<Question> questions) {
+  Widget _getGameUI(BuildContext context, List<Question> questions) {
     numOfQuestions = questions.length;
     return Center(
-      child: Column(
-        children: [
-          Expanded(
-            child: GridView.count(
-              crossAxisCount: 3,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-              children: questions.map((opt) {
-                return _buildQuestion(opt);
-              }).toList(),
+        child: Column(
+          children: [
+            Expanded(
+              child: GridView.count(
+                crossAxisCount: 3,
+                shrinkWrap: true,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                physics: NeverScrollableScrollPhysics(),
+                children: questions.map((opt) {
+                  return _buildQuestion(opt);
+                }).toList(),
+              )
             )
-          ),
-          ResultButton(
-            visible: numOfQuestions == solved.length,
-            param: ResultParam(wrongCount: wrong, decreaseFactor: 100)
-          )
-        ]
-      )
+          ]
+        )
     );
   }
 
@@ -206,19 +286,8 @@ class _MixMatchGameState extends State<MixMatchGame> {
   Widget build(BuildContext context) {
     // PracticeGameArguments arg = ModalRoute.of(context)!.settings.arguments as PracticeGameArguments;
     
-    return Scaffold(
-      body: FutureBuilder(
-        future: _questionSet,
-        builder: (context, AsyncSnapshot<List<Question>> snapshot) {
-          if(snapshot.hasData) {
-            return _getGameUI(snapshot.data!);
-          } else {
-            return const Center(
-              child: Text('Loading...'),
-            );
-          }
-        },
-      ),
-    );
+    return _getGameUI(context, widget.options);
   }
+
+
 }

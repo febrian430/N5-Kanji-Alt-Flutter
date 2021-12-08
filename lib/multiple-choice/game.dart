@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/components/result_button.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/models/common.dart';
@@ -128,11 +129,7 @@ class _MultipleChoiceGameState extends State<MultipleChoiceGame> {
               },
             );
           } else {
-            return const Center(
-              child: Text(
-                'Loading',
-              ),
-            );
+            return LoadingScreen();
           }
         }
       )
