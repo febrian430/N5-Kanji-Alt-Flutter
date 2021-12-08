@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/components/result_button.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/menu_screens/result_screen.dart';
@@ -36,6 +37,7 @@ class _PickDropState extends State<PickDrop> {
   int index = 0;
   int wrongAttempts = 0;
 
+  int solved = 0;
   late int total;
 
   @override
@@ -48,8 +50,11 @@ class _PickDropState extends State<PickDrop> {
   void _handleOnDrop(bool isCorrect) {
     print(isCorrect);
     setState(() {
-      if (isCorrect && index < total-1) {
-        index++;  
+      if (isCorrect) {
+        solved++;
+        if (index < total-1) {
+          index++;
+        }
       } else {
         wrongAttempts++;
       }
@@ -62,11 +67,16 @@ class _PickDropState extends State<PickDrop> {
       child: Column(
         children: [
           Container(
-            child: PickDropRound(question: set.question, options: set.options, onDrop: _handleOnDrop, isLast: index == total-1,)
+            child: PickDropRound(
+              question: set.question, 
+              options: set.options, 
+              onDrop: _handleOnDrop, 
+              isLast: index == total-1,
+            )
           ),
           ResultButton(
             param: ResultParam(wrongCount: wrongAttempts, decreaseFactor: 100),
-            visible: index == total-1,
+            visible: total == solved,
           ),
         ]
       )
@@ -88,7 +98,7 @@ class _PickDropState extends State<PickDrop> {
               var set = snapshot.data!.elementAt(index);
               return _buildRound(set);
             } else {
-              return Center(child: Text("Loading"),);
+              return LoadingScreen();
             }
           }
         )
