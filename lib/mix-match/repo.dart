@@ -4,11 +4,14 @@ import 'package:kanji_memory_hint/repository/repo.dart';
 import 'package:kanji_memory_hint/map_indexed.dart';
 
 
-Future<List<Question>> makeOptions(int n, int chapter, GAME_MODE mode) {
+Future<List<List<Question>>> makeOptions(int n, int chapter, GAME_MODE mode) async {
+  List<Question> roundOptions = [];
   if(mode == GAME_MODE.imageMeaning) {
-    return _makeImageMeaningOptions(n, chapter);
+    roundOptions = await _makeImageMeaningOptions(n, chapter);
+  } else {
+    roundOptions =  await _makeReadingOptions(n, chapter);
   }
-  return _makeReadingOptions(n, chapter);
+  return [roundOptions, roundOptions];
 }
 
 Future<List<Question>> _makeImageMeaningOptions(int n, int chapter) async {
