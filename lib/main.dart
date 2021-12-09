@@ -11,6 +11,7 @@ import 'package:kanji_memory_hint/kanji-list/menu.dart';
 import 'package:kanji_memory_hint/menu_screens/game_select.dart';
 import 'package:kanji_memory_hint/mix-match/game.dart';
 import 'package:kanji_memory_hint/pick-drop/game.dart';
+import 'package:kanji_memory_hint/quiz/quiz.dart';
 import 'package:kanji_memory_hint/route_param.dart';
 
 void main() {
@@ -94,6 +95,13 @@ class MyApp extends StatelessWidget {
 
             return MaterialPageRoute(builder: (context) {
                 return PickDrop(mode: args.mode, chapter: args.chapter);
+            });
+          
+          case Quiz.route:
+            final args = settings.arguments as PracticeGameArguments;
+
+            return MaterialPageRoute(builder: (context) {
+              return Quiz();
             });
           // case ResultScreen.route:
           //   final args = settings.arguments as ResultParam;
