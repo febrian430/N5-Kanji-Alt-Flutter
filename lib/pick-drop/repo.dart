@@ -31,7 +31,7 @@ Future<List<Option>> _findOptionsFor(int n, KanjiExample question, GAME_MODE mod
   otherOptions = otherOptions.take(n-1).toList();
   if(mode == GAME_MODE.imageMeaning) {
     options = [
-      Option(value: question.meaning, key: question.id.toString()),
+      Option(value: question.rune, key: question.id.toString()),
       ...otherOptions.map((opt) => Option(value: opt.rune, key: opt.id.toString()))
     ];
   } else {
