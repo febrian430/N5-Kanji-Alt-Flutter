@@ -10,11 +10,11 @@ const _minChapter = 1;
 const _maxChapter = 10;
 
 class KanjiExample {
-  const KanjiExample({required this.id, required this.rune, required this.meaning, required this.spelling, required this.image, required this.chapter});
+  KanjiExample({required this.id, required this.rune, required this.meaning, required this.spelling, required this.image, required this.chapter});
   final int id;
   final String rune;
   final String meaning;
-  final String spelling;
+  late final List<String> spelling;
   final String image;
   final int chapter;
 
@@ -22,9 +22,13 @@ class KanjiExample {
       : id = json['id'],
         rune = json['rune'],
         meaning = json['meaning'],
-        spelling = json['spelling'],
         image = json['image'],
-        chapter = json['chapter'];        
+        chapter = json['chapter'] {
+
+      spelling = (json['spelling'] as List).map((spellDynamic) {
+        return spellDynamic.toString();
+      }).toList();
+  }    
 }
 
 List<KanjiExample> _distincts = [];
@@ -35,7 +39,7 @@ Future<List<KanjiExample>> _kanjiExamples() async {
   if(_distincts.length > 0) {
     return _distincts;
   }
-  const source = 'assets/kanji/distinct_test.json';
+  const source = 'assets/kanji/examples.json';
   // const source = 'distinct.json';
   final jsonData = await rootBundle.loadString(source);
   var data = jsonDecode(jsonData);

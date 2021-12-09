@@ -1,0 +1,3232 @@
+[
+	{
+		"id": 1,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "一",
+		"spelling": [
+			"い",
+			"ち"
+		],
+		"meaning": "Satu",
+		"is_single": true
+	},
+	{
+		"id": 2,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "一つ",
+		"spelling": [
+			"ひ",
+			"と",
+			"つ"
+		],
+		"meaning": "Satu buah"
+	},
+	{
+		"id": 3,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "一人",
+		"spelling": [
+			"ひ",
+			"と",
+			"り"
+		],
+		"meaning": "Satu orang"
+	},
+	{
+		"id": 4,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "一月",
+		"spelling": [
+			"い",
+			"ち",
+			"が",
+			"つ"
+		],
+		"meaning": "Bulan Januari"
+	},
+	{
+		"id": 5,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "一日",
+		"spelling": [
+			"つ",
+			"い",
+			"た",
+			"ち"
+		],
+		"meaning": "Tanggal 1"
+	},
+	{
+		"id": 6,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "二",
+		"spelling": [
+			"に"
+		],
+		"meaning": "Dua",
+		"is_single": true
+	},
+	{
+		"id": 7,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "二つ",
+		"spelling": [
+			"ふ",
+			"た",
+			"つ"
+		],
+		"meaning": "Dua buah"
+	},
+	{
+		"id": 8,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "二人",
+		"spelling": [
+			"ふ",
+			"た",
+			"り"
+		],
+		"meaning": "Dua orang"
+	},
+	{
+		"id": 9,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "二月",
+		"spelling": [
+			"に",
+			"が",
+			"つ"
+		],
+		"meaning": "Bulan Februari"
+	},
+	{
+		"id": 10,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "二日",
+		"spelling": [
+			"ふ",
+			"つ",
+			"か"
+		],
+		"meaning": "Tanggal 2"
+	},
+	{
+		"id": 11,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "三",
+		"spelling": [
+			"さ",
+			"ん"
+		],
+		"meaning": "Tiga",
+		"is_single": true
+	},
+	{
+		"id": 12,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "三つ",
+		"spelling": [
+			"み",
+			"っ",
+			"つ"
+		],
+		"meaning": "Tiga buah"
+	},
+	{
+		"id": 13,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "三人",
+		"spelling": [
+			"さ",
+			"ん",
+			"に",
+			"ん"
+		],
+		"meaning": "Tiga orang"
+	},
+	{
+		"id": 14,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "三月",
+		"spelling": [
+			"さ",
+			"ん",
+			"が",
+			"つ"
+		],
+		"meaning": "Bulan Maret"
+	},
+	{
+		"id": 15,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "三日",
+		"spelling": [
+			"み",
+			"っ",
+			"か"
+		],
+		"meaning": "Tanggal 3"
+	},
+	{
+		"id": 16,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "四",
+		"spelling": [
+			"よ",
+			"ん"
+		],
+		"meaning": "Empat",
+		"is_single": true
+	},
+	{
+		"id": 17,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "四つ",
+		"spelling": [
+			"よ",
+			"っ",
+			"つ"
+		],
+		"meaning": "Empat buah"
+	},
+	{
+		"id": 18,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "四人",
+		"spelling": [
+			"よ",
+			"ん",
+			"に",
+			"ん"
+		],
+		"meaning": "Empat orang"
+	},
+	{
+		"id": 19,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "四月",
+		"spelling": [
+			"し",
+			"が",
+			"つ"
+		],
+		"meaning": "Bulan April"
+	},
+	{
+		"id": 20,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "四日",
+		"spelling": [
+			"よ",
+			"っ",
+			"か"
+		],
+		"meaning": "Tanggal 4"
+	},
+	{
+		"id": 21,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "五",
+		"spelling": [
+			"ご"
+		],
+		"meaning": "Lima",
+		"is_single": true
+	},
+	{
+		"id": 22,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "五つ",
+		"spelling": [
+			"い",
+			"つ",
+			"つ"
+		],
+		"meaning": "Lima buah"
+	},
+	{
+		"id": 23,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "五人",
+		"spelling": [
+			"ご",
+			"に",
+			"ん"
+		],
+		"meaning": "Lima orang"
+	},
+	{
+		"id": 24,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "五月",
+		"spelling": [
+			"ご",
+			"が",
+			"つ"
+		],
+		"meaning": "Bulan Mei"
+	},
+	{
+		"id": 25,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "五日",
+		"spelling": [
+			"い",
+			"つ",
+			"か"
+		],
+		"meaning": "Tanggal 5"
+	},
+	{
+		"id": 26,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "六",
+		"spelling": [
+			"ろ",
+			"く"
+		],
+		"meaning": "Enam",
+		"is_single": true
+	},
+	{
+		"id": 27,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "六つ",
+		"spelling": [
+			"む",
+			"っ",
+			"つ"
+		],
+		"meaning": "Enam buah"
+	},
+	{
+		"id": 28,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "六人",
+		"spelling": [
+			"ろ",
+			"く",
+			"に",
+			"ん"
+		],
+		"meaning": "Enam orang"
+	},
+	{
+		"id": 29,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "六月",
+		"spelling": [
+			"ろ",
+			"く",
+			"が",
+			"つ"
+		],
+		"meaning": "Bulan Juni"
+	},
+	{
+		"id": 30,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "六日",
+		"spelling": [
+			"み",
+			"い",
+			"か"
+		],
+		"meaning": "Tanggal 6"
+	},
+	{
+		"id": 31,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "七",
+		"spelling": [
+			"な",
+			"な"
+		],
+		"meaning": "Tujuh",
+		"is_single": true
+	},
+	{
+		"id": 32,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "七つ",
+		"spelling": [
+			"な",
+			"な",
+			"つ"
+		],
+		"meaning": "Tujuh buah"
+	},
+	{
+		"id": 33,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "七人",
+		"spelling": [
+			"な",
+			"な",
+			"に",
+			"ん"
+		],
+		"meaning": "Tujuh orang"
+	},
+	{
+		"id": 34,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "七月",
+		"spelling": [
+			"し",
+			"ち",
+			"が",
+			"つ"
+		],
+		"meaning": "Bulan Juli"
+	},
+	{
+		"id": 35,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "七日",
+		"spelling": [
+			"な",
+			"の",
+			"か"
+		],
+		"meaning": "Tanggal 7"
+	},
+	{
+		"id": 36,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "八",
+		"spelling": [
+			"は",
+			"ち"
+		],
+		"meaning": "Delapan",
+		"is_single": true
+	},
+	{
+		"id": 37,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "八つ",
+		"spelling": [
+			"や",
+			"っ",
+			"つ"
+		],
+		"meaning": "Delapan buah"
+	},
+	{
+		"id": 38,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "八人",
+		"spelling": [
+			"は",
+			"ち",
+			"に",
+			"ん"
+		],
+		"meaning": "Delapan orang"
+	},
+	{
+		"id": 39,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "八月",
+		"spelling": [
+			"は",
+			"ち",
+			"が",
+			"つ"
+		],
+		"meaning": "Bulan Agustus"
+	},
+	{
+		"id": 40,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "八日",
+		"spelling": [
+			"よ",
+			"う",
+			"か"
+		],
+		"meaning": "Tanggal 8"
+	},
+	{
+		"id": 41,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "九",
+		"spelling": [
+			"きゅ",
+			"う"
+		],
+		"meaning": "Sembilan",
+		"is_single": true
+	},
+	{
+		"id": 42,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "九つ",
+		"spelling": [
+			"こ",
+			"こ",
+			"の",
+			"つ"
+		],
+		"meaning": "Sembilan buah"
+	},
+	{
+		"id": 43,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "九人",
+		"spelling": [
+			"きゅ",
+			"う",
+			"に",
+			"ん"
+		],
+		"meaning": "Sembilan orang"
+	},
+	{
+		"id": 44,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "九月",
+		"spelling": [
+			"く",
+			"が",
+			"つ"
+		],
+		"meaning": "Bulan September"
+	},
+	{
+		"id": 45,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "九日",
+		"spelling": [
+			"こ",
+			"こ",
+			"の",
+			"か"
+		],
+		"meaning": "Tanggal 9"
+	},
+	{
+		"id": 46,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "十",
+		"spelling": [
+			"じゅ",
+			"う"
+		],
+		"meaning": "Sepuluh",
+		"is_single": true
+	},
+	{
+		"id": 47,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "十月",
+		"spelling": [
+			"じゅ",
+			"う",
+			"が",
+			"つ"
+		],
+		"meaning": "Bulan Oktober"
+	},
+	{
+		"id": 48,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "十二月",
+		"spelling": [
+			"じゅ",
+			"う",
+			"に",
+			"が",
+			"つ"
+		],
+		"meaning": "Bulan Desember"
+	},
+	{
+		"id": 49,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "十日",
+		"spelling": [
+			"と",
+			"う",
+			"か"
+		],
+		"meaning": "Tanggal  10"
+	},
+	{
+		"id": 50,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "百",
+		"spelling": [
+			"ひゃ",
+			"く"
+		],
+		"meaning": "100",
+		"is_single": true
+	},
+	{
+		"id": 51,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "二百",
+		"spelling": [
+			"に",
+			"ひゃ",
+			"く"
+		],
+		"meaning": "200"
+	},
+	{
+		"id": 52,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "三百",
+		"spelling": [
+			"さ",
+			"ん",
+			"びゃ",
+			"く"
+		],
+		"meaning": "300"
+	},
+	{
+		"id": 53,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "六百",
+		"spelling": [
+			"ろ",
+			"っ",
+			"ぴゃ",
+			"く"
+		],
+		"meaning": "600"
+	},
+	{
+		"id": 54,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "千",
+		"spelling": [
+			"え",
+			"ん"
+		],
+		"meaning": "1000 (satuan) (ribu)",
+		"is_single": true
+	},
+	{
+		"id": 55,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "千円",
+		"spelling": [
+			"せ",
+			"ん",
+			"え",
+			"ん"
+		],
+		"meaning": "1000 Yen"
+	},
+	{
+		"id": 56,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "三千",
+		"spelling": [
+			"さ",
+			"ん",
+			"ぜ",
+			"ん"
+		],
+		"meaning": "3000"
+	},
+	{
+		"id": 57,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "万",
+		"spelling": [
+			"ま",
+			"ん"
+		],
+		"meaning": "10.000 (satuan) (puluh ribu)",
+		"is_single": true
+	},
+	{
+		"id": 58,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "一万円",
+		"spelling": [
+			"い",
+			"ち",
+			"ま",
+			"ん",
+			"え",
+			"ん"
+		],
+		"meaning": "10.000 Yen"
+	},
+	{
+		"id": 59,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "四万",
+		"spelling": [
+			"よ",
+			"ん",
+			"ま",
+			"ん"
+		],
+		"meaning": "40.000"
+	},
+	{
+		"id": 60,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "年",
+		"spelling": [
+			"と",
+			"し"
+		],
+		"meaning": "Tahun",
+		"is_single": true
+	},
+	{
+		"id": 61,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "来年",
+		"spelling": [
+			"ら",
+			"い",
+			"ね",
+			"ん"
+		],
+		"meaning": "Tahun depan"
+	},
+	{
+		"id": 62,
+		"chapter": 1,
+		"image": "30kr1n.png",
+		"rune": "去年",
+		"spelling": [
+			"き",
+			"ょ",
+			"ね",
+			"ん"
+		],
+		"meaning": "Tahun lalu"
+	},
+	{
+		"id": 63,
+		"chapter": 2,
+		"image": "30kr1n.png",
+		"rune": "日",
+		"spelling": [
+			"ひ"
+		],
+		"meaning": "Matahari",
+		"is_single": true
+	},
+	{
+		"id": 64,
+		"chapter": 2,
+		"image": "30kr1n.png",
+		"rune": "日曜日",
+		"spelling": [
+			"い",
+			"ち",
+			"よ",
+			"う",
+			"び"
+		],
+		"meaning": "Hari Minggu"
+	},
+	{
+		"id": 65,
+		"chapter": 2,
+		"image": "30kr1n.png",
+		"rune": "日本",
+		"spelling": [
+			"に",
+			"ほ",
+			"ん",
+			"／",
+			"に",
+			"ぽ",
+			"ん"
+		],
+		"meaning": "Jepang"
+	},
+	{
+		"id": 66,
+		"chapter": 2,
+		"image": "30kr1n.png",
+		"rune": "月",
+		"spelling": [
+			"つ",
+			"き"
+		],
+		"meaning": "Bulan",
+		"is_single": true
+	},
+	{
+		"id": 67,
+		"chapter": 2,
+		"image": "30kr1n.png",
+		"rune": "月曜日",
+		"spelling": [
+			"げ",
+			"つ",
+			"よ",
+			"う",
+			"び"
+		],
+		"meaning": "Hari Senin"
+	},
+	{
+		"id": 68,
+		"chapter": 2,
+		"image": "30kr1n.png",
+		"rune": "木",
+		"spelling": [
+			"き"
+		],
+		"meaning": "Pohon",
+		"is_single": true
+	},
+	{
+		"id": 69,
+		"chapter": 2,
+		"image": "30kr1n.png",
+		"rune": "土木",
+		"spelling": [
+			"ど",
+			"ぼ",
+			"く"
+		],
+		"meaning": "Teknik Sipil"
+	},
+	{
+		"id": 70,
+		"chapter": 2,
+		"image": "30kr1n.png",
+		"rune": "木曜日",
+		"spelling": [
+			"も",
+			"く",
+			"よ",
+			"う",
+			"び"
+		],
+		"meaning": "Hari Kamis"
+	},
+	{
+		"id": 71,
+		"chapter": 2,
+		"image": "30kr1n.png",
+		"rune": "山",
+		"spelling": [
+			"や",
+			"ま"
+		],
+		"meaning": "Gunung",
+		"is_single": true
+	},
+	{
+		"id": 72,
+		"chapter": 2,
+		"image": "30kr1n.png",
+		"rune": "火山",
+		"spelling": [
+			"か",
+			"ざ",
+			"ん"
+		],
+		"meaning": "Gunung Berapi"
+	},
+	{
+		"id": 73,
+		"chapter": 2,
+		"image": "30kr1n.png",
+		"rune": "川",
+		"spelling": [
+			"か",
+			"わ"
+		],
+		"meaning": "Sungai",
+		"is_single": true
+	},
+	{
+		"id": 74,
+		"chapter": 2,
+		"image": "30kr1n.png",
+		"rune": "小川",
+		"spelling": [
+			"お",
+			"が",
+			"わ"
+		],
+		"meaning": "Anak sungai"
+	},
+	{
+		"id": 75,
+		"chapter": 2,
+		"image": "30kr1n.png",
+		"rune": "田",
+		"spelling": [
+			"た"
+		],
+		"meaning": "Sawah",
+		"is_single": true
+	},
+	{
+		"id": 76,
+		"chapter": 2,
+		"image": "30kr1n.png",
+		"rune": "水田",
+		"spelling": [
+			"す",
+			"い",
+			"で",
+			"ん"
+		],
+		"meaning": "Sawah"
+	},
+	{
+		"id": 77,
+		"chapter": 2,
+		"image": "30kr1n.png",
+		"rune": "人",
+		"spelling": [
+			"ひ",
+			"と"
+		],
+		"meaning": "Orang",
+		"is_single": true
+	},
+	{
+		"id": 78,
+		"chapter": 2,
+		"image": "30kr1n.png",
+		"rune": "一人",
+		"spelling": [
+			"ひ",
+			"と",
+			"り"
+		],
+		"meaning": "Satu orang / seorang"
+	},
+	{
+		"id": 79,
+		"chapter": 2,
+		"image": "30kr1n.png",
+		"rune": "日本人",
+		"spelling": [
+			"に",
+			"ほ",
+			"ん",
+			"じ",
+			"ん"
+		],
+		"meaning": "Orang Jepang"
+	},
+	{
+		"id": 80,
+		"chapter": 2,
+		"image": "30kr1n.png",
+		"rune": "口",
+		"spelling": [
+			"く",
+			"ち"
+		],
+		"meaning": "Mulut",
+		"is_single": true
+	},
+	{
+		"id": 81,
+		"chapter": 2,
+		"image": "30kr1n.png",
+		"rune": "入口",
+		"spelling": [
+			"い",
+			"り",
+			"ぐ",
+			"ち"
+		],
+		"meaning": "Pintu Masuk"
+	},
+	{
+		"id": 82,
+		"chapter": 2,
+		"image": "30kr1n.png",
+		"rune": "出口",
+		"spelling": [
+			"で",
+			"ぐ",
+			"ち"
+		],
+		"meaning": "Pintu Keluar"
+	},
+	{
+		"id": 83,
+		"chapter": 2,
+		"image": "30kr1n.png",
+		"rune": "人口",
+		"spelling": [
+			"じ",
+			"ん",
+			"こ",
+			"う"
+		],
+		"meaning": "Populasi"
+	},
+	{
+		"id": 84,
+		"chapter": 2,
+		"image": "30kr1n.png",
+		"rune": "車",
+		"spelling": [
+			"く",
+			"る",
+			"ま"
+		],
+		"meaning": "Mobil",
+		"is_single": true
+	},
+	{
+		"id": 85,
+		"chapter": 2,
+		"image": "30kr1n.png",
+		"rune": "自動車",
+		"spelling": [
+			"じ",
+			"ど",
+			"う",
+			"しゃ"
+		],
+		"meaning": "Mobil/Otomotif"
+	},
+	{
+		"id": 86,
+		"chapter": 2,
+		"image": "30kr1n.png",
+		"rune": "電車",
+		"spelling": [
+			"で",
+			"ん",
+			"しゃ"
+		],
+		"meaning": "Kereta"
+	},
+	{
+		"id": 87,
+		"chapter": 2,
+		"image": "30kr1n.png",
+		"rune": "水車",
+		"spelling": [
+			"す",
+			"い",
+			"しゃ"
+		],
+		"meaning": "Kincir air"
+	},
+	{
+		"id": 88,
+		"chapter": 2,
+		"image": "30kr1n.png",
+		"rune": "門",
+		"spelling": [
+			"も",
+			"ん"
+		],
+		"meaning": "Gerbang",
+		"is_single": true
+	},
+	{
+		"id": 89,
+		"chapter": 2,
+		"image": "30kr1n.png",
+		"rune": "専門",
+		"spelling": [
+			"せ",
+			"ん",
+			"も",
+			"ん"
+		],
+		"meaning": "Bidang/Keahlian khusus (speciality)"
+	},
+	{
+		"id": 90,
+		"chapter": 3,
+		"image": "30kr1n.png",
+		"rune": "火",
+		"spelling": [
+			"ひ"
+		],
+		"meaning": "Api",
+		"is_single": true
+	},
+	{
+		"id": 91,
+		"chapter": 3,
+		"image": "30kr1n.png",
+		"rune": "火曜日",
+		"spelling": [
+			"か",
+			"よ",
+			"う",
+			"び"
+		],
+		"meaning": "Hari Selasa"
+	},
+	{
+		"id": 92,
+		"chapter": 3,
+		"image": "30kr1n.png",
+		"rune": "火事",
+		"spelling": [
+			"か",
+			"じ"
+		],
+		"meaning": "Kebakaran ( Accident )"
+	},
+	{
+		"id": 93,
+		"chapter": 3,
+		"image": "30kr1n.png",
+		"rune": "水",
+		"spelling": [
+			"み",
+			"ず"
+		],
+		"meaning": "Air",
+		"is_single": true
+	},
+	{
+		"id": 94,
+		"chapter": 3,
+		"image": "30kr1n.png",
+		"rune": "水曜日",
+		"spelling": [
+			"す",
+			"い",
+			"よ",
+			"う",
+			"び"
+		],
+		"meaning": "Hari Rabu"
+	},
+	{
+		"id": 95,
+		"chapter": 3,
+		"image": "30kr1n.png",
+		"rune": "金",
+		"spelling": [
+			"き",
+			"ん"
+		],
+		"meaning": "Emas",
+		"is_single": true
+	},
+	{
+		"id": 96,
+		"chapter": 3,
+		"image": "30kr1n.png",
+		"rune": "お金",
+		"spelling": [
+			"お",
+			"か",
+			"ね"
+		],
+		"meaning": "Uang",
+		"is_single": true
+	},
+	{
+		"id": 97,
+		"chapter": 3,
+		"image": "30kr1n.png",
+		"rune": "金曜日",
+		"spelling": [
+			"き",
+			"ん",
+			"よ",
+			"う",
+			"び"
+		],
+		"meaning": "Hari Jumat"
+	},
+	{
+		"id": 98,
+		"chapter": 3,
+		"image": "30kr1n.png",
+		"rune": "土",
+		"spelling": [
+			"つ",
+			"ち"
+		],
+		"meaning": "Tanah",
+		"is_single": true
+	},
+	{
+		"id": 99,
+		"chapter": 3,
+		"image": "30kr1n.png",
+		"rune": "土曜日",
+		"spelling": [
+			"ど",
+			"よ",
+			"う",
+			"び"
+		],
+		"meaning": "Hari Sabtu"
+	},
+	{
+		"id": 100,
+		"chapter": 3,
+		"image": "30kr1n.png",
+		"rune": "女",
+		"spelling": [
+			"お",
+			"ん",
+			"な"
+		],
+		"meaning": "Perempuan",
+		"is_single": true
+	},
+	{
+		"id": 101,
+		"chapter": 3,
+		"image": "30kr1n.png",
+		"rune": "女の人",
+		"spelling": [
+			"お",
+			"ん",
+			"な",
+			"の",
+			"ひ",
+			"と"
+		],
+		"meaning": "Orang perempuan"
+	},
+	{
+		"id": 102,
+		"chapter": 3,
+		"image": "30kr1n.png",
+		"rune": "彼女",
+		"spelling": [
+			"か",
+			"の",
+			"じょ"
+		],
+		"meaning": "Dia (perempuan)"
+	},
+	{
+		"id": 103,
+		"chapter": 3,
+		"image": "30kr1n.png",
+		"rune": "子ども",
+		"spelling": [
+			"こ",
+			"ど",
+			"も"
+		],
+		"meaning": "Anak",
+		"is_single": true
+	},
+	{
+		"id": 104,
+		"chapter": 3,
+		"image": "30kr1n.png",
+		"rune": "女の子",
+		"spelling": [
+			"お",
+			"ん",
+			"な",
+			"の",
+			"こ"
+		],
+		"meaning": "Anak perempuan"
+	},
+	{
+		"id": 105,
+		"chapter": 3,
+		"image": "30kr1n.png",
+		"rune": "男の子",
+		"spelling": [
+			"お",
+			"と",
+			"こ",
+			"の",
+			"こ"
+		],
+		"meaning": "Anak laki-laki"
+	},
+	{
+		"id": 106,
+		"chapter": 3,
+		"image": "30kr1n.png",
+		"rune": "女子大学",
+		"spelling": [
+			"じょ",
+			"し",
+			"が",
+			"く",
+			"せ",
+			"い"
+		],
+		"meaning": "Murid perempuan"
+	},
+	{
+		"id": 107,
+		"chapter": 3,
+		"image": "30kr1n.png",
+		"rune": "学生",
+		"spelling": [
+			"が",
+			"く",
+			"せ",
+			"い"
+		],
+		"meaning": "Murid"
+	},
+	{
+		"id": 108,
+		"chapter": 3,
+		"image": "30kr1n.png",
+		"rune": "大学",
+		"spelling": [
+			"だ",
+			"い",
+			"が",
+			"く"
+		],
+		"meaning": "Universitas"
+	},
+	{
+		"id": 109,
+		"chapter": 3,
+		"image": "30kr1n.png",
+		"rune": "学校",
+		"spelling": [
+			"が",
+			"っ",
+			"こ",
+			"う"
+		],
+		"meaning": "Sekolah"
+	},
+	{
+		"id": 110,
+		"chapter": 3,
+		"image": "30kr1n.png",
+		"rune": "生きる",
+		"spelling": [
+			"い",
+			"き",
+			"る"
+		],
+		"meaning": "Hidup",
+		"is_single": true
+	},
+	{
+		"id": 111,
+		"chapter": 3,
+		"image": "30kr1n.png",
+		"rune": "生まれる",
+		"spelling": [
+			"う",
+			"ま",
+			"れ",
+			"る"
+		],
+		"meaning": "Lahir"
+	},
+	{
+		"id": 112,
+		"chapter": 3,
+		"image": "30kr1n.png",
+		"rune": "先生",
+		"spelling": [
+			"せ",
+			"ん",
+			"せ",
+			"い"
+		],
+		"meaning": "Guru"
+	},
+	{
+		"id": 113,
+		"chapter": 3,
+		"image": "30kr1n.png",
+		"rune": "先",
+		"spelling": [
+			"さ",
+			"き"
+		],
+		"meaning": "Lebih dahulu",
+		"is_single": true
+	},
+	{
+		"id": 114,
+		"chapter": 3,
+		"image": "30kr1n.png",
+		"rune": "先週",
+		"spelling": [
+			"せ",
+			"ん",
+			"しゅ",
+			"う"
+		],
+		"meaning": "Minggu lalu"
+	},
+	{
+		"id": 115,
+		"chapter": 3,
+		"image": "30kr1n.png",
+		"rune": "先月",
+		"spelling": [
+			"せ",
+			"ん",
+			"げ",
+			"つ"
+		],
+		"meaning": "Bulan lalu"
+	},
+	{
+		"id": 116,
+		"chapter": 3,
+		"image": "30kr1n.png",
+		"rune": "私",
+		"spelling": [
+			"わ",
+			"た",
+			"し"
+		],
+		"meaning": "Aku/Saya",
+		"is_single": true
+	},
+	{
+		"id": 117,
+		"chapter": 3,
+		"image": "30kr1n.png",
+		"rune": "私立大学",
+		"spelling": [
+			"し",
+			"り",
+			"つ",
+			"だ",
+			"い",
+			"が",
+			"く"
+		],
+		"meaning": "Universitas Swasta"
+	},
+	{
+		"id": 118,
+		"chapter": 4,
+		"image": "30kr1n.png",
+		"rune": "上",
+		"spelling": [
+			"う",
+			"え"
+		],
+		"meaning": "Atas",
+		"is_single": true
+	},
+	{
+		"id": 119,
+		"chapter": 4,
+		"image": "30kr1n.png",
+		"rune": "上がる",
+		"spelling": [
+			"あ",
+			"が",
+			"る"
+		],
+		"meaning": "Naik/Mengangkat"
+	},
+	{
+		"id": 120,
+		"chapter": 4,
+		"image": "30kr1n.png",
+		"rune": "上手な",
+		"spelling": [
+			"じょ",
+			"う",
+			"ず"
+		],
+		"meaning": "Mahir"
+	},
+	{
+		"id": 121,
+		"chapter": 4,
+		"image": "30kr1n.png",
+		"rune": "下",
+		"spelling": [
+			"し",
+			"た"
+		],
+		"meaning": "Bawah",
+		"is_single": true
+	},
+	{
+		"id": 122,
+		"chapter": 4,
+		"image": "30kr1n.png",
+		"rune": "下がる",
+		"spelling": [
+			"さ",
+			"が",
+			"る"
+		],
+		"meaning": "Turun"
+	},
+	{
+		"id": 123,
+		"chapter": 4,
+		"image": "30kr1n.png",
+		"rune": "地下",
+		"spelling": [
+			"ち",
+			"か"
+		],
+		"meaning": "Bawah tanah"
+	},
+	{
+		"id": 124,
+		"chapter": 4,
+		"image": "30kr1n.png",
+		"rune": "中",
+		"spelling": [
+			"な",
+			"か"
+		],
+		"meaning": "Tengah/Dalam",
+		"is_single": true
+	},
+	{
+		"id": 125,
+		"chapter": 4,
+		"image": "30kr1n.png",
+		"rune": "中学校",
+		"spelling": [
+			"ちゅ",
+			"う",
+			"が",
+			"っ",
+			"こ",
+			"う"
+		],
+		"meaning": "Sekolah Menengah Pertama"
+	},
+	{
+		"id": 126,
+		"chapter": 4,
+		"image": "30kr1n.png",
+		"rune": "中学生",
+		"spelling": [
+			"ちゅ",
+			"う",
+			"が",
+			"く",
+			"せ",
+			"い"
+		],
+		"meaning": "Murid SMP"
+	},
+	{
+		"id": 127,
+		"chapter": 4,
+		"image": "30kr1n.png",
+		"rune": "大きい",
+		"spelling": [
+			"お",
+			"お",
+			"き",
+			"い"
+		],
+		"meaning": "Besar",
+		"is_single": true
+	},
+	{
+		"id": 128,
+		"chapter": 4,
+		"image": "30kr1n.png",
+		"rune": "大人",
+		"spelling": [
+			"お",
+			"と",
+			"な"
+		],
+		"meaning": "Orang dewasa"
+	},
+	{
+		"id": 129,
+		"chapter": 4,
+		"image": "30kr1n.png",
+		"rune": "小さい",
+		"spelling": [
+			"ち",
+			"い",
+			"さ",
+			"い"
+		],
+		"meaning": "Kecil",
+		"is_single": true
+	},
+	{
+		"id": 130,
+		"chapter": 4,
+		"image": "30kr1n.png",
+		"rune": "小学校",
+		"spelling": [
+			"しょ",
+			"う",
+			"が",
+			"っ",
+			"こ",
+			"う"
+		],
+		"meaning": "Sekolah Dasar"
+	},
+	{
+		"id": 131,
+		"chapter": 4,
+		"image": "30kr1n.png",
+		"rune": "本",
+		"spelling": [
+			"ほ",
+			"ん"
+		],
+		"meaning": "Buku",
+		"is_single": true
+	},
+	{
+		"id": 132,
+		"chapter": 4,
+		"image": "30kr1n.png",
+		"rune": "本日",
+		"spelling": [
+			"ほ",
+			"ん",
+			"じ",
+			"つ"
+		],
+		"meaning": "Hari ini (sangat formal)"
+	},
+	{
+		"id": 133,
+		"chapter": 4,
+		"image": "30kr1n.png",
+		"rune": "本店",
+		"spelling": [
+			"ほ",
+			"ん",
+			"て",
+			"ん"
+		],
+		"meaning": "Toko utama / Kantor pusat"
+	},
+	{
+		"id": 134,
+		"chapter": 4,
+		"image": "30kr1n.png",
+		"rune": "本屋",
+		"spelling": [
+			"ほ",
+			"ん",
+			"や"
+		],
+		"meaning": "Toko buku"
+	},
+	{
+		"id": 135,
+		"chapter": 4,
+		"image": "30kr1n.png",
+		"rune": "半分",
+		"spelling": [
+			"は",
+			"ん",
+			"ぶ",
+			"ん"
+		],
+		"meaning": "Setengah bagian"
+	},
+	{
+		"id": 136,
+		"chapter": 4,
+		"image": "30kr1n.png",
+		"rune": "三時半",
+		"spelling": [
+			"サ",
+			"ン",
+			"じ",
+			"は",
+			"ん"
+		],
+		"meaning": "Pukul 3.30"
+	},
+	{
+		"id": 137,
+		"chapter": 4,
+		"image": "30kr1n.png",
+		"rune": "半年",
+		"spelling": [
+			"は",
+			"ん",
+			"と",
+			"し"
+		],
+		"meaning": "Setengah tahun"
+	},
+	{
+		"id": 138,
+		"chapter": 4,
+		"image": "30kr1n.png",
+		"rune": "半日",
+		"spelling": [
+			"は",
+			"ん",
+			"に",
+			"ち"
+		],
+		"meaning": "Setengah hari"
+	},
+	{
+		"id": 139,
+		"chapter": 4,
+		"image": "30kr1n.png",
+		"rune": "分ける",
+		"spelling": [
+			"わ",
+			"け",
+			"る"
+		],
+		"meaning": "Membagi"
+	},
+	{
+		"id": 140,
+		"chapter": 4,
+		"image": "30kr1n.png",
+		"rune": "分かる",
+		"spelling": [
+			"わ",
+			"か",
+			"る"
+		],
+		"meaning": "Mengerti"
+	},
+	{
+		"id": 141,
+		"chapter": 4,
+		"image": "30kr1n.png",
+		"rune": "五分",
+		"spelling": [
+			"ご",
+			"ふ",
+			"ん"
+		],
+		"meaning": "5 Menit"
+	},
+	{
+		"id": 142,
+		"chapter": 4,
+		"image": "30kr1n.png",
+		"rune": "六分",
+		"spelling": [
+			"ろ",
+			"っ",
+			"ぷ",
+			"ん"
+		],
+		"meaning": "6 Menit"
+	},
+	{
+		"id": 143,
+		"chapter": 4,
+		"image": "30kr1n.png",
+		"rune": "力",
+		"spelling": [
+			"ち",
+			"か",
+			"ら"
+		],
+		"meaning": "Kekuatan / tenaga (power)",
+		"is_single": true
+	},
+	{
+		"id": 144,
+		"chapter": 4,
+		"image": "30kr1n.png",
+		"rune": "水力",
+		"spelling": [
+			"す",
+			"い",
+			"りょ",
+			"く"
+		],
+		"meaning": "Tenaga air"
+	},
+	{
+		"id": 145,
+		"chapter": 4,
+		"image": "30kr1n.png",
+		"rune": "火力",
+		"spelling": [
+			"か",
+			"りょ",
+			"く"
+		],
+		"meaning": "Tenaga panas"
+	},
+	{
+		"id": 146,
+		"chapter": 4,
+		"image": "30kr1n.png",
+		"rune": "何",
+		"spelling": [
+			"な",
+			"に"
+		],
+		"meaning": "Apa?",
+		"is_single": true
+	},
+	{
+		"id": 147,
+		"chapter": 4,
+		"image": "30kr1n.png",
+		"rune": "何ですか",
+		"spelling": [
+			"な",
+			"ん",
+			"で",
+			"す",
+			"か"
+		],
+		"meaning": "Apa itu?"
+	},
+	{
+		"id": 148,
+		"chapter": 4,
+		"image": "30kr1n.png",
+		"rune": "何人",
+		"spelling": [
+			"な",
+			"ん",
+			"に",
+			"ん"
+		],
+		"meaning": "Berapa orang?"
+	},
+	{
+		"id": 149,
+		"chapter": 4,
+		"image": "30kr1n.png",
+		"rune": "何年",
+		"spelling": [
+			"な",
+			"ん",
+			"ね",
+			"ん"
+		],
+		"meaning": "Tahun berapa?"
+	},
+	{
+		"id": 150,
+		"chapter": 5,
+		"image": "30kr1n.png",
+		"rune": "明るい",
+		"spelling": [
+			"あ",
+			"か",
+			"る",
+			"い"
+		],
+		"meaning": "Terang",
+		"is_single": true
+	},
+	{
+		"id": 151,
+		"chapter": 5,
+		"image": "30kr1n.png",
+		"rune": "明日",
+		"spelling": [
+			"あ",
+			"し",
+			"た"
+		],
+		"meaning": "Besok"
+	},
+	{
+		"id": 152,
+		"chapter": 5,
+		"image": "30kr1n.png",
+		"rune": "説明する",
+		"spelling": [
+			"せ",
+			"つ",
+			"め",
+			"い",
+			"す",
+			"る"
+		],
+		"meaning": "Menjelaskan"
+	},
+	{
+		"id": 153,
+		"chapter": 5,
+		"image": "30kr1n.png",
+		"rune": "休む",
+		"spelling": [
+			"や",
+			"す",
+			"む"
+		],
+		"meaning": "Beristirahat",
+		"is_single": true
+	},
+	{
+		"id": 154,
+		"chapter": 5,
+		"image": "30kr1n.png",
+		"rune": "休日",
+		"spelling": [
+			"きゅ",
+			"う",
+			"じ",
+			"つ"
+		],
+		"meaning": "Hari libur"
+	},
+	{
+		"id": 155,
+		"chapter": 5,
+		"image": "30kr1n.png",
+		"rune": "体",
+		"spelling": [
+			"か",
+			"ら",
+			"だ"
+		],
+		"meaning": "Tubuh",
+		"is_single": true
+	},
+	{
+		"id": 156,
+		"chapter": 5,
+		"image": "30kr1n.png",
+		"rune": "体力",
+		"spelling": [
+			"た",
+			"い",
+			"りょ",
+			"く"
+		],
+		"meaning": "Kesehatan fisik"
+	},
+	{
+		"id": 157,
+		"chapter": 5,
+		"image": "30kr1n.png",
+		"rune": "体育",
+		"spelling": [
+			"た",
+			"い",
+			"い",
+			"く"
+		],
+		"meaning": "Pendidikan Jasmani"
+	},
+	{
+		"id": 158,
+		"chapter": 5,
+		"image": "30kr1n.png",
+		"rune": "好きな",
+		"spelling": [
+			"す",
+			"き",
+			"な"
+		],
+		"meaning": "Suka",
+		"is_single": true
+	},
+	{
+		"id": 159,
+		"chapter": 5,
+		"image": "30kr1n.png",
+		"rune": "林",
+		"spelling": [
+			"は",
+			"や",
+			"し"
+		],
+		"meaning": "Pepohonan",
+		"is_single": true
+	},
+	{
+		"id": 160,
+		"chapter": 5,
+		"image": "30kr1n.png",
+		"rune": "森林",
+		"spelling": [
+			"し",
+			"ん",
+			"り",
+			"ん"
+		],
+		"meaning": "Hutan rimba"
+	},
+	{
+		"id": 161,
+		"chapter": 5,
+		"image": "30kr1n.png",
+		"rune": "森",
+		"spelling": [
+			"も",
+			"り"
+		],
+		"meaning": "Hutan",
+		"is_single": true
+	},
+	{
+		"id": 162,
+		"chapter": 5,
+		"image": "30kr1n.png",
+		"rune": "男",
+		"spelling": [
+			"お",
+			"と",
+			"こ"
+		],
+		"meaning": "Laki-laki",
+		"is_single": true
+	},
+	{
+		"id": 163,
+		"chapter": 5,
+		"image": "30kr1n.png",
+		"rune": "男の人",
+		"spelling": [
+			"お",
+			"と",
+			"こ",
+			"の",
+			"ひ",
+			"と"
+		],
+		"meaning": "Orang laki-laki"
+	},
+	{
+		"id": 164,
+		"chapter": 5,
+		"image": "30kr1n.png",
+		"rune": "長男",
+		"spelling": [
+			"ちょ",
+			"う",
+			"な",
+			"ん"
+		],
+		"meaning": "Anak putra tertua"
+	},
+	{
+		"id": 165,
+		"chapter": 5,
+		"image": "30kr1n.png",
+		"rune": "間",
+		"spelling": [
+			"あ",
+			"い",
+			"だ"
+		],
+		"meaning": "Di antara dua hal",
+		"is_single": true
+	},
+	{
+		"id": 166,
+		"chapter": 5,
+		"image": "30kr1n.png",
+		"rune": "間に合う",
+		"spelling": [
+			"ま",
+			"に",
+			"あ",
+			"う"
+		],
+		"meaning": "Tepat waktu"
+	},
+	{
+		"id": 167,
+		"chapter": 5,
+		"image": "30kr1n.png",
+		"rune": "一年間",
+		"spelling": [
+			"い",
+			"ち",
+			"ね",
+			"ん",
+			"か",
+			"ん"
+		],
+		"meaning": "1 tahun"
+	},
+	{
+		"id": 168,
+		"chapter": 5,
+		"image": "30kr1n.png",
+		"rune": "時間",
+		"spelling": [
+			"じ",
+			"か",
+			"ん"
+		],
+		"meaning": "Waktu"
+	},
+	{
+		"id": 169,
+		"chapter": 5,
+		"image": "30kr1n.png",
+		"rune": "高校",
+		"spelling": [
+			"こ",
+			"う",
+			"こ",
+			"う"
+		],
+		"meaning": "Sekolah Menengah Atas"
+	},
+	{
+		"id": 170,
+		"chapter": 5,
+		"image": "30kr1n.png",
+		"rune": "高校生",
+		"spelling": [
+			"こ",
+			"う",
+			"こ",
+			"う",
+			"せ",
+			"い"
+		],
+		"meaning": "Murid SMA"
+	},
+	{
+		"id": 171,
+		"chapter": 5,
+		"image": "30kr1n.png",
+		"rune": "校長",
+		"spelling": [
+			"こ",
+			"う",
+			"ちょ",
+			"う"
+		],
+		"meaning": "Kepala Sekolah"
+	},
+	{
+		"id": 172,
+		"chapter": 5,
+		"image": "30kr1n.png",
+		"rune": "国",
+		"spelling": [
+			"は",
+			"た",
+			"け"
+		],
+		"meaning": "Negara",
+		"is_single": true
+	},
+	{
+		"id": 173,
+		"chapter": 5,
+		"image": "30kr1n.png",
+		"rune": "外国人",
+		"spelling": [
+			"が",
+			"い",
+			"こ",
+			"く",
+			"じ",
+			"ん"
+		],
+		"meaning": "Orang asing"
+	},
+	{
+		"id": 174,
+		"chapter": 5,
+		"image": "30kr1n.png",
+		"rune": "中国",
+		"spelling": [
+			"ちゅ",
+			"う",
+			"ご",
+			"く"
+		],
+		"meaning": "China"
+	},
+	{
+		"id": 175,
+		"chapter": 6,
+		"image": "30kr1n.png",
+		"rune": "目",
+		"spelling": [
+			"め"
+		],
+		"meaning": "Mata",
+		"is_single": true
+	},
+	{
+		"id": 176,
+		"chapter": 6,
+		"image": "30kr1n.png",
+		"rune": "目次",
+		"spelling": [
+			"も",
+			"く",
+			"じ"
+		],
+		"meaning": "Daftar isi"
+	},
+	{
+		"id": 177,
+		"chapter": 6,
+		"image": "30kr1n.png",
+		"rune": "耳",
+		"spelling": [
+			"み",
+			"み"
+		],
+		"meaning": "Telinga",
+		"is_single": true
+	},
+	{
+		"id": 178,
+		"chapter": 6,
+		"image": "30kr1n.png",
+		"rune": "手",
+		"spelling": [
+			"て"
+		],
+		"meaning": "Tangan",
+		"is_single": true
+	},
+	{
+		"id": 179,
+		"chapter": 6,
+		"image": "30kr1n.png",
+		"rune": "手紙",
+		"spelling": [
+			"て",
+			"が",
+			"み"
+		],
+		"meaning": "Surat"
+	},
+	{
+		"id": 180,
+		"chapter": 6,
+		"image": "30kr1n.png",
+		"rune": "歌手",
+		"spelling": [
+			"か",
+			"しゅ"
+		],
+		"meaning": "Penyanyi"
+	},
+	{
+		"id": 181,
+		"chapter": 6,
+		"image": "30kr1n.png",
+		"rune": "上手",
+		"spelling": [
+			"じょ",
+			"う",
+			"ず"
+		],
+		"meaning": "Mahir"
+	},
+	{
+		"id": 182,
+		"chapter": 6,
+		"image": "30kr1n.png",
+		"rune": "足",
+		"spelling": [
+			"あ",
+			"し"
+		],
+		"meaning": "Kaki",
+		"is_single": true
+	},
+	{
+		"id": 183,
+		"chapter": 6,
+		"image": "30kr1n.png",
+		"rune": "二足",
+		"spelling": [
+			"に",
+			"そ",
+			"く"
+		],
+		"meaning": "2 Pasang",
+		"needs_check": true
+	},
+	{
+		"id": 184,
+		"chapter": 6,
+		"image": "30kr1n.png",
+		"rune": "雨",
+		"spelling": [
+			"あ",
+			"め"
+		],
+		"meaning": "Hujan",
+		"is_single": true
+	},
+	{
+		"id": 185,
+		"chapter": 6,
+		"image": "30kr1n.png",
+		"rune": "大雨",
+		"spelling": [
+			"お",
+			"お",
+			"あ",
+			"め"
+		],
+		"meaning": "Hujan lebat"
+	},
+	{
+		"id": 186,
+		"chapter": 6,
+		"image": "30kr1n.png",
+		"rune": "雨天",
+		"spelling": [
+			"う",
+			"て",
+			"ん"
+		],
+		"meaning": "Cuaca hujan"
+	},
+	{
+		"id": 187,
+		"chapter": 6,
+		"image": "30kr1n.png",
+		"rune": "竹",
+		"spelling": [
+			"た",
+			"け"
+		],
+		"meaning": "Bambu",
+		"is_single": true
+	},
+	{
+		"id": 188,
+		"chapter": 6,
+		"image": "30kr1n.png",
+		"rune": "竹の子",
+		"spelling": [
+			"た",
+			"け",
+			"の",
+			"こ"
+		],
+		"meaning": "Tebu"
+	},
+	{
+		"id": 189,
+		"chapter": 6,
+		"image": "30kr1n.png",
+		"rune": "米",
+		"spelling": [
+			"こ",
+			"め"
+		],
+		"meaning": "Beras",
+		"is_single": true
+	},
+	{
+		"id": 190,
+		"chapter": 6,
+		"image": "30kr1n.png",
+		"rune": "新米",
+		"spelling": [
+			"し",
+			"ん",
+			"ま",
+			"い"
+		],
+		"meaning": "Beras baru"
+	},
+	{
+		"id": 191,
+		"chapter": 6,
+		"image": "30kr1n.png",
+		"rune": "米国",
+		"spelling": [
+			"べ",
+			"い",
+			"こ",
+			"く"
+		],
+		"meaning": "Amerika Serikat"
+	},
+	{
+		"id": 192,
+		"chapter": 6,
+		"image": "30kr1n.png",
+		"rune": "中米",
+		"spelling": [
+			"ちゅ",
+			"う",
+			"べ",
+			"い"
+		],
+		"meaning": "Amerika tengah"
+	},
+	{
+		"id": 193,
+		"chapter": 6,
+		"image": "30kr1n.png",
+		"rune": "貝",
+		"spelling": [
+			"か",
+			"い"
+		],
+		"meaning": "Kerang",
+		"is_single": true
+	},
+	{
+		"id": 194,
+		"chapter": 6,
+		"image": "30kr1n.png",
+		"rune": "石",
+		"spelling": [
+			"い",
+			"し"
+		],
+		"meaning": "Batu",
+		"is_single": true
+	},
+	{
+		"id": 195,
+		"chapter": 6,
+		"image": "30kr1n.png",
+		"rune": "石油",
+		"spelling": [
+			"せ",
+			"き",
+			"ゆ"
+		],
+		"meaning": "Minyak bumi"
+	},
+	{
+		"id": 196,
+		"chapter": 6,
+		"image": "30kr1n.png",
+		"rune": "化石",
+		"spelling": [
+			"か",
+			"せ",
+			"き"
+		],
+		"meaning": "Fosil"
+	},
+	{
+		"id": 197,
+		"chapter": 6,
+		"image": "30kr1n.png",
+		"rune": "糸",
+		"spelling": [
+			"い",
+			"と"
+		],
+		"meaning": "Benang",
+		"is_single": true
+	},
+	{
+		"id": 198,
+		"chapter": 6,
+		"image": "30kr1n.png",
+		"rune": "毛糸",
+		"spelling": [
+			"け",
+			"い",
+			"と"
+		],
+		"meaning": "Benang wol"
+	},
+	{
+		"id": 199,
+		"chapter": 7,
+		"image": "30kr1n.png",
+		"rune": "花",
+		"spelling": [
+			"は",
+			"な"
+		],
+		"meaning": "Bunga",
+		"is_single": true
+	},
+	{
+		"id": 200,
+		"chapter": 7,
+		"image": "30kr1n.png",
+		"rune": "花火",
+		"spelling": [
+			"は",
+			"な",
+			"び"
+		],
+		"meaning": "Kembang api"
+	},
+	{
+		"id": 201,
+		"chapter": 7,
+		"image": "30kr1n.png",
+		"rune": "お茶",
+		"spelling": [
+			"お",
+			"ちゃ"
+		],
+		"meaning": "Teh",
+		"is_single": true
+	},
+	{
+		"id": 202,
+		"chapter": 7,
+		"image": "30kr1n.png",
+		"rune": "紅茶",
+		"spelling": [
+			"こ",
+			"う",
+			"ちゃ"
+		],
+		"meaning": "Teh hitam"
+	},
+	{
+		"id": 203,
+		"chapter": 7,
+		"image": "30kr1n.png",
+		"rune": "肉",
+		"spelling": [
+			"に",
+			"く"
+		],
+		"meaning": "Daging",
+		"is_single": true
+	},
+	{
+		"id": 204,
+		"chapter": 7,
+		"image": "30kr1n.png",
+		"rune": "鳥肉",
+		"spelling": [
+			"と",
+			"り",
+			"に",
+			"く"
+		],
+		"meaning": "Daging ayam"
+	},
+	{
+		"id": 205,
+		"chapter": 7,
+		"image": "30kr1n.png",
+		"rune": "牛肉",
+		"spelling": [
+			"ぎゅ",
+			"う",
+			"に",
+			"く"
+		],
+		"meaning": "Daging sapi"
+	},
+	{
+		"id": 206,
+		"chapter": 7,
+		"image": "30kr1n.png",
+		"rune": "赤い",
+		"spelling": [
+			"あ",
+			"か",
+			"い"
+		],
+		"meaning": "Merah",
+		"is_single": true
+	},
+	{
+		"id": 207,
+		"chapter": 7,
+		"image": "30kr1n.png",
+		"rune": "赤ちゃん",
+		"spelling": [
+			"あ",
+			"か",
+			"ちゃ",
+			"ん"
+		],
+		"meaning": "Bayi"
+	},
+	{
+		"id": 208,
+		"chapter": 7,
+		"image": "30kr1n.png",
+		"rune": "白い",
+		"spelling": [
+			"し",
+			"ろ",
+			"い"
+		],
+		"meaning": "Putih",
+		"is_single": true
+	},
+	{
+		"id": 209,
+		"chapter": 7,
+		"image": "30kr1n.png",
+		"rune": "白米",
+		"spelling": [
+			"は",
+			"く",
+			"ま",
+			"い"
+		],
+		"meaning": "Beras putih"
+	},
+	{
+		"id": 210,
+		"chapter": 7,
+		"image": "30kr1n.png",
+		"rune": "物",
+		"spelling": [
+			"も",
+			"の"
+		],
+		"meaning": "Benda / hal",
+		"is_single": true
+	},
+	{
+		"id": 211,
+		"chapter": 7,
+		"image": "30kr1n.png",
+		"rune": "買い物",
+		"spelling": [
+			"か",
+			"い",
+			"も",
+			"の"
+		],
+		"meaning": "Belanjaan"
+	},
+	{
+		"id": 212,
+		"chapter": 7,
+		"image": "30kr1n.png",
+		"rune": "荷物",
+		"spelling": [
+			"に",
+			"も",
+			"つ"
+		],
+		"meaning": "Luggage / Koper bawaan"
+	},
+	{
+		"id": 213,
+		"chapter": 7,
+		"image": "30kr1n.png",
+		"rune": "牛",
+		"spelling": [
+			"う",
+			"し"
+		],
+		"meaning": "Sapi",
+		"is_single": true
+	},
+	{
+		"id": 214,
+		"chapter": 7,
+		"image": "30kr1n.png",
+		"rune": "子牛",
+		"spelling": [
+			"こ",
+			"う",
+			"し"
+		],
+		"meaning": "Anak sapi"
+	},
+	{
+		"id": 215,
+		"chapter": 7,
+		"image": "30kr1n.png",
+		"rune": "牛乳",
+		"spelling": [
+			"ぎゅ",
+			"う",
+			"にゅ",
+			"う"
+		],
+		"meaning": "Susu"
+	},
+	{
+		"id": 216,
+		"chapter": 7,
+		"image": "30kr1n.png",
+		"rune": "馬",
+		"spelling": [
+			"う",
+			"ま"
+		],
+		"meaning": "Kuda",
+		"is_single": true
+	},
+	{
+		"id": 217,
+		"chapter": 7,
+		"image": "30kr1n.png",
+		"rune": "馬車",
+		"spelling": [
+			"ば",
+			"しゃ"
+		],
+		"meaning": "Kereta Kuda"
+	},
+	{
+		"id": 218,
+		"chapter": 7,
+		"image": "30kr1n.png",
+		"rune": "鳥",
+		"spelling": [
+			"と",
+			"り"
+		],
+		"meaning": "Burung/Ayam",
+		"is_single": true
+	},
+	{
+		"id": 219,
+		"chapter": 7,
+		"image": "30kr1n.png",
+		"rune": "焼き鳥",
+		"spelling": [
+			"や",
+			"き",
+			"と",
+			"り"
+		],
+		"meaning": "Ayam bakar"
+	},
+	{
+		"id": 220,
+		"chapter": 7,
+		"image": "30kr1n.png",
+		"rune": "白鳥",
+		"spelling": [
+			"は",
+			"く",
+			"ちょ",
+			"う"
+		],
+		"meaning": "Angsa"
+	},
+	{
+		"id": 221,
+		"chapter": 7,
+		"image": "30kr1n.png",
+		"rune": "魚",
+		"spelling": [
+			"さ",
+			"か",
+			"な"
+		],
+		"meaning": "Ikan",
+		"is_single": true
+	},
+	{
+		"id": 222,
+		"chapter": 7,
+		"image": "30kr1n.png",
+		"rune": "魚屋",
+		"spelling": [
+			"さ",
+			"か",
+			"な",
+			"や"
+		],
+		"meaning": "Toko ikan"
+	},
+	{
+		"id": 223,
+		"chapter": 7,
+		"image": "30kr1n.png",
+		"rune": "焼き魚",
+		"spelling": [
+			"や",
+			"き",
+			"ざ",
+			"か",
+			"な"
+		],
+		"meaning": "Ikan bakar"
+	},
+	{
+		"id": 224,
+		"chapter": 7,
+		"image": "30kr1n.png",
+		"rune": "金魚",
+		"spelling": [
+			"き",
+			"ん",
+			"ぎょ"
+		],
+		"meaning": "Ikan mas"
+	},
+	{
+		"id": 225,
+		"chapter": 8,
+		"image": "30kr1n.png",
+		"rune": "行く",
+		"spelling": [
+			"あ",
+			"た",
+			"ら",
+			"し",
+			"い"
+		],
+		"meaning": "Pergi",
+		"is_single": true
+	},
+	{
+		"id": 226,
+		"chapter": 8,
+		"image": "30kr1n.png",
+		"rune": "旅行する",
+		"spelling": [
+			"りょ",
+			"こ",
+			"う",
+			"す",
+			"る"
+		],
+		"meaning": "Travelling / bepergian"
+	},
+	{
+		"id": 227,
+		"chapter": 8,
+		"image": "30kr1n.png",
+		"rune": "来る",
+		"spelling": [
+			"く",
+			"る"
+		],
+		"meaning": "Datang",
+		"is_single": true
+	},
+	{
+		"id": 228,
+		"chapter": 8,
+		"image": "30kr1n.png",
+		"rune": "来月",
+		"spelling": [
+			"ら",
+			"い",
+			"げ",
+			"つ"
+		],
+		"meaning": "Bulan depan"
+	},
+	{
+		"id": 229,
+		"chapter": 8,
+		"image": "30kr1n.png",
+		"rune": "食べる",
+		"spelling": [
+			"た",
+			"べ",
+			"る"
+		],
+		"meaning": "Makan",
+		"is_single": true
+	},
+	{
+		"id": 230,
+		"chapter": 8,
+		"image": "30kr1n.png",
+		"rune": "食べ物",
+		"spelling": [
+			"た",
+			"べ",
+			"も",
+			"の"
+		],
+		"meaning": "Makanan"
+	},
+	{
+		"id": 231,
+		"chapter": 8,
+		"image": "30kr1n.png",
+		"rune": "食事",
+		"spelling": [
+			"しょ",
+			"く",
+			"じ"
+		],
+		"meaning": "Makanan (meal)"
+	},
+	{
+		"id": 232,
+		"chapter": 8,
+		"image": "30kr1n.png",
+		"rune": "飲む",
+		"spelling": [
+			"の",
+			"む"
+		],
+		"meaning": "Minum",
+		"is_single": true
+	},
+	{
+		"id": 233,
+		"chapter": 8,
+		"image": "30kr1n.png",
+		"rune": "飲み物",
+		"spelling": [
+			"の",
+			"み",
+			"も",
+			"の"
+		],
+		"meaning": "Minuman"
+	},
+	{
+		"id": 234,
+		"chapter": 8,
+		"image": "30kr1n.png",
+		"rune": "見る",
+		"spelling": [
+			"み",
+			"る"
+		],
+		"meaning": "Lihat/Melihat",
+		"is_single": true
+	},
+	{
+		"id": 235,
+		"chapter": 8,
+		"image": "30kr1n.png",
+		"rune": "見せる",
+		"spelling": [
+			"み",
+			"せ",
+			"る"
+		],
+		"meaning": "Memperlihatkan"
+	},
+	{
+		"id": 236,
+		"chapter": 8,
+		"image": "30kr1n.png",
+		"rune": "意見",
+		"spelling": [
+			"い",
+			"け",
+			"ん"
+		],
+		"meaning": "Pendapat"
+	},
+	{
+		"id": 237,
+		"chapter": 8,
+		"image": "30kr1n.png",
+		"rune": "見物する",
+		"spelling": [
+			"け",
+			"ん",
+			"ぶ",
+			"つ",
+			"す",
+			"る"
+		],
+		"meaning": "Melihat-lihat"
+	},
+	{
+		"id": 238,
+		"chapter": 8,
+		"image": "30kr1n.png",
+		"rune": "聞く",
+		"spelling": [
+			"き",
+			"く"
+		],
+		"meaning": "Dengar",
+		"is_single": true
+	},
+	{
+		"id": 239,
+		"chapter": 8,
+		"image": "30kr1n.png",
+		"rune": "聞こえる",
+		"spelling": [
+			"き",
+			"こ",
+			"え",
+			"る"
+		],
+		"meaning": "Terdengar"
+	},
+	{
+		"id": 240,
+		"chapter": 8,
+		"image": "30kr1n.png",
+		"rune": "新聞",
+		"spelling": [
+			"し",
+			"ん",
+			"ぶ",
+			"ん"
+		],
+		"meaning": "Koran"
+	},
+	{
+		"id": 241,
+		"chapter": 8,
+		"image": "30kr1n.png",
+		"rune": "読む",
+		"spelling": [
+			"よ",
+			"む"
+		],
+		"meaning": "Baca/Membaca",
+		"is_single": true
+	},
+	{
+		"id": 242,
+		"chapter": 8,
+		"image": "30kr1n.png",
+		"rune": "読書",
+		"spelling": [
+			"ど",
+			"く",
+			"しょ"
+		],
+		"meaning": "Membaca"
+	},
+	{
+		"id": 243,
+		"chapter": 8,
+		"image": "30kr1n.png",
+		"rune": "読者",
+		"spelling": [
+			"ど",
+			"く",
+			"しゃ"
+		],
+		"meaning": "Pembaca"
+	},
+	{
+		"id": 244,
+		"chapter": 8,
+		"image": "30kr1n.png",
+		"rune": "書く",
+		"spelling": [
+			"か",
+			"く"
+		],
+		"meaning": "Menulis",
+		"is_single": true
+	},
+	{
+		"id": 245,
+		"chapter": 8,
+		"image": "30kr1n.png",
+		"rune": "下書き",
+		"spelling": [
+			"し",
+			"た",
+			"が",
+			"き"
+		],
+		"meaning": "Draft"
+	},
+	{
+		"id": 246,
+		"chapter": 8,
+		"image": "30kr1n.png",
+		"rune": "書道",
+		"spelling": [
+			"しょ",
+			"ど",
+			"う"
+		],
+		"meaning": "Kaligrafi"
+	},
+	{
+		"id": 247,
+		"chapter": 8,
+		"image": "30kr1n.png",
+		"rune": "話す",
+		"spelling": [
+			"は",
+			"な",
+			"す"
+		],
+		"meaning": "Berbicara",
+		"is_single": true
+	},
+	{
+		"id": 248,
+		"chapter": 8,
+		"image": "30kr1n.png",
+		"rune": "会話",
+		"spelling": [
+			"か",
+			"い",
+			"わ"
+		],
+		"meaning": "Percakapan"
+	},
+	{
+		"id": 249,
+		"chapter": 8,
+		"image": "30kr1n.png",
+		"rune": "電話",
+		"spelling": [
+			"で",
+			"ん",
+			"わ"
+		],
+		"meaning": "Telepon"
+	},
+	{
+		"id": 250,
+		"chapter": 8,
+		"image": "30kr1n.png",
+		"rune": "買う",
+		"spelling": [
+			"か",
+			"う"
+		],
+		"meaning": "Membeli",
+		"is_single": true
+	},
+	{
+		"id": 251,
+		"chapter": 8,
+		"image": "30kr1n.png",
+		"rune": "帰る",
+		"spelling": [
+			"か",
+			"え",
+			"る"
+		],
+		"meaning": "Pulang ke tempat tinggal",
+		"is_single": true
+	},
+	{
+		"id": 252,
+		"chapter": 8,
+		"image": "30kr1n.png",
+		"rune": "帰国する",
+		"spelling": [
+			"き",
+			"こ",
+			"く",
+			"す",
+			"る"
+		],
+		"meaning": "Pulang ke negara asal"
+	},
+	{
+		"id": 253,
+		"chapter": 8,
+		"image": "30kr1n.png",
+		"rune": "教える",
+		"spelling": [
+			"お",
+			"し",
+			"え",
+			"る"
+		],
+		"meaning": "Mengajar",
+		"is_single": true
+	},
+	{
+		"id": 254,
+		"chapter": 8,
+		"image": "30kr1n.png",
+		"rune": "教室",
+		"spelling": [
+			"き",
+			"ょ",
+			"う",
+			"し",
+			"つ"
+		],
+		"meaning": "Ruang kelas"
+	},
+	{
+		"id": 255,
+		"chapter": 8,
+		"image": "30kr1n.png",
+		"rune": "教会",
+		"spelling": [
+			"き",
+			"ょ",
+			"う",
+			"か",
+			"い"
+		],
+		"meaning": "Gereja"
+	}
+]

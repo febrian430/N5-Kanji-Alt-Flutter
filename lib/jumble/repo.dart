@@ -14,7 +14,7 @@ Future<List<JumbleQuestionSet>> getQuestions(int n, int chapter, GAME_MODE mode)
   var kanjis = await ByChapterRandom(chapter);
   var candidates = kanjis.take(n);
 
-  var optionCandidates = await random(startChapter: chapter-1, endChapter: chapter+1);
+  var optionCandidates = await random(startChapter: 1, endChapter: 8);
 
   return candidates.map((candidate) {
     return _makeQuestionSet(candidate, optionCandidates, mode);
@@ -40,7 +40,7 @@ JumbleQuestionSet _makeQuestionSet(KanjiExample kanji, List<KanjiExample> option
   DestroyerFunc destroy = getDestroyer(mode);
 
   if(GAME_MODE.imageMeaning == mode) {
-    correctKeys = destroy(kanji);
+    correctKeys = kanji.rune.split("");
     questionVal = kanji.image;
 
     final keysToTake = TOTAL_OPTIONS - correctKeys.length;
@@ -49,14 +49,14 @@ JumbleQuestionSet _makeQuestionSet(KanjiExample kanji, List<KanjiExample> option
     var chosens = optionCandidates.take(keysToTake);
     
     chosens.forEach((chosen) {
-      optionVals += destroy(chosen);
+      optionVals += chosen.rune.split("");
     });
 
     optionVals = correctKeys + optionVals.take(keysToTake).toList();
 
     optionVals.shuffle();
   } else {
-    correctKeys = destroy(kanji);
+    correctKeys = kanji.spelling;
     questionVal = kanji.rune;
 
     final keysToTake = TOTAL_OPTIONS - correctKeys.length;
@@ -65,7 +65,7 @@ JumbleQuestionSet _makeQuestionSet(KanjiExample kanji, List<KanjiExample> option
     var chosens = optionCandidates.take(keysToTake);
     
     chosens.forEach((chosen) {
-      optionVals += destroy(chosen);
+      optionVals += kanji.spelling;
     });
     optionVals = correctKeys + optionVals.take(keysToTake).toList();
 

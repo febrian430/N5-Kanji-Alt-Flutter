@@ -60,7 +60,7 @@ class GameSelect extends StatelessWidget {
                   // Within the `Home` widget
                   onPressed: () {
                     // Navigate to the second screen using a named route.
-                    Navigator.pushNamed(context, ChapterSelect.route,
+                    Navigator.pushNamed(context, ModeSelect.route,
                     arguments: PracticeGameArguments(selectedGame: JumbleGame.route));
                   },
                   child: const Text('Jumble'),

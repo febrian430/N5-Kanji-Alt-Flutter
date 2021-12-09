@@ -37,7 +37,7 @@ Future<List<Option>> _findOptionsFor(int n, KanjiExample question, GAME_MODE mod
   } else {
     options = [
         Option(value: question.rune, key: question.id.toString()),
-        ...otherOptions.map((opt) => Option(value: opt.spelling, key: opt.id.toString()))
+        ...otherOptions.map((opt) => Option(value: opt.spelling.join(), key: opt.id.toString()))
     ];
   }
   options.shuffle();

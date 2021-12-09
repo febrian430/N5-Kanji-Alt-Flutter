@@ -49,7 +49,7 @@ Future<List<Question>> _makeReadingOptions(int n, int chapter) async {
     var last = runeOptions.length;
 
     List<Question> spellingOptions = candidates.mapIndexed((kanji, index) {
-      return Question(id: index+last, value: kanji.spelling, key: kanji.id.toString());
+      return Question(id: index+last, value: kanji.spelling.join(""), key: kanji.id.toString());
     }).toList();
 
     final List<Question> options = [...runeOptions, ...spellingOptions];

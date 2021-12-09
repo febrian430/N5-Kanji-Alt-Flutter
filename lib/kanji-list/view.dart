@@ -98,7 +98,7 @@ class Example extends StatelessWidget {
           children: [
             Text(example.rune), 
             Text(example.meaning), 
-            Text(example.spelling), 
+            Text(example.spelling.join()), 
           ],
         )
       )

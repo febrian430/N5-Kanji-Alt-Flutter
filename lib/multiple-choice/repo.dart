@@ -41,13 +41,13 @@ Future<List<Option>> _findOptionsFor(KanjiExample question, GAME_MODE mode) asyn
   otherOptions = otherOptions.take(3).toList();
   if(mode == GAME_MODE.imageMeaning) {
     options = [
-      Option(value: question.meaning, key: question.id.toString()),
+      Option(value: question.rune, key: question.id.toString()),
       ...otherOptions.map((opt) => Option(value: opt.rune, key: opt.id.toString()))
     ];
   } else {
     options = [
-        Option(value: question.rune, key: question.id.toString()),
-        ...otherOptions.map((opt) => Option(value: opt.spelling, key: opt.id.toString()))
+        Option(value: question.spelling.join(), key: question.id.toString()),
+        ...otherOptions.map((opt) => Option(value: opt.spelling.join(), key: opt.id.toString()))
     ];
   }
   options.shuffle();
