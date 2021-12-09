@@ -65,7 +65,7 @@ class _MultipleChoiceGameState extends State<MultipleChoiceGame> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          GameRound(
+          MultipleChoiceRound(
             question: data[itemIndex].question, 
             options: data[itemIndex].options, 
             mode: widget.mode, 
@@ -106,7 +106,7 @@ class _MultipleChoiceGameState extends State<MultipleChoiceGame> {
       //         ListView(
       //           children: 
       //             widget.questionSets.map((QuestionSet questionSet) {
-      //               return GameRound(question: questionSet.question, options: questionSet.options, mode: GAME_MODE.imageMeaning , onSelect: (bool isCorrect) => _handleOnSelect(isCorrect),);
+      //               return MultipleChoiceRound(question: questionSet.question, options: questionSet.options, mode: GAME_MODE.imageMeaning , onSelect: (bool isCorrect) => _handleOnSelect(isCorrect),);
       //             }).toList()
       //           ,
       //           scrollDirection: Axis.horizontal,
@@ -138,8 +138,8 @@ class _MultipleChoiceGameState extends State<MultipleChoiceGame> {
   }
 }
 
-class GameRound extends StatefulWidget  {
-  const GameRound({Key? key, required this.question, required this.options, required this.mode, required this.onSelect}) : super(key: key);
+class MultipleChoiceRound extends StatefulWidget  {
+  const MultipleChoiceRound({Key? key, required this.question, required this.options, required this.mode, required this.onSelect}) : super(key: key);
 
   final Question question;
   final List<Option> options;
@@ -147,10 +147,10 @@ class GameRound extends StatefulWidget  {
   final RoundOverCallback onSelect;
 
   @override
-  State<StatefulWidget> createState() => _GameRoundState();
+  State<StatefulWidget> createState() => _MultipleChoiceRoundState();
 }
 
-class _GameRoundState extends State<GameRound> with AutomaticKeepAliveClientMixin<GameRound> {
+class _MultipleChoiceRoundState extends State<MultipleChoiceRound> with AutomaticKeepAliveClientMixin<MultipleChoiceRound> {
   Option? selected;
   bool gameOver = false;
 
