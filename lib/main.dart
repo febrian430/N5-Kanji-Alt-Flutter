@@ -101,7 +101,7 @@ class MyApp extends StatelessWidget {
             final args = settings.arguments as PracticeGameArguments;
 
             return MaterialPageRoute(builder: (context) {
-              return Quiz();
+              return Quiz(mode: args.mode, chapter: args.chapter);
             });
           // case ResultScreen.route:
           //   final args = settings.arguments as ResultParam;
