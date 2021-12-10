@@ -10,7 +10,7 @@ import 'package:kanji_memory_hint/map_indexed.dart';
 const TOTAL_OPTIONS = 8;
 
 
-Future<List<JumbleQuestionSet>> getQuestions(int n, int chapter, GAME_MODE mode) async {
+Future<List<JumbleQuestionSet>> jumbleQuestionSets(int n, int chapter, GAME_MODE mode) async {
   var kanjis = await ByChapterRandom(chapter);
   var candidates = kanjis.take(n);
 
