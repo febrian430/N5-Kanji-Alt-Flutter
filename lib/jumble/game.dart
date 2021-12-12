@@ -141,7 +141,7 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
   final int answerLength;
 
   int selectCount = 0;
-  int wrongAttempts = 0;
+  int misses = 0;
   List<Option> selected = [];
   bool isRoundOver = false;
 
@@ -214,13 +214,13 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
       if(diff.length == 0) {
         setState(() {
           isRoundOver = true;
-          widget.onRoundOver(wrongAttempts);
+          widget.onRoundOver(misses);
         });
         
-      }else {
+      } else {
         _unselect(diff);
         setState(() {
-          wrongAttempts++;
+          misses += diff.length;
         });
         diff.forEach((element) {
           print(widget.question.key[element]);

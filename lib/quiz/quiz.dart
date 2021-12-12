@@ -36,7 +36,7 @@ class _QuizState extends State<Quiz> {
   int mulchoiceWrong = 0;
 
   int jumbleCorrect = 0;
-  int jumbleWrong = 0;
+  int jumbleMisses = 0;
 
   int gameIndex = 0;
 
@@ -60,42 +60,18 @@ class _QuizState extends State<Quiz> {
       gameIndex = 1;
     });
   }
+
+  void _handleJumbleSubmit(int correct, int misses, int score) {
+    setState(() {
+      jumbleCorrect = correct;
+      jumbleMisses = misses;
+      score += score;
+      gameIndex = 2;
+    });
+  }
   
 
-  Widget _buildJumbleRound(BuildContext context, int index, JumbleQuestionSet set) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(
-          width: 1
-        )
-      ),
-      child: JumbleRound(
-        mode: widget.mode, 
-        question: set.question, 
-        options: set.options, 
-        onRoundOver: (int attempts) {
-          print(attempts);
-        }
-      )
-    );
-  }
-
-  Widget _buildJumble(BuildContext context, int gameIndex, List<JumbleQuestionSet> items) {
-    print("jubmle was called");
-    return PageView.builder(
-              // store this controller in a State to save the carousel scroll position
-              controller: PageController(
-                viewportFraction: 1,
-                initialPage: 0
-              ),
-              
-              itemCount: items.length,
-              itemBuilder: (BuildContext context, int index) {
-                print("JUMBLE INDEX" + index.toString());
-                return _buildJumbleRound(context, index, items[index]);
-              },
-      );
-  }
+  
 
   Widget _build(BuildContext context, int gameIndex, List items) {
     List<QuestionSet> mcQuestionSets = items[0];
@@ -111,7 +87,11 @@ class _QuizState extends State<Quiz> {
           questionSets: mcQuestionSets, 
           onSubmit: _handleMultipleChoiceSubmit,
         ),
-        _buildJumble(context, gameIndex, jumbleQuestionSets)
+        _JumbleGame(
+          mode: widget.mode,
+          questionSets: jumbleQuestionSets,
+          onSubmit: _handleJumbleSubmit,
+        )
       ],
     );
   }
@@ -221,5 +201,62 @@ class _MultipleChoiceGameState extends State<_MultipleChoiceGame> {
   @override
   Widget build(BuildContext context) {
     return _build(context, widget.questionSets);
+  }
+}
+
+class _JumbleGame extends StatefulWidget {
+
+  final GAME_MODE mode;
+  final List<JumbleQuestionSet> questionSets;
+  final Function(int correct, int misses, int score) onSubmit;
+
+  const _JumbleGame({Key? key, required this.mode, required this.questionSets, required this.onSubmit}) : super(key: key);
+  
+  @override
+  State<StatefulWidget> createState() => _JumbleGameState();
+}
+
+//TODO: REFACTOR MAIN JUMBLE ROUND LOGIC TO SUPPORT QUIZ MODE
+class _JumbleGameState extends State<_JumbleGame> {
+  
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return _buildJumble(context, widget.questionSets);
+  }
+
+  Widget _buildJumbleRound(BuildContext context, int index, JumbleQuestionSet set) {
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(
+          width: 1
+        )
+      ),
+      child: JumbleRound(
+        mode: widget.mode, 
+        question: set.question, 
+        options: set.options, 
+        onRoundOver: (int attempts) {
+          print(attempts);
+        }
+      )
+    );
+  }
+
+  Widget _buildJumble(BuildContext context, List<JumbleQuestionSet> items) {
+    print("jubmle was called");
+    return PageView.builder(
+              // store this controller in a State to save the carousel scroll position
+              controller: PageController(
+                viewportFraction: 1,
+                initialPage: 0
+              ),
+              
+              itemCount: items.length,
+              itemBuilder: (BuildContext context, int index) {
+                print("JUMBLE INDEX" + index.toString());
+                return _buildJumbleRound(context, index, items[index]);
+              },
+      );
   }
 }
