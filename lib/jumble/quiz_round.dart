@@ -99,6 +99,9 @@ class _JumbleQuizRoundState extends State<JumbleQuizRound> with AutomaticKeepAli
 
   @override
   Widget build(BuildContext context) {
+    if(widget.isOver){
+      print("REBUILD!!!");
+    }
     return Center(
       child: Container(
         // height: MediaQuery.of(context).size.height - 120,

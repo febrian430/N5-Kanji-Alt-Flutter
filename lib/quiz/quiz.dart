@@ -1,13 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/components/loading_screen.dart';
+import 'package:kanji_memory_hint/components/submit_button.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/jumble/game.dart';
 import 'package:kanji_memory_hint/jumble/model.dart';
+import 'package:kanji_memory_hint/jumble/quiz_round.dart';
 import 'package:kanji_memory_hint/models/common.dart';
 import 'package:kanji_memory_hint/models/question_set.dart';
 import 'package:kanji_memory_hint/multiple-choice/game.dart';
 import 'package:kanji_memory_hint/quiz/next_button.dart';
+import 'package:kanji_memory_hint/quiz/quiz_result.dart';
 import 'package:kanji_memory_hint/quiz/repo.dart';
 
 class Quiz extends StatefulWidget {
@@ -67,12 +70,10 @@ class _QuizState extends State<Quiz> {
       jumbleMisses = misses;
       score += score;
       gameIndex = 2;
+      print(jumbleCorrect);
     });
   }
   
-
-  
-
   Widget _build(BuildContext context, int gameIndex, List items) {
     List<QuestionSet> mcQuestionSets = items[0];
     List<JumbleQuestionSet> jumbleQuestionSets = items[1];
@@ -91,6 +92,12 @@ class _QuizState extends State<Quiz> {
           mode: widget.mode,
           questionSets: jumbleQuestionSets,
           onSubmit: _handleJumbleSubmit,
+        ),
+        QuizResult(
+          multipleChoiceCorrect: mulchoiceCorrect, 
+          multipleChoiceWrong: mulchoiceWrong, 
+          jumbleCorrect: jumbleCorrect, 
+          jumbleMisses: jumbleMisses
         )
       ],
     );
@@ -176,7 +183,8 @@ class _MultipleChoiceGameState extends State<_MultipleChoiceGame> {
             onTap: () {
               widget.onSubmit(correct, wrong, correct*100); //TODO: fix score calc
             }, 
-            visible: solved == totalQuestion)
+            visible: solved == totalQuestion
+          )
         ]
       )
     );
@@ -192,7 +200,6 @@ class _MultipleChoiceGameState extends State<_MultipleChoiceGame> {
               ),
               itemCount: items.length,
               itemBuilder: (BuildContext context, int index) {
-                print("MULCHOICE " + index.toString());
                 return _buildMultipleChoiceRound(context, index, items[index]);
               },
       );
@@ -216,47 +223,73 @@ class _JumbleGame extends StatefulWidget {
   State<StatefulWidget> createState() => _JumbleGameState();
 }
 
-//TODO: REFACTOR MAIN JUMBLE ROUND LOGIC TO SUPPORT QUIZ MODE
 class _JumbleGameState extends State<_JumbleGame> {
   
+  int solved = 0;
+  int correct = 0;
+  int misses = 0;
+  int score = 0;
+  bool isOver = false;
+
+  late int totalQuestion = widget.questionSets.length;
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return _buildJumble(context, widget.questionSets);
+    return _build(context, widget.questionSets);
   }
 
-  Widget _buildJumbleRound(BuildContext context, int index, JumbleQuestionSet set) {
+  Widget _buildRound(BuildContext context, int index, JumbleQuestionSet set) {
     return Container(
       decoration: BoxDecoration(
         border: Border.all(
           width: 1
         )
       ),
-      child: JumbleRound(
-        mode: widget.mode, 
-        question: set.question, 
-        options: set.options, 
-        onRoundOver: (int attempts) {
-          print(attempts);
-        }
+      child: Column(
+        children: [
+          JumbleQuizRound(
+            mode: widget.mode, 
+            question: set.question, 
+            options: set.options, 
+            isOver: isOver,
+            onComplete: (bool isCorrect, int misses, bool initial) {
+              setState(() {
+                if(initial) {
+                  solved++;
+                }
+                print(solved);
+              });
+            },
+            onSubmit: (bool isCorrect, int miss) {
+              setState(() {
+                correct++;
+                misses += miss;
+              });
+            },
+          ),
+          SubmitButton(
+            visible: solved == totalQuestion, 
+            onTap:  () {
+              widget.onSubmit(correct, misses, correct*100 + 200-misses*10);
+            }
+          )
+        ]
       )
     );
   }
 
-  Widget _buildJumble(BuildContext context, List<JumbleQuestionSet> items) {
-    print("jubmle was called");
+  Widget _build(BuildContext context, List<JumbleQuestionSet> items) {
     return PageView.builder(
               // store this controller in a State to save the carousel scroll position
-              controller: PageController(
-                viewportFraction: 1,
-                initialPage: 0
-              ),
-              
-              itemCount: items.length,
-              itemBuilder: (BuildContext context, int index) {
-                print("JUMBLE INDEX" + index.toString());
-                return _buildJumbleRound(context, index, items[index]);
-              },
-      );
+      controller: PageController(
+        viewportFraction: 1,
+        initialPage: 0
+      ),
+      
+      itemCount: items.length,
+      itemBuilder: (BuildContext context, int index) {
+        return _buildRound(context, index, items[index]);
+      },
+    );
   }
 }

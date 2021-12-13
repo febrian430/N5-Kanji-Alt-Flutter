@@ -2,8 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/components/result_button.dart';
+import 'package:kanji_memory_hint/components/submit_button.dart';
 import 'package:kanji_memory_hint/const.dart';
+import 'package:kanji_memory_hint/game_components/question_widget.dart';
 import 'package:kanji_memory_hint/jumble/model.dart';
+import 'package:kanji_memory_hint/jumble/quiz_round.dart';
 import 'package:kanji_memory_hint/jumble/repo.dart';
 import 'package:kanji_memory_hint/models/common.dart';
 import 'package:kanji_memory_hint/map_indexed.dart';
@@ -19,9 +22,10 @@ class JumbleGame extends StatefulWidget {
 
   final GAME_MODE mode;
   final int chapter;
+  final bool isQuiz = false;
 
   Future<List<JumbleQuestionSet>> _getQuestionSet() async {
-    return jumbleQuestionSets(10, chapter, mode);
+    return jumbleQuestionSets(2, chapter, mode);
   }
 
   @override
@@ -42,34 +46,51 @@ class _JumbleGameState extends State<JumbleGame> {
     _questionSets = widget._getQuestionSet();
   }
 
-  void _handleRoundOver(int wrong) {
+  void _handleRoundOver(bool isCorrect, int misses, bool initialAnswer) {
     setState(() {
-      wrongCount += wrong;
-      solved++;
+      // if(isCorrect) {
+      //   wrongCount += misses;
+      // }
+      if(initialAnswer) {
+        solved++;
+      }
+    });
+  }
+
+  void _onGameSubmit(bool isCorrect, int misses) {
+    setState(() {
+      wrongCount += misses;
+      if(isCorrect) {
+        score++;
+      }
     });
   }
 
 
   Widget _buildRound(BuildContext context, int itemIndex, List<JumbleQuestionSet> questionSets) {
-    print("SOLVED " + solved.toString());
-    print("WRONG COUNT " + wrongCount.toString());
-    print("NUM Q: " + numOfQuestions.toString());
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 4.0),
       child: Column(
         children: [
           Container(
-            child: JumbleRound(
+            child: JumbleQuizRound(
               question: questionSets[itemIndex].question, 
               options: questionSets[itemIndex].options, 
               mode: widget.mode, 
-              onRoundOver: _handleRoundOver,
+              isOver: numOfQuestions == solved,
+              onComplete: _handleRoundOver,
+              onSubmit: _onGameSubmit,
             )
           ),
           ResultButton(
-            param: ResultParam(wrongCount: wrongCount, decreaseFactor: 100),
+            param: ResultParam(wrongCount: wrongCount, decreaseFactor: 10),
             visible: numOfQuestions == solved,
           ),
+          SubmitButton(visible: widget.isQuiz && numOfQuestions == solved, onTap: () {
+            setState(() {
+              
+            });
+          })
         ]
       )
     );
@@ -78,52 +99,41 @@ class _JumbleGameState extends State<JumbleGame> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const  Text('JUMBLE'),
-      ),
-      // body: SafeArea(child:
-      //         ListView(
-      //           children: 
-      //             widget.questionSets.map((QuestionSet questionSet) {
-      //               return GameRound(question: questionSet.question, options: questionSet.options, mode: GAME_MODE.imageMeaning , onSelect: (bool isCorrect) => _handleOnSelect(isCorrect),);
-      //             }).toList()
-      //           ,
-      //           scrollDirection: Axis.horizontal,
-      //         ),
-      //       )
-      body: FutureBuilder(
-        future: _questionSets,
-        builder: (context, AsyncSnapshot<List<JumbleQuestionSet>> snapshot) {
-          if(snapshot.hasData) {
-            numOfQuestions = snapshot.data!.length;
-            return PageView.builder(
-              // store this controller in a State to save the carousel scroll position
-              controller: PageController(
-                viewportFraction: 1,
-              ),
-              itemCount: snapshot.data?.length,
-              itemBuilder: (BuildContext context, int itemIndex) {
-                return _buildRound(context, itemIndex, snapshot.data!);
-              },
-            );
-          } else {
-            return LoadingScreen();
+      body: SafeArea(
+        child: FutureBuilder(
+          future: _questionSets,
+          builder: (context, AsyncSnapshot<List<JumbleQuestionSet>> snapshot) {
+            if(snapshot.hasData) {
+              numOfQuestions = snapshot.data!.length;
+              return PageView.builder(
+                // store this controller in a State to save the carousel scroll position
+                controller: PageController(
+                  viewportFraction: 1,
+                ),
+                itemCount: snapshot.data?.length,
+                itemBuilder: (BuildContext context, int itemIndex) {
+                  return _buildRound(context, itemIndex, snapshot.data!);
+                },
+              );
+            } else {
+              return LoadingScreen();
+            }
           }
-        }
+        )
       )
-      );
+    );
   }
 }
 
 const SENTINEL = const Option(value: "-1", key: "-1");
 
 class JumbleRound extends StatefulWidget {
-  JumbleRound({Key? key, required this.mode, required this.question, required this.options, required this.onRoundOver}) : super(key: key);
+  const JumbleRound({Key? key, required this.mode, required this.question, required this.options, required this.onComplete}) : super(key: key);
 
   final JumbleQuestion question;
   final List<Option> options;
   final GAME_MODE mode;
-  final Function(int wrong) onRoundOver;
+  final Function(int wrong) onComplete;
 
   @override
   State<StatefulWidget> createState() => _JumbleRoundState(answerLength: question.key.length);
@@ -144,32 +154,6 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
   int misses = 0;
   List<Option> selected = [];
   bool isRoundOver = false;
-
-
-
-  Widget _questionWidget() {
-    
-    if(widget.mode == GAME_MODE.imageMeaning) {
-      return Container(
-        child: Image(
-          image: AssetImage(KANJI_IMAGE_FOLDER + widget.question.value),
-          fit: BoxFit.cover,  
-          ),
-          height: 200,
-          width: 200
-      );
-    } else {
-      return Container(
-        child: Center(
-          child: Text(
-          widget.question.value,
-          ),
-        ),
-        height: 200,
-        width: 200
-      );
-    }
-  }
 
   void _unselect(List<int> indexes) {
     indexes.forEach((index) {
@@ -214,7 +198,7 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
       if(diff.length == 0) {
         setState(() {
           isRoundOver = true;
-          widget.onRoundOver(misses);
+          widget.onComplete(misses);
         });
         
       } else {
@@ -246,7 +230,7 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
         //question
         child: Column(
           children: [
-            _questionWidget(),
+            QuestionWidget(mode: widget.mode, questionStr: widget.question.value),
             SizedBox(height: 10),
             //selected box
             Container(
