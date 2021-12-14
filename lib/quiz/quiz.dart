@@ -80,24 +80,42 @@ class _QuizState extends State<Quiz> {
     return IndexedStack(
       index: gameIndex,
       children: [
-        _MultipleChoiceGame(
+        Container(
+          decoration: BoxDecoration(
+            border: Border.all(
+              width: 1
+            )
+          ),
+          child: _MultipleChoiceGame(
           mode: widget.mode, 
           questionSets: mcQuestionSets, 
           isOver: isOver,
           onSubmit: _handleMultipleChoiceSubmit,
-        ),
-        _JumbleGame(
-          mode: widget.mode,
-          questionSets: jumbleQuestionSets,
-          isOver: isOver,
-          onSubmit: _handleJumbleSubmit,
-        ),
-        QuizResult(
-          multipleChoiceCorrect: mulchoiceCorrect, 
-          multipleChoiceWrong: mulchoiceWrong, 
-          jumbleCorrect: jumbleCorrect, 
-          jumbleMisses: jumbleMisses
-        )
+        )),
+        Container(
+          decoration: BoxDecoration(
+            border: Border.all(
+              width: 1
+            )
+          ),
+          child: _JumbleGame(
+            mode: widget.mode,
+            questionSets: jumbleQuestionSets,
+            isOver: isOver,
+            onSubmit: _handleJumbleSubmit,
+        )),
+        Container(
+          decoration: BoxDecoration(
+            border: Border.all(
+              width: 1
+            )
+          ),
+          child: QuizResult(
+            multipleChoiceCorrect: mulchoiceCorrect, 
+            multipleChoiceWrong: mulchoiceWrong, 
+            jumbleCorrect: jumbleCorrect, 
+            jumbleMisses: jumbleMisses
+        ))
       ],
     );
   }
