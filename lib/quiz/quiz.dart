@@ -71,6 +71,24 @@ class _QuizState extends State<Quiz> {
       gameIndex = 2;
     });
   }
+
+  void _goMultipleChoice() {
+    setState(() {
+      gameIndex = 0;
+    });
+  }
+
+  void _goJumble() {
+    setState(() {
+      gameIndex = 1;
+    });
+  }
+
+  void _goQuizResult() {
+    setState(() {
+      gameIndex = 2;
+    });
+  }
   
   Widget _build(BuildContext context, int gameIndex, List items) {
     List<QuestionSet> mcQuestionSets = items[0];
@@ -80,42 +98,34 @@ class _QuizState extends State<Quiz> {
     return IndexedStack(
       index: gameIndex,
       children: [
-        Container(
-          decoration: BoxDecoration(
-            border: Border.all(
-              width: 1
-            )
-          ),
-          child: _MultipleChoiceGame(
+        _MultipleChoiceGame(
           mode: widget.mode, 
           questionSets: mcQuestionSets, 
-          isOver: isOver,
+          quizOver: isOver,
           onSubmit: _handleMultipleChoiceSubmit,
-        )),
-        Container(
-          decoration: BoxDecoration(
-            border: Border.all(
-              width: 1
+          goNext: _goJumble,
+          goPrev: _goQuizResult,
+        ),
+        _JumbleGame(
+          mode: widget.mode,
+          questionSets: jumbleQuestionSets,
+          quizOver: isOver,
+          onSubmit: _handleJumbleSubmit,
+          goNext: _goQuizResult,
+          goPrev: _goMultipleChoice,
+        ),
+        QuizResult(
+            multipleChoice: QuizGameParam(
+              correct: mulchoiceCorrect, 
+              wrong: mulchoiceWrong, 
+              goHere: _goMultipleChoice
+            ), 
+            jumble: QuizGameParam(
+              correct: jumbleCorrect, 
+              wrong: jumbleMisses, 
+              goHere: _goJumble
             )
-          ),
-          child: _JumbleGame(
-            mode: widget.mode,
-            questionSets: jumbleQuestionSets,
-            isOver: isOver,
-            onSubmit: _handleJumbleSubmit,
-        )),
-        Container(
-          decoration: BoxDecoration(
-            border: Border.all(
-              width: 1
-            )
-          ),
-          child: QuizResult(
-            multipleChoiceCorrect: mulchoiceCorrect, 
-            multipleChoiceWrong: mulchoiceWrong, 
-            jumbleCorrect: jumbleCorrect, 
-            jumbleMisses: jumbleMisses
-        ))
+        )
       ],
     );
   }
@@ -140,12 +150,16 @@ class _QuizState extends State<Quiz> {
 }
 
 class _MultipleChoiceGame extends StatefulWidget {
-  const _MultipleChoiceGame({Key? key, required this.mode, required this.questionSets, required this.onSubmit, this.isOver = false}) : super(key: key);
+  const _MultipleChoiceGame({Key? key, required this.mode, required this.questionSets, required this.onSubmit, this.quizOver = false, required this.goPrev, required this.goNext}) : super(key: key);
 
   final GAME_MODE mode;
   final List<QuestionSet> questionSets;
   final Function(int correct, int wrong, int score) onSubmit;
-  final bool isOver;
+  final bool quizOver;
+  final Function() goPrev;
+  final Function() goNext;
+
+
 
   @override
   State<StatefulWidget> createState() => _MultipleChoiceGameState();
@@ -194,14 +208,14 @@ class _MultipleChoiceGameState extends State<_MultipleChoiceGame> {
             index: index,
             onSelect: _handleOnSelectQuiz,
             quiz: true,
-            isOver: widget.isOver,
+            isOver: widget.quizOver,
           ),
 
           NextQuizRoundButton(
             onTap: () {
               widget.onSubmit(correct, wrong, correct*100); //TODO: fix score calc
             }, 
-            visible: solved == totalQuestion
+            visible: !widget.quizOver && solved == totalQuestion
           )
         ]
       )
@@ -209,17 +223,46 @@ class _MultipleChoiceGameState extends State<_MultipleChoiceGame> {
   }
 
   Widget _build(BuildContext context, List<QuestionSet> items) {
-    return PageView.builder(
+    return Column(
+      children: [
+        Flexible(
+          flex: 9,
+          child: PageView.builder(
               // store this controller in a State to save the carousel scroll position
-              pageSnapping: true,
-              controller: PageController(
-                viewportFraction: 1,
-                initialPage: 0
-              ),
-              itemCount: items.length,
-              itemBuilder: (BuildContext context, int index) {
-                return _buildMultipleChoiceRound(context, index, items[index]);
-              },
+            pageSnapping: true,
+            controller: PageController(
+              viewportFraction: 1,
+              initialPage: 0
+            ),
+            itemCount: items.length,
+            itemBuilder: (BuildContext context, int index) {
+              return _buildMultipleChoiceRound(context, index, items[index]);
+            },
+          ),
+        ),
+        Visibility(
+          visible: widget.quizOver,
+          child: Flexible(
+            flex: 1,
+            child: Row(
+              children: [
+                ElevatedButton(
+                  onPressed: widget.goNext,
+                  child: const Center(
+                    child: Text("Jumble"),
+                  ),  
+                ),
+                ElevatedButton(
+                  onPressed: widget.goPrev,
+                  child: const Center(
+                    child: Text("Result"),
+                  ),  
+                ),
+             ],
+            )
+          )
+        )
+      ]
       );
   }
 
@@ -233,10 +276,12 @@ class _JumbleGame extends StatefulWidget {
 
   final GAME_MODE mode;
   final List<JumbleQuestionSet> questionSets;
-  final bool isOver;
+  final bool quizOver;
   final Function(int correct, int misses, int score) onSubmit;
+  final Function() goPrev;
+  final Function() goNext;
 
-  const _JumbleGame({Key? key, required this.mode, required this.questionSets, required this.onSubmit, this.isOver = false}) : super(key: key);
+  const _JumbleGame({Key? key, required this.mode, required this.questionSets, required this.onSubmit, this.quizOver = false, required this.goPrev, required this.goNext}) : super(key: key);
   
   @override
   State<StatefulWidget> createState() => _JumbleGameState();
@@ -248,7 +293,7 @@ class _JumbleGameState extends State<_JumbleGame> {
   int correct = 0;
   int misses = 0;
 
-  bool submit = false;
+  bool initial = true;
 
   bool isGameOver = false;
 
@@ -290,7 +335,7 @@ class _JumbleGameState extends State<_JumbleGame> {
             },
           ),
           SubmitButton(
-            visible: solved == totalQuestion, 
+            visible: !widget.quizOver && solved == totalQuestion, 
             onTap:  () {
               setState(() {
                 isGameOver = true;
@@ -304,21 +349,52 @@ class _JumbleGameState extends State<_JumbleGame> {
 
   Widget _build(BuildContext context, List<JumbleQuestionSet> items) {
     WidgetsBinding.instance?.addPostFrameCallback((_) {
-      if(isGameOver) {
+      if(isGameOver && initial) {
         widget.onSubmit(correct, misses, 0);
+        setState(() {
+          initial = false;
+        });
       }
     });
-    return PageView.builder(
+    return Column(children: [
+      Flexible(
+        flex: 9,
+        child: PageView.builder(
               // store this controller in a State to save the carousel scroll position
-      controller: PageController(
-        viewportFraction: 1,
-        initialPage: 0
+          controller: PageController(
+            viewportFraction: 1,
+            initialPage: 0
+          ),
+          
+          itemCount: items.length,
+          itemBuilder: (BuildContext context, int index) {
+            return _buildRound(context, index, items[index]);
+          },
+        )
       ),
-      
-      itemCount: items.length,
-      itemBuilder: (BuildContext context, int index) {
-        return _buildRound(context, index, items[index]);
-      },
+      Visibility(
+        visible: widget.quizOver,
+        child: Flexible(
+          flex: 1,
+          child: Row(
+            children: [
+              ElevatedButton(
+                onPressed: widget.goPrev,
+                child: const Center(
+                  child: Text("Multiple Choice"),
+                ),  
+              ),
+              ElevatedButton(
+                onPressed: widget.goNext,
+                child: const Center(
+                  child: Text("Result"),
+                ),  
+              )
+            ],
+          )
+        )
+      )
+    ]
     );
   }
 }

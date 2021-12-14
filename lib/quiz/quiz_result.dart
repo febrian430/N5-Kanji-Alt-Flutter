@@ -1,13 +1,19 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+class QuizGameParam {
+  final int correct;
+  final int wrong;
+  final Function() goHere;
+
+  QuizGameParam({required this.correct, required this.wrong, required this.goHere});
+}
 
 class QuizResult extends StatelessWidget {
-  const QuizResult({Key? key, required this.multipleChoiceCorrect, required this.multipleChoiceWrong, required this.jumbleCorrect, required this.jumbleMisses}) : super(key: key);
+  const QuizResult({Key? key, required this.multipleChoice, required this.jumble}) : super(key: key);
 
-  final int multipleChoiceCorrect;
-  final int multipleChoiceWrong;
-
-  final int jumbleCorrect;
-  final int jumbleMisses;
+  final QuizGameParam multipleChoice;
+  final QuizGameParam jumble;
 
   Widget _header() {
     return const SizedBox(
@@ -27,17 +33,32 @@ class QuizResult extends StatelessWidget {
     return Container(
         child: Column(
           children: [
-            _header(),
-            _GameResult(
-              game: "Multiple Choice", 
-              correct: multipleChoiceCorrect, 
-              wrong: multipleChoiceWrong
+            Container(
+              child: Column(
+                children: [
+                  _header(),
+                  _GameResult(
+                    game: "Multiple Choice", 
+                    correct: multipleChoice.correct, 
+                    wrong: multipleChoice.wrong
+                  ),
+                  _GameResult(
+                    game: "Jumble", 
+                    correct: jumble.correct, 
+                    wrong: jumble.wrong
+                  ),
+                ],
+              ),
             ),
-            _GameResult(
-              game: "Jumble", 
-              correct: jumbleCorrect, 
-              wrong: jumbleMisses
+
+            ElevatedButton(
+              child: Text("Check Multiple Choice"),
+              onPressed: multipleChoice.goHere,
             ),
+            ElevatedButton(
+              child: Text("Check Jumble"),
+              onPressed: jumble.goHere,
+            )
           ],
         ),
     );

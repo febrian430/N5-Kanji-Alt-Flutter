@@ -6,6 +6,7 @@ import 'package:flutter/rendering.dart';
 import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/components/result_button.dart';
 import 'package:kanji_memory_hint/const.dart';
+import 'package:kanji_memory_hint/game_components/question_widget.dart';
 import 'package:kanji_memory_hint/menu_screens/result_screen.dart';
 import 'package:kanji_memory_hint/models/common.dart';
 import 'package:kanji_memory_hint/models/question_set.dart';
@@ -115,6 +116,7 @@ class PickDropRound extends StatefulWidget {
   final Question question;
   final List<Option> options;
   final OnDropCallback onDrop;
+  final GAME_MODE mode = GAME_MODE.imageMeaning;
   final bool isLast;
 
   @override
@@ -137,7 +139,7 @@ class _PickDropRoundState extends State<PickDropRound> {
                 decoration: BoxDecoration(border: Border.all(width: 3)),
                 child: Center(
                   child: Text(
-                  opt.value,  
+                  opt.value + (widget.question.key == opt.key ? " C" : ""),  
                   style: const TextStyle(
                     color: Colors.black,
                     fontSize: 20,
@@ -217,25 +219,19 @@ class _PickDropRoundState extends State<PickDropRound> {
           child: Column(
             
             children: [
-              Container(
-                height: screen.height*0.5,
-                child: AspectRatio(
-                  aspectRatio: 1,
-                  child: DragTarget<Option>(
-                    builder: (context, candidateData, rejectedData) {
-                      return _QuestionWidget(value: widget.question.value, answerKey: widget.question.key.toString(), isImage: true);
-                    },
-                    onWillAccept: (opt) {
-                    //  return opt?.key == widget.question.key;
-                      return true;
-                    },
-                    onAccept: (opt) {
-                      widget.onDrop(opt.key == widget.question.key);
-                    },
-
-                  )
-                ),
-              ),  
+              DragTarget<Option>(
+                builder: (context, candidateData, rejectedData) {
+                  return QuestionWidget(questionStr: widget.question.value, mode: widget.mode);
+                },
+                onWillAccept: (opt) {
+                //  return opt?.key == widget.question.key;
+                  return true;
+                },
+                onAccept: (opt) {
+                  widget.onDrop(opt.key == widget.question.key);
+                },
+              ),
+              Text("Answer: " + widget.question.key.toString()),
               SizedBox(height: screen.height*0.07,),
               Container(
                 height: screen.height*0.3,

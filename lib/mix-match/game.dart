@@ -171,7 +171,7 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
 
       return Container( 
         child: Center(
-          child: Text(opt.value),
+          child: Text(opt.value + " " + opt.key),
         ),
         decoration: deco,
         height: 120,
@@ -214,7 +214,8 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
               child: const Text('OK'),
             ),
           ],
-        ),);
+        ),
+      );
     }
   }
 
