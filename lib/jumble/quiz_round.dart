@@ -40,6 +40,7 @@ class _JumbleQuizRoundState extends State<JumbleQuizRound> with AutomaticKeepAli
   int misses = 0;
   List<Option> selected = [];
   bool initial = true;
+  bool initialRerender = true;
 
   void _unselect(List<int> indexes) {
     indexes.forEach((index) {
@@ -99,9 +100,19 @@ class _JumbleQuizRoundState extends State<JumbleQuizRound> with AutomaticKeepAli
 
   @override
   Widget build(BuildContext context) {
-    if(widget.isOver){
-      print("REBUILD!!!");
-    }
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      if(widget.isOver && initialRerender){
+        var diff = _differentIndexes();
+
+        widget.onSubmit(diff.isEmpty, diff.length);
+        setState(() {
+          initialRerender = false;
+        });
+      }
+    });
+
+    
+
     return Center(
       child: Container(
         // height: MediaQuery.of(context).size.height - 120,

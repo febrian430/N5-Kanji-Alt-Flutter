@@ -34,16 +34,14 @@ class _QuizState extends State<Quiz> {
   var quizQuestionSet;
   
   int score = 0;
-
   int mulchoiceCorrect = 0;
   int mulchoiceWrong = 0;
-
   int jumbleCorrect = 0;
   int jumbleMisses = 0;
 
   int gameIndex = 0;
+  bool isOver = false;
 
-  late int jumbleLength;
 
   @override
   void initState() {
@@ -69,8 +67,8 @@ class _QuizState extends State<Quiz> {
       jumbleCorrect = correct;
       jumbleMisses = misses;
       score += score;
+      isOver = true;
       gameIndex = 2;
-      print(jumbleCorrect);
     });
   }
   
@@ -78,7 +76,6 @@ class _QuizState extends State<Quiz> {
     List<QuestionSet> mcQuestionSets = items[0];
     List<JumbleQuestionSet> jumbleQuestionSets = items[1];
 
-    jumbleLength = jumbleQuestionSets.length;
 
     return IndexedStack(
       index: gameIndex,
@@ -86,11 +83,13 @@ class _QuizState extends State<Quiz> {
         _MultipleChoiceGame(
           mode: widget.mode, 
           questionSets: mcQuestionSets, 
+          isOver: isOver,
           onSubmit: _handleMultipleChoiceSubmit,
         ),
         _JumbleGame(
           mode: widget.mode,
           questionSets: jumbleQuestionSets,
+          isOver: isOver,
           onSubmit: _handleJumbleSubmit,
         ),
         QuizResult(
@@ -123,12 +122,12 @@ class _QuizState extends State<Quiz> {
 }
 
 class _MultipleChoiceGame extends StatefulWidget {
-  const _MultipleChoiceGame({Key? key, required this.mode, required this.questionSets, required this.onSubmit}) : super(key: key);
+  const _MultipleChoiceGame({Key? key, required this.mode, required this.questionSets, required this.onSubmit, this.isOver = false}) : super(key: key);
 
   final GAME_MODE mode;
   final List<QuestionSet> questionSets;
   final Function(int correct, int wrong, int score) onSubmit;
-
+  final bool isOver;
 
   @override
   State<StatefulWidget> createState() => _MultipleChoiceGameState();
@@ -177,6 +176,7 @@ class _MultipleChoiceGameState extends State<_MultipleChoiceGame> {
             index: index,
             onSelect: _handleOnSelectQuiz,
             quiz: true,
+            isOver: widget.isOver,
           ),
 
           NextQuizRoundButton(
@@ -215,9 +215,10 @@ class _JumbleGame extends StatefulWidget {
 
   final GAME_MODE mode;
   final List<JumbleQuestionSet> questionSets;
+  final bool isOver;
   final Function(int correct, int misses, int score) onSubmit;
 
-  const _JumbleGame({Key? key, required this.mode, required this.questionSets, required this.onSubmit}) : super(key: key);
+  const _JumbleGame({Key? key, required this.mode, required this.questionSets, required this.onSubmit, this.isOver = false}) : super(key: key);
   
   @override
   State<StatefulWidget> createState() => _JumbleGameState();
@@ -228,8 +229,10 @@ class _JumbleGameState extends State<_JumbleGame> {
   int solved = 0;
   int correct = 0;
   int misses = 0;
-  int score = 0;
-  bool isOver = false;
+
+  bool submit = false;
+
+  bool isGameOver = false;
 
   late int totalQuestion = widget.questionSets.length;
 
@@ -251,18 +254,19 @@ class _JumbleGameState extends State<_JumbleGame> {
             mode: widget.mode, 
             question: set.question, 
             options: set.options, 
-            isOver: isOver,
+            isOver: isGameOver,
             onComplete: (bool isCorrect, int misses, bool initial) {
               setState(() {
                 if(initial) {
                   solved++;
                 }
-                print(solved);
               });
             },
             onSubmit: (bool isCorrect, int miss) {
               setState(() {
-                correct++;
+                if(isCorrect) {
+                  correct++;
+                }
                 misses += miss;
               });
             },
@@ -270,7 +274,9 @@ class _JumbleGameState extends State<_JumbleGame> {
           SubmitButton(
             visible: solved == totalQuestion, 
             onTap:  () {
-              widget.onSubmit(correct, misses, correct*100 + 200-misses*10);
+              setState(() {
+                isGameOver = true;
+              });
             }
           )
         ]
@@ -279,6 +285,11 @@ class _JumbleGameState extends State<_JumbleGame> {
   }
 
   Widget _build(BuildContext context, List<JumbleQuestionSet> items) {
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      if(isGameOver) {
+        widget.onSubmit(correct, misses, 0);
+      }
+    });
     return PageView.builder(
               // store this controller in a State to save the carousel scroll position
       controller: PageController(

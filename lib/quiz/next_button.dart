@@ -23,3 +23,25 @@ class NextQuizRoundButton extends StatelessWidget {
       );
   }
 }
+
+class QuizResultButton extends StatelessWidget {
+  final Function() onTap;
+  final bool visible;
+
+  const QuizResultButton({Key? key, required this.onTap, required this.visible}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Visibility(
+      visible: visible,
+      child: ElevatedButton(
+        onPressed: onTap, 
+        child: const Center(
+          child: Text(
+            'Quiz Result'
+          )
+        )
+      )
+    );
+  }
+}
