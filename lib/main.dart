@@ -152,22 +152,6 @@ class Home extends StatelessWidget {
               child: const Text('Start'),
             ),
           ),
-          Center(
-            child: ElevatedButton(
-              // Within the `Home` widget
-              onPressed: () {
-                var chapter = 256;
-                var arg = PracticeGameArguments(selectedGame: "/idk");
-                arg.chapter = chapter;
-                arg.mode = GAME_MODE.reading;
-                // Navigate to the second screen using a named route.
-                Navigator.pushNamed(context, '/mock', 
-                arguments: arg);
-                
-              },
-              child: const Text('TRASH CAN'),
-            ),
-          ),
       ]
     )
     );
