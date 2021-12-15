@@ -34,8 +34,10 @@ class _QuizState extends State<Quiz> {
   var quizQuestionSet;
   
   int score = 0;
+
   int mulchoiceCorrect = 0;
   int mulchoiceWrong = 0;
+
   int jumbleCorrect = 0;
   int jumbleMisses = 0;
 
@@ -69,6 +71,9 @@ class _QuizState extends State<Quiz> {
       score += score;
       isOver = true;
       gameIndex = 2;
+      print("collecting jumble score from game");
+      print(misses);
+
     });
   }
 
@@ -297,12 +302,11 @@ class _JumbleGameState extends State<_JumbleGame> {
 
   bool isGameOver = false;
 
+  int loaded = 0;
+
   late int totalQuestion = widget.questionSets.length;
 
-  @override
-  Widget build(BuildContext context) {
-    return _build(context, widget.questionSets);
-  }
+  
 
   Widget _buildRound(BuildContext context, int index, JumbleQuestionSet set) {
     return Container(
@@ -318,9 +322,9 @@ class _JumbleGameState extends State<_JumbleGame> {
             question: set.question, 
             options: set.options, 
             isOver: isGameOver,
-            onComplete: (bool isCorrect, int misses, bool initial) {
+            onComplete: (bool isCorrect, int misses, bool init) {
               setState(() {
-                if(initial) {
+                if(init) {
                   solved++;
                 }
               });
@@ -331,12 +335,13 @@ class _JumbleGameState extends State<_JumbleGame> {
                   correct++;
                 }
                 misses += miss;
+                loaded++;
               });
             },
           ),
           SubmitButton(
             visible: !widget.quizOver && solved == totalQuestion, 
-            onTap:  () {
+            onTap: () {
               setState(() {
                 isGameOver = true;
               });
@@ -348,14 +353,6 @@ class _JumbleGameState extends State<_JumbleGame> {
   }
 
   Widget _build(BuildContext context, List<JumbleQuestionSet> items) {
-    WidgetsBinding.instance?.addPostFrameCallback((_) {
-      if(isGameOver && initial) {
-        widget.onSubmit(correct, misses, 0);
-        setState(() {
-          initial = false;
-        });
-      }
-    });
     return Column(children: [
       Flexible(
         flex: 9,
@@ -396,5 +393,18 @@ class _JumbleGameState extends State<_JumbleGame> {
       )
     ]
     );
+  }
+  
+  @override
+  Widget build(BuildContext context) {
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      if(isGameOver && initial && loaded == totalQuestion) {
+        widget.onSubmit(correct, misses, 0);
+        setState(() {
+          initial = false;
+        });
+      }
+    });
+    return _build(context, widget.questionSets);
   }
 }

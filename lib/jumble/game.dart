@@ -25,7 +25,7 @@ class JumbleGame extends StatefulWidget {
   final bool isQuiz = false;
 
   Future<List<JumbleQuestionSet>> _getQuestionSet() async {
-    return jumbleQuestionSets(2, chapter, mode);
+    return jumbleQuestionSets(15, chapter, mode);
   }
 
   @override
@@ -86,11 +86,6 @@ class _JumbleGameState extends State<JumbleGame> {
             param: ResultParam(wrongCount: wrongCount, decreaseFactor: 10),
             visible: numOfQuestions == solved,
           ),
-          SubmitButton(visible: widget.isQuiz && numOfQuestions == solved, onTap: () {
-            setState(() {
-              
-            });
-          })
         ]
       )
     );
@@ -185,7 +180,6 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
 
   void _handleOptionTap(Option option) {
     int firstEmpty = _firstEmptySlot();
-      print(firstEmpty);
       if(firstEmpty != -1){
         setState(() {
           selected[firstEmpty] = option;
@@ -205,9 +199,6 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
         _unselect(diff);
         setState(() {
           misses += diff.length;
-        });
-        diff.forEach((element) {
-          print(widget.question.key[element]);
         });
       }
     }
@@ -348,7 +339,9 @@ class OptionWidget extends StatelessWidget {
                 child: Text(
                     option.value,
                     style: TextStyle(
-                      color: textColor
+                      color: textColor,
+                      fontSize: 30,
+                      fontFamily: "MS Mincho"
                     ),
                   ),
               ),
