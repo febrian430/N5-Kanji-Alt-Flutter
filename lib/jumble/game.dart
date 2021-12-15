@@ -25,7 +25,7 @@ class JumbleGame extends StatefulWidget {
   final bool isQuiz = false;
 
   Future<List<JumbleQuestionSet>> _getQuestionSet() async {
-    return jumbleQuestionSets(15, chapter, mode);
+    return jumbleQuestionSets(15, chapter, mode, false);
   }
 
   @override

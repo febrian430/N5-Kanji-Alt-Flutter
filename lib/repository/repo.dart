@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:ffi';
 import 'dart:math';
 import 'dart:typed_data';
 
@@ -10,12 +11,13 @@ const _minChapter = 1;
 const _maxChapter = 10;
 
 class KanjiExample {
-  KanjiExample({required this.id, required this.rune, required this.meaning, required this.spelling, required this.image, required this.chapter});
+  KanjiExample({required this.id, required this.rune, required this.meaning, required this.spelling, required this.image, required this.chapter, required this.isSingle});
   final int id;
   final String rune;
   final String meaning;
   late final List<String> spelling;
   final String image;
+  late final bool isSingle;
   final int chapter;
 
   KanjiExample.fromJson(Map<String, dynamic> json)
@@ -28,6 +30,14 @@ class KanjiExample {
       spelling = (json['spelling'] as List).map((spellDynamic) {
         return spellDynamic.toString();
       }).toList();
+
+      
+      if(json['is_single'] != null){
+        isSingle = json['is_single'] as bool;
+      } else {
+        isSingle = false;
+      }
+
   }    
 }
 
@@ -54,6 +64,31 @@ Future<List<KanjiExample>> _kanjiExamples() async {
 Future<List<KanjiExample>> ByChapter(int chapter) async {
   var data = await _kanjiExamples();
   return data.where((KanjiExample kanji) => kanji.chapter == chapter).toList();
+}
+
+Future<List<KanjiExample>> ByChapterWithSingle(int chapter, bool isSingle) async {
+  var data = await ByChapter(chapter);
+
+  var list = data.where((KanjiExample kanji) => kanji.isSingle == isSingle);
+  list.toList().shuffle();
+  return list.toList();
+}
+
+Future<List<KanjiExample>> ByChapterForQuestion(int chapter, int n, double ratio, bool quiz) async {
+  int singleCount = (n*ratio).floor();
+  print(singleCount);
+  int doubleCount = n - singleCount;
+
+  var futures = await Future.wait([ByChapterWithSingle(chapter, true), ByChapterWithSingle(chapter, false)]);
+  futures[0].shuffle();
+  futures[1].shuffle();
+  var combined = [...futures[0].take(singleCount), ...futures[1].take(doubleCount)];
+  
+  if(quiz == true){
+    combined.shuffle();
+  }
+
+  return combined;
 }
 
 Future<List<KanjiExample>> ByChapterRandom(int chapter) async {

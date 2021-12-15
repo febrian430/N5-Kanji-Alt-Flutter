@@ -24,7 +24,7 @@ class MultipleChoiceGame extends StatefulWidget {
   final int chapter;
 
   Future<List<QuestionSet>> _getQuestionSet(int chapter, GAME_MODE mode) async {
-     return multipleChoiceQuestionSet(3, chapter, mode);
+     return multipleChoiceQuestionSet(3, chapter, mode, false);
   }
 
   @override

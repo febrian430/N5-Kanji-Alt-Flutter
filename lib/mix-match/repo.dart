@@ -5,21 +5,25 @@ import 'package:kanji_memory_hint/map_indexed.dart';
 
 
 Future<List<List<Question>>> makeOptions(int n, int chapter, GAME_MODE mode) async {
-  List<Question> roundOptions = [];
+
+  List<List<Question>> options = [];
+
+  var singles = await ByChapterWithSingle(chapter, true);
+  var doubles = await ByChapterWithSingle(chapter, false);
+
+  singles = singles.take(n).toList();
+  doubles = doubles.take(n).toList();
+  
   if(mode == GAME_MODE.imageMeaning) {
-    roundOptions = await _makeImageMeaningOptions(n, chapter);
+    options = await Future.wait([_makeImageMeaningOptions(singles), _makeImageMeaningOptions(doubles)]);
   } else {
-    roundOptions =  await _makeReadingOptions(n, chapter);
+    options =  await Future.wait([_makeReadingOptions(singles), _makeReadingOptions(doubles)]);
   }
-  return [roundOptions, roundOptions];
+
+  return options;
 }
 
-Future<List<Question>> _makeImageMeaningOptions(int n, int chapter) async {
-    var kanjis = await ByChapter(chapter);
-    kanjis.shuffle();
-
-    var candidates = kanjis.take(n);
-
+Future<List<Question>> _makeImageMeaningOptions(List<KanjiExample> candidates) async {
     List<Question> imageOptions = candidates.mapIndexed((kanji, index) {
       return Question(id: index, value: kanji.image, key: kanji.id.toString(), isImage: true);
     }).toList();
@@ -36,12 +40,7 @@ Future<List<Question>> _makeImageMeaningOptions(int n, int chapter) async {
     return options;
 }
 
-Future<List<Question>> _makeReadingOptions(int n, int chapter) async {
-    var kanjis = await ByChapter(chapter);
-    kanjis.shuffle();
-
-    var candidates = kanjis.take(n);
-
+Future<List<Question>> _makeReadingOptions(List<KanjiExample> candidates) async {
     List<Question> runeOptions = candidates.mapIndexed((kanji, index) {
       return Question(id: index, value: kanji.rune, key: kanji.id.toString());
     }).toList();

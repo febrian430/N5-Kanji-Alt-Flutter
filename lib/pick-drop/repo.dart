@@ -4,8 +4,7 @@ import 'package:kanji_memory_hint/models/question_set.dart';
 import 'package:kanji_memory_hint/repository/repo.dart';
 
 Future<List<QuestionSet>> getPickDropQuestionSets(int n, int chapter, GAME_MODE mode) async {
-  var kanjis = await ByChapterRandom(chapter);
-  kanjis = kanjis.take(n).toList();
+  var kanjis = await ByChapterForQuestion(chapter, n, 1/2, false);
   List<QuestionSet> questionSets = [];
   
   for (var kanji in kanjis) {

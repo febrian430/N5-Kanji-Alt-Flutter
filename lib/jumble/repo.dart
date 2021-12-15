@@ -10,25 +10,21 @@ import 'package:kanji_memory_hint/map_indexed.dart';
 const TOTAL_OPTIONS = 8;
 
 
-Future<List<JumbleQuestionSet>> jumbleQuestionSets(int n, int chapter, GAME_MODE mode) async {
-  var kanjis = await ByChapterRandom(chapter);
-  var candidates = kanjis.take(n);
+Future<List<JumbleQuestionSet>> jumbleQuestionSets(int n, int chapter, GAME_MODE mode, bool quiz) async {
+  var kanjis = await ByChapterForQuestion(chapter, n, 7/15, quiz);
+
+  return _build(kanjis, mode);
+}
+
+
+Future<List<JumbleQuestionSet>> _build(List<KanjiExample> kanjis, GAME_MODE mode) async {
 
   var optionCandidates = await random(startChapter: 1, endChapter: 8);
 
-  return candidates.map((candidate) {
-    return _makeQuestionSet(candidate, optionCandidates, mode);
+  return kanjis.map((kanji) {
+    return _makeQuestionSet(kanji, optionCandidates, mode);
   }).toList();
-
 }
-
-// Future<List<JumbleQuestionSet>> _getReadingQuestions(int n, int chapter) async {
-  
-// }
-
-// Future<List<JumbleQuestionSet>> _getImageMeaningQuestions(int n, int chapter) async {
-
-// }
 
 //todo: REFACTOR
 JumbleQuestionSet _makeQuestionSet(KanjiExample kanji, List<KanjiExample> optionCandidates, GAME_MODE mode) {
@@ -44,7 +40,6 @@ JumbleQuestionSet _makeQuestionSet(KanjiExample kanji, List<KanjiExample> option
     questionVal = kanji.image;
 
     final keysToTake = TOTAL_OPTIONS - correctKeys.length;
-    print(keysToTake);
     optionCandidates.shuffle();
     var chosens = optionCandidates.take(keysToTake);
     

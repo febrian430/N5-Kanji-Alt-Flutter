@@ -3,10 +3,9 @@ import 'package:kanji_memory_hint/models/common.dart';
 import 'package:kanji_memory_hint/models/question_set.dart';
 import 'package:kanji_memory_hint/repository/repo.dart';
 
-Future<List<QuestionSet>> multipleChoiceQuestionSet(int n, int chapter, GAME_MODE mode) async {
-  var kanjis = await ByChapter(chapter);
-  kanjis.shuffle();
-  kanjis = kanjis.take(n).toList();
+Future<List<QuestionSet>> multipleChoiceQuestionSet(int n, int chapter, GAME_MODE mode, bool quiz) async {
+  var kanjis = await ByChapterForQuestion(chapter, n, 1/2, quiz);
+
   return _makeQuestionSetsFrom(kanjis, mode);
 }
 
@@ -15,7 +14,6 @@ Future<List<QuestionSet>> _makeQuestionSetsFrom(List<KanjiExample> kanjis, GAME_
   for (var i = 0; i < kanjis.length; i++) {
     questionSets.add(await _makeQuestionSet(kanjis[i], mode));
   }
-  questionSets.shuffle();
   return questionSets;
 }
 
