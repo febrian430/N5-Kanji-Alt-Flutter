@@ -73,13 +73,13 @@ class _JumbleGameState extends State<JumbleGame> {
       child: Column(
         children: [
           Container(
-            child: JumbleQuizRound(
+            child: JumbleRound(
               question: questionSets[itemIndex].question, 
               options: questionSets[itemIndex].options, 
               mode: widget.mode, 
-              isOver: numOfQuestions == solved,
+              // isOver: numOfQuestions == solved,
               onComplete: _handleRoundOver,
-              onSubmit: _onGameSubmit,
+              // onSubmit: _onGameSubmit,
             )
           ),
           ResultButton(
@@ -128,7 +128,7 @@ class JumbleRound extends StatefulWidget {
   final JumbleQuestion question;
   final List<Option> options;
   final GAME_MODE mode;
-  final Function(int wrong) onComplete;
+  final Function(bool isCorrect, int misses, bool initialAnswer) onComplete;
 
   @override
   State<StatefulWidget> createState() => _JumbleRoundState(answerLength: question.key.length);
@@ -192,7 +192,7 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
       if(diff.length == 0) {
         setState(() {
           isRoundOver = true;
-          widget.onComplete(misses);
+          widget.onComplete(true, misses, false);
         });
         
       } else {
