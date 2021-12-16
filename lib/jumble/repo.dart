@@ -3,6 +3,7 @@ import 'package:kanji_memory_hint/jumble/destroyer.dart';
 import 'package:kanji_memory_hint/jumble/model.dart';
 import 'package:kanji_memory_hint/models/common.dart';
 import 'package:kanji_memory_hint/models/question_set.dart';
+import 'package:kanji_memory_hint/repository/kana.dart';
 import 'package:kanji_memory_hint/repository/repo.dart';
 import 'package:kanji_memory_hint/map_indexed.dart';
 
@@ -11,7 +12,7 @@ const TOTAL_OPTIONS = 8;
 
 
 Future<List<JumbleQuestionSet>> jumbleQuestionSets(int n, int chapter, GAME_MODE mode, bool quiz) async {
-  var kanjis = await ByChapterForQuestion(chapter, n, 7/15, quiz);
+  var kanjis = await ByChapterForQuestion(chapter, n, 1/2, quiz);
 
   return _build(kanjis, mode);
 }
@@ -19,11 +20,49 @@ Future<List<JumbleQuestionSet>> jumbleQuestionSets(int n, int chapter, GAME_MODE
 
 Future<List<JumbleQuestionSet>> _build(List<KanjiExample> kanjis, GAME_MODE mode) async {
 
-  var optionCandidates = await random(startChapter: 1, endChapter: 8);
+  if(mode == GAME_MODE.imageMeaning) {
+    var optionCandidates = await random(startChapter: 1, endChapter: 8);
 
-  return kanjis.map((kanji) {
-    return _makeQuestionSet(kanji, optionCandidates, mode);
+    return kanjis.map((kanji) {
+      return _makeQuestionSet(kanji, optionCandidates, mode);
+    }).toList();
+  } else {
+    List<JumbleQuestionSet> sets = [];
+
+    for (var kanji in kanjis) {
+      sets.add(await _makeReading(kanji));
+    }
+
+    return sets;
+  }
+}
+
+Future<JumbleQuestionSet> _makeReading(KanjiExample kanji) async {
+  String questionVal = "";
+
+  List<String> correctKeys = [];
+  correctKeys = kanji.spelling;
+  questionVal = kanji.rune;
+
+  final keysToTake = TOTAL_OPTIONS - correctKeys.length;
+  // optionCandidates.shuffle();
+  // var chosens = optionCandidates.take(keysToTake);
+  
+  // chosens.forEach((chosen) {
+  //   optionVals += kanji.spelling;
+  // });
+  var hiraganas = await KanaRepository.hiragana(correctKeys);
+  hiraganas.shuffle();
+  var optionVals = hiraganas.take(keysToTake).map((hiragana) => hiragana.rune).toList();
+  optionVals = correctKeys + optionVals.take(keysToTake).toList();
+  optionVals.shuffle();
+
+  JumbleQuestion question = JumbleQuestion(value: questionVal, key: correctKeys, isImage: false);
+  List<Option> options = optionVals.mapIndexed((value, i) {
+    return Option(id: i, value: value, key: value);
   }).toList();
+
+  return JumbleQuestionSet(question: question, options: options);
 }
 
 //todo: REFACTOR
@@ -55,13 +94,15 @@ JumbleQuestionSet _makeQuestionSet(KanjiExample kanji, List<KanjiExample> option
     questionVal = kanji.rune;
 
     final keysToTake = TOTAL_OPTIONS - correctKeys.length;
-    print(keysToTake);
     optionCandidates.shuffle();
     var chosens = optionCandidates.take(keysToTake);
     
     chosens.forEach((chosen) {
       optionVals += kanji.spelling;
     });
+    // var otherOptions = await KanaRepository.hiragana(correctKeys);
+
+
     optionVals = correctKeys + optionVals.take(keysToTake).toList();
 
     optionVals.shuffle();

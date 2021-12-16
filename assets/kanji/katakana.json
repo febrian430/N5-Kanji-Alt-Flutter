@@ -1,0 +1,466 @@
+[
+    {
+        "rune": "ア",
+        "spelling": "a"
+    },
+    {
+        "rune": "イ",
+        "spelling": "i"
+    },
+    {
+        "rune": "ウ",
+        "spelling": "u"
+    },
+    {
+        "rune": "エ",
+        "spelling": "e"
+    },
+    {
+        "rune": "オ",
+        "spelling": "o"
+    },
+    {
+        "rune": "カ",
+        "spelling": "ka"
+    },
+    {
+        "rune": "キ",
+        "spelling": "ki"
+    },
+    {
+        "rune": "ク",
+        "spelling": "ku"
+    },
+    {
+        "rune": "ケ",
+        "spelling": "ke"
+    },
+    {
+        "rune": "コ",
+        "spelling": "ko"
+    },
+    {
+        "rune": "サ",
+        "spelling": "sa"
+    },
+    {
+        "rune": "シ",
+        "spelling": "shi"
+    },
+    {
+        "rune": "ス",
+        "spelling": "su"
+    },
+    {
+        "rune": "セ",
+        "spelling": "se"
+    },
+    {
+        "rune": "ソ",
+        "spelling": "so"
+    },
+    {
+        "rune": "タ",
+        "spelling": "ta"
+    },
+    {
+        "rune": "チ",
+        "spelling": "chi"
+    },
+    {
+        "rune": "ツ",
+        "spelling": "tsu"
+    },
+    {
+        "rune": "テ",
+        "spelling": "te"
+    },
+    {
+        "rune": "ト",
+        "spelling": "to"
+    },
+    {
+        "rune": "ナ",
+        "spelling": "na"
+    },
+    {
+        "rune": "ニ",
+        "spelling": "ni"
+    },
+    {
+        "rune": "ヌ",
+        "spelling": "nu"
+    },
+    {
+        "rune": "ネ",
+        "spelling": "ne"
+    },
+    {
+        "rune": "ノ",
+        "spelling": "no"
+    },
+    {
+        "rune": "ハ",
+        "spelling": "ha"
+    },
+    {
+        "rune": "ヒ",
+        "spelling": "hi"
+    },
+    {
+        "rune": "フ",
+        "spelling": "fu"
+    },
+    {
+        "rune": "ヘ",
+        "spelling": "he"
+    },
+    {
+        "rune": "ホ",
+        "spelling": "ho"
+    },
+    {
+        "rune": "マ",
+        "spelling": "ma"
+    },
+    {
+        "rune": "ミ",
+        "spelling": "mi"
+    },
+    {
+        "rune": "ム",
+        "spelling": "mu"
+    },
+    {
+        "rune": "メ",
+        "spelling": "me"
+    },
+    {
+        "rune": "モ",
+        "spelling": "mo"
+    },
+    {
+        "rune": "ヤ",
+        "spelling": "ya"
+    },
+    {
+        "rune": "ユ",
+        "spelling": "yu"
+    },
+    {
+        "rune": "ヨ",
+        "spelling": "yo"
+    },
+    {
+        "rune": "ラ",
+        "spelling": "ra"
+    },
+    {
+        "rune": "リ",
+        "spelling": "ri"
+    },
+    {
+        "rune": "ル",
+        "spelling": "ru"
+    },
+    {
+        "rune": "レ",
+        "spelling": "re"
+    },
+    {
+        "rune": "ロ",
+        "spelling": "ro"
+    },
+    {
+        "rune": "ワ",
+        "spelling": "wa"
+    },
+    {
+        "rune": "を",
+        "spelling": "wo"
+    },
+    {
+        "rune": "ン",
+        "spelling": "n ( ng )"
+    },
+    {
+        "rune": "ガ",
+        "spelling": "ga"
+    },
+    {
+        "rune": "ギ",
+        "spelling": "gi"
+    },
+    {
+        "rune": "グ",
+        "spelling": "gu"
+    },
+    {
+        "rune": "ゲ",
+        "spelling": "ge"
+    },
+    {
+        "rune": "ゴ",
+        "spelling": "go"
+    },
+    {
+        "rune": "ザ",
+        "spelling": "za"
+    },
+    {
+        "rune": "ジ",
+        "spelling": "ji"
+    },
+    {
+        "rune": "ズ",
+        "spelling": "zu"
+    },
+    {
+        "rune": "ゼ",
+        "spelling": "ze"
+    },
+    {
+        "rune": "ゾ",
+        "spelling": "zo"
+    },
+    {
+        "rune": "ダ",
+        "spelling": "da"
+    },
+    {
+        "rune": "デ",
+        "spelling": "de"
+    },
+    {
+        "rune": "ド",
+        "spelling": "do"
+    },
+    {
+        "rune": "バ",
+        "spelling": "ba"
+    },
+    {
+        "rune": "ビ",
+        "spelling": "bi"
+    },
+    {
+        "rune": "ブ",
+        "spelling": "bu"
+    },
+    {
+        "rune": "ベ",
+        "spelling": "be"
+    },
+    {
+        "rune": "ボ",
+        "spelling": "bo"
+    },
+    {
+        "rune": "パ",
+        "spelling": "pa"
+    },
+    {
+        "rune": "ピ",
+        "spelling": "pi"
+    },
+    {
+        "rune": "プ",
+        "spelling": "pu"
+    },
+    {
+        "rune": "ペ",
+        "spelling": "pe"
+    },
+    {
+        "rune": "ポ",
+        "spelling": "po"
+    },
+    {
+        "rune": "ヤ",
+        "spelling": "ya"
+    },
+    {
+        "rune": "ユ",
+        "spelling": "yu"
+    },
+    {
+        "rune": "ヨ",
+        "spelling": "yo"
+    },
+    {
+        "rune": "キ",
+        "spelling": "ki"
+    },
+    {
+        "rune": "キャ",
+        "spelling": "kya"
+    },
+    {
+        "rune": "キュ",
+        "spelling": "kyu"
+    },
+    {
+        "rune": "キョ",
+        "spelling": "kyo"
+    },
+    {
+        "rune": "シ",
+        "spelling": "shi"
+    },
+    {
+        "rune": "シャ",
+        "spelling": "sha"
+    },
+    {
+        "rune": "シュ",
+        "spelling": "shu"
+    },
+    {
+        "rune": "ショ",
+        "spelling": "sho"
+    },
+    {
+        "rune": "チ",
+        "spelling": "chi"
+    },
+    {
+        "rune": "チャ",
+        "spelling": "cha"
+    },
+    {
+        "rune": "チュ",
+        "spelling": "chu"
+    },
+    {
+        "rune": "チョ",
+        "spelling": "cho"
+    },
+    {
+        "rune": "ニ",
+        "spelling": "ni"
+    },
+    {
+        "rune": "ニャ",
+        "spelling": "nya"
+    },
+    {
+        "rune": "ニュ",
+        "spelling": "nyu"
+    },
+    {
+        "rune": "ニョ",
+        "spelling": "nyo"
+    },
+    {
+        "rune": "ヒ",
+        "spelling": "hi"
+    },
+    {
+        "rune": "ヒャ",
+        "spelling": "hya"
+    },
+    {
+        "rune": "ヒュ",
+        "spelling": "hyu"
+    },
+    {
+        "rune": "ヒョ",
+        "spelling": "hyo"
+    },
+    {
+        "rune": "ミ",
+        "spelling": "mi"
+    },
+    {
+        "rune": "ミャ",
+        "spelling": "mya"
+    },
+    {
+        "rune": "ミュ",
+        "spelling": "myu"
+    },
+    {
+        "rune": "ミョ",
+        "spelling": "myo"
+    },
+    {
+        "rune": "リ",
+        "spelling": "ri"
+    },
+    {
+        "rune": "リャ",
+        "spelling": "rya"
+    },
+    {
+        "rune": "リュ",
+        "spelling": "ryu"
+    },
+    {
+        "rune": "リョ",
+        "spelling": "ryo"
+    },
+    {
+        "rune": "ギ",
+        "spelling": "gi"
+    },
+    {
+        "rune": "ギャ",
+        "spelling": "gya"
+    },
+    {
+        "rune": "ギュ",
+        "spelling": "gyu"
+    },
+    {
+        "rune": "ギョ",
+        "spelling": "gyo"
+    },
+    {
+        "rune": "ジ",
+        "spelling": "ji"
+    },
+    {
+        "rune": "ジャ",
+        "spelling": "ja"
+    },
+    {
+        "rune": "ジュ",
+        "spelling": "ju"
+    },
+    {
+        "rune": "ジョ",
+        "spelling": "jo"
+    },
+    {
+        "rune": "ビ",
+        "spelling": "bi"
+    },
+    {
+        "rune": "ビャ",
+        "spelling": "bya"
+    },
+    {
+        "rune": "ビュ",
+        "spelling": "byu"
+    },
+    {
+        "rune": "ビョ",
+        "spelling": "byo"
+    },
+    {
+        "rune": "ピ",
+        "spelling": "pi"
+    },
+    {
+        "rune": "ピャ",
+        "spelling": "pya"
+    },
+    {
+        "rune": "ピュ",
+        "spelling": "pyu"
+    },
+    {
+        "rune": "ピョ",
+        "spelling": "pyo"
+    }
+]
