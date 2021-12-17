@@ -15,13 +15,14 @@ typedef RoundOverCallback = Function(bool isCorrect, int index, bool? wasCorrect
 
 
 class MultipleChoiceGame extends StatefulWidget {
-  const MultipleChoiceGame({Key? key, required this.mode, required this.chapter}) : super(key: key);
+  MultipleChoiceGame({Key? key, required this.mode, required this.chapter}) : super(key: key);
 
   static const route = '/game/multiple-choice';
   static const name ='Multiple Choice';
 
   final GAME_MODE mode;
   final int chapter;
+  final Stopwatch stopwatch = Stopwatch();
 
   Future<List<QuestionSet>> _getQuestionSet(int chapter, GAME_MODE mode) async {
      return multipleChoiceQuestionSet(3, chapter, mode, false);
@@ -87,13 +88,14 @@ class _MultipleChoiceGameState extends State<MultipleChoiceGame> {
           ),
           ResultButton(
             visible: gameOver && solved == numOfQuestions, 
-            param: ResultParam(wrongCount: wrong, decreaseFactor: 100)
+            param: ResultParam(wrongCount: wrong, decreaseFactor: 100, stopwatch: widget.stopwatch)
           ),
           SubmitButton(
             visible: !gameOver && solved == numOfQuestions, 
             onTap: () {
               setState(() {
                 gameOver = true;
+                widget.stopwatch.stop();
               });
             },
           ),
@@ -105,7 +107,8 @@ class _MultipleChoiceGameState extends State<MultipleChoiceGame> {
 
   @override
   Widget build(BuildContext context) {
-    
+    widget.stopwatch.start();
+
     return Scaffold(
       body: SafeArea(
         child: FutureBuilder(

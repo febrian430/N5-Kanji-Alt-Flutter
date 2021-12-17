@@ -9,8 +9,9 @@ class PracticeGameArguments {
 }
 
 class ResultParam {
-  ResultParam({required this.wrongCount, required this.decreaseFactor});
+  ResultParam({required this.stopwatch, required this.wrongCount, required this.decreaseFactor});
 
   final int wrongCount;
   final int decreaseFactor;
+  final Stopwatch stopwatch;
 }

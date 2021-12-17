@@ -15,7 +15,7 @@ import 'package:kanji_memory_hint/route_param.dart';
 
 
 class JumbleGame extends StatefulWidget {
-  const JumbleGame({Key? key, required this.mode, required this.chapter}) : super(key: key);
+  JumbleGame({Key? key, required this.mode, required this.chapter}) : super(key: key);
 
   static const route = '/game/jumble';
   static const name = 'Jumble';
@@ -23,9 +23,10 @@ class JumbleGame extends StatefulWidget {
   final GAME_MODE mode;
   final int chapter;
   final bool isQuiz = false;
+  final Stopwatch stopwatch = Stopwatch();
 
   Future<List<JumbleQuestionSet>> _getQuestionSet() async {
-    return jumbleQuestionSets(15, chapter, mode, false);
+    return jumbleQuestionSets(3, chapter, mode, false);
   }
 
   @override
@@ -51,8 +52,11 @@ class _JumbleGameState extends State<JumbleGame> {
       // if(isCorrect) {
       //   wrongCount += misses;
       // }
-      if(initialAnswer) {
+      // if(initialAnswer) {
         solved++;
+      // }
+      if(solved == numOfQuestions) {
+        widget.stopwatch.stop();
       }
     });
   }
@@ -83,7 +87,7 @@ class _JumbleGameState extends State<JumbleGame> {
             )
           ),
           ResultButton(
-            param: ResultParam(wrongCount: wrongCount, decreaseFactor: 10),
+            param: ResultParam(wrongCount: wrongCount, decreaseFactor: 10, stopwatch: widget.stopwatch),
             visible: numOfQuestions == solved,
           ),
         ]
@@ -93,6 +97,7 @@ class _JumbleGameState extends State<JumbleGame> {
 
   @override
   Widget build(BuildContext context) {
+    widget.stopwatch.start();
     return Scaffold(
       body: SafeArea(
         child: FutureBuilder(
@@ -179,7 +184,8 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
   }
 
   void _handleOptionTap(Option option) {
-    int firstEmpty = _firstEmptySlot();
+    if(!isRoundOver){
+      int firstEmpty = _firstEmptySlot();
       if(firstEmpty != -1){
         setState(() {
           selected[firstEmpty] = option;
@@ -187,19 +193,20 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
         });
       }
 
-    if(selectCount == answerLength) {
-      var diff = _differentIndexes();
-      if(diff.length == 0) {
-        setState(() {
-          isRoundOver = true;
-          widget.onComplete(true, misses, false);
-        });
-        
-      } else {
-        _unselect(diff);
-        setState(() {
-          misses += diff.length;
-        });
+      if(selectCount == answerLength) {
+        var diff = _differentIndexes();
+        if(diff.length == 0) {
+          setState(() {
+            isRoundOver = true;
+            widget.onComplete(true, misses, false);
+          });
+          
+        } else {
+          _unselect(diff);
+          setState(() {
+            misses += diff.length;
+          });
+        }
       }
     }
   }

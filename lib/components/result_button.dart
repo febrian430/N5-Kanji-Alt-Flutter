@@ -16,7 +16,8 @@ class ResultButton extends StatelessWidget  {
         child: ElevatedButton(
           onPressed: () {
             Navigator.pushNamed(context, ResultScreen.route, 
-              arguments: ResultParam(wrongCount: param.wrongCount, decreaseFactor: param.decreaseFactor));
+              arguments: param
+            );
           }, 
           child: const Center(
             child: Text(

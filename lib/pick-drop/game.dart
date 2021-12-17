@@ -22,6 +22,7 @@ class PickDrop extends StatefulWidget {
 
   final int chapter;
   final GAME_MODE mode;
+  final Stopwatch stopwatch = Stopwatch();
 
   Future<List<QuestionSet>> _getQuestionSets() {
     return getPickDropQuestionSets(10, chapter, mode);
@@ -55,6 +56,8 @@ class _PickDropState extends State<PickDrop> {
         solved++;
         if (index < total-1) {
           index++;
+        } else {
+          widget.stopwatch.stop();
         }
       } else {
         wrongAttempts++;
@@ -76,7 +79,7 @@ class _PickDropState extends State<PickDrop> {
             )
           ),
           ResultButton(
-            param: ResultParam(wrongCount: wrongAttempts, decreaseFactor: 100),
+            param: ResultParam(wrongCount: wrongAttempts, decreaseFactor: 100, stopwatch: widget.stopwatch),
             visible: total == solved,
           ),
         ]
@@ -86,7 +89,7 @@ class _PickDropState extends State<PickDrop> {
 
   @override
   Widget build(BuildContext context) {
-
+    widget.stopwatch.start();
     final screen = MediaQuery.of(context).size;
 
     return Scaffold(

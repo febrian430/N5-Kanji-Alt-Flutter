@@ -15,6 +15,7 @@ class MixMatchGame extends StatefulWidget {
   final int chapter;
   final GAME_MODE mode;
   final int numOfRounds = 2;
+  final Stopwatch stopwatch = Stopwatch();
 
   static const route = '/game/mix-match';
   static const name = 'Mix and Match';
@@ -44,6 +45,9 @@ class _MixMatchGameState extends State<MixMatchGame> {
     setState(() {
       wrong += wrongAttempts;
       roundsSolved++;
+      if(roundsSolved == widget.numOfRounds){
+        widget.stopwatch.stop();
+      }
     });
     print("was called");
   }
@@ -63,7 +67,8 @@ class _MixMatchGameState extends State<MixMatchGame> {
             )
           ),
           ResultButton(
-            param: ResultParam(wrongCount: wrong, decreaseFactor: 100),
+            //FIXTHISHSIT
+            param: ResultParam(wrongCount: wrong, decreaseFactor: 100, stopwatch: widget.stopwatch),
             visible: widget.numOfRounds == roundsSolved,
           ),
         ]
@@ -73,6 +78,7 @@ class _MixMatchGameState extends State<MixMatchGame> {
 
   @override
   Widget build(BuildContext context) {
+    widget.stopwatch.start();
     return Scaffold(
       body: FutureBuilder(
         future: _questionSet,

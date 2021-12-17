@@ -20,6 +20,8 @@ class ResultScreen extends StatelessWidget{
   Widget build(BuildContext context) {
     var param = ModalRoute.of(context)!.settings.arguments as ResultParam;
     var points = 1000 - param.decreaseFactor*param.wrongCount;
+    var stopwatch = param.stopwatch;
+
     print(param.wrongCount);
 
     return Scaffold(
@@ -38,7 +40,10 @@ class ResultScreen extends StatelessWidget{
                     Text(param.wrongCount.toString()),
                     SizedBox(height: 100,),
                     Text("Points gained"),
-                    Text(points.toString())
+                    Text(points.toString()),
+                    SizedBox(height: 100,),
+                    Text("Time elapsed"),
+                    Text(stopwatch.elapsed.toString())
                 ]
                 ),
                 Row(
