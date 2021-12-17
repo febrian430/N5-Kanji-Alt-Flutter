@@ -11,6 +11,7 @@ import 'package:kanji_memory_hint/kanji-list/menu.dart';
 import 'package:kanji_memory_hint/menu_screens/game_select.dart';
 import 'package:kanji_memory_hint/mix-match/game.dart';
 import 'package:kanji_memory_hint/pick-drop/game.dart';
+import 'package:kanji_memory_hint/quests/quest_screen.dart';
 import 'package:kanji_memory_hint/quiz/quiz.dart';
 import 'package:kanji_memory_hint/route_param.dart';
 
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         backgroundColor: Colors.white,
       ),
-      initialRoute: '/game',
+      initialRoute: '/',
       routes: { 
         '/': (context) => const Home(),
         '/list': (context) => Menu(),
@@ -49,7 +50,7 @@ class MyApp extends StatelessWidget {
         '/chapter-select': (context) => const ChapterSelect(),
         '/mode-select': (context) => const ModeSelect(),
         '/result': (context) => ResultScreen(),
-
+        '/quests': (context) => QuestScreen()
 
         // '/result': (context) => ResultScreen(wrongCount: 10)
 
@@ -150,6 +151,17 @@ class Home extends StatelessWidget {
                 
               },
               child: const Text('Start'),
+            ),
+          ),
+          Center(
+            child: ElevatedButton(
+              // Within the `Home` widget
+              onPressed: () {
+                // Navigate to the second screen using a named route.
+                Navigator.pushNamed(context, '/quests');
+                
+              },
+              child: const Text('Quests'),
             ),
           ),
       ]
