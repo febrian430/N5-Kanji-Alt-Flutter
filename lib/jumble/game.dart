@@ -26,7 +26,7 @@ class JumbleGame extends StatefulWidget {
   final Stopwatch stopwatch = Stopwatch();
 
   Future<List<JumbleQuestionSet>> _getQuestionSet() async {
-    return jumbleQuestionSets(3, chapter, mode, false);
+    return jumbleQuestionSets(15, chapter, mode, false);
   }
 
   @override

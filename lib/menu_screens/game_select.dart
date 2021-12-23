@@ -21,19 +21,19 @@ class GameSelect extends StatelessWidget {
         child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Center(
-                child: ElevatedButton(
-                  // Within the `Home` widget
-                  onPressed: () {
-                    // Navigate to the second screen using a named route.
-                    Navigator.pushNamed(context, ModeSelect.route, 
-                    arguments: PracticeGameArguments(
-                      selectedGame: MultipleChoiceGame.route,
-                    ));
-                  },
-                  child: const Text('Multiple Choice'),
-                ),
-              ),
+              // Center(
+              //   child: ElevatedButton(
+              //     // Within the `Home` widget
+              //     onPressed: () {
+              //       // Navigate to the second screen using a named route.
+              //       Navigator.pushNamed(context, ModeSelect.route, 
+              //       arguments: PracticeGameArguments(
+              //         selectedGame: MultipleChoiceGame.route,
+              //       ));
+              //     },
+              //     child: const Text('Multiple Choice'),
+              //   ),
+              // ),
               Center(
                 child: ElevatedButton(
                   // Within the `Home` widget

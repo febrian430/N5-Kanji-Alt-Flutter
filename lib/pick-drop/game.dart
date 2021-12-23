@@ -25,7 +25,7 @@ class PickDrop extends StatefulWidget {
   final Stopwatch stopwatch = Stopwatch();
 
   Future<List<QuestionSet>> _getQuestionSets() {
-    return getPickDropQuestionSets(10, chapter, mode);
+    return getPickDropQuestionSets(15, chapter, mode);
   }
 
   @override

@@ -22,7 +22,7 @@ class Quiz extends StatefulWidget {
   static const name = "Quiz";
 
   Future<List> _getQuizQuestionSet() async {
-    return getQuizQuestions(4, chapter, mode);
+    return getQuizQuestions(10, chapter, mode);
   }
 
   @override

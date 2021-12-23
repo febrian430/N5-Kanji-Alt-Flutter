@@ -14,6 +14,7 @@ import 'package:kanji_memory_hint/pick-drop/game.dart';
 import 'package:kanji_memory_hint/quests/quest_screen.dart';
 import 'package:kanji_memory_hint/quiz/quiz.dart';
 import 'package:kanji_memory_hint/route_param.dart';
+import 'package:kanji_memory_hint/test.dart';
 
 void main() {
   runApp(const MyApp());
@@ -50,7 +51,9 @@ class MyApp extends StatelessWidget {
         '/chapter-select': (context) => const ChapterSelect(),
         '/mode-select': (context) => const ModeSelect(),
         '/result': (context) => ResultScreen(),
-        '/quests': (context) => QuestScreen()
+        '/quests': (context) => QuestScreen(),
+        '/test': (context) => Test()
+
 
         // '/result': (context) => ResultScreen(wrongCount: 10)
 
