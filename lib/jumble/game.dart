@@ -142,13 +142,15 @@ class JumbleRound extends StatefulWidget {
 class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClientMixin<JumbleRound> {
   @override
   bool get wantKeepAlive => true;
-  
+
   _JumbleRoundState({required this.answerLength}) {
     for (int i = 0; i < answerLength; i++) {
         selected.add(SENTINEL);
     }
   }
   final int answerLength;
+
+  Color roundColor = Colors.white;
 
   int selectCount = 0;
   int misses = 0;
@@ -198,15 +200,22 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
         if(diff.length == 0) {
           setState(() {
             isRoundOver = true;
+            roundColor = Colors.green;
             widget.onComplete(true, misses, false);
           });
-          
         } else {
-          _unselect(diff);
           setState(() {
             misses += diff.length;
+            roundColor = Colors.red;
           });
+          _unselect(diff);
         }
+        Future.delayed(const Duration(seconds: 1), () {
+            setState(() {
+              roundColor = Colors.white;
+            });
+
+        });
       }
     }
   }
@@ -217,6 +226,8 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
+
     return Center(
       child: Container(
         // height: MediaQuery.of(context).size.height - 120,
@@ -224,6 +235,7 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
           border: Border.all(
             width: 1,
           ),
+          color: roundColor
         ),
         //question
         child: Column(
