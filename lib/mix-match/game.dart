@@ -21,7 +21,7 @@ class MixMatchGame extends StatefulWidget {
   static const name = 'Mix and Match';
 
   Future<List<List<Question>>> _getQuestionSet(int chapter, GAME_MODE mode) async {
-    return makeOptions(6, chapter, mode);
+    return makeOptions(8, chapter, mode);
   }
 
   @override
@@ -126,9 +126,11 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
   bool get wantKeepAlive => true;
 
 
-  Widget _drawQuestionWidget(Question opt) {
+  Widget _drawQuestionWidget(BuildContext context, Question opt) {
     bool isSelected = (selected?.id == opt.id);
     bool isSolved = solved.contains(opt);
+
+    final boxSize = MediaQuery.of(context).size.width*0.20;
 
     if(opt.isImage){
       double opacity = isSelected || isSolved ? 0.5 : 1;
@@ -145,8 +147,8 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
             width: 2
           ) : null,
         ),
-        height: 120,
-        width: 120,
+        height: boxSize,
+        width: boxSize,
       );
     } else {
     
@@ -254,10 +256,10 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
     }
   }
 
-  Widget _buildQuestion(Question opt) {
+  Widget _buildQuestion(BuildContext context, Question opt) {
     return GestureDetector(
             child: Container(
-              child: _drawQuestionWidget(opt)
+              child: _drawQuestionWidget(context, opt)
             ),
             onTap:() {
               setState(() {
@@ -274,13 +276,13 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
           children: [
             Expanded(
               child: GridView.count(
-                crossAxisCount: 3,
+                crossAxisCount: 4,
                 shrinkWrap: true,
                 crossAxisSpacing: 10,
                 mainAxisSpacing: 10,
                 physics: NeverScrollableScrollPhysics(),
                 children: questions.map((opt) {
-                  return _buildQuestion(opt);
+                  return _buildQuestion(context, opt);
                 }).toList(),
               )
             )
