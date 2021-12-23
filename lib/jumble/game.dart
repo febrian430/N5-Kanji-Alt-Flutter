@@ -34,6 +34,8 @@ class JumbleGame extends StatefulWidget {
 }
 
 class _JumbleGameState extends State<JumbleGame> {
+  final PageController _pageController =  PageController(viewportFraction: 1,);
+
   int score = 0;
   int wrongCount = 0;
   int solved = 0;
@@ -49,9 +51,9 @@ class _JumbleGameState extends State<JumbleGame> {
 
   void _handleRoundOver(bool isCorrect, int misses, bool initialAnswer) {
     setState(() {
-      // if(isCorrect) {
-      //   wrongCount += misses;
-      // }
+      if(isCorrect) {
+        _slideToNextQuestion();
+      }
       // if(initialAnswer) {
         solved++;
       // }
@@ -66,6 +68,16 @@ class _JumbleGameState extends State<JumbleGame> {
       wrongCount += misses;
       if(isCorrect) {
         score++;
+      }
+    });
+  }
+
+  void _slideToNextQuestion() {
+    Future.delayed(const Duration(seconds: 1), () {
+      int next = _pageController.page!.round() + 1;
+      if(next != numOfQuestions) {
+        print("here");
+        _pageController.animateToPage(next, duration: const Duration(milliseconds: 200), curve: Curves.linear);
       }
     });
   }
@@ -107,9 +119,7 @@ class _JumbleGameState extends State<JumbleGame> {
               numOfQuestions = snapshot.data!.length;
               return PageView.builder(
                 // store this controller in a State to save the carousel scroll position
-                controller: PageController(
-                  viewportFraction: 1,
-                ),
+                controller: _pageController,
                 itemCount: snapshot.data?.length,
                 itemBuilder: (BuildContext context, int itemIndex) {
                   return _buildRound(context, itemIndex, snapshot.data!);
@@ -151,6 +161,8 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
   final int answerLength;
 
   Color roundColor = Colors.white;
+  final Color _correctColor = Colors.green;
+  final Color _wrongColor = Colors.red;
 
   int selectCount = 0;
   int misses = 0;
@@ -200,13 +212,14 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
         if(diff.length == 0) {
           setState(() {
             isRoundOver = true;
-            roundColor = Colors.green;
+            roundColor = _correctColor;
             widget.onComplete(true, misses, false);
           });
         } else {
           setState(() {
             misses += diff.length;
-            roundColor = Colors.red;
+            roundColor = _wrongColor
+            ;
           });
           _unselect(diff);
         }
