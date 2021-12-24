@@ -10,6 +10,7 @@ import 'package:kanji_memory_hint/jumble/quiz_round.dart';
 import 'package:kanji_memory_hint/models/common.dart';
 import 'package:kanji_memory_hint/models/question_set.dart';
 import 'package:kanji_memory_hint/multiple-choice/game.dart';
+import 'package:kanji_memory_hint/quiz/footer_nav.dart';
 import 'package:kanji_memory_hint/quiz/next_button.dart';
 import 'package:kanji_memory_hint/quiz/quiz_result.dart';
 import 'package:kanji_memory_hint/quiz/repo.dart';
@@ -23,7 +24,7 @@ class Quiz extends StatefulWidget {
   static const name = "Quiz";
 
   Future<List> _getQuizQuestionSet() async {
-    return getQuizQuestions(10, chapter, mode);
+    return getQuizQuestions(2, chapter, mode);
   }
 
   @override
@@ -129,12 +130,12 @@ class _QuizState extends State<Quiz> {
 
     return Column(
       children: [
+        // Flexible(
+        //   flex: 1,
+        //   child: CountdownWidget(seconds: secondsLeft)
+        // ),
         Flexible(
-          flex: 1,
-          child: CountdownWidget(seconds: secondsLeft)
-        ),
-        Flexible(
-          flex: 12,
+          flex: 9,
           child: IndexedStack(
             index: gameIndex,
             children: [
@@ -149,8 +150,6 @@ class _QuizState extends State<Quiz> {
                   questionSets: mcQuestionSets, 
                   quizOver: isOver,
                   onSubmit: _handleMultipleChoiceSubmit,
-                  goNext: _goJumble,
-                  goPrev: _goQuizResult,
                 )
               ),
               _JumbleGame(
@@ -158,8 +157,6 @@ class _QuizState extends State<Quiz> {
                 questionSets: jumbleQuestionSets,
                 quizOver: isOver,
                 onSubmit: _handleJumbleSubmit,
-                goNext: _goQuizResult,
-                goPrev: _goMultipleChoice,
               ),
               QuizResult(
                   multipleChoice: QuizGameParam(
@@ -175,6 +172,47 @@ class _QuizState extends State<Quiz> {
               )
             ],
           )
+        ),
+        Visibility(
+          visible: isOver,
+          child: Flexible(
+            flex: 1,
+            child: IndexedStack(
+              index: gameIndex,
+              children: [
+                FooterNavigation(
+                  result: FooterNavigationParam(
+                    title: "See result",
+                    onTap: _goQuizResult
+                  ),
+                  next: FooterNavigationParam(
+                    title: "Go Jumble",
+                    onTap: _goJumble
+                  ),
+                ),
+                FooterNavigation(
+                  result: FooterNavigationParam(
+                    title: "See result",
+                    onTap: _goQuizResult
+                  ),
+                  prev: FooterNavigationParam(
+                    title: "Multiple Choice",
+                    onTap: _goMultipleChoice
+                  ),
+                ),
+                FooterNavigation(
+                  prev: FooterNavigationParam(
+                    title: "Multiple Choice",
+                    onTap: _goMultipleChoice
+                  ),
+                  next: FooterNavigationParam(
+                    title: "Jumble",
+                    onTap: _goJumble
+                  ),
+                ),
+              ],
+            )
+          ),
         )
       ]
     );
@@ -200,16 +238,12 @@ class _QuizState extends State<Quiz> {
 }
 
 class _MultipleChoiceGame extends StatefulWidget {
-  const _MultipleChoiceGame({Key? key, required this.mode, required this.questionSets, required this.onSubmit, this.quizOver = false, required this.goPrev, required this.goNext}) : super(key: key);
+  const _MultipleChoiceGame({Key? key, required this.mode, required this.questionSets, required this.onSubmit, this.quizOver = false}) : super(key: key);
 
   final GAME_MODE mode;
   final List<QuestionSet> questionSets;
   final Function(int correct, int wrong, int score) onSubmit;
   final bool quizOver;
-  final Function() goPrev;
-  final Function() goNext;
-
-
 
   @override
   State<StatefulWidget> createState() => _MultipleChoiceGameState();
@@ -290,28 +324,6 @@ class _MultipleChoiceGameState extends State<_MultipleChoiceGame> {
             },
           ),
         ),
-        Visibility(
-          visible: widget.quizOver,
-          child: Flexible(
-            flex: 1,
-            child: Row(
-              children: [
-                ElevatedButton(
-                  onPressed: widget.goNext,
-                  child: const Center(
-                    child: Text("Jumble"),
-                  ),  
-                ),
-                ElevatedButton(
-                  onPressed: widget.goPrev,
-                  child: const Center(
-                    child: Text("Result"),
-                  ),  
-                ),
-             ],
-            )
-          )
-        )
       ]
       );
   }
@@ -328,10 +340,8 @@ class _JumbleGame extends StatefulWidget {
   final List<JumbleQuestionSet> questionSets;
   final bool quizOver;
   final Function(int correct, int misses, int score) onSubmit;
-  final Function() goPrev;
-  final Function() goNext;
 
-  const _JumbleGame({Key? key, required this.mode, required this.questionSets, required this.onSubmit, this.quizOver = false, required this.goPrev, required this.goNext}) : super(key: key);
+  const _JumbleGame({Key? key, required this.mode, required this.questionSets, required this.onSubmit, this.quizOver = false}) : super(key: key);
   
   @override
   State<StatefulWidget> createState() => _JumbleGameState();
@@ -345,7 +355,7 @@ class _JumbleGameState extends State<_JumbleGame> {
 
   bool initial = true;
 
-  bool isGameOver = false;
+  late bool isGameOver = widget.quizOver;
 
   int loaded = 0;
 
@@ -366,7 +376,7 @@ class _JumbleGameState extends State<_JumbleGame> {
             mode: widget.mode, 
             question: set.question, 
             options: set.options, 
-            isOver: isGameOver,
+            isOver: isGameOver || widget.quizOver,
             onComplete: (bool isCorrect, int misses, bool init) {
               setState(() {
                 if(init) {
@@ -385,7 +395,7 @@ class _JumbleGameState extends State<_JumbleGame> {
             },
           ),
           SubmitButton(
-            visible: !widget.quizOver && solved == totalQuestion, 
+            visible: (!isGameOver || !widget.quizOver) && solved == totalQuestion, 
             onTap: () {
               setState(() {
                 isGameOver = true;
@@ -415,28 +425,6 @@ class _JumbleGameState extends State<_JumbleGame> {
           },
         )
       ),
-      Visibility(
-        visible: widget.quizOver,
-        child: Flexible(
-          flex: 1,
-          child: Row(
-            children: [
-              ElevatedButton(
-                onPressed: widget.goPrev,
-                child: const Center(
-                  child: Text("Multiple Choice"),
-                ),  
-              ),
-              ElevatedButton(
-                onPressed: widget.goNext,
-                child: const Center(
-                  child: Text("Result"),
-                ),  
-              )
-            ],
-          )
-        )
-      )
     ]
     );
   }
@@ -444,7 +432,8 @@ class _JumbleGameState extends State<_JumbleGame> {
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance?.addPostFrameCallback((_) {
-      if(isGameOver && initial && loaded == totalQuestion) {
+      if((isGameOver || widget.quizOver) && initial && loaded == totalQuestion) {
+        print("is called");
         widget.onSubmit(correct, misses, 0);
         setState(() {
           initial = false;

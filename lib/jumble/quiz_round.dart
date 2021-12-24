@@ -71,27 +71,29 @@ class _JumbleQuizRoundState extends State<JumbleQuizRound> with AutomaticKeepAli
   }
 
   void _handleOptionTap(Option option) {
-    int firstEmpty = _firstEmptySlot();
-      print(firstEmpty);
-      if(firstEmpty != -1){
+    if(!widget.isOver){
+      int firstEmpty = _firstEmptySlot();
+        print(firstEmpty);
+        if(firstEmpty != -1){
+          setState(() {
+            selected[firstEmpty] = option;
+            selectCount++;
+          });
+        }
+
+      if(selectCount == answerLength) {
+        var diff = _differentIndexes();
         setState(() {
-          selected[firstEmpty] = option;
-          selectCount++;
+          if(diff.isEmpty) {
+            widget.onComplete(true, misses, initial);
+          } else {
+            misses += diff.length;
+            widget.onComplete(false, misses, initial);
+          }
+          initial = false;
         });
       }
-
-    if(selectCount == answerLength) {
-      var diff = _differentIndexes();
-      setState(() {
-        if(diff.length == 0) {
-          widget.onComplete(true, misses, initial);
-        } else {
-          misses += diff.length;
-          widget.onComplete(false, misses, initial);
-        }
-        initial = false;
-      });
-    } 
+    }
   }
 
   int _firstEmptySlot() {
@@ -103,7 +105,8 @@ class _JumbleQuizRoundState extends State<JumbleQuizRound> with AutomaticKeepAli
     WidgetsBinding.instance?.addPostFrameCallback((_) {
       if(widget.isOver && initialRerender){
         var diff = _differentIndexes();
-
+        print("JUMBLE DIFF");
+        print(diff);
         widget.onSubmit(diff.isEmpty, diff.length);
         setState(() {
           initialRerender = false;
