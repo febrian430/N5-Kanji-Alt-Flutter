@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/components/submit_button.dart';
 import 'package:kanji_memory_hint/const.dart';
+import 'package:kanji_memory_hint/countdown.dart';
 import 'package:kanji_memory_hint/jumble/game.dart';
 import 'package:kanji_memory_hint/jumble/model.dart';
 import 'package:kanji_memory_hint/jumble/quiz_round.dart';
@@ -30,9 +31,18 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
+  _QuizState(){
+    _countdown = Countdown(
+      startTime: secondsLeft,
+      onTick: onCountdownTick,
+      onDone: onCountdownOver
+    );
+  }
 
   var quizQuestionSet;
   
+  
+  int secondsLeft = 5;
   int score = 0;
 
   int mulchoiceCorrect = 0;
@@ -44,11 +54,28 @@ class _QuizState extends State<Quiz> {
   int gameIndex = 0;
   bool isOver = false;
 
+  late final Countdown _countdown;
 
   @override
   void initState() {
     super.initState();
     quizQuestionSet = widget._getQuizQuestionSet();
+
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      _countdown.start();
+    });
+  }
+
+  void onCountdownTick(int current) {
+    setState(() {
+      secondsLeft = current;
+    });
+  }
+
+  void onCountdownOver() {
+    setState(() {
+      isOver = true;
+    });
   }
 
   // Widget _buildNextButton(BuildContext context) {
@@ -100,38 +127,56 @@ class _QuizState extends State<Quiz> {
     List<JumbleQuestionSet> jumbleQuestionSets = items[1];
 
 
-    return IndexedStack(
-      index: gameIndex,
+    return Column(
       children: [
-        _MultipleChoiceGame(
-          mode: widget.mode, 
-          questionSets: mcQuestionSets, 
-          quizOver: isOver,
-          onSubmit: _handleMultipleChoiceSubmit,
-          goNext: _goJumble,
-          goPrev: _goQuizResult,
+        Flexible(
+          flex: 1,
+          child: CountdownWidget(seconds: secondsLeft)
         ),
-        _JumbleGame(
-          mode: widget.mode,
-          questionSets: jumbleQuestionSets,
-          quizOver: isOver,
-          onSubmit: _handleJumbleSubmit,
-          goNext: _goQuizResult,
-          goPrev: _goMultipleChoice,
-        ),
-        QuizResult(
-            multipleChoice: QuizGameParam(
-              correct: mulchoiceCorrect, 
-              wrong: mulchoiceWrong, 
-              goHere: _goMultipleChoice
-            ), 
-            jumble: QuizGameParam(
-              correct: jumbleCorrect, 
-              wrong: jumbleMisses, 
-              goHere: _goJumble
-            )
+        Flexible(
+          flex: 12,
+          child: IndexedStack(
+            index: gameIndex,
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                    border: Border.all(
+                    width: 1,
+                  )
+                ),
+                child: _MultipleChoiceGame(
+                  mode: widget.mode, 
+                  questionSets: mcQuestionSets, 
+                  quizOver: isOver,
+                  onSubmit: _handleMultipleChoiceSubmit,
+                  goNext: _goJumble,
+                  goPrev: _goQuizResult,
+                )
+              ),
+              _JumbleGame(
+                mode: widget.mode,
+                questionSets: jumbleQuestionSets,
+                quizOver: isOver,
+                onSubmit: _handleJumbleSubmit,
+                goNext: _goQuizResult,
+                goPrev: _goMultipleChoice,
+              ),
+              QuizResult(
+                  multipleChoice: QuizGameParam(
+                    correct: mulchoiceCorrect, 
+                    wrong: mulchoiceWrong, 
+                    goHere: _goMultipleChoice
+                  ), 
+                  jumble: QuizGameParam(
+                    correct: jumbleCorrect, 
+                    wrong: jumbleMisses, 
+                    goHere: _goJumble
+                  )
+              )
+            ],
+          )
         )
-      ],
+      ]
     );
   }
 
@@ -354,6 +399,7 @@ class _JumbleGameState extends State<_JumbleGame> {
 
   Widget _build(BuildContext context, List<JumbleQuestionSet> items) {
     return Column(children: [
+      
       Flexible(
         flex: 9,
         child: PageView.builder(
