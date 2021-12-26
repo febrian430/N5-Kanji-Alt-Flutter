@@ -14,6 +14,8 @@ import 'package:kanji_memory_hint/quiz/footer_nav.dart';
 import 'package:kanji_memory_hint/quiz/next_button.dart';
 import 'package:kanji_memory_hint/quiz/quiz_result.dart';
 import 'package:kanji_memory_hint/quiz/repo.dart';
+import 'package:kanji_memory_hint/map_indexed.dart';
+
 
 class Quiz extends StatefulWidget {
   const Quiz({Key? key, required this.mode, required this.chapter}) : super(key: key);
@@ -24,7 +26,7 @@ class Quiz extends StatefulWidget {
   static const name = "Quiz";
 
   Future<List> _getQuizQuestionSet() async {
-    return getQuizQuestions(2, chapter, mode);
+    return getQuizQuestions(5, chapter, mode);
   }
 
   @override
@@ -83,12 +85,36 @@ class _QuizState extends State<Quiz> {
   //   if()
   // }
 
+  void _onMCCountdownOver(int correct, int wrong, int score) {
+    setState(() {
+      mulchoiceCorrect = correct;
+      mulchoiceWrong = wrong;
+      score += score;
+      gameIndex = 2;
+    });
+  }
+
+  void _onJumbleCountdownOver(int correct, int misses, int score) {
+    setState(() {
+      jumbleCorrect = correct;
+      jumbleMisses = misses;
+      score += score;
+      isOver = true;
+      gameIndex = 2;
+    });
+  }
+
   void _handleMultipleChoiceSubmit(int correct, int wrong, int score) {
     setState(() {
       mulchoiceCorrect = correct;
       mulchoiceWrong = wrong;
       score += score;
-      gameIndex = 1;
+
+      if(_countdown.isDone) {
+        gameIndex = 2;
+      } else {
+        gameIndex = 1;
+      }
     });
   }
 
@@ -254,6 +280,7 @@ class _MultipleChoiceGameState extends State<_MultipleChoiceGame> {
     int wrong = 0;
     int solved = 0;
 
+    bool initialRerender = true;
     late int totalQuestion = widget.questionSets.length; 
 
   void _handleOnSelectQuiz(bool isCorrect, int index, bool? wasCorrect) {
@@ -277,6 +304,7 @@ class _MultipleChoiceGameState extends State<_MultipleChoiceGame> {
   }
 
   Widget _buildMultipleChoiceRound(BuildContext context, int index, QuestionSet set) {
+    final unanswered = totalQuestion - solved;
     return Container(
       decoration: BoxDecoration(
         border: Border.all(
@@ -297,7 +325,7 @@ class _MultipleChoiceGameState extends State<_MultipleChoiceGame> {
 
           NextQuizRoundButton(
             onTap: () {
-              widget.onSubmit(correct, wrong, correct*100); //TODO: fix score calc
+              widget.onSubmit(correct, wrong+unanswered, correct*100); //TODO: fix score calc
             }, 
             visible: !widget.quizOver && solved == totalQuestion
           )
@@ -316,7 +344,8 @@ class _MultipleChoiceGameState extends State<_MultipleChoiceGame> {
             pageSnapping: true,
             controller: PageController(
               viewportFraction: 1,
-              initialPage: 0
+              initialPage: 0,
+              keepPage: false,
             ),
             itemCount: items.length,
             itemBuilder: (BuildContext context, int index) {
@@ -330,6 +359,15 @@ class _MultipleChoiceGameState extends State<_MultipleChoiceGame> {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      if(widget.quizOver && initialRerender) {
+        final unanswered = totalQuestion - solved;
+        widget.onSubmit(correct, wrong+unanswered, correct*100);
+        // setState(() {
+          initialRerender = false;
+        // });
+      }
+    });
     return _build(context, widget.questionSets);
   }
 }
@@ -391,6 +429,7 @@ class _JumbleGameState extends State<_JumbleGame> {
                 }
                 misses += miss;
                 loaded++;
+                isGameOver = true;
               });
             },
           ),
@@ -407,22 +446,42 @@ class _JumbleGameState extends State<_JumbleGame> {
     );
   }
 
+  // Widget _build(BuildContext context, List<JumbleQuestionSet> items) {
+  //   return Column(children: [
+      
+  //     Flexible(
+  //       flex: 9,
+  //       child: PageView.builder(
+  //             // store this controller in a State to save the carousel scroll position
+  //         controller: PageController(
+  //           viewportFraction: 1,
+  //           initialPage: 0,
+  //         ),
+          
+  //         itemCount: items.length,
+  //         itemBuilder: (BuildContext context, int index) {
+  //           return _buildRound(context, index, items[index]);
+  //         },
+  //       )
+  //     ),
+  //   ]
+  //   );
+  // }
+
   Widget _build(BuildContext context, List<JumbleQuestionSet> items) {
     return Column(children: [
       
       Flexible(
         flex: 9,
-        child: PageView.builder(
+        child: PageView(
               // store this controller in a State to save the carousel scroll position
           controller: PageController(
             viewportFraction: 1,
-            initialPage: 0
+            initialPage: 0,
           ),
-          
-          itemCount: items.length,
-          itemBuilder: (BuildContext context, int index) {
-            return _buildRound(context, index, items[index]);
-          },
+          children: items.mapIndexed((questionSet, index) {
+            return _buildRound(context, index, questionSet);
+          }).toList(),
         )
       ),
     ]

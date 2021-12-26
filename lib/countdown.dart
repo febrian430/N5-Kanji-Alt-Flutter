@@ -9,7 +9,7 @@ class Countdown {
   }
 
   bool paused = true;
-
+  bool isDone = false;
   int startTime;
   late int _current;
   Function() onDone;
@@ -35,6 +35,7 @@ class Countdown {
     _sub.onDone(() {
       onDone();
       _sub.cancel();
+      isDone = true;
     });
     paused = false;
   }
