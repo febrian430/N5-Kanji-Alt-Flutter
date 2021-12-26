@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:kanji_memory_hint/const.dart';
+import 'package:kanji_memory_hint/color_hex.dart';
 import 'package:kanji_memory_hint/game.dart';
 import 'package:kanji_memory_hint/kanji-list/view.dart';
 import 'package:kanji_memory_hint/menu_screens/chapter_select.dart';
 import 'package:kanji_memory_hint/menu_screens/mode_select.dart';
 import 'package:kanji_memory_hint/menu_screens/result_screen.dart';
+import 'package:kanji_memory_hint/menu_screens/start_select.dart';
 import 'package:kanji_memory_hint/multiple-choice/game.dart';
 import 'package:kanji_memory_hint/jumble/game.dart';
 import 'package:kanji_memory_hint/kanji-list/menu.dart';
@@ -15,6 +16,7 @@ import 'package:kanji_memory_hint/quests/quest_screen.dart';
 import 'package:kanji_memory_hint/quiz/quiz.dart';
 import 'package:kanji_memory_hint/route_param.dart';
 import 'package:kanji_memory_hint/test.dart';
+import 'package:kanji_memory_hint/theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,6 +28,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    
+    final buttonColor = HexColor.fromHex(AppButtonTheme.buttonColor);
+    final buttonOutline = HexColor.fromHex(AppButtonTheme.buttonOutline);
+
+
     return MaterialApp(
       title: 'N5 Kanji',
       theme: ThemeData( 
@@ -38,16 +45,18 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
+
         scaffoldBackgroundColor: Colors.white,
         primarySwatch: Colors.blue,
         backgroundColor: Colors.white,
       ),
-      initialRoute: '/',
+      initialRoute: '/game',
       routes: { 
         '/': (context) => const Home(),
         '/list': (context) => Menu(),
         '/list/view': (context) => KanjiScreen(),
         '/game': (context) => GameSelect(),
+        '/start-select': (context) => StartSelect(),
         '/chapter-select': (context) => const ChapterSelect(),
         '/mode-select': (context) => const ModeSelect(),
         '/result': (context) => ResultScreen(),
@@ -150,7 +159,7 @@ class Home extends StatelessWidget {
               // Within the `Home` widget
               onPressed: () {
                 // Navigate to the second screen using a named route.
-                Navigator.pushNamed(context, '/game');
+                Navigator.pushNamed(context, StartSelect.route);
                 
               },
               child: const Text('Start'),
@@ -167,6 +176,17 @@ class Home extends StatelessWidget {
               child: const Text('Quests'),
             ),
           ),
+          Center(
+            child: ElevatedButton(
+              // Within the `Home` widget
+              onPressed: () {
+                // Navigate to the second screen using a named route.
+                Navigator.pushNamed(context, '/test');
+                
+              },
+              child: const Text('test'),
+            ),
+          )
       ]
     )
     );
