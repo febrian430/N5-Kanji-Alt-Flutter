@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kanji_memory_hint/components/buttons/select_button.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/menu_screens/chapter_select.dart';
+import 'package:kanji_memory_hint/menu_screens/menu.dart';
 import 'package:kanji_memory_hint/route_param.dart';
 
 class ModeSelect extends StatelessWidget {
@@ -17,52 +19,27 @@ class ModeSelect extends StatelessWidget {
 
     PracticeGameArguments param = ModalRoute.of(context)!.settings.arguments as PracticeGameArguments;
 
-    return Scaffold(
-      body: Center( 
-        child: Column(
+    Widget screen = Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            GestureDetector(
+            SelectButton(
               onTap: () {
                 param.mode = GAME_MODE.imageMeaning;
                 Navigator.pushReplacementNamed(context, ChapterSelect.route, arguments: param);
               },
-              child: Container(
-                height: 50,
-                width: 150,
-                decoration: BoxDecoration(
-                  color: Colors.lightBlue
-                ),
-                child: const Center(
-                  child: Text(
-                    "Image Meaning"
-                  ),
-                )
-              )
+              title: "Image Meaning"
             ),
             SizedBox(height: 100),
-            GestureDetector(
+            SelectButton(
               onTap: () {
                 param.mode = GAME_MODE.reading;
                 Navigator.pushReplacementNamed(context, ChapterSelect.route, arguments: param);
               },
-              child: Container(
-                height: 50,
-                width: 150,
-                decoration: BoxDecoration(
-                  color: Colors.lightBlue
-                ),
-                child: const Center(
-                  child: Text(
-                    "Reading"
-                  ),
-                )
-              )
+              title: "Meaning"
             ),
           ]
-        ),
-      )
-    );
+        );
+    return Menu(title: "Select Mode", titleJapanese: "in japanese", child: screen);
   }
 }

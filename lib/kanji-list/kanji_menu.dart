@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/repository/kanji_list.dart';
 
-class Menu extends StatefulWidget {
-  Menu({Key? key}) : super(key: key);
+class KanjiMenu extends StatefulWidget {
+  KanjiMenu({Key? key}) : super(key: key);
 
   static const route = "/list";
   final List<int> chapters = [1,2,3,4,5,6,7,8];
@@ -16,7 +16,7 @@ class Menu extends StatefulWidget {
   State<StatefulWidget> createState() => _MenuState();
 }
 
-class _MenuState extends State<Menu> {
+class _MenuState extends State<KanjiMenu> {
   @override
 
   var _list;

@@ -4,12 +4,13 @@ import 'package:kanji_memory_hint/components/buttons/select_button.dart';
 import 'package:kanji_memory_hint/game.dart';
 import 'package:kanji_memory_hint/kanji-list/view.dart';
 import 'package:kanji_memory_hint/menu_screens/chapter_select.dart';
+import 'package:kanji_memory_hint/menu_screens/menu.dart';
 import 'package:kanji_memory_hint/menu_screens/mode_select.dart';
 import 'package:kanji_memory_hint/menu_screens/result_screen.dart';
 import 'package:kanji_memory_hint/menu_screens/start_select.dart';
 import 'package:kanji_memory_hint/multiple-choice/game.dart';
 import 'package:kanji_memory_hint/jumble/game.dart';
-import 'package:kanji_memory_hint/kanji-list/menu.dart';
+import 'package:kanji_memory_hint/kanji-list/kanji_menu.dart';
 import 'package:kanji_memory_hint/menu_screens/game_select.dart';
 import 'package:kanji_memory_hint/mix-match/game.dart';
 import 'package:kanji_memory_hint/pick-drop/game.dart';
@@ -54,11 +55,11 @@ class MyApp extends StatelessWidget {
       initialRoute: '/game',
       routes: { 
         '/': (context) => const Home(),
-        '/list': (context) => Menu(),
+        '/list': (context) => KanjiMenu(),
         '/list/view': (context) => KanjiScreen(),
         '/game': (context) => GameSelect(),
         '/start-select': (context) => StartSelect(),
-        '/chapter-select': (context) => const ChapterSelect(),
+        '/chapter-select': (context) => ChapterSelect(),
         '/mode-select': (context) => const ModeSelect(),
         '/result': (context) => ResultScreen(),
         '/quests': (context) => QuestScreen(),

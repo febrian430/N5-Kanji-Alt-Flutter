@@ -1,18 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/color_hex.dart';
-import 'package:kanji_memory_hint/components/buttons/material_state_button.dart';
 import 'package:kanji_memory_hint/theme.dart';
 
-class SelectButton extends StatelessWidget {
+class AppButton extends StatelessWidget {
   final String title;
-  final String? description;
   final Function() onTap;
 
-  SelectButton({Key? key, required this.title, this.description, required this.onTap}) : super(key: key) {
+  AppButton({Key? key, required this.title, required this.onTap}) : super(key: key) {
     _buttonColor = HexColor.fromHex(AppButtonTheme.buttonColor);
     _titleTextColor = Colors.black;
-    _descTextColor = Colors.grey;
   }
 
   static const double _titleFontSize = 22;
@@ -20,33 +17,15 @@ class SelectButton extends StatelessWidget {
 
   late Color _buttonColor;
   late Color _titleTextColor;
-  late Color _descTextColor;
-
-  Widget _withDescription(BuildContext context, Widget titleWidget) {
-    return Container(
-      child: Column(
-        children: [
-          titleWidget,
-          Center(
-            child: Text(
-              description!, 
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: _descTextColor,
-                fontSize: _descFontSize,
-              ),
-            )
-          )
-        ],
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    Widget child = Center(
+    return TextButton(
+      onPressed: onTap,
+      child: Container(
+        child: Center(
             child: Text(
               title,
               style: TextStyle(
@@ -54,15 +33,7 @@ class SelectButton extends StatelessWidget {
                 color: _titleTextColor
               ),
             ),
-          );
-    if (description != null) {
-      child = _withDescription(context, child);
-    }
-
-    return TextButton(
-      onPressed: onTap,
-      child: Container(
-        child: child,
+        ),
         constraints: BoxConstraints(
           minHeight: size.height*0.10
         ),
