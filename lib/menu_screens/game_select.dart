@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kanji_memory_hint/components/buttons/select_button.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/jumble/game.dart';
 import 'package:kanji_memory_hint/menu_screens/chapter_select.dart';
@@ -35,36 +36,39 @@ class GameSelect extends StatelessWidget {
               //   ),
               // ),
               Center(
-                child: ElevatedButton(
+                child: SelectButton(
                   // Within the `Home` widget
-                  onPressed: () {
+                  onTap: () {
                     PracticeGameArguments param = PracticeGameArguments(selectedGame: PickDrop.route);
                     param.mode = GAME_MODE.imageMeaning;
                     Navigator.pushNamed(context, ChapterSelect.route, arguments: param);
                   },
-                  child: const Text('Pick and Drop'),
+                  title: 'Pick and Drop',
+                  description: "Pick and Drag the correct kanji",
                 ),
               ),
               Center(
-                child: ElevatedButton(
+                child: SelectButton(
                   // Within the `Home` widget
-                  onPressed: () {
+                  onTap: () {
                     // Navigate to the second screen using a named route.
                     Navigator.pushNamed(context, ModeSelect.route,
                     arguments: PracticeGameArguments(selectedGame: MixMatchGame.route));
                   },
-                  child: const Text('Mix and Match'),
+                  title: 'Mix and Match',
+                  description: "Match the Kanji with its appropriate meaning",
                 ),
               ),
               Center(
-                child: ElevatedButton(
+                child: SelectButton(
                   // Within the `Home` widget
-                  onPressed: () {
+                  onTap: () {
                     // Navigate to the second screen using a named route.
                     Navigator.pushNamed(context, ModeSelect.route,
                     arguments: PracticeGameArguments(selectedGame: JumbleGame.route));
                   },
-                  child: const Text('Jumble'),
+                  title: 'Jumble',
+                  description: "Choose the correct answer",
                 ),
               ),
             ]

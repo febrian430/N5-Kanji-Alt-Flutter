@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/color_hex.dart';
+import 'package:kanji_memory_hint/components/buttons/select_button.dart';
 import 'package:kanji_memory_hint/game.dart';
 import 'package:kanji_memory_hint/kanji-list/view.dart';
 import 'package:kanji_memory_hint/menu_screens/chapter_select.dart';
@@ -137,56 +138,53 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Menu'),
-      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Center(
-            child: ElevatedButton(
+            child: SelectButton(
               // Within the `Home` widget
-              onPressed: () {
+              onTap: () {
                 // Navigate to the second screen using a named route.
                 Navigator.pushNamed(context, '/list');
                 
               },
-              child: const Text('List'),
+              title: 'List',
             ),
           ),
           Center(
-            child: ElevatedButton(
+            child: SelectButton(
               // Within the `Home` widget
-              onPressed: () {
+              onTap: () {
                 // Navigate to the second screen using a named route.
                 Navigator.pushNamed(context, StartSelect.route);
                 
               },
-              child: const Text('Start'),
+              title: 'Start',
             ),
           ),
           Center(
-            child: ElevatedButton(
+            child: SelectButton(
               // Within the `Home` widget
-              onPressed: () {
+              onTap: () {
                 // Navigate to the second screen using a named route.
                 Navigator.pushNamed(context, '/quests');
                 
               },
-              child: const Text('Quests'),
+              title: 'Quests',
             ),
           ),
-          Center(
-            child: ElevatedButton(
-              // Within the `Home` widget
-              onPressed: () {
-                // Navigate to the second screen using a named route.
-                Navigator.pushNamed(context, '/test');
+          // Center(
+          //   child: SelectButton(
+          //     // Within the `Home` widget
+          //     onTap: () {
+          //       // Navigate to the second screen using a named route.
+          //       Navigator.pushNamed(context, '/test');
                 
-              },
-              child: const Text('test'),
-            ),
-          )
+          //     },
+          //     title: 'test',
+          //   ),
+          // )
       ]
     )
     );
