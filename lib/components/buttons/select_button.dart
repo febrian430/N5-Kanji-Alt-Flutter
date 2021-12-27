@@ -10,7 +10,7 @@ class SelectButton extends StatelessWidget {
   final Function() onTap;
 
   SelectButton({Key? key, required this.title, this.description, required this.onTap}) : super(key: key) {
-    _buttonColor = HexColor.fromHex(AppButtonTheme.buttonColor);
+    _buttonColor = AppButtonTheme.buttonColor;
     _titleTextColor = Colors.black;
     _descTextColor = Colors.grey;
   }

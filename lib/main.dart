@@ -30,11 +30,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    
-    final buttonColor = HexColor.fromHex(AppButtonTheme.buttonColor);
-    final buttonOutline = HexColor.fromHex(AppButtonTheme.buttonOutline);
-
-
     return MaterialApp(
       title: 'N5 Kanji',
       theme: ThemeData( 
@@ -52,7 +47,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         backgroundColor: Colors.white,
       ),
-      initialRoute: '/game',
+      initialRoute: '/',
       routes: { 
         '/': (context) => const Home(),
         '/list': (context) => KanjiMenu(),
@@ -175,17 +170,17 @@ class Home extends StatelessWidget {
               title: 'Quests',
             ),
           ),
-          // Center(
-          //   child: SelectButton(
-          //     // Within the `Home` widget
-          //     onTap: () {
-          //       // Navigate to the second screen using a named route.
-          //       Navigator.pushNamed(context, '/test');
+          Center(
+            child: SelectButton(
+              // Within the `Home` widget
+              onTap: () {
+                // Navigate to the second screen using a named route.
+                Navigator.pushNamed(context, '/test');
                 
-          //     },
-          //     title: 'test',
-          //   ),
-          // )
+              },
+              title: 'test',
+            ),
+          )
       ]
     )
     );

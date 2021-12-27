@@ -8,7 +8,7 @@ class AppButton extends StatelessWidget {
   final Function() onTap;
 
   AppButton({Key? key, required this.title, required this.onTap}) : super(key: key) {
-    _buttonColor = HexColor.fromHex(AppButtonTheme.buttonColor);
+    _buttonColor = AppButtonTheme.buttonColor;
     _titleTextColor = Colors.black;
   }
 
