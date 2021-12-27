@@ -15,7 +15,7 @@ class SelectButton extends StatelessWidget {
     _descTextColor = Colors.grey;
   }
 
-  static const double _titleFontSize = 22;
+  static const double _titleFontSize = 20;
   static const double _descFontSize = 14;
 
   late Color _buttonColor;
@@ -26,15 +26,21 @@ class SelectButton extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          titleWidget,
+          Padding(
+            child: titleWidget,
+            padding: const EdgeInsets.all(4),
+          ),
           Center(
-            child: Text(
-              description!, 
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: _descTextColor,
-                fontSize: _descFontSize,
-              ),
+            child: Padding(
+              padding: const EdgeInsets.all(4),
+              child: Text(
+                description!, 
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: _descTextColor,
+                  fontSize: _descFontSize,
+                ),
+              )
             )
           )
         ],
@@ -64,12 +70,12 @@ class SelectButton extends StatelessWidget {
       child: Container(
         child: child,
         constraints: BoxConstraints(
-          minHeight: size.height*0.10
+          minHeight: size.height*0.075
         ),
         width: size.width*0.4,
         decoration: BoxDecoration(
           border: Border.all(
-            width: 1
+            width: 2
           ),
           color: _buttonColor,
         ),
