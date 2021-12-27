@@ -47,5 +47,8 @@ Future<List<Kanji>> _all() async {
 }
 
 Future<List<Kanji>> kanjiList() async {
-  return await _all();
+  if(_kanjis.isEmpty) {
+    return await _all();
+  }
+  return _kanjis;
 }
