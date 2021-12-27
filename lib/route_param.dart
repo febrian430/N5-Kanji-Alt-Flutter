@@ -1,4 +1,5 @@
 import 'package:kanji_memory_hint/const.dart';
+import 'package:kanji_memory_hint/scoring/mix_match.dart';
 
 class PracticeGameArguments {
     PracticeGameArguments({required this.selectedGame});
@@ -9,9 +10,9 @@ class PracticeGameArguments {
 }
 
 class ResultParam {
-  ResultParam({required this.stopwatch, required this.wrongCount, required this.decreaseFactor});
+  ResultParam({required this.stopwatch, required this.score, required this.result});
 
-  final int wrongCount;
-  final int decreaseFactor;
+  final PracticeScore score;
+  final GameResult result;
   final Stopwatch stopwatch;
 }

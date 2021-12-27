@@ -6,6 +6,7 @@ import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/mix-match/repo.dart';
 import 'package:kanji_memory_hint/models/common.dart';
 import 'package:kanji_memory_hint/route_param.dart';
+import 'package:kanji_memory_hint/scoring/mix_match.dart';
 
 typedef OnRoundOverCallback = Function(bool isCorrect, int correct, int wrongAttempts);
 
@@ -32,7 +33,11 @@ class _MixMatchGameState extends State<MixMatchGame> {
   var _questionSet;
 
   int roundsSolved = 0;
+  int perfect = 0;
   int wrong = 0;
+
+  late PracticeScore score;
+  late GameResult result;
 
   @override
   void initState() {
@@ -42,18 +47,32 @@ class _MixMatchGameState extends State<MixMatchGame> {
   }
 
   void _onRoundOver(bool isCorrect, int correct, int wrongAttempts) {
+    wrong += wrongAttempts;
+    if(wrongAttempts == 0) {
+      perfect++;
+    }
+
     setState(() {
-      wrong += wrongAttempts;
-      roundsSolved++;
-      if(roundsSolved == widget.numOfRounds){
-        widget.stopwatch.stop();
-      }
+      roundsSolved++;    
     });
-    print("was called");
+
+    if(roundsSolved == widget.numOfRounds){
+      widget.stopwatch.stop();
+      score = PracticeScore(perfectRounds: perfect, wrongAttempts: wrong);
+      result = MixMatchScoring.evaluate(score);
+    }
   }
 
   Widget _buildRound(BuildContext context, int index, List<List<Question>> data) {
     final size = MediaQuery.of(context).size;
+
+    Widget resultButton = Visibility(visible: false, child: Text(""));
+    if(widget.numOfRounds == roundsSolved) {
+      resultButton = ResultButton(
+        param: ResultParam(result: result, score: score, stopwatch: widget.stopwatch),
+        visible: widget.numOfRounds == roundsSolved,
+      );
+    }
 
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 4.0),
@@ -66,11 +85,7 @@ class _MixMatchGameState extends State<MixMatchGame> {
               onRoundOver: _onRoundOver,
             )
           ),
-          ResultButton(
-            //FIXTHISHSIT
-            param: ResultParam(wrongCount: wrong, decreaseFactor: 100, stopwatch: widget.stopwatch),
-            visible: widget.numOfRounds == roundsSolved,
-          ),
+          resultButton
         ]
       )
     );

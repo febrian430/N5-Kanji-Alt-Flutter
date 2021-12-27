@@ -19,10 +19,7 @@ class ResultScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     var param = ModalRoute.of(context)!.settings.arguments as ResultParam;
-    var points = 1000 - param.decreaseFactor*param.wrongCount;
     var stopwatch = param.stopwatch;
-
-    print(param.wrongCount);
 
     return Scaffold(
       body: SafeArea(
@@ -37,11 +34,21 @@ class ResultScreen extends StatelessWidget{
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text("Wrong attempts"),
-                    Text(param.wrongCount.toString()),
+                    Text(param.score.wrongAttempts.toString()),
                     SizedBox(height: 100,),
+
+                    Text("Perfect rounds"),
+                    Text(param.score.perfectRounds.toString()),
+                    SizedBox(height: 100,),
+
                     Text("Points gained"),
-                    Text(points.toString()),
+                    Text(param.result.pointsGained.toString()),
                     SizedBox(height: 100,),
+
+                    Text("Exp gained"),
+                    Text(param.result.expGained.toString()),
+                    SizedBox(height: 100,),
+
                     Text("Time elapsed"),
                     Text(stopwatch.elapsed.toString())
                 ]
