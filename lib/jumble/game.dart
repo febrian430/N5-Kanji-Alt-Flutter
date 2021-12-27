@@ -12,6 +12,8 @@ import 'package:kanji_memory_hint/models/common.dart';
 import 'package:kanji_memory_hint/map_indexed.dart';
 import 'package:kanji_memory_hint/foreach_indexed.dart';
 import 'package:kanji_memory_hint/route_param.dart';
+import 'package:kanji_memory_hint/scoring/jumble.dart';
+import 'package:kanji_memory_hint/scoring/model.dart';
 
 
 class JumbleGame extends StatefulWidget {
@@ -26,7 +28,7 @@ class JumbleGame extends StatefulWidget {
   final Stopwatch stopwatch = Stopwatch();
 
   Future<List<JumbleQuestionSet>> _getQuestionSet() async {
-    return jumbleQuestionSets(15, chapter, mode, false);
+    return jumbleQuestionSets(3, chapter, mode, false);
   }
 
   @override
@@ -39,8 +41,13 @@ class _JumbleGameState extends State<JumbleGame> {
   int score = 0;
   int wrongCount = 0;
   int solved = 0;
-  
+  int perfect = 0;
+
+  late int slotsToFill;
   late int numOfQuestions;
+  late PracticeScore endScore;
+  late GameResult result;
+
   var _questionSets;
 
   @override
@@ -52,13 +59,21 @@ class _JumbleGameState extends State<JumbleGame> {
   void _handleRoundOver(bool isCorrect, int misses, bool initialAnswer) {
     setState(() {
       if(isCorrect) {
+        if(initialAnswer) {
+          perfect++;
+          print('SOLVED: ${solved}');
+        }
         _slideToNextQuestion();
-      }
-      // if(initialAnswer) {
         solved++;
-      // }
+
+      } else {
+        wrongCount += misses;
+      }
+
       if(solved == numOfQuestions) {
         widget.stopwatch.stop();
+        endScore = PracticeScore(perfectRounds: perfect, wrongAttempts: wrongCount);
+        result = JumbleScoring.evaluate(endScore, slotsToFill);
       }
     });
   }
@@ -84,6 +99,17 @@ class _JumbleGameState extends State<JumbleGame> {
 
 
   Widget _buildRound(BuildContext context, int itemIndex, List<JumbleQuestionSet> questionSets) {
+    var resultButton = EmptyWidget;
+    
+    if(solved == numOfQuestions) {
+      resultButton = ResultButton(
+        param: ResultParam(score: endScore, result: result, stopwatch: widget.stopwatch),
+        visible: numOfQuestions == solved,
+      );
+    }
+
+
+
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 4.0),
       child: Column(
@@ -98,10 +124,7 @@ class _JumbleGameState extends State<JumbleGame> {
               // onSubmit: _onGameSubmit,
             )
           ),
-          ResultButton(
-            param: ResultParam(wrongCount: wrongCount, decreaseFactor: 10, stopwatch: widget.stopwatch),
-            visible: numOfQuestions == solved,
-          ),
+          resultButton
         ]
       )
     );
@@ -117,14 +140,17 @@ class _JumbleGameState extends State<JumbleGame> {
           builder: (context, AsyncSnapshot<List<JumbleQuestionSet>> snapshot) {
             if(snapshot.hasData) {
               numOfQuestions = snapshot.data!.length;
-              return PageView.builder(
-                // store this controller in a State to save the carousel scroll position
+              int sum = 0;
+              var screen =  PageView.builder(
                 controller: _pageController,
                 itemCount: snapshot.data?.length,
                 itemBuilder: (BuildContext context, int itemIndex) {
+                  sum += snapshot.data![itemIndex].question.key.length;
                   return _buildRound(context, itemIndex, snapshot.data!);
                 },
               );
+              slotsToFill = sum;
+              return screen;
             } else {
               return LoadingScreen();
             }
@@ -167,6 +193,8 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
   int selectCount = 0;
   int misses = 0;
   List<Option> selected = [];
+
+  bool isFirstTry = true;
   bool isRoundOver = false;
 
   void _unselect(List<int> indexes) {
@@ -213,21 +241,21 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
           setState(() {
             isRoundOver = true;
             roundColor = _correctColor;
-            widget.onComplete(true, misses, false);
+            widget.onComplete(true, 0, isFirstTry);
           });
         } else {
           setState(() {
             misses += diff.length;
-            roundColor = _wrongColor
-            ;
+            roundColor = _wrongColor;
+            widget.onComplete(false, diff.length, isFirstTry);
           });
           _unselect(diff);
         }
+        isFirstTry = false;
         Future.delayed(const Duration(seconds: 1), () {
             setState(() {
               roundColor = Colors.white;
             });
-
         });
       }
     }
@@ -362,6 +390,9 @@ class OptionWidget extends StatelessWidget {
 
     return GestureDetector(
             onTap: () {
+              print("round option is");
+
+              print(disabled);
               if(!disabled) {
                 onTap();
               }

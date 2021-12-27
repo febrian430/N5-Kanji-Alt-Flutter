@@ -86,10 +86,10 @@ class _MultipleChoiceGameState extends State<MultipleChoiceGame> {
             // || (!widget.quiz && correctlySolved.contains(itemIndex)), quiz test purposes
             quiz: true,
           ),
-          ResultButton(
-            visible: gameOver && solved == numOfQuestions, 
-            param: ResultParam(wrongCount: wrong, decreaseFactor: 100, stopwatch: widget.stopwatch)
-          ),
+          // ResultButton(
+          //   visible: gameOver && solved == numOfQuestions, 
+          //   param: ResultParam(wrongCount: wrong, decreaseFactor: 100, stopwatch: widget.stopwatch)
+          // ),
           SubmitButton(
             visible: !gameOver && solved == numOfQuestions, 
             onTap: () {
