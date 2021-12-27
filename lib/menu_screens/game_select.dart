@@ -41,18 +41,6 @@ class GameSelect extends StatelessWidget {
                 child: SelectButton(
                   // Within the `Home` widget
                   onTap: () {
-                    PracticeGameArguments param = PracticeGameArguments(selectedGame: PickDrop.route);
-                    param.mode = GAME_MODE.imageMeaning;
-                    Navigator.pushNamed(context, ChapterSelect.route, arguments: param);
-                  },
-                  title: 'Pick and Drop',
-                  description: "Pick and Drag the correct kanji",
-                ),
-              ),
-              Center(
-                child: SelectButton(
-                  // Within the `Home` widget
-                  onTap: () {
                     // Navigate to the second screen using a named route.
                     Navigator.pushNamed(context, ModeSelect.route,
                     arguments: PracticeGameArguments(selectedGame: MixMatchGame.route));
@@ -71,6 +59,18 @@ class GameSelect extends StatelessWidget {
                   },
                   title: 'Jumble',
                   description: "Choose the correct answer",
+                ),
+              ),
+              Center(
+                child: SelectButton(
+                  // Within the `Home` widget
+                  onTap: () {
+                    PracticeGameArguments param = PracticeGameArguments(selectedGame: PickDrop.route);
+                    param.mode = GAME_MODE.imageMeaning;
+                    Navigator.pushNamed(context, ChapterSelect.route, arguments: param);
+                  },
+                  title: 'Pick and Drop',
+                  description: "Pick and Drag the correct kanji",
                 ),
               ),
             ]
