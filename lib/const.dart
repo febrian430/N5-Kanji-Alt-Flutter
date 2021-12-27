@@ -10,3 +10,5 @@ const MultipleChoiceRoute = '/game/multiple-choice';
 const MixMatchRoute = '/game/mix-match';
 const JumbleRoute = '/game/pick-drop';
 const PickDropRoute = '/game/pick-drop';
+
+const Widget EmptyWidget = Visibility(child: Text(""), visible: false,);

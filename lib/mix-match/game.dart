@@ -7,6 +7,7 @@ import 'package:kanji_memory_hint/mix-match/repo.dart';
 import 'package:kanji_memory_hint/models/common.dart';
 import 'package:kanji_memory_hint/route_param.dart';
 import 'package:kanji_memory_hint/scoring/mix_match.dart';
+import 'package:kanji_memory_hint/scoring/model.dart';
 
 typedef OnRoundOverCallback = Function(bool isCorrect, int correct, int wrongAttempts);
 
@@ -66,7 +67,7 @@ class _MixMatchGameState extends State<MixMatchGame> {
   Widget _buildRound(BuildContext context, int index, List<List<Question>> data) {
     final size = MediaQuery.of(context).size;
 
-    Widget resultButton = Visibility(visible: false, child: Text(""));
+    Widget resultButton = EmptyWidget;
     if(widget.numOfRounds == roundsSolved) {
       resultButton = ResultButton(
         param: ResultParam(result: result, score: score, stopwatch: widget.stopwatch),

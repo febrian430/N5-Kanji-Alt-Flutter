@@ -2,9 +2,7 @@ import 'dart:math';
 
 import 'package:kanji_memory_hint/scoring/model.dart';
 
-
-
-class MixMatchScoring {
+class PickDropScoring {
   static GameResult evaluate(PracticeScore score) {
     var points = _getPoints(score);
     var exp = _getExp(score);
@@ -14,15 +12,14 @@ class MixMatchScoring {
 
   static int _getPoints(PracticeScore score) {
     var pointsForPerfect = 5*score.perfectRounds;
-    var points = (5-(score.wrongAttempts*0.5)).floor();
-    return max(0, points) + pointsForPerfect + 5;
+    var points = (score.perfectRounds*0.5).floor();
+    return max(0, points).toInt() + pointsForPerfect + 5;
   }
 // base exp: 100
 // exp: 150-(wrongAttempts * 10)
   static int _getExp(PracticeScore score) {
-      var expForPerfect = 50*score.perfectRounds;
-      var exp = 150-(score.wrongAttempts*10);
-      return max(0, exp) + expForPerfect + 100;
+    var expForPerfect = 50*score.perfectRounds;
+    var exp = 150-(score.wrongAttempts*10);
+    return max(0, exp).toInt() + expForPerfect + 150;
   }
 }
-

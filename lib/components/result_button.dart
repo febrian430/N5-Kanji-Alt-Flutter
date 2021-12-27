@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:kanji_memory_hint/menu_screens/result_screen.dart';
+import 'package:kanji_memory_hint/result_screen/practice.dart';
 import 'package:kanji_memory_hint/route_param.dart';
 
 class ResultButton extends StatelessWidget  {

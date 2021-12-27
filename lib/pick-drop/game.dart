@@ -7,11 +7,14 @@ import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/components/result_button.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/game_components/question_widget.dart';
-import 'package:kanji_memory_hint/menu_screens/result_screen.dart';
+import 'package:kanji_memory_hint/result_screen/practice.dart';
 import 'package:kanji_memory_hint/models/common.dart';
 import 'package:kanji_memory_hint/models/question_set.dart';
 import 'package:kanji_memory_hint/pick-drop/repo.dart';
 import 'package:kanji_memory_hint/route_param.dart';
+import 'package:kanji_memory_hint/scoring/jumble.dart';
+import 'package:kanji_memory_hint/scoring/model.dart';
+import 'package:kanji_memory_hint/scoring/pick_drop.dart';
 
 //TODO: wrong count, correct result page, 
 class PickDrop extends StatefulWidget {
@@ -38,9 +41,12 @@ class _PickDropState extends State<PickDrop> {
   var sets;
   int index = 0;
   int wrongAttempts = 0;
-
+  int perfect = 0;
   int solved = 0;
+
   late int total;
+  late PracticeScore score;
+  late GameResult result;
 
   @override
   void initState() {
@@ -49,16 +55,23 @@ class _PickDropState extends State<PickDrop> {
   }
 
 
-  void _handleOnDrop(bool isCorrect) {
-    print(isCorrect);
+  void _handleOnDrop(bool isCorrect, bool isFirstTry) {
     setState(() {
       if (isCorrect) {
         solved++;
+
+        if(isFirstTry) {
+          perfect++;
+        }
+
         if (index < total-1) {
           index++;
         } else {
           widget.stopwatch.stop();
+          score = PracticeScore(perfectRounds: perfect, wrongAttempts: wrongAttempts);
+          result = PickDropScoring.evaluate(score);
         }
+        
       } else {
         wrongAttempts++;
       }
@@ -66,6 +79,15 @@ class _PickDropState extends State<PickDrop> {
   }
 
   Widget _buildRound(QuestionSet set) {
+    var resultButton = EmptyWidget;
+
+    if(total == solved) {
+      resultButton = ResultButton(
+        param: ResultParam(score: score, result: result, stopwatch: widget.stopwatch),
+        visible: total == solved,
+      );
+    }
+
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 4.0),
       child: Column(
@@ -78,10 +100,7 @@ class _PickDropState extends State<PickDrop> {
               isLast: index == total-1,
             )
           ),
-          ResultButton(
-            param: ResultParam(wrongCount: wrongAttempts, decreaseFactor: 100, stopwatch: widget.stopwatch),
-            visible: total == solved,
-          ),
+          resultButton
         ]
       )
     );
@@ -111,7 +130,7 @@ class _PickDropState extends State<PickDrop> {
   }
 }
 
-typedef OnDropCallback = Function(bool isCorrect);
+typedef OnDropCallback = Function(bool isCorrect, bool isFirstTry);
 
 class PickDropRound extends StatefulWidget {
   const PickDropRound({Key? key, required this.question, required this.options, required this.onDrop, required this.isLast}) : super(key: key);
@@ -129,6 +148,7 @@ class PickDropRound extends StatefulWidget {
 class _PickDropRoundState extends State<PickDropRound> {
 
   bool isCorrect = false;
+  bool isFirstTry = true;
 
   Widget _renderOption(BuildContext context, Option opt) {
     final size = MediaQuery.of(context).size;
@@ -231,7 +251,13 @@ class _PickDropRoundState extends State<PickDropRound> {
                   return true;
                 },
                 onAccept: (opt) {
-                  widget.onDrop(opt.key == widget.question.key);
+                  bool isCorrect = opt.key == widget.question.key;
+
+                  widget.onDrop(isCorrect, isFirstTry);
+
+                  if(!isCorrect) {
+                    isFirstTry = false;
+                  }
                 },
               ),
               Text("Answer: " + widget.question.key.toString()),
