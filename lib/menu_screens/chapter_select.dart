@@ -68,6 +68,6 @@ class ChapterSelect extends StatelessWidget {
     //   )
     // );
 
-    return Menu(title: "Chapter Select", titleJapanese: "Hehe", child: screen);
+    return Menu(title: "Chapter Select", titleJapanese: "in japanese", child: screen);
   }
 }
