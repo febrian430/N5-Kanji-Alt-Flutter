@@ -26,7 +26,7 @@ class Quiz extends StatefulWidget {
   static const name = "Quiz";
 
   Future<List> _getQuizQuestionSet() async {
-    return getQuizQuestions(5, chapter, mode);
+    return getQuizQuestions(3, chapter, mode);
   }
 
   @override
@@ -45,7 +45,7 @@ class _QuizState extends State<Quiz> {
   var quizQuestionSet;
   
   
-  int secondsLeft = 5;
+  int secondsLeft = 15;
   int score = 0;
 
   int mulchoiceCorrect = 0;
@@ -125,9 +125,6 @@ class _QuizState extends State<Quiz> {
       score += score;
       isOver = true;
       gameIndex = 2;
-      print("collecting jumble score from game");
-      print(misses);
-
     });
   }
 
@@ -390,13 +387,12 @@ class _JumbleGameState extends State<_JumbleGame> {
   int solved = 0;
   int correct = 0;
   int misses = 0;
-
   bool initial = true;
-
-  late bool isGameOver = widget.quizOver;
-
+  bool initialBuild = true;
   int loaded = 0;
 
+  late List<int> lengthOfRound = []; 
+  late bool isGameOver = widget.quizOver;
   late int totalQuestion = widget.questionSets.length;
 
   
@@ -428,7 +424,8 @@ class _JumbleGameState extends State<_JumbleGame> {
                   correct++;
                 }
                 misses += miss;
-                loaded++;
+                loaded++; 
+
                 isGameOver = true;
               });
             },
@@ -474,12 +471,23 @@ class _JumbleGameState extends State<_JumbleGame> {
       Flexible(
         flex: 9,
         child: PageView(
-              // store this controller in a State to save the carousel scroll position
+          onPageChanged: (int index){
+            if(lengthOfRound[index] != 0){
+              lengthOfRound[index] = 0;
+            };
+
+            if(lengthOfRound[0] != 0) {
+              lengthOfRound[0] = 0;
+            }
+          },
           controller: PageController(
             viewportFraction: 1,
             initialPage: 0,
           ),
           children: items.mapIndexed((questionSet, index) {
+            if(initialBuild){
+              lengthOfRound.add(questionSet.question.key.length);
+            }
             return _buildRound(context, index, questionSet);
           }).toList(),
         )
@@ -490,15 +498,35 @@ class _JumbleGameState extends State<_JumbleGame> {
   
   @override
   Widget build(BuildContext context) {
+    print(lengthOfRound);
     WidgetsBinding.instance?.addPostFrameCallback((_) {
-      if((isGameOver || widget.quizOver) && initial && loaded == totalQuestion) {
-        print("is called");
-        widget.onSubmit(correct, misses, 0);
-        setState(() {
-          initial = false;
-        });
+      if((isGameOver || widget.quizOver) && initial ) {
+        print(lengthOfRound);
+        var unansweredCount = lengthOfRound.reduce((sum, miss) => sum + miss);
+        var answeredQuestion = lengthOfRound.where((val) => val == 0).length;
+
+        // print('unanswered: ${unansweredCount.toString()}');
+        // print('misses: ${misses.toString()}');
+
+        //taro lengthOfRound[index] dimana user udah akses round
+        //
+
+        if (answeredQuestion == totalQuestion && loaded == totalQuestion){
+          widget.onSubmit(correct, misses, 0);
+          setState(() {
+            initial = false;
+          });
+          //handle if jumble questoin not even reached
+        } else if (answeredQuestion < totalQuestion && loaded == answeredQuestion) {
+          widget.onSubmit(correct, misses+unansweredCount, 0);
+          setState(() {
+            initial = false;
+          });
+        }
       }
     });
-    return _build(context, widget.questionSets);
+    var gameScreen =  _build(context, widget.questionSets);
+    initialBuild = false;
+    return gameScreen;
   }
 }

@@ -102,15 +102,12 @@ class _JumbleQuizRoundState extends State<JumbleQuizRound> with AutomaticKeepAli
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     WidgetsBinding.instance?.addPostFrameCallback((_) {
       if(widget.isOver && initialRerender){
         var diff = _differentIndexes();
-        print("JUMBLE DIFF");
-        print(diff);
         widget.onSubmit(diff.isEmpty, diff.length);
-        setState(() {
-          initialRerender = false;
-        });
+        initialRerender = false;
       }
     });
 
