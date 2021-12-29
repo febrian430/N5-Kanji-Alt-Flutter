@@ -153,12 +153,12 @@ class _QuizState extends State<Quiz> {
 
     return Column(
       children: [
-        // Flexible(
-        //   flex: 1,
-        //   child: CountdownWidget(seconds: secondsLeft)
-        // ),
         Flexible(
-          flex: 9,
+          flex: 1,
+          child: CountdownWidget(seconds: secondsLeft)
+        ),
+        Flexible(
+          flex: 10,
           child: IndexedStack(
             index: gameIndex,
             children: [
