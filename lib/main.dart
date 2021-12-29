@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/color_hex.dart';
 import 'package:kanji_memory_hint/components/buttons/select_button.dart';
+import 'package:kanji_memory_hint/database/repository.dart';
 import 'package:kanji_memory_hint/game.dart';
 import 'package:kanji_memory_hint/kanji-list/view.dart';
 import 'package:kanji_memory_hint/menu_screens/chapter_select.dart';
 import 'package:kanji_memory_hint/menu_screens/menu.dart';
 import 'package:kanji_memory_hint/menu_screens/mode_select.dart';
-import 'package:kanji_memory_hint/menu_screens/result_screen.dart';
+import 'package:kanji_memory_hint/result_screen/practice.dart';
 import 'package:kanji_memory_hint/menu_screens/start_select.dart';
 import 'package:kanji_memory_hint/multiple-choice/game.dart';
 import 'package:kanji_memory_hint/jumble/game.dart';
@@ -25,9 +26,22 @@ void main() {
 }
 
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
   // This widget is the root of your application.
+
+  @override
+  State<StatefulWidget> createState() => _MyAppState();
+}
+class _MyAppState extends State<MyApp> {
+
+  @override
+  void initState() {
+    super.initState();
+
+    SQLRepo.open();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

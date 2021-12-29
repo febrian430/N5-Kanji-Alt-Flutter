@@ -6,6 +6,7 @@ import 'package:flutter/rendering.dart';
 import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/components/result_button.dart';
 import 'package:kanji_memory_hint/const.dart';
+import 'package:kanji_memory_hint/database/repository.dart';
 import 'package:kanji_memory_hint/game_components/question_widget.dart';
 import 'package:kanji_memory_hint/result_screen/practice.dart';
 import 'package:kanji_memory_hint/models/common.dart';
@@ -70,6 +71,7 @@ class _PickDropState extends State<PickDrop> {
           widget.stopwatch.stop();
           score = PracticeScore(perfectRounds: perfect, wrongAttempts: wrongAttempts);
           result = PickDropScoring.evaluate(score);
+          SQLRepo.userPoints.addExpAndPoints(result.pointsGained, result.expGained);
         }
         
       } else {
@@ -193,26 +195,6 @@ class _PickDropRoundState extends State<PickDropRound> {
             );
   }
 
-  Widget _optionsByGridView(BuildContext context, List<Option> opts) {
-      final size = MediaQuery.of(context).size;
-
-      return Expanded(
-                  child: Container(
-                    height: 200,
-                    child: GridView.count(
-                        padding: const EdgeInsets.all(15),
-                        crossAxisCount: 4,
-                        crossAxisSpacing: 15,
-                        mainAxisSpacing: 15,
-                        physics: const NeverScrollableScrollPhysics(),
-                        primary: false,
-                        children: widget.options.map((opt) {
-                          return _renderOption(context, opt);
-                        }).toList()
-                      )
-                    )
-                );
-  }
   Widget _optionsByColumn(BuildContext context, List<Option> opts) {
       final screen = MediaQuery.of(context).size;
 
