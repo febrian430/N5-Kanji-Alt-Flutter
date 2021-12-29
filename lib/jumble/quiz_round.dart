@@ -152,7 +152,7 @@ class _JumbleQuizRoundState extends State<JumbleQuizRound> with AutomaticKeepAli
               ),
               child: GridView.count(
                 crossAxisCount: 4,
-                padding: EdgeInsets.all(25),
+                padding: EdgeInsets.fromLTRB(25, 0, 25, 0),
                 mainAxisSpacing: 5,
                 crossAxisSpacing: 5,
                 shrinkWrap: true,
