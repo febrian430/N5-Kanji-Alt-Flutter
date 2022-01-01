@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -9,12 +8,10 @@ import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/database/repository.dart';
 import 'package:kanji_memory_hint/game_components/question_widget.dart';
 import 'package:kanji_memory_hint/quests/practice_quest.dart';
-import 'package:kanji_memory_hint/result_screen/practice.dart';
 import 'package:kanji_memory_hint/models/common.dart';
 import 'package:kanji_memory_hint/models/question_set.dart';
 import 'package:kanji_memory_hint/pick-drop/repo.dart';
 import 'package:kanji_memory_hint/route_param.dart';
-import 'package:kanji_memory_hint/scoring/practice/jumble.dart';
 import 'package:kanji_memory_hint/scoring/model.dart';
 import 'package:kanji_memory_hint/scoring/practice/pick_drop.dart';
 
@@ -30,7 +27,7 @@ class PickDrop extends StatefulWidget {
   final Stopwatch stopwatch = Stopwatch();
 
   Future<List<QuestionSet>> _getQuestionSets() {
-    return getPickDropQuestionSets(15, chapter, mode);
+    return getPickDropQuestionSets(GameNumOfRounds, chapter, mode);
   }
 
   @override
@@ -123,7 +120,6 @@ class _PickDropState extends State<PickDrop> {
   @override
   Widget build(BuildContext context) {
     widget.stopwatch.start();
-    final screen = MediaQuery.of(context).size;
 
     return Scaffold(
       body: SafeArea(
@@ -208,7 +204,6 @@ class _PickDropRoundState extends State<PickDropRound> {
   }
 
   Widget _optionsByColumn(BuildContext context, List<Option> opts) {
-      final screen = MediaQuery.of(context).size;
 
       return Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -308,7 +303,7 @@ class _QuestionWidget extends StatelessWidget {
 
 class _OptionWidget extends StatelessWidget {
   const _OptionWidget({Key? key, required this.value, required this.answerKey}) : super(key: key);
-  
+
   final String value;
   final int answerKey;
 

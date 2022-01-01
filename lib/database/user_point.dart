@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:sqflite/sqflite.dart';
 import 'dart:async';
 
@@ -28,32 +30,23 @@ class UserPoint {
 }
 
 class UserPointProvider {
-  Database? db;
+  UserPointProvider(this.db);
 
-  Future open(String path) async {
-    
+  final Database db;
 
-    db ??= await openDatabase(path, version: 1,
-        // onConfigure: (Database db) async {
-        //   await db!.execute('''
-        //     DROP TABLE IF EXISTS $_userPointsTable
-        //   ''');
-        // },
-        onCreate: (Database db, int version) 
-          async {
-            await db.execute('''
-            create table $_userPointsTable ( 
-              $_goldColumn integer not null,
-              $_expColumn integer not null)
-            ''');
-            UserPoint userPoint = UserPoint(exp: 0, gold: 0);
-            await db.insert(_userPointsTable, userPoint.toMap());
-          },
-    );
+  static Future migrate(Database db) async {
+    log("CREATING USER POINTS TABLE");
+    await db.execute('''
+    create table $_userPointsTable ( 
+      $_goldColumn integer not null,
+      $_expColumn integer not null)
+    ''');
+    UserPoint userPoint = UserPoint(exp: 0, gold: 0);
+    await db.insert(_userPointsTable, userPoint.toMap());
   }
 
   Future<UserPoint> get() async {
-    List<Map<String, dynamic>> maps = await db!.query(
+    List<Map<String, dynamic>> maps = await db.query(
       _userPointsTable,
       columns: [_expColumn, _goldColumn]
     );
@@ -64,21 +57,21 @@ class UserPointProvider {
   FutureOr<void> addExp(int exp) async {
     var userPoints = await get();
     userPoints.exp += exp;
-    await db!.update(_userPointsTable, userPoints.toMap());
+    await db.update(_userPointsTable, userPoints.toMap());
   }
 
   FutureOr<void> addGold(int gold) async {
     var userPoints = await get();
     userPoints.gold += gold;
-    await db!.update(_userPointsTable, userPoints.toMap());
+    await db.update(_userPointsTable, userPoints.toMap());
   }
 
   FutureOr<void> addExpAndGold(int exp, int gold) async {
     var userPoints = await get();
     userPoints.gold += gold;
     userPoints.exp += exp;
-    await db!.update(_userPointsTable, userPoints.toMap());
+    await db.update(_userPointsTable, userPoints.toMap());
   }
 
-  Future close() async => db!.close();
+  Future close() async => db.close();
 }

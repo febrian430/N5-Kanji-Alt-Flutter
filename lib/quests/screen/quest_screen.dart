@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:kanji_memory_hint/const.dart';
+import 'package:kanji_memory_hint/database/quests.dart';
 import 'package:kanji_memory_hint/quests/practice_quest.dart';
 
 class QuestScreen extends StatefulWidget {
@@ -177,7 +179,7 @@ class _PracticeQuestList extends StatelessWidget {
                     child: Flexible(
                       flex: 6, 
                       child: TextButton(
-                        child: Center(child: quest.claimed ? Text("Claimed") : Text("Claim")),
+                        child: Center(child: quest.status == QUEST_STATUS.CLAIMED ? Text("Claimed") : Text("Claim")),
                         onPressed: () {
                           quest.claim();
                         },
