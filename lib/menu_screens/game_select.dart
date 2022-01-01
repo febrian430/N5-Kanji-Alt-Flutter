@@ -65,9 +65,7 @@ class GameSelect extends StatelessWidget {
                 child: SelectButton(
                   // Within the `Home` widget
                   onTap: () {
-                    PracticeGameArguments param = PracticeGameArguments(selectedGame: PickDrop.route);
-                    param.mode = GAME_MODE.imageMeaning;
-                    Navigator.pushNamed(context, ChapterSelect.route, arguments: param);
+                    Navigator.pushNamed(context, ChapterSelect.route, arguments: PracticeGameArguments(selectedGame: PickDrop.route));
                   },
                   title: 'Pick and Drop',
                   description: "Pick and Drag the correct kanji",

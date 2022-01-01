@@ -8,7 +8,7 @@ class SQLRepo {
 
   static Future open() async {
     var path = await getDatabasesPath();
-    var dbPath = join(path, 'kantan.db');
+    var dbPath = join(path, 'kantan_test.db');
 
     await userPoints.open(dbPath);
   }

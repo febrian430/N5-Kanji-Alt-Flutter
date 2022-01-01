@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:kanji_memory_hint/quests/practice_quest.dart';
 
 class QuestScreen extends StatefulWidget {
   
@@ -116,7 +117,19 @@ class _QuestList extends StatelessWidget {
         return SizedBox(child: Text("Mastery " + index.toString()), height: 150);
       }
     );
-    
+  }
+
+  Widget _practiceList() {
+    return FutureBuilder(
+      future: PracticeQuestHandler.quests(),
+      builder: (BuildContext context, AsyncSnapshot<List<PracticeQuest>> snapshot){
+        if(snapshot.hasData) {
+          return _PracticeQuestList(quests: snapshot.data!);
+        }else {
+          return const Text("Loading...");
+        }
+      },
+    );
   }
 
   @override
@@ -135,11 +148,59 @@ class _QuestList extends StatelessWidget {
         index: index,
         children: [
           _mastery(),
-          Text("Practice"),
+          _practiceList(),
           Text("Quiz"),
-          Text("Learn"),
         ],
       ),
     );
+  }
+}
+
+class _PracticeQuestList extends StatelessWidget {
+
+  final List<PracticeQuest> quests;
+
+  const _PracticeQuestList({Key? key, required this.quests}) : super(key: key);
+  
+  Widget questWidget(PracticeQuest quest) {
+    return SizedBox(
+        height: 150,
+        child: Row( 
+          children: [
+            Flexible(flex: 8, child: Text('Do ${quest.game} - ${quest.mode.toString()} mode with topic ${quest.chapter}')),
+            Flexible(
+              flex: 2, 
+              child: Column(
+                children: [
+                  Visibility(
+                    visible: quest.count >= quest.total, 
+                    child: Flexible(
+                      flex: 6, 
+                      child: TextButton(
+                        child: Center(child: quest.claimed ? Text("Claimed") : Text("Claim")),
+                        onPressed: () {
+                          quest.claim();
+                        },
+                      )
+                    )
+                  ),
+                  Flexible(flex: 4, child: Center(child: Text('${quest.count} / ${quest.total}'),))
+                ],
+              ) 
+            )
+          ]
+        )
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: quests.length,
+      itemBuilder: (BuildContext context, int index) {
+        return questWidget(quests[index]);
+      }
+    );
+
   }
 }

@@ -5,6 +5,7 @@ import 'package:kanji_memory_hint/components/result_button.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/mix-match/repo.dart';
 import 'package:kanji_memory_hint/models/common.dart';
+import 'package:kanji_memory_hint/quests/practice_quest.dart';
 import 'package:kanji_memory_hint/route_param.dart';
 import 'package:kanji_memory_hint/scoring/practice/mix_match.dart';
 import 'package:kanji_memory_hint/scoring/model.dart';
@@ -39,6 +40,7 @@ class _MixMatchGameState extends State<MixMatchGame> {
 
   late PracticeScore score;
   late GameResult result;
+  late PracticeGameReport report;
 
   @override
   void initState() {
@@ -61,6 +63,15 @@ class _MixMatchGameState extends State<MixMatchGame> {
       widget.stopwatch.stop();
       score = PracticeScore(perfectRounds: perfect, wrongAttempts: wrong);
       result = MixMatchScoring.evaluate(score);
+      report = PracticeGameReport(
+          game: MixMatchGame.name,
+          chapter: widget.chapter,
+          mode: widget.mode,
+          gains: result,
+          result: score
+        );
+
+      PracticeQuestHandler.checkForQuests(report);
     }
   }
 

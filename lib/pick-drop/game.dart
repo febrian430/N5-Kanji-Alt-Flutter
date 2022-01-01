@@ -8,6 +8,7 @@ import 'package:kanji_memory_hint/components/result_button.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/database/repository.dart';
 import 'package:kanji_memory_hint/game_components/question_widget.dart';
+import 'package:kanji_memory_hint/quests/practice_quest.dart';
 import 'package:kanji_memory_hint/result_screen/practice.dart';
 import 'package:kanji_memory_hint/models/common.dart';
 import 'package:kanji_memory_hint/models/question_set.dart';
@@ -48,6 +49,7 @@ class _PickDropState extends State<PickDrop> {
   late int total;
   late PracticeScore score;
   late GameResult result;
+  late PracticeGameReport report;
 
   @override
   void initState() {
@@ -71,7 +73,17 @@ class _PickDropState extends State<PickDrop> {
           widget.stopwatch.stop();
           score = PracticeScore(perfectRounds: perfect, wrongAttempts: wrongAttempts);
           result = PickDropScoring.evaluate(score);
-          SQLRepo.userPoints.addExpAndPoints(result.pointsGained, result.expGained);
+          
+          report = PracticeGameReport(
+            game: PickDrop.name,
+            chapter: widget.chapter,
+            mode: widget.mode,
+            gains: result,
+            result: score
+          );
+
+          PracticeQuestHandler.checkForQuests(report);
+          SQLRepo.userPoints.addExp(result.expGained);
         }
         
       } else {

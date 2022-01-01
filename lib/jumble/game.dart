@@ -2,15 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/components/result_button.dart';
-import 'package:kanji_memory_hint/components/submit_button.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/game_components/question_widget.dart';
 import 'package:kanji_memory_hint/jumble/model.dart';
-import 'package:kanji_memory_hint/jumble/quiz_round.dart';
 import 'package:kanji_memory_hint/jumble/repo.dart';
 import 'package:kanji_memory_hint/models/common.dart';
 import 'package:kanji_memory_hint/map_indexed.dart';
 import 'package:kanji_memory_hint/foreach_indexed.dart';
+import 'package:kanji_memory_hint/quests/practice_quest.dart';
 import 'package:kanji_memory_hint/route_param.dart';
 import 'package:kanji_memory_hint/scoring/practice/jumble.dart';
 import 'package:kanji_memory_hint/scoring/model.dart';
@@ -45,8 +44,10 @@ class _JumbleGameState extends State<JumbleGame> {
 
   late int slotsToFill;
   late int numOfQuestions;
+
   late PracticeScore endScore;
   late GameResult result;
+  late PracticeGameReport report;
 
   var _questionSets;
 
@@ -74,6 +75,15 @@ class _JumbleGameState extends State<JumbleGame> {
         widget.stopwatch.stop();
         endScore = PracticeScore(perfectRounds: perfect, wrongAttempts: wrongCount);
         result = JumbleScoring.evaluate(endScore, slotsToFill);
+        report = PracticeGameReport(
+          game: JumbleGame.name,
+          chapter: widget.chapter,
+          mode: widget.mode,
+          gains: result,
+          result: endScore
+        );
+
+        PracticeQuestHandler.checkForQuests(report);
       }
     });
   }
