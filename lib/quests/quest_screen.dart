@@ -98,12 +98,6 @@ class _SelectBar extends StatelessWidget {
             }, 
             child: Text("Quiz")
           ),
-          TextButton(
-            onPressed: () {
-              onTap(3);
-            }, 
-            child: Text("Learn")
-          ),
         ],
       ),
     );
