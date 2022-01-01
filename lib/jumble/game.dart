@@ -12,7 +12,7 @@ import 'package:kanji_memory_hint/models/common.dart';
 import 'package:kanji_memory_hint/map_indexed.dart';
 import 'package:kanji_memory_hint/foreach_indexed.dart';
 import 'package:kanji_memory_hint/route_param.dart';
-import 'package:kanji_memory_hint/scoring/jumble.dart';
+import 'package:kanji_memory_hint/scoring/practice/jumble.dart';
 import 'package:kanji_memory_hint/scoring/model.dart';
 
 

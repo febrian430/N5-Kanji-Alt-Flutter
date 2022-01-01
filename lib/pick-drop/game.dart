@@ -13,9 +13,9 @@ import 'package:kanji_memory_hint/models/common.dart';
 import 'package:kanji_memory_hint/models/question_set.dart';
 import 'package:kanji_memory_hint/pick-drop/repo.dart';
 import 'package:kanji_memory_hint/route_param.dart';
-import 'package:kanji_memory_hint/scoring/jumble.dart';
+import 'package:kanji_memory_hint/scoring/practice/jumble.dart';
 import 'package:kanji_memory_hint/scoring/model.dart';
-import 'package:kanji_memory_hint/scoring/pick_drop.dart';
+import 'package:kanji_memory_hint/scoring/practice/pick_drop.dart';
 
 //TODO: wrong count, correct result page, 
 class PickDrop extends StatefulWidget {

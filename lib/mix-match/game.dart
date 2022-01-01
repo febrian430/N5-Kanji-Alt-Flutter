@@ -6,7 +6,7 @@ import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/mix-match/repo.dart';
 import 'package:kanji_memory_hint/models/common.dart';
 import 'package:kanji_memory_hint/route_param.dart';
-import 'package:kanji_memory_hint/scoring/mix_match.dart';
+import 'package:kanji_memory_hint/scoring/practice/mix_match.dart';
 import 'package:kanji_memory_hint/scoring/model.dart';
 
 typedef OnRoundOverCallback = Function(bool isCorrect, int correct, int wrongAttempts);
