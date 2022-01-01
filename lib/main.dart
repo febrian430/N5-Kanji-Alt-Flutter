@@ -63,6 +63,20 @@ class _MyAppState extends State<MyApp> {
         scaffoldBackgroundColor: Colors.white,
         primarySwatch: Colors.blue,
         backgroundColor: Colors.white,
+
+        // textButtonTheme: TextButtonThemeData(
+        //   style: TextButton.styleFrom(
+        //     backgroundColor: AppColors.primary,
+
+        //   )
+        // ),
+
+        textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(
+            backgroundColor: AppColors.primary,
+            side: const BorderSide(width: 2, color: Colors.black)
+          )
+        )
       ),
       initialRoute: '/',
       routes: { 
