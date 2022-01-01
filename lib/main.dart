@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/color_hex.dart';
 import 'package:kanji_memory_hint/components/buttons/select_button.dart';
+import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/database/repository.dart';
 import 'package:kanji_memory_hint/game.dart';
 import 'package:kanji_memory_hint/kanji-list/view.dart';
 import 'package:kanji_memory_hint/menu_screens/chapter_select.dart';
 import 'package:kanji_memory_hint/menu_screens/menu.dart';
 import 'package:kanji_memory_hint/menu_screens/mode_select.dart';
+import 'package:kanji_memory_hint/quests/practice_quest.dart';
 import 'package:kanji_memory_hint/result_screen/practice.dart';
 import 'package:kanji_memory_hint/menu_screens/start_select.dart';
 import 'package:kanji_memory_hint/multiple-choice/game.dart';
@@ -15,7 +17,7 @@ import 'package:kanji_memory_hint/kanji-list/kanji_menu.dart';
 import 'package:kanji_memory_hint/menu_screens/game_select.dart';
 import 'package:kanji_memory_hint/mix-match/game.dart';
 import 'package:kanji_memory_hint/pick-drop/game.dart';
-import 'package:kanji_memory_hint/quests/quest_screen.dart';
+import 'package:kanji_memory_hint/quests/screen/quest_screen.dart';
 import 'package:kanji_memory_hint/quiz/quiz.dart';
 import 'package:kanji_memory_hint/route_param.dart';
 import 'package:kanji_memory_hint/test.dart';
@@ -40,6 +42,7 @@ class _MyAppState extends State<MyApp> {
     super.initState();
 
     SQLRepo.open();
+    PracticeQuestHandler.supplyQuests();
   }
 
   @override
@@ -118,21 +121,15 @@ class _MyAppState extends State<MyApp> {
             final args = settings.arguments as PracticeGameArguments;
 
             return MaterialPageRoute(builder: (context) {
-                return PickDrop(mode: args.mode, chapter: args.chapter);
+                return PickDrop(mode: GAME_MODE.imageMeaning, chapter: args.chapter);
             });
           
           case Quiz.route:
             final args = settings.arguments as PracticeGameArguments;
 
             return MaterialPageRoute(builder: (context) {
-              return Quiz(mode: args.mode, chapter: args.chapter);
+              return Quiz(mode: GAME_MODE.imageMeaning, chapter: args.chapter);
             });
-          // case ResultScreen.route:
-          //   final args = settings.arguments as ResultParam;
-
-          //   return MaterialPageRoute(builder: (context) {
-          //       return JumbleGame(mode: args.mode, chapter: args.chapter);
-          //   });
           default:
             
         }
@@ -153,9 +150,7 @@ class Home extends StatelessWidget {
         children: [
           Center(
             child: SelectButton(
-              // Within the `Home` widget
               onTap: () {
-                // Navigate to the second screen using a named route.
                 Navigator.pushNamed(context, '/list');
                 
               },
@@ -164,9 +159,7 @@ class Home extends StatelessWidget {
           ),
           Center(
             child: SelectButton(
-              // Within the `Home` widget
               onTap: () {
-                // Navigate to the second screen using a named route.
                 Navigator.pushNamed(context, StartSelect.route);
                 
               },
@@ -175,9 +168,7 @@ class Home extends StatelessWidget {
           ),
           Center(
             child: SelectButton(
-              // Within the `Home` widget
               onTap: () {
-                // Navigate to the second screen using a named route.
                 Navigator.pushNamed(context, '/quests');
                 
               },
@@ -186,9 +177,7 @@ class Home extends StatelessWidget {
           ),
           Center(
             child: SelectButton(
-              // Within the `Home` widget
               onTap: () {
-                // Navigate to the second screen using a named route.
                 Navigator.pushNamed(context, '/test');
                 
               },
