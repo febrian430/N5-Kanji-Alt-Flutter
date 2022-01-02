@@ -108,8 +108,8 @@ class KanjiProvider {
     for (var kanji in list) {
       await create(kanji);
     }
-    var testKanji = await getByID(1);
-    addMastery(testKanji);
+    // var testKanji = await getByID(1);
+    // addMastery(testKanji);
   }
 
   Future create(Kanji kanji) async {
