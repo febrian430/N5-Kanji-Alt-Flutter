@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:kanji_memory_hint/database/example.dart';
+import 'package:kanji_memory_hint/database/repository.dart';
 import 'package:kanji_memory_hint/repository/kanji_list.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -37,7 +38,6 @@ class Kanji {
 
     onyomi = onyomiDb.split('/');
     kunyomi = kunyomiDb.split('/');
-  //  call db to populate example
   }
 
   Map<String, Object?> toMap() {
@@ -49,7 +49,6 @@ class Kanji {
       _columnKunyomi: kunyomi.join("/"),
     };
   }
-
 
   Kanji.fromJson(Map<String, dynamic> json)
       :
@@ -64,6 +63,14 @@ class Kanji {
     for (var _onyomi in json['onyomi'] as List) {
       onyomi.add(_onyomi as String);
     }
+  }
+
+  static List<Kanji> fromRows(List<Map<String, dynamic>> rows) {
+    return rows.map((row) => Kanji.fromMap(row)).toList();
+  }
+
+  Future populate() async {
+    examples = await SQLRepo.examples.examplesOf(id!);
   }
 }
 
@@ -119,9 +126,7 @@ class KanjiProvider {
           order by $_columnId
       ''');
 
-      _kanjis = rows.map((rawKanji) {
-        return Kanji.fromMap(rawKanji);
-      }).toList();
+      _kanjis = Kanji.fromRows(rows);
     }
   }
 

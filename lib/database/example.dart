@@ -69,6 +69,17 @@ class ExampleProvider {
       }
     }
   }
+
+  Future<List<Example>> examplesOf(int kanjiId) async {
+    var rows = await db.rawQuery('''
+      select e.*
+      from examples e join kanji_examples ke on e.id = ke.example_id
+      where ke.kanji_id = ?
+      ''',
+      [kanjiId]
+    );
+    return Example.fromRows(rows);
+  }
 }
 
 class Example {
@@ -82,6 +93,10 @@ class Example {
 
   bool hasImage;
   late List<int> exampleOf;
+
+  static List<Example> fromRows(List<Map<String, dynamic>> rows){
+    return rows.map((row) => Example.fromMap(row)).toList();
+  }
 
   Example.fromMap(Map<String, dynamic> map):
       id = map[_columnId] as int,
