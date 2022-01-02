@@ -22,7 +22,7 @@ Future<List<Example>> kanjiExamples() async {
   var data = jsonDecode(jsonData);
   // print(data);
   for (var element in (data as List)) {
-    print(element['example_of']);
+    // print(element['example_of']);
     _distincts.add(Example.fromJson(element));
   }
 

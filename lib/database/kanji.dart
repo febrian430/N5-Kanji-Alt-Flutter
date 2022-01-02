@@ -127,11 +127,15 @@ class KanjiProvider {
       ''');
 
       _kanjis = Kanji.fromRows(rows);
+      for (var kanji in _kanjis) { 
+        await kanji.populate();
+      }
     }
   }
 
   Future<List<Kanji>> all() async {
     await _read(forceRefresh: true);
+
     return _kanjis;
   }
 

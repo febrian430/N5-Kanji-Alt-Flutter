@@ -36,7 +36,7 @@ class ExampleProvider {
         $_columnMeaning text not null,
         $_columnSpelling text not null,
         $_columnImage text not null,
-        $_columnIsSingle text not null
+        $_columnIsSingle int not null
       )
     ''');
 
@@ -92,7 +92,7 @@ class Example {
   int chapter;
 
   bool hasImage;
-  late List<int> exampleOf;
+  List<int> exampleOf = [];
 
   static List<Example> fromRows(List<Map<String, dynamic>> rows){
     return rows.map((row) => Example.fromMap(row)).toList();
@@ -109,9 +109,12 @@ class Example {
 
       hasImage = (map[_columnImage] as String).isNotEmpty
   {
-    exampleOf = map[_columnExampleOf].toString()
+    exampleOf = map[_columnExampleOf] != null ? 
+        map[_columnExampleOf].toString()
         .split("#")
-        .map((e) => e as int).toList();
+        .map((e) => int.parse(e)).toList()
+        :
+        [];
   }
 
   Map<String, Object?> toMap() {
