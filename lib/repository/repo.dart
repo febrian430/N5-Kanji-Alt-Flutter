@@ -8,7 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:kanji_memory_hint/models/common.dart';
 
 const _minChapter = 1;
-const _maxChapter = 10;
+const _maxChapter = 8;
 
 class KanjiExample {
   KanjiExample({required this.id, required this.rune, required this.meaning, required this.spelling, required this.image, required this.chapter, required this.isSingle});
@@ -31,14 +31,14 @@ class KanjiExample {
         return spellDynamic.toString();
       }).toList();
 
-      
+
       if(json['is_single'] != null){
         isSingle = json['is_single'] as bool;
       } else {
         isSingle = false;
       }
 
-  }    
+  }
 }
 
 List<KanjiExample> _distincts = [];
