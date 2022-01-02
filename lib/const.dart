@@ -2,6 +2,8 @@
 
 import 'package:flutter/cupertino.dart';
 
+const MIGRATE=true;
+
 enum GAME_MODE { imageMeaning, reading }
 
 extension GAME_MODE_MAP on GAME_MODE {
