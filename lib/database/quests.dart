@@ -44,7 +44,7 @@ class QuestProvider {
   }
 
   FutureOr<bool> claimPractice(PracticeQuest quest) async {
-    quest.status = QUEST_STATUS.ONGOING;
+    quest.status = QUEST_STATUS.CLAIMED;
     return await db.update(_tablePracticeQuests, quest.toMap(), 
       where: '$_columnId = ?',
       whereArgs: [quest.id]
