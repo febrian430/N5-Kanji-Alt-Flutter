@@ -24,7 +24,7 @@ class MixMatchGame extends StatefulWidget {
   static const name = 'Mix and Match';
 
   Future<List<List<Question>>> _getQuestionSet(int chapter, GAME_MODE mode) async {
-    return makeOptions(8, chapter, mode);
+    return MixMatchQuestionMaker.makeOptions(8, chapter, mode);
   }
 
   @override

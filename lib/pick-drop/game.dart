@@ -27,7 +27,7 @@ class PickDrop extends StatefulWidget {
   final Stopwatch stopwatch = Stopwatch();
 
   Future<List<QuestionSet>> _getQuestionSets() {
-    return getPickDropQuestionSets(GameNumOfRounds, chapter, mode);
+    return PickDropQuestionMaker.makeQuestionSet(GameNumOfRounds, chapter, mode);
   }
 
   @override

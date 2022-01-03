@@ -2,7 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 
-const MIGRATE=true;
+const MIGRATE=false;
 
 enum GAME_MODE { imageMeaning, reading }
 
@@ -59,5 +59,6 @@ const JumbleRoute = '/game/pick-drop';
 const PickDropRoute = '/game/pick-drop';
 
 const GameNumOfRounds = 3;
+const CHAPTERS = 3;
 
 const Widget EmptyWidget = Visibility(child: Text(""), visible: false,);

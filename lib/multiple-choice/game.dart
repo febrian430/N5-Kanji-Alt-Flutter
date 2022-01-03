@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/components/loading_screen.dart';
-import 'package:kanji_memory_hint/components/result_button.dart';
 import 'package:kanji_memory_hint/components/submit_button.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/game_components/question_widget.dart';
 import 'package:kanji_memory_hint/models/common.dart';
 import 'package:kanji_memory_hint/models/question_set.dart';
 import 'package:kanji_memory_hint/multiple-choice/repo.dart';
-import 'package:kanji_memory_hint/route_param.dart';
 
 typedef OnOptionSelectCallback = Function(Option option);
 typedef RoundOverCallback = Function(bool isCorrect, int index, bool? wasCorrect); 
@@ -25,7 +23,7 @@ class MultipleChoiceGame extends StatefulWidget {
   final Stopwatch stopwatch = Stopwatch();
 
   Future<List<QuestionSet>> _getQuestionSet(int chapter, GAME_MODE mode) async {
-     return multipleChoiceQuestionSet(15, chapter, mode, false);
+     return MultipleChoiceQuestionMaker.makeQuestionSet(GameNumOfRounds, chapter, mode, false);
   }
 
   @override

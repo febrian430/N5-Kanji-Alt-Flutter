@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:kanji_memory_hint/repository/kanji_list.dart';
-import 'package:kanji_memory_hint/repository/repo.dart';
+import 'package:kanji_memory_hint/database/example.dart';
+import 'package:kanji_memory_hint/database/kanji.dart';
 
 class KanjiScreen extends StatelessWidget {
   @override
@@ -68,7 +68,7 @@ class KanjiScreen extends StatelessWidget {
                 child: GridView.count(
                   crossAxisCount: 2,
                   children: param.examples.map((example) {
-                    return Example(example: example);
+                    return ExampleWidget(example: example);
                   }).toList(),
                 ),
               )
@@ -80,10 +80,10 @@ class KanjiScreen extends StatelessWidget {
   }
 }
 
-class Example extends StatelessWidget {
-  Example({Key? key, required this.example, this.height, this.width}) : super(key: key);
+class ExampleWidget extends StatelessWidget {
+  ExampleWidget({Key? key, required this.example, this.height, this.width}) : super(key: key);
 
-  final KanjiExample example;
+  final Example example;
   double? height;
   double? width;
 
@@ -96,7 +96,7 @@ class Example extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(example.rune), 
+            Text(example.rune),
             Text(example.meaning), 
             Text(example.spelling.join()), 
           ],
