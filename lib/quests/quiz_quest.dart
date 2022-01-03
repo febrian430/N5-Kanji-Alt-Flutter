@@ -26,7 +26,7 @@ class QuizQuestHandler {
         await SQLRepo.quests.create(element);
       }
     }
-    // _ongoingQuests = await SQLRepo.quests.getOnGoingPractice();
+    _ongoingQuests = await SQLRepo.quests.getOnGoingQuiz();
   }
 
   static int checkForQuests(QuizReport report) {
@@ -39,8 +39,9 @@ class QuizQuestHandler {
 
     return affected;
   }
-  //
-  // static Future<List<PracticeQuest>> quests() async {
-  //   return onGoingQuests;
-  // }
+
+  static Future<List<QuizQuest>> quests() async {
+    _ongoingQuests = await SQLRepo.quests.getOnGoingQuiz();
+    return _ongoingQuests;
+  }
 }

@@ -184,7 +184,7 @@ class PracticeQuest extends Quest {
 }
 
 class QuizQuest extends Quest{
-
+  final String game = "Quiz";
   QuizQuest({required int chapter, required int requiresPerfect, required int total, required int goldReward}):
         super(chapter: chapter, goldReward: goldReward, requiresPerfect: requiresPerfect, total: total);
 
@@ -193,6 +193,7 @@ class QuizQuest extends Quest{
   @override
   Map<String, Object?> toMap() {
     return <String, Object?> {
+      _columnGame: game,
       _columnChapter: chapter,
       _columnIsPerfect: requiresPerfect,
       _columnGoldReward: goldReward,

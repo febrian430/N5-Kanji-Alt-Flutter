@@ -1,7 +1,7 @@
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/database/quests.dart';
 import 'package:kanji_memory_hint/database/repository.dart';
-import 'package:kanji_memory_hint/mix-match/game.dart';
+import 'package:kanji_memory_hint/jumble/game.dart';
 import 'package:kanji_memory_hint/pick-drop/game.dart';
 import 'package:kanji_memory_hint/scoring/model.dart';
 
@@ -11,12 +11,12 @@ class PracticeQuestHandler {
     if(MIGRATE) {
       onGoingQuests = [
         PracticeQuest(
-            game: MixMatchGame.name,
-            mode: GAME_MODE.reading,
+            game: JumbleGame.name,
+            mode: null,
             chapter: 1,
             requiresPerfect: 0,
             total: 5,
-            goldReward: 5
+            goldReward: 25
         ),
         PracticeQuest(
             game: PickDrop.name,
@@ -28,7 +28,7 @@ class PracticeQuestHandler {
         )
       ];
       for (var element in onGoingQuests) {
-        await SQLRepo.quests.createPractice(element);
+        await SQLRepo.quests.create(element);
       }
     }
     onGoingQuests = await SQLRepo.quests.getOnGoingPractice();

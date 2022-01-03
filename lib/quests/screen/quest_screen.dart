@@ -4,6 +4,7 @@ import 'package:flutter/rendering.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/database/quests.dart';
 import 'package:kanji_memory_hint/quests/practice_quest.dart';
+import 'package:kanji_memory_hint/quests/quiz_quest.dart';
 
 class QuestScreen extends StatefulWidget {
   
@@ -134,6 +135,19 @@ class _QuestList extends StatelessWidget {
     );
   }
 
+  Widget _quizList() {
+    return FutureBuilder(
+      future: QuizQuestHandler.quests(),
+      builder: (BuildContext context, AsyncSnapshot<List<QuizQuest>> snapshot){
+        if(snapshot.hasData) {
+          return _QuizQuestList(quests: snapshot.data!);
+        }else {
+          return const Text("Loading...");
+        }
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -151,7 +165,7 @@ class _QuestList extends StatelessWidget {
         children: [
           _mastery(),
           _practiceList(),
-          Text("Quiz"),
+          _quizList(),
         ],
       ),
     );
@@ -169,7 +183,7 @@ class _PracticeQuestList extends StatelessWidget {
         height: 150,
         child: Row( 
           children: [
-            Flexible(flex: 8, child: Text('Do ${quest.game} - ${quest.mode.toString()} mode with topic ${quest.chapter}')),
+            Flexible(flex: 8, child: Text('Do ${quest.game} ${quest.mode == null ? '' :  quest.mode!.name + ' mode'}  with topic ${quest.chapter} ${quest.requiresPerfect == 1 ? "perfectly" : ""}')),
             Flexible(
               flex: 2, 
               child: Column(
@@ -202,6 +216,55 @@ class _PracticeQuestList extends StatelessWidget {
       itemBuilder: (BuildContext context, int index) {
         return questWidget(quests[index]);
       }
+    );
+
+  }
+}
+
+class _QuizQuestList extends StatelessWidget {
+
+  final List<QuizQuest> quests;
+
+  const _QuizQuestList({Key? key, required this.quests}) : super(key: key);
+
+  Widget questWidget(QuizQuest quest) {
+    return SizedBox(
+        height: 150,
+        child: Row(
+            children: [
+              Flexible(flex: 8, child: Text('Do ${quest.game} with topic ${quest.chapter}')),
+              Flexible(
+                  flex: 2,
+                  child: Column(
+                    children: [
+                      Visibility(
+                          visible: quest.count >= quest.total,
+                          child: Flexible(
+                              flex: 6,
+                              child: TextButton(
+                                child: Center(child: quest.status == QUEST_STATUS.CLAIMED ? Text("Claimed") : Text("Claim")),
+                                onPressed: () {
+                                  quest.claim();
+                                },
+                              )
+                          )
+                      ),
+                      Flexible(flex: 4, child: Center(child: Text('${quest.count} / ${quest.total}'),))
+                    ],
+                  )
+              )
+            ]
+        )
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+        itemCount: quests.length,
+        itemBuilder: (BuildContext context, int index) {
+          return questWidget(quests[index]);
+        }
     );
 
   }
