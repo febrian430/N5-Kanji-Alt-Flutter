@@ -12,14 +12,15 @@ import 'package:kanji_memory_hint/map_indexed.dart';
 const SENTINEL = const Option(value: "-1", key: "-1");
 
 class JumbleQuizRound extends StatefulWidget {
-  const JumbleQuizRound({Key? key, required this.mode, required this.question, required this.options, required this.onComplete, required this.isOver, required this.onSubmit}) : super(key: key);
+  const JumbleQuizRound({Key? key, required this.mode, required this.question, required this.options, required this.onComplete, required this.isOver, required this.onSubmit, required this.index}) : super(key: key);
 
+  final int index;
   final JumbleQuestion question;
   final List<Option> options;
   final GAME_MODE mode;
   final bool isOver;
   final Function(bool isCorrect, int misses, bool initial) onComplete;
-  final Function(bool isCorrect, int misses) onSubmit;
+  final Function(bool isCorrect, int misses, int index) onSubmit;
 
   @override
   State<StatefulWidget> createState() => _JumbleQuizRoundState(answerLength: question.key.length);
@@ -106,12 +107,10 @@ class _JumbleQuizRoundState extends State<JumbleQuizRound> with AutomaticKeepAli
     WidgetsBinding.instance?.addPostFrameCallback((_) {
       if(widget.isOver && initialRerender){
         var diff = _differentIndexes();
-        widget.onSubmit(diff.isEmpty, diff.length);
+        widget.onSubmit(diff.isEmpty, diff.length, widget.index);
         initialRerender = false;
       }
     });
-
-    
 
     return Center(
       child: Container(
@@ -125,6 +124,7 @@ class _JumbleQuizRoundState extends State<JumbleQuizRound> with AutomaticKeepAli
         child: Column(
           children: [
             QuestionWidget(mode: widget.mode, questionStr: widget.question.value),
+            Text('Answer: ${widget.question.key.join(" ")}'),
             SizedBox(height: 10),
             //selected box
             Container(

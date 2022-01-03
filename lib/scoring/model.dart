@@ -35,7 +35,7 @@ class QuizScore {
   final int correct;
   final int miss;
 
-  final List<int> correctlyAnsweredKanji;
+  final List<List<int>> correctlyAnsweredKanji;
 
   QuizScore({required this.correct, required this.miss, required this.correctlyAnsweredKanji});
 }

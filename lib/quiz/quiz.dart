@@ -4,6 +4,7 @@ import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/components/submit_button.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/countdown.dart';
+import 'package:kanji_memory_hint/database/repository.dart';
 import 'package:kanji_memory_hint/jumble/game.dart';
 import 'package:kanji_memory_hint/jumble/model.dart';
 import 'package:kanji_memory_hint/jumble/quiz_round.dart';
@@ -15,6 +16,7 @@ import 'package:kanji_memory_hint/quiz/next_button.dart';
 import 'package:kanji_memory_hint/quiz/quiz_result.dart';
 import 'package:kanji_memory_hint/quiz/repo.dart';
 import 'package:kanji_memory_hint/map_indexed.dart';
+import 'package:kanji_memory_hint/scoring/model.dart';
 
 
 class Quiz extends StatefulWidget {
@@ -26,7 +28,7 @@ class Quiz extends StatefulWidget {
   static const name = "Quiz";
 
   Future<List> _getQuizQuestionSet() async {
-    return getQuizQuestions(3, chapter, mode);
+    return QuizQuestionMaker.makeQuestionSet(3, chapter, mode);
   }
 
   @override
@@ -50,12 +52,15 @@ class _QuizState extends State<Quiz> {
 
   int mulchoiceCorrect = 0;
   int mulchoiceWrong = 0;
-
+  
   int jumbleCorrect = 0;
   int jumbleMisses = 0;
-
+  
   int gameIndex = 0;
   bool isOver = false;
+
+  QuizScore multipleChoiceScore = QuizScore(correct: 0, miss: 0, correctlyAnsweredKanji: []);
+  QuizScore jumbleScore = QuizScore(correct: 0, miss: 0, correctlyAnsweredKanji: []); 
 
   late final Countdown _countdown;
 
@@ -81,34 +86,16 @@ class _QuizState extends State<Quiz> {
     });
   }
 
-  // Widget _buildNextButton(BuildContext context) {
-  //   if()
-  // }
-
-  void _onMCCountdownOver(int correct, int wrong, int score) {
+  void _handleMultipleChoiceSubmit(int correct, int wrong, List<List<int>> correctKanjis) {
     setState(() {
+      multipleChoiceScore = QuizScore(
+        correct: correct, 
+        miss: wrong, 
+        correctlyAnsweredKanji: correctKanjis
+      );
+
       mulchoiceCorrect = correct;
       mulchoiceWrong = wrong;
-      score += score;
-      gameIndex = 2;
-    });
-  }
-
-  void _onJumbleCountdownOver(int correct, int misses, int score) {
-    setState(() {
-      jumbleCorrect = correct;
-      jumbleMisses = misses;
-      score += score;
-      isOver = true;
-      gameIndex = 2;
-    });
-  }
-
-  void _handleMultipleChoiceSubmit(int correct, int wrong, int score) {
-    setState(() {
-      mulchoiceCorrect = correct;
-      mulchoiceWrong = wrong;
-      score += score;
 
       if(_countdown.isDone) {
         gameIndex = 2;
@@ -118,11 +105,16 @@ class _QuizState extends State<Quiz> {
     });
   }
 
-  void _handleJumbleSubmit(int correct, int misses, int score) {
+  void _handleJumbleSubmit(int correct, int misses, List<List<int>> correctKanjis) {
     setState(() {
+      jumbleScore = QuizScore(
+        correct: correct, 
+        miss: misses, 
+        correctlyAnsweredKanji: correctKanjis
+      );
+
       jumbleCorrect = correct;
       jumbleMisses = misses;
-      score += score;
       isOver = true;
       gameIndex = 2;
     });
@@ -147,8 +139,8 @@ class _QuizState extends State<Quiz> {
   }
   
   Widget _build(BuildContext context, int gameIndex, List items) {
-    List<QuestionSet> mcQuestionSets = items[0];
-    List<JumbleQuestionSet> jumbleQuestionSets = items[1];
+    List<QuizQuestionSet> mcQuestionSets = items[0];
+    List<JumbleQuizQuestionSet> jumbleQuestionSets = items[1];
 
 
     return Column(
@@ -183,13 +175,11 @@ class _QuizState extends State<Quiz> {
               ),
               QuizResult(
                   multipleChoice: QuizGameParam(
-                    correct: mulchoiceCorrect, 
-                    wrong: mulchoiceWrong, 
+                    result: multipleChoiceScore, 
                     goHere: _goMultipleChoice
                   ), 
                   jumble: QuizGameParam(
-                    correct: jumbleCorrect, 
-                    wrong: jumbleMisses, 
+                    result: jumbleScore,
                     goHere: _goJumble
                   )
               )
@@ -264,8 +254,8 @@ class _MultipleChoiceGame extends StatefulWidget {
   const _MultipleChoiceGame({Key? key, required this.mode, required this.questionSets, required this.onSubmit, this.quizOver = false}) : super(key: key);
 
   final GAME_MODE mode;
-  final List<QuestionSet> questionSets;
-  final Function(int correct, int wrong, int score) onSubmit;
+  final List<QuizQuestionSet> questionSets;
+  final Function(int correct, int wrong, List<List<int>> correctKanjis) onSubmit;
   final bool quizOver;
 
   @override
@@ -276,6 +266,7 @@ class _MultipleChoiceGameState extends State<_MultipleChoiceGame> {
     int correct = 0;
     int wrong = 0;
     int solved = 0;
+    List<List<int>> correctKanjis = [];
 
     bool initialRerender = true;
     late int totalQuestion = widget.questionSets.length; 
@@ -300,7 +291,7 @@ class _MultipleChoiceGameState extends State<_MultipleChoiceGame> {
       });
   }
 
-  Widget _buildMultipleChoiceRound(BuildContext context, int index, QuestionSet set) {
+  Widget _buildMultipleChoiceRound(BuildContext context, int index, QuizQuestionSet set) {
     final unanswered = totalQuestion - solved;
     return Container(
       decoration: BoxDecoration(
@@ -322,7 +313,7 @@ class _MultipleChoiceGameState extends State<_MultipleChoiceGame> {
 
           NextQuizRoundButton(
             onTap: () {
-              widget.onSubmit(correct, wrong+unanswered, correct*100); //TODO: fix score calc
+              widget.onSubmit(correct, wrong+unanswered, []); //TODO: fix score calc
             }, 
             visible: !widget.quizOver && solved == totalQuestion
           )
@@ -331,7 +322,7 @@ class _MultipleChoiceGameState extends State<_MultipleChoiceGame> {
     );
   }
 
-  Widget _build(BuildContext context, List<QuestionSet> items) {
+  Widget _build(BuildContext context, List<QuizQuestionSet> items) {
     return Column(
       children: [
         Flexible(
@@ -351,7 +342,7 @@ class _MultipleChoiceGameState extends State<_MultipleChoiceGame> {
           ),
         ),
       ]
-      );
+    );
   }
 
   @override
@@ -359,7 +350,7 @@ class _MultipleChoiceGameState extends State<_MultipleChoiceGame> {
     WidgetsBinding.instance?.addPostFrameCallback((_) {
       if(widget.quizOver && initialRerender) {
         final unanswered = totalQuestion - solved;
-        widget.onSubmit(correct, wrong+unanswered, correct*100);
+        widget.onSubmit(correct, wrong+unanswered, []);
         // setState(() {
           initialRerender = false;
         // });
@@ -372,9 +363,9 @@ class _MultipleChoiceGameState extends State<_MultipleChoiceGame> {
 class _JumbleGame extends StatefulWidget {
 
   final GAME_MODE mode;
-  final List<JumbleQuestionSet> questionSets;
+  final List<JumbleQuizQuestionSet> questionSets;
   final bool quizOver;
-  final Function(int correct, int misses, int score) onSubmit;
+  final Function(int correct, int misses, List<List<int>> score) onSubmit;
 
   const _JumbleGame({Key? key, required this.mode, required this.questionSets, required this.onSubmit, this.quizOver = false}) : super(key: key);
   
@@ -390,6 +381,7 @@ class _JumbleGameState extends State<_JumbleGame> {
   bool initial = true;
   bool initialBuild = true;
   int loaded = 0;
+  List<List<int>> correctKanjis = [];
 
   late List<int> lengthOfRound = []; 
   late bool isGameOver = widget.quizOver;
@@ -397,7 +389,7 @@ class _JumbleGameState extends State<_JumbleGame> {
 
   
 
-  Widget _buildRound(BuildContext context, int index, JumbleQuestionSet set) {
+  Widget _buildRound(BuildContext context, int index, JumbleQuizQuestionSet set) {
     return Container(
       decoration: BoxDecoration(
         border: Border.all(
@@ -407,6 +399,7 @@ class _JumbleGameState extends State<_JumbleGame> {
       child: Column(
         children: [
           JumbleQuizRound(
+            index: index,
             mode: widget.mode, 
             question: set.question, 
             options: set.options, 
@@ -418,10 +411,11 @@ class _JumbleGameState extends State<_JumbleGame> {
                 }
               });
             },
-            onSubmit: (bool isCorrect, int miss) {
+            onSubmit: (bool isCorrect, int miss, int index) {
               setState(() {
                 if(isCorrect) {
                   correct++;
+                  correctKanjis.add(widget.questionSets[index].fromKanji);
                 }
                 misses += miss;
                 loaded++; 
@@ -443,29 +437,7 @@ class _JumbleGameState extends State<_JumbleGame> {
     );
   }
 
-  // Widget _build(BuildContext context, List<JumbleQuestionSet> items) {
-  //   return Column(children: [
-      
-  //     Flexible(
-  //       flex: 9,
-  //       child: PageView.builder(
-  //             // store this controller in a State to save the carousel scroll position
-  //         controller: PageController(
-  //           viewportFraction: 1,
-  //           initialPage: 0,
-  //         ),
-          
-  //         itemCount: items.length,
-  //         itemBuilder: (BuildContext context, int index) {
-  //           return _buildRound(context, index, items[index]);
-  //         },
-  //       )
-  //     ),
-  //   ]
-  //   );
-  // }
-
-  Widget _build(BuildContext context, List<JumbleQuestionSet> items) {
+  Widget _build(BuildContext context, List<JumbleQuizQuestionSet> items) {
     return Column(children: [
       
       Flexible(
@@ -512,13 +484,13 @@ class _JumbleGameState extends State<_JumbleGame> {
         //
 
         if (answeredQuestion == totalQuestion && loaded == totalQuestion){
-          widget.onSubmit(correct, misses, 0);
+          widget.onSubmit(correct, misses, correctKanjis);
           setState(() {
             initial = false;
           });
           //handle if jumble questoin not even reached
         } else if (answeredQuestion < totalQuestion && loaded == answeredQuestion) {
-          widget.onSubmit(correct, misses+unansweredCount, 0);
+          widget.onSubmit(correct, misses+unansweredCount, correctKanjis);
           setState(() {
             initial = false;
           });

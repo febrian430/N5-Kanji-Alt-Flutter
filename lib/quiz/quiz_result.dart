@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kanji_memory_hint/scoring/model.dart';
 
 class QuizGameParam {
-  final int correct;
-  final int wrong;
+  final QuizScore result;
   final Function() goHere;
 
-  QuizGameParam({required this.correct, required this.wrong, required this.goHere});
+  QuizGameParam({required this.result, required this.goHere});
 }
 
 class QuizResult extends StatelessWidget {
@@ -39,13 +39,11 @@ class QuizResult extends StatelessWidget {
                   _header(),
                   _GameResult(
                     game: "Multiple Choice", 
-                    correct: multipleChoice.correct, 
-                    wrong: multipleChoice.wrong
+                    result: multipleChoice.result,
                   ),
                   _GameResult(
                     game: "Jumble", 
-                    correct: jumble.correct, 
-                    wrong: jumble.wrong
+                    result: jumble.result
                   ),
                 ],
               ),
@@ -66,11 +64,10 @@ class QuizResult extends StatelessWidget {
 }
 
 class _GameResult extends StatelessWidget {
-  const _GameResult({Key? key, required this.game, required this.correct, required this.wrong}) : super(key: key);
+  const _GameResult({Key? key, required this.game, required this.result}) : super(key: key);
 
   final String game;
-  final int correct;
-  final int wrong;
+  final QuizScore result;
 
   Widget _header() {
     return Text(game);
@@ -80,8 +77,9 @@ class _GameResult extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          _Item(title: "Correct", value: correct.toString()),
-          _Item(title: "Miss", value: wrong.toString())
+          _Item(title: "Correct", value: result.correct.toString()),
+          _Item(title: "Miss", value: result.miss.toString()),
+          _Item(title: "Answered Kanji", value: result.correctlyAnsweredKanji.join(", "),)
         ],
       ),
     );
