@@ -7,3 +7,11 @@ class QuestionSet {
   final Question question;
   final List<Option> options;
 }
+
+class QuizQuestionSet {
+  const QuizQuestionSet({required this.question, required this.options, required this.fromKanji});
+
+  final Question question;
+  final List<Option> options;
+  final List<int> fromKanji;
+}

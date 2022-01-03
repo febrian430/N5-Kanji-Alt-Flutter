@@ -3,12 +3,29 @@ import 'package:kanji_memory_hint/database/example.dart';
 import 'package:kanji_memory_hint/database/repository.dart';
 import 'package:kanji_memory_hint/models/common.dart';
 import 'package:kanji_memory_hint/models/question_set.dart';
+import 'package:kanji_memory_hint/map_indexed.dart';
+
 
 class MultipleChoiceQuestionMaker {
-  static Future<List<QuestionSet>> makeQuestionSet(int n, int chapter, GAME_MODE mode, bool quiz) async {
-    var kanjis = await SQLRepo.gameQuestions.byChapterForQuestion(chapter, n, 1/2, quiz);
+  static Future<List<QuestionSet>> makeQuestionSet(int n, int chapter, GAME_MODE mode) async {
+    var kanjis = await SQLRepo.gameQuestions.byChapterForQuestion(chapter, n, 1/2, false);
 
     return _makeQuestionSetsFrom(kanjis, mode);
+  }
+
+  static Future<List<QuizQuestionSet>> makeQuizQuestionSet(int n, int chapter, GAME_MODE mode) async {
+    var examples = await SQLRepo.gameQuestions.byChapterForQuestion(chapter, n, 1/2, true);
+
+    List<List<int>> fromKanjiIds = examples.map((e) => e.exampleOf).toList();
+
+    var basicQuestionSets = await _makeQuestionSetsFrom(examples, mode);
+    return basicQuestionSets.mapIndexed((basic, i) {
+      return QuizQuestionSet(
+        question: basic.question,
+        options: basic.options,
+        fromKanji: fromKanjiIds[i]
+      );
+    }).toList();
   }
 
   static Future<List<QuestionSet>> _makeQuestionSetsFrom(List<Example> kanjis, GAME_MODE mode) async {

@@ -27,7 +27,7 @@ class JumbleGame extends StatefulWidget {
   final Stopwatch stopwatch = Stopwatch();
 
   Future<List<JumbleQuestionSet>> _getQuestionSet() async {
-    return JumbleQuestionMaker.makeQuestionSet(GameNumOfRounds, chapter, mode, false);
+    return JumbleQuestionMaker.makeQuestionSet(GameNumOfRounds, chapter, mode);
   }
 
   @override
@@ -88,14 +88,14 @@ class _JumbleGameState extends State<JumbleGame> {
     });
   }
 
-  void _onGameSubmit(bool isCorrect, int misses) {
-    setState(() {
-      wrongCount += misses;
-      if(isCorrect) {
-        score++;
-      }
-    });
-  }
+  // void _onGameSubmit(bool isCorrect, int misses) {
+  //   setState(() {
+  //     wrongCount += misses;
+  //     if(isCorrect) {
+  //       score++;
+  //     }
+  //   });
+  // }
 
   void _slideToNextQuestion() {
     Future.delayed(const Duration(seconds: 1), () {

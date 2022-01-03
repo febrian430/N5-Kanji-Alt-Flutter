@@ -14,3 +14,12 @@ class JumbleQuestionSet {
   final JumbleQuestion question;
   final List<Option> options;
 }
+
+
+class JumbleQuizQuestionSet {
+  JumbleQuizQuestionSet({required this.question, required this.options, required this.fromKanji});
+
+  final JumbleQuestion question;
+  final List<Option> options;
+  final List<int> fromKanji;
+}

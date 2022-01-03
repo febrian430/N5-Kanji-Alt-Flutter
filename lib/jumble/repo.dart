@@ -12,10 +12,25 @@ import 'package:kanji_memory_hint/map_indexed.dart';
 const TOTAL_OPTIONS = 8;
 
 class JumbleQuestionMaker {
-  static Future<List<JumbleQuestionSet>> makeQuestionSet(int n, int chapter, GAME_MODE mode, bool quiz) async {
-    var kanjis = await SQLRepo.gameQuestions.byChapterForQuestion(chapter, n, 1/2, quiz);
+  static Future<List<JumbleQuestionSet>> makeQuestionSet(int n, int chapter, GAME_MODE mode) async {
+    var examples = await SQLRepo.gameQuestions.byChapterForQuestion(chapter, n, 1/2, false);
 
-    return _build(kanjis, mode);
+    return _build(examples, mode);
+  }
+
+  static Future<List<JumbleQuizQuestionSet>> makeQuizQuestionSet(int n, int chapter, GAME_MODE mode) async {
+    var examples = await SQLRepo.gameQuestions.byChapterForQuestion(chapter, n, 1/2, false);
+    List<List<int>> fromKanji = examples.map((e) => e.exampleOf).toList();
+
+    var basicQuestionSet = await _build(examples, mode);
+
+    return basicQuestionSet.mapIndexed((basic, i) {
+      return JumbleQuizQuestionSet(
+          question: basic.question,
+          options: basic.options,
+          fromKanji: fromKanji[i]
+      );
+    }).toList();
   }
 
 

@@ -4,8 +4,13 @@ import 'package:kanji_memory_hint/jumble/repo.dart';
 import 'package:kanji_memory_hint/models/question_set.dart';
 import 'package:kanji_memory_hint/multiple-choice/repo.dart';
 
-Future<List> getQuizQuestions(int n, int chapter, GAME_MODE mode) async {
-  List<QuestionSet> mulchoice = await MultipleChoiceQuestionMaker.makeQuestionSet(n, chapter, mode, true);
-  List<JumbleQuestionSet> jumbleQset = await JumbleQuestionMaker.makeQuestionSet(n, chapter, mode, true);
-  return [mulchoice, jumbleQset];
+class QuizQuestionMaker {
+
+  static Future<List> makeQuestionSet(int n, int chapter, GAME_MODE mode) async {
+    List<QuizQuestionSet> mulchoice = await MultipleChoiceQuestionMaker
+        .makeQuizQuestionSet(n, chapter, mode);
+    List<JumbleQuizQuestionSet> jumbleQset = await JumbleQuestionMaker
+        .makeQuizQuestionSet(n, chapter, mode);
+    return [mulchoice, jumbleQset];
+  }
 }

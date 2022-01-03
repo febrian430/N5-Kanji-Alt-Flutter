@@ -23,3 +23,19 @@ class PracticeScore {
   // final Stopwatch
 }
 
+class QuizReport {
+  final QuizScore multiple;
+  final QuizScore jumble;
+  final GameResult gains;
+
+  QuizReport({required this.multiple, required this.jumble, required this.gains});
+}
+
+class QuizScore {
+  final int correct;
+  final int miss;
+
+  final List<int> correctlyAnsweredKanji;
+
+  QuizScore({required this.correct, required this.miss, required this.correctlyAnsweredKanji});
+}

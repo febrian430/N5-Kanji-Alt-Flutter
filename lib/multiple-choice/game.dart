@@ -23,7 +23,7 @@ class MultipleChoiceGame extends StatefulWidget {
   final Stopwatch stopwatch = Stopwatch();
 
   Future<List<QuestionSet>> _getQuestionSet(int chapter, GAME_MODE mode) async {
-     return MultipleChoiceQuestionMaker.makeQuestionSet(GameNumOfRounds, chapter, mode, false);
+     return MultipleChoiceQuestionMaker.makeQuestionSet(GameNumOfRounds, chapter, mode);
   }
 
   @override
