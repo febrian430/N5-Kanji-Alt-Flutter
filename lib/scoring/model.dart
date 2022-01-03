@@ -24,11 +24,13 @@ class PracticeScore {
 }
 
 class QuizReport {
+  final int chapter;
+
   final QuizScore multiple;
   final QuizScore jumble;
   final GameResult gains;
 
-  QuizReport({required this.multiple, required this.jumble, required this.gains});
+  QuizReport({required this.chapter, required this.multiple, required this.jumble, required this.gains});
 }
 
 class QuizScore {

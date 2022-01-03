@@ -9,6 +9,7 @@ import 'package:kanji_memory_hint/jumble/quiz_round.dart';
 import 'package:kanji_memory_hint/models/question_set.dart';
 import 'package:kanji_memory_hint/multiple-choice/game.dart';
 import 'package:kanji_memory_hint/quests/mastery.dart';
+import 'package:kanji_memory_hint/quests/quiz_quest.dart';
 import 'package:kanji_memory_hint/quiz/footer_nav.dart';
 import 'package:kanji_memory_hint/quiz/next_button.dart';
 import 'package:kanji_memory_hint/quiz/quiz_result.dart';
@@ -80,11 +81,13 @@ class _QuizState extends State<Quiz> {
   void postQuizHook() {
     report = QuizReport(
       multiple: multipleChoiceScore, 
-      jumble: jumbleScore, 
+      jumble: jumbleScore,
+      chapter: widget.chapter,
       gains: GameResult(expGained: 100, pointsGained: 100)
     );
 
     MasteryHandler.addMasteryFromQuiz(report);
+    QuizQuestHandler.checkForQuests(report);
     initial = false;
   }
 

@@ -5,6 +5,7 @@ import 'package:kanji_memory_hint/database/kanji.dart';
 import 'package:kanji_memory_hint/database/quests.dart';
 import 'package:kanji_memory_hint/database/user_point.dart';
 import 'package:kanji_memory_hint/quests/practice_quest.dart';
+import 'package:kanji_memory_hint/quests/quiz_quest.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
@@ -46,7 +47,7 @@ class SQLRepo {
     gameQuestions = GameQuestionProvider(kanjis, examples);
 
     PracticeQuestHandler.supplyQuests();
-
+    QuizQuestHandler.supplyQuests();
     if(MIGRATE){
       kanjis.seed();
       examples.seed();

@@ -45,7 +45,7 @@ class PracticeQuestHandler {
     return affected;
   }
 
-static Future<List<PracticeQuest>> quests() async {
+  static Future<List<PracticeQuest>> quests() async {
     return onGoingQuests;
   }
 }

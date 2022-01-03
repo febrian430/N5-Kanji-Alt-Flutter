@@ -26,7 +26,7 @@ extension GAME_MODE_MAP on GAME_MODE {
   }
 }
 
-enum QUEST_STATUS { ONGOING, CLAIMED }
+enum QUEST_STATUS { ONGOING, COMPLETE, CLAIMED }
 
 extension QUEST_STATUS_MAP on QUEST_STATUS {
   String get name {
@@ -35,6 +35,8 @@ extension QUEST_STATUS_MAP on QUEST_STATUS {
         return "ONGOING";
       case QUEST_STATUS.CLAIMED:
         return "CLAIMED";
+      case QUEST_STATUS.COMPLETE:
+        return "COMPLETE";
     }
   }
 
@@ -44,6 +46,8 @@ extension QUEST_STATUS_MAP on QUEST_STATUS {
         return QUEST_STATUS.ONGOING;
       case "CLAIMED":
         return QUEST_STATUS.CLAIMED;
+      case "COMPLETE":
+        return QUEST_STATUS.COMPLETE;
     }
   }
 }
