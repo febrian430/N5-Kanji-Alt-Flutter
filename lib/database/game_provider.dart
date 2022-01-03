@@ -35,6 +35,22 @@ class GameQuestionProvider {
     return _exampleProvider.byChapter(chapter, single: single, hasImage: hasImage);
   }
 
+  Future<List<String>> distinctSyllables(int chapter) async {
+    Set<String> seen = <String>{};
+    List<String> distinct = [];
+    var examples = await byChapter(chapter);
+
+    for (var example in examples) {
+      for(var spelling in example.spelling){
+        if(!seen.contains(spelling)) {
+          distinct.add(spelling);
+          seen.add(spelling);
+        }
+      }
+    }
+    return distinct;
+  }
+
   Future<List<Example>> random({int n = 10, int startChapter = 1, int endChapter = GameNumOfRounds}) async {
     List<Example> kanjis = [];
     startChapter = max(startChapter, 1);
