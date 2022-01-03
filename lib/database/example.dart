@@ -43,19 +43,34 @@ class ExampleProvider {
     log("CREATING KANJI EXAMPLE TABLE");
     await db.execute('''
       create table $_tableKanjiExample ( 
-        $_columnKanjiId integer references $_tableKanji($_columnKanjiId),
-        $_columnExampleId integer references $_tableExample($_columnId),
+        $_columnKanjiId int references $_tableKanji($_columnKanjiId),
+        $_columnExampleId int references $_tableExample($_columnId),
         primary key($_columnKanjiId, $_columnExampleId)
       )
     ''');
   }
 
-  Future<int> create(Example example, int kanjiId) async {
+  Future<void> _read({bool forceRefresh = false}) async {
+    if(_examples.isEmpty || forceRefresh) {
+      var rows = await db.rawQuery(''' 
+        select e.*, group_concat(ke.$_columnKanjiId, '#') as $_columnExampleOf from $_tableExample e
+        join $_tableKanjiExample ke on e.$_columnId = ke.$_columnExampleId
+        group by e.$_columnId
+      ''');
+
+      _examples = Example.fromRows(rows);
+    }
+  }
+
+  Future<int> create(Example example, List<int> kanjiIds) async {
     int id = await db.insert(_tableExample, example.toMap());
-    await db.insert(_tableKanjiExample, {
-      _columnKanjiId: kanjiId,
-      _columnExampleId: id
-    });
+
+    for(var kanjiId in kanjiIds) {
+      await db.insert(_tableKanjiExample, {
+        _columnKanjiId: kanjiId,
+        _columnExampleId: id
+      });
+    }
     return id;
   }
 
@@ -64,9 +79,7 @@ class ExampleProvider {
     var examples = await kanjiExamples();
 
     for (var example in examples) {
-      for (var kanjiId in example.exampleOf) {
-        await create(example, kanjiId);
-      }
+      await create(example, example.exampleOf);
     }
   }
 
@@ -79,6 +92,21 @@ class ExampleProvider {
       [kanjiId]
     );
     return Example.fromRows(rows);
+  }
+
+  Future<List<Example>> byChapter(int chapter, {bool? single, bool? hasImage}) async {
+    await _read();
+    return _examples.where((example) {
+      if(single != null && example.isSingle != single) {
+        return false;
+      }
+
+      if(hasImage != null && example.hasImage != hasImage) {
+        return false;
+      } 
+
+      return example.chapter == chapter;
+    }).toList();
   }
 }
 

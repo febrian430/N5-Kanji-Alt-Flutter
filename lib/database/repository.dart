@@ -1,5 +1,6 @@
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/database/example.dart';
+import 'package:kanji_memory_hint/database/game_provider.dart';
 import 'package:kanji_memory_hint/database/kanji.dart';
 import 'package:kanji_memory_hint/database/quests.dart';
 import 'package:kanji_memory_hint/database/user_point.dart';
@@ -14,6 +15,7 @@ class SQLRepo {
   static late final QuestProvider quests;
   static late final KanjiProvider kanjis;
   static late final ExampleProvider examples;
+  static late final GameQuestionProvider gameQuestions;
 
   static Future drop() async {
     var path = await getDatabasesPath();
@@ -41,6 +43,7 @@ class SQLRepo {
     quests = QuestProvider(db!);
     kanjis = KanjiProvider(db!);
     examples = ExampleProvider(db!);
+    gameQuestions = GameQuestionProvider(kanjis, examples);
 
     PracticeQuestHandler.supplyQuests();
 
