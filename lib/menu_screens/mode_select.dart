@@ -36,7 +36,7 @@ class ModeSelect extends StatelessWidget {
                 param.mode = GAME_MODE.reading;
                 Navigator.pushReplacementNamed(context, ChapterSelect.route, arguments: param);
               },
-              title: "Meaning"
+              title: "Reading"
             ),
           ]
         );
