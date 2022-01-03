@@ -96,7 +96,7 @@ class KanjiProvider {
     log("CREATING MASTERY TABLE");
     await db.execute('''
       create table $_tableMastery ( 
-        $_columnKanjiId integer primary key,
+        $_columnKanjiId integer,
         foreign key($_columnKanjiId) REFERENCES $_tableKanjis($_columnId)
       )
     ''');

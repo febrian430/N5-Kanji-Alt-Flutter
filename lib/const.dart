@@ -2,7 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 
-const MIGRATE=false;
+const MIGRATE=true;
 
 enum GAME_MODE { imageMeaning, reading }
 

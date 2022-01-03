@@ -125,7 +125,6 @@ class _JumbleQuizRoundState extends State<JumbleQuizRound> with AutomaticKeepAli
           children: [
             QuestionWidget(mode: widget.mode, questionStr: widget.question.value),
             Text('Answer: ${widget.question.key.join(" ")}'),
-            SizedBox(height: 10),
             //selected box
             Container(
               child: Row(
@@ -141,7 +140,6 @@ class _JumbleQuizRoundState extends State<JumbleQuizRound> with AutomaticKeepAli
                   }).toList(),
               ),
             ),
-            const SizedBox(height: 10),
             //options
             // Expanded(
             Container(

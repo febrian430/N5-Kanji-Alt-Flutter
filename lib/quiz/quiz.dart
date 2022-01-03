@@ -4,13 +4,11 @@ import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/components/submit_button.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/countdown.dart';
-import 'package:kanji_memory_hint/database/repository.dart';
-import 'package:kanji_memory_hint/jumble/game.dart';
 import 'package:kanji_memory_hint/jumble/model.dart';
 import 'package:kanji_memory_hint/jumble/quiz_round.dart';
-import 'package:kanji_memory_hint/models/common.dart';
 import 'package:kanji_memory_hint/models/question_set.dart';
 import 'package:kanji_memory_hint/multiple-choice/game.dart';
+import 'package:kanji_memory_hint/quests/mastery.dart';
 import 'package:kanji_memory_hint/quiz/footer_nav.dart';
 import 'package:kanji_memory_hint/quiz/next_button.dart';
 import 'package:kanji_memory_hint/quiz/quiz_result.dart';
@@ -59,6 +57,8 @@ class _QuizState extends State<Quiz> {
   int gameIndex = 0;
   bool isOver = false;
   bool initial = true;
+  bool isMcReady = false;
+  bool isJumbleReady = false;
 
   QuizScore multipleChoiceScore = QuizScore(correct: 0, miss: 0, correctlyAnsweredKanji: []);
   QuizScore jumbleScore = QuizScore(correct: 0, miss: 0, correctlyAnsweredKanji: []); 
@@ -83,6 +83,8 @@ class _QuizState extends State<Quiz> {
       jumble: jumbleScore, 
       gains: GameResult(expGained: 100, pointsGained: 100)
     );
+
+    MasteryHandler.addMasteryFromQuiz(report);
     initial = false;
   }
 
@@ -115,6 +117,7 @@ class _QuizState extends State<Quiz> {
       } else {
         gameIndex = 1;
       }
+      isMcReady = true;
     });
   }
 
@@ -130,6 +133,7 @@ class _QuizState extends State<Quiz> {
       jumbleMisses = misses;
       isOver = true;
       gameIndex = 2;
+      isJumbleReady = true;
     });
   }
 
@@ -247,7 +251,7 @@ class _QuizState extends State<Quiz> {
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance?.addPostFrameCallback((_) {
-      if(isOver && initial) {
+      if(isOver && initial && (isMcReady && isJumbleReady)) {
         postQuizHook();
       }
      });

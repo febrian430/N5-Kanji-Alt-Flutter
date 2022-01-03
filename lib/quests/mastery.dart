@@ -1,8 +1,25 @@
+import 'dart:developer';
+
 import 'package:kanji_memory_hint/database/repository.dart';
+import 'package:kanji_memory_hint/scoring/model.dart';
 
 class MasteryHandler {
-  static Future<void> addMastery(List<int> kanjiIds) async {
-    for (var kanjiId in kanjiIds) {
+  static List<int> _flatten(List<List<int>> array) {
+    if(array.isEmpty){
+      return [];
+    }
+    return array.reduce((value, element) {
+      print(value+element);
+      return value+element;
+    }).toList();
+  }
+  static Future<void> addMasteryFromQuiz(QuizReport report) async {
+    var fromMC = _flatten(report.multiple.correctlyAnsweredKanji);
+    var fromJumble = _flatten(report.jumble.correctlyAnsweredKanji);
+    List<int> combined = fromMC + fromJumble;
+    log("ADDING MASTERY TO KANJI WITH ID: ${combined.join(", ")}");
+
+    for (var kanjiId in combined) {
       SQLRepo.kanjis.addMastery(kanjiId);
     }
   }
