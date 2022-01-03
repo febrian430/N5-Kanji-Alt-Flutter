@@ -1,18 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/components/loading_screen.dart';
+import 'package:kanji_memory_hint/database/kanji.dart';
+import 'package:kanji_memory_hint/database/repository.dart';
 import 'package:kanji_memory_hint/menu_screens/menu.dart';
-import 'package:kanji_memory_hint/repository/kanji_list.dart';
-import 'package:kanji_memory_hint/theme.dart';
 
 class KanjiMenu extends StatefulWidget {
   KanjiMenu({Key? key}) : super(key: key);
 
   static const route = "/list";
-  final List<int> chapters = [1,2,3,4,5,6,7,8];
+  // final List<int> chapters = [1,2,3,4,5,6,7,8];
+  final List<int> chapters = [1,2,3];
   
   Future<List<Kanji>> _getList() async {
-    return await kanjiList();
+    return SQLRepo.kanjis.all();
   }
 
   @override
