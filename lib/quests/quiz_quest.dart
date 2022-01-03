@@ -23,7 +23,7 @@ class QuizQuestHandler {
         )
       ];
       for (var element in _ongoingQuests) {
-        await SQLRepo.quests.createQuiz(element);
+        await SQLRepo.quests.create(element);
       }
     }
     // _ongoingQuests = await SQLRepo.quests.getOnGoingPractice();

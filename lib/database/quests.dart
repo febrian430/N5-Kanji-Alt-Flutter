@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/database/repository.dart';
 import 'package:kanji_memory_hint/scoring/model.dart';
@@ -44,15 +45,11 @@ class QuestProvider {
     ''');
   }
 
-  Future createPractice(PracticeQuest quest) async {
+  Future create(Quest quest) async {
     quest.id = await db.insert(_tableQuests, quest.toMap());
   }
 
-  Future createQuiz(QuizQuest quest) async {
-    quest.id = await db.insert(_tableQuests, quest.toMap());
-  }
-
-  FutureOr<bool> claimPractice(PracticeQuest quest) async {
+  FutureOr<bool> claim(Quest quest) async {
     quest.status = QUEST_STATUS.CLAIMED;
     return await db.update(_tableQuests, quest.toMap(),
       where: '$_columnId = ?',
@@ -62,21 +59,23 @@ class QuestProvider {
 
   Future<List<PracticeQuest>> getOnGoingPractice() async {
     var raw = await db.query(_tableQuests,
-      where: '$_columnType = ? AND  $_columnStatus = ?',
-      whereArgs: [_enumPractice, QUEST_STATUS.ONGOING.name]
+      where: '$_columnType = ? AND  $_columnStatus != ?',
+      whereArgs: [_enumPractice, QUEST_STATUS.CLAIMED.name]
     );
 
     return raw.map((questRaw) => PracticeQuest.fromMap(questRaw)).toList();
   }
 
-  FutureOr<bool> updatePractice(PracticeQuest quest) async {
-    return await db.update(_tableQuests, quest.toMap(),
-        where: '$_columnId = ?',
-        whereArgs: [quest.id]
-    ) > 0;
+  Future<List<QuizQuest>> getOnGoingQuiz() async {
+    var raw = await db.query(_tableQuests,
+        where: '$_columnType = ? AND  $_columnStatus != ?',
+        whereArgs: [_enumQuiz, QUEST_STATUS.CLAIMED.name]
+    );
+
+    return raw.map((questRaw) => QuizQuest.fromMap(questRaw)).toList();
   }
 
-  FutureOr<bool> updateQuiz(QuizQuest quest) async {
+  FutureOr<bool> update(Quest quest) async {
     return await db.update(_tableQuests, quest.toMap(),
         where: '$_columnId = ?',
         whereArgs: [quest.id]
@@ -84,38 +83,57 @@ class QuestProvider {
   }
 }
 
-class PracticeQuest {
+abstract class Quest {
   int? id;
-  final String game;
-  GAME_MODE? mode;
   final int? chapter;
   final int requiresPerfect;
-  
-  final int total;
-  int count = 0;
-
   final int goldReward;
 
+  final int total;
+  int count = 0;
   QUEST_STATUS status = QUEST_STATUS.ONGOING;
 
-  PracticeQuest({required this.game, required this.mode, required this.chapter, required this.requiresPerfect, required this.total, required this.goldReward});
+  Quest({this.chapter, required this.requiresPerfect, required this.goldReward, required this.total});
+
+  Quest.fromMap(Map<String, dynamic> map):
+        id = map[_columnId],
+        chapter = map[_columnChapter] as int,
+        requiresPerfect = map[_columnIsPerfect] as int,
+        goldReward = map[_columnGoldReward] as int,
+        count = map[_columnCount] as int,
+        total = map[_columnTotal] as int,
+        status = QUEST_STATUS_MAP.fromString(map[_columnStatus])!;
+
+  Map<String, Object?> toMap();
+
+  @protected
+  void claim() {
+    if(status != QUEST_STATUS.CLAIMED && count >= total) {
+      SQLRepo.userPoints.addGold(goldReward);
+      status = QUEST_STATUS.CLAIMED;
+      SQLRepo.quests.update(this);
+    }
+  }
+}
+
+class PracticeQuest extends Quest {
+  final String game;
+  GAME_MODE? mode;
+
+  PracticeQuest({required this.game, required this.mode, required int chapter, required int requiresPerfect, required int total, required int goldReward}) :
+        super(chapter: chapter, requiresPerfect: requiresPerfect, total: total, goldReward: goldReward);
 
   PracticeQuest.fromMap(Map<String, dynamic> map):
-      id = map[_columnId] as int,
-      game = map[_columnGame] as String,
-      chapter = map[_columnChapter] as int,
-      requiresPerfect = map[_columnIsPerfect] as int,
-      count = map[_columnCount] as int,
-      total = map[_columnTotal] as int,
-      goldReward = map[_columnGoldReward] as int
+    game = map[_columnGame] as String,
+    super.fromMap(map)
   {
-        var statusDb = map[_columnStatus] as String;
-        var modeDb = map[_columnMode] as String;
-
-        status = QUEST_STATUS_MAP.fromString(statusDb)!;
-        mode = GAME_MODE_MAP.fromString(modeDb)!;
+    var modeDb = map[_columnMode];
+    if(modeDb != null){
+      mode = GAME_MODE_MAP.fromString(modeDb)!;
+    }
   }
 
+  @override
   Map<String, Object?> toMap() {
     return <String, Object?>{
       _columnGame: game, 
@@ -152,7 +170,7 @@ class PracticeQuest {
     if(count == total) {
       status = QUEST_STATUS.COMPLETE;
     }
-    SQLRepo.quests.updatePractice(this);
+    SQLRepo.quests.update(this);
     return true;
   }
 
@@ -160,32 +178,19 @@ class PracticeQuest {
     if(status != QUEST_STATUS.CLAIMED && count >= total) {
       SQLRepo.userPoints.addGold(goldReward);
       status = QUEST_STATUS.CLAIMED;
-      SQLRepo.quests.updatePractice(this);
+      SQLRepo.quests.update(this);
     }
   }
 }
 
-class QuizQuest {
-  int? id;
-  final int? chapter;
-  final int requiresPerfect;
-  final int goldReward;
+class QuizQuest extends Quest{
 
-  final int total;
-  int count = 0;
-  QUEST_STATUS status = QUEST_STATUS.ONGOING;
+  QuizQuest({required int chapter, required int requiresPerfect, required int total, required int goldReward}):
+        super(chapter: chapter, goldReward: goldReward, requiresPerfect: requiresPerfect, total: total);
 
-  QuizQuest({required this.chapter, required this.requiresPerfect, required this.total, required this.goldReward});
+  QuizQuest.fromMap(Map<String, dynamic> map): super.fromMap(map);
 
-  QuizQuest.fromMap(Map<String, dynamic> map):
-      id = map[_columnId],
-      chapter = map[_columnChapter] as int,
-      requiresPerfect = map[_columnIsPerfect] as int,
-      goldReward = map[_columnGoldReward] as int,
-      count = map[_columnCount] as int,
-      total = map[_columnTotal] as int,
-      status = QUEST_STATUS_MAP.fromString(map[_columnStatus])!;
-
+  @override
   Map<String, Object?> toMap() {
     return <String, Object?> {
       _columnChapter: chapter,
@@ -199,7 +204,6 @@ class QuizQuest {
   }
 
   bool evaluate(QuizReport report) {
-
     if(chapter != null && chapter != report.chapter) {
       return false;
     }
@@ -212,15 +216,7 @@ class QuizQuest {
     if(count == total) {
       status = QUEST_STATUS.COMPLETE;
     }
-    SQLRepo.quests.updateQuiz(this);
+    SQLRepo.quests.update(this);
     return true;
-  }
-
-  void claim() {
-    if(status != QUEST_STATUS.CLAIMED && count >= total) {
-      SQLRepo.userPoints.addGold(goldReward);
-      status = QUEST_STATUS.CLAIMED;
-      SQLRepo.quests.updateQuiz(this);
-    }
   }
 }
