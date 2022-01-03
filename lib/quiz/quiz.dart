@@ -58,9 +58,12 @@ class _QuizState extends State<Quiz> {
   
   int gameIndex = 0;
   bool isOver = false;
+  bool initial = true;
 
   QuizScore multipleChoiceScore = QuizScore(correct: 0, miss: 0, correctlyAnsweredKanji: []);
   QuizScore jumbleScore = QuizScore(correct: 0, miss: 0, correctlyAnsweredKanji: []); 
+
+  late QuizReport report;
 
   late final Countdown _countdown;
 
@@ -73,6 +76,16 @@ class _QuizState extends State<Quiz> {
       _countdown.start();
     });
   }
+
+  void postQuizHook() {
+    report = QuizReport(
+      multiple: multipleChoiceScore, 
+      jumble: jumbleScore, 
+      gains: GameResult(expGained: 100, pointsGained: 100)
+    );
+    initial = false;
+  }
+
 
   void onCountdownTick(int current) {
     setState(() {
@@ -233,6 +246,12 @@ class _QuizState extends State<Quiz> {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      if(isOver && initial) {
+        postQuizHook();
+      }
+     });
+
     return Scaffold(
       body: SafeArea(
         child: FutureBuilder(
@@ -248,6 +267,7 @@ class _QuizState extends State<Quiz> {
       )
     );
   }
+
 }
 
 class _MultipleChoiceGame extends StatefulWidget {
@@ -266,7 +286,7 @@ class _MultipleChoiceGameState extends State<_MultipleChoiceGame> {
     int correct = 0;
     int wrong = 0;
     int solved = 0;
-    List<List<int>> correctKanjis = [];
+    List<int> correctIndexes = [];
 
     bool initialRerender = true;
     late int totalQuestion = widget.questionSets.length; 
@@ -275,12 +295,14 @@ class _MultipleChoiceGameState extends State<_MultipleChoiceGame> {
       setState(() {
         if(wasCorrect == true) {
           correct--;
+          correctIndexes.remove(index);
         } else if(wasCorrect == false) {
           wrong--;
         }
 
         if(isCorrect){
           correct++;
+          correctIndexes.add(index);
         } else {
           wrong++;
         }
@@ -313,7 +335,8 @@ class _MultipleChoiceGameState extends State<_MultipleChoiceGame> {
 
           NextQuizRoundButton(
             onTap: () {
-              widget.onSubmit(correct, wrong+unanswered, []); //TODO: fix score calc
+              var correctKanjis = correctIndexes.map((index) => widget.questionSets[index].fromKanji).toList();
+              widget.onSubmit(correct, wrong+unanswered, correctKanjis);
             }, 
             visible: !widget.quizOver && solved == totalQuestion
           )
@@ -350,7 +373,8 @@ class _MultipleChoiceGameState extends State<_MultipleChoiceGame> {
     WidgetsBinding.instance?.addPostFrameCallback((_) {
       if(widget.quizOver && initialRerender) {
         final unanswered = totalQuestion - solved;
-        widget.onSubmit(correct, wrong+unanswered, []);
+        var correctKanjis = correctIndexes.map((index) => widget.questionSets[index].fromKanji).toList();
+        widget.onSubmit(correct, wrong+unanswered, correctKanjis);
         // setState(() {
           initialRerender = false;
         // });
@@ -439,7 +463,6 @@ class _JumbleGameState extends State<_JumbleGame> {
 
   Widget _build(BuildContext context, List<JumbleQuizQuestionSet> items) {
     return Column(children: [
-      
       Flexible(
         flex: 9,
         child: PageView(

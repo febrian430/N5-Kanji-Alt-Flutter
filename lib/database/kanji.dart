@@ -145,9 +145,9 @@ class KanjiProvider {
     return _kanjis.where((kanji) => kanji.id == kanjiID).single;
   }
 
-  Future addMastery(Kanji kanji) async {
+  Future addMastery(int kanjiId) async {
     return await db.insert(_tableMastery, <String, Object?>{
-      _columnKanjiId: kanji.id
+      _columnKanjiId: kanjiId
     });
   }
 }
