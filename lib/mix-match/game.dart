@@ -82,19 +82,16 @@ class _MixMatchGameState extends State<MixMatchGame> {
   Widget _buildRound(BuildContext context, int index, List<List<Question>> data) {
     final size = MediaQuery.of(context).size;
 
-    
-
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 4.0),
       child: 
-          Container(
-            height: size.height*0.85,
-            child: _MixMatchRound( 
-              options: data[index], 
-              onRoundOver: _onRoundOver,
-            )
-          ),
-          
+        Container(
+          height: size.height*0.85,
+          child: _MixMatchRound( 
+            options: data[index], 
+            onRoundOver: _onRoundOver,
+          )
+        ),
     );
   }
 
