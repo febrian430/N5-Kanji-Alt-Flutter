@@ -40,6 +40,6 @@ class ModeSelect extends StatelessWidget {
             ),
           ]
         );
-    return Menu(title: "Select Mode", titleJapanese: "in japanese", child: screen);
+    return Menu(title: "Select Mode", japanese: "in japanese", child: screen);
   }
 }

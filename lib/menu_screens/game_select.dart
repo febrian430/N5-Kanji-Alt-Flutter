@@ -73,6 +73,6 @@ class GameSelect extends StatelessWidget {
               ),
             ]
           );
-      return Menu(title: "Choose Game", titleJapanese: "in japanese", child: screen);
+      return Menu(title: "Choose Game", japanese: "in japanese", child: screen);
   }
 }
