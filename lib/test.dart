@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/audio_repository/audio.dart';
 import 'package:kanji_memory_hint/color_hex.dart';
+import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/countdown.dart';
 import 'package:kanji_memory_hint/database/kanji.dart';
 import 'package:kanji_memory_hint/database/repository.dart';
@@ -59,7 +60,7 @@ class _TestState extends State<Test> {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
-                end: Alignment.bottomCenter, // 10% of the width, so there are ten blinds.
+                end: Alignment.bottomCenter,
                 colors: <Color>[
                     HexColor.fromHex("f9e7b1"),
                     HexColor.fromHex("f9e7b1"),
@@ -70,7 +71,18 @@ class _TestState extends State<Test> {
             ),
           child: Column(
             children: [
-              Text("test"),
+              Image(
+                  image: AssetImage(APP_IMAGE_FOLDER+'sakura.png'), 
+                  height: 50,
+                  width: 50,
+                  fit: BoxFit.fill,
+                ),
+                Image(
+                  image: AssetImage(APP_IMAGE_FOLDER+'Ryo.png'), 
+                  height: 50,
+                  width: 50,
+                  fit: BoxFit.fill,
+                ),
               Text(currentTime.toString()),
               ElevatedButton(
                 onPressed: () {
