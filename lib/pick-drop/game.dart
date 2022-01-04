@@ -7,6 +7,7 @@ import 'package:kanji_memory_hint/components/result_button.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/database/repository.dart';
 import 'package:kanji_memory_hint/game_components/question_widget.dart';
+import 'package:kanji_memory_hint/menu_screens/game_screen.dart';
 import 'package:kanji_memory_hint/quests/practice_quest.dart';
 import 'package:kanji_memory_hint/models/common.dart';
 import 'package:kanji_memory_hint/models/question_set.dart';
@@ -17,9 +18,11 @@ import 'package:kanji_memory_hint/scoring/practice/pick_drop.dart';
 
 //TODO: wrong count, correct result page, 
 class PickDrop extends StatefulWidget {
+
   PickDrop({Key? key, required this.chapter, required this.mode}) : super(key: key);
 
   static const route = '/game/pick-drop';
+  static const japanese = "Pick and drop in japanese";
   static const name = 'Pick and Drop';
 
   final int chapter;
@@ -103,7 +106,7 @@ class _PickDropState extends State<PickDrop> {
       padding: EdgeInsets.symmetric(horizontal: 4.0),
       child: Column(
         children: [
-          Container(
+          Expanded(
             child: PickDropRound(
               question: set.question, 
               options: set.options, 
@@ -117,25 +120,43 @@ class _PickDropState extends State<PickDrop> {
     );
   }
 
+  Widget _buildGame(BuildContext context) {
+    return FutureBuilder(
+      future: sets,
+      builder: (context, AsyncSnapshot<List<QuestionSet>> snapshot){
+        if(snapshot.hasData){
+          widget.stopwatch.start();
+          total = snapshot.data!.length;
+          var set = snapshot.data!.elementAt(index);
+          return _buildRound(set);
+        } else {
+          return LoadingScreen();
+        }
+      }
+    );
+  }
+
+  onPause() {
+    widget.stopwatch.stop();
+  }
+
+  onRestart() {
+    print("restart");
+  }
+
+  onContinue() {
+    widget.stopwatch.start();
+  }
+
   @override
   Widget build(BuildContext context) {
-    widget.stopwatch.start();
-
-    return Scaffold(
-      body: SafeArea(
-        child: FutureBuilder(
-          future: sets,
-          builder: (context, AsyncSnapshot<List<QuestionSet>> snapshot){
-            if(snapshot.hasData){
-              total = snapshot.data!.length;
-              var set = snapshot.data!.elementAt(index);
-              return _buildRound(set);
-            } else {
-              return LoadingScreen();
-            }
-          }
-        )
-      )
+    return GameScreen(
+      title: PickDrop.name, 
+      japanese: PickDrop.japanese, 
+      game: _buildGame(context), 
+      onPause: onPause, 
+      onRestart: onRestart, 
+      onContinue: onContinue
     );
   }
 }
@@ -203,7 +224,7 @@ class _PickDropRoundState extends State<PickDropRound> {
             );
   }
 
-  Widget _optionsByColumn(BuildContext context, List<Option> opts) {
+  Column _optionsByColumn(BuildContext context, List<Option> opts) {
 
       return Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -225,38 +246,44 @@ class _PickDropRoundState extends State<PickDropRound> {
   }
   @override
   Widget build(BuildContext context) {
-    final screen = MediaQuery.of(context).size;
+    final size = MediaQuery.of(context).size;
 
     return Center(
-          child: Column(
-            
+          child: Column(  
             children: [
-              DragTarget<Option>(
-                builder: (context, candidateData, rejectedData) {
-                  return QuestionWidget(questionStr: widget.question.value, mode: widget.mode);
-                },
-                onWillAccept: (opt) {
-                //  return opt?.key == widget.question.key;
-                  return true;
-                },
-                onAccept: (opt) {
-                  bool isCorrect = opt.key == widget.question.key;
-
-                  widget.onDrop(isCorrect, isFirstTry);
-
-                  if(!isCorrect) {
-                    isFirstTry = false;
-                  }
-                },
+              Expanded(
+                flex: 5,
+                child: DragTarget<Option>(
+                  builder: (context, candidateData, rejectedData) {
+                    return QuestionWidget(questionStr: widget.question.value, mode: widget.mode);
+                  },
+                  onWillAccept: (opt) {
+                  //  return opt?.key == widget.question.key;
+                    return true;
+                  },
+                  onAccept: (opt) {
+                    bool isCorrect = opt.key == widget.question.key;
+                    widget.onDrop(isCorrect, isFirstTry);
+                    if(!isCorrect) {
+                      isFirstTry = false;
+                    }
+                  },
+                ),
               ),
-              Text("Answer: " + widget.question.key.toString()),
-              SizedBox(height: screen.height*0.07,),
-              Container(
-                height: screen.height*0.3,
-                child: _optionsByColumn(context, widget.options)
+              Expanded(
+                flex: 1,
+                child: SizedBox()
+              ),
+              Expanded(
+                flex: 3,
+                child: 
+                SizedBox(
+                  child: _optionsByColumn(context, widget.options),
+                  height: size.height*0.3,
+                )
               ),
             ],
-          ),
+          )
         );
   }
 }

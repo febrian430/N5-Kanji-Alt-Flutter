@@ -11,6 +11,7 @@ class ScreenLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -20,7 +21,7 @@ class ScreenLayout extends StatelessWidget {
               child: header,
             ),
             Expanded(
-              flex: 6,
+              flex: 8,
               child: child
             ),
             Expanded(
