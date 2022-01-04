@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/components/result_button.dart';
 import 'package:kanji_memory_hint/const.dart';
+import 'package:kanji_memory_hint/game_components/game_helper.dart';
 import 'package:kanji_memory_hint/game_components/question_widget.dart';
 import 'package:kanji_memory_hint/jumble/model.dart';
 import 'package:kanji_memory_hint/jumble/repo.dart';
+import 'package:kanji_memory_hint/menu_screens/game_screen.dart';
 import 'package:kanji_memory_hint/models/common.dart';
 import 'package:kanji_memory_hint/map_indexed.dart';
 import 'package:kanji_memory_hint/foreach_indexed.dart';
@@ -13,6 +15,7 @@ import 'package:kanji_memory_hint/quests/practice_quest.dart';
 import 'package:kanji_memory_hint/route_param.dart';
 import 'package:kanji_memory_hint/scoring/practice/jumble.dart';
 import 'package:kanji_memory_hint/scoring/model.dart';
+import 'package:kanji_memory_hint/theme.dart';
 
 
 class JumbleGame extends StatefulWidget {
@@ -41,9 +44,10 @@ class _JumbleGameState extends State<JumbleGame> {
   int wrongCount = 0;
   int solved = 0;
   int perfect = 0;
+  Set<int> solvedIdx = {};
 
   late int slotsToFill;
-  late int numOfQuestions;
+  int? numOfQuestions;
 
   late PracticeScore endScore;
   late GameResult result;
@@ -57,16 +61,16 @@ class _JumbleGameState extends State<JumbleGame> {
     _questionSets = widget._getQuestionSet();
   }
 
-  void _handleRoundOver(bool isCorrect, int misses, bool initialAnswer) {
+  void _handleRoundOver(bool isCorrect, int misses, int index, bool initialAnswer) {
     setState(() {
       if(isCorrect) {
         if(initialAnswer) {
           perfect++;
           print('SOLVED: ${solved}');
         }
-        _slideToNextQuestion();
         solved++;
-
+        solvedIdx.add(index);
+        _slideToNextQuestion(index, solvedIdx);
       } else {
         wrongCount += misses;
       }
@@ -97,11 +101,12 @@ class _JumbleGameState extends State<JumbleGame> {
   //   });
   // }
 
-  void _slideToNextQuestion() {
-    Future.delayed(const Duration(seconds: 1), () {
-      int next = _pageController.page!.round() + 1;
-      if(next != numOfQuestions) {
-        print("here");
+  void _slideToNextQuestion(int fromIndex, Set<int> answered) async {
+    Future.delayed(const Duration(milliseconds: 500), () {
+      int? next = GameHelper.nearestUnansweredIndex(fromIndex, answered, GameNumOfRounds);
+      print("HERE");
+      print("YOUR NEXT LINE IS $next");
+      if(next != null){
         _pageController.animateToPage(next, duration: const Duration(milliseconds: 200), curve: Curves.linear);
       }
     });
@@ -109,6 +114,22 @@ class _JumbleGameState extends State<JumbleGame> {
 
 
   Widget _buildRound(BuildContext context, int itemIndex, List<JumbleQuestionSet> questionSets) {
+    
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 4.0),
+      child: JumbleRound(
+        index: itemIndex,
+        question: questionSets[itemIndex].question, 
+        options: questionSets[itemIndex].options, 
+        mode: widget.mode, 
+        // isOver: numOfQuestions == solved,
+        onComplete: _handleRoundOver,
+        // onSubmit: _onGameSubmit,
+      )
+    );
+  }
+
+  Widget _buildGame(BuildContext context) {
     var resultButton = EmptyWidget;
     
     if(solved == numOfQuestions) {
@@ -117,56 +138,62 @@ class _JumbleGameState extends State<JumbleGame> {
         visible: numOfQuestions == solved,
       );
     }
-
-
-
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 4.0),
-      child: Column(
-        children: [
-          Container(
-            child: JumbleRound(
-              question: questionSets[itemIndex].question, 
-              options: questionSets[itemIndex].options, 
-              mode: widget.mode, 
-              // isOver: numOfQuestions == solved,
-              onComplete: _handleRoundOver,
-              // onSubmit: _onGameSubmit,
-            )
-          ),
-          resultButton
-        ]
-      )
+    return Column(
+      children: [
+        Flexible(
+          flex: 15,
+          child: FutureBuilder(
+            future: _questionSets,
+            builder: (context, AsyncSnapshot<List<JumbleQuestionSet>> snapshot) {
+              if(snapshot.hasData) {
+                widget.stopwatch.start();
+                numOfQuestions = snapshot.data!.length;
+                int sum = 0;
+                var screen =  PageView.builder(
+                  controller: _pageController,
+                  itemCount: snapshot.data?.length,
+                  itemBuilder: (BuildContext context, int itemIndex) {
+                    sum += snapshot.data![itemIndex].question.key.length;
+                    return _buildRound(context, itemIndex, snapshot.data!);
+                  },
+                );
+                slotsToFill = sum;
+                return screen;
+              } else {
+                return LoadingScreen();
+              }
+            }
+          ), 
+        ),
+        Flexible(flex: 1, child: resultButton)
+      ]
     );
+  }
+
+  void onPause() {
+    print("jumble pause");
+    widget.stopwatch.stop();
+  }
+
+  void onRestart() {
+    print("jumble restart");
+    widget.stopwatch.reset();
+  }
+
+  void onContinue() {
+    print("jumble continued");
+    widget.stopwatch.start();
   }
 
   @override
   Widget build(BuildContext context) {
-    widget.stopwatch.start();
-    return Scaffold(
-      body: SafeArea(
-        child: FutureBuilder(
-          future: _questionSets,
-          builder: (context, AsyncSnapshot<List<JumbleQuestionSet>> snapshot) {
-            if(snapshot.hasData) {
-              numOfQuestions = snapshot.data!.length;
-              int sum = 0;
-              var screen =  PageView.builder(
-                controller: _pageController,
-                itemCount: snapshot.data?.length,
-                itemBuilder: (BuildContext context, int itemIndex) {
-                  sum += snapshot.data![itemIndex].question.key.length;
-                  return _buildRound(context, itemIndex, snapshot.data!);
-                },
-              );
-              slotsToFill = sum;
-              return screen;
-            } else {
-              return LoadingScreen();
-            }
-          }
-        )
-      )
+    return GameScreen(
+      title: JumbleGame.name, 
+      japanese: "Jumble in japanese", 
+      game: _buildGame(context), 
+      onPause: onPause, 
+      onRestart: onRestart, 
+      onContinue: onContinue
     );
   }
 }
@@ -174,12 +201,13 @@ class _JumbleGameState extends State<JumbleGame> {
 const SENTINEL = const Option(value: "-1", key: "-1");
 
 class JumbleRound extends StatefulWidget {
-  const JumbleRound({Key? key, required this.mode, required this.question, required this.options, required this.onComplete}) : super(key: key);
+  const JumbleRound({Key? key, required this.mode, required this.question, required this.options, required this.onComplete, required this.index}) : super(key: key);
 
+  final int index;
   final JumbleQuestion question;
   final List<Option> options;
   final GAME_MODE mode;
-  final Function(bool isCorrect, int misses, bool initialAnswer) onComplete;
+  final Function(bool isCorrect, int misses, int index, bool initialAnswer) onComplete;
 
   @override
   State<StatefulWidget> createState() => _JumbleRoundState(answerLength: question.key.length);
@@ -196,7 +224,7 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
   }
   final int answerLength;
 
-  Color roundColor = Colors.white;
+  Color roundColor = AppColors.primary;
   final Color _correctColor = Colors.green;
   final Color _wrongColor = Colors.red;
 
@@ -251,20 +279,20 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
           setState(() {
             isRoundOver = true;
             roundColor = _correctColor;
-            widget.onComplete(true, 0, isFirstTry);
+            widget.onComplete(true, 0, widget.index, isFirstTry);
           });
         } else {
           setState(() {
             misses += diff.length;
             roundColor = _wrongColor;
-            widget.onComplete(false, diff.length, isFirstTry);
+            widget.onComplete(false, diff.length, widget.index, isFirstTry);
           });
           _unselect(diff);
         }
         isFirstTry = false;
-        Future.delayed(const Duration(seconds: 1), () {
+        Future.delayed(const Duration(milliseconds: 500), () {
             setState(() {
-              roundColor = Colors.white;
+              roundColor = AppColors.primary;
             });
         });
       }
@@ -273,6 +301,27 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
 
   int _firstEmptySlot() {
     return selected.indexOf(SENTINEL);
+  }
+
+  Column _optionsByColumn(BuildContext context, List<Option> opts) {
+
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: opts.take(4).map((opt) {
+              return OptionWidget(option: opt, disabled: selected.contains(opt), onTap: () { _handleOptionTap(opt); },);
+            }).toList(),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: opts.skip(4).map((opt) {
+              return OptionWidget(option: opt, disabled: selected.contains(opt), onTap: () { _handleOptionTap(opt); },);
+            }).toList(),
+          ),
+        ]
+      );
   }
 
   @override
@@ -291,10 +340,14 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
         //question
         child: Column(
           children: [
-            QuestionWidget(mode: widget.mode, questionStr: widget.question.value),
+            Expanded(
+              flex: 6,
+              child: QuestionWidget(mode: widget.mode, questionStr: widget.question.value),
+            ),
             SizedBox(height: 10),
             //selected box
-            Container(
+            Flexible(
+              flex: 2,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 mainAxisSize: MainAxisSize.min,
@@ -306,25 +359,17 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
             const SizedBox(height: 10),
             //options
             // Expanded(
-            Container(
-              decoration: BoxDecoration(
-                border: Border.all(
-                  width: 1
-                )
-              ),
-              child: GridView.count(
-                crossAxisCount: 4,
-                padding: EdgeInsets.all(25),
-                mainAxisSpacing: 5,
-                crossAxisSpacing: 5,
-                shrinkWrap: true,
-                children: widget.options.map((opt){
-                  //option box
-                  return OptionWidget(option: opt, disabled: selected.contains(opt), onTap: () { _handleOptionTap(opt); },);
-                }).toList(),
-              ),
+            Flexible(
+              flex: 4,
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    width: 1
+                  )
+                ),
+                child: _optionsByColumn(context, widget.options)
+              )
             )
-            // )
           ],
         )
       )
@@ -346,10 +391,10 @@ class SelectWidget extends StatelessWidget {
   }
 
   Widget _draw(){
-    Color bgColor = Colors.grey;
+    Color bgColor = Colors.white;
 
     if(!_isSentinel()) {
-      bgColor = Colors.white;
+      bgColor = AppColors.primary;
     } 
     if(isRoundOver) {
       bgColor = Colors.green;
@@ -389,7 +434,7 @@ class OptionWidget extends StatelessWidget {
   final bool disabled;
   final OnTapFunc onTap;
 
-  Widget _draw() {
+  Widget _draw(BuildContext context) {
     Color boxColor = Colors.white;
     Color textColor = Colors.black;
 
@@ -398,40 +443,28 @@ class OptionWidget extends StatelessWidget {
       textColor = Colors.grey;
     }
 
-    return GestureDetector(
-            onTap: () {
-              print("round option is");
-
-              print(disabled);
-              if(!disabled) {
-                onTap();
-              }
-            },
-            child: Container(
-              child: Center(
-                child: Text(
-                    option.value,
-                    style: TextStyle(
-                      color: textColor,
-                      fontSize: 30,
-                      fontFamily: "MS Mincho"
-                    ),
-                  ),
-              ),
-              height: 50,
-              width: 50,
-              decoration: BoxDecoration(
-                border: Border.all(
-                  width: 1
-                ),
-                color: boxColor
-              ),
-            )
-          );
+    return TextButton(
+      onPressed: () {
+        print("round option is");
+        print(disabled);
+        if(!disabled) {
+          onTap();
+        }
+      },
+      child: Center(
+        child: Text(
+          option.value,
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 30
+          )
+        ),
+      )
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return _draw();
+    return _draw(context);
   }
 }
