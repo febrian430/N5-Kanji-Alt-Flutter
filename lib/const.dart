@@ -2,7 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 
-const MIGRATE=true;
+const MIGRATE=false;
 
 enum GAME_MODE { imageMeaning, reading }
 
@@ -56,6 +56,7 @@ const GAME_MODE_IMG = "IMG_MEANING";
 
 
 const KANJI_IMAGE_FOLDER = 'assets/images/kanji/';
+const APP_IMAGE_FOLDER = 'assets/images/app/';
 
 const MultipleChoiceRoute = '/game/multiple-choice';
 const MixMatchRoute = '/game/mix-match';

@@ -97,6 +97,6 @@ class _MenuState extends State<KanjiMenu> {
       }
     );
 
-    return Menu(title: "Kanji List", titleJapanese: "in japanese", child: screen);
+    return Menu(title: "Kanji List", japanese: "in japanese", child: screen);
   }
 }

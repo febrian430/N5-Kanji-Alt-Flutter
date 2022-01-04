@@ -56,16 +56,19 @@ class _MyAppState extends State<MyApp> {
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
 
-        scaffoldBackgroundColor: Colors.white,
-        primarySwatch: Colors.blue,
+        scaffoldBackgroundColor: AppColors.primary,
+        // primarySwatch: Colors.blue,
+        // primaryColor: Colors.black,
         backgroundColor: Colors.white,
 
-        // textButtonTheme: TextButtonThemeData(
-        //   style: TextButton.styleFrom(
-        //     backgroundColor: AppColors.primary,
 
-        //   )
-        // ),
+        textTheme: TextTheme(
+          button: TextStyle(
+            color: Colors.black,
+            
+            fontSize: 18
+          )
+        ),
 
         textButtonTheme: TextButtonThemeData(
           style: TextButton.styleFrom(

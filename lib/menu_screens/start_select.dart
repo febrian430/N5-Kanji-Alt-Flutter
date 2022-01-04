@@ -39,7 +39,7 @@ class StartSelect extends StatelessWidget {
             ]
           );
     
-    return Menu(title: "Start", titleJapanese: "in japanese", child: screen);
+    return Menu(title: "Start", japanese: "in japanese", child: screen);
    
   }
 }
