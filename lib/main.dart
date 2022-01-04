@@ -61,7 +61,9 @@ class _MyAppState extends State<MyApp> {
         // primaryColor: Colors.black,
         backgroundColor: Colors.white,
 
-
+        dialogTheme: DialogTheme(
+          backgroundColor: AppColors.primary,
+        ),
         textTheme: TextTheme(
           button: TextStyle(
             color: Colors.black,
