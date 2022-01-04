@@ -121,7 +121,12 @@ class PauseDialog extends StatelessWidget {
                 Navigator.pop(context);
               },
             ),
-            SimpleDialogOption(child: Center(child: Text("Restart")), onPressed: onRestart,),
+            SimpleDialogOption(
+              child: Center(child: Text("Restart")), 
+              onPressed: () {
+                Navigator.pop(context);
+                onRestart();
+              },),
             SimpleDialogOption(
               child: Center(child: Text("Kana")), 
               onPressed: (){

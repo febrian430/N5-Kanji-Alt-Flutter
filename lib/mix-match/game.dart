@@ -1,8 +1,11 @@
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/components/result_button.dart';
 import 'package:kanji_memory_hint/const.dart';
+import 'package:kanji_memory_hint/menu_screens/game_screen.dart';
 import 'package:kanji_memory_hint/mix-match/repo.dart';
 import 'package:kanji_memory_hint/models/common.dart';
 import 'package:kanji_memory_hint/quests/practice_quest.dart';
@@ -37,6 +40,7 @@ class _MixMatchGameState extends State<MixMatchGame> {
   int roundsSolved = 0;
   int perfect = 0;
   int wrong = 0;
+  var _pageController = PageController(viewportFraction: 1,);
 
   late PracticeScore score;
   late GameResult result;
@@ -78,18 +82,11 @@ class _MixMatchGameState extends State<MixMatchGame> {
   Widget _buildRound(BuildContext context, int index, List<List<Question>> data) {
     final size = MediaQuery.of(context).size;
 
-    Widget resultButton = EmptyWidget;
-    if(widget.numOfRounds == roundsSolved) {
-      resultButton = ResultButton(
-        param: ResultParam(result: result, score: score, stopwatch: widget.stopwatch),
-        visible: widget.numOfRounds == roundsSolved,
-      );
-    }
+    
 
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 4.0),
-      child: Column(
-        children: [
+      child: 
           Container(
             height: size.height*0.85,
             child: _MixMatchRound( 
@@ -97,35 +94,79 @@ class _MixMatchGameState extends State<MixMatchGame> {
               onRoundOver: _onRoundOver,
             )
           ),
-          resultButton
-        ]
-      )
+          
+    );
+  }
+
+  Widget _buildGame(BuildContext context) {
+    Widget resultButton = EmptyWidget;
+    if(widget.numOfRounds == roundsSolved) {
+      resultButton = ResultButton(
+        param: ResultParam(result: result, score: score, stopwatch: widget.stopwatch),
+        visible: widget.numOfRounds == roundsSolved,
+      );
+    }
+    return Column(
+      children: [
+        Flexible(
+          flex: 15,
+          child: Center(
+            child: FutureBuilder(
+              future: _questionSet,
+              builder: (context, AsyncSnapshot<List<List<Question>>> snapshot) {
+                if(snapshot.hasData) {
+                  return PageView.builder(
+                    controller: _pageController,
+                    itemCount: snapshot.data?.length,
+                    itemBuilder: (BuildContext context, int itemIndex) {
+                      return _buildRound(context, itemIndex, snapshot.data!);
+                    }
+                  );
+                } else {
+                  return LoadingScreen();
+                }
+              }
+            )
+          )
+        ),
+        Flexible(
+          flex: 1,
+          child: resultButton
+        )
+      ]
     );
   }
 
   @override
   Widget build(BuildContext context) {
     widget.stopwatch.start();
-    return Scaffold(
-      body: FutureBuilder(
-        future: _questionSet,
-        builder: (context, AsyncSnapshot<List<List<Question>>> snapshot) {
-          if(snapshot.hasData) {
-            return PageView.builder(
-              controller: PageController(
-                viewportFraction: 1,
-              ),
-              itemCount: snapshot.data?.length,
-              itemBuilder: (BuildContext context, int itemIndex) {
-                return _buildRound(context, itemIndex, snapshot.data!);
-              }
-            );
-          } else {
-            return LoadingScreen();
-          }
-        }
-      )
-    );    
+    return GameScreen(
+      game: _buildGame(context),
+      title: MixMatchGame.name,
+      japanese: "in japanese",
+      onRestart: onRestart,
+      onContinue: onContinue,
+      onPause: onPause,
+    );   
+  }
+
+  onContinue() {
+    widget.stopwatch.start();
+  }
+
+  onPause() {
+    widget.stopwatch.stop();
+  }
+
+  onRestart() {
+    setState(() {
+      roundsSolved = 0;
+      perfect = 0;
+      wrong = 0;
+      _questionSet = widget._getQuestionSet(widget.chapter, widget.mode);
+      _pageController.animateToPage(0, duration: Duration(milliseconds: 250), curve: Curves.linear);  
+    });
+    widget.stopwatch.reset();
   }
 }
 
@@ -236,20 +277,25 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
       widget.onRoundOver(true, score, wrong);
       showDialog<String>(
         context: context,
-        builder: (BuildContext context) => AlertDialog(
-          title: const Text('Game over'),
-          content: Text('Wrong attempts: ' + wrong.toString()),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () => Navigator.pop(context, 'Cancel'),
-              child: const Text('Cancel'),
-            ),
-            TextButton(
-              onPressed: () => Navigator.pop(context, 'OK'),
-              child: const Text('OK'),
-            ),
-          ],
-        ),
+        builder: (BuildContext context) {
+          return BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+            child: AlertDialog(
+              title: const Text('Game over'),
+              content: Text('Wrong attempts: ' + wrong.toString()),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () => Navigator.pop(context, 'Cancel'),
+                  child: const Text('Cancel'),
+                ),
+                TextButton(
+                  onPressed: () => Navigator.pop(context, 'OK'),
+                  child: const Text('OK'),
+                ),
+              ],
+            )
+          );
+        }
       );
     }
   }
