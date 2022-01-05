@@ -45,6 +45,7 @@ class _PickDropState extends State<PickDrop> {
   int wrongAttempts = 0;
   int perfect = 0;
   int solved = 0;
+  bool restart = false;
 
   late int total;
   late PracticeScore score;
@@ -85,7 +86,6 @@ class _PickDropState extends State<PickDrop> {
           PracticeQuestHandler.checkForQuests(report);
           SQLRepo.userPoints.addExp(result.expGained);
         }
-        
       } else {
         wrongAttempts++;
       }
@@ -112,6 +112,7 @@ class _PickDropState extends State<PickDrop> {
               options: set.options, 
               onDrop: _handleOnDrop, 
               isLast: index == total-1,
+              restartSrc: restart,
             )
           ),
           resultButton
@@ -141,7 +142,14 @@ class _PickDropState extends State<PickDrop> {
   }
 
   onRestart() {
-    print("restart");
+    setState(() {
+      index = 0;
+      wrongAttempts = 0;
+      perfect = 0;
+      solved = 0;
+      sets = widget._getQuestionSets();
+      restart = true;
+    });
   }
 
   onContinue() {
@@ -150,6 +158,14 @@ class _PickDropState extends State<PickDrop> {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      if(restart) {
+        setState(() {
+          restart = false;
+        });
+      }
+    });
+
     return GameScreen(
       title: PickDrop.name, 
       japanese: PickDrop.japanese, 
@@ -164,13 +180,14 @@ class _PickDropState extends State<PickDrop> {
 typedef OnDropCallback = Function(bool isCorrect, bool isFirstTry);
 
 class PickDropRound extends StatefulWidget {
-  const PickDropRound({Key? key, required this.question, required this.options, required this.onDrop, required this.isLast}) : super(key: key);
+  const PickDropRound({Key? key, required this.question, required this.options, required this.onDrop, required this.isLast, required this.restartSrc}) : super(key: key);
 
   final Question question;
   final List<Option> options;
   final OnDropCallback onDrop;
   final GAME_MODE mode = GAME_MODE.imageMeaning;
   final bool isLast;
+  final bool restartSrc;
 
   @override
   State<StatefulWidget> createState() => _PickDropRoundState();
@@ -181,110 +198,123 @@ class _PickDropRoundState extends State<PickDropRound> {
   bool isCorrect = false;
   bool isFirstTry = true;
 
+  void restart() {
+    setState(() {
+      isCorrect = false;
+      isFirstTry = true;
+    });
+  }
+
   Widget _renderOption(BuildContext context, Option opt) {
     final size = MediaQuery.of(context).size;
 
     return Draggable<Option>(
-            data: opt,
-            maxSimultaneousDrags: 1,
-            child: Container(
-                height: size.height*0.115,
-                width: size.height*0.115,
-                decoration: BoxDecoration(border: Border.all(width: 3)),
-                child: Center(
-                  child: Text(
-                  opt.value + (widget.question.key == opt.key ? " C" : ""),  
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    ),
-                  )
-                )
-              ),
-              feedback: Container(
-                height: size.height*0.115,
-                width: size.height*0.115,
-                decoration: BoxDecoration(border: Border.all(width: 3)),
-                child: Center(
-                  child: Text(
-                  opt.value,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    decoration: TextDecoration.none
-                    ),
-                  )
-                )
-              ),
-               
-              childWhenDragging: SizedBox(
-                height: size.height*0.115,
-                width: size.height*0.115,
-              )
-            );
+      data: opt,
+      maxSimultaneousDrags: 1,
+      child: Container(
+        height: size.height*0.115,
+        width: size.height*0.115,
+        decoration: BoxDecoration(border: Border.all(width: 3)),
+        child: Center(
+          child: Text(
+          opt.value + (widget.question.key == opt.key ? " C" : ""),  
+          style: const TextStyle(
+            color: Colors.black,
+            fontSize: 20,
+            ),
+          )
+        )
+      ),
+      feedback: Container(
+        height: size.height*0.115,
+        width: size.height*0.115,
+        decoration: BoxDecoration(border: Border.all(width: 3)),
+        child: Center(
+          child: Text(
+          opt.value,
+          style: const TextStyle(
+            color: Colors.black,
+            fontSize: 20,
+            decoration: TextDecoration.none
+            ),
+          )
+        )
+      ),
+
+      childWhenDragging: SizedBox(
+        height: size.height*0.115,
+        width: size.height*0.115,
+      )
+    );
   }
 
   Column _optionsByColumn(BuildContext context, List<Option> opts) {
-
-      return Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: opts.take(4).map((opt) {
-                  return _renderOption(context, opt);
-                }).toList(),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: opts.skip(4).map((opt) {
-                  return _renderOption(context, opt);
-                }).toList(),
-              ),
-            ]
-          );
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: opts.take(4).map((opt) {
+            return _renderOption(context, opt);
+          }).toList(),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: opts.skip(4).map((opt) {
+            return _renderOption(context, opt);
+          }).toList(),
+        ),
+      ]
+    );
   }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      if(widget.restartSrc) {
+        restart();
+      }
+    });
+
     return Center(
-          child: Column(  
-            children: [
-              Expanded(
-                flex: 5,
-                child: DragTarget<Option>(
-                  builder: (context, candidateData, rejectedData) {
-                    return QuestionWidget(questionStr: widget.question.value, mode: widget.mode);
-                  },
-                  onWillAccept: (opt) {
-                  //  return opt?.key == widget.question.key;
-                    return true;
-                  },
-                  onAccept: (opt) {
-                    bool isCorrect = opt.key == widget.question.key;
-                    widget.onDrop(isCorrect, isFirstTry);
-                    if(!isCorrect) {
-                      isFirstTry = false;
-                    }
-                  },
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: SizedBox()
-              ),
-              Expanded(
-                flex: 3,
-                child: 
-                SizedBox(
-                  child: _optionsByColumn(context, widget.options),
-                  height: size.height*0.3,
-                )
-              ),
-            ],
-          )
-        );
+      child: Column(  
+        children: [
+          Expanded(
+            flex: 5,
+            child: DragTarget<Option>(
+              builder: (context, candidateData, rejectedData) {
+                return QuestionWidget(questionStr: widget.question.value, mode: widget.mode);
+              },
+              onWillAccept: (opt) {
+              //  return opt?.key == widget.question.key;
+                return true;
+              },
+              onAccept: (opt) {
+                bool isCorrect = opt.key == widget.question.key;
+                widget.onDrop(isCorrect, isFirstTry);
+                if(!isCorrect) {
+                  isFirstTry = false;
+                }
+              },
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: SizedBox()
+          ),
+          Expanded(
+            flex: 3,
+            child: 
+            SizedBox(
+              child: _optionsByColumn(context, widget.options),
+              height: size.height*0.3,
+            )
+          ),
+        ],
+      )
+    );
   }
 }
 
