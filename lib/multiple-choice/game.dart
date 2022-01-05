@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kanji_memory_hint/components/backgrounds/practice_background.dart';
 import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/components/submit_button.dart';
 import 'package:kanji_memory_hint/const.dart';
@@ -68,7 +69,6 @@ class _MultipleChoiceGameState extends State<MultipleChoiceGame> {
   }
 
   Widget _buildRound(BuildContext context, int itemIndex, List<QuestionSet> data) {
-    
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 4.0),
       child: Column(
@@ -98,14 +98,10 @@ class _MultipleChoiceGameState extends State<MultipleChoiceGame> {
             },
           ),
       ],) 
-
-      
     );
   }
 
-  @override
-  Widget build(BuildContext context) {
-    widget.stopwatch.start();
+  Widget _buildGame(BuildContext context) {
 
     return Scaffold(
       body: SafeArea(
@@ -114,9 +110,8 @@ class _MultipleChoiceGameState extends State<MultipleChoiceGame> {
           builder: (context, AsyncSnapshot<List<QuestionSet>> snapshot) {
             if(snapshot.hasData) {
               numOfQuestions = snapshot.data!.length;
-
+              widget.stopwatch.start();
               return PageView.builder(
-                // store this controller in a State to save the carousel scroll position
                 controller: PageController(
                   viewportFraction: 1,
                 ),
@@ -131,6 +126,13 @@ class _MultipleChoiceGameState extends State<MultipleChoiceGame> {
           }
         )
       )
+    );
+  }
+
+   @override
+  Widget build(BuildContext context) {
+    return PracticeBackground(
+      child: _buildGame(context)
     );
   }
 }
@@ -173,6 +175,51 @@ class _MultipleChoiceRoundState extends State<MultipleChoiceRound> with Automati
   @override
   bool get wantKeepAlive => true;
 
+  Widget _buildOption(BuildContext context, Option opt) {
+    return widget.quiz ?  
+      _QuizOption(
+        option: opt, 
+        isSelected: selected?.key == opt.key, 
+        disabled: widget.isOver, 
+        correctKey: widget.question.key.toString(), 
+        onSelect: (option) {
+          _handleSelect(opt);
+        }, 
+        isOver: widget.isOver
+      )
+      :
+      _PracticeOption(
+        option: opt, 
+        isSelected: selected?.key == opt.key, 
+        disabled: widget.isOver, 
+        correctKey: widget.question.key.toString(), 
+        onSelect: (option) {
+          _handleSelect(opt);
+        }
+      );
+  }
+
+  Column _optionsByColumn(BuildContext context, List<Option> opts) {
+
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: opts.take(2).map((opt) {
+              return _buildOption(context, opt);
+            }).toList(),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: opts.skip(2).map((opt) {
+              return _buildOption(context, opt);
+            }).toList(),
+          ),
+        ]
+      );
+  }
+
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -181,33 +228,19 @@ class _MultipleChoiceRoundState extends State<MultipleChoiceRound> with Automati
       child: Center(
         child: Column(
           children: [
-            QuestionWidget(mode: widget.mode, questionStr: widget.question.value),
-            Center(child: Text((widget.question.key.toString())),),
-            Column(
-                children: widget.options.map((Option opt) {
-                  return widget.quiz ?  
-                  _QuizOption(
-                    option: opt, 
-                    isSelected: selected?.key == opt.key, 
-                    disabled: widget.isOver, 
-                    correctKey: widget.question.key.toString(), 
-                    onSelect: (option) {
-                      _handleSelect(opt);
-                    }, 
-                    isOver: widget.isOver
-                  )
-                  :
-                  _PracticeOption(
-                    option: opt, 
-                    isSelected: selected?.key == opt.key, 
-                    disabled: widget.isOver, 
-                    correctKey: widget.question.key.toString(), 
-                    onSelect: (option) {
-                      _handleSelect(opt);
-                    }
-                  );
-                }).toList(),
+            Expanded(
+              flex: 15,
+              child: QuestionWidget(mode: widget.mode, questionStr: widget.question.value),
+            ),
+            Expanded(
+              flex: 1,
+              child: Center(child: Text((widget.question.key.toString())),),
+            ),
+            Expanded(
+              flex: 15,
+              child: _optionsByColumn(context, widget.options)
             )
+
           ],
         ),
       ),
@@ -276,16 +309,19 @@ class _QuizOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => disabled ? null : onSelect(option),
+    final width = MediaQuery.of(context).size.width;
+    return TextButton(
+      onPressed: () => disabled ? null : onSelect(option),
       child: Container(
-        color: _getBackgroundColor(context),
         child: Center(
-          child: Text(option.value + '\t' + option.key.toString(), style: _getTextStyle(context),),),
-        width: 180,
-        height: 60
+          child: Text(option.value + '\t' + option.key.toString(), style: _getTextStyle(context),),
+        ),
+        width: 0.35*width,
+        height: 0.1*width
       ),
-      
+      style: TextButton.styleFrom(
+        backgroundColor: _getBackgroundColor(context),      
+      ),
     );
   }
 }
