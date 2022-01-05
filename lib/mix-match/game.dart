@@ -40,6 +40,7 @@ class _MixMatchGameState extends State<MixMatchGame> {
   int roundsSolved = 0;
   int perfect = 0;
   int wrong = 0;
+  bool restart = false;
   var _pageController = PageController(viewportFraction: 1,);
 
   late PracticeScore score;
@@ -76,6 +77,12 @@ class _MixMatchGameState extends State<MixMatchGame> {
         );
 
       PracticeQuestHandler.checkForQuests(report);
+    } else {
+      _pageController.animateToPage(
+        _pageController.page!.floor() + 1, 
+        duration: Duration(milliseconds: 500), 
+        curve: Curves.linear
+      );
     }
   }
 
@@ -90,6 +97,7 @@ class _MixMatchGameState extends State<MixMatchGame> {
           child: _MixMatchRound( 
             options: data[index], 
             onRoundOver: _onRoundOver,
+            restartSrc: restart,
           )
         ),
     );
@@ -112,6 +120,8 @@ class _MixMatchGameState extends State<MixMatchGame> {
               future: _questionSet,
               builder: (context, AsyncSnapshot<List<List<Question>>> snapshot) {
                 if(snapshot.hasData) {
+                  widget.stopwatch.start();
+
                   return PageView.builder(
                     controller: _pageController,
                     itemCount: snapshot.data?.length,
@@ -136,7 +146,14 @@ class _MixMatchGameState extends State<MixMatchGame> {
 
   @override
   Widget build(BuildContext context) {
-    widget.stopwatch.start();
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      if(restart) {
+        setState(() {
+          restart = false;
+        });
+      }
+    });
+
     return GameScreen(
       game: _buildGame(context),
       title: MixMatchGame.name,
@@ -161,17 +178,20 @@ class _MixMatchGameState extends State<MixMatchGame> {
       perfect = 0;
       wrong = 0;
       _questionSet = widget._getQuestionSet(widget.chapter, widget.mode);
-      _pageController.animateToPage(0, duration: Duration(milliseconds: 250), curve: Curves.linear);  
+      restart = true;
     });
+
+    _pageController.animateToPage(0, duration: Duration(milliseconds: 250), curve: Curves.linear);  
     widget.stopwatch.reset();
   }
 }
 
 class _MixMatchRound extends StatefulWidget {
   
-  _MixMatchRound({Key? key, required this.options, required this.onRoundOver}): super(key: key);
+  _MixMatchRound({Key? key, required this.options, required this.onRoundOver, required this.restartSrc}): super(key: key);
 
   final List<Question> options;
+  final bool restartSrc;
   final OnRoundOverCallback onRoundOver;
 
   @override
@@ -181,15 +201,23 @@ class _MixMatchRound extends StatefulWidget {
 class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveClientMixin {
   int score = 0;
   int wrong = 0;
-  late int numOfQuestions; 
-
   Question? selected;
   List<Question> solved = [];
+
+  late int numOfQuestions; 
 
 
   @override
   bool get wantKeepAlive => true;
 
+  void restart() {
+    setState(() {
+      score = 0;
+      selected = null;
+      solved = [];
+      wrong = 0;
+    });
+  }
 
   Widget _drawQuestionWidget(BuildContext context, Question opt) {
     bool isSelected = (selected?.id == opt.id);
@@ -364,7 +392,11 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
   @override
   Widget build(BuildContext context) {
     // PracticeGameArguments arg = ModalRoute.of(context)!.settings.arguments as PracticeGameArguments;
-    
+    WidgetsBinding.instance?.addPostFrameCallback((_){
+      if(widget.restartSrc) {
+        restart();
+      }
+    });
     return _getGameUI(context, widget.options);
   }
 
