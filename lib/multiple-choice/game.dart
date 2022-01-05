@@ -81,6 +81,7 @@ class _MultipleChoiceGameState extends State<MultipleChoiceGame> {
             index: itemIndex, 
             onSelect:  _handleOnSelect,
             isOver: gameOver, 
+            restartSource: false,
             // || (!widget.quiz && correctlySolved.contains(itemIndex)), quiz test purposes
             quiz: true,
           ),
@@ -138,7 +139,7 @@ class _MultipleChoiceGameState extends State<MultipleChoiceGame> {
 }
 
 class MultipleChoiceRound extends StatefulWidget  {
-  const MultipleChoiceRound({Key? key, required this.question, required this.options, required this.mode, required this.onSelect, this.quiz = false, this.isOver = false, required this.index}) : super(key: key);
+  const MultipleChoiceRound({Key? key, required this.question, required this.options, required this.mode, required this.onSelect, this.quiz = false, this.isOver = false, required this.index, required this.restartSource}) : super(key: key);
 
   final int index;
 
@@ -150,6 +151,8 @@ class MultipleChoiceRound extends StatefulWidget  {
   final bool quiz;
   final bool isOver;
 
+  final bool restartSource;
+  
   @override
   State<StatefulWidget> createState() => _MultipleChoiceRoundState();
 }

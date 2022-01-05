@@ -10,8 +10,8 @@ class QuizGameParam {
 }
 
 class QuizResult extends StatelessWidget {
-  const QuizResult({Key? key, required this.multipleChoice, required this.jumble}) : super(key: key);
-
+  const QuizResult({Key? key, required this.multipleChoice, required this.jumble, required this.onRestart}) : super(key: key);
+  final Function() onRestart;
   final QuizGameParam multipleChoice;
   final QuizGameParam jumble;
 
@@ -50,13 +50,9 @@ class QuizResult extends StatelessWidget {
             ),
 
             ElevatedButton(
-              child: Text("Check Multiple Choice"),
-              onPressed: multipleChoice.goHere,
+              child: Text("Play again"),
+              onPressed: onRestart,
             ),
-            ElevatedButton(
-              child: Text("Check Jumble"),
-              onPressed: jumble.goHere,
-            )
           ],
         ),
     );

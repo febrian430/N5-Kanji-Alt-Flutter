@@ -12,13 +12,14 @@ import 'package:kanji_memory_hint/map_indexed.dart';
 const SENTINEL = const Option(value: "-1", key: "-1");
 
 class JumbleQuizRound extends StatefulWidget {
-  const JumbleQuizRound({Key? key, required this.mode, required this.question, required this.options, required this.onComplete, required this.isOver, required this.onSubmit, required this.index}) : super(key: key);
+  const JumbleQuizRound({Key? key, required this.mode, required this.question, required this.options, required this.onComplete, required this.isOver, required this.onSubmit, required this.index, required this.restartSource}) : super(key: key);
 
   final int index;
   final JumbleQuestion question;
   final List<Option> options;
   final GAME_MODE mode;
   final bool isOver;
+  final bool restartSource;
   final Function(bool isCorrect, int misses, bool initial) onComplete;
   final Function(bool isCorrect, int misses, int index) onSubmit;
 
@@ -42,6 +43,19 @@ class _JumbleQuizRoundState extends State<JumbleQuizRound> with AutomaticKeepAli
   List<Option> selected = [];
   bool initial = true;
   bool initialRerender = true;
+  
+  bool wasRestarted = false;
+
+  void restart() {
+    setState(() {
+      print("question during restart setState ${widget.index}:${widget.question.key.length}");
+      selected = widget.question.key.map((_) => SENTINEL).toList();
+      selectCount = 0;
+      selected = [];
+      misses = 0;
+      wasRestarted = true;
+    });
+  }
 
   void _unselect(List<int> indexes) {
     indexes.forEach((index) {
@@ -105,12 +119,22 @@ class _JumbleQuizRoundState extends State<JumbleQuizRound> with AutomaticKeepAli
   Widget build(BuildContext context) {
     super.build(context);
     WidgetsBinding.instance?.addPostFrameCallback((_) {
+      if(widget.restartSource) {
+        restart();
+      }
       if(widget.isOver && initialRerender){
         var diff = _differentIndexes();
         widget.onSubmit(diff.isEmpty, diff.length, widget.index);
         initialRerender = false;
       }
     });
+
+    if(wasRestarted) {
+      setState(() {
+        selected = widget.question.key.map((_) => SENTINEL).toList();
+        wasRestarted = false;
+      });
+    }
 
     return Center(
       child: Container(
@@ -128,6 +152,7 @@ class _JumbleQuizRoundState extends State<JumbleQuizRound> with AutomaticKeepAli
               child: QuestionWidget(mode: widget.mode, questionStr: widget.question.value),
             ),
             Text('Answer: ${widget.question.key.join(" ")}'),
+
             //selected box
             Flexible(
               flex: 2,
@@ -144,8 +169,8 @@ class _JumbleQuizRoundState extends State<JumbleQuizRound> with AutomaticKeepAli
                   }).toList(),
               ),
             ),
+
             //options
-            // Expanded(
             Flexible(
               flex: 4,
               child: Container(

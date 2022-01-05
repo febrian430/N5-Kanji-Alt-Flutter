@@ -5,25 +5,39 @@ import 'package:kanji_memory_hint/multiple-choice/game.dart';
 import 'package:kanji_memory_hint/quiz/next_button.dart';
 
 class MultipleChoiceQuizGame extends StatefulWidget {
-  const MultipleChoiceQuizGame({Key? key, required this.mode, required this.questionSets, required this.onSubmit, this.quizOver = false}) : super(key: key);
+  const MultipleChoiceQuizGame({Key? key, required this.mode, required this.questionSets, required this.onSubmit, this.quizOver = false, required this.restartSource}) : super(key: key);
 
   final GAME_MODE mode;
   final List<QuizQuestionSet> questionSets;
   final Function(int correct, int wrong, List<List<int>> correctKanjis) onSubmit;
   final bool quizOver;
 
+  final bool restartSource;
+
   @override
   State<StatefulWidget> createState() => _MultipleChoiceGameState();
 }
 
 class _MultipleChoiceGameState extends State<MultipleChoiceQuizGame> {
-    int correct = 0;
-    int wrong = 0;
-    int solved = 0;
-    List<int> correctIndexes = [];
+  int correct = 0;
+  int wrong = 0;
+  int solved = 0;
+  List<int> correctIndexes = [];
+  bool initialRerender = true;
 
-    bool initialRerender = true;
-    late int totalQuestion = widget.questionSets.length; 
+  bool restart = false;
+  
+  late int totalQuestion = widget.questionSets.length; 
+
+  void onRestart() {
+    setState(() {
+      correct = 0;
+      wrong = 0;
+      solved = 0;
+      correctIndexes = [];
+      initialRerender = true;
+    });
+  }
 
   void _handleOnSelectQuiz(bool isCorrect, int index, bool? wasCorrect) {
       setState(() {
@@ -67,6 +81,7 @@ class _MultipleChoiceGameState extends State<MultipleChoiceQuizGame> {
               onSelect: _handleOnSelectQuiz,
               quiz: true,
               isOver: widget.quizOver,
+              restartSource: restart,
             ),
           ),
           Expanded(
@@ -110,6 +125,12 @@ class _MultipleChoiceGameState extends State<MultipleChoiceQuizGame> {
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance?.addPostFrameCallback((_) {
+      if(restart){
+        setState(() {
+          restart = false;
+        });
+      }
+
       if(widget.quizOver && initialRerender) {
         final unanswered = totalQuestion - solved;
         var correctKanjis = correctIndexes.map((index) => widget.questionSets[index].fromKanji).toList();

@@ -13,6 +13,7 @@ import 'package:kanji_memory_hint/quiz/jumble.dart';
 import 'package:kanji_memory_hint/quiz/multiple_choice.dart';
 import 'package:kanji_memory_hint/quiz/quiz_result.dart';
 import 'package:kanji_memory_hint/quiz/repo.dart';
+import 'package:kanji_memory_hint/route_param.dart';
 import 'package:kanji_memory_hint/scoring/model.dart';
 
 
@@ -58,12 +59,22 @@ class _QuizState extends State<Quiz> {
   bool isMcReady = false;
   bool isJumbleReady = false;
 
+  bool restart = false;
+
   QuizScore multipleChoiceScore = QuizScore(correct: 0, miss: 0, correctlyAnsweredKanji: []);
   QuizScore jumbleScore = QuizScore(correct: 0, miss: 0, correctlyAnsweredKanji: []); 
 
   late QuizReport report;
 
   late final Countdown _countdown;
+
+  void onRestart(){
+    var arg = PracticeGameArguments(selectedGame: Quiz.route);
+    arg.chapter = widget.chapter;
+    Navigator.popAndPushNamed(context, Quiz.route, 
+      arguments: arg
+    );
+  }
 
   @override
   void initState() {
@@ -182,6 +193,7 @@ class _QuizState extends State<Quiz> {
                   questionSets: mcQuestionSets, 
                   quizOver: isOver,
                   onSubmit: _handleMultipleChoiceSubmit,
+                  restartSource: restart,
                 )
               ),
               JumbleQuizGame(
@@ -189,8 +201,10 @@ class _QuizState extends State<Quiz> {
                 questionSets: jumbleQuestionSets,
                 quizOver: isOver,
                 onSubmit: _handleJumbleSubmit,
+                restartSource: restart,
               ),
               QuizResult(
+                  onRestart: onRestart,
                   multipleChoice: QuizGameParam(
                     result: multipleChoiceScore, 
                     goHere: _goMultipleChoice

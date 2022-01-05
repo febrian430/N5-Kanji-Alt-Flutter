@@ -11,8 +11,9 @@ class JumbleQuizGame extends StatefulWidget {
   final List<JumbleQuizQuestionSet> questionSets;
   final bool quizOver;
   final Function(int correct, int misses, List<List<int>> score) onSubmit;
+  final bool restartSource;
 
-  const JumbleQuizGame({Key? key, required this.mode, required this.questionSets, required this.onSubmit, this.quizOver = false}) : super(key: key);
+  const JumbleQuizGame({Key? key, required this.mode, required this.questionSets, required this.onSubmit, this.quizOver = false, required this.restartSource}) : super(key: key);
   
   @override
   State<StatefulWidget> createState() => _JumbleQuizGameState();
@@ -28,11 +29,25 @@ class _JumbleQuizGameState extends State<JumbleQuizGame> {
   int loaded = 0;
   List<List<int>> correctKanjis = [];
 
+  bool restart = false;
+
   late List<int> lengthOfRound = []; 
   late bool isGameOver = widget.quizOver;
   late int totalQuestion = widget.questionSets.length;
 
-  
+  void onRestart() {
+    setState(() {
+      solved = 0;
+      correct = 0;
+      misses = 0;
+      initial = true;
+      initialBuild = true;
+      loaded = 0;
+      correctKanjis = [];
+
+      restart = true;
+    });
+  }
 
   Widget _buildRound(BuildContext context, int index, JumbleQuizQuestionSet set) {
     return Container(
@@ -43,6 +58,7 @@ class _JumbleQuizGameState extends State<JumbleQuizGame> {
       ),
       child: JumbleQuizRound(
         index: index,
+        restartSource: restart,
         mode: widget.mode, 
         question: set.question, 
         options: set.options, 
@@ -114,6 +130,12 @@ class _JumbleQuizGameState extends State<JumbleQuizGame> {
   Widget build(BuildContext context) {
     print(lengthOfRound);
     WidgetsBinding.instance?.addPostFrameCallback((_) {
+      if(restart){
+        setState(() {
+          restart = false;
+        });
+      }
+
       if((isGameOver || widget.quizOver) && initial ) {
         print(lengthOfRound);
         var unansweredCount = lengthOfRound.reduce((sum, miss) => sum + miss);
