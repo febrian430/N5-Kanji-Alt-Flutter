@@ -123,10 +123,14 @@ class _JumbleQuizRoundState extends State<JumbleQuizRound> with AutomaticKeepAli
         //question
         child: Column(
           children: [
-            QuestionWidget(mode: widget.mode, questionStr: widget.question.value),
+            Expanded(
+              flex: 6,
+              child: QuestionWidget(mode: widget.mode, questionStr: widget.question.value),
+            ),
             Text('Answer: ${widget.question.key.join(" ")}'),
             //selected box
-            Container(
+            Flexible(
+              flex: 2,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 mainAxisSize: MainAxisSize.min,
@@ -142,25 +146,27 @@ class _JumbleQuizRoundState extends State<JumbleQuizRound> with AutomaticKeepAli
             ),
             //options
             // Expanded(
-            Container(
-              decoration: BoxDecoration(
-                border: Border.all(
-                  width: 1
-                )
-              ),
-              child: GridView.count(
-                crossAxisCount: 4,
-                padding: EdgeInsets.fromLTRB(25, 0, 25, 0),
-                mainAxisSpacing: 5,
-                crossAxisSpacing: 5,
-                shrinkWrap: true,
-                children: widget.options.map((opt){
-                  //option box
-                  return OptionWidget(option: opt, disabled: selected.contains(opt), onTap: () { _handleOptionTap(opt); },);
-                }).toList(),
-              ),
+            Flexible(
+              flex: 4,
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    width: 1
+                  )
+                ),
+                child: GridView.count(
+                  crossAxisCount: 4,
+                  padding: EdgeInsets.fromLTRB(25, 0, 25, 0),
+                  mainAxisSpacing: 5,
+                  crossAxisSpacing: 5,
+                  shrinkWrap: true,
+                  children: widget.options.map((opt){
+                    //option box
+                    return OptionWidget(option: opt, disabled: selected.contains(opt), onTap: () { _handleOptionTap(opt); },);
+                  }).toList(),
+                ),
+              )
             )
-            // )
           ],
         )
       )
