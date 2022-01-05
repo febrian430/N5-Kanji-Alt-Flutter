@@ -30,6 +30,7 @@ class JumbleGame extends StatefulWidget {
   final Stopwatch stopwatch = Stopwatch();
 
   Future<List<JumbleQuestionSet>> _getQuestionSet() async {
+    print("Question fetch");
     return JumbleQuestionMaker.makeQuestionSet(GameNumOfRounds, chapter, mode);
   }
 
@@ -49,6 +50,8 @@ class _JumbleGameState extends State<JumbleGame> {
   late int slotsToFill;
   int? numOfQuestions;
 
+  bool restart = false;
+
   late PracticeScore endScore;
   late GameResult result;
   late PracticeGameReport report;
@@ -59,6 +62,28 @@ class _JumbleGameState extends State<JumbleGame> {
   void initState(){
     super.initState();
     _questionSets = widget._getQuestionSet();
+  }
+
+  void onPause() {
+    widget.stopwatch.stop();
+  }
+
+  void onRestart() {
+    setState(() {
+      score = 0;
+      wrongCount = 0;
+      solved = 0;
+      perfect = 0;
+      solvedIdx = {};
+      slotsToFill = 0;
+      numOfQuestions = null;
+      _questionSets =  widget._getQuestionSet();
+      restart = true;
+    });
+  }
+
+  void onContinue() {
+    widget.stopwatch.start();
   }
 
   void _handleRoundOver(bool isCorrect, int misses, int index, bool initialAnswer) {
@@ -92,20 +117,9 @@ class _JumbleGameState extends State<JumbleGame> {
     });
   }
 
-  // void _onGameSubmit(bool isCorrect, int misses) {
-  //   setState(() {
-  //     wrongCount += misses;
-  //     if(isCorrect) {
-  //       score++;
-  //     }
-  //   });
-  // }
-
   void _slideToNextQuestion(int fromIndex, Set<int> answered) async {
     Future.delayed(const Duration(milliseconds: 500), () {
       int? next = GameHelper.nearestUnansweredIndex(fromIndex, answered, GameNumOfRounds);
-      print("HERE");
-      print("YOUR NEXT LINE IS $next");
       if(next != null){
         _pageController.animateToPage(next, duration: const Duration(milliseconds: 200), curve: Curves.linear);
       }
@@ -114,7 +128,7 @@ class _JumbleGameState extends State<JumbleGame> {
 
 
   Widget _buildRound(BuildContext context, int itemIndex, List<JumbleQuestionSet> questionSets) {
-    
+    print("building round at index $itemIndex: ${questionSets[itemIndex].question.key.length}");
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 4.0),
       child: JumbleRound(
@@ -124,6 +138,7 @@ class _JumbleGameState extends State<JumbleGame> {
         mode: widget.mode, 
         // isOver: numOfQuestions == solved,
         onComplete: _handleRoundOver,
+        restartSource: restart,
         // onSubmit: _onGameSubmit,
       )
     );
@@ -170,23 +185,19 @@ class _JumbleGameState extends State<JumbleGame> {
     );
   }
 
-  void onPause() {
-    print("jumble pause");
-    widget.stopwatch.stop();
-  }
-
-  void onRestart() {
-    print("jumble restart");
-    widget.stopwatch.reset();
-  }
-
-  void onContinue() {
-    print("jumble continued");
-    widget.stopwatch.start();
-  }
-
   @override
   Widget build(BuildContext context) {
+    print("restart is $restart");
+
+    WidgetsBinding.instance?.addPostFrameCallback((_){
+      if(restart){
+        setState(() {
+          restart = false;
+        });
+      }
+    });
+
+
     return GameScreen(
       title: JumbleGame.name, 
       japanese: "Jumble in japanese", 
@@ -201,28 +212,25 @@ class _JumbleGameState extends State<JumbleGame> {
 const SENTINEL = const Option(value: "-1", key: "-1");
 
 class JumbleRound extends StatefulWidget {
-  const JumbleRound({Key? key, required this.mode, required this.question, required this.options, required this.onComplete, required this.index}) : super(key: key);
+  const JumbleRound({Key? key, required this.mode, required this.question, required this.options, required this.onComplete, required this.index, required this.restartSource}) : super(key: key);
 
   final int index;
   final JumbleQuestion question;
   final List<Option> options;
   final GAME_MODE mode;
+  final bool restartSource;
   final Function(bool isCorrect, int misses, int index, bool initialAnswer) onComplete;
 
   @override
-  State<StatefulWidget> createState() => _JumbleRoundState(answerLength: question.key.length);
+  State<StatefulWidget> createState() => _JumbleRoundState();
 }
 
 class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClientMixin<JumbleRound> {
   @override
   bool get wantKeepAlive => true;
 
-  _JumbleRoundState({required this.answerLength}) {
-    for (int i = 0; i < answerLength; i++) {
-        selected.add(SENTINEL);
-    }
-  }
-  final int answerLength;
+
+  _JumbleRoundState();
 
   Color roundColor = AppColors.primary;
   final Color _correctColor = Colors.green;
@@ -234,6 +242,28 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
 
   bool isFirstTry = true;
   bool isRoundOver = false;
+  bool wasRestarted = false;
+
+
+  @override
+  void initState() {
+    super.initState();
+
+    selected = widget.question.key.map((_) => SENTINEL).toList();
+  }
+
+  void restart() {
+    setState(() {
+      print("question during restart setState ${widget.index}:${widget.question.key.length}");
+      selected = widget.question.key.map((_) => SENTINEL).toList();
+      roundColor = AppColors.primary;
+      selectCount = 0;
+      misses = 0;
+      isFirstTry = true;
+      isRoundOver = false;
+      wasRestarted = true;
+    });
+  }
 
   void _unselect(List<int> indexes) {
     indexes.forEach((index) {
@@ -273,7 +303,7 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
         });
       }
 
-      if(selectCount == answerLength) {
+      if(selectCount == widget.question.key.length) {
         var diff = _differentIndexes();
         if(diff.length == 0) {
           setState(() {
@@ -327,6 +357,20 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
   @override
   Widget build(BuildContext context) {
     super.build(context);
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      if(widget.restartSource) {
+        restart();
+      }
+    });
+    if(wasRestarted) {
+      setState(() {
+         selected = widget.question.key.map((_) => SENTINEL).toList();
+         wasRestarted = false;
+      });
+    }
+
+    print("question  ${widget.index}: ${widget.question.key.length}");
+
 
     return Center(
       child: Container(
@@ -445,8 +489,6 @@ class OptionWidget extends StatelessWidget {
 
     return TextButton(
       onPressed: () {
-        print("round option is");
-        print(disabled);
         if(!disabled) {
           onTap();
         }
