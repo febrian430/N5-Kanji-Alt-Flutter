@@ -1,8 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kanji_memory_hint/color_hex.dart';
+import 'package:kanji_memory_hint/components/backgrounds/menu_background.dart';
 import 'package:kanji_memory_hint/components/buttons/back_button.dart';
 import 'package:kanji_memory_hint/components/header.dart';
+import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/menu_screens/screen_layout.dart';
+import 'package:kanji_memory_hint/theme.dart';
 
 class Menu extends StatelessWidget {
 
@@ -26,13 +30,15 @@ class Menu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenLayout(
-      header: AppHeader(
-        title: title,
-        japanese: japanese,
-      ), 
-      footer: backWidget(context), 
-      child: child
+    return MenuBackground(
+      child: ScreenLayout(
+        header: AppHeader(
+          title: title,
+          japanese: japanese,
+        ), 
+        footer: backWidget(context), 
+        child: child
+      )
     );
   }
 }

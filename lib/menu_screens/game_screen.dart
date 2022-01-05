@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kanji_memory_hint/color_hex.dart';
+import 'package:kanji_memory_hint/components/backgrounds/practice_background.dart';
 import 'package:kanji_memory_hint/components/header.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/menu_screens/screen_layout.dart';
@@ -66,13 +68,15 @@ class _GameScreenState extends State<GameScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenLayout(
-      header: AppHeader(
-        title: widget.title, 
-        japanese: widget.japanese
-      ), 
-      footer: pauseButton(context), 
-      child: widget.game
+    return PracticeBackground(
+      child: ScreenLayout(
+        header: AppHeader(
+          title: widget.title, 
+          japanese: widget.japanese
+        ), 
+        footer: pauseButton(context), 
+        child: widget.game
+      )
     );
   }
 }
