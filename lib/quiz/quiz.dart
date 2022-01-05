@@ -143,8 +143,8 @@ class _QuizState extends State<Quiz> {
       jumbleCorrect = correct;
       jumbleMisses = misses;
       isOver = true;
-      gameIndex = 2;
       isJumbleReady = true;
+      gameIndex = 2;
     });
   }
 
@@ -166,7 +166,7 @@ class _QuizState extends State<Quiz> {
     });
   }
   
-  Widget _build(BuildContext context, int gameIndex, List items) {
+  Widget _build(BuildContext context, List items) {
     List<QuizQuestionSet> mcQuestionSets = items[0];
     List<JumbleQuizQuestionSet> jumbleQuestionSets = items[1];
 
@@ -269,7 +269,7 @@ class _QuizState extends State<Quiz> {
           future: quizQuestionSet,
           builder: (context, AsyncSnapshot<List> snapshot) {
             if(snapshot.hasData) {
-              return _build(context, gameIndex, snapshot.data!);
+              return _build(context, snapshot.data!);
             } else {
               return LoadingScreen();
             }

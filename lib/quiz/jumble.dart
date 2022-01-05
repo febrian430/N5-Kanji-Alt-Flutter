@@ -86,43 +86,45 @@ class _JumbleQuizGameState extends State<JumbleQuizGame> {
   }
 
   Widget _build(BuildContext context, List<JumbleQuizQuestionSet> items) {
-    return Column(children: [
-      Flexible(
-        flex: 15,
-        child: PageView(
-          onPageChanged: (int index){
-            if(lengthOfRound[index] != 0){
-              lengthOfRound[index] = 0;
-            };
+    return Column(
+      children: [
+        Flexible(
+          flex: 15,
+          child: PageView(
+            onPageChanged: (int index){
+              if(lengthOfRound[index] != 0){
+                lengthOfRound[index] = 0;
+              };
 
-            if(lengthOfRound[0] != 0) {
-              lengthOfRound[0] = 0;
-            }
-          },
-          controller: PageController(
-            viewportFraction: 1,
-            initialPage: 0,
-          ),
-          children: items.mapIndexed((questionSet, index) {
-            if(initialBuild){
-              lengthOfRound.add(questionSet.question.key.length);
-            }
-            return _buildRound(context, index, questionSet);
-          }).toList(),
-        )
-      ),
-      Flexible(
-        flex: 1,
-        child: SubmitButton(
-            visible: (!isGameOver || !widget.quizOver) && solved == totalQuestion, 
-            onTap: () {
-              setState(() {
-                isGameOver = true;
-              });
-            }
+              if(lengthOfRound[0] != 0) {
+                lengthOfRound[0] = 0;
+              }
+            },
+            controller: PageController(
+              viewportFraction: 1,
+              initialPage: 0,
+            ),
+            children: items.mapIndexed((questionSet, index) {
+              if(initialBuild){
+                lengthOfRound.add(questionSet.question.key.length);
+              }
+              return _buildRound(context, index, questionSet);
+            }).toList(),
           )
-      )
-    ]
+        ),
+        Flexible(
+          flex: 1,
+          child: SubmitButton(
+              visible: (!isGameOver || !widget.quizOver) && solved == totalQuestion, 
+              onTap: () {
+                setState(() {
+                  widget.onSubmit(correct, misses, correctKanjis);
+                  isGameOver = true;
+                });
+              }
+            )
+        )
+      ]
     );
   }
   

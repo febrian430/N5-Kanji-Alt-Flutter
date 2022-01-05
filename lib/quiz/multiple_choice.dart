@@ -26,6 +26,7 @@ class _MultipleChoiceGameState extends State<MultipleChoiceQuizGame> {
   bool initialRerender = true;
 
   bool restart = false;
+  bool wasSubmitted = false;
   
   late int totalQuestion = widget.questionSets.length; 
 
@@ -90,6 +91,7 @@ class _MultipleChoiceGameState extends State<MultipleChoiceQuizGame> {
               onTap: () {
                 var correctKanjis = correctIndexes.map((index) => widget.questionSets[index].fromKanji).toList();
                 widget.onSubmit(correct, wrong+unanswered, correctKanjis);
+                wasSubmitted = true;
               }, 
               visible: !widget.quizOver && solved == totalQuestion
             )
@@ -131,7 +133,7 @@ class _MultipleChoiceGameState extends State<MultipleChoiceQuizGame> {
         });
       }
 
-      if(widget.quizOver && initialRerender) {
+      if(!wasSubmitted && widget.quizOver && initialRerender) {
         final unanswered = totalQuestion - solved;
         var correctKanjis = correctIndexes.map((index) => widget.questionSets[index].fromKanji).toList();
         widget.onSubmit(correct, wrong+unanswered, correctKanjis);
