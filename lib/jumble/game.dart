@@ -388,7 +388,11 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
               flex: 6,
               child: QuestionWidget(mode: widget.mode, questionStr: widget.question.value),
             ),
-            SizedBox(height: 10),
+            Flexible(
+              flex: 1,
+              child: Text(widget.question.key.join('')),
+              
+            ),
             //selected box
             Flexible(
               flex: 2,
@@ -479,7 +483,7 @@ class OptionWidget extends StatelessWidget {
   final OnTapFunc onTap;
 
   Widget _draw(BuildContext context) {
-    Color boxColor = Colors.white;
+    Color boxColor = AppColors.primary;
     Color textColor = Colors.black;
 
     if(disabled) {
@@ -497,11 +501,14 @@ class OptionWidget extends StatelessWidget {
         child: Text(
           option.value,
           style: TextStyle(
-            color: Colors.black,
+            color: textColor,
             fontSize: 30
           )
         ),
-      )
+      ),
+      style: TextButton.styleFrom(
+        backgroundColor: boxColor
+      ),
     );
   }
 
