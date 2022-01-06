@@ -29,6 +29,7 @@ class SQLRepo {
       await drop();
     }
 
+    bool initial = false;
     var path = await getDatabasesPath();
     var dbPath = join(path, 'kantan_test.db');
     db ??= await openDatabase(dbPath, version: 1,
@@ -37,6 +38,7 @@ class SQLRepo {
         await QuestProvider.migrate(db);
         await KanjiProvider.migrate(db);
         await ExampleProvider.migrate(db);
+        initial = true;
       }
     );
 
@@ -46,11 +48,15 @@ class SQLRepo {
     examples = ExampleProvider(db!);
     gameQuestions = GameQuestionProvider(kanjis, examples);
 
+    if(initial){
+      await kanjis.seed();
+      await examples.seed();
+      await quests.seed();
+    }
+
     PracticeQuestHandler.supplyQuests();
     QuizQuestHandler.supplyQuests();
-    if(MIGRATE){
-      kanjis.seed();
-      examples.seed();
-    }
+
+
   }
 }

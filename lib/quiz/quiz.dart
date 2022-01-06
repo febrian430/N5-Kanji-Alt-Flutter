@@ -86,7 +86,7 @@ class _QuizState extends State<Quiz> {
     });
   }
 
-  void postQuizHook() {
+  void postQuizHook() async {
     report = QuizReport(
       multiple: multipleChoiceScore, 
       jumble: jumbleScore,
@@ -94,9 +94,15 @@ class _QuizState extends State<Quiz> {
       gains: GameResult(expGained: 100, pointsGained: 100)
     );
 
-    MasteryHandler.addMasteryFromQuiz(report);
-    QuizQuestHandler.checkForQuests(report);
+    Future.delayed(Duration(milliseconds: 200), () async {
+      print("mulchoice during quiz ${report.multiple.correctlyAnsweredKanji.join(",")}");
+      print("jumble during quiz ${report.jumble.correctlyAnsweredKanji.join(",")}");
+      await MasteryHandler.addMasteryFromQuiz(report);
+      await QuizQuestHandler.checkForQuests(report);
+    });
+
     initial = false;
+    gameIndex = 2;
   }
 
 
@@ -144,7 +150,6 @@ class _QuizState extends State<Quiz> {
       jumbleMisses = misses;
       isOver = true;
       isJumbleReady = true;
-      gameIndex = 2;
     });
   }
 

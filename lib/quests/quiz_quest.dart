@@ -7,25 +7,6 @@ class QuizQuestHandler {
   static List<QuizQuest> _ongoingQuests = [];
 
   static void supplyQuests() async {
-    if(MIGRATE) {
-      _ongoingQuests = [
-        QuizQuest(
-            chapter: 1,
-            requiresPerfect: 0,
-            total: 5,
-            goldReward: 5
-        ),
-        QuizQuest(
-            chapter: 1,
-            requiresPerfect: 0,
-            total: 2,
-            goldReward: 10
-        )
-      ];
-      for (var element in _ongoingQuests) {
-        await SQLRepo.quests.create(element);
-      }
-    }
     _ongoingQuests = await SQLRepo.quests.getOnGoingQuiz();
   }
 

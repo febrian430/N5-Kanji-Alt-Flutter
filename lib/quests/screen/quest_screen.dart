@@ -4,6 +4,7 @@ import 'package:flutter/rendering.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/database/quests.dart';
 import 'package:kanji_memory_hint/menu_screens/menu.dart';
+import 'package:kanji_memory_hint/quests/mastery.dart';
 import 'package:kanji_memory_hint/quests/practice_quest.dart';
 import 'package:kanji_memory_hint/quests/quiz_quest.dart';
 
@@ -116,11 +117,16 @@ class _QuestList extends StatelessWidget {
   final int index;
 
   Widget _mastery() {
-    return ListView.builder(
-      itemCount: 5,
-      itemBuilder: (context, index) {
-        return SizedBox(child: Text("Mastery " + index.toString()), height: 150);
-      }
+    return FutureBuilder(
+      future: MasteryHandler.quests(),
+      builder: (BuildContext context,
+          AsyncSnapshot<List<MasteryQuest>> snapshot) {
+        if (snapshot.hasData) {
+          return _MasteryQuestList(quests: snapshot.data!);
+        } else {
+          return const Text("Loading...");
+        }
+      },
     );
   }
 
@@ -235,6 +241,55 @@ class _QuizQuestList extends StatelessWidget {
         child: Row(
             children: [
               Flexible(flex: 8, child: Text('Do ${quest.game} with topic ${quest.chapter}')),
+              Flexible(
+                  flex: 2,
+                  child: Column(
+                    children: [
+                      Visibility(
+                          visible: quest.count >= quest.total,
+                          child: Flexible(
+                              flex: 6,
+                              child: TextButton(
+                                child: Center(child: quest.status == QUEST_STATUS.CLAIMED ? Text("Claimed") : Text("Claim")),
+                                onPressed: () {
+                                  quest.claim();
+                                },
+                              )
+                          )
+                      ),
+                      Flexible(flex: 4, child: Center(child: Text('${quest.count} / ${quest.total}'),))
+                    ],
+                  )
+              )
+            ]
+        )
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+        itemCount: quests.length,
+        itemBuilder: (BuildContext context, int index) {
+          return questWidget(quests[index]);
+        }
+    );
+
+  }
+}
+
+class _MasteryQuestList extends StatelessWidget {
+
+  final List<MasteryQuest> quests;
+
+  const _MasteryQuestList({Key? key, required this.quests}) : super(key: key);
+
+  Widget questWidget(MasteryQuest quest) {
+    return SizedBox(
+        height: 150,
+        child: Row(
+            children: [
+              Flexible(flex: 8, child: Text('Master ${quest.total} kanjis')),
               Flexible(
                   flex: 2,
                   child: Column(
