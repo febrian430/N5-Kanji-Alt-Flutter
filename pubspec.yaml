@@ -38,6 +38,9 @@ dependencies:
   just_audio: ^0.9.18
   just_audio_libwinmedia: ^0.0.4
   sqflite: ^2.0.1
+  flutter_local_notifications: ^9.2.0
+  timezone: ^0.8.0
+
 
 dev_dependencies:
   flutter_test:

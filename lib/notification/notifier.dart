@@ -65,6 +65,7 @@ class Notifier {
       androidAllowWhileIdle: true,
       uiLocalNotificationDateInterpretation:
         UILocalNotificationDateInterpretation.absoluteTime,
+      matchDateTimeComponents: DateTimeComponents.dayOfWeekAndTime
     );
   }
 
