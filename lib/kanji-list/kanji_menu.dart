@@ -47,8 +47,74 @@ class _MenuState extends State<KanjiMenu> {
           onPressed: () => Navigator.of(context).pushNamed("/list/view",
             arguments: kanji
           ),
-          child: Text(kanji.rune),
+          child: Text(
+            kanji.rune,
+            style: TextStyle(
+              color: Colors.black
+            ),
+          ),
         )
+    );
+  }
+
+  Widget _instantPopList(BuildContext context, List<Kanji> kanjis) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final childWidth = screenWidth*0.8;
+    final width = screenWidth*0.6;
+
+    return ListView.builder(
+      key: Key('builder ${selected.toString()}'),
+      itemCount: widget.chapters.length,  
+      itemBuilder: (context, index) {
+        var chapter = widget.chapters[index];
+        return Padding(
+            padding: EdgeInsets.only(
+              top: 10,
+              bottom: 10
+            ),
+            child: KanjiTile(
+              key: Key(index.toString()),
+              // initiallyExpanded: selected == index,
+              // onExpansionChanged: (expanding) {
+              //   if(expanding){
+              //     setState(() {
+              //       selected = index;
+              //     });
+              //   } else {
+              //     setState(() {
+              //       selected = -1;
+              //     });
+              //   }
+              // },
+              iconColor: Colors.black,
+              textColor: Colors.black,
+              childrenPadding: const EdgeInsets.all(4),
+              expandedCrossAxisAlignment: CrossAxisAlignment.end,
+              width: width,
+              childWidth: childWidth,
+              headerBackgroundColor: AppColors.primary,
+              headerBorderWidth: 3,
+              
+              children: <Widget>[
+                GridView.count(
+                  crossAxisCount: 5,
+                  padding: const EdgeInsets.all(4),
+                  crossAxisSpacing: 12,
+                  mainAxisSpacing: 12,
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  children: kanjis.where((kanji) => kanji.chapter == chapter)
+                    .map((kanji) {
+                      return buildKanji(context, kanji);
+                    }).toList() 
+                )
+              ],
+              title: Text(
+                  "Chapter ${chapter}",
+              )
+            )
+        );
+      }
     );
   }
 
@@ -57,52 +123,45 @@ class _MenuState extends State<KanjiMenu> {
     final childWidth = screenWidth*0.8;
     final width = screenWidth*0.6;
 
-    return ListView.builder(
-            key: Key('builder ${selected.toString()}'),
-            itemCount: widget.chapters.length,
-            itemBuilder: (context, index) {
-              var chapter = widget.chapters[index];
+    return SingleChildScrollView(
+      child: Center(
+        child: Column(
+          children: 
+            widget.chapters.map((chapter) {
               return KanjiTile(
-                  key: Key(index.toString()),
-                  initiallyExpanded: selected == index,
-                  onExpansionChanged: (expanding) {
-                    if(expanding){
-                      setState(() {
-                        selected = index;
-                      });
-                    } else {
-                      setState(() {
-                        selected = -1;
-                      });
-                    }
-                  },
-                  textColor: Colors.black,
-                  childrenPadding: const EdgeInsets.all(4),
-                  expandedCrossAxisAlignment: CrossAxisAlignment.end,
-                  width: width,
-                  childWidth: childWidth,
-                  headerBackgroundColor: AppColors.primary,
-                  headerBorderWidth: 3,
-                  
-                  children: <Widget>[
-                    GridView.count(
-                      crossAxisCount: 5,
-                      padding: const EdgeInsets.all(4),
-                      crossAxisSpacing: 12,
-                      mainAxisSpacing: 12,
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      children: kanjis.where((kanji) => kanji.chapter == chapter)
-                        .map((kanji) {
-                          return buildKanji(context, kanji);
-                        }).toList() 
-                    )
-                  ],
-                  title: Text(
-                      "Chapter ${chapter}"
+                textColor: Colors.black,
+                iconColor: Colors.black,
+                backgroundColor: Colors.transparent,
+                childrenPadding: const EdgeInsets.all(4),
+                expandedCrossAxisAlignment: CrossAxisAlignment.end,
+                childWidth: childWidth,
+                width: width,
+                headerBackgroundColor: AppColors.primary,
+                maintainState: true,
+                headerBorderWidth: 3,
+                children: <Widget>[
+                  GridView.count(
+                    crossAxisCount: 5,
+                    padding: const EdgeInsets.all(4),
+                    crossAxisSpacing: 12,
+                    mainAxisSpacing: 12,
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    children: kanjis.where((kanji) => kanji.chapter == chapter)
+                      .map((kanji) {
+                        return buildKanji(context, kanji);
+                      }).toList() 
                   )
+                ],
+                title: Center(
+                  child: Text(
+                    "Chapter ${chapter}"
+                  )
+                )
               );
-            }
+            }).toList()
+        ),
+      ),
     );
   }
 
