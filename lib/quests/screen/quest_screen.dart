@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/database/quests.dart';
+import 'package:kanji_memory_hint/menu_screens/menu.dart';
 import 'package:kanji_memory_hint/quests/practice_quest.dart';
 import 'package:kanji_memory_hint/quests/quiz_quest.dart';
 
@@ -21,7 +22,7 @@ class _QuestScreenState extends State<QuestScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    var screen = Scaffold(
       body: SafeArea(
         child: Center(
           child: Column(
@@ -38,6 +39,7 @@ class _QuestScreenState extends State<QuestScreen> {
         ),
       ),
     );
+    return Menu(title: "Quest", japanese: "quest in japanese", child: screen); 
   }
 }
 
