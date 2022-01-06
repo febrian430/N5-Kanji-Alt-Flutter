@@ -4,6 +4,7 @@ import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/database/kanji.dart';
 import 'package:kanji_memory_hint/database/repository.dart';
 import 'package:kanji_memory_hint/kanji-list/tile.dart';
+import 'package:kanji_memory_hint/kanji-list/tile_alt.dart';
 import 'package:kanji_memory_hint/menu_screens/menu.dart';
 import 'package:kanji_memory_hint/theme.dart';
 import 'package:kanji_memory_hint/map_indexed.dart';
@@ -29,7 +30,10 @@ class _MenuState extends State<KanjiMenu> {
 
   var _list;
 
-  int selected = -1;
+  ValueNotifier<Key?> _expanded = ValueNotifier(null);
+
+  var selected;
+
 
   @override
   void initState() {
@@ -118,6 +122,55 @@ class _MenuState extends State<KanjiMenu> {
     );
   }
 
+  Widget _withAnimation(BuildContext context, List<Kanji> kanjis) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final childWidth = screenWidth*0.8;
+    final width = screenWidth*0.6;
+
+    return SingleChildScrollView(
+      child: Center(
+        child: Column(
+          children: 
+            widget.chapters.mapIndexed((chapter, index) {
+              return KanjiTile2(
+                key: Key(index.toString()),
+                expandedItem: _expanded,
+                textColor: Colors.black,
+                iconColor: Colors.black,
+                backgroundColor: Colors.transparent,
+                childrenPadding: const EdgeInsets.all(4),
+                expandedCrossAxisAlignment: CrossAxisAlignment.end,
+                childWidth: childWidth,
+                width: width,
+                headerBackgroundColor: AppColors.primary,
+                maintainState: true,
+                headerBorderWidth: 3,
+                children: <Widget>[
+                  GridView.count(
+                    crossAxisCount: 5,
+                    padding: const EdgeInsets.all(4),
+                    crossAxisSpacing: 12,
+                    mainAxisSpacing: 12,
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    children: kanjis.where((kanji) => kanji.chapter == chapter)
+                      .map((kanji) {
+                        return buildKanji(context, kanji);
+                      }).toList() 
+                  )
+                ],
+                title: Center(
+                  child: Text(
+                    "Chapter ${chapter}"
+                  )
+                ), 
+              );
+            }).toList()
+        ),
+      ),
+    );
+  }
+
   Widget _renderList(BuildContext context, List<Kanji> kanjis) {
     final screenWidth = MediaQuery.of(context).size.width;
     final childWidth = screenWidth*0.8;
@@ -127,7 +180,7 @@ class _MenuState extends State<KanjiMenu> {
       child: Center(
         child: Column(
           children: 
-            widget.chapters.map((chapter) {
+            widget.chapters.mapIndexed((chapter, index) {
               return KanjiTile(
                 textColor: Colors.black,
                 iconColor: Colors.black,
@@ -157,7 +210,7 @@ class _MenuState extends State<KanjiMenu> {
                   child: Text(
                     "Chapter ${chapter}"
                   )
-                )
+                ), 
               );
             }).toList()
         ),

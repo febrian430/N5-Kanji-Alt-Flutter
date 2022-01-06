@@ -6,15 +6,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:kanji_memory_hint/theme.dart';
 
+// Courtesy to Sahandevs from
+// https://stackoverflow.com/questions/58217058/is-there-a-way-in-flutter-to-allow-only-one-expansiontile-of-a-dynamic-generated
 
 const Duration _kExpand = Duration(milliseconds: 200);
 
-class KanjiTile extends StatefulWidget {
+class KanjiTile2 extends StatefulWidget {
   /// Creates a single-line [ListTile] with an expansion arrow icon that expands or collapses
   /// the tile to reveal or hide the [children]. The [initiallyExpanded] property must
   /// be non-null.
-  const KanjiTile({
-    Key? key,
+  const KanjiTile2({
+    required Key key,
     this.leading,
     required this.title,
     this.subtitle,
@@ -37,7 +39,8 @@ class KanjiTile extends StatefulWidget {
     this.childWidth, 
     this.width, 
     this.headerBackgroundColor, 
-    this.headerBorderWidth,
+    this.headerBorderWidth, 
+    required this.expandedItem,
   }) : assert(initiallyExpanded != null),
        assert(maintainState != null),
        assert(
@@ -179,11 +182,14 @@ class KanjiTile extends StatefulWidget {
   /// which means that the expansion arrow icon will appear on the tile's trailing edge.
   final ListTileControlAffinity? controlAffinity;
 
+  final ValueNotifier<Key?> expandedItem;
+
+
   @override
-  State<KanjiTile> createState() => _KanjiTileState();
+  State<KanjiTile2> createState() => _KanjiTileState();
 }
 
-class _KanjiTileState extends State<KanjiTile> with SingleTickerProviderStateMixin {
+class _KanjiTileState extends State<KanjiTile2> with SingleTickerProviderStateMixin {
   static final Animatable<double> _easeOutTween = CurveTween(curve: Curves.easeOut);
   static final Animatable<double> _easeInTween = CurveTween(curve: Curves.easeIn);
   static final Animatable<double> _halfTween = Tween<double>(begin: 0.0, end: 0.5);
@@ -202,7 +208,6 @@ class _KanjiTileState extends State<KanjiTile> with SingleTickerProviderStateMix
   late Animation<Color?> _backgroundColor;
 
   bool _isExpanded = false;
-  bool _wasExpanded = false;
 
   @override
   void initState() {
@@ -218,31 +223,47 @@ class _KanjiTileState extends State<KanjiTile> with SingleTickerProviderStateMix
     _isExpanded = PageStorage.of(context)?.readState(context) as bool? ?? widget.initiallyExpanded;
     if (_isExpanded)
       _controller.value = 1.0;
+
+    widget.expandedItem.addListener(listener);
   }
 
   @override
   void dispose() {
     _controller.dispose();
+    
     super.dispose();
   }
 
-  void _handleTap() {
-    setState(() {
-      _isExpanded = !_isExpanded;
-      if (_isExpanded) {
-        _controller.forward();
-      } else {
-        _controller.reverse().then<void>((void value) {
-          if (!mounted)
-            return;
-          setState(() {
-            // Rebuild without widget.children.
-          });
+  void _changeState(bool isExpanded) {
+        setState(() {
+          _isExpanded = isExpanded;
+          if (_isExpanded) {
+            _controller.forward();
+          } else {
+            _controller.reverse().then<void>((void value) {
+            if (!mounted)
+              return;
+            setState(() {
+              // Rebuild without widget.children.
+            });
         });
       }
       PageStorage.of(context)?.writeState(context, _isExpanded);
     });
-    widget.onExpansionChanged?.call(_isExpanded);
+  }
+
+  void listener() {
+    setState(() {
+      _changeState(widget.expandedItem.value == widget.key);
+    });
+  }
+
+
+  void _handleTap() {
+    _changeState(!_isExpanded);
+    widget.expandedItem.value = _isExpanded ? widget.key : null;
+
+    // widget.onExpansionChanged?.call(_isExpanded);
   }
 
   // Platform or null affinity defaults to trailing.
