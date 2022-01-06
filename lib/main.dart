@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:kanji_memory_hint/components/backgrounds/menu_background.dart';
 import 'package:kanji_memory_hint/components/buttons/select_button.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/database/repository.dart';
@@ -6,6 +8,7 @@ import 'package:kanji_memory_hint/game.dart';
 import 'package:kanji_memory_hint/kanji-list/view.dart';
 import 'package:kanji_memory_hint/menu_screens/chapter_select.dart';
 import 'package:kanji_memory_hint/menu_screens/mode_select.dart';
+import 'package:kanji_memory_hint/notification/notifier.dart';
 import 'package:kanji_memory_hint/result_screen/practice.dart';
 import 'package:kanji_memory_hint/menu_screens/start_select.dart';
 import 'package:kanji_memory_hint/multiple-choice/game.dart';
@@ -20,7 +23,11 @@ import 'package:kanji_memory_hint/route_param.dart';
 import 'package:kanji_memory_hint/test.dart';
 import 'package:kanji_memory_hint/theme.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Notifier.initialize();
+  await SQLRepo.open();
+
   runApp(const MyApp());
 }
 
@@ -35,14 +42,9 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
 
   @override
-  void initState() {
-    super.initState();
-
-    SQLRepo.open();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+
     return MaterialApp(
       title: 'N5 Kanji',
       theme: ThemeData( 
@@ -55,8 +57,8 @@ class _MyAppState extends State<MyApp> {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-
-        scaffoldBackgroundColor: AppColors.primary,
+        
+        scaffoldBackgroundColor: Colors.transparent,
         // primarySwatch: Colors.blue,
         // primaryColor: Colors.black,
         backgroundColor: Colors.white,
@@ -159,48 +161,58 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center(
-            child: SelectButton(
-              onTap: () {
-                Navigator.pushNamed(context, '/list');
-                
-              },
-              title: 'List',
+    return MenuBackground(
+      child: Scaffold(
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+              child: SelectButton(
+                onTap: () {
+                  Navigator.pushNamed(context, '/list');
+                  
+                },
+                title: 'List',
+              ),
             ),
-          ),
-          Center(
-            child: SelectButton(
-              onTap: () {
-                Navigator.pushNamed(context, StartSelect.route);
-                
-              },
-              title: 'Start',
+            Center(
+              child: SelectButton(
+                onTap: () {
+                  Navigator.pushNamed(context, StartSelect.route);
+                  
+                },
+                title: 'Start',
+              ),
             ),
-          ),
-          Center(
-            child: SelectButton(
-              onTap: () {
-                Navigator.pushNamed(context, '/quests');
-                
-              },
-              title: 'Quests',
+            Center(
+              child: SelectButton(
+                onTap: () {
+                  Navigator.pushNamed(context, '/quests');
+                  
+                },
+                title: 'Quests',
+              ),
             ),
-          ),
-          Center(
-            child: SelectButton(
-              onTap: () {
-                Navigator.pushNamed(context, '/test');
-                
-              },
-              title: 'test',
+            Center(
+              child: SelectButton(
+                onTap: () {
+                  Navigator.pushNamed(context, '/test');
+                  
+                },
+                title: 'test',
+              ),
             ),
-          )
-      ]
-    )
+            Center(
+              child: SelectButton(
+                onTap: () async {
+                  await Notifier.createNotifier();
+                },
+                title: 'Notify',
+              ),
+            )
+          ]
+        )
+      )
     );
   }
 }
