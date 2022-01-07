@@ -8,29 +8,6 @@ import 'package:kanji_memory_hint/scoring/model.dart';
 class PracticeQuestHandler {
   static List<PracticeQuest> onGoingQuests = [];
   static void supplyQuests() async {
-    if(MIGRATE) {
-      onGoingQuests = [
-        PracticeQuest(
-            game: JumbleGame.name,
-            mode: null,
-            chapter: 1,
-            requiresPerfect: 0,
-            total: 5,
-            goldReward: 25
-        ),
-        PracticeQuest(
-            game: PickDrop.name,
-            mode: GAME_MODE.imageMeaning,
-            chapter: 1,
-            requiresPerfect: 0,
-            total: 2,
-            goldReward: 10
-        )
-      ];
-      for (var element in onGoingQuests) {
-        await SQLRepo.quests.create(element);
-      }
-    }
     onGoingQuests = await SQLRepo.quests.getOnGoingPractice();
   }
 
