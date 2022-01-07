@@ -281,13 +281,16 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
           );
       }
 
-      return Container( 
-        child: Center(
-          child: Text(opt.value + " " + opt.key),
-        ),
-        decoration: deco,
-        height: 120,
-        width: 120,
+      final width = MediaQuery.of(context).size.width;
+      return AspectRatio(
+        aspectRatio: 12/8,
+        child: Container( 
+          child: Center(
+            child: Text(opt.value + " " + opt.key),
+          ),
+          decoration: deco,
+          width: width*0.2,
+        )
       );
     }
   }
@@ -379,22 +382,19 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
   Widget _getGameUI(BuildContext context, List<Question> questions) {
     numOfQuestions = questions.length;
     return Center(
-        child: Column(
-          children: [
-            Expanded(
-              child: GridView.count(
-                crossAxisCount: 4,
-                shrinkWrap: true,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-                physics: const NeverScrollableScrollPhysics(),
-                children: questions.mapIndexed((opt, index) {
-                  return _buildQuestion(context, index, opt);
-                }).toList(),
-              )
-            )
-          ]
+      child: Expanded(
+        child: GridView.count(
+          crossAxisCount: 4,
+          childAspectRatio: 8/9,
+          shrinkWrap: true,
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
+          physics: const NeverScrollableScrollPhysics(),
+          children: questions.mapIndexed((opt, index) {
+            return _buildQuestion(context, index, opt);
+          }).toList(),
         )
+      )
     );
   }
 
