@@ -12,6 +12,9 @@ import 'package:kanji_memory_hint/quests/practice_quest.dart';
 import 'package:kanji_memory_hint/route_param.dart';
 import 'package:kanji_memory_hint/scoring/practice/mix_match.dart';
 import 'package:kanji_memory_hint/scoring/model.dart';
+import 'package:kanji_memory_hint/map_indexed.dart';
+import 'package:kanji_memory_hint/theme.dart';
+
 
 typedef OnRoundOverCallback = Function(bool isCorrect, int correct, int wrongAttempts);
 
@@ -219,9 +222,15 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
     });
   }
 
-  Widget _drawQuestionWidget(BuildContext context, Question opt) {
+  Widget _drawQuestionWidget(BuildContext context, int index, Question opt) {
     bool isSelected = (selected?.id == opt.id);
     bool isSolved = solved.contains(opt);
+
+    const Color selectedBorderColor = Colors.blue;
+    const Color solvedBorderColor = Colors.green;
+    const Color defaultBorderColor = Colors.black;
+    const int borderWidth = 2;
+    final Color defaultBackgroundColor = (index + (index / 4).floor()) % 2 == 1 ? AppColors.primary : Colors.white;
 
     final boxSize = MediaQuery.of(context).size.width*0.20;
 
@@ -246,27 +255,29 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
     } else {
     
       BoxDecoration? deco;
-
       if(isSelected) {
         deco = BoxDecoration(
             border: Border.all(
-              color: Colors.green,
+              color: selectedBorderColor,
               width: 2
-            )
+            ),
+            color: defaultBackgroundColor
           );
       } else if(isSolved) {
         deco = BoxDecoration(
             border: Border.all(
-              color: Colors.red,
+              color: solvedBorderColor,
               width: 2
-            )
+            ),
+            color: defaultBorderColor 
           );
       } else {
         deco = BoxDecoration(
             border: Border.all(
-              color: Colors.black,
-              width: 1
-            )
+              color: defaultBorderColor,
+              width: 2
+            ),
+            color: defaultBackgroundColor
           );
       }
 
@@ -299,23 +310,21 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
 
   void _isGameOver() async {
     if(solved.length == numOfQuestions){
-      widget.onRoundOver(true, score, wrong);
       showDialog<String>(
         context: context,
         builder: (BuildContext context) {
           return BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
             child: AlertDialog(
-              title: const Text('Game over'),
-              content: Text('Wrong attempts: ' + wrong.toString()),
+              title: const Text('Round one over'),
+              content: Text('Beginning round two'),
               actions: <Widget>[
                 TextButton(
-                  onPressed: () => Navigator.pop(context, 'Cancel'),
-                  child: const Text('Cancel'),
-                ),
-                TextButton(
-                  onPressed: () => Navigator.pop(context, 'OK'),
-                  child: const Text('OK'),
+                  onPressed: () {
+                    Navigator.pop(context, 'OK');
+                    widget.onRoundOver(true, score, wrong);
+                  } ,
+                  child: const Text('Continue'),
                 ),
               ],
             )
@@ -354,10 +363,10 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
     }
   }
 
-  Widget _buildQuestion(BuildContext context, Question opt) {
+  Widget _buildQuestion(BuildContext context, int index, Question opt) {
     return GestureDetector(
             child: Container(
-              child: _drawQuestionWidget(context, opt)
+              child: _drawQuestionWidget(context, index, opt)
             ),
             onTap:() {
               setState(() {
@@ -378,9 +387,9 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
                 shrinkWrap: true,
                 crossAxisSpacing: 10,
                 mainAxisSpacing: 10,
-                physics: NeverScrollableScrollPhysics(),
-                children: questions.map((opt) {
-                  return _buildQuestion(context, opt);
+                physics: const NeverScrollableScrollPhysics(),
+                children: questions.mapIndexed((opt, index) {
+                  return _buildQuestion(context, index, opt);
                 }).toList(),
               )
             )
