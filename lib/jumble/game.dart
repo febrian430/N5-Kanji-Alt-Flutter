@@ -232,7 +232,7 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
 
   _JumbleRoundState();
 
-  Color roundColor = AppColors.primary;
+  Color roundColor = Colors.transparent;
   final Color _correctColor = Colors.green;
   final Color _wrongColor = Colors.red;
 
@@ -400,7 +400,10 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 mainAxisSize: MainAxisSize.min,
                 children: selected.mapIndexed((select, i) {
-                    return SelectWidget(option: select, isRoundOver: isRoundOver, onTap: () { _handleSelectTap(select, i); },);
+                    return Container(
+                      margin: EdgeInsets.only(left: 4, right: 4),
+                      child: SelectWidget(option: select, isRoundOver: isRoundOver, onTap: () { _handleSelectTap(select, i); },)
+                    );
                   }).toList(),
               ),
             ),
@@ -438,7 +441,7 @@ class SelectWidget extends StatelessWidget {
     return option.id == SENTINEL.id;
   }
 
-  Widget _draw(){
+  Widget _draw(BuildContext context){
     Color bgColor = Colors.white;
 
     if(!_isSentinel()) {
@@ -448,30 +451,42 @@ class SelectWidget extends StatelessWidget {
       bgColor = Colors.green;
     }
 
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+
     return GestureDetector( 
-            onTap: () { 
-              if(!_isSentinel()){
-                onTap();
-              }
-            },
-            child: Container(
-              height: 50,
-              width: 50,
-              decoration: BoxDecoration(
-                color: bgColor
-              ),
-              child: Center(
-                child: Text(
-                  !_isSentinel() ? option.value : ""
-                )
-              ),
-            )
-          );
+        onTap: () { 
+          if(!_isSentinel()){
+            onTap();
+          }
+        },
+        child: Container(
+          height: height*0.06,
+          child: AspectRatio(
+          aspectRatio: 8/9, 
+          child: Container(
+            width: width*1,
+            decoration: BoxDecoration(
+              color: bgColor,
+              border: Border.all(
+                width: 1,
+                color: Colors.grey
+              )
+            ),
+            child: Center(
+              child: Text(
+                !_isSentinel() ? option.value : ""
+              )
+            ),
+          )
+          )
+      )
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return _draw();
+    return _draw(context);
   }
 }
 

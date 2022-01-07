@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/const.dart';
+import 'package:kanji_memory_hint/theme.dart';
 
 class QuestionWidget extends StatelessWidget {
   
@@ -41,8 +42,9 @@ class QuestionWidget extends StatelessWidget {
             decoration: BoxDecoration(
               border: Border.all(
                 color: Colors.black,
-              width: 3
-            )
+                width: 3,
+              ),
+              color: AppColors.primary
           ),
         )
       )
