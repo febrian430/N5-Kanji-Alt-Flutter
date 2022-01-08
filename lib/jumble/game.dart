@@ -155,7 +155,15 @@ class _JumbleGameState extends State<JumbleGame> {
     
     if(solved == numOfQuestions) {
       resultButton = ResultButton(
-        param: ResultParam(score: endScore, result: result, stopwatch: widget.stopwatch),
+        param: ResultParam(
+          route: JumbleGame.route,
+          score: endScore, 
+          result: result, 
+          stopwatch: widget.stopwatch,
+          chapter: widget.chapter,
+          game: JumbleGame.name,
+          mode: widget.mode
+        ),
         visible: numOfQuestions == solved,
       );
     }

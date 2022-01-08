@@ -115,7 +115,15 @@ class _MixMatchGameState extends State<MixMatchGame> {
     Widget resultButton = EmptyWidget;
     if(widget.numOfRounds == roundsSolved) {
       resultButton = ResultButton(
-        param: ResultParam(result: result, score: score, stopwatch: widget.stopwatch),
+        param: ResultParam(
+          route: MixMatchGame.route,
+          chapter: widget.chapter,
+          game: MixMatchGame.name,
+          mode: widget.mode,
+          result: result, 
+          score: score, 
+          stopwatch: widget.stopwatch
+        ),
         visible: widget.numOfRounds == roundsSolved,
       );
     }

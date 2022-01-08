@@ -103,7 +103,15 @@ class _PickDropState extends State<PickDrop> {
 
     if(total == solved) {
       resultButton = ResultButton(
-        param: ResultParam(score: score, result: result, stopwatch: widget.stopwatch),
+        param: ResultParam(
+          route: PickDrop.route,
+          score: score, 
+          result: result, 
+          stopwatch: widget.stopwatch,
+          chapter: widget.chapter,
+          game: PickDrop.name,
+          mode: widget.mode
+        ),
         visible: total == solved,
       );
     }
