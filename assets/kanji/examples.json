@@ -966,7 +966,7 @@
 			"と",
 			"り"
 		],
-		"meaning": "Satu orang / seorang"
+		"meaning": "Satu orang"
 	},
 	{
 		"id": 79,
@@ -1056,7 +1056,7 @@
 			"う",
 			"しゃ"
 		],
-		"meaning": "Mobil/Otomotif"
+		"meaning": "Otomotif"
 	},
 	{
 		"id": 86,
@@ -1105,7 +1105,7 @@
 			"も",
 			"ん"
 		],
-		"meaning": "Bidang/Keahlian khusus (speciality)"
+		"meaning": "Keahlian khusus"
 	},
 	{
 		"id": 90,
@@ -1454,7 +1454,7 @@
 			"た",
 			"し"
 		],
-		"meaning": "Aku/Saya",
+		"meaning": "Saya",
 		"is_single": true
 	},
 	{
@@ -1495,7 +1495,7 @@
 			"が",
 			"る"
 		],
-		"meaning": "Naik/Mengangkat"
+		"meaning": "Mengangkat"
 	},
 	{
 		"id": 120,
@@ -1553,7 +1553,7 @@
 			"な",
 			"か"
 		],
-		"meaning": "Tengah/Dalam",
+		"meaning": "Dalam",
 		"is_single": true
 	},
 	{
@@ -1677,7 +1677,7 @@
 			"て",
 			"ん"
 		],
-		"meaning": "Toko utama / Kantor pusat"
+		"meaning": "Kantor pusat"
 	},
 	{
 		"id": 134,
@@ -1803,7 +1803,7 @@
 			"か",
 			"ら"
 		],
-		"meaning": "Kekuatan / tenaga (power)",
+		"meaning": "Tenaga",
 		"is_single": true
 	},
 	{
@@ -2654,7 +2654,7 @@
 			"も",
 			"の"
 		],
-		"meaning": "Benda / hal",
+		"meaning": "Hal",
 		"is_single": true
 	},
 	{
@@ -2680,7 +2680,7 @@
 			"も",
 			"つ"
 		],
-		"meaning": "Luggage / Koper bawaan"
+		"meaning": "Koper Bawaan"
 	},
 	{
 		"id": 213,
@@ -2751,7 +2751,7 @@
 			"と",
 			"り"
 		],
-		"meaning": "Burung/Ayam",
+		"meaning": "Burung",
 		"is_single": true
 	},
 	{
@@ -2859,7 +2859,7 @@
 			"す",
 			"る"
 		],
-		"meaning": "Travelling / bepergian"
+		"meaning": "Bepergian"
 	},
 	{
 		"id": 227,
@@ -2958,7 +2958,7 @@
 			"み",
 			"る"
 		],
-		"meaning": "Lihat/Melihat",
+		"meaning": "Lihat",
 		"is_single": true
 	},
 	{
@@ -3047,7 +3047,7 @@
 			"よ",
 			"む"
 		],
-		"meaning": "Baca/Membaca",
+		"meaning": "Baca",
 		"is_single": true
 	},
 	{
