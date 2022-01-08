@@ -24,7 +24,7 @@ class ScreenLayout extends StatelessWidget {
               flex: 8,
               child: child
             ),
-            Expanded(
+            Flexible(
               flex: 1,
               child: footer
             )

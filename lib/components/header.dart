@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:kanji_memory_hint/components/buttons/back_button.dart';
 
 class AppHeader extends StatelessWidget {
   final String title;
@@ -9,13 +10,28 @@ class AppHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: Column(
-          children: [
-            Center(child: Text(title)),
-            Center(child: Text(japanese)),
-          ],
-        ),
-      );
+      child: Row(
+        children: [
+          Expanded(
+            flex: 2,
+            child: AppBackButton(context),
+          ),
+          Expanded(
+            flex: 8,
+            child: Column(
+              children: [
+                Center(child: Text(title)),
+                Center(child: Text(japanese)),
+              ],
+            ), 
+          ),
+          Expanded(
+            flex: 2,
+            child: SizedBox()
+          ) 
+        ],
+      )    
+    );
   }
 
   
