@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/components/buttons/select_button.dart';
 import 'package:kanji_memory_hint/const.dart';
+import 'package:kanji_memory_hint/icons.dart';
 import 'package:kanji_memory_hint/menu_screens/chapter_select.dart';
 import 'package:kanji_memory_hint/menu_screens/game_select.dart';
 import 'package:kanji_memory_hint/menu_screens/menu.dart';
@@ -23,7 +24,8 @@ class StartSelect extends StatelessWidget {
                   description: "Train your skills with games such as Mix & Match, Jumble, and Pick & Drop",
                   onTap: (){
                     Navigator.pushNamed(context, GameSelect.route);
-                  }
+                  },
+                  iconPath: AppIcons.practice,
                 )
               ),
               Center(
@@ -33,7 +35,8 @@ class StartSelect extends StatelessWidget {
                     Navigator.pushNamed(context, ChapterSelect.route, 
                       arguments: PracticeGameArguments(selectedGame: Quiz.route));
                   },
-                  description: "Feeling ready? Test your skills and earn points"
+                  description: "Feeling ready? Test your skills and earn points",
+                  iconPath: AppIcons.quest,
                 ),
               ),
             ]

@@ -63,7 +63,7 @@ const MixMatchRoute = '/game/mix-match';
 const JumbleRoute = '/game/pick-drop';
 const PickDropRoute = '/game/pick-drop';
 
-const GameNumOfRounds = 3;
+const GameNumOfRounds = 5;
 const CHAPTERS = 3;
 
 const Widget EmptyWidget = Visibility(child: Text(""), visible: false,);

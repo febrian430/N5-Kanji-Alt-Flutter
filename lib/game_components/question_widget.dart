@@ -32,19 +32,19 @@ class QuestionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 1,
-      child: SizedBox(
-        height: MediaQuery.of(context).size.width*0.7,
-        width: MediaQuery.of(context).size.width*0.7,
-          child: Container(
-            child: _getQuestionWidget(),
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.black,
-                width: 3,
-              ),
-              color: AppColors.primary
+    return SizedBox(
+      height: MediaQuery.of(context).size.width*0.7,
+      width: MediaQuery.of(context).size.width*0.7,
+      child: AspectRatio(
+        aspectRatio: 1,
+        child: Container(
+          child: _getQuestionWidget(),
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Colors.black,
+              width: 3,
+            ),
+            color: AppColors.primary
           ),
         )
       )

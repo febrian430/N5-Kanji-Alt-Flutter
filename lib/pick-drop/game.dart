@@ -15,6 +15,7 @@ import 'package:kanji_memory_hint/pick-drop/repo.dart';
 import 'package:kanji_memory_hint/route_param.dart';
 import 'package:kanji_memory_hint/scoring/model.dart';
 import 'package:kanji_memory_hint/scoring/practice/pick_drop.dart';
+import 'package:kanji_memory_hint/theme.dart';
 
 //TODO: wrong count, correct result page, 
 class PickDrop extends StatefulWidget {
@@ -208,27 +209,36 @@ class _PickDropRoundState extends State<PickDropRound> {
   Widget _renderOption(BuildContext context, Option opt) {
     final size = MediaQuery.of(context).size;
 
+    final width = size.width*0.175;
+
+
     return Draggable<Option>(
       data: opt,
       maxSimultaneousDrags: 1,
       child: Container(
-        height: size.height*0.115,
-        width: size.height*0.115,
-        decoration: BoxDecoration(border: Border.all(width: 3)),
+        height: width,
+        width: width,
+        decoration: BoxDecoration(
+          border: Border.all(width: 3),
+          color: AppColors.primary
+        ),
         child: Center(
           child: Text(
           opt.value + (widget.question.key == opt.key ? " C" : ""),  
-          style: const TextStyle(
-            color: Colors.black,
-            fontSize: 20,
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 20,
             ),
           )
         )
       ),
       feedback: Container(
-        height: size.height*0.115,
-        width: size.height*0.115,
-        decoration: BoxDecoration(border: Border.all(width: 3)),
+        height: width,
+        width: width,
+        decoration: BoxDecoration(
+          border: Border.all(width: 3),
+          color: AppColors.primary
+        ),
         child: Center(
           child: Text(
           opt.value,
@@ -242,8 +252,8 @@ class _PickDropRoundState extends State<PickDropRound> {
       ),
 
       childWhenDragging: SizedBox(
-        height: size.height*0.115,
-        width: size.height*0.115,
+        height: width,
+        width: width,
       )
     );
   }
@@ -281,7 +291,7 @@ class _PickDropRoundState extends State<PickDropRound> {
     return Center(
       child: Column(  
         children: [
-          Expanded(
+          Flexible(
             flex: 5,
             child: DragTarget<Option>(
               builder: (context, candidateData, rejectedData) {
@@ -300,16 +310,12 @@ class _PickDropRoundState extends State<PickDropRound> {
               },
             ),
           ),
-          Expanded(
-            flex: 1,
-            child: SizedBox()
-          ),
-          Expanded(
+          SizedBox(height: size.height*0.05,),
+          Flexible(
             flex: 3,
-            child: 
-            SizedBox(
+            child: SizedBox(
               child: _optionsByColumn(context, widget.options),
-              height: size.height*0.3,
+              height: size.height*0.25,
             )
           ),
         ],

@@ -8,8 +8,9 @@ class SelectButton extends StatelessWidget {
   final String title;
   final String? description;
   final Function() onTap;
+  final String? iconPath;
 
-  SelectButton({Key? key, required this.title, this.description, required this.onTap}) : super(key: key) {
+  SelectButton({Key? key, required this.title, this.description, required this.onTap, this.iconPath}) : super(key: key) {
     _titleTextColor = Colors.black;
     _descTextColor = Colors.grey;
   }
@@ -45,29 +46,32 @@ class SelectButton extends StatelessWidget {
       ),
     );
   }
+  Widget _withImage(BuildContext context) {
+    return iconPath == null ? Text(title, style: Theme.of(context).textTheme.button) :
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Text(
+            title,
+            style: Theme.of(context).textTheme.button,
+          ),
+          Image(
+            image: AssetImage(iconPath!), 
+            height: 30,
+            width: 30,
+            fit: BoxFit.fill,
+          ) 
+        ],
+      ); 
+  }
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
     Widget child = Center(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Text(
-                  title,
-                  style: Theme.of(context).textTheme.button,
-                ),
-                Image(
-                  image: AssetImage(APP_IMAGE_FOLDER+'sakura.png'), 
-                  height: 30,
-                  width: 30,
-                  fit: BoxFit.fill,
-                ),
-              ],
-            ) 
-            
-          );
+      child: _withImage(context)
+    );
     if (description != null) {
       child = _withDescription(context, child);
     }
@@ -79,7 +83,7 @@ class SelectButton extends StatelessWidget {
         constraints: BoxConstraints(
           minHeight: size.height*0.075
         ),
-        width: size.width*0.40,
+        width: size.width*0.45,
         decoration: BoxDecoration(
           border: Border.all(
             width: 2

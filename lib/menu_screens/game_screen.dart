@@ -7,6 +7,7 @@ import 'package:kanji_memory_hint/components/backgrounds/practice_background.dar
 import 'package:kanji_memory_hint/components/dialogs/pause_dialog.dart';
 import 'package:kanji_memory_hint/components/header.dart';
 import 'package:kanji_memory_hint/const.dart';
+import 'package:kanji_memory_hint/icons.dart';
 import 'package:kanji_memory_hint/menu_screens/screen_layout.dart';
 
 class GameScreen extends StatefulWidget {
@@ -51,7 +52,7 @@ class _GameScreenState extends State<GameScreen> {
       style: Theme.of(context).textButtonTheme.style,
       child: Container(
         child: Image.asset(
-          APP_IMAGE_FOLDER+'pause.png',
+          AppIcons.pause,
           height: 25,
           width: 25,
           // fit: BoxFit.scaleDown,

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/components/buttons/select_button.dart';
 import 'package:kanji_memory_hint/const.dart';
+import 'package:kanji_memory_hint/icons.dart';
 import 'package:kanji_memory_hint/jumble/game.dart';
 import 'package:kanji_memory_hint/menu_screens/chapter_select.dart';
 import 'package:kanji_memory_hint/menu_screens/menu.dart';
@@ -39,14 +40,13 @@ class GameSelect extends StatelessWidget {
               // ),
               Center(
                 child: SelectButton(
-                  // Within the `Home` widget
                   onTap: () {
-                    // Navigate to the second screen using a named route.
                     Navigator.pushNamed(context, ModeSelect.route,
                     arguments: PracticeGameArguments(selectedGame: MixMatchGame.route));
                   },
                   title: 'Mix and Match',
                   description: "Match the Kanji with its appropriate meaning",
+                  iconPath: AppIcons.mixmatch,
                 ),
               ),
               Center(
@@ -59,6 +59,7 @@ class GameSelect extends StatelessWidget {
                   },
                   title: 'Jumble',
                   description: "Choose the correct answer",
+                  iconPath: AppIcons.jumble,
                 ),
               ),
               Center(
@@ -67,8 +68,9 @@ class GameSelect extends StatelessWidget {
                   onTap: () {
                     Navigator.pushNamed(context, ChapterSelect.route, arguments: PracticeGameArguments(selectedGame: PickDrop.route));
                   },
-                  title: 'Pick and Drop',
+                  title: 'Pick and Drag',
                   description: "Pick and Drag the correct kanji",
+                  iconPath: AppIcons.pickdrop,
                 ),
               ),
             ]
