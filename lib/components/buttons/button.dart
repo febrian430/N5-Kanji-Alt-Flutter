@@ -15,7 +15,7 @@ class AppButton extends StatelessWidget {
 
     return IconButton(
       onPressed: onTap, 
-      icon: Image.asset(APP_IMAGE_FOLDER+'sakura.png')
+      icon: Image.asset(APP_IMAGE_FOLDER+'back.png')
     );
   }
 
