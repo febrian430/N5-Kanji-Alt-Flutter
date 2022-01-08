@@ -8,4 +8,8 @@ class AppButtonTheme {
 
 class AppColors {
   static final Color primary = HexColor.fromHex("fefbe7");
+  static final Color secondary = HexColor.fromHex("f8b444");
+  static final Color correct = HexColor.fromHex("6DC063");
+  static final Color wrong = HexColor.fromHex("DE7162");
+  static final Color selected = HexColor.fromHex("F0E9D0");
 }

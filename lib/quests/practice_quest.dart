@@ -23,6 +23,7 @@ class PracticeQuestHandler {
   }
 
   static Future<List<PracticeQuest>> quests() async {
+    onGoingQuests = await SQLRepo.quests.getOnGoingPractice();
     return onGoingQuests;
   }
 }

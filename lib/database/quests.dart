@@ -113,8 +113,8 @@ class QuestProvider {
 
   Future<List<PracticeQuest>> getOnGoingPractice() async {
     var raw = await db.query(_tableQuests,
-      where: '$_columnType = ? AND  $_columnStatus != ?',
-      whereArgs: [_enumPractice, QUEST_STATUS.CLAIMED.name]
+      where: '$_columnType = ?',
+      whereArgs: [_enumPractice]
     );
 
     return raw.map((questRaw) => PracticeQuest.fromMap(questRaw)).toList();
@@ -122,8 +122,8 @@ class QuestProvider {
 
   Future<List<QuizQuest>> getOnGoingQuiz() async {
     var raw = await db.query(_tableQuests,
-        where: '$_columnType = ? AND  $_columnStatus != ?',
-        whereArgs: [_enumQuiz, QUEST_STATUS.CLAIMED.name]
+        where: '$_columnType = ?',
+        whereArgs: [_enumQuiz]
     );
 
     return raw.map((questRaw) => QuizQuest.fromMap(questRaw)).toList();
@@ -132,8 +132,8 @@ class QuestProvider {
   Future<List<MasteryQuest>> getOnGoingMasteryQuests() async {
     await updateAndSyncForMastery();
     var raw = await db.query(_tableQuests,
-      where: '$_columnType = ? AND $_columnStatus != ?',
-      whereArgs: [_enumMastery, QUEST_STATUS.CLAIMED.name]
+      where: '$_columnType = ?',
+      whereArgs: [_enumMastery]
     );
 
     return raw.map((questRaw) => MasteryQuest.fromMap(questRaw)).toList();
@@ -275,7 +275,7 @@ class PracticeQuest extends GameQuest {
     }
 
     count++;
-    if(count == total) {
+    if(count >= total) {
       status = QUEST_STATUS.COMPLETE;
     }
     SQLRepo.quests.update(this);

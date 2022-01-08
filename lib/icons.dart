@@ -10,4 +10,5 @@ class AppIcons {
   static const pickdrop = APP_IMAGE_FOLDER + 'pick_drop.png';
   static const jumble = APP_IMAGE_FOLDER + 'jumble.png';
   static const pause = APP_IMAGE_FOLDER + 'pause.png';
+  static const currency = APP_IMAGE_FOLDER + 'ryo.png';
 }
