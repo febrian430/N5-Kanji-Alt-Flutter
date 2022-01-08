@@ -1,5 +1,5 @@
 import 'package:kanji_memory_hint/const.dart';
-import 'package:kanji_memory_hint/scoring/model.dart';
+import 'package:kanji_memory_hint/scoring/report.dart';
 
 class PracticeGameArguments {
     PracticeGameArguments({required this.selectedGame});

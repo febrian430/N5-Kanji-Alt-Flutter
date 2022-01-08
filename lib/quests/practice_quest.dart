@@ -3,7 +3,7 @@ import 'package:kanji_memory_hint/database/quests.dart';
 import 'package:kanji_memory_hint/database/repository.dart';
 import 'package:kanji_memory_hint/jumble/game.dart';
 import 'package:kanji_memory_hint/pick-drop/game.dart';
-import 'package:kanji_memory_hint/scoring/model.dart';
+import 'package:kanji_memory_hint/scoring/report.dart';
 
 class PracticeQuestHandler {
   static List<PracticeQuest> onGoingQuests = [];

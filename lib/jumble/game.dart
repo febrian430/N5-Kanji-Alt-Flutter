@@ -14,7 +14,7 @@ import 'package:kanji_memory_hint/foreach_indexed.dart';
 import 'package:kanji_memory_hint/quests/practice_quest.dart';
 import 'package:kanji_memory_hint/route_param.dart';
 import 'package:kanji_memory_hint/scoring/practice/jumble.dart';
-import 'package:kanji_memory_hint/scoring/model.dart';
+import 'package:kanji_memory_hint/scoring/report.dart';
 import 'package:kanji_memory_hint/theme.dart';
 
 
@@ -46,6 +46,7 @@ class _JumbleGameState extends State<JumbleGame> {
   int solved = 0;
   int perfect = 0;
   Set<int> solvedIdx = {};
+  List<int> perfectRoundsSlots = [];
 
   late int slotsToFill;
   int? numOfQuestions;
@@ -86,12 +87,12 @@ class _JumbleGameState extends State<JumbleGame> {
     widget.stopwatch.start();
   }
 
-  void _handleRoundOver(bool isCorrect, int misses, int index, bool initialAnswer) {
+  void _handleRoundOver(bool isCorrect, int misses, int index, int slotsToFill, bool initialAnswer) {
     setState(() {
       if(isCorrect) {
         if(initialAnswer) {
           perfect++;
-          print('SOLVED: ${solved}');
+          perfectRoundsSlots.add(slotsToFill);
         }
         solved++;
         solvedIdx.add(index);
@@ -102,8 +103,13 @@ class _JumbleGameState extends State<JumbleGame> {
 
       if(solved == numOfQuestions) {
         widget.stopwatch.stop();
-        endScore = PracticeScore(perfectRounds: perfect, wrongAttempts: wrongCount);
-        result = JumbleScoring.evaluate(endScore, slotsToFill);
+        endScore = PracticeScore(
+          perfectRounds: perfect, 
+          wrongAttempts: wrongCount,
+          chapter: widget.chapter,
+          mode: widget.mode
+        );
+        result = JumbleScoring.evaluate(endScore, slotsToFill, perfectRoundsSlots);
         report = PracticeGameReport(
           game: JumbleGame.name,
           chapter: widget.chapter,
@@ -219,7 +225,7 @@ class JumbleRound extends StatefulWidget {
   final List<Option> options;
   final GAME_MODE mode;
   final bool restartSource;
-  final Function(bool isCorrect, int misses, int index, bool initialAnswer) onComplete;
+  final Function(bool isCorrect, int misses, int index, int slotsToFill, bool initialAnswer) onComplete;
 
   @override
   State<StatefulWidget> createState() => _JumbleRoundState();
@@ -309,13 +315,13 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
           setState(() {
             isRoundOver = true;
             roundColor = _correctColor;
-            widget.onComplete(true, 0, widget.index, isFirstTry);
+            widget.onComplete(true, 0, widget.index, widget.question.key.length, isFirstTry);
           });
         } else {
           setState(() {
             misses += diff.length;
             roundColor = _wrongColor;
-            widget.onComplete(false, diff.length, widget.index, isFirstTry);
+            widget.onComplete(false, diff.length, widget.index, widget.question.key.length, isFirstTry);
           });
           _unselect(diff);
         }
@@ -384,15 +390,12 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
         //question
         child: Column(
           children: [
-            Expanded(
-              flex: 6,
+            Flexible(
+              flex:7,
               child: QuestionWidget(mode: widget.mode, questionStr: widget.question.value),
             ),
-            Flexible(
-              flex: 1,
-              child: Text(widget.question.key.join('')),
-              
-            ),
+            Text(widget.question.key.join('')),
+
             //selected box
             Flexible(
               flex: 2,
@@ -407,7 +410,7 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
                   }).toList(),
               ),
             ),
-            const SizedBox(height: 10),
+
             //options
             // Expanded(
             Flexible(

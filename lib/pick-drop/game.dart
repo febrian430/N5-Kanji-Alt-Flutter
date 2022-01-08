@@ -13,7 +13,7 @@ import 'package:kanji_memory_hint/models/common.dart';
 import 'package:kanji_memory_hint/models/question_set.dart';
 import 'package:kanji_memory_hint/pick-drop/repo.dart';
 import 'package:kanji_memory_hint/route_param.dart';
-import 'package:kanji_memory_hint/scoring/model.dart';
+import 'package:kanji_memory_hint/scoring/report.dart';
 import 'package:kanji_memory_hint/scoring/practice/pick_drop.dart';
 import 'package:kanji_memory_hint/theme.dart';
 
@@ -73,7 +73,12 @@ class _PickDropState extends State<PickDrop> {
           index++;
         } else {
           widget.stopwatch.stop();
-          score = PracticeScore(perfectRounds: perfect, wrongAttempts: wrongAttempts);
+          score = PracticeScore(
+            perfectRounds: perfect, 
+            wrongAttempts: wrongAttempts,
+            chapter: widget.chapter,
+            mode: widget.mode
+          );
           result = PickDropScoring.evaluate(score);
           
           report = PracticeGameReport(

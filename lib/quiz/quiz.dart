@@ -14,7 +14,7 @@ import 'package:kanji_memory_hint/quiz/multiple_choice.dart';
 import 'package:kanji_memory_hint/quiz/quiz_result.dart';
 import 'package:kanji_memory_hint/quiz/repo.dart';
 import 'package:kanji_memory_hint/route_param.dart';
-import 'package:kanji_memory_hint/scoring/model.dart';
+import 'package:kanji_memory_hint/scoring/report.dart';
 
 
 class Quiz extends StatefulWidget {

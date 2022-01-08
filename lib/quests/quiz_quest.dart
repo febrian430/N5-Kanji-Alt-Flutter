@@ -1,7 +1,7 @@
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/database/quests.dart';
 import 'package:kanji_memory_hint/database/repository.dart';
-import 'package:kanji_memory_hint/scoring/model.dart';
+import 'package:kanji_memory_hint/scoring/report.dart';
 
 class QuizQuestHandler {
   static List<QuizQuest> _ongoingQuests = [];

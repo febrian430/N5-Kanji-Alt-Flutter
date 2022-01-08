@@ -11,7 +11,7 @@ import 'package:kanji_memory_hint/models/common.dart';
 import 'package:kanji_memory_hint/quests/practice_quest.dart';
 import 'package:kanji_memory_hint/route_param.dart';
 import 'package:kanji_memory_hint/scoring/practice/mix_match.dart';
-import 'package:kanji_memory_hint/scoring/model.dart';
+import 'package:kanji_memory_hint/scoring/report.dart';
 import 'package:kanji_memory_hint/map_indexed.dart';
 import 'package:kanji_memory_hint/theme.dart';
 
@@ -69,7 +69,12 @@ class _MixMatchGameState extends State<MixMatchGame> {
 
     if(roundsSolved == widget.numOfRounds){
       widget.stopwatch.stop();
-      score = PracticeScore(perfectRounds: perfect, wrongAttempts: wrong);
+      score = PracticeScore(
+        perfectRounds: perfect, 
+        wrongAttempts: wrong,
+        chapter: widget.chapter,
+        mode: widget.mode
+      );
       result = MixMatchScoring.evaluate(score);
       report = PracticeGameReport(
           game: MixMatchGame.name,

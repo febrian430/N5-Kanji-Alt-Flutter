@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:kanji_memory_hint/database/quests.dart';
 import 'package:kanji_memory_hint/database/repository.dart';
-import 'package:kanji_memory_hint/scoring/model.dart';
+import 'package:kanji_memory_hint/scoring/report.dart';
 
 class MasteryHandler {
   static List<int> _flatten(List<List<int>> array) {
