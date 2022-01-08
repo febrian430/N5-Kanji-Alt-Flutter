@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:kanji_memory_hint/scoring/model.dart';
+import 'package:kanji_memory_hint/scoring/report.dart';
 
 
 
@@ -17,12 +17,14 @@ class MixMatchScoring {
     var points = (5-(score.wrongAttempts*0.5)).floor();
     return max(0, points) + pointsForPerfect + 5;
   }
-// base exp: 100
-// exp: 150-(wrongAttempts * 10)
+
+// all perfect = 200
+// amount of questions: 32
+// max wrong until 0 exp: 30
   static int _getExp(PracticeScore score) {
-      var expForPerfect = 50*score.perfectRounds;
-      var exp = 150-(score.wrongAttempts*10);
-      return max(0, exp) + expForPerfect + 100;
+      var expForPerfect = 15*score.perfectRounds;
+      var exp = 60-(score.wrongAttempts*2);
+      return max(0, exp) + expForPerfect + 10;
   }
 }
 

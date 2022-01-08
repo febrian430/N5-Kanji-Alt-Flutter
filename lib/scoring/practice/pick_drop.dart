@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:kanji_memory_hint/scoring/model.dart';
+import 'package:kanji_memory_hint/scoring/report.dart';
 
 class PickDropScoring {
   static GameResult evaluate(PracticeScore score) {
@@ -18,8 +18,8 @@ class PickDropScoring {
 // base exp: 100
 // exp: 150-(wrongAttempts * 10)
   static int _getExp(PracticeScore score) {
-    var expForPerfect = 50*score.perfectRounds;
-    var exp = 150-(score.wrongAttempts*10);
-    return max(0, exp) + expForPerfect + 150;
+    var expForPerfect = 4*score.perfectRounds;
+    var exp = 40-(score.wrongAttempts*3);
+    return max(0, exp) + expForPerfect + 20;
   }
 }
