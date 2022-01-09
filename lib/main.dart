@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:kanji_memory_hint/components/backgrounds/menu_background.dart';
 import 'package:kanji_memory_hint/components/buttons/icon_button.dart';
 import 'package:kanji_memory_hint/components/buttons/select_button.dart';
+import 'package:kanji_memory_hint/components/dialogs/reminder.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/database/repository.dart';
 import 'package:kanji_memory_hint/game.dart';
@@ -216,7 +217,14 @@ class MainScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               AppIconButton(
-                onTap: (){}, 
+                onTap: (){
+                  showDialog(
+                    context: context, 
+                    builder: (context) {
+                      return ReminderDialog();
+                    }
+                  );
+                }, 
                 iconPath: AppIcons.reminder, 
                 height: 40, 
                 width: 40,
@@ -326,7 +334,7 @@ class Home extends StatelessWidget {
             Center(
               child: SelectButton(
                 onTap: () async {
-                  await Notifier.createNotifier();
+                  // await Notifier.createNotifier();
                 },
                 title: 'Notify',
               ),

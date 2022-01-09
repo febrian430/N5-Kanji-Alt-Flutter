@@ -11,18 +11,32 @@ class Notifier {
   static late final AndroidNotificationDetails _androidNotificationDetail;
 
   static tz.TZDateTime _getSchedule({required Time time, required List<int> days}) {
-    var day = Time(8);
-    DateTime.sunday;
-    return tz.TZDateTime.now(tz.local).add(Duration(seconds: 3));
+    var scheduledDate = _setDaily(time);
+    
+    
+
+    return tz.TZDateTime.now(tz.local);
+  }
+
+  static tz.TZDateTime _setDaily(Time time) {
+    final now = tz.TZDateTime.now(tz.local);
+    final scheduledDate = tz.TZDateTime(tz.local, now.year, now.month, now.day, time.hour, time.minute);
+
+    return scheduledDate.isBefore(now) ? 
+          scheduledDate.add(const Duration(days: 1)) : scheduledDate;
   }
 
   static tz.TZDateTime _getScheduleTest({required Time time, required List<int> days}) {
-    return tz.TZDateTime.now(tz.local).add(const Duration(seconds: 3));
+    var sch = _setDaily(time);
+
+    while(!days.contains(sch.weekday)){
+      sch = sch.add(const Duration(days: 1));
+    }
+    return sch;
   }
 
   static Future initialize() async {
     tz.initializeTimeZones();
-    
     final jakarta = tz.getLocation('Asia/Jakarta');
     tz.setLocalLocation(jakarta);
 
@@ -52,13 +66,17 @@ class Notifier {
     );
   }
 
-  static Future createNotifier() async {
+  static Future createNotifier(TimeOfDay time, Set<int> days) async {
+
     _notificationPlugin.cancelAll();
     _notificationPlugin.zonedSchedule(
       0,
       'Title',
       'Body',
-      _getScheduleTest(time: Time(8), days: [DateTime.sunday, DateTime.monday]),
+      _getScheduleTest(
+        time: Time(time.hour, time.minute), 
+        days: [...days]
+      ),
       NotificationDetails(
           android: _androidNotificationDetail
       ),
@@ -68,10 +86,5 @@ class Notifier {
       matchDateTimeComponents: DateTimeComponents.dayOfWeekAndTime
     );
   }
-
-  static void _onSelectNotification(String? payload) {
-    // Navigator.push(context, route)
-  }
-
   
 }
