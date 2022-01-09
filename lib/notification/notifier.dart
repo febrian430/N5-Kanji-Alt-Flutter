@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:kanji_memory_hint/database/reminder.dart';
+import 'package:kanji_memory_hint/database/repository.dart';
 import 'package:kanji_memory_hint/main.dart';
 import 'package:kanji_memory_hint/menu_screens/start_select.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
@@ -10,13 +12,7 @@ class Notifier {
   static late FlutterLocalNotificationsPlugin _notificationPlugin;
   static late final AndroidNotificationDetails _androidNotificationDetail;
 
-  static tz.TZDateTime _getSchedule({required Time time, required List<int> days}) {
-    var scheduledDate = _setDaily(time);
-    
-    
 
-    return tz.TZDateTime.now(tz.local);
-  }
 
   static tz.TZDateTime _setDaily(Time time) {
     final now = tz.TZDateTime.now(tz.local);
@@ -67,12 +63,15 @@ class Notifier {
   }
 
   static Future createNotifier(TimeOfDay time, Set<int> days) async {
-
     _notificationPlugin.cancelAll();
+
+    var reminder = Reminder(days.toSet(), TimeOfDay(hour: time.hour, minute: time.minute));
+    SQLRepo.reminder.updateReminder(reminder);
+
     _notificationPlugin.zonedSchedule(
       0,
-      'Title',
-      'Body',
+      'Kantan Kanji',
+      "It's time to study",
       _getScheduleTest(
         time: Time(time.hour, time.minute), 
         days: [...days]
@@ -85,6 +84,10 @@ class Notifier {
         UILocalNotificationDateInterpretation.absoluteTime,
       matchDateTimeComponents: DateTimeComponents.dayOfWeekAndTime
     );
+  }
+
+  static Future<Reminder?> current() async {
+    return await SQLRepo.reminder.getReminder();
   }
   
 }

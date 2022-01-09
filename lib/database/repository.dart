@@ -3,6 +3,7 @@ import 'package:kanji_memory_hint/database/example.dart';
 import 'package:kanji_memory_hint/database/game_provider.dart';
 import 'package:kanji_memory_hint/database/kanji.dart';
 import 'package:kanji_memory_hint/database/quests.dart';
+import 'package:kanji_memory_hint/database/reminder.dart';
 import 'package:kanji_memory_hint/database/user_point.dart';
 import 'package:kanji_memory_hint/quests/practice_quest.dart';
 import 'package:kanji_memory_hint/quests/quiz_quest.dart';
@@ -17,6 +18,7 @@ class SQLRepo {
   static late final KanjiProvider kanjis;
   static late final ExampleProvider examples;
   static late final GameQuestionProvider gameQuestions;
+  static late final ReminderProvider reminder;
 
   static Future drop() async {
     var path = await getDatabasesPath();
@@ -38,6 +40,7 @@ class SQLRepo {
         await QuestProvider.migrate(db);
         await KanjiProvider.migrate(db);
         await ExampleProvider.migrate(db);
+        await ReminderProvider.migrate(db);
         initial = true;
       }
     );
@@ -47,6 +50,7 @@ class SQLRepo {
     kanjis = KanjiProvider(db!);
     examples = ExampleProvider(db!);
     gameQuestions = GameQuestionProvider(kanjis, examples);
+    reminder = ReminderProvider(db!);
 
     if(initial){
       await kanjis.seed();

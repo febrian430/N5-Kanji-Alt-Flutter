@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kanji_memory_hint/database/reminder.dart';
 import 'package:kanji_memory_hint/notification/notifier.dart';
 import 'package:kanji_memory_hint/theme.dart';
 import 'package:quiver/testing/time.dart';
@@ -13,6 +14,15 @@ class ReminderDialog extends StatefulWidget {
 class _ReminderDialogState extends State<ReminderDialog> {
   Set<int> selected = {};
   TimeOfDay time = TimeOfDay.now();
+  var reminder;
+
+  bool loaded = false;
+
+  @override
+  void initState() {
+    super.initState();
+    reminder = Notifier.current();
+  }
 
   void onDayTap(int day) {
     setState(() {
@@ -31,6 +41,7 @@ class _ReminderDialogState extends State<ReminderDialog> {
     );
 
     if(selectedTime != null && time != selectedTime){
+      print("here");
       setState(() {
         time = selectedTime;
       });
@@ -232,18 +243,28 @@ class _ReminderDialogState extends State<ReminderDialog> {
             ),
             borderRadius: const BorderRadius.all(Radius.zero)
           ),
-          child: Column(
-            children: [
-              Expanded(
-                flex: 5,
-                child: reminderContent(context)
-              ),
-              Expanded(
-                flex: 1,
-                child: buttons(context),
-              )
-            ],
-          ),
+          child: FutureBuilder(
+            future: reminder,
+            builder: (context, AsyncSnapshot<Reminder?> snapshot) {
+              if(snapshot.hasData && !loaded){
+                selected = snapshot.data!.days;
+                time = snapshot.data!.time;
+                loaded =  true;
+              }
+              return Column(
+                children: [
+                  Expanded(
+                    flex: 5,
+                    child: reminderContent(context)
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: buttons(context),
+                  )
+                ],
+              );
+            },
+          )
         ),
       ),
     );
