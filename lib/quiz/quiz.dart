@@ -44,7 +44,7 @@ class _QuizState extends State<Quiz> {
 
   var quizQuestionSet;
   
-  int secondsLeft = 15;
+  int secondsLeft = 60;
   int score = 0;
 
   int mulchoiceCorrect = 0;
@@ -82,7 +82,7 @@ class _QuizState extends State<Quiz> {
     quizQuestionSet = widget._getQuizQuestionSet();
 
     WidgetsBinding.instance?.addPostFrameCallback((_) {
-      // _countdown.start();
+      _countdown.start();
     });
   }
 
@@ -102,6 +102,7 @@ class _QuizState extends State<Quiz> {
     });
 
     initial = false;
+    _countdown.pause();
     gameIndex = 2;
   }
 
@@ -210,6 +211,7 @@ class _QuizState extends State<Quiz> {
               ),
               QuizResult(
                   onRestart: onRestart,
+                  countdown: _countdown,
                   multipleChoice: QuizGameParam(
                     result: multipleChoiceScore, 
                     goHere: _goMultipleChoice

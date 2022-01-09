@@ -54,6 +54,10 @@ class Countdown {
       pause();
     }
   }
+
+  Duration elapsed() {
+    return _countdownTimer.elapsed;
+  }
 }
 
 class CountdownWidget extends StatelessWidget {
