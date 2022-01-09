@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:kanji_memory_hint/components/backgrounds/menu_background.dart';
+import 'package:kanji_memory_hint/components/buttons/icon_button.dart';
 import 'package:kanji_memory_hint/components/buttons/select_button.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/database/repository.dart';
@@ -202,6 +203,43 @@ class MainScreen extends StatelessWidget {
     );
   }
 
+  Widget _bottomSettings(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          flex: 3,
+          child: SizedBox(),
+        ),
+        Flexible(
+          flex: 2,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              AppIconButton(
+                onTap: (){}, 
+                iconPath: AppIcons.reminder, 
+                height: 40, 
+                width: 40,
+                ratio: 1, 
+                backgroundColor: Colors.transparent,
+                noBorder: true,
+              ),
+              AppIconButton(
+                onTap: (){}, 
+                iconPath: AppIcons.sound, 
+                height: 40, 
+                width: 40,
+                ratio: 1, 
+                backgroundColor: Colors.transparent,
+                noBorder: true,
+              )
+            ],
+          ),
+        )
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -211,16 +249,21 @@ class MainScreen extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.symmetric(
               horizontal: size.width*0.1,
+              vertical: size.height*0.1
             ),
             child: Column(
             children: [
               Expanded(
-                flex: 3,
+                flex: 6,
                 child: Image.asset(AppIcons.currency),
               ),
               Expanded(
-                flex: 3,
+                flex: 6,
                 child: _mainButtons(context),
+              ),
+              Expanded(
+                flex: 1,
+                child: _bottomSettings(context)
               )
             ]
           )
