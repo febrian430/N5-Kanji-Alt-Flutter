@@ -181,7 +181,9 @@ class _MenuState extends State<KanjiMenu> {
         child: Column(
           children: 
             widget.chapters.mapIndexed((chapter, index) {
-              return KanjiTile(
+              return KanjiTile2(
+                expandedItem: _expanded,
+                key: Key(index.toString()),
                 textColor: Colors.black,
                 iconColor: Colors.black,
                 backgroundColor: Colors.transparent,
