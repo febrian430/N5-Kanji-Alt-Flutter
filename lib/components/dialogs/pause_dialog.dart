@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:kanji_memory_hint/icons.dart';
 import 'package:kanji_memory_hint/theme.dart';
 
 class PauseDialog extends StatelessWidget {
@@ -39,8 +40,17 @@ class PauseDialog extends StatelessWidget {
           ),
           child: Container(
             height: size.height * 0.45,
-            width: size.width * 0.6,
-            child: Column(
+            width: size.width * 0.45,
+            padding: EdgeInsets.all(6),
+            child: Container(
+              height: size.height*0.40,
+              width: size.width*0.40,
+              decoration: BoxDecoration(
+                border: Border.all(
+                  width: 1
+                )
+              ),
+              child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Flexible(
@@ -53,43 +63,49 @@ class PauseDialog extends StatelessWidget {
                   )
                 ),
                 Flexible(
-                  flex: 2, 
-                  child: _DialogButton(
-                    title: "Continue", 
-                    onPressed: () {
-                      onContinue();
-                      Navigator.pop(context);
-                    },
-                  )
-                ),
-                Flexible(
-                  flex: 2,
-                  child:  _DialogButton(
-                  title: "Restart", 
-                  onPressed: () {
-                    Navigator.pop(context);
-                    onRestart();
-                  },
+                  flex: 8,
+                  child: SizedBox(
+                    width: size.width*0.48,
+                    child: GridView(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 10,
+                      crossAxisSpacing: 10,
+
+                    ),
+                    children: [
+                      _DialogButton(
+                          icon: AppIcons.resume, 
+                          onPressed: () {
+                            onContinue();
+                            Navigator.pop(context);
+                          },
+                        ),
+                      
+                      _DialogButton(
+                        icon: AppIcons.resume, 
+                        onPressed: () {
+                          Navigator.pop(context);
+                          onRestart();
+                        },
+                        ),
+                      _DialogButton(
+                        icon: AppIcons.kana, 
+                        onPressed: (){
+                          showDialog(context: context, builder: showKanaDialog);
+                        }),
+                      _QuitButton(
+                          icon: AppIcons.exit, 
+                          onPressed: (){
+                            Navigator.of(context).popUntil(ModalRoute.withName('/start-select'));
+                          }
+                        )
+                    ],
                   ),
-                ),
-                Flexible(
-                  flex: 2,
-                  child:  _DialogButton(
-                  title: "Kana", 
-                  onPressed: (){
-                    showDialog(context: context, builder: showKanaDialog);
-                  }),
-                ),
-                Flexible(
-                  flex: 2,
-                  child: _QuitButton(
-                    title: "Quit", 
-                    onPressed: (){
-                      Navigator.of(context).popUntil(ModalRoute.withName('/start-select'));
-                    }
                   )
                 )
               ]
+              )
             ),
           )
         )
@@ -100,53 +116,54 @@ class PauseDialog extends StatelessWidget {
 
 class _DialogButton extends  StatelessWidget {
   
-  final String title;
+  final String icon;
   final Function() onPressed;
 
-  const _DialogButton({Key? key, required this.title, required this.onPressed}) : super(key: key);
+  const _DialogButton({Key? key, required this.icon, required this.onPressed}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     
-    return Container(
+    return AspectRatio(
+      aspectRatio: 1,
+      child: Container(
       width: size.width*0.4,
       decoration: BoxDecoration(
         border: Border.all(
           width: 1
         )
       ),
-      child: AspectRatio(
-        aspectRatio: 30/9,
         child: TextButton(
           onPressed: onPressed,
           child: Container(
             alignment: Alignment.center,
-            child: Text(
-              title,
-              style: TextStyle(
-                color: Colors.black
-              ),
-            ),
+            child: Image.asset(
+              icon,
+              height: 50,
+              width: 50,
+            )
+          )
           )
         )
-      )
     );
   }
 }
 
 class _QuitButton extends  StatelessWidget {
   
-  final String title;
+  final String icon;
   final Function() onPressed;
 
-  const _QuitButton({Key? key, required this.title, required this.onPressed}) : super(key: key);
+  const _QuitButton({Key? key, required this.icon, required this.onPressed}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     
-    return Container(
+    return AspectRatio(
+      aspectRatio: 1,
+      child: Container(
       width: size.width*0.4,
   
       decoration: BoxDecoration(
@@ -154,21 +171,18 @@ class _QuitButton extends  StatelessWidget {
           width: 2
         )
       ),
-      child: AspectRatio(
-        aspectRatio: 30/9,
-        child: TextButton(
+      child: TextButton(
           style: TextButton.styleFrom(
-            backgroundColor: Colors.red
+            backgroundColor: AppColors.wrong
           ),
           onPressed: onPressed,
           child: Container(
             alignment: Alignment.center,
-            child: Text(
-              title,
-              style: TextStyle(
-                color: Colors.white
-              ),
-            ),
+            child: Image.asset(
+              icon,
+              height: 50,
+              width: 50,
+            )
           )
         )
       )
