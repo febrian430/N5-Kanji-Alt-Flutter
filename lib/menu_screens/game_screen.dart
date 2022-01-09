@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/color_hex.dart';
 import 'package:kanji_memory_hint/components/backgrounds/practice_background.dart';
+import 'package:kanji_memory_hint/components/dialogs/confirmation_dialog.dart';
 import 'package:kanji_memory_hint/components/dialogs/pause_dialog.dart';
 import 'package:kanji_memory_hint/components/header.dart';
 import 'package:kanji_memory_hint/const.dart';
@@ -68,16 +69,44 @@ class _GameScreenState extends State<GameScreen> {
     );
   }
 
+  Widget buildConfirmationDialog(BuildContext context) {
+    return ConfirmationDialog(
+      onConfirm: (){
+        Navigator.of(context, rootNavigator: true).pop(true);
+      },
+      onCancel: (){
+        Navigator.of(context, rootNavigator: true).pop(false);
+      },
+    );
+  }
+
+  Future<bool> showConfirmationDialog(BuildContext context) async {
+    bool exit;
+    exit = await showDialog(
+      context: context, 
+      builder: buildConfirmationDialog
+    );
+    return exit;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return PracticeBackground(
-      child: ScreenLayout(
-        header: AppHeader(
-          title: widget.title, 
-          japanese: widget.japanese
-        ), 
-        footer: pauseButton(context), 
-        child: widget.game
+    return WillPopScope(
+      onWillPop: () async {
+          bool exit = await showConfirmationDialog(context);
+          print("EXIT FROM GAME SCREEN $exit");
+          return exit;
+        },
+      child: PracticeBackground(
+        child: ScreenLayout(
+          header: AppHeader(
+            title: widget.title, 
+            japanese: widget.japanese,
+            withBack: false,
+          ), 
+          footer: pauseButton(context), 
+          child: widget.game
+        )
       )
     );
   }

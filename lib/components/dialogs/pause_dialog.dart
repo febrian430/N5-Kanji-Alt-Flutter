@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:kanji_memory_hint/components/dialogs/confirmation_dialog.dart';
 import 'package:kanji_memory_hint/icons.dart';
 import 'package:kanji_memory_hint/theme.dart';
 
@@ -22,6 +23,7 @@ class PauseDialog extends StatelessWidget {
         ),
       );
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -157,6 +159,26 @@ class _QuitButton extends  StatelessWidget {
 
   const _QuitButton({Key? key, required this.icon, required this.onPressed}) : super(key: key);
 
+  Widget buildConfirmationDialog(BuildContext context) {
+    return ConfirmationDialog(
+      onConfirm: (){
+        Navigator.of(context, rootNavigator: true).pop(true);
+      },
+      onCancel: (){
+        Navigator.of(context, rootNavigator: true).pop(false);
+      },
+    );
+  }
+
+  Future<bool> showConfirmationDialog(BuildContext context) async {
+    bool exit;
+    exit = await showDialog(
+      context: context, 
+      builder: buildConfirmationDialog
+    ) ?? false;
+    return exit;
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -175,7 +197,12 @@ class _QuitButton extends  StatelessWidget {
           style: TextButton.styleFrom(
             backgroundColor: AppColors.wrong
           ),
-          onPressed: onPressed,
+          onPressed: () async {
+            bool exit = await showConfirmationDialog(context);
+            if(exit) {
+              onPressed();
+            }
+          },
           child: Container(
             alignment: Alignment.center,
             child: Image.asset(

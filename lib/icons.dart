@@ -18,5 +18,6 @@ class AppIcons {
   static const reminderSmall = APP_IMAGE_FOLDER + 'reminder_small.png';
   static const viewResult = APP_IMAGE_FOLDER +  'view_result.png';
   static const kana = APP_IMAGE_FOLDER +  'kana_chart.png';
-
+  static const yes = APP_IMAGE_FOLDER + 'yes.png';
+  static const no = APP_IMAGE_FOLDER + 'cross.png';
 }

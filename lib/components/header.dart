@@ -4,8 +4,8 @@ import 'package:kanji_memory_hint/components/buttons/back_button.dart';
 class AppHeader extends StatelessWidget {
   final String title;
   final String japanese;
-
-  const AppHeader({Key? key, required this.title, required this.japanese}) : super(key: key);
+  bool withBack;
+  AppHeader({Key? key, required this.title, required this.japanese, this.withBack = false}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class AppHeader extends StatelessWidget {
         children: [
           Expanded(
             flex: 2,
-            child: AppBackButton(context),
+            child: withBack ? AppBackButton(context) : SizedBox(),
           ),
           Expanded(
             flex: 8,

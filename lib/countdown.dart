@@ -47,6 +47,12 @@ class Countdown {
     paused = true;
   }
 
+  void stop() {
+    print("stopping");
+    _sub.cancel();
+    _countdownTimer.cancel();
+  }
+
   void toggle() {
     if(paused) {
       start();

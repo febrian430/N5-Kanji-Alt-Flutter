@@ -8,6 +8,7 @@ class AppIconButton extends StatelessWidget {
   final double width;
   final Color backgroundColor;
   final double iconSize;
+  final double ratio;
 
   const AppIconButton({
     Key? key, 
@@ -16,12 +17,14 @@ class AppIconButton extends StatelessWidget {
     required this.height, 
     required this.width, 
     required this.backgroundColor,
+    this.ratio = 1,
     this.iconSize = 30}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-        aspectRatio: 1, child: TextButton(
+      aspectRatio: ratio, 
+      child: TextButton(
       onPressed: onTap, 
       style: TextButton.styleFrom(
         backgroundColor: backgroundColor
