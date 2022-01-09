@@ -2,11 +2,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:kanji_memory_hint/components/dialogs/guide.dart';
 import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/components/result_button.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/database/repository.dart';
 import 'package:kanji_memory_hint/game_components/question_widget.dart';
+import 'package:kanji_memory_hint/images.dart';
 import 'package:kanji_memory_hint/menu_screens/game_screen.dart';
 import 'package:kanji_memory_hint/quests/practice_quest.dart';
 import 'package:kanji_memory_hint/models/common.dart';
@@ -23,8 +25,8 @@ class PickDrop extends StatefulWidget {
   PickDrop({Key? key, required this.chapter, required this.mode}) : super(key: key);
 
   static const route = '/game/pick-drop';
-  static const japanese = "Pick and drop in japanese";
-  static const name = 'Pick and Drop';
+  static const japanese = "Pick and drag in japanese";
+  static const name = 'Pick and Drag';
 
   final int chapter;
   final GAME_MODE mode;
@@ -186,7 +188,14 @@ class _PickDropState extends State<PickDrop> {
       game: _buildGame(context), 
       onPause: onPause, 
       onRestart: onRestart, 
-      onContinue: onContinue
+      onContinue: onContinue,
+      onGuideOpen: onPause,
+      guide: GuideDialog(
+        game: PickDrop.name,
+        description: "Pick and drag the correct answer to the image",
+        guideImage: AppImages.guidePickDrop,
+        onClose: onContinue,
+      ),
     );
   }
 }

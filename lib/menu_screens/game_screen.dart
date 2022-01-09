@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/color_hex.dart';
 import 'package:kanji_memory_hint/components/backgrounds/practice_background.dart';
 import 'package:kanji_memory_hint/components/dialogs/confirmation_dialog.dart';
+import 'package:kanji_memory_hint/components/dialogs/guide.dart';
 import 'package:kanji_memory_hint/components/dialogs/pause_dialog.dart';
 import 'package:kanji_memory_hint/components/header.dart';
 import 'package:kanji_memory_hint/const.dart';
@@ -16,12 +17,15 @@ class GameScreen extends StatefulWidget {
   final String title;
   final String japanese;
   final Widget game;
+  final GuideDialog guide;
 
   final Function() onPause;
   final Function() onContinue;
   final Function() onRestart;
+  final Function() onGuideOpen;
 
-  const GameScreen({Key? key, required this.title, required this.japanese, required this.game, required this.onPause, required this.onRestart, required this.onContinue}) : super(key: key);
+
+  GameScreen({Key? key, required this.title, required this.japanese, required this.game, required this.onPause, required this.onRestart, required this.onContinue, required this.guide, required this.onGuideOpen}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _GameScreenState();
@@ -97,16 +101,20 @@ class _GameScreenState extends State<GameScreen> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-          bool exit = await showConfirmationDialog(context);
-          print("EXIT FROM GAME SCREEN $exit");
-          return exit;
-        },
+        bool exit = await showConfirmationDialog(context);
+        print("EXIT FROM GAME SCREEN $exit");
+        return exit;
+      },
       child: PracticeBackground(
         child: ScreenLayout(
           header: AppHeader(
             title: widget.title, 
             japanese: widget.japanese,
             withBack: false,
+            guideButton: GuideDialogButton(
+              guide: widget.guide,
+              onOpen: widget.onGuideOpen,
+            ),
           ), 
           footer: pauseButton(context), 
           child: widget.game

@@ -2,9 +2,11 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kanji_memory_hint/components/dialogs/guide.dart';
 import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/components/result_button.dart';
 import 'package:kanji_memory_hint/const.dart';
+import 'package:kanji_memory_hint/images.dart';
 import 'package:kanji_memory_hint/menu_screens/game_screen.dart';
 import 'package:kanji_memory_hint/mix-match/repo.dart';
 import 'package:kanji_memory_hint/models/common.dart';
@@ -177,6 +179,13 @@ class _MixMatchGameState extends State<MixMatchGame> {
       onRestart: onRestart,
       onContinue: onContinue,
       onPause: onPause,
+      onGuideOpen: onPause,
+      guide: GuideDialog(
+        game: MixMatchGame.name,
+        description: "Match the Kanji with the image or spelling based on its appropriate meaning",
+        guideImage: AppImages.guideMixMatch,
+        onClose: onContinue,
+      ),
     );   
   }
 
@@ -395,18 +404,16 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
   Widget _getGameUI(BuildContext context, List<Question> questions) {
     numOfQuestions = questions.length;
     return Center(
-      child: Expanded(
-        child: GridView.count(
-          crossAxisCount: 4,
-          childAspectRatio: 8/9,
-          shrinkWrap: true,
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10,
-          physics: const NeverScrollableScrollPhysics(),
-          children: questions.mapIndexed((opt, index) {
-            return _buildQuestion(context, index, opt);
-          }).toList(),
-        )
+      child: GridView.count(
+        crossAxisCount: 4,
+        childAspectRatio: 8/9,
+        shrinkWrap: true,
+        crossAxisSpacing: 10,
+        mainAxisSpacing: 10,
+        physics: const NeverScrollableScrollPhysics(),
+        children: questions.mapIndexed((opt, index) {
+          return _buildQuestion(context, index, opt);
+        }).toList(),
       )
     );
   }
