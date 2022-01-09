@@ -33,7 +33,11 @@ class _GameScreenState extends State<GameScreen> {
   bool isPaused = false;
 
   Widget buildDialog(BuildContext context) {
-    return PauseDialog(onRestart: widget.onRestart, onContinue: widget.onContinue,);
+    return PauseDialog(
+      onRestart: widget.onRestart, 
+      onContinue: widget.onContinue,
+      withKanaChart: true,
+    );
   }
 
   Widget pauseButton(BuildContext context) {

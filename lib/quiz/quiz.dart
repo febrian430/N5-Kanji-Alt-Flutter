@@ -86,6 +86,12 @@ class _QuizState extends State<Quiz> {
     });
   }
 
+  @override
+  void dispose() {
+    _countdown.stop();
+    super.dispose();
+  }
+
   void postQuizHook() async {
     report = QuizReport(
       multiple: multipleChoiceScore, 

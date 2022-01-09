@@ -9,8 +9,9 @@ class PauseDialog extends StatelessWidget {
   
   final Function() onContinue;
   final Function() onRestart;
+  final bool withKanaChart;
 
-  const PauseDialog({Key? key, required this.onContinue, required this.onRestart}) : super(key: key);
+  const PauseDialog({Key? key, required this.onContinue, required this.onRestart, this.withKanaChart = true}) : super(key: key);
 
   Dialog showKanaDialog(BuildContext context) {
       final size = MediaQuery.of(context).size;
@@ -24,6 +25,89 @@ class PauseDialog extends StatelessWidget {
       );
   }
 
+  Widget _buildPracticePause(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    return  GridView(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        mainAxisSpacing: 10,
+        crossAxisSpacing: 10,
+      ),
+      children: [
+        _DialogButton(
+            icon: AppIcons.resume, 
+            onPressed: () {
+              onContinue();
+              Navigator.pop(context);
+            },
+          ),
+
+        _DialogButton(
+          icon: AppIcons.resume, 
+          onPressed: () {
+            Navigator.pop(context);
+            onRestart();
+          },
+          ),
+        _DialogButton(
+          icon: AppIcons.kana, 
+          onPressed: (){
+            showDialog(context: context, builder: showKanaDialog);
+          }),
+        _QuitButton(
+            icon: AppIcons.exit, 
+            onPressed: (){
+              Navigator.of(context).popUntil(ModalRoute.withName('/start-select'));
+            }
+          )
+        ],
+    );
+  }
+
+  Widget _buildQuizPause(BuildContext context) {
+    return Column(
+      children: [
+        Flexible(
+          child: Row(
+            children: [
+              Padding(
+                padding: EdgeInsets.all(5),
+                child: _DialogButton(
+                icon: AppIcons.resume, 
+                onPressed: () {
+                  onContinue();
+                  Navigator.pop(context);
+                },
+              ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(5),
+                child: _DialogButton(
+                icon: AppIcons.resume, 
+                onPressed: () {
+                  Navigator.pop(context);
+                  onRestart();
+                },
+              ),)
+            ],
+          ),
+        ),
+        Flexible(
+          child: Center(
+            child: Padding(
+              padding: EdgeInsets.all(5),
+              child: _QuitButton(
+              icon: AppIcons.exit, 
+              onPressed: (){
+                Navigator.of(context).popUntil(ModalRoute.withName('/start-select'));
+              }
+            )
+          )
+        )
+        )
+      ],
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,12 +125,10 @@ class PauseDialog extends StatelessWidget {
               side: BorderSide(color: Colors.black, width: 1)
           ),
           child: Container(
-            height: size.height * 0.45,
-            width: size.width * 0.45,
+            height: size.height * 0.42,
+            width: size.width * 0.42,
             padding: EdgeInsets.all(6),
             child: Container(
-              height: size.height*0.40,
-              width: size.width*0.40,
               decoration: BoxDecoration(
                 border: Border.all(
                   width: 1
@@ -58,7 +140,7 @@ class PauseDialog extends StatelessWidget {
                 Flexible(
                   flex: 3, 
                   child: Padding(
-                    padding: EdgeInsets.fromLTRB(0, 12, 0, 6),
+                    padding: EdgeInsets.fromLTRB(0, 6, 0, 6),
                     child: Text("Paused",
                       style: Theme.of(context).textTheme.headline6!,  
                     )
@@ -66,45 +148,17 @@ class PauseDialog extends StatelessWidget {
                 ),
                 Flexible(
                   flex: 8,
-                  child: SizedBox(
-                    width: size.width*0.48,
-                    child: GridView(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 10,
-                      crossAxisSpacing: 10,
-
-                    ),
-                    children: [
-                      _DialogButton(
-                          icon: AppIcons.resume, 
-                          onPressed: () {
-                            onContinue();
-                            Navigator.pop(context);
-                          },
-                        ),
-                      
-                      _DialogButton(
-                        icon: AppIcons.resume, 
-                        onPressed: () {
-                          Navigator.pop(context);
-                          onRestart();
-                        },
-                        ),
-                      _DialogButton(
-                        icon: AppIcons.kana, 
-                        onPressed: (){
-                          showDialog(context: context, builder: showKanaDialog);
-                        }),
-                      _QuitButton(
-                          icon: AppIcons.exit, 
-                          onPressed: (){
-                            Navigator.of(context).popUntil(ModalRoute.withName('/start-select'));
-                          }
-                        )
-                    ],
-                  ),
-                  )
+                  child: withKanaChart ? 
+                    SizedBox(
+                      width: size.width*0.5,
+                      child:
+                        _buildPracticePause(context) 
+                    ) 
+                    :
+                    SizedBox(
+                      width: size.width*0.52,
+                      child: _buildQuizPause(context) 
+                    )
                 )
               ]
               )
