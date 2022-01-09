@@ -46,7 +46,7 @@ class _GameScreenState extends State<GameScreen> {
 
   Widget pauseButton(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return ElevatedButton(
+    return TextButton(
       onPressed: () {
         setState(() {
           isPaused = true;
@@ -58,18 +58,16 @@ class _GameScreenState extends State<GameScreen> {
         );
         widget.onPause();
       },
-      style: Theme.of(context).textButtonTheme.style,
+      style: TextButton.styleFrom(
+        side: BorderSide.none,
+        backgroundColor: Colors.transparent
+      ),
       child: Container(
         child: Image.asset(
           AppIcons.pause,
           height: 25,
           width: 25,
           // fit: BoxFit.scaleDown,
-        ),
-        decoration: BoxDecoration(
-          border: Border.all(
-            width: 2
-          )
         ),
         height: size.width*0.075,
         width: size.width*0.075,

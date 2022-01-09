@@ -24,6 +24,7 @@ class ModeSelect extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SelectButton(
+              padding: EdgeInsets.symmetric(vertical: 5),
               onTap: () {
                 param.mode = GAME_MODE.imageMeaning;
                 Navigator.pushReplacementNamed(context, ChapterSelect.route, arguments: param);
@@ -31,8 +32,9 @@ class ModeSelect extends StatelessWidget {
               title: "Image Meaning",
               description: "Match the Kanji with the image based on its appropriate meaning",
             ),
-            SizedBox(height: 100),
             SelectButton(
+              padding: EdgeInsets.symmetric(vertical: 5),
+
               onTap: () {
                 param.mode = GAME_MODE.reading;
                 Navigator.pushReplacementNamed(context, ChapterSelect.route, arguments: param);

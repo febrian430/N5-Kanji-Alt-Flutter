@@ -40,6 +40,8 @@ class GameSelect extends StatelessWidget {
               // ),
               Center(
                 child: SelectButton(
+                  padding: EdgeInsets.symmetric(vertical: 5),
+
                   onTap: () {
                     Navigator.pushNamed(context, ModeSelect.route,
                     arguments: PracticeGameArguments(selectedGame: MixMatchGame.route));
@@ -52,6 +54,8 @@ class GameSelect extends StatelessWidget {
               Center(
                 child: SelectButton(
                   // Within the `Home` widget
+                  padding: EdgeInsets.symmetric(vertical: 5),
+
                   onTap: () {
                     // Navigate to the second screen using a named route.
                     Navigator.pushNamed(context, ModeSelect.route,
@@ -65,6 +69,8 @@ class GameSelect extends StatelessWidget {
               Center(
                 child: SelectButton(
                   // Within the `Home` widget
+                  padding: EdgeInsets.symmetric(vertical: 5),
+
                   onTap: () {
                     Navigator.pushNamed(context, ChapterSelect.route, arguments: PracticeGameArguments(selectedGame: PickDrop.route));
                   },

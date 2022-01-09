@@ -21,6 +21,7 @@ class StartSelect extends StatelessWidget {
               Center(
                 child: SelectButton(
                   title: "Practice", 
+                  padding: EdgeInsets.symmetric(vertical: 10),
                   description: "Train your skills with games such as Mix & Match, Jumble, and Pick & Drop",
                   onTap: (){
                     Navigator.pushNamed(context, GameSelect.route);
@@ -31,6 +32,8 @@ class StartSelect extends StatelessWidget {
               Center(
                 child: SelectButton(
                   title: "Quiz",
+                  padding: EdgeInsets.symmetric(vertical: 10),
+
                   onTap: (){
                     Navigator.pushNamed(context, ChapterSelect.route, 
                       arguments: PracticeGameArguments(selectedGame: Quiz.route));

@@ -10,16 +10,15 @@ class SelectButton extends StatelessWidget {
   final Function() onTap;
   final String? iconPath;
 
-  SelectButton({Key? key, required this.title, this.description, required this.onTap, this.iconPath}) : super(key: key) {
-    _titleTextColor = Colors.black;
-    _descTextColor = Colors.grey;
-  }
+  EdgeInsetsGeometry? padding;
+
+  SelectButton({Key? key, required this.title, this.description, required this.onTap, this.iconPath, this.padding}) : super(key: key);
 
   static const double _titleFontSize = 20;
   static const double _descFontSize = 14;
 
-  late Color _titleTextColor;
-  late Color _descTextColor;
+  final Color _titleTextColor = Colors.black;
+  final Color _descTextColor = Colors.grey;
 
   Widget _withDescription(BuildContext context, Widget titleWidget) {
     return Container(
@@ -77,25 +76,28 @@ class SelectButton extends StatelessWidget {
       child = _withDescription(context, child);
     }
 
-    return TextButton(
-      onPressed: onTap,
-      child: Container(
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            vertical: 4,
-            horizontal: 7
+    return Padding(
+      padding: padding == null ? EdgeInsets.zero : padding!,
+      child: TextButton(
+        onPressed: onTap,
+        child: Container(
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              vertical: 4,
+              horizontal: 7
+            ),
+            child: child,
           ),
-          child: child,
-        ),
-        constraints: BoxConstraints(
-          minHeight: size.height*0.075
-        ),
-        width: size.width*0.45,
-        decoration: BoxDecoration(
-          border: Border.all(
-            width: 2
+          constraints: BoxConstraints(
+            minHeight: size.height*0.075
           ),
-        ),
+          width: size.width*0.45,
+          decoration: BoxDecoration(
+            border: Border.all(
+              width: 2
+            ),
+          ),
+        )
       )
     );
   }
