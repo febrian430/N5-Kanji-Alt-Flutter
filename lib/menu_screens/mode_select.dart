@@ -28,7 +28,8 @@ class ModeSelect extends StatelessWidget {
                 param.mode = GAME_MODE.imageMeaning;
                 Navigator.pushReplacementNamed(context, ChapterSelect.route, arguments: param);
               },
-              title: "Image Meaning"
+              title: "Image Meaning",
+              description: "Match the Kanji with the image based on its appropriate meaning",
             ),
             SizedBox(height: 100),
             SelectButton(
@@ -36,7 +37,8 @@ class ModeSelect extends StatelessWidget {
                 param.mode = GAME_MODE.reading;
                 Navigator.pushReplacementNamed(context, ChapterSelect.route, arguments: param);
               },
-              title: "Reading"
+              title: "Reading",
+              description: "Choose the correct answer based on its spelling",
             ),
           ]
         );
