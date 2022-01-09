@@ -35,6 +35,7 @@ class Menu extends StatelessWidget {
         header: AppHeader(
           title: title,
           japanese: japanese,
+          withBack: true,
         ), 
         footer: EmptyWidget, 
         child: child

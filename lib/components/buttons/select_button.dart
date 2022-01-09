@@ -23,33 +23,35 @@ class SelectButton extends StatelessWidget {
 
   Widget _withDescription(BuildContext context, Widget titleWidget) {
     return Container(
+      padding: EdgeInsets.symmetric(horizontal: 4),
       child: Column(
         children: [
           Padding(
-            child: titleWidget,
-            padding: const EdgeInsets.all(4),
+            padding: const EdgeInsets.all(0),
+            child: 
+            titleWidget,
           ),
-          Center(
-            child: Padding(
-              padding: const EdgeInsets.all(4),
-              child: Text(
+          
+          Padding(
+              padding: const EdgeInsets.only(top: 5),
+              child: 
+              Text(
                 description!, 
-                textAlign: TextAlign.center,
+                textAlign: TextAlign.left,
                 style: TextStyle(
                   color: _descTextColor,
                   fontSize: _descFontSize,
                 ),
               )
             )
-          )
         ],
       ),
     );
   }
   Widget _withImage(BuildContext context) {
-    return iconPath == null ? Text(title, style: Theme.of(context).textTheme.button) :
+    return iconPath == null ? Center(child: Text(title, style: Theme.of(context).textTheme.button)) :
       Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
             title,
@@ -57,21 +59,20 @@ class SelectButton extends StatelessWidget {
           ),
           Image(
             image: AssetImage(iconPath!), 
-            height: 30,
-            width: 30,
+            height: 35,
+            width: 35,
             fit: BoxFit.fill,
           ) 
         ],
-      ); 
+      );
   }
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    Widget child = Center(
-      child: _withImage(context)
-    );
+    Widget child =  _withImage(context);
+
     if (description != null) {
       child = _withDescription(context, child);
     }
@@ -79,7 +80,13 @@ class SelectButton extends StatelessWidget {
     return TextButton(
       onPressed: onTap,
       child: Container(
-        child: child,
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            vertical: 4,
+            horizontal: 7
+          ),
+          child: child,
+        ),
         constraints: BoxConstraints(
           minHeight: size.height*0.075
         ),

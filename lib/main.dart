@@ -5,6 +5,7 @@ import 'package:kanji_memory_hint/components/buttons/select_button.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/database/repository.dart';
 import 'package:kanji_memory_hint/game.dart';
+import 'package:kanji_memory_hint/icons.dart';
 import 'package:kanji_memory_hint/kanji-list/view.dart';
 import 'package:kanji_memory_hint/menu_screens/chapter_select.dart';
 import 'package:kanji_memory_hint/menu_screens/mode_select.dart';
@@ -83,7 +84,7 @@ class _MyAppState extends State<MyApp> {
       ),
       initialRoute: '/',
       routes: { 
-        '/': (context) => const Home(),
+        '/': (context) => const MainScreen(),
         '/list': (context) => KanjiMenu(),
         '/list/view': (context) => KanjiScreen(),
         '/game': (context) => GameSelect(),
@@ -156,6 +157,81 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
+class MainScreen extends StatelessWidget {
+  const MainScreen({Key? key}) : super(key: key);
+
+  Widget _mainButtons(BuildContext context) {
+    return Row(
+      children: [
+        Flexible(
+          flex: 3,
+          child: Column(
+            children: [
+              SelectButton(
+                onTap: () {
+                  Navigator.pushNamed(context, StartSelect.route);
+                  
+                },
+                title: 'Start',
+                iconPath: AppIcons.start,
+              ),
+              SelectButton(
+                onTap: () {
+                  Navigator.pushNamed(context, '/list');
+                },
+                title: 'Kanji List',
+                iconPath: AppIcons.list,
+              ),
+             SelectButton(
+                onTap: () {
+                  Navigator.pushNamed(context, '/quests');
+                  
+                },
+                title: 'Quests',
+                iconPath: AppIcons.quest,
+              ),
+
+            ],
+          )
+        ),
+        Expanded(
+          flex: 2,
+          child: SizedBox(),
+        ),
+      ],
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    return MenuBackground(
+      child: Scaffold(
+        body: SafeArea(
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: size.width*0.1,
+            ),
+            child: Column(
+            children: [
+              Expanded(
+                flex: 3,
+                child: Image.asset(AppIcons.currency),
+              ),
+              Expanded(
+                flex: 3,
+                child: _mainButtons(context),
+              )
+            ]
+          )
+        )
+        )
+      ),
+    );
+  }
+
+}
+
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
 
@@ -170,9 +246,9 @@ class Home extends StatelessWidget {
               child: SelectButton(
                 onTap: () {
                   Navigator.pushNamed(context, '/list');
-                  
                 },
                 title: 'List',
+                iconPath: AppIcons.list,
               ),
             ),
             Center(
@@ -182,6 +258,7 @@ class Home extends StatelessWidget {
                   
                 },
                 title: 'Start',
+                iconPath: AppIcons.start,
               ),
             ),
             Center(
@@ -191,6 +268,7 @@ class Home extends StatelessWidget {
                   
                 },
                 title: 'Quests',
+                iconPath: AppIcons.quest,
               ),
             ),
             Center(
