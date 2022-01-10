@@ -14,37 +14,42 @@ class QuestScreenLayout extends StatelessWidget {
 
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            Flexible(
-              flex: 12, 
-              child: Column(
-                children: [
-                  Expanded(
-                    flex: 1,
-                    child: AppHeader(title: "Quest", japanese: "in japanese", withBack: true,),
-                  ),
-                  Expanded(
-                    flex: 11,
-                    child: content,
-                  )
-                ],
+        child: Padding(
+          padding: EdgeInsets.only(
+            top: size.height*.075
+          ),
+          child: Column(
+            children: [
+              Flexible(
+                flex: 12, 
+                child: Column(
+                  children: [
+                    Expanded(
+                      flex: 1,
+                      child: AppHeader(title: "Quest", japanese: "in japanese", withBack: true,),
+                    ),
+                    Expanded(
+                      flex: 11,
+                      child: content,
+                    )
+                  ],
+                ),
               ),
-            ),
-              // Stack(
-            //     children: [
-            //       content,
-            //       SizedBox(height: size.height*0.1, 
-            //         child: AppHeader(title: "Quest", japanese: "in japanese"),
-            //       )
-            //     ],
-            //   )
-            // ),
-            Expanded(
-              flex: 1,
-              child: footer
-            ),
-          ],
+                // Stack(
+              //     children: [
+              //       content,
+              //       SizedBox(height: size.height*0.1, 
+              //         child: AppHeader(title: "Quest", japanese: "in japanese"),
+              //       )
+              //     ],
+              //   )
+              // ),
+              Expanded(
+                flex: 1,
+                child: footer
+              ),
+            ],
+          )
         )
       )
     ); 

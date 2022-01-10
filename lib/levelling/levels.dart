@@ -21,6 +21,7 @@ class Levels {
 
   static Future<List<int>> current() async {
     var points = await SQLRepo.userPoints.get();
+    print("${points.exp} ${points.gold}");
     return _levelAndRemainingExp(points.exp);
   }
 
