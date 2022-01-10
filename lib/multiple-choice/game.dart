@@ -275,7 +275,7 @@ class _QuizOption extends StatelessWidget {
     if(isSelected) {
       return AppColors.selected;
     }
-    return Colors.white;
+    return AppColors.primary;
   }
 
   Color _afterQuizOver() {
@@ -284,7 +284,7 @@ class _QuizOption extends StatelessWidget {
     } else if (isSelected) {
       return AppColors.wrong;
     } else {
-      return Colors.white;
+      return AppColors.primary;
     }
   }
 
