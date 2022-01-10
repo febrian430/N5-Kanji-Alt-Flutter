@@ -33,7 +33,10 @@ void main() async {
   await Notifier.initialize();
   await SQLRepo.open();
 
-  runApp(const MyApp());
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+    .then((_) {
+      runApp(new MyApp());
+    });
 }
 
 
