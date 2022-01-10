@@ -74,6 +74,17 @@ flutter:
     - assets/audio/
   #   - images/a_dot_ham.jpeg
 
+  fonts: 
+  - family: NotoSansJP
+    fonts: 
+      - asset:  fonts/NotoSansJP-Black.otf
+      - asset:  fonts/NotoSansJP-Bold.otf
+      - asset:  fonts/NotoSansJP-Light.otf
+      - asset:  fonts/NotoSansJP-Medium.otf
+      - asset:  fonts/NotoSansJP-Regular.otf
+      - asset:  fonts/NotoSansJP-Thin.otf
+
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
