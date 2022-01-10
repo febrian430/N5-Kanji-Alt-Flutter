@@ -3,14 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:kanji_memory_hint/color_hex.dart';
 import 'package:kanji_memory_hint/components/backgrounds/menu_background.dart';
-import 'package:kanji_memory_hint/components/backgrounds/quest_background.dart';
-import 'package:kanji_memory_hint/components/buttons/back_button.dart';
-import 'package:kanji_memory_hint/components/header.dart';
+import 'package:kanji_memory_hint/components/progress_bar.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/database/quests.dart';
-import 'package:kanji_memory_hint/menu_screens/menu.dart';
+import 'package:kanji_memory_hint/images.dart';
 import 'package:kanji_memory_hint/menu_screens/quest_screen_layout.dart';
-import 'package:kanji_memory_hint/menu_screens/screen_layout.dart';
 import 'package:kanji_memory_hint/quests/mastery.dart';
 import 'package:kanji_memory_hint/quests/practice_quest.dart';
 import 'package:kanji_memory_hint/quests/quiz_quest.dart';
@@ -104,8 +101,8 @@ class _ProgressContainer extends StatelessWidget {
         width: size.width,
         decoration: BoxDecoration(
           image: const DecorationImage(
-            image: AssetImage(APP_IMAGE_FOLDER+'main_menu.png'),
-            fit: BoxFit.fill
+            image: AssetImage(AppImages.progress),
+            fit: BoxFit.cover
           ),
           gradient: LinearGradient(
             begin: Alignment.topCenter,
@@ -118,7 +115,15 @@ class _ProgressContainer extends StatelessWidget {
             tileMode: TileMode.decal, // repeats the gradient over the canvas
           )
         ),
-        child: Text("Test")
+        child: ProgressBar(
+          from: 100,
+          to: 500,
+          total: 400,
+          nextLevel: 500,
+          onLevelup: (){
+            print("level up!");
+          },
+        )
     );
   }
 }
