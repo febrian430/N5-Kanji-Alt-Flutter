@@ -15,6 +15,7 @@ class QuizScreen extends StatefulWidget {
   final String title;
   final String japanese;
   final Widget game;
+  final Widget footerWhenOver;
 
   final Function() onPause;
   final Function() onContinue;
@@ -23,10 +24,10 @@ class QuizScreen extends StatefulWidget {
   final GuideDialog? guide;
   Function()? onGuideOpen;
 
-  final bool isQuizOver;
+  final bool isOver;
 
 
-  QuizScreen({Key? key, required this.title, required this.japanese, required this.game, required this.onPause, required this.onRestart, required this.onContinue, this.guide, this.onGuideOpen, required this.isQuizOver, }) : super(key: key);
+  QuizScreen({Key? key, required this.title, required this.japanese, required this.game, required this.onPause, required this.onRestart, required this.onContinue, this.guide, this.onGuideOpen, required this.isOver, required this.footerWhenOver, }) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _QuizScreenState();
@@ -64,22 +65,29 @@ class _QuizScreenState extends State<QuizScreen> {
     ) : null;
   }
 
-  Widget _pauseButtonOrEmptyBox(BuildContext context) {
-    return (widget.guide == null || widget.isQuizOver) ? SizedBox() : PauseButton(
-      onPause: () {
-        setState(() {
-          isPaused = true;
-        });
-        widget.onPause();
-      },
-      onContinue: () {
-        setState(() {
-          isPaused = false;
-        });
-        widget.onContinue();
-      },
-      onRestart: widget.onRestart,
-    );
+  Widget _getFooter(BuildContext context) {    
+    if(widget.isOver) {
+      return widget.footerWhenOver;
+    } else if(widget.guide == null) {
+      return SizedBox();
+    } else {
+      return PauseButton(
+        onPause: () {
+          setState(() {
+            isPaused = true;
+          });
+          widget.onPause();
+        },
+        onContinue: () {
+          setState(() {
+            isPaused = false;
+          });
+          widget.onContinue();
+        },
+        onRestart: widget.onRestart,
+        withChart: false,
+      );
+    }
   }
 
   @override
@@ -98,7 +106,7 @@ class _QuizScreenState extends State<QuizScreen> {
             withBack: false,
             guideButton: _guideButton(context)
           ), 
-          footer: _pauseButtonOrEmptyBox(context),
+          footer: _getFooter(context),
           child: widget.game
         )
       )

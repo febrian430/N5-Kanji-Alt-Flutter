@@ -269,47 +269,6 @@ class _QuizState extends State<Quiz> {
             ],
           )
         ),
-        Visibility(
-          visible: isOver,
-          child: Flexible(
-            flex: 1,
-            child: IndexedStack(
-              index: gameIndex,
-              children: [
-                FooterNavigation(
-                  result: FooterNavigationParam(
-                    title: "See result",
-                    onTap: _goQuizResult
-                  ),
-                  next: FooterNavigationParam(
-                    title: "Go Jumble",
-                    onTap: _goJumble
-                  ),
-                ),
-                FooterNavigation(
-                  result: FooterNavigationParam(
-                    title: "See result",
-                    onTap: _goQuizResult
-                  ),
-                  prev: FooterNavigationParam(
-                    title: "Multiple Choice",
-                    onTap: _goMultipleChoice
-                  ),
-                ),
-                FooterNavigation(
-                  prev: FooterNavigationParam(
-                    title: "Multiple Choice",
-                    onTap: _goMultipleChoice
-                  ),
-                  next: FooterNavigationParam(
-                    title: "Jumble",
-                    onTap: _goJumble
-                  ),
-                ),
-              ],
-            )
-          ),
-        )
       ]
     );
   }
@@ -346,7 +305,32 @@ class _QuizState extends State<Quiz> {
       game: _buildQuiz(context),
       guide: screen.dialog,
       onGuideOpen: screen.onDialogOpen,
-      isQuizOver: isOver,
+      isOver: isOver,
+      footerWhenOver: Row(
+        children: [
+          Expanded(
+            flex: 1,
+            child: _FooterNav(
+              title: "Multiple Choice",
+              go: _goMultipleChoice,
+            )
+          ),
+          Expanded(
+            flex: 1,
+            child: _FooterNav(
+              title: "Jumble",
+              go: _goJumble,
+            )
+          ),
+          Expanded(
+            flex: 1,
+            child: _FooterNav(
+              title:"Result",
+              go: _goQuizResult,
+            )
+          ),
+        ],
+      )
     );
   }
 
@@ -366,4 +350,32 @@ class _Screen {
   final Function()? onDialogOpen;
 
   _Screen(this.name, this.japanese, {this.dialog, this.onDialogOpen});
+}
+
+class _FooterNav extends StatelessWidget{
+  final String title;
+  final Function() go;
+
+  const _FooterNav({Key? key, required this.title, required this.go}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      style: TextButton.styleFrom(
+        side: BorderSide.none,
+      ),
+      onPressed: go,
+      child: Container(
+        alignment: Alignment.center,
+        height: 100, 
+        child: Text(title, 
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Colors.black
+          ),
+        ),
+      )
+    );
+  }
+
 }
