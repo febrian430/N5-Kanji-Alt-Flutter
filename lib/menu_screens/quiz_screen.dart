@@ -107,8 +107,10 @@ class _QuizScreenState extends State<QuizScreen> {
             guideButton: _guideButton(context)
           ), 
           footer: _getFooter(context),
-          child: widget.game
-        )
+          child: widget.game,
+          horizontalPadding: false,
+          verticalPadding: false,
+        ),
       )
     );
   }

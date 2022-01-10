@@ -6,8 +6,10 @@ class ScreenLayout extends StatelessWidget {
   final Widget header;
   final Widget child;
   final Widget footer;
+  final bool verticalPadding;
+  final bool horizontalPadding;
 
-  const ScreenLayout({Key? key, required this.header, required this.footer, required this.child}) : super(key: key);
+  const ScreenLayout({Key? key, required this.header, required this.footer, required this.child, this.verticalPadding = true, this.horizontalPadding = true}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +23,8 @@ class ScreenLayout extends StatelessWidget {
             )
           ),
           padding: EdgeInsets.symmetric(
-            vertical: size.width*.075,
-            horizontal: size.height*.044
+            vertical: verticalPadding ? size.height*.075 : 0,
+            horizontal: horizontalPadding ? size.width*.044 : 0
           ),
           child: Container(
             child: Column(
