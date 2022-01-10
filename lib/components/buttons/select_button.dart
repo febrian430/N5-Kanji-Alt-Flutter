@@ -91,7 +91,7 @@ class SelectButton extends StatelessWidget {
           constraints: BoxConstraints(
             minHeight: size.height*0.075
           ),
-          width: size.width*0.45,
+          width: size.width*0.50,
           decoration: BoxDecoration(
             border: Border.all(
               width: 2
