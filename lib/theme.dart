@@ -12,7 +12,7 @@ class AppColors {
   static final Color secondary = HexColor.fromHex("f8b444");
   static final Color correct = HexColor.fromHex("6DC063");
   static final Color wrong = HexColor.fromHex("DE7162");
-  static final Color selected = HexColor.fromHex("F0E9D0");
+  static final Color selected = HexColor.fromHex("d9c08d");
   static final Color teal = HexColor.fromHex("71cac4");
   static final Color purple = HexColor.fromHex("D083A8");
 }
