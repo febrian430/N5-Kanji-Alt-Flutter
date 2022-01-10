@@ -267,7 +267,7 @@ class _QuizSelectWidget extends StatelessWidget {
   }
 
   Widget _drawDuringQuiz(BuildContext context){
-    Color bgColor = AppColors.selected;
+    Color bgColor = Colors.white;
 
     final size = MediaQuery.of(context).size;
     final width = size.width;

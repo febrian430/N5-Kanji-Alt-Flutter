@@ -40,7 +40,7 @@ class QuizResult extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         AppIconButton(
-          onTap: (){}, 
+          onTap: onRestart, 
           iconPath: AppIcons.retry, 
           height: 50, 
           width: 50, 
