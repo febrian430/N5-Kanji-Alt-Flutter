@@ -32,10 +32,7 @@ class QuestionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.width*0.7,
-      width: MediaQuery.of(context).size.width*0.7,
-      child: AspectRatio(
+    return AspectRatio(
         aspectRatio: 1,
         child: Container(
           child: _getQuestionWidget(),
@@ -47,7 +44,7 @@ class QuestionWidget extends StatelessWidget {
             color: AppColors.primary
           ),
         )
-      )
+
     );
     
   }

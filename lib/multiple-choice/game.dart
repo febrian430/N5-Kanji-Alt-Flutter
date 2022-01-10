@@ -206,18 +206,24 @@ class _MultipleChoiceRoundState extends State<MultipleChoiceRound> with Automati
   Column _optionsByColumn(BuildContext context, List<Option> opts) {
 
       return Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: opts.take(2).map((opt) {
-              return _buildOption(context, opt);
+              return Padding(
+                padding: EdgeInsets.all(10),
+                child: _buildOption(context, opt)
+              );
             }).toList(),
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: opts.skip(2).map((opt) {
-              return _buildOption(context, opt);
+              return Padding(
+                padding: EdgeInsets.all(10),
+                child: _buildOption(context, opt)
+              );
             }).toList(),
           ),
         ]
@@ -233,15 +239,15 @@ class _MultipleChoiceRoundState extends State<MultipleChoiceRound> with Automati
         child: Column(
           children: [
             Expanded(
-              flex: 15,
+              flex: 10,
               child: QuestionWidget(mode: widget.mode, questionStr: widget.question.value),
             ),
-            Expanded(
+            Flexible(
               flex: 1,
               child: Center(child: Text((widget.question.key.toString())),),
             ),
             Expanded(
-              flex: 15,
+              flex: 8,
               child: _optionsByColumn(context, widget.options)
             )
 
