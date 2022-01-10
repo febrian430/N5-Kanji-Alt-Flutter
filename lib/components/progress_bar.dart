@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ProgressBar extends StatefulWidget {
-  const ProgressBar({Key? key, required this.from, required this.to, required this.total, required this.nextLevel, required this.onLevelup, }) : super(key: key);
+  const ProgressBar({Key? key, required this.from, required this.gain, required this.levelupReq, required this.nextLevel, required this.onLevelup, }) : super(key: key);
   
   final int from;
-  final int to;
-  final int total;
+  final int gain;
+  final int levelupReq;
   final int nextLevel; 
 
   final Function() onLevelup;
@@ -29,8 +29,13 @@ class _ProgressBarState extends State<ProgressBar>
         
       });
     });
-    controller.value = widget.from/widget.total;
+    animate();
     super.initState();
+  }
+
+  void animate() async {
+    controller.value = widget.from/widget.levelupReq;
+    await controller.animateTo((widget.from+widget.gain)/widget.levelupReq, duration: const Duration(milliseconds: 500));
   }
 
   @override
@@ -41,8 +46,7 @@ class _ProgressBarState extends State<ProgressBar>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
+    return Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -61,23 +65,20 @@ class _ProgressBarState extends State<ProgressBar>
                 semanticsLabel: 'Progress bar',
               ),
             ),
-            TextButton(
-              child: Text("test"),
-              onPressed: () async {
-                
-                await controller.animateTo(widget.to/widget.total, duration: const Duration(milliseconds: 500));
-                if(widget.to > widget.total) {
-                  widget.onLevelup();
-                  controller.value = 0;
-                  final remaining = widget.to - widget.total;
-                  await controller.animateTo(remaining/widget.nextLevel);
-                }
-                
-              },
-            )
+            // TextButton(
+            //   child: Text("test"),
+            //   onPressed: () async {
+            //     await controller.animateTo(widget.gain/widget.levelupReq, duration: const Duration(milliseconds: 500));
+            //     if(widget.gain > widget.levelupReq) {
+            //       widget.onLevelup();
+            //       controller.value = 0;
+            //       final remaining = widget.gain - widget.levelupReq;
+            //       await controller.animateTo(remaining/widget.nextLevel);
+            //     }
+            //   },
+            // )
           ],
         ),
-      ),
-    );
+      );
   }
 }

@@ -108,6 +108,7 @@ class QuestWidget extends StatelessWidget {
         )
       ),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Flexible(flex: 8, child: _description(context)),
           Flexible(

@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:kanji_memory_hint/color_hex.dart';
 import 'package:kanji_memory_hint/components/backgrounds/menu_background.dart';
+import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/components/progress_bar.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/database/quests.dart';
 import 'package:kanji_memory_hint/images.dart';
+import 'package:kanji_memory_hint/levelling/levels.dart';
 import 'package:kanji_memory_hint/menu_screens/quest_screen_layout.dart';
 import 'package:kanji_memory_hint/quests/mastery.dart';
 import 'package:kanji_memory_hint/quests/practice_quest.dart';
@@ -33,16 +35,17 @@ class _QuestScreenState extends State<QuestScreen> {
     return MenuBackground(
       child: QuestScreenLayout(
         content: Column(
-            children: [
-              Expanded(
-                flex: 6,
-                child: _ProgressContainer(),
-              ),
-              Expanded(
-                flex: 6,
-                child: QuestMenuWidget()
-              )
-            ],
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
+              flex: 6,
+              child: _ProgressContainer(),
+            ),
+            Expanded(
+              flex: 6,
+              child: QuestMenuWidget()
+            )
+          ],
         ), 
         footer: TextButton(
           child: Text("Trade reward"),
@@ -92,40 +95,45 @@ class _QuestWidgetState extends State<QuestMenuWidget> {
 
 }
 
-class _ProgressContainer extends StatelessWidget {
+class _ProgressContainer extends StatefulWidget {
+
+  @override
+  State<StatefulWidget> createState() => _ProgressContainerState();
+}
+
+class _ProgressContainerState extends State<_ProgressContainer> {
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-
-    return Container(
-        width: size.width,
-        decoration: BoxDecoration(
-          image: const DecorationImage(
-            image: AssetImage(AppImages.progress),
-            fit: BoxFit.cover
-          ),
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: <Color>[
-                HexColor.fromHex("f9e7b1"),
-                HexColor.fromHex("f9e7b1"),
-                HexColor.fromHex("f8b444")
+    return FutureBuilder(
+      future: Levels.current(),
+      builder: (context, AsyncSnapshot<List<int>> snapshot) {
+        if(snapshot.hasData) {
+          final level = snapshot.data![0];
+          final remaining = snapshot.data![1];
+          final toNextLevel = Levels.next(level);
+          print('$level, $remaining, $toNextLevel');
+          return Column(
+            children: [
+              Text(level.toString(), style: TextStyle(fontSize: 50),),
+              ProgressBar(
+                from: remaining, 
+                gain: 0, 
+                levelupReq: toNextLevel ?? remaining, 
+                nextLevel: 999, 
+                onLevelup: (){
+                  print("huh");
+                }
+              ),
+              Text('${remaining.toString()}/${toNextLevel.toString()}'),
             ],
-            tileMode: TileMode.decal, // repeats the gradient over the canvas
-          )
-        ),
-        child: ProgressBar(
-          from: 100,
-          to: 500,
-          total: 400,
-          nextLevel: 500,
-          onLevelup: (){
-            print("level up!");
-          },
-        )
+          );
+        } else {
+          return LoadingScreen();
+        }
+      }
     );
   }
+
 }
 
 class _SelectBar extends StatefulWidget {

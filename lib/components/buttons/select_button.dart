@@ -12,8 +12,9 @@ class SelectButton extends StatelessWidget {
   final double? width;
 
   EdgeInsetsGeometry? padding;
+  final bool mainScreen;
 
-  SelectButton({Key? key, required this.title, this.description, required this.onTap, this.iconPath, this.padding, this.width}) : super(key: key);
+  SelectButton({Key? key, required this.title, this.description, required this.onTap, this.iconPath, this.padding, this.width, this.mainScreen = false}) : super(key: key);
 
 
   final TextStyle titleStyle = const TextStyle(
@@ -63,8 +64,8 @@ class SelectButton extends StatelessWidget {
               Image(
                 image: AssetImage(iconPath!), 
                 fit: BoxFit.contain,
-                height: 60,
-                width: 60,
+                height: mainScreen ? 30 : 60,
+                width: mainScreen ? 30 : 60,
               )
               :
               SizedBox()
@@ -99,7 +100,7 @@ class SelectButton extends StatelessWidget {
               Center(child: child) : child,
           ),
           constraints: description == null ? BoxConstraints(
-            minHeight: size.height*0.075,
+            minHeight: size.height*.075,
           ) : null,
           height: description != null ? size.height*.18 : null,
           width: width ?? size.width*0.60,

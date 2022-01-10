@@ -18,15 +18,28 @@ class QuestScreenLayout extends StatelessWidget {
           children: [
             Flexible(
               flex: 12, 
-              child: Stack(
+              child: Column(
                 children: [
-                  content,
-                  SizedBox(height: size.height*0.1, 
-                    child: AppHeader(title: "Quest", japanese: "in japanese"),
+                  Expanded(
+                    flex: 1,
+                    child: AppHeader(title: "Quest", japanese: "in japanese", withBack: true,),
+                  ),
+                  Expanded(
+                    flex: 11,
+                    child: content,
                   )
                 ],
-              )
+              ),
             ),
+              // Stack(
+            //     children: [
+            //       content,
+            //       SizedBox(height: size.height*0.1, 
+            //         child: AppHeader(title: "Quest", japanese: "in japanese"),
+            //       )
+            //     ],
+            //   )
+            // ),
             Expanded(
               flex: 1,
               child: footer
