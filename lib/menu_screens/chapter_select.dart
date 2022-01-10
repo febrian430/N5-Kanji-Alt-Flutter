@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/components/buttons/select_button.dart';
 import 'package:kanji_memory_hint/icons.dart';
+import 'package:kanji_memory_hint/menu_screens/game_menu.dart';
 import 'package:kanji_memory_hint/menu_screens/menu.dart';
 import 'package:kanji_memory_hint/route_param.dart';
 
@@ -69,6 +70,11 @@ class ChapterSelect extends StatelessWidget {
     //   )
     // );
 
-    return Menu(title: "Choose Topic", japanese: "トピックを選択", child: screen);
+    return GameMenu(
+      title: "Choose Topic", 
+      japanese: "トピックを選択", 
+      child: screen,
+      type: param.gameType,
+    );
   }
 }

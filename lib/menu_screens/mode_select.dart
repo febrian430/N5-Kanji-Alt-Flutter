@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/components/buttons/select_button.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/menu_screens/chapter_select.dart';
+import 'package:kanji_memory_hint/menu_screens/game_menu.dart';
 import 'package:kanji_memory_hint/menu_screens/menu.dart';
 import 'package:kanji_memory_hint/route_param.dart';
 
@@ -44,6 +45,11 @@ class ModeSelect extends StatelessWidget {
             ),
           ]
         );
-    return Menu(title: "Choose Type", japanese: "タイプを選択", child: screen);
+    return GameMenu(
+      title: "Choose Type", 
+      japanese: "タイプを選択", 
+      child: screen,
+      type: param.gameType,
+    );
   }
 }
