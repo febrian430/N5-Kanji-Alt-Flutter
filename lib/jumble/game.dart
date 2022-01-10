@@ -498,22 +498,22 @@ class SelectWidget extends StatelessWidget {
         child: Container(
           height: height*0.06,
           child: AspectRatio(
-          aspectRatio: 8/9, 
-          child: Container(
-            width: width*1,
-            decoration: BoxDecoration(
-              color: bgColor,
-              border: Border.all(
-                width: 1,
-                color: Colors.grey
-              )
-            ),
-            child: Center(
-              child: Text(
-                !_isSentinel() ? option.value : ""
-              )
-            ),
-          )
+            aspectRatio: 8/9, 
+            child: Container(
+              width: width*1,
+              decoration: BoxDecoration(
+                color: bgColor,
+                border: Border.all(
+                  width: 1,
+                  color: Colors.grey
+                )
+              ),
+              child: Center(
+                child: Text(
+                  !_isSentinel() ? option.value : ""
+                )
+              ),
+            )
           )
       )
     );
@@ -537,8 +537,8 @@ class OptionWidget extends StatelessWidget {
     Color textColor = Colors.black;
 
     if(disabled) {
-      boxColor = Colors.grey;
-      textColor = Colors.grey;
+      boxColor = AppColors.selected;
+      textColor = AppColors.selected;
     }
 
     return TextButton(

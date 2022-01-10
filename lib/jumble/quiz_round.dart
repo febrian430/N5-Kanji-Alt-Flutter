@@ -116,6 +116,31 @@ class _JumbleQuizRoundState extends State<JumbleQuizRound> with AutomaticKeepAli
     return selected.indexOf(SENTINEL);
   }
 
+  Column _optionsByColumn(BuildContext context, List<Option> opts) {
+
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: opts.take(4).map((opt) {
+              return Padding(
+                padding: EdgeInsets.all(10),
+                child: OptionWidget(option: opt, disabled: selected.contains(opt), onTap: () { _handleOptionTap(opt); },));
+            }).toList()
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: opts.skip(4).map((opt) {
+              return Padding(
+                padding: EdgeInsets.all(10),
+                child: OptionWidget(option: opt, disabled: selected.contains(opt), onTap: () { _handleOptionTap(opt); },));
+            }).toList()
+          ),
+        ]
+      );
+  }
+
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -149,48 +174,42 @@ class _JumbleQuizRoundState extends State<JumbleQuizRound> with AutomaticKeepAli
         child: Column(
           children: [
             Expanded(
-              flex: 6,
-              child: QuestionWidget(mode: widget.mode, questionStr: widget.question.value),
+              flex: 12,
+              child: Container(
+          decoration: BoxDecoration(border: Border.all(width: 1)),
+                child: Column(
+                children: [
+                  Expanded(flex: 12, child: QuestionWidget(mode: widget.mode, questionStr: widget.question.value)),
+                  Flexible(flex: 1, child: Text('Answer: ${widget.question.key.join(" ")}')),
+                  Flexible(
+                    flex: 2,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisSize: MainAxisSize.min,
+                      children: selected.mapIndexed((select, i) {
+                          return _QuizSelectWidget(
+                            option: select, 
+                            isOver: widget.isOver, 
+                            isCorrect: widget.question.key[i] == select.value, 
+                            disabled: widget.isOver, 
+                            onTap: () { _handleSelectTap(select, i); });
+                        }).toList(),
+                    ),
+                  ),
+                ]
+              )
+              )
             ),
-            Text('Answer: ${widget.question.key.join(" ")}'),
-
-            //selected box
-            Flexible(
-              flex: 2,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                mainAxisSize: MainAxisSize.min,
-                children: selected.mapIndexed((select, i) {
-                    return _QuizSelectWidget(
-                      option: select, 
-                      isOver: widget.isOver, 
-                      isCorrect: widget.question.key[i] == select.value, 
-                      disabled: widget.isOver, 
-                      onTap: () { _handleSelectTap(select, i); });
-                  }).toList(),
-              ),
-            ),
-
             //options
             Flexible(
-              flex: 4,
+              flex: 6,
               child: Container(
                 decoration: BoxDecoration(
                   border: Border.all(
                     width: 1
                   )
                 ),
-                child: GridView.count(
-                  crossAxisCount: 4,
-                  padding: EdgeInsets.fromLTRB(25, 0, 25, 0),
-                  mainAxisSpacing: 5,
-                  crossAxisSpacing: 5,
-                  shrinkWrap: true,
-                  children: widget.options.map((opt){
-                    //option box
-                    return OptionWidget(option: opt, disabled: selected.contains(opt), onTap: () { _handleOptionTap(opt); },);
-                  }).toList(),
-                ),
+                child: _optionsByColumn(context, widget.options)
               )
             )
           ],
@@ -214,7 +233,11 @@ class _QuizSelectWidget extends StatelessWidget {
     return option.id == SENTINEL.id;
   }
 
-  Widget _drawAfterQuizOver() {
+  Widget _drawAfterQuizOver(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final width = size.width;
+    final height = size.height;
+
     Color bgColor = AppColors.wrong;
 
     if(isCorrect) {
@@ -222,23 +245,33 @@ class _QuizSelectWidget extends StatelessWidget {
     }
 
     return GestureDetector( 
+
       child: Container(
-        height: 50,
-        width: 50,
-        decoration: BoxDecoration(
-          color: bgColor
-        ),
-        child: Center(
-          child: Text(
-            !_isSentinel() ? option.value : ""
+          height: height*0.06,
+          child: AspectRatio(
+            aspectRatio: 8/9, 
+            child: Container(
+              width: width*1,
+            decoration: BoxDecoration(
+              color: bgColor
+            ),
+            child: Center(
+              child: Text(
+                !_isSentinel() ? option.value : ""
+              )
+            ),
           )
-        ),
-      )
+          )
+          )
     );
   }
 
-  Widget _drawDuringQuiz(){
+  Widget _drawDuringQuiz(BuildContext context){
     Color bgColor = AppColors.selected;
+
+    final size = MediaQuery.of(context).size;
+    final width = size.width;
+    final height = size.height;
 
     if(!_isSentinel()) {
       bgColor = Colors.white;
@@ -251,8 +284,11 @@ class _QuizSelectWidget extends StatelessWidget {
             }
           },
           child: Container(
-            height: 50,
-            width: 50,
+          height: height*0.06,
+          child: AspectRatio(
+            aspectRatio: 8/9, 
+            child: Container(
+              width: width*1,
             decoration: BoxDecoration(
               color: bgColor
             ),
@@ -262,14 +298,16 @@ class _QuizSelectWidget extends StatelessWidget {
               )
             ),
           )
+          )
+          )
         );
   }
 
   @override
   Widget build(BuildContext context) {
     if(isOver) {
-      return _drawAfterQuizOver();
+      return _drawAfterQuizOver(context);
     }
-    return _drawDuringQuiz();
+    return _drawDuringQuiz(context);
   }
 }

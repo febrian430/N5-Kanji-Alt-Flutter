@@ -250,12 +250,9 @@ class _MultipleChoiceRoundState extends State<MultipleChoiceRound> with Automati
               flex: 8,
               child: _optionsByColumn(context, widget.options)
             )
-
           ],
         ),
       ),
-
-      
     );
   }
 }
