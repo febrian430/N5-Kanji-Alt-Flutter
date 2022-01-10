@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/components/buttons/back_button.dart';
 import 'package:kanji_memory_hint/components/dialogs/guide.dart';
 import 'package:kanji_memory_hint/icons.dart';
+import 'package:kanji_memory_hint/theme.dart';
 
 class GuideDialogButton extends StatelessWidget {
   final GuideDialog guide;
@@ -21,19 +22,32 @@ class GuideDialogButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+ 
     return Container(
-      width: 50,
-      height: 50,
-      child:TextButton(
+      height: 30,
+      width: 30,
+      child: 
+      TextButton(
       onPressed: () {
         onOpen();
         showGuideDialog(context);
       },
-      child: Image.asset(
-          AppIcons.no,
-          fit: BoxFit.cover,
-        ),
+      style: TextButton.styleFrom(
+        shape: CircleBorder(
+          side: BorderSide(width: 1)
+        )
       ),
+      child:
+        Text(
+        "?",
+        style: TextStyle(
+          color: Colors.black,
+          fontSize: 13,
+          fontWeight: FontWeight.bold
+        ),
+      )
+      )
     );  
   }
 
@@ -80,7 +94,7 @@ class AppHeader extends StatelessWidget {
               ],
             ), 
           ),
-          Expanded(
+          Flexible(
             flex: 2,
             child: guideButton == null ? SizedBox() : guideButton!
           ) 
