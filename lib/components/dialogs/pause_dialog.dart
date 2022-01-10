@@ -43,7 +43,7 @@ class PauseDialog extends StatelessWidget {
           ),
 
         _DialogButton(
-          icon: AppIcons.resume, 
+          icon: AppIcons.retry, 
           onPressed: () {
             Navigator.pop(context);
             onRestart();
@@ -83,7 +83,7 @@ class PauseDialog extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.all(5),
                 child: _DialogButton(
-                icon: AppIcons.resume, 
+                icon: AppIcons.retry, 
                 onPressed: () {
                   Navigator.pop(context);
                   onRestart();
