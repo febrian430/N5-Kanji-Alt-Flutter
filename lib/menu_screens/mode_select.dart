@@ -27,7 +27,7 @@ class ModeSelect extends StatelessWidget {
               padding: EdgeInsets.symmetric(vertical: 5),
               onTap: () {
                 param.mode = GAME_MODE.imageMeaning;
-                Navigator.pushReplacementNamed(context, ChapterSelect.route, arguments: param);
+                Navigator.pushNamed(context, ChapterSelect.route, arguments: param);
               },
               title: "Image Meaning",
               description: "Match the Kanji with the image based on its appropriate meaning",
@@ -37,7 +37,7 @@ class ModeSelect extends StatelessWidget {
 
               onTap: () {
                 param.mode = GAME_MODE.reading;
-                Navigator.pushReplacementNamed(context, ChapterSelect.route, arguments: param);
+                Navigator.pushNamed(context, ChapterSelect.route, arguments: param);
               },
               title: "Reading",
               description: "Choose the correct answer based on its spelling",
