@@ -2,17 +2,11 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:kanji_memory_hint/color_hex.dart';
-import 'package:kanji_memory_hint/components/backgrounds/background.dart';
-import 'package:kanji_memory_hint/components/backgrounds/practice_background.dart';
 import 'package:kanji_memory_hint/components/backgrounds/quiz_background.dart';
 import 'package:kanji_memory_hint/components/buttons/pause_button.dart';
 import 'package:kanji_memory_hint/components/dialogs/confirmation_dialog.dart';
 import 'package:kanji_memory_hint/components/dialogs/guide.dart';
-import 'package:kanji_memory_hint/components/dialogs/pause_dialog.dart';
 import 'package:kanji_memory_hint/components/header.dart';
-import 'package:kanji_memory_hint/const.dart';
-import 'package:kanji_memory_hint/icons.dart';
 import 'package:kanji_memory_hint/menu_screens/screen_layout.dart';
 
 class GameScreen extends StatefulWidget {

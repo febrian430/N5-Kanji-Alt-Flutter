@@ -44,7 +44,7 @@ class _QuizState extends State<Quiz> {
 
   var quizQuestionSet;
   
-  int secondsLeft = 60;
+  int secondsLeft = 7200;
   int score = 0;
 
   int mulchoiceCorrect = 0;
@@ -69,7 +69,10 @@ class _QuizState extends State<Quiz> {
   late final Countdown _countdown;
 
   void onRestart(){
-    var arg = PracticeGameArguments(selectedGame: Quiz.route);
+    var arg = PracticeGameArguments(
+      selectedGame: Quiz.route, 
+      gameType: GAME_TYPE.QUIZ
+    );
     arg.chapter = widget.chapter;
     Navigator.popAndPushNamed(context, Quiz.route, 
       arguments: arg

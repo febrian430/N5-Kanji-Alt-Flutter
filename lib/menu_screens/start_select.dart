@@ -36,7 +36,7 @@ class StartSelect extends StatelessWidget {
 
                   onTap: (){
                     Navigator.pushNamed(context, ChapterSelect.route, 
-                      arguments: PracticeGameArguments(selectedGame: Quiz.route));
+                      arguments: PracticeGameArguments(selectedGame: Quiz.route, gameType: GAME_TYPE.QUIZ));
                   },
                   description: "Feeling ready? Test your skills and earn points",
                   iconPath: AppIcons.quest,

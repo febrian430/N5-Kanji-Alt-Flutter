@@ -62,7 +62,10 @@ class _PickDropState extends State<PickDrop> {
   }
 
   void onRestartFromResult() {
-    var arg = PracticeGameArguments(selectedGame: PickDrop.route);
+    var arg = PracticeGameArguments(
+      selectedGame: PickDrop.route,
+      gameType: GAME_TYPE.PRACTICE
+    );
     arg.chapter = widget.chapter;
     arg.mode = widget.mode;
     

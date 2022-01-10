@@ -91,7 +91,10 @@ class _JumbleGameState extends State<JumbleGame> {
   }
 
   void onRestartFromResult() {
-    var arg = PracticeGameArguments(selectedGame: JumbleGame.route);
+    var arg = PracticeGameArguments(
+      selectedGame: JumbleGame.route,
+      gameType: GAME_TYPE.PRACTICE
+    );
     arg.chapter = widget.chapter;
     arg.mode = widget.mode;
     

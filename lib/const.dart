@@ -52,18 +52,12 @@ extension QUEST_STATUS_MAP on QUEST_STATUS {
   }
 }
 
-const GAME_MODE_IMG = "IMG_MEANING";
-
+enum GAME_TYPE { PRACTICE, QUIZ }
 
 const KANJI_IMAGE_FOLDER = 'assets/images/kanji/';
 const APP_IMAGE_FOLDER = 'assets/images/app/';
 
-const MultipleChoiceRoute = '/game/multiple-choice';
-const MixMatchRoute = '/game/mix-match';
-const JumbleRoute = '/game/pick-drop';
-const PickDropRoute = '/game/pick-drop';
-
-const GameNumOfRounds = 5;
+const GameNumOfRounds = 3;
 const CHAPTERS = 3;
 
 const Widget EmptyWidget = Visibility(child: Text(""), visible: false,);

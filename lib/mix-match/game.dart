@@ -97,7 +97,10 @@ class _MixMatchGameState extends State<MixMatchGame> {
   }
 
   void onRestartFromResult() {
-    var arg = PracticeGameArguments(selectedGame: MixMatchGame.route);
+    var arg = PracticeGameArguments(
+      selectedGame: MixMatchGame.route,
+      gameType: GAME_TYPE.PRACTICE
+    );
     arg.chapter = widget.chapter;
     arg.mode = widget.mode;
     

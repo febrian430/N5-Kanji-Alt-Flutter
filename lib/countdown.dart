@@ -42,8 +42,10 @@ class Countdown {
 
   void pause() {
     print("pausing");
-    _sub.cancel();
-    _countdownTimer.cancel();
+    if(!paused) {
+      _sub.cancel();
+      _countdownTimer.cancel();
+    }
     paused = true;
   }
 

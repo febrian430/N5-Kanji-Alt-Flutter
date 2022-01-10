@@ -25,26 +25,13 @@ class GameSelect extends StatelessWidget {
     Widget screen = Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // Center(
-              //   child: ElevatedButton(
-              //     // Within the `Home` widget
-              //     onPressed: () {
-              //       // Navigate to the second screen using a named route.
-              //       Navigator.pushNamed(context, ModeSelect.route, 
-              //       arguments: PracticeGameArguments(
-              //         selectedGame: MultipleChoiceGame.route,
-              //       ));
-              //     },
-              //     child: const Text('Multiple Choice'),
-              //   ),
-              // ),
               Center(
                 child: SelectButton(
                   padding: EdgeInsets.symmetric(vertical: 5),
 
                   onTap: () {
                     Navigator.pushNamed(context, ModeSelect.route,
-                    arguments: PracticeGameArguments(selectedGame: MixMatchGame.route));
+                    arguments: PracticeGameArguments(selectedGame: MixMatchGame.route, gameType: GAME_TYPE.PRACTICE));
                   },
                   title: 'Mix and Match',
                   description: "Match the Kanji with its appropriate meaning",
@@ -59,7 +46,7 @@ class GameSelect extends StatelessWidget {
                   onTap: () {
                     // Navigate to the second screen using a named route.
                     Navigator.pushNamed(context, ModeSelect.route,
-                    arguments: PracticeGameArguments(selectedGame: JumbleGame.route));
+                    arguments: PracticeGameArguments(selectedGame: JumbleGame.route, gameType: GAME_TYPE.PRACTICE));
                   },
                   title: 'Jumble',
                   description: "Choose the correct answer",
@@ -72,7 +59,11 @@ class GameSelect extends StatelessWidget {
                   padding: EdgeInsets.symmetric(vertical: 5),
 
                   onTap: () {
-                    Navigator.pushNamed(context, ChapterSelect.route, arguments: PracticeGameArguments(selectedGame: PickDrop.route));
+                    Navigator.pushNamed(context, ChapterSelect.route, 
+                      arguments: PracticeGameArguments(
+                        selectedGame: PickDrop.route,
+                        gameType: GAME_TYPE.PRACTICE
+                      ));
                   },
                   title: 'Pick and Drag',
                   description: "Pick and Drag the correct kanji",

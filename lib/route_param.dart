@@ -2,11 +2,13 @@ import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/scoring/report.dart';
 
 class PracticeGameArguments {
-    PracticeGameArguments({required this.selectedGame});
+    PracticeGameArguments({required this.selectedGame, required this.gameType});
 
+    GAME_TYPE gameType;
     int chapter = 1;
     GAME_MODE mode = GAME_MODE.imageMeaning;
     String selectedGame; 
+
 }
 
 class ResultParam {
