@@ -175,7 +175,7 @@ class _MixMatchGameState extends State<MixMatchGame> {
     return GameScreen(
       game: _buildGame(context),
       title: MixMatchGame.name,
-      japanese: "in japanese",
+      japanese: "ミックスマッチ",
       onRestart: onRestart,
       onContinue: onContinue,
       onPause: onPause,

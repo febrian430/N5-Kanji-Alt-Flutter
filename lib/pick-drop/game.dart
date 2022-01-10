@@ -25,7 +25,7 @@ class PickDrop extends StatefulWidget {
   PickDrop({Key? key, required this.chapter, required this.mode}) : super(key: key);
 
   static const route = '/game/pick-drop';
-  static const japanese = "Pick and drag in japanese";
+  static const japanese = "ピックドラッグ";
   static const name = 'Pick and Drag';
 
   final int chapter;

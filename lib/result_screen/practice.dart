@@ -101,7 +101,7 @@ class ResultScreen extends StatelessWidget{
     stopwatch.stop();
     final screen = _screen(context, param, stopwatch);
 
-    return Menu(title: "Result", japanese: "result in japanese", child: screen);
+    return Menu(title: "Result", japanese: "結果", child: screen);
   }
 }
 

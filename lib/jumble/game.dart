@@ -217,7 +217,7 @@ class _JumbleGameState extends State<JumbleGame> {
 
     return GameScreen(
       title: JumbleGame.name, 
-      japanese: "Jumble in japanese", 
+      japanese: "ごちゃ混ぜ", 
       game: _buildGame(context), 
       onPause: onPause, 
       onRestart: onRestart, 
