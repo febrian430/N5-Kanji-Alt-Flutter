@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:kanji_memory_hint/color_hex.dart';
 import 'package:kanji_memory_hint/const.dart';
+import 'package:kanji_memory_hint/theme.dart';
 
 class MenuBackground extends StatelessWidget {
 
@@ -13,8 +14,8 @@ class MenuBackground extends StatelessWidget {
     return Container(
       child: child,
       decoration: BoxDecoration(
-        image: const DecorationImage(
-          image: AssetImage(APP_IMAGE_FOLDER+'main_menu.png'),
+        image: DecorationImage(
+          image: AssetImage(AppBackgrounds.common),
           fit: BoxFit.fill
         ),
         gradient: LinearGradient(
