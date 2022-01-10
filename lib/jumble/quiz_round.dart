@@ -21,8 +21,8 @@ class JumbleQuizRound extends StatefulWidget {
   final GAME_MODE mode;
   final bool isOver;
   final bool restartSource;
-  final Function(bool isCorrect, int misses, bool initial) onComplete;
-  final Function(bool isCorrect, int misses, int index) onSubmit;
+  final Function(bool isCorrect, int hits, int misses, bool initial) onComplete;
+  final Function(bool isCorrect, int hits, int misses, int index) onSubmit;
 
   @override
   State<StatefulWidget> createState() => _JumbleQuizRoundState(answerLength: question.key.length);
@@ -101,10 +101,10 @@ class _JumbleQuizRoundState extends State<JumbleQuizRound> with AutomaticKeepAli
         var diff = _differentIndexes();
         setState(() {
           if(diff.isEmpty) {
-            widget.onComplete(true, misses, initial);
+            widget.onComplete(true, answerLength, misses, initial);
           } else {
             misses += diff.length;
-            widget.onComplete(false, misses, initial);
+            widget.onComplete(false, answerLength-misses, misses, initial);
           }
           initial = false;
         });
@@ -150,7 +150,7 @@ class _JumbleQuizRoundState extends State<JumbleQuizRound> with AutomaticKeepAli
       }
       if(widget.isOver && initialRerender){
         var diff = _differentIndexes();
-        widget.onSubmit(diff.isEmpty, diff.length, widget.index);
+        widget.onSubmit(diff.isEmpty, widget.question.key.length - diff.length, diff.length, widget.index);
         initialRerender = false;
       }
     });

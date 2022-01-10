@@ -12,12 +12,18 @@ class QuizGameParam {
 
   QuizGameParam({required this.result, required this.goHere});
 }
+class QuizJumbleGameParam {
+  final QuizJumbleScore result;
+  final Function() goHere;
+
+  QuizJumbleGameParam({required this.result, required this.goHere});
+}
 
 class QuizResult extends StatelessWidget {
   const QuizResult({Key? key, required this.multipleChoice, required this.jumble, required this.onRestart, required this.countdown}) : super(key: key);
   final Function() onRestart;
   final QuizGameParam multipleChoice;
-  final QuizGameParam jumble;
+  final QuizJumbleGameParam jumble;
   final Countdown countdown;
 
   Widget _header() {
@@ -179,7 +185,7 @@ class _Item extends StatelessWidget {
 class _DetailWidget extends StatelessWidget {
 
   final QuizGameParam multipleChoice;
-  final QuizGameParam jumble;
+  final QuizJumbleGameParam jumble;
   final Countdown countdown;
 
   const _DetailWidget({Key? key, required this.countdown, required this.multipleChoice, required this.jumble}) : super(key: key);
@@ -189,7 +195,7 @@ class _DetailWidget extends StatelessWidget {
 
     var minutes = (seconds/60).floor();
     var remaining = seconds % 60;
-    return "${minutes > 0 ?  minutes.toString() + " min" : ""}$remaining seconds";
+    return "${minutes > 0 ?  minutes.toString() + " minutes " : ""}$remaining seconds";
   }
 
   @override
@@ -222,8 +228,17 @@ class _DetailWidget extends StatelessWidget {
           child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            _GameScoreWidget(game: "Multiple Choice", score: multipleChoice.result),
-            _GameScoreWidget(game: "Jumble", score: jumble.result),
+            _GameScoreWidget(
+              game: "Multiple Choice", 
+              correct: multipleChoice.result.correct,
+              miss: multipleChoice.result.miss,
+            ),
+            _GameScoreWidget(
+              game: "Jumble", 
+              correct: jumble.result.correct,
+              miss: jumble.result.miss,
+              hits: jumble.result.hits
+            ),
           ],
         )
         )
@@ -234,12 +249,15 @@ class _DetailWidget extends StatelessWidget {
 
 class _GameScoreWidget extends StatelessWidget {
   final String game;
-  final QuizScore score;
+  final int correct;
+  final int miss;
+  int? hits;
 
-  const _GameScoreWidget({Key? key, required this.game, required this.score}) : super(key: key);
+  _GameScoreWidget({Key? key, required this.game, required this.correct, required this.miss, this.hits}) : super(key: key);
   
   @override
   Widget build(BuildContext context) {
+
     return Column(
       children: [
         Text(game),
@@ -253,10 +271,26 @@ class _GameScoreWidget extends StatelessWidget {
                 height: 25,
                 width: 25,
               ),
-              Text(score.correct.toString())
+              Text(correct.toString())
             ],
           )
         ),
+        hits == null ? SizedBox() :
+        SizedBox(
+          width: 50,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Image.asset(
+                AppIcons.yes,
+                height: 25,
+                width: 25,
+              ),
+              Text(hits!.toString())
+            ],
+          )
+        )
+        ,
         SizedBox(
           width: 50,
           child: Row(
@@ -267,7 +301,7 @@ class _GameScoreWidget extends StatelessWidget {
                 height: 25,
                 width: 25,
               ),
-              Text(score.miss.toString())
+              Text(miss.toString())
             ],
           )
         )

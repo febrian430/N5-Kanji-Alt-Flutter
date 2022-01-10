@@ -10,7 +10,7 @@ class JumbleQuizGame extends StatefulWidget {
   final GAME_MODE mode;
   final List<JumbleQuizQuestionSet> questionSets;
   final bool quizOver;
-  final Function(int correct, int misses, List<List<int>> score) onSubmit;
+  final Function(int correct, int hits, int misses, List<List<int>> score) onSubmit;
   final bool restartSource;
 
   const JumbleQuizGame({Key? key, required this.mode, required this.questionSets, required this.onSubmit, this.quizOver = false, required this.restartSource}) : super(key: key);
@@ -23,6 +23,7 @@ class _JumbleQuizGameState extends State<JumbleQuizGame> {
   
   int solved = 0;
   int correct = 0;
+  int hits = 0;
   int misses = 0;
   bool initial = true;
   bool initialBuild = true;
@@ -39,6 +40,7 @@ class _JumbleQuizGameState extends State<JumbleQuizGame> {
     setState(() {
       solved = 0;
       correct = 0;
+      hits = 0;
       misses = 0;
       initial = true;
       initialBuild = true;
@@ -63,20 +65,21 @@ class _JumbleQuizGameState extends State<JumbleQuizGame> {
         question: set.question, 
         options: set.options, 
         isOver: isGameOver || widget.quizOver,
-        onComplete: (bool isCorrect, int misses, bool init) {
+        onComplete: (bool isCorrect, int hit, int misses, bool init) {
           setState(() {
             if(init) {
               solved++;
             }
           });
         },
-        onSubmit: (bool isCorrect, int miss, int index) {
+        onSubmit: (bool isCorrect, int hit, int miss, int index) {
           setState(() {
             if(isCorrect) {
               correct++;
               correctKanjis.add(widget.questionSets[index].fromKanji);
             }
             misses += miss;
+            hits += hit;
             loaded++;
             isGameOver = true;
           });
@@ -118,7 +121,7 @@ class _JumbleQuizGameState extends State<JumbleQuizGame> {
               visible: (!isGameOver || !widget.quizOver) && solved == totalQuestion, 
               onTap: () {
                 setState(() {
-                  widget.onSubmit(correct, misses, correctKanjis);
+                  widget.onSubmit(correct, hits, misses, correctKanjis);
                   isGameOver = true;
                 });
               }
@@ -150,13 +153,13 @@ class _JumbleQuizGameState extends State<JumbleQuizGame> {
         //
 
         if (answeredQuestion == totalQuestion && loaded == totalQuestion){
-          widget.onSubmit(correct, misses, correctKanjis);
+          widget.onSubmit(correct, hits, misses, correctKanjis);
           setState(() {
             initial = false;
           });
           //handle if jumble questoin not even reached
         } else if (answeredQuestion < totalQuestion && loaded == answeredQuestion) {
-          widget.onSubmit(correct, misses+unansweredCount, correctKanjis);
+          widget.onSubmit(correct, hits, misses+unansweredCount, correctKanjis);
           setState(() {
             initial = false;
           });

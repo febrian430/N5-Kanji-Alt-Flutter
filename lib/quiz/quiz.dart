@@ -98,7 +98,7 @@ class _QuizState extends State<Quiz> {
   bool restart = false;
 
   QuizScore multipleChoiceScore = QuizScore(correct: 0, miss: 0, correctlyAnsweredKanji: []);
-  QuizScore jumbleScore = QuizScore(correct: 0, miss: 0, correctlyAnsweredKanji: []); 
+  QuizJumbleScore jumbleScore = QuizJumbleScore(correct: 0, hits: 0, miss: 0, correctlyAnsweredKanji: []); 
 
   late QuizReport report;
 
@@ -184,10 +184,11 @@ class _QuizState extends State<Quiz> {
     });
   }
 
-  void _handleJumbleSubmit(int correct, int misses, List<List<int>> correctKanjis) {
+  void _handleJumbleSubmit(int correct, int hits, int misses, List<List<int>> correctKanjis) {
     setState(() {
-      jumbleScore = QuizScore(
-        correct: correct, 
+      jumbleScore = QuizJumbleScore(
+        correct: correct,
+        hits: hits,
         miss: misses, 
         correctlyAnsweredKanji: correctKanjis
       );
@@ -261,7 +262,7 @@ class _QuizState extends State<Quiz> {
                     result: multipleChoiceScore, 
                     goHere: _goMultipleChoice
                   ), 
-                  jumble: QuizGameParam(
+                  jumble: QuizJumbleGameParam(
                     result: jumbleScore,
                     goHere: _goJumble
                   )

@@ -29,7 +29,7 @@ class QuizReport {
   final int chapter;
 
   final QuizScore multiple;
-  final QuizScore jumble;
+  final QuizJumbleScore jumble;
   final GameResult gains;
 
   QuizReport({required this.chapter, required this.multiple, required this.jumble, required this.gains});
@@ -42,4 +42,13 @@ class QuizScore {
   final List<List<int>> correctlyAnsweredKanji;
 
   QuizScore({required this.correct, required this.miss, required this.correctlyAnsweredKanji});
+}
+
+class QuizJumbleScore {
+  final int correct;
+  final int hits;
+  final int miss;
+  final List<List<int>> correctlyAnsweredKanji;
+  
+  QuizJumbleScore({required this.correct, required this.hits, required this.miss, required this.correctlyAnsweredKanji});
 }
