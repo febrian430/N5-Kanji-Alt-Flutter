@@ -41,7 +41,7 @@ class QuizResult extends StatelessWidget {
       children: [
         AppIconButton(
           onTap: (){}, 
-          iconPath: AppIcons.resume, 
+          iconPath: AppIcons.retry, 
           height: 50, 
           width: 50, 
           backgroundColor: AppColors.primary
@@ -77,39 +77,39 @@ class QuizResult extends StatelessWidget {
 
     return Center(
       child: Container(
-      width: size.width*0.75,
-      height: size.height*0.60,
-      decoration: BoxDecoration(
-        border: Border.all(
-          width: 1
+        width: size.width*0.75,
+        height: size.height*0.60,
+        decoration: BoxDecoration(
+          border: Border.all(
+            width: 1
+          ),
+          color: AppColors.primary
         ),
-        color: AppColors.primary
-      ),
-      child: Padding(
-        padding: EdgeInsets.all(6),
-        child: Container(
-          decoration: BoxDecoration(
-            border: Border.all(
-              width: 1
+        child: Padding(
+          padding: EdgeInsets.all(6),
+          child: Container(
+            decoration: BoxDecoration(
+              border: Border.all(
+                width: 1
+              )
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(flex: 2, child: Center(child: Text("やった!", style: TextStyle(fontSize: 36)))),
+                Expanded(
+                  flex: 8, 
+                  child: _DetailWidget(
+                    jumble: jumble,
+                    multipleChoice: multipleChoice, 
+                    countdown: countdown,
+                  )
+                ),
+                Flexible(flex: 2, child: _rowOfButtons(context))
+              ]
             )
-          ),
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Expanded(flex: 2, child: Center(child: Text("CONGRATS", style: TextStyle(fontSize: 36)))),
-          Expanded(
-            flex: 8, 
-            child: _DetailWidget(
-              jumble: jumble,
-              multipleChoice: multipleChoice, 
-              countdown: countdown,
-            )
-          ),
-          Flexible(flex: 2, child: _rowOfButtons(context))
-        ]
           )
-          )
-      )
+        )
       )
     );
   }
@@ -216,7 +216,6 @@ class _DetailWidget extends StatelessWidget {
           ),
         ),
         Text(humanize(countdown.elapsed())),
-        Text(humanize(Duration(seconds: 20))),
 
         SizedBox(
           width: 200,

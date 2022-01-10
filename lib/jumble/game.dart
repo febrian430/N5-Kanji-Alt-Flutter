@@ -90,6 +90,19 @@ class _JumbleGameState extends State<JumbleGame> {
     widget.stopwatch.start();
   }
 
+  void onRestartFromResult() {
+    var arg = PracticeGameArguments(selectedGame: JumbleGame.route);
+    arg.chapter = widget.chapter;
+    arg.mode = widget.mode;
+    
+    Navigator.of(context).pop(true);
+
+    Navigator.of(context).popAndPushNamed(
+      JumbleGame.route, 
+      arguments: arg
+    );
+  }
+
   void _handleRoundOver(bool isCorrect, int misses, int index, int slotsToFill, bool initialAnswer) {
     setState(() {
       if(isCorrect) {
@@ -159,6 +172,7 @@ class _JumbleGameState extends State<JumbleGame> {
     if(solved == numOfQuestions) {
       resultButton = ResultButton(
         param: ResultParam(
+          onRestart: onRestartFromResult,
           route: JumbleGame.route,
           score: endScore, 
           result: result, 

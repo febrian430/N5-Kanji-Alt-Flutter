@@ -61,6 +61,18 @@ class _PickDropState extends State<PickDrop> {
     sets = widget._getQuestionSets();
   }
 
+  void onRestartFromResult() {
+    var arg = PracticeGameArguments(selectedGame: PickDrop.route);
+    arg.chapter = widget.chapter;
+    arg.mode = widget.mode;
+    
+    Navigator.of(context).pop(true);
+    Navigator.of(context).popAndPushNamed(
+      PickDrop.route, 
+      arguments: arg, 
+      result: true
+    );
+  }
 
   void _handleOnDrop(bool isCorrect, bool isFirstTry) {
     setState(() {
@@ -106,6 +118,7 @@ class _PickDropState extends State<PickDrop> {
     if(total == solved) {
       resultButton = ResultButton(
         param: ResultParam(
+          onRestart: onRestartFromResult,
           route: PickDrop.route,
           score: score, 
           result: result, 

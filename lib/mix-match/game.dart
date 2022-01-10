@@ -96,6 +96,19 @@ class _MixMatchGameState extends State<MixMatchGame> {
     }
   }
 
+  void onRestartFromResult() {
+    var arg = PracticeGameArguments(selectedGame: MixMatchGame.route);
+    arg.chapter = widget.chapter;
+    arg.mode = widget.mode;
+    
+    Navigator.of(context).pop(true);
+
+    Navigator.of(context).popAndPushNamed(
+      MixMatchGame.route, 
+      arguments: arg
+    );
+  }
+
   Widget _buildRound(BuildContext context, int index, List<List<Question>> data) {
     final size = MediaQuery.of(context).size;
 
@@ -118,6 +131,7 @@ class _MixMatchGameState extends State<MixMatchGame> {
     if(widget.numOfRounds == roundsSolved) {
       resultButton = ResultButton(
         param: ResultParam(
+          onRestart: onRestartFromResult,
           route: MixMatchGame.route,
           chapter: widget.chapter,
           game: MixMatchGame.name,

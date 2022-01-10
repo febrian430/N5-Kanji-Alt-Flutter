@@ -10,7 +10,7 @@ class PracticeGameArguments {
 }
 
 class ResultParam {
-  ResultParam({required this.route, required this.game, required this.chapter, required this.mode, required this.stopwatch, required this.score, required this.result});
+  ResultParam({required this.onRestart, required this.route, required this.game, required this.chapter, required this.mode, required this.stopwatch, required this.score, required this.result});
 
   final PracticeScore score;
   final GameResult result;
@@ -19,4 +19,6 @@ class ResultParam {
   final GAME_MODE mode;
   final String route;
   final Stopwatch stopwatch;
+
+  final Function() onRestart;
 }

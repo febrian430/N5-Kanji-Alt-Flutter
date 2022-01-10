@@ -10,27 +10,21 @@ import 'package:kanji_memory_hint/route_param.dart';
 import 'package:kanji_memory_hint/theme.dart';
 
 class ResultScreen extends StatelessWidget{
-  // ResultScreen({required this.wrongCount, required this.decreaseFactor}){
-  //   points = 1000 - decreaseFactor*wrongCount;
-  // }
+
 
   ResultScreen({Key? key}) : super(key: key);
 
   static const route = "/result";
-  
-  // final int wrongCount = 0;
-  // final int decreaseFactor = 0;
-  // late int points = 0;
 
-  Widget _rowOfButtons(BuildContext context) {
+  Widget _rowOfButtons(BuildContext context, Function() onRestart) {
     return Padding(
       padding: EdgeInsets.all(6),
       child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         AppIconButton(
-          onTap: (){}, 
-          iconPath: AppIcons.resume, 
+          onTap: onRestart, 
+          iconPath: AppIcons.retry, 
           height: 50, 
           width: 50, 
           backgroundColor: AppColors.primary
@@ -84,9 +78,9 @@ class ResultScreen extends StatelessWidget{
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Expanded(flex: 2, child: Center(child: Text("CONGRATS", style: TextStyle(fontSize: 36)))),
+          Expanded(flex: 2, child: Center(child: Text("やった!", style: TextStyle(fontSize: 36)))),
           Expanded(flex: 6, child: _DetailWidget(param: param, stopwatch: stopwatch)),
-          Flexible(flex: 1, child: _rowOfButtons(context))
+          Flexible(flex: 1, child: _rowOfButtons(context, param.onRestart))
         ]
           )
           )
