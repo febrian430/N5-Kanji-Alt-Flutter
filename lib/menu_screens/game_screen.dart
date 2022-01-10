@@ -3,7 +3,10 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/color_hex.dart';
+import 'package:kanji_memory_hint/components/backgrounds/background.dart';
 import 'package:kanji_memory_hint/components/backgrounds/practice_background.dart';
+import 'package:kanji_memory_hint/components/backgrounds/quiz_background.dart';
+import 'package:kanji_memory_hint/components/buttons/pause_button.dart';
 import 'package:kanji_memory_hint/components/dialogs/confirmation_dialog.dart';
 import 'package:kanji_memory_hint/components/dialogs/guide.dart';
 import 'package:kanji_memory_hint/components/dialogs/pause_dialog.dart';
@@ -25,7 +28,7 @@ class GameScreen extends StatefulWidget {
   final Function() onGuideOpen;
 
 
-  GameScreen({Key? key, required this.title, required this.japanese, required this.game, required this.onPause, required this.onRestart, required this.onContinue, required this.guide, required this.onGuideOpen}) : super(key: key);
+  GameScreen({Key? key, required this.title, required this.japanese, required this.game, required this.onPause, required this.onRestart, required this.onContinue, required this.guide, required this.onGuideOpen, }) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _GameScreenState();
@@ -35,45 +38,6 @@ class GameScreen extends StatefulWidget {
 class _GameScreenState extends State<GameScreen> {
 
   bool isPaused = false;
-
-  Widget buildDialog(BuildContext context) {
-    return PauseDialog(
-      onRestart: widget.onRestart, 
-      onContinue: widget.onContinue,
-      withKanaChart: true,
-    );
-  }
-
-  Widget pauseButton(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    return TextButton(
-      onPressed: () {
-        setState(() {
-          isPaused = true;
-        });
-        showDialog(
-          context: context, 
-          builder: buildDialog,
-          // barrierDismissible: false
-        );
-        widget.onPause();
-      },
-      style: TextButton.styleFrom(
-        side: BorderSide.none,
-        backgroundColor: Colors.transparent
-      ),
-      child: Container(
-        child: Image.asset(
-          AppIcons.pause,
-          height: 25,
-          width: 25,
-          // fit: BoxFit.scaleDown,
-        ),
-        height: size.width*0.075,
-        width: size.width*0.075,
-      ),
-    );
-  }
 
   Widget buildConfirmationDialog(BuildContext context) {
     return ConfirmationDialog(
@@ -103,7 +67,7 @@ class _GameScreenState extends State<GameScreen> {
         print("EXIT FROM GAME SCREEN $exit");
         return exit;
       },
-      child: PracticeBackground(
+      child: QuizBackground(
         child: ScreenLayout(
           header: AppHeader(
             title: widget.title, 
@@ -114,7 +78,21 @@ class _GameScreenState extends State<GameScreen> {
               onOpen: widget.onGuideOpen,
             ),
           ), 
-          footer: pauseButton(context), 
+          footer: PauseButton(
+            onPause: () {
+              setState(() {
+                isPaused = true;
+              });
+              widget.onPause();
+            },
+            onContinue: () {
+              setState(() {
+                isPaused = false;
+              });
+              widget.onContinue();
+            },
+            onRestart: widget.onRestart,
+          ), 
           child: widget.game
         )
       )
