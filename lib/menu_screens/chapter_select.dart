@@ -37,10 +37,12 @@ class ChapterSelect extends StatelessWidget {
   }
 
   Widget buildTile(BuildContext context, int chapter, PracticeGameArguments param){
+    final width = MediaQuery.of(context).size.width;
     return SelectButton(
+      width: width *.35,
       onTap: () {
         param.chapter = chapter;
-        Navigator.pushReplacementNamed(context, param.selectedGame, arguments: param);
+        Navigator.pushNamed(context, param.selectedGame, arguments: param);
       },
       title: 'Topic ${chapter.toString()}'
     );

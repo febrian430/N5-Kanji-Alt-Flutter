@@ -9,59 +9,66 @@ class SelectButton extends StatelessWidget {
   final String? description;
   final Function() onTap;
   final String? iconPath;
+  final double? width;
 
   EdgeInsetsGeometry? padding;
 
-  SelectButton({Key? key, required this.title, this.description, required this.onTap, this.iconPath, this.padding}) : super(key: key);
+  SelectButton({Key? key, required this.title, this.description, required this.onTap, this.iconPath, this.padding, this.width}) : super(key: key);
 
-  static const double _titleFontSize = 20;
-  static const double _descFontSize = 14;
 
-  final Color _titleTextColor = Colors.black;
-  final Color _descTextColor = Colors.grey;
+  final TextStyle titleStyle = const TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.bold,
+    color: Colors.black
+  );
+  final TextStyle descStyle = const TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.normal,
+    color: Colors.black
+  );
 
-  Widget _withDescription(BuildContext context, Widget titleWidget) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 4),
+  Widget _withDescription(BuildContext context, Widget child) {
+    return description != null ? Container(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(0),
-            child: 
-            titleWidget,
+          Expanded(
+            flex: 1,
+            child: child,
           ),
-          
-          Padding(
-              padding: const EdgeInsets.only(top: 5),
-              child: 
-              Text(
-                description!, 
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  color: _descTextColor,
-                  fontSize: _descFontSize,
-                ),
-              )
+          Expanded(
+            flex: 2, 
+            child: Text(
+            description!, 
+            textAlign: TextAlign.left,
+            style: descStyle
             )
+          )
         ],
       ),
-    );
+    ) : child;
   }
-  Widget _withImage(BuildContext context) {
-    return iconPath == null ? Center(child: Text(title, style: Theme.of(context).textTheme.button)) :
-      Row(
+  Widget _withImage(BuildContext context, Widget child) {
+    return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: description != null ? CrossAxisAlignment.start : CrossAxisAlignment.center,
         children: [
-          Text(
-            title,
-            style: Theme.of(context).textTheme.button,
+          Flexible(
+            flex: 4, 
+            child: child,
           ),
-          Image(
-            image: AssetImage(iconPath!), 
-            height: 35,
-            width: 35,
-            fit: BoxFit.fill,
-          ) 
+          Expanded(
+            flex: 1,
+            child: iconPath != null ? 
+              Image(
+                image: AssetImage(iconPath!), 
+                fit: BoxFit.contain,
+                height: 60,
+                width: 60,
+              )
+              :
+              SizedBox()
+          )
         ],
       );
   }
@@ -69,11 +76,13 @@ class SelectButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    Widget child = Text(title, style: titleStyle,);
 
-    Widget child =  _withImage(context);
+    child = _withDescription(context, child);
+    child =  _withImage(context, child);
 
-    if (description != null) {
-      child = _withDescription(context, child);
+    if(description == null && iconPath == null) {
+      child = Center(child: child,);
     }
 
     return Padding(
@@ -86,12 +95,14 @@ class SelectButton extends StatelessWidget {
               vertical: 4,
               horizontal: 7
             ),
-            child: child,
+            child: description == null  && iconPath == null ? 
+              Center(child: child) : child,
           ),
-          constraints: BoxConstraints(
-            minHeight: size.height*0.075
-          ),
-          width: size.width*0.50,
+          constraints: description == null ? BoxConstraints(
+            minHeight: size.height*0.075,
+          ) : null,
+          height: description != null ? size.height*.18 : null,
+          width: width ?? size.width*0.60,
           decoration: BoxDecoration(
             border: Border.all(
               width: 2

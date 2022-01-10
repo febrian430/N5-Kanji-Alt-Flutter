@@ -265,9 +265,9 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
     bool isSelected = (selected?.id == opt.id);
     bool isSolved = solved.contains(opt);
 
-    const Color selectedBorderColor = Colors.blue;
-    const Color solvedBorderColor = Colors.green;
-    const Color defaultBorderColor = Colors.black;
+    Color selectedBorderColor = AppColors.selected;
+    Color solvedBackgroundColor = AppColors.correct;
+    Color defaultBorderColor = Colors.black;
     const int borderWidth = 2;
     final Color defaultBackgroundColor = (index + (index / 4).floor()) % 2 == 1 ? AppColors.primary : Colors.white;
 
@@ -280,13 +280,12 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
           image: DecorationImage(
             image: AssetImage(KANJI_IMAGE_FOLDER + opt.value),
             fit: BoxFit.fill,
-            
             colorFilter: ColorFilter.mode(Colors.black.withOpacity(opacity), BlendMode.dstATop)
           ),
-          border: isSelected ? Border.all(
-            color:  Colors.green,
+          border: Border.all(
+            color:  isSelected ? selectedBorderColor : defaultBorderColor,
             width: 2
-          ) : null,
+          )
         ),
         height: boxSize,
         width: boxSize,
@@ -305,10 +304,10 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
       } else if(isSolved) {
         deco = BoxDecoration(
             border: Border.all(
-              color: solvedBorderColor,
+              color: defaultBorderColor,
               width: 2
             ),
-            color: defaultBorderColor 
+            color: solvedBackgroundColor
           );
       } else {
         deco = BoxDecoration(
