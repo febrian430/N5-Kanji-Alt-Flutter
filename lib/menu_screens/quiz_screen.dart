@@ -10,27 +10,30 @@ import 'package:kanji_memory_hint/components/dialogs/guide.dart';
 import 'package:kanji_memory_hint/components/header.dart';
 import 'package:kanji_memory_hint/menu_screens/screen_layout.dart';
 
-class GameScreen extends StatefulWidget {
+class QuizScreen extends StatefulWidget {
 
   final String title;
   final String japanese;
   final Widget game;
-  final GuideDialog guide;
 
   final Function() onPause;
   final Function() onContinue;
   final Function() onRestart;
-  final Function() onGuideOpen;
+
+  final GuideDialog? guide;
+  Function()? onGuideOpen;
+
+  final bool isQuizOver;
 
 
-  GameScreen({Key? key, required this.title, required this.japanese, required this.game, required this.onPause, required this.onRestart, required this.onContinue, required this.guide, required this.onGuideOpen, }) : super(key: key);
+  QuizScreen({Key? key, required this.title, required this.japanese, required this.game, required this.onPause, required this.onRestart, required this.onContinue, this.guide, this.onGuideOpen, required this.isQuizOver, }) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _GameScreenState();
+  State<StatefulWidget> createState() => _QuizScreenState();
 
 }
 
-class _GameScreenState extends State<GameScreen> {
+class _QuizScreenState extends State<QuizScreen> {
 
   bool isPaused = false;
 
@@ -54,6 +57,31 @@ class _GameScreenState extends State<GameScreen> {
     return exit;
   }
 
+  GuideDialogButton? _guideButton(BuildContext context) {
+    return widget.guide != null ? GuideDialogButton(
+      guide: widget.guide!,
+      onOpen: widget.onGuideOpen!,
+    ) : null;
+  }
+
+  Widget _pauseButtonOrEmptyBox(BuildContext context) {
+    return (widget.guide == null || widget.isQuizOver) ? SizedBox() : PauseButton(
+      onPause: () {
+        setState(() {
+          isPaused = true;
+        });
+        widget.onPause();
+      },
+      onContinue: () {
+        setState(() {
+          isPaused = false;
+        });
+        widget.onContinue();
+      },
+      onRestart: widget.onRestart,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -62,32 +90,15 @@ class _GameScreenState extends State<GameScreen> {
         print("EXIT FROM GAME SCREEN $exit");
         return exit;
       },
-      child: PracticeBackground(
+      child: QuizBackground(
         child: ScreenLayout(
           header: AppHeader(
             title: widget.title, 
             japanese: widget.japanese,
             withBack: false,
-            guideButton: GuideDialogButton(
-              guide: widget.guide,
-              onOpen: widget.onGuideOpen,
-            ),
+            guideButton: _guideButton(context)
           ), 
-          footer: PauseButton(
-            onPause: () {
-              setState(() {
-                isPaused = true;
-              });
-              widget.onPause();
-            },
-            onContinue: () {
-              setState(() {
-                isPaused = false;
-              });
-              widget.onContinue();
-            },
-            onRestart: widget.onRestart,
-          ), 
+          footer: _pauseButtonOrEmptyBox(context),
           child: widget.game
         )
       )

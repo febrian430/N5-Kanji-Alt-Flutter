@@ -1,11 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/components/backgrounds/practice_background.dart';
+import 'package:kanji_memory_hint/components/dialogs/guide.dart';
 import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/countdown.dart';
+import 'package:kanji_memory_hint/images.dart';
+import 'package:kanji_memory_hint/jumble/game.dart';
 import 'package:kanji_memory_hint/jumble/model.dart';
+import 'package:kanji_memory_hint/menu_screens/quiz_screen.dart';
 import 'package:kanji_memory_hint/models/question_set.dart';
+import 'package:kanji_memory_hint/multiple-choice/game.dart';
 import 'package:kanji_memory_hint/quests/mastery.dart';
 import 'package:kanji_memory_hint/quests/quiz_quest.dart';
 import 'package:kanji_memory_hint/quiz/footer_nav.dart';
@@ -24,6 +29,8 @@ class Quiz extends StatefulWidget {
   final int chapter;
   static const route = "/quiz";
   static const name = "Quiz";
+
+  
 
   Future<List> _getQuizQuestionSet() async {
     return QuizQuestionMaker.makeQuestionSet(3, chapter, mode);
@@ -44,6 +51,35 @@ class _QuizState extends State<Quiz> {
 
   var quizQuestionSet;
   
+  late final _Screen mc = _Screen(
+    "Quiz", "クイズ",
+    dialog: GuideDialog(
+      game: MultipleChoiceGame.name,
+      description: "Your classic kanji multiple choice game. Choose the correct kanji based on the image",
+      guideImage: AppImages.guideMultipleChoice,
+      onClose: onContinue,
+    ),
+    onDialogOpen: onPause
+  );
+
+  late final _Screen jumble = _Screen(
+    "Quiz", "クイズ",
+    dialog: GuideDialog(
+      game: JumbleGame.name,
+      description: "Select the kanji based on the image in order",
+      guideImage: AppImages.guideJumble,
+      onClose: onContinue,
+    ),
+    onDialogOpen: onPause
+  );
+  late final _Screen result = _Screen("Result", "結果");
+
+  late Map<int, _Screen> mapping = {
+    0: mc,
+    1: jumble,
+    2: result
+  };
+
   int secondsLeft = 7200;
   int score = 0;
 
@@ -279,9 +315,7 @@ class _QuizState extends State<Quiz> {
   }
 
   Widget _buildQuiz(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: FutureBuilder(
+    return FutureBuilder(
           future: quizQuestionSet,
           builder: (context, AsyncSnapshot<List> snapshot) {
             if(snapshot.hasData) {
@@ -290,8 +324,6 @@ class _QuizState extends State<Quiz> {
               return LoadingScreen();
             }
           }
-        ) 
-      )
     );
   }
 
@@ -302,8 +334,36 @@ class _QuizState extends State<Quiz> {
         postQuizHook();
       }
      });
-    return PracticeBackground(
-      child: _buildQuiz(context)
+
+    final screen = mapping[gameIndex];
+
+    return QuizScreen(
+      title: screen!.name,
+      japanese: screen.japanese,
+      onContinue: onContinue,
+      onPause: onPause,
+      onRestart: onRestart,
+      game: _buildQuiz(context),
+      guide: screen.dialog,
+      onGuideOpen: screen.onDialogOpen,
+      isQuizOver: isOver,
     );
   }
+
+  onContinue() {
+    _countdown.start();
+  }
+
+  onPause() {
+    _countdown.pause();
+  }
+}
+
+class _Screen {
+  final String name;
+  final String japanese;
+  final GuideDialog? dialog;
+  final Function()? onDialogOpen;
+
+  _Screen(this.name, this.japanese, {this.dialog, this.onDialogOpen});
 }
