@@ -4,7 +4,7 @@ import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/icons.dart';
 import 'package:kanji_memory_hint/theme.dart';
 
-class QuestWidget extends StatelessWidget {
+class QuestWidget extends StatefulWidget {
   final Widget title;
   final bool claimable;
   final QUEST_STATUS status;
@@ -24,11 +24,19 @@ class QuestWidget extends StatelessWidget {
     required this.goldReward
     }) : super(key: key);
 
+  @override
+  State<StatefulWidget> createState() => _QuestWidgetState();
+}
+
+class _QuestWidgetState extends State<QuestWidget> {
+
+  late QUEST_STATUS status = widget.status;
+
   Widget _description(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Row(
       children: [
-        Expanded(flex: 8, child: title),
+        Expanded(flex: 8, child: widget.title),
         Flexible(flex: 2, child: _reward(context))
       ],
     );
@@ -42,7 +50,7 @@ class QuestWidget extends StatelessWidget {
           height: 25,
           width: 25,
         ),
-        Text("x${goldReward}")
+        Text("x${widget.goldReward}")
       ],
     );
   }
@@ -51,7 +59,7 @@ class QuestWidget extends StatelessWidget {
     ButtonStyle buttonStyle = TextButton.styleFrom(
       backgroundColor: AppColors.primary
     );
-    Widget child = Text('$count/$total');
+    Widget child = Text('${widget.count}/${widget.total}');
     if(status == QUEST_STATUS.CLAIMED) {
       child = Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -59,9 +67,11 @@ class QuestWidget extends StatelessWidget {
           Flexible(
             flex: 4, 
             child: Image.asset(
-              AppIcons.quiz,
-              fit: BoxFit.cover,
+              AppIcons.check,
+              fit: BoxFit.contain,
               color: AppColors.correct,
+              height: 30,
+              width: 30,
             )
           ),
           Flexible(
@@ -75,7 +85,7 @@ class QuestWidget extends StatelessWidget {
           )
         ],
       );
-    } else if(count >= total) {
+    } else if(widget.count >= widget.total) {
       buttonStyle = TextButton.styleFrom(
         backgroundColor: AppColors.correct
       );
@@ -92,7 +102,16 @@ class QuestWidget extends StatelessWidget {
       aspectRatio: 1,
       child: TextButton(
       child: Center(child: child),
-      onPressed: count < total || status == QUEST_STATUS.CLAIMED  ? null : onClaim,
+      onPressed: 
+      widget.count < widget.total || status == QUEST_STATUS.CLAIMED  ? 
+        null 
+        : 
+        (){
+          widget.onClaim();
+          setState(() {
+            status = QUEST_STATUS.CLAIMED;
+          });
+        },
       style: buttonStyle,)
     );
   }
@@ -132,5 +151,4 @@ class QuestWidget extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) => questWidget(context);
-
 }
