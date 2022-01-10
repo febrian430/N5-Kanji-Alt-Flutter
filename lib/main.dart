@@ -8,6 +8,8 @@ import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/database/repository.dart';
 import 'package:kanji_memory_hint/game.dart';
 import 'package:kanji_memory_hint/icons.dart';
+import 'package:kanji_memory_hint/images.dart';
+import 'package:kanji_memory_hint/kanji-list/kanji_view.dart';
 import 'package:kanji_memory_hint/kanji-list/view.dart';
 import 'package:kanji_memory_hint/menu_screens/chapter_select.dart';
 import 'package:kanji_memory_hint/menu_screens/mode_select.dart';
@@ -88,7 +90,7 @@ class _MyAppState extends State<MyApp> {
       routes: { 
         '/': (context) => const MainScreen(),
         '/list': (context) => KanjiMenu(),
-        '/list/view': (context) => KanjiScreen(),
+        '/list/view': (context) => KanjiView(),
         '/game': (context) => GameSelect(),
         '/start-select': (context) => StartSelect(),
         '/chapter-select': (context) => ChapterSelect(),
@@ -178,6 +180,7 @@ class MainScreen extends StatelessWidget {
                 iconPath: AppIcons.start,
               ),
               SelectButton(
+                padding: EdgeInsets.symmetric(vertical: 10),
                 onTap: () {
                   Navigator.pushNamed(context, '/list');
                 },
@@ -263,7 +266,7 @@ class MainScreen extends StatelessWidget {
             children: [
               Expanded(
                 flex: 6,
-                child: Image.asset(AppIcons.currency),
+                child: Image.asset(AppImages.logo),
               ),
               Expanded(
                 flex: 6,
@@ -331,14 +334,6 @@ class Home extends StatelessWidget {
                 title: 'test',
               ),
             ),
-            Center(
-              child: SelectButton(
-                onTap: () async {
-                  // await Notifier.createNotifier();
-                },
-                title: 'Notify',
-              ),
-            )
           ]
         )
       )
