@@ -14,21 +14,27 @@ class ScreenLayout extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            Expanded(
-              flex: 1, 
-              child: header,
-            ),
-            Expanded(
-              flex: 8,
-              child: child
-            ),
-            Flexible(
-              flex: 1,
-              child: footer
-            )
-          ],
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            vertical: size.width*.075,
+            horizontal: size.height*.05
+          ),
+          child: Column(
+            children: [
+              Flexible(
+                flex: 1, 
+                child: header,
+              ),
+              Expanded(
+                flex: 8,
+                child: child
+              ),
+              Flexible(
+                flex: 1,
+                child: footer
+              )
+            ],
+          )
         )
       )
     );
