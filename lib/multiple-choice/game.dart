@@ -7,6 +7,7 @@ import 'package:kanji_memory_hint/game_components/question_widget.dart';
 import 'package:kanji_memory_hint/models/common.dart';
 import 'package:kanji_memory_hint/models/question_set.dart';
 import 'package:kanji_memory_hint/multiple-choice/repo.dart';
+import 'package:kanji_memory_hint/theme.dart';
 
 typedef OnOptionSelectCallback = Function(Option option);
 typedef RoundOverCallback = Function(bool isCorrect, int index, bool? wasCorrect); 
@@ -269,29 +270,23 @@ class _QuizOption extends StatelessWidget {
 
   Color _inProgress() {
     if(isSelected) {
-      return Colors.grey;
+      return AppColors.selected;
     }
     return Colors.white;
   }
 
   Color _afterQuizOver() {
     if(correctKey == option.key) {
-      return Colors.green;
+      return AppColors.correct;
     } else if (isSelected) {
-      return Colors.red;
+      return AppColors.wrong;
     } else {
       return Colors.white;
     }
   }
 
   Color _getBackgroundColor(BuildContext buildContext) {
-    // if((disabled || isSelected) && correctKey == option.key) {
-    //   return Colors.green;
-    // } else if(isSelected) {
-    //   return Colors.red;
-    // } 
-    
-    // return Colors.white;
+
 
     if(isOver) {
       return _afterQuizOver();
@@ -302,7 +297,7 @@ class _QuizOption extends StatelessWidget {
   TextStyle? _getTextStyle(BuildContext buildContext) {
     if(isSelected) {
       return const TextStyle(
-      color: Colors.white
+      color: Colors.black
     );
     }
     return const TextStyle(
@@ -341,9 +336,9 @@ class _PracticeOption extends StatelessWidget {
 
   Color _getBackgroundColor(BuildContext buildContext) {
     if(isSelected && correctKey == option.key) {
-      return Colors.green;
+      return AppColors.correct;
     } else if(isSelected) {
-      return Colors.red;
+      return AppColors.wrong;
     }
     
     return Colors.white;

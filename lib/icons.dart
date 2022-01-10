@@ -24,4 +24,5 @@ class AppIcons {
 
   static const sound = APP_IMAGE_FOLDER + 'sound.png';
   static const reminder = APP_IMAGE_FOLDER + 'reminder.png';
+  static const retry  = APP_IMAGE_FOLDER + 'retry.png';
 }

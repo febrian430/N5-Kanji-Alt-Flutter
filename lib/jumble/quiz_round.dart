@@ -7,6 +7,7 @@ import 'package:kanji_memory_hint/jumble/model.dart';
 import 'package:kanji_memory_hint/models/common.dart';
 import 'package:kanji_memory_hint/foreach_indexed.dart';
 import 'package:kanji_memory_hint/map_indexed.dart';
+import 'package:kanji_memory_hint/theme.dart';
 
 
 const SENTINEL = const Option(value: "-1", key: "-1");
@@ -214,10 +215,10 @@ class _QuizSelectWidget extends StatelessWidget {
   }
 
   Widget _drawAfterQuizOver() {
-    Color bgColor = Colors.red;
+    Color bgColor = AppColors.wrong;
 
     if(isCorrect) {
-      bgColor = Colors.green;
+      bgColor = AppColors.correct;
     }
 
     return GestureDetector( 
@@ -237,7 +238,7 @@ class _QuizSelectWidget extends StatelessWidget {
   }
 
   Widget _drawDuringQuiz(){
-    Color bgColor = Colors.grey;
+    Color bgColor = AppColors.selected;
 
     if(!_isSentinel()) {
       bgColor = Colors.white;

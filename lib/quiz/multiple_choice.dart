@@ -65,11 +65,6 @@ class _MultipleChoiceGameState extends State<MultipleChoiceQuizGame> {
   Widget _buildMultipleChoiceRound(BuildContext context, int index, QuizQuestionSet set) {
     final unanswered = totalQuestion - solved;
     return Container(
-      decoration: BoxDecoration(
-        border: Border.all(
-          width: 1
-        )
-      ),
       child: Column(
         children: [
           Expanded(
