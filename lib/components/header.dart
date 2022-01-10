@@ -89,8 +89,24 @@ class AppHeader extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Center(child: Text(title)),
-                Center(child: Text(japanese)),
+                Center(
+                  child: Text(
+                    title,
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold
+                    ),
+                  )
+                ),
+                Center(
+                  child: Text(
+                    japanese,
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w500
+                    ),
+                  )
+                ),
               ],
             ), 
           ),
