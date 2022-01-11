@@ -65,7 +65,7 @@ class QuestMenuWidget extends StatefulWidget {
 }
 
 class _QuestWidgetState extends State<QuestMenuWidget> {
-  int questIndex = 1;
+  int questIndex = 0;
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -80,6 +80,7 @@ class _QuestWidgetState extends State<QuestMenuWidget> {
           Flexible(
             flex: 3, 
             child: _SelectBar(
+              index: questIndex,
               onTap: (int index) {
                 setState(() {
                   questIndex = index;
@@ -138,7 +139,8 @@ class _ProgressContainerState extends State<_ProgressContainer> {
 
 class _SelectBar extends StatefulWidget {
   final Function(int index) onTap;
-  const _SelectBar({Key? key, required this.onTap}) : super(key: key);
+  final int index;
+  const _SelectBar({Key? key, required this.onTap, this.index = 0}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _SelectBarState();
