@@ -5,6 +5,8 @@ import 'package:kanji_memory_hint/components/dialogs/guide.dart';
 import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/countdown.dart';
+import 'package:kanji_memory_hint/database/repository.dart';
+import 'package:kanji_memory_hint/database/user_point.dart';
 import 'package:kanji_memory_hint/images.dart';
 import 'package:kanji_memory_hint/jumble/game.dart';
 import 'package:kanji_memory_hint/jumble/model.dart';
@@ -19,6 +21,7 @@ import 'package:kanji_memory_hint/quiz/multiple_choice.dart';
 import 'package:kanji_memory_hint/quiz/quiz_result.dart';
 import 'package:kanji_memory_hint/quiz/repo.dart';
 import 'package:kanji_memory_hint/route_param.dart';
+import 'package:kanji_memory_hint/scoring/quiz/quiz.dart';
 import 'package:kanji_memory_hint/scoring/report.dart';
 
 
@@ -33,7 +36,7 @@ class Quiz extends StatefulWidget {
   
 
   Future<List> _getQuizQuestionSet() async {
-    return QuizQuestionMaker.makeQuestionSet(3, chapter, mode);
+    return QuizQuestionMaker.makeQuestionSet(10, chapter, mode);
   }
 
   @override
@@ -132,11 +135,13 @@ class _QuizState extends State<Quiz> {
   }
 
   void postQuizHook() async {
+    var result  = QuizScoring.evaluate(multipleChoiceScore, jumbleScore);
+
     report = QuizReport(
       multiple: multipleChoiceScore, 
       jumble: jumbleScore,
       chapter: widget.chapter,
-      gains: GameResult(expGained: 100, pointsGained: 100)
+      gains: result
     );
 
     Future.delayed(Duration(milliseconds: 200), () async {
@@ -144,6 +149,7 @@ class _QuizState extends State<Quiz> {
       print("jumble during quiz ${report.jumble.correctlyAnsweredKanji.join(",")}");
       await MasteryHandler.addMasteryFromQuiz(report);
       await QuizQuestHandler.checkForQuests(report);
+      await SQLRepo.userPoints.addExp(result.expGained);
     });
 
     initial = false;

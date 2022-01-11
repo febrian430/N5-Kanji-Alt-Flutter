@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kanji_memory_hint/theme.dart';
 
 class ProgressBar extends StatefulWidget {
   const ProgressBar({Key? key, required this.from, required this.gain, required this.levelupReq, required this.nextLevel, required this.onLevelup, }) : super(key: key);
@@ -18,6 +19,7 @@ class ProgressBar extends StatefulWidget {
 class _ProgressBarState extends State<ProgressBar>
     with TickerProviderStateMixin {
   late AnimationController controller;
+  late int upperbound = widget.levelupReq;
 
   @override
   void initState() {
@@ -35,7 +37,16 @@ class _ProgressBarState extends State<ProgressBar>
 
   void animate() async {
     controller.value = widget.from/widget.levelupReq;
-    await controller.animateTo((widget.from+widget.gain)/widget.levelupReq, duration: const Duration(milliseconds: 500));
+    await controller.animateTo((widget.from+widget.gain)/widget.levelupReq, duration: const Duration(seconds: 1));
+    
+    if(widget.gain > widget.levelupReq) {
+      upperbound = widget.nextLevel;
+      widget.onLevelup();
+      controller.value = 0;
+      final remaining = widget.gain - widget.levelupReq;
+      await controller.animateTo(remaining/widget.nextLevel);
+    }
+    
   }
 
   @override
@@ -56,15 +67,29 @@ class _ProgressBarState extends State<ProgressBar>
                 border: Border.all(
                   width: 1,
                 ),
-                borderRadius: BorderRadius.circular(10)
+                borderRadius: BorderRadius.zero
               ),
               child: LinearProgressIndicator(
                 value: controller.value,
                 minHeight: 6,
+                backgroundColor: AppColors.primary,
                 color: Colors.green,
                 semanticsLabel: 'Progress bar',
               ),
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Flexible(child: SizedBox()),
+                Flexible(
+                  child: widget.gain == 0 ?
+                    SizedBox()
+                    :
+                    Text('+${widget.gain.toString()} exp', style: TextStyle(fontSize: 14),),),
+
+                Flexible(child: Text(upperbound.toString())),
+              ],
+            )
             // TextButton(
             //   child: Text("test"),
             //   onPressed: () async {

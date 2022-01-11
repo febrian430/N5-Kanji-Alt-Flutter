@@ -1,8 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/components/buttons/icon_button.dart';
+import 'package:kanji_memory_hint/components/loading_screen.dart';
+import 'package:kanji_memory_hint/components/progress_bar.dart';
 import 'package:kanji_memory_hint/countdown.dart';
+import 'package:kanji_memory_hint/database/repository.dart';
 import 'package:kanji_memory_hint/icons.dart';
+import 'package:kanji_memory_hint/levelling/levels.dart';
+import 'package:kanji_memory_hint/scoring/quiz/quiz.dart';
 import 'package:kanji_memory_hint/scoring/report.dart';
 import 'package:kanji_memory_hint/theme.dart';
 
@@ -80,11 +85,11 @@ class QuizResult extends StatelessWidget {
 
   Widget _build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-
+    final result = QuizScoring.evaluate(multipleChoice.result, jumble.result);
     return Center(
       child: Container(
         width: size.width*0.75,
-        height: size.height*0.60,
+        height: size.height*0.65,
         decoration: BoxDecoration(
           border: Border.all(
             width: 1
@@ -109,6 +114,7 @@ class QuizResult extends StatelessWidget {
                     jumble: jumble,
                     multipleChoice: multipleChoice, 
                     countdown: countdown,
+                    gains: result
                   )
                 ),
                 Flexible(flex: 2, child: _rowOfButtons(context))
@@ -186,9 +192,10 @@ class _DetailWidget extends StatelessWidget {
 
   final QuizGameParam multipleChoice;
   final QuizJumbleGameParam jumble;
+  final GameResult gains;
   final Countdown countdown;
 
-  const _DetailWidget({Key? key, required this.countdown, required this.multipleChoice, required this.jumble}) : super(key: key);
+  const _DetailWidget({Key? key, required this.countdown, required this.multipleChoice, required this.jumble, required this.gains}) : super(key: key);
 
   String humanize(Duration duration) {
     var seconds = duration.inSeconds;
@@ -210,7 +217,7 @@ class _DetailWidget extends StatelessWidget {
             ),
             children: <TextSpan>[
               TextSpan(
-                text: "100",
+                text: gains.pointsGained.toString(),
                 style: TextStyle(
                   fontSize: 70,
                   color: Colors.amber
@@ -223,24 +230,54 @@ class _DetailWidget extends StatelessWidget {
         ),
         Text(humanize(countdown.elapsed())),
 
-        SizedBox(
+        Container(
           width: 200,
+          padding: EdgeInsets.only(top: 10),
           child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            _GameScoreWidget(
-              game: "Multiple Choice", 
-              correct: multipleChoice.result.correct,
-              miss: multipleChoice.result.miss,
-            ),
-            _GameScoreWidget(
-              game: "Jumble", 
-              correct: jumble.result.correct,
-              miss: jumble.result.miss,
-              hits: jumble.result.hits
-            ),
-          ],
-        )
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _GameScoreWidget(
+                game: "Multiple Choice", 
+                correct: multipleChoice.result.correct,
+                miss: multipleChoice.result.miss,
+              ),
+              _GameScoreWidget(
+                game: "Jumble", 
+                correct: jumble.result.correct,
+                miss: jumble.result.miss,
+                hits: jumble.result.hits
+              ),
+            ],
+          )
+        ),
+
+        FutureBuilder(
+          future: Levels.current(),
+          builder: (context, AsyncSnapshot<List<int>> snapshot) {
+            if(snapshot.hasData){  
+              final level = snapshot.data![0];
+              final remaining = snapshot.data![1];
+              final nextLevel = Levels.next(level) ?? remaining;
+              final nextNextLevel = Levels.next(level+1) ?? remaining;
+
+              return Column(
+                children: [
+                  ProgressBar(
+                    from: remaining, 
+                    gain: gains.expGained, 
+                    levelupReq: nextLevel, 
+                    nextLevel: nextNextLevel, 
+                    onLevelup: (){
+                      print("level up!");
+                  }),
+                  Text('+${gains.expGained.toString()} exp', style: TextStyle(fontSize: 14),)
+                ]
+              );
+            } else {
+              return LoadingScreen();
+            }
+          }
         )
       ],
     );

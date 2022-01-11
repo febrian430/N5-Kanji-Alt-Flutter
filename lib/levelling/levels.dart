@@ -16,7 +16,7 @@ class Levels {
         break;
       }
     }
-    return [level, exp];
+    return [level, remaining];
   }
 
   static Future<List<int>> current() async {
