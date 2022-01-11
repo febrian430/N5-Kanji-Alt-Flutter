@@ -42,7 +42,7 @@ class _QuestScreenState extends State<QuestScreen> {
               child: _ProgressContainer(),
             ),
             Expanded(
-              flex: 6,
+              flex: 10,
               child: QuestMenuWidget()
             )
           ],
