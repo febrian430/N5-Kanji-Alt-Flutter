@@ -23,6 +23,7 @@ import 'package:kanji_memory_hint/mix-match/game.dart';
 import 'package:kanji_memory_hint/pick-drop/game.dart';
 import 'package:kanji_memory_hint/quests/screen/quest_screen.dart';
 import 'package:kanji_memory_hint/quiz/quiz.dart';
+import 'package:kanji_memory_hint/reward/reward_screen.dart';
 import 'package:kanji_memory_hint/route_param.dart';
 import 'package:kanji_memory_hint/test.dart';
 import 'package:kanji_memory_hint/theme.dart';
@@ -103,6 +104,7 @@ class _MyAppState extends State<MyApp> {
         '/mode-select': (context) => const ModeSelect(),
         '/result': (context) => ResultScreen(),
         '/quests': (context) => QuestScreen(),
+        '/rewards': (context) => RewardScreen(),
         '/test': (context) => Test()
 
 

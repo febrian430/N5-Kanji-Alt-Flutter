@@ -56,7 +56,8 @@ class GuideDialogButton extends StatelessWidget {
 class AppHeader extends StatelessWidget {
   final String title;
   final String japanese;
-  GuideDialogButton? guideButton;
+
+  Widget? topRight;
   bool withBack;
   
   AppHeader({
@@ -64,7 +65,7 @@ class AppHeader extends StatelessWidget {
     required this.title, 
     required this.japanese, 
     this.withBack = false, 
-    this.guideButton
+    this.topRight
   }) : super(key: key);
 
   
@@ -112,7 +113,7 @@ class AppHeader extends StatelessWidget {
           ),
           Flexible(
             flex: 2,
-            child: guideButton == null ? SizedBox() : guideButton!
+            child: topRight == null ? SizedBox() : topRight!
           ) 
         ],
       )    

@@ -68,7 +68,7 @@ class _GameScreenState extends State<GameScreen> {
             title: widget.title, 
             japanese: widget.japanese,
             withBack: false,
-            guideButton: GuideDialogButton(
+            topRight: GuideDialogButton(
               guide: widget.guide,
               onOpen: widget.onGuideOpen,
             ),

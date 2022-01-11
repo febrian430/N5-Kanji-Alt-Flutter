@@ -104,7 +104,7 @@ class _QuizScreenState extends State<QuizScreen> {
             title: widget.title, 
             japanese: widget.japanese,
             withBack: false,
-            guideButton: _guideButton(context)
+            topRight: _guideButton(context)
           ), 
           footer: _getFooter(context),
           child: widget.game,

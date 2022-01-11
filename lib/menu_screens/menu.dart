@@ -16,17 +16,7 @@ class Menu extends StatelessWidget {
 
   const Menu({Key? key, required this.title, required this.japanese, required this.child}) : super(key: key);
 
-  Widget backWidget(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-
-    return Center(
-        child: Container(
-          height: size.height*0.09,
-          width: size.height*0.16,
-          child: AppBackButton(context)
-        )
-      );
-  }
+  
 
   @override
   Widget build(BuildContext context) {

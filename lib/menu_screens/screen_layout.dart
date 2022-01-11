@@ -23,8 +23,8 @@ class ScreenLayout extends StatelessWidget {
             )
           ),
           padding: EdgeInsets.symmetric(
-            vertical: verticalPadding ? size.height*.075 : 0,
-            horizontal: horizontalPadding ? size.width*.044 : 0
+            vertical: verticalPadding ? size.height*.045 : 0,
+            horizontal: horizontalPadding ? size.width*.032 : 0
           ),
           child: Container(
             child: Column(
