@@ -1,13 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:kanji_memory_hint/color_hex.dart';
 import 'package:kanji_memory_hint/components/backgrounds/menu_background.dart';
 import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/components/progress_bar.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/database/quests.dart';
-import 'package:kanji_memory_hint/images.dart';
+import 'package:kanji_memory_hint/database/repository.dart';
+import 'package:kanji_memory_hint/database/user_point.dart';
+import 'package:kanji_memory_hint/icons.dart';
 import 'package:kanji_memory_hint/levelling/levels.dart';
 import 'package:kanji_memory_hint/menu_screens/quest_screen_layout.dart';
 import 'package:kanji_memory_hint/quests/mastery.dart';
@@ -38,11 +39,11 @@ class _QuestScreenState extends State<QuestScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Expanded(
-              flex: 6,
+              flex: 5,
               child: _ProgressContainer(),
             ),
             Expanded(
-              flex: 10,
+              flex: 11,
               child: QuestMenuWidget()
             )
           ],
@@ -56,6 +57,8 @@ class _QuestScreenState extends State<QuestScreen> {
   }
 }
 
+
+
 class QuestMenuWidget extends StatefulWidget {
   const QuestMenuWidget({Key? key}) : super(key: key);
 
@@ -66,32 +69,121 @@ class QuestMenuWidget extends StatefulWidget {
 
 class _QuestWidgetState extends State<QuestMenuWidget> {
   int questIndex = 0;
+  bool loaded = false;
+  int gold = 0;
+  var points;
+
+  void onQuestClaim(int goldClaim) {
+    setState(() {
+      print("called");
+      gold+=goldClaim;
+    });
+  }
+
+  Widget _gold(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(flex: 1, child: SizedBox()),
+        Expanded(flex: 1, child: SizedBox()),
+        Expanded(
+          flex: 1, 
+          child: Container(
+            margin: EdgeInsets.symmetric(
+              vertical: 10,
+              horizontal: 24
+            ),
+            padding: EdgeInsets.symmetric(
+              vertical: 5,
+              horizontal: 5
+            ),
+            decoration: BoxDecoration(
+              border: Border.all(width: 2),
+              color: AppColors.primary,
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 2,
+                  child: Text(
+                    gold.toString(), 
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold
+                    ),  
+                  )
+                ),
+                Flexible(
+                  flex: 1,
+                  child: Center(child: Image.asset(AppIcons.currency))
+                )
+              ],
+            ),
+          )
+        ),
+      ]
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    points = SQLRepo.userPoints.get();
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    return Container(
-      height: size.height*0.4,
-      decoration: BoxDecoration(
-        color: AppColors.primary
-      ),
-      child: Column(
-        children: [
-          Flexible(
-            flex: 3, 
-            child: _SelectBar(
-              index: questIndex,
-              onTap: (int index) {
-                setState(() {
-                  questIndex = index;
-                });
-              }
+    return FutureBuilder(
+      future: points,
+      builder: (context, AsyncSnapshot<UserPoint> snapshot){
+        if(snapshot.hasData && !loaded) {
+          gold = snapshot.data!.gold;
+          loaded=true;
+        }
+        return Column(
+          children: [
+            Flexible(
+              flex: 2,
+              child: _gold(context)
             ),
-          ),
-          Expanded(flex: 8, child: _QuestList(index: questIndex,))
-        ],
-      )
+            Flexible(
+              flex: 10,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: AppColors.primary
+                ),
+                child: Column(
+                  children: [
+                    Flexible(
+                      flex: 3, 
+                      child: _SelectBar(
+                        index: questIndex,
+                        onTap: (int index) {
+                          setState(() {
+                            questIndex = index;
+                          });
+                        }
+                      ),
+                    ),
+                    Expanded(
+                      flex: 8, 
+                      child: _QuestList(
+                        onClaimQuest: onQuestClaim,
+                        index: questIndex,
+                      )
+                    )
+                  ],
+                )
+              )
+            )
+          ]
+        );
+      }
+      
     );
+        
   }
 
 }
@@ -112,7 +204,6 @@ class _ProgressContainerState extends State<_ProgressContainer> {
           final level = snapshot.data![0];
           final remaining = snapshot.data![1];
           final toNextLevel = Levels.next(level);
-          print('$level, $remaining, $toNextLevel');
           return Column(
             children: [
               Text(level.toString(), style: TextStyle(fontSize: 50),),
@@ -227,8 +318,10 @@ class _SelectBarState extends State<_SelectBar> {
 }
 
 class _QuestList extends StatelessWidget {
-  const _QuestList({Key? key, this.index = 0}) : super(key: key);
   
+  const _QuestList({Key? key, this.index = 0, required this.onClaimQuest}) : super(key: key);
+  
+  final Function(int) onClaimQuest;
   final int index;
 
   Widget _mastery() {
@@ -237,7 +330,7 @@ class _QuestList extends StatelessWidget {
       builder: (BuildContext context,
           AsyncSnapshot<List<MasteryQuest>> snapshot) {
         if (snapshot.hasData) {
-          return _MasteryQuestList(quests: snapshot.data!);
+          return _MasteryQuestList(quests: snapshot.data!, onClaimQuest: onClaimQuest,);
         } else {
           return const Text("Loading...");
         }
@@ -250,7 +343,7 @@ class _QuestList extends StatelessWidget {
       future: PracticeQuestHandler.quests(),
       builder: (BuildContext context, AsyncSnapshot<List<PracticeQuest>> snapshot){
         if(snapshot.hasData) {
-          return _PracticeQuestList(quests: snapshot.data!);
+          return _PracticeQuestList(quests: snapshot.data!, onClaimQuest: onClaimQuest,);
         }else {
           return const Text("Loading...");
         }
@@ -263,7 +356,7 @@ class _QuestList extends StatelessWidget {
       future: QuizQuestHandler.quests(),
       builder: (BuildContext context, AsyncSnapshot<List<QuizQuest>> snapshot){
         if(snapshot.hasData) {
-          return _QuizQuestList(quests: snapshot.data!);
+          return _QuizQuestList(quests: snapshot.data!, onClaimQuest: onClaimQuest,);
         }else {
           return const Text("Loading...");
         }
@@ -300,8 +393,9 @@ class _QuestList extends StatelessWidget {
 class _PracticeQuestList extends StatelessWidget {
 
   final List<PracticeQuest> quests;
+  final Function(int) onClaimQuest;
 
-  const _PracticeQuestList({Key? key, required this.quests}) : super(key: key);
+  const _PracticeQuestList({Key? key, required this.quests, required this.onClaimQuest}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -316,7 +410,10 @@ class _PracticeQuestList extends StatelessWidget {
           total: quest.total,
           status: quest.status,
           claimable: quest.count >= quest.total,
-          onClaim: quest.claim,
+          onClaim: (){
+            quest.claim();
+            onClaimQuest(quest.goldReward);
+          },
           goldReward: quest.goldReward,
         );
       }
@@ -328,8 +425,9 @@ class _PracticeQuestList extends StatelessWidget {
 class _QuizQuestList extends StatelessWidget {
 
   final List<QuizQuest> quests;
+  final Function(int) onClaimQuest;
 
-  const _QuizQuestList({Key? key, required this.quests}) : super(key: key);
+  const _QuizQuestList({Key? key, required this.quests, required this.onClaimQuest}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -343,7 +441,10 @@ class _QuizQuestList extends StatelessWidget {
             count: quest.count,
             total: quest.total,
             status: quest.status,
-            onClaim: quest.claim,
+            onClaim: (){
+              quest.claim();
+              onClaimQuest(quest.goldReward);
+            },
             claimable: quest.count >= quest.total,
             goldReward: quest.goldReward,
           );
@@ -356,8 +457,9 @@ class _QuizQuestList extends StatelessWidget {
 class _MasteryQuestList extends StatelessWidget {
 
   final List<MasteryQuest> quests;
+  final Function(int) onClaimQuest;
 
-  const _MasteryQuestList({Key? key, required this.quests}) : super(key: key);
+  const _MasteryQuestList({Key? key, required this.quests, required this.onClaimQuest}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -374,7 +476,10 @@ class _MasteryQuestList extends StatelessWidget {
             total: quest.total,
             claimable: quest.count >= quest.total,
             status: quest.status,
-            onClaim: quest.claim,
+            onClaim: (){
+              quest.claim();
+              onClaimQuest(quest.goldReward);
+            },
             goldReward: quest.goldReward,
           );
         }
