@@ -57,6 +57,7 @@ class PauseDialog extends StatelessWidget {
         _QuitButton(
             icon: AppIcons.exit, 
             onPressed: (){
+              // Navigator.of(context).pushNamedAndRemoveUntil(newRouteName, (route) => false)
               Navigator.of(context).popUntil(ModalRoute.withName('/start-select'));
             }
           )

@@ -224,7 +224,6 @@ class _ReminderDialogState extends State<ReminderDialog> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-
     return Dialog(
       backgroundColor: AppColors.primary,
       shape: const BeveledRectangleBorder(
@@ -246,11 +245,14 @@ class _ReminderDialogState extends State<ReminderDialog> {
           child: FutureBuilder(
             future: reminder,
             builder: (context, AsyncSnapshot<Reminder?> snapshot) {
+
               if(snapshot.hasData && !loaded){
+                print("set selected from db");
                 selected = snapshot.data!.days;
                 time = snapshot.data!.time;
                 loaded =  true;
               }
+
               return Column(
                 children: [
                   Expanded(
@@ -288,29 +290,29 @@ class _DayWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textColor = (day == DateTime.sunday) ? AppColors.wrong : Colors.black;
-
+    print("is selected ${isSelected}");
     return TextButton( 
       child: Text(
         initial,
         style: TextStyle(
-          color: Colors.transparent,
           shadows: [
             Shadow(
               color: textColor,
               offset: Offset(0, -4))
-          ],
+            ],
+          color: Colors.transparent,
           decoration: isSelected ? TextDecoration.underline : null,
-          decorationThickness: isSelected ? 2 : null,
+          decorationThickness: isSelected ? 3 : null,
           decorationColor: isSelected ? Colors.black : null,
           fontSize: 19,
-          fontWeight: FontWeight.bold
+          fontWeight:  FontWeight.bold
         ),
       ),
       onPressed: (){
         onTap(day);
       },
       style: TextButton.styleFrom(
-        side: BorderSide.none
+        side: isSelected ? null : BorderSide.none,
       )
     );
   }
