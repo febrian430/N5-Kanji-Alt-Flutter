@@ -10,7 +10,6 @@ import 'package:kanji_memory_hint/game.dart';
 import 'package:kanji_memory_hint/icons.dart';
 import 'package:kanji_memory_hint/images.dart';
 import 'package:kanji_memory_hint/kanji-list/kanji_view.dart';
-import 'package:kanji_memory_hint/kanji-list/view.dart';
 import 'package:kanji_memory_hint/menu_screens/chapter_select.dart';
 import 'package:kanji_memory_hint/menu_screens/mode_select.dart';
 import 'package:kanji_memory_hint/notification/notifier.dart';
