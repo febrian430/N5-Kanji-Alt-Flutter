@@ -16,8 +16,16 @@ class GameMenu extends StatelessWidget {
   final String japanese;
   final GAME_TYPE type;
   final Widget child;
+  final Widget? footer;
 
-  const GameMenu({Key? key, required this.title, required this.japanese, required this.child, required this.type}) : super(key: key);
+  const GameMenu({
+    Key? key, 
+    required this.title, 
+    required this.japanese, 
+    required this.child, 
+    required this.type,
+    this.footer
+  }) : super(key: key);
 
   Widget backWidget(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -39,7 +47,7 @@ class GameMenu extends StatelessWidget {
         japanese: japanese,
         withBack: true,
       ), 
-      footer: EmptyWidget, 
+      footer: footer ?? EmptyWidget, 
       child: child
     );
     if(type == GAME_TYPE.PRACTICE) {

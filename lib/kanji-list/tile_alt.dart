@@ -263,7 +263,7 @@ class _KanjiTileState extends State<KanjiTile2> with SingleTickerProviderStateMi
     _changeState(!_isExpanded);
     widget.expandedItem.value = _isExpanded ? widget.key : null;
 
-    // widget.onExpansionChanged?.call(_isExpanded);
+    widget.onExpansionChanged?.call(_isExpanded);
   }
 
   // Platform or null affinity defaults to trailing.
@@ -303,14 +303,16 @@ class _KanjiTileState extends State<KanjiTile2> with SingleTickerProviderStateMi
     final childWidth = widget.childWidth ?? screenWidth;
     final width = widget.width ?? screenWidth;
 
+    
+
     return Container(
       width: childWidth,
       decoration: BoxDecoration(
         color: _backgroundColor.value ?? Colors.transparent,
-        border: Border(
-          top: BorderSide(color: borderSideColor),
-          bottom: BorderSide(color: borderSideColor),
-        ),
+        // border: Border(
+        //   top: BorderSide(color: borderSideColor),
+        //   bottom: BorderSide(color: borderSideColor),
+        // ),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -320,23 +322,29 @@ class _KanjiTileState extends State<KanjiTile2> with SingleTickerProviderStateMi
             textColor: _headerColor.value,
             child: Container(
               width: width,
-              height: screenWidth*0.150,
+              height: screenWidth*0.13,
+              // padding: EdgeInsets.all(4),
               decoration: BoxDecoration(
                 color: widget.headerBackgroundColor ?? Colors.transparent,
                 border: Border.all(
                   width: widget.headerBorderWidth ?? 0,
                 )
               ),
-              child: ListTile(
-                onTap: _handleTap,
-                contentPadding: widget.tilePadding,
-                leading: widget.leading ?? _buildLeadingIcon(context),
-                title: Padding(
-                  padding: EdgeInsets.only(bottom: 7), 
-                  child: Center(child: widget.title),
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(width: 1)
                 ),
-                subtitle: widget.subtitle,
-                trailing: widget.trailing ?? _buildTrailingIcon(context),
+                child: ListTile(
+                  onTap: _handleTap,
+                  contentPadding: widget.tilePadding,
+                  leading: widget.leading ?? _buildLeadingIcon(context),
+                  title: Padding(
+                    padding: EdgeInsets.only(bottom: 7), 
+                    child: Center(child: widget.title),
+                  ),
+                  subtitle: widget.subtitle,
+                  trailing: widget.trailing ?? _buildTrailingIcon(context),
+                )
               )
             ),
           ),

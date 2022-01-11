@@ -100,7 +100,7 @@ class _MyAppState extends State<MyApp> {
         '/list/view': (context) => KanjiView(),
         '/game': (context) => GameSelect(),
         '/start-select': (context) => StartSelect(),
-        '/chapter-select': (context) => ChapterSelect(),
+        '/chapter-select': (context) => ChapterSelect2(),
         '/mode-select': (context) => const ModeSelect(),
         '/result': (context) => ResultScreen(),
         '/quests': (context) => QuestScreen(),
@@ -185,6 +185,7 @@ class MainScreen extends StatelessWidget {
                 },
                 title: 'Start',
                 iconPath: AppIcons.start,
+                mainScreen: true,
               ),
               SelectButton(
                 padding: EdgeInsets.symmetric(vertical: 10),
@@ -193,6 +194,8 @@ class MainScreen extends StatelessWidget {
                 },
                 title: 'Kanji List',
                 iconPath: AppIcons.list,
+                mainScreen: true,
+
               ),
              SelectButton(
                 onTap: () {
@@ -201,6 +204,8 @@ class MainScreen extends StatelessWidget {
                 },
                 title: 'Quests',
                 iconPath: AppIcons.quest,
+                mainScreen: true,
+
               ),
 
             ],
