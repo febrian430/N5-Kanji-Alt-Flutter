@@ -32,4 +32,8 @@ class Levels {
       return null;    
     }
   }
+
+  static Future addExp(int exp) async {
+    await SQLRepo.userPoints.addExp(exp);
+  }
 }

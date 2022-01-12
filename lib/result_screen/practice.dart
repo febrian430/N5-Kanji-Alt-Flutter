@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/components/backgrounds/menu_background.dart';
 import 'package:kanji_memory_hint/components/backgrounds/practice_background.dart';
 import 'package:kanji_memory_hint/components/buttons/icon_button.dart';
+import 'package:kanji_memory_hint/components/dialogs/reminder.dart';
 import 'package:kanji_memory_hint/icons.dart';
 import 'package:kanji_memory_hint/main.dart';
 import 'package:kanji_memory_hint/menu_screens/menu.dart';
@@ -37,7 +38,11 @@ class ResultScreen extends StatelessWidget{
           backgroundColor: AppColors.primary
         ),
         AppIconButton(
-          onTap: (){Navigator.of(context).popUntil(ModalRoute.withName("/game"));}, 
+          onTap: (){
+            showDialog(context: context, builder: (context){
+              return ReminderDialog();
+            });
+          }, 
           iconPath: AppIcons.reminderSmall, 
           height: 50, 
           width: 50, 
@@ -167,7 +172,9 @@ class _DetailWidget extends StatelessWidget {
               Text(param.score.wrongAttempts.toString())
             ],
           )
-        )
+        ),
+        Text("Exp gained: ${param.result.expGained}"),
+        
       ],
     );
   }

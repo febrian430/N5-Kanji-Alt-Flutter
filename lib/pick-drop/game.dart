@@ -9,6 +9,7 @@ import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/database/repository.dart';
 import 'package:kanji_memory_hint/game_components/question_widget.dart';
 import 'package:kanji_memory_hint/images.dart';
+import 'package:kanji_memory_hint/levelling/levels.dart';
 import 'package:kanji_memory_hint/menu_screens/game_screen.dart';
 import 'package:kanji_memory_hint/quests/practice_quest.dart';
 import 'package:kanji_memory_hint/models/common.dart';
@@ -19,7 +20,6 @@ import 'package:kanji_memory_hint/scoring/report.dart';
 import 'package:kanji_memory_hint/scoring/practice/pick_drop.dart';
 import 'package:kanji_memory_hint/theme.dart';
 
-//TODO: wrong count, correct result page, 
 class PickDrop extends StatefulWidget {
 
   PickDrop({Key? key, required this.chapter, required this.mode}) : super(key: key);
@@ -107,7 +107,7 @@ class _PickDropState extends State<PickDrop> {
           );
 
           PracticeQuestHandler.checkForQuests(report);
-          SQLRepo.userPoints.addExp(result.expGained);
+          Levels.addExp(result.expGained);
         }
       } else {
         wrongAttempts++;

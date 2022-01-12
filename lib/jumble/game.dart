@@ -5,11 +5,13 @@ import 'package:kanji_memory_hint/components/header.dart';
 import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/components/result_button.dart';
 import 'package:kanji_memory_hint/const.dart';
+import 'package:kanji_memory_hint/database/repository.dart';
 import 'package:kanji_memory_hint/game_components/game_helper.dart';
 import 'package:kanji_memory_hint/game_components/question_widget.dart';
 import 'package:kanji_memory_hint/images.dart';
 import 'package:kanji_memory_hint/jumble/model.dart';
 import 'package:kanji_memory_hint/jumble/repo.dart';
+import 'package:kanji_memory_hint/levelling/levels.dart';
 import 'package:kanji_memory_hint/menu_screens/game_screen.dart';
 import 'package:kanji_memory_hint/models/common.dart';
 import 'package:kanji_memory_hint/map_indexed.dart';
@@ -138,6 +140,8 @@ class _JumbleGameState extends State<JumbleGame> {
         );
 
         PracticeQuestHandler.checkForQuests(report);
+        Levels.addExp(result.expGained);
+        print("gained: ${result.expGained}");
       }
     });
   }

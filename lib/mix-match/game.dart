@@ -7,6 +7,7 @@ import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/components/result_button.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/images.dart';
+import 'package:kanji_memory_hint/levelling/levels.dart';
 import 'package:kanji_memory_hint/menu_screens/game_screen.dart';
 import 'package:kanji_memory_hint/mix-match/repo.dart';
 import 'package:kanji_memory_hint/models/common.dart';
@@ -87,6 +88,7 @@ class _MixMatchGameState extends State<MixMatchGame> {
         );
 
       PracticeQuestHandler.checkForQuests(report);
+      Levels.addExp(result.expGained);
     } else {
       _pageController.animateToPage(
         _pageController.page!.floor() + 1, 
