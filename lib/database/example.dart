@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/database/example_json.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -14,6 +15,8 @@ const _columnChapter = "chapter";
 const _columnImage = "image";
 const _columnIsSingle = "is_single";
 const _columnExampleOf = "example_of";
+const _columnCost = "cost";
+const _columnRewardStatus = "reward_status";
 
 const _tableKanjiExample = "kanji_examples";
 const _columnKanjiId = "kanji_id";
@@ -36,7 +39,9 @@ class ExampleProvider {
         $_columnMeaning text not null,
         $_columnSpelling text not null,
         $_columnImage text not null,
-        $_columnIsSingle int not null
+        $_columnIsSingle int not null,
+        $_columnCost int not null,
+        $_columnRewardStatus text check($_columnRewardStatus IN ('${REWARD_STATUS.AVAILABLE.name}', '${REWARD_STATUS.CLAIMED.name}')) default '${REWARD_STATUS.AVAILABLE.name}'
       )
     ''');
 
@@ -124,6 +129,8 @@ class Example {
   late List<String> spelling;
   late bool isSingle;
   int chapter;
+  int cost;
+  REWARD_STATUS rewardStatus;
 
   bool hasImage;
   List<int> exampleOf = [];
@@ -140,6 +147,8 @@ class Example {
       isSingle = (map[_columnIsSingle] as int) == 1,
       chapter = map[_columnChapter] as int,
       spelling = map[_columnSpelling].toString().split("#"),
+      cost = map[_columnCost] as int,
+      rewardStatus = REWARD_STATUS_MAP.fromString(map[_columnRewardStatus])!,
 
       hasImage = (map[_columnImage] as String).isNotEmpty
   {
@@ -160,6 +169,8 @@ class Example {
       _columnChapter: chapter,
       _columnSpelling: spelling.join("#"),
       _columnIsSingle: isSingle ? 1 : 0,
+      _columnCost: cost,
+      _columnRewardStatus: rewardStatus.name
     };
   }
 
@@ -170,7 +181,9 @@ class Example {
         meaning = json['meaning'],
         image = json['image'],
         chapter = json['chapter'] as int,
-        hasImage = (json['image'] as String).isNotEmpty
+        hasImage = (json['image'] as String).isNotEmpty,
+        cost = json['cost'] as int,
+        rewardStatus = REWARD_STATUS_MAP.fromString(json['reward_status'] as String)!
   {
     spelling = (json['spelling'] as List).map((spellDynamic) {
       return spellDynamic.toString();

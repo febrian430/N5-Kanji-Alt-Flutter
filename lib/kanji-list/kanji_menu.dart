@@ -10,8 +10,8 @@ import 'package:kanji_memory_hint/theme.dart';
 import 'package:kanji_memory_hint/map_indexed.dart';
 
 
-class KanjiMenu extends StatefulWidget {
-  KanjiMenu({Key? key}) : super(key: key);
+class KanjiList extends StatefulWidget {
+  KanjiList({Key? key}) : super(key: key);
 
   static const route = "/list";
   // final List<int> chapters = [1,2,3,4,5,6,7,8];
@@ -25,7 +25,7 @@ class KanjiMenu extends StatefulWidget {
   State<StatefulWidget> createState() => _MenuState();
 }
 
-class _MenuState extends State<KanjiMenu> {
+class _MenuState extends State<KanjiList> {
   @override
 
   var _list;

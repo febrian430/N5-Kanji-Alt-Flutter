@@ -100,11 +100,11 @@ class _RewardItem extends StatelessWidget {
                 children: [
                   Expanded(
                     flex: 3,
-                    child: Text("123", textAlign: TextAlign.end,)
+                    child: Text(example.cost.toString(), textAlign: TextAlign.end,)
                   ),
                   Expanded(
                     flex: 2,
-                    child: Image.asset(AppIcons.currency, fit: BoxFit.contain)
+                  child: Image.asset(AppIcons.currency, fit: BoxFit.contain)
                   )
                 ],
               ),
