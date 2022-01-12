@@ -4,13 +4,18 @@ import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/database/example.dart';
 import 'package:kanji_memory_hint/icons.dart';
 import 'package:kanji_memory_hint/reward/dialog.dart';
+import 'package:kanji_memory_hint/theme.dart';
 
 class TopicRewards extends StatefulWidget {
   final List<Example> examples;
+  final int gold;
+  final Function(int, int) onBuy;
 
   const TopicRewards({
     Key? key, 
-    required this.examples
+    required this.examples,
+    required this.gold,
+    required this.onBuy
   }) : super(key: key);
   
   
@@ -23,6 +28,10 @@ class _TopicRewardsState extends State<TopicRewards> {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      print("GOLD IS ${widget.gold}");
+    });
+
     return Column(
         children: [
           Expanded(
@@ -42,7 +51,11 @@ class _TopicRewardsState extends State<TopicRewards> {
                       showDialog(
                         context: context, 
                         builder: (context) {
-                          return RewardDialog(example: example,);
+                          return RewardDialog(
+                            example: example,
+                            gold: widget.gold,
+                            onBuy: widget.onBuy,
+                          );
                         }
                       ); 
                     },
@@ -96,7 +109,8 @@ class _RewardItem extends StatelessWidget {
               decoration: BoxDecoration(
                 border: Border(top: BorderSide(width: 1)),
               ),
-              child: Row(
+              child: example.rewardStatus == REWARD_STATUS.AVAILABLE ?
+              Row(
                 children: [
                   Expanded(
                     flex: 3,
@@ -107,7 +121,8 @@ class _RewardItem extends StatelessWidget {
                   child: Image.asset(AppIcons.currency, fit: BoxFit.contain)
                   )
                 ],
-              ),
+              ):
+              Text("Bought", style: TextStyle(color: AppColors.correct),)
             ),
           )
         ]

@@ -52,6 +52,28 @@ extension QUEST_STATUS_MAP on QUEST_STATUS {
   }
 }
 
+enum REWARD_STATUS { AVAILABLE, CLAIMED }
+
+extension REWARD_STATUS_MAP on REWARD_STATUS {
+  String get name {
+    switch (this) {
+      case REWARD_STATUS.AVAILABLE:
+        return "AVAILABLE";
+      case REWARD_STATUS.CLAIMED:
+        return "CLAIMED";
+    }
+  }
+
+  static REWARD_STATUS? fromString(String value) {
+    switch (value) {
+      case "AVAILABLE":
+        return REWARD_STATUS.AVAILABLE;
+      case "CLAIMED":
+        return REWARD_STATUS.CLAIMED;
+    }
+  }
+}
+
 enum GAME_TYPE { PRACTICE, QUIZ }
 
 const KANJI_IMAGE_FOLDER = 'assets/images/kanji/';

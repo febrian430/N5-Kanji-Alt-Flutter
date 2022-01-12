@@ -57,7 +57,8 @@ class _QuestWidgetState extends State<QuestWidget> {
 
   Widget _claimButton(BuildContext context) {
     ButtonStyle buttonStyle = TextButton.styleFrom(
-      backgroundColor: AppColors.primary
+      backgroundColor: AppColors.selected,
+      side: BorderSide.none
     );
     Widget child = Text('${widget.count}/${widget.total}');
     if(status == QUEST_STATUS.CLAIMED) {
@@ -79,7 +80,8 @@ class _QuestWidgetState extends State<QuestWidget> {
             child: Text(
               "Claimed",
               style: TextStyle(
-                color: AppColors.correct  
+                color: AppColors.correct,
+                fontSize: 14,
               ),
             ),
           )
@@ -93,7 +95,8 @@ class _QuestWidgetState extends State<QuestWidget> {
         "Tap to Claim", 
         textAlign: TextAlign.center,
         style: TextStyle(
-          color: Colors.white
+          color: Colors.white,
+          fontSize: 14,
         ),
       );
     }
@@ -101,18 +104,19 @@ class _QuestWidgetState extends State<QuestWidget> {
     return AspectRatio(
       aspectRatio: 1,
       child: TextButton(
-      child: Center(child: child),
-      onPressed: 
-      widget.count < widget.total || status == QUEST_STATUS.CLAIMED  ? 
-        null 
-        : 
-        (){
-          widget.onClaim();
-          setState(() {
-            status = QUEST_STATUS.CLAIMED;
-          });
-        },
-      style: buttonStyle,)
+        child: Center(child: child),
+        onPressed: 
+        widget.count < widget.total || status == QUEST_STATUS.CLAIMED  ? 
+          null 
+          : 
+          (){
+            widget.onClaim();
+            setState(() {
+              status = QUEST_STATUS.CLAIMED;
+            });
+          },
+        style: buttonStyle,
+      )
     );
   }
 
@@ -121,10 +125,11 @@ class _QuestWidgetState extends State<QuestWidget> {
     final size = MediaQuery.of(context).size;
     return Container(
       height: size.height*0.113,
+      padding: EdgeInsets.symmetric(vertical: 6),
       decoration: BoxDecoration(
-        border: Border.all(
-          width: 1
-        )
+        border: Border(bottom: BorderSide(
+          width: 2
+        ))
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

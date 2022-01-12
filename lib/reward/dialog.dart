@@ -4,15 +4,19 @@ import 'package:kanji_memory_hint/components/containers/double_border_container.
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/database/example.dart';
 import 'package:kanji_memory_hint/quests/screen/gold.dart';
+import 'package:kanji_memory_hint/reward/save_image.dart';
 import 'package:kanji_memory_hint/theme.dart';
 
 class RewardDialog extends StatefulWidget {
   final Example example;
-  int gold = 5;
+  final int gold;
+  final Function(int, int) onBuy;
 
   RewardDialog({
     Key? key, 
-    required this.example
+    required this.example, 
+    required this.gold,
+    required this.onBuy
   }) : super(key: key);
 
   @override
@@ -20,7 +24,9 @@ class RewardDialog extends StatefulWidget {
 }
 
 class _RewardDialogState extends State<RewardDialog> {
-  bool bought = false;
+  // bool bought = false;
+  late int gold = widget.gold;
+  late Example example = widget.example;
 
   Widget _header(BuildContext context) {
     return Padding(
@@ -34,7 +40,7 @@ class _RewardDialogState extends State<RewardDialog> {
               children: [
                 Expanded(flex: 4, child: SizedBox(),),
                 Expanded(flex: 4, child: Text("Topic ${widget.example.chapter.toString()}", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))),
-                Expanded(flex: 3, child: GoldWidget(gold: 5))
+                Expanded(flex: 3, child: GoldWidget(gold: gold))
               ],
             )
           ),
@@ -62,24 +68,79 @@ class _RewardDialogState extends State<RewardDialog> {
     );
   }
 
-  Widget _getActionButton(BuildContext context) {
-    return !bought ? Container(
-      margin: EdgeInsets.all(6),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Flexible(child: Text("Buy", style: TextStyle(color: Colors.white),)),
-          Flexible(child: GoldWidget(gold: 1, color: Colors.white,))    
-        ],
+  Widget saveImageDialog(BuildContext context) {
+    return AlertDialog(
+      title: Text("Image saved!"),
+      actions: [
+        TextButton(
+          onPressed: (){
+            Navigator.pop(context);
+          }, 
+          child: Text("OK")
+        )
+      ],
+      content: Text("Image has been saved to your Download folder under kantan_kanji_library folder"),
+    );
+  }
+
+  Widget _getActionButton(BuildContext context, BoxConstraints constraints) {
+    return example.rewardStatus == REWARD_STATUS.AVAILABLE ? 
+    TextButton(
+      onPressed: (){
+        if(widget.example.cost <= gold) {
+          setState(() {
+            // bought = !bought;
+            gold -= widget.example.cost;
+            example.claim();
+            example.rewardStatus = REWARD_STATUS.CLAIMED;
+            widget.onBuy(widget.example.cost, widget.example.cost);
+          });
+        }
+      }, 
+      style: TextButton.styleFrom(
+        backgroundColor: AppColors.correct
+      ),
+      child: SizedBox(
+        width: constraints.maxWidth,
+        child: Container(
+          margin: EdgeInsets.all(6),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Flexible(child: Text("Buy", style: TextStyle(color: Colors.white),)),
+              Flexible(child: GoldWidget(gold: widget.example.cost, color: Colors.white,))    
+            ],
+          )
+        )
       )
     )
     :
-    Text(
-      "Save to Library", 
-      textAlign: TextAlign.center, 
-      style: TextStyle(
-        color: Colors.black
+    TextButton(
+      onPressed: () async {
+        await saveImage(widget.example.image);
+        showDialog(
+          context: context, 
+          builder: (context) {
+            return saveImageDialog(context);
+          }
+        );
+      }, 
+      style: TextButton.styleFrom(
+        backgroundColor: AppColors.primary
       ),
+      child: SizedBox(
+        width: constraints.maxWidth,
+        child: Container(
+          margin: EdgeInsets.all(6),
+          child: Text(
+            "Save to Library", 
+            textAlign: TextAlign.center, 
+            style: TextStyle(
+              color: Colors.black
+            ),
+          )
+        )
+      )
     );
   }
 
@@ -93,20 +154,7 @@ class _RewardDialogState extends State<RewardDialog> {
           flex: 6, 
           child: LayoutBuilder(
             builder: (context, constraints) {
-              return TextButton(
-                onPressed: (){
-                  setState(() {
-                    bought = !bought;
-                  });
-                }, 
-                style: TextButton.styleFrom(
-                  backgroundColor: !bought ? AppColors.correct : AppColors.primary
-                ),
-                child: SizedBox(
-                  width: constraints.maxWidth,
-                  child: _getActionButton(context)
-                )
-              );
+              return _getActionButton(context, constraints);
             }
           )
         ),

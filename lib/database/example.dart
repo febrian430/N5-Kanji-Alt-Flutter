@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/database/example_json.dart';
+import 'package:kanji_memory_hint/database/repository.dart';
 import 'package:sqflite/sqflite.dart';
 
 const _tableKanji = "kanjis";
@@ -92,6 +93,23 @@ class ExampleProvider {
     var rows = await db.query(_tableExample);
 
     return Example.fromRows(rows);
+  }
+
+  Future claimReward(Example example) async {
+    await db.transaction((txn) async {
+      example.rewardStatus = REWARD_STATUS.CLAIMED;
+      await txn.update(_tableExample, example.toMap(),
+        where: '$_columnId = ?',
+        whereArgs: [example.id]
+      );
+
+      await txn.rawQuery('''
+        update user_points
+        set gold = gold - ${example.cost}
+      '''
+      );
+
+    });
   }
 
   Future<List<Example>> examplesOf(int kanjiId) async {
@@ -198,6 +216,9 @@ class Example {
     } else {
       isSingle = false;
     }
+  }
 
+  Future claim() async {
+    return SQLRepo.examples.claimReward(this);
   }
 }

@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/database/example.dart';
 import 'package:kanji_memory_hint/database/repository.dart';
+import 'package:kanji_memory_hint/database/user_point.dart';
 import 'package:kanji_memory_hint/menu_screens/menu.dart';
 import 'package:kanji_memory_hint/quests/screen/gold.dart';
 import 'package:kanji_memory_hint/reward/reward_screen_layout.dart';
@@ -23,16 +24,22 @@ class RewardScreen extends StatefulWidget {
 }
 
 class _RewardScreenState extends State<RewardScreen> {
-  late Future<List<Example>> examples;
+  late Future<List<Example>> futureExamples;
+  late Future<UserPoint> point;
+  int gold = 0;
+  bool goldLoaded = false;
+  bool exampleLoaded = false;
+  late List<Example> examples;
 
   @override
   void initState() {
     super.initState();
 
-    examples = SQLRepo.examples.all();
+    futureExamples = SQLRepo.examples.all();
+    point = SQLRepo.userPoints.get();
   }
 
-  Widget _pageView(BuildContext context, List<Example> examples){
+  Widget _pageView(BuildContext context){
     final size = MediaQuery.of(context).size;
 
     List<List<Example>> groupedPerChapter = widget.chapters.map((chapter){
@@ -47,7 +54,18 @@ class _RewardScreenState extends State<RewardScreen> {
       children: groupedPerChapter.map((examples) {
         return Padding(
           padding: EdgeInsets.symmetric(horizontal: size.width*0.062),
-          child: TopicRewards(examples: examples,)
+          child: TopicRewards(
+            examples: examples, 
+            gold: gold,
+            onBuy: (int cost, int exampleId) {
+              
+              setState(() {
+                gold -= cost;
+
+                // examples = examples.where((example) => example.id == exampleId).
+              });
+            },
+          )
         );
       }).toList(),
     );
@@ -65,10 +83,16 @@ class _RewardScreenState extends State<RewardScreen> {
         color: AppColors.primary
       ),
       child: FutureBuilder(
-        future: examples,
+        future: futureExamples,
         builder: (context, AsyncSnapshot<List<Example>> snapshot) {
+
           if(snapshot.hasData){
-            return _pageView(context, snapshot.data!);
+            if(!exampleLoaded) {
+              examples = snapshot.data!;
+              exampleLoaded = true;
+            }
+            
+            return _pageView(context);
           } else {
             return LoadingScreen();
           }
@@ -80,9 +104,18 @@ class _RewardScreenState extends State<RewardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return RewardScreenLayout(
-      child: screen(context),
-      gold: GoldWidget(gold: 0,),
+    return  FutureBuilder(
+        future: point,
+        builder: (context, AsyncSnapshot<UserPoint> snapshot) {
+          if(snapshot.hasData && !goldLoaded) {
+            gold = snapshot.data!.gold;
+            goldLoaded = true;
+          }
+          return RewardScreenLayout(
+            child: screen(context),
+            gold: GoldWidget(gold: gold,)
+          );
+        }
     ); 
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:kanji_memory_hint/components/backgrounds/menu_background.dart';
+import 'package:kanji_memory_hint/components/buttons/select_button.dart';
 import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/components/progress_bar.dart';
 import 'package:kanji_memory_hint/const.dart';
@@ -9,6 +10,7 @@ import 'package:kanji_memory_hint/database/quests.dart';
 import 'package:kanji_memory_hint/database/repository.dart';
 import 'package:kanji_memory_hint/database/user_point.dart';
 import 'package:kanji_memory_hint/icons.dart';
+import 'package:kanji_memory_hint/kanji-list/kanji_menu.dart';
 import 'package:kanji_memory_hint/levelling/levels.dart';
 import 'package:kanji_memory_hint/menu_screens/quest_screen_layout.dart';
 import 'package:kanji_memory_hint/quests/mastery.dart';
@@ -45,16 +47,37 @@ class _QuestScreenState extends State<QuestScreen> {
               child: _ProgressContainer(),
             ),
             Expanded(
-              flex: 11,
+              flex: 13,
               child: QuestMenuWidget()
             )
           ],
         ), 
-        footer: TextButton(
-          child: Text("Trade reward"),
-          onPressed: (){
-            Navigator.of(context).pushNamed(RewardScreen.route);
-          },
+        footer: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Flexible(
+              flex: 1,
+              child: SelectButton(
+                title: "Kanji List",
+                iconPath: AppIcons.list,
+                width: size.width*0.35,
+                onTap: (){
+                  Navigator.of(context).pushNamed(KanjiList.route);
+                },
+              ),
+            ),
+            Flexible(
+              flex: 1,
+              child: SelectButton(
+                title: "Rewards",
+                iconPath: AppIcons.currency,
+                width: size.width*0.35,
+                onTap: (){
+                  Navigator.of(context).pushNamed(RewardScreen.route);
+                },
+              ),
+            )
+          ]
         )
       )
     );
@@ -82,51 +105,6 @@ class _QuestWidgetState extends State<QuestMenuWidget> {
       print("called");
       gold+=goldClaim;
     });
-  }
-
-  Widget _gold(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(flex: 1, child: SizedBox()),
-        Expanded(flex: 1, child: SizedBox()),
-        Expanded(
-          flex: 1, 
-          child: Container(
-            margin: EdgeInsets.symmetric(
-              vertical: 10,
-              horizontal: 24
-            ),
-            padding: EdgeInsets.symmetric(
-              vertical: 5,
-              horizontal: 5
-            ),
-            decoration: BoxDecoration(
-              border: Border.all(width: 2),
-              color: AppColors.primary,
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                  flex: 2,
-                  child: Text(
-                    gold.toString(), 
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold
-                    ),  
-                  )
-                ),
-                Flexible(
-                  flex: 1,
-                  child: Center(child: Image.asset(AppIcons.currency))
-                )
-              ],
-            ),
-          )
-        ),
-      ]
-    );
   }
 
   @override
@@ -382,11 +360,6 @@ class _QuestList extends StatelessWidget {
       padding: EdgeInsets.fromLTRB(0, 10, 0, 4),
       child: Container(
         width: size.width*0.85, 
-        decoration: BoxDecoration(
-          border: Border.all(
-            width: 1,
-          )
-        ),
         child: IndexedStack(
           index: index,
           children: [
