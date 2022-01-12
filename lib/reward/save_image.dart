@@ -23,7 +23,6 @@ Future<bool> saveImage(String filename) async {
     await _createFolderIfNotExists();
 
     File  file = File('$_savePath$filename');
-    // Directory dir = Directory('')
     final byteData = await rootBundle.load(KANJI_IMAGE_FOLDER+filename);
     await file.writeAsBytes(byteData.buffer.asUint8List(byteData.offsetInBytes, byteData.lengthInBytes));
     return true;
