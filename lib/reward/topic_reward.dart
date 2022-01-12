@@ -6,11 +6,11 @@ import 'package:kanji_memory_hint/icons.dart';
 import 'package:kanji_memory_hint/reward/dialog.dart';
 
 class TopicRewards extends StatefulWidget {
-  // final List<Example> examples;
+  final List<Example> examples;
 
   const TopicRewards({
     Key? key, 
-    // required this.examples
+    required this.examples
   }) : super(key: key);
   
   
@@ -23,16 +23,7 @@ class _TopicRewardsState extends State<TopicRewards> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () { 
-        showDialog(
-          context: context, 
-          builder: (context) {
-            return RewardDialog();
-          }
-        ); 
-      },
-      child: Column(
+    return Column(
         children: [
           Expanded(
             flex: 1,
@@ -42,45 +33,43 @@ class _TopicRewardsState extends State<TopicRewards> {
             flex: 9,
             child:  GridView.count(
                 crossAxisCount: 5,
+                crossAxisSpacing: 7,
+                mainAxisSpacing: 7,
                 childAspectRatio: 3/4,
-                children: [ 
-                // widget.examples.map((e) => SizedBox()).toList()
-                  _RewardItem(),
-                  _RewardItem(),
-                  _RewardItem(),
-                  _RewardItem(),
-                  _RewardItem(),
-                  _RewardItem(),
-                  _RewardItem(),
-                  _RewardItem(),
-                  _RewardItem(),
-                  _RewardItem(),
-                ]
-              ),
+                children: widget.examples.map((example) {
+                  return GestureDetector(
+                    onTap: () { 
+                      showDialog(
+                        context: context, 
+                        builder: (context) {
+                          return RewardDialog(example: example,);
+                        }
+                      ); 
+                    },
+                    child: _RewardItem(example: example,));
+                }).toList(),
             )
-          
+          )
         ],
-      )
-    );
+      );
   }
 
   Widget _header(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text("<"),
-        Text("Topic 1"),
-        Text(">")
+        Text("Topic ${widget.examples[0].chapter}"),
       ],
     );
   }
 }
 
 class _RewardItem extends StatelessWidget {
-  // final Example example;
+  final Example example;
 
   const _RewardItem({
     Key? key, 
-    // required this.example
+    required this.example
   }) : super(key: key);
 
   @override
@@ -96,7 +85,7 @@ class _RewardItem extends StatelessWidget {
             child: AspectRatio(
               aspectRatio: 1,
               child: Image.asset(
-                KANJI_IMAGE_FOLDER+'30kr1n.png',
+                KANJI_IMAGE_FOLDER+example.image,
                 fit: BoxFit.contain,
               ),
             ),

@@ -16,7 +16,7 @@ class QuestScreenLayout extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.only(
-            top: size.height*.075
+            top: size.height*.045,
           ),
           child: Column(
             children: [

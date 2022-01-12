@@ -7,12 +7,12 @@ import 'package:kanji_memory_hint/quests/screen/gold.dart';
 import 'package:kanji_memory_hint/theme.dart';
 
 class RewardDialog extends StatefulWidget {
-  // final Example example;
+  final Example example;
   int gold = 5;
 
   RewardDialog({
     Key? key, 
-    // required this.example
+    required this.example
   }) : super(key: key);
 
   @override
@@ -23,23 +23,29 @@ class _RewardDialogState extends State<RewardDialog> {
   bool bought = false;
 
   Widget _header(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        Expanded(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Expanded(flex: 4, child: SizedBox(),),
-              Expanded(flex: 4, child: Text("Topic 1", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))),
-              Expanded(flex: 3, child: GoldWidget(gold: 5))
-            ],
+    return Padding(
+      padding: EdgeInsets.only(bottom: 10),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Expanded(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(flex: 4, child: SizedBox(),),
+                Expanded(flex: 4, child: Text("Topic ${widget.example.chapter.toString()}", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))),
+                Expanded(flex: 3, child: GoldWidget(gold: 5))
+              ],
+            )
+          ),
+          Expanded(
+            child: Text(
+              widget.example.rune, 
+              style: TextStyle(fontFamily: "MsMincho", fontSize: 40)
+            ),
           )
-        ),
-        Expanded(
-          child: Text("一", style: TextStyle(fontFamily: "MsMincho", fontSize: 60)),
-        )
-      ],
+        ],
+      )
     );
   }
 
@@ -49,7 +55,7 @@ class _RewardDialogState extends State<RewardDialog> {
       child: AspectRatio(
         aspectRatio: 1,
         child: Image.asset(
-          KANJI_IMAGE_FOLDER+'30kr1n.png',
+          KANJI_IMAGE_FOLDER+widget.example.image,
           fit: BoxFit.contain,
         ),
       )

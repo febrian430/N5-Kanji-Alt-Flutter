@@ -1,4 +1,7 @@
+import 'dart:ffi';
+
 import 'package:flutter/cupertino.dart';
+import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/database/example.dart';
 import 'package:kanji_memory_hint/database/repository.dart';
 import 'package:kanji_memory_hint/menu_screens/menu.dart';
@@ -11,6 +14,7 @@ class RewardScreen extends StatefulWidget {
   
   static const route = '/rewards';
   static const name = 'Reward';
+  final chapters = [1,2,3];
 
   RewardScreen({Key? key}) : super(key: key);
 
@@ -28,6 +32,27 @@ class _RewardScreenState extends State<RewardScreen> {
     examples = SQLRepo.examples.all();
   }
 
+  Widget _pageView(BuildContext context, List<Example> examples){
+    final size = MediaQuery.of(context).size;
+
+    List<List<Example>> groupedPerChapter = widget.chapters.map((chapter){
+      var examplesOfChapter = examples.where((example) => example.chapter == chapter);
+      return examplesOfChapter.toList();
+    }).toList();
+
+    return PageView(
+      controller: PageController(
+        viewportFraction: 1,
+      ),
+      children: groupedPerChapter.map((examples) {
+        return Padding(
+          padding: EdgeInsets.symmetric(horizontal: size.width*0.062),
+          child: TopicRewards(examples: examples,)
+        );
+      }).toList(),
+    );
+  }
+
   Widget screen(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Container(
@@ -39,24 +64,15 @@ class _RewardScreenState extends State<RewardScreen> {
         ),
         color: AppColors.primary
       ),
-      child: PageView(
-        controller: PageController(
-          viewportFraction: 1,
-        ),
-        children: [
-          Padding(
-            padding: EdgeInsets.all(20),
-            child: TopicRewards()
-          ),
-          Padding(
-            padding: EdgeInsets.all(20),
-            child: TopicRewards()
-          ),
-          Padding(
-            padding: EdgeInsets.all(20),
-            child: TopicRewards()
-          ),
-        ],
+      child: FutureBuilder(
+        future: examples,
+        builder: (context, AsyncSnapshot<List<Example>> snapshot) {
+          if(snapshot.hasData){
+            return _pageView(context, snapshot.data!);
+          } else {
+            return LoadingScreen();
+          }
+        }
       )
       
     );

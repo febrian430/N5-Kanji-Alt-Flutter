@@ -109,7 +109,8 @@ class _QuizScreenState extends State<QuizScreen> {
           footer: _getFooter(context),
           child: widget.game,
           horizontalPadding: false,
-          verticalPadding: false,
+          topPadding: false,
+          bottomPadding: false,
         ),
       )
     );

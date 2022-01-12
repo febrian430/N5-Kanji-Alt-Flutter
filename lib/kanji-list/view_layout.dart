@@ -18,7 +18,8 @@ class KanjiLayout extends StatelessWidget {
         child: child,
         footer: SizedBox(),
         horizontalPadding: false,
-        verticalPadding: false,
+        topPadding: false,
+        bottomPadding: false,
       ),
     );
   }

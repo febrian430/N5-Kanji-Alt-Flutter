@@ -2,7 +2,7 @@
 	{
 		"id": 1,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "1.png",
 		"rune": "一",
 		"spelling": [
 			"い",
@@ -80,7 +80,7 @@
 	{
 		"id": 6,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "2.png",
 		"rune": "二",
 		"spelling": [
 			"に"
@@ -154,7 +154,7 @@
 	{
 		"id": 11,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "3.png",
 		"rune": "三",
 		"spelling": [
 			"さ",
@@ -233,7 +233,7 @@
 	{
 		"id": 16,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "4.png",
 		"rune": "四",
 		"spelling": [
 			"よ",
@@ -309,7 +309,7 @@
 	{
 		"id": 21,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "5.png",
 		"rune": "五",
 		"spelling": [
 			"ご"
@@ -383,7 +383,7 @@
 	{
 		"id": 26,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "6.png",
 		"rune": "六",
 		"spelling": [
 			"ろ",
@@ -448,7 +448,7 @@
 		"image": "30kr1n.png",
 		"rune": "六日",
 		"spelling": [
-			"み",
+			"む",
 			"い",
 			"か"
 		],
@@ -460,7 +460,7 @@
 	{
 		"id": 31,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "7.png",
 		"rune": "七",
 		"spelling": [
 			"な",
@@ -537,7 +537,7 @@
 	{
 		"id": 36,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "8.png",
 		"rune": "八",
 		"spelling": [
 			"は",
@@ -614,7 +614,7 @@
 	{
 		"id": 41,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "9.png",
 		"rune": "九",
 		"spelling": [
 			"きゅ",
@@ -692,7 +692,7 @@
 	{
 		"id": 46,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "10.png",
 		"rune": "十",
 		"spelling": [
 			"じゅ",
@@ -755,7 +755,7 @@
 	{
 		"id": 50,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "100.png",
 		"rune": "百",
 		"spelling": [
 			"ひゃ",
@@ -817,13 +817,13 @@
 	{
 		"id": 54,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "1000.png",
 		"rune": "千",
 		"spelling": [
 			"え",
 			"ん"
 		],
-		"meaning": "1000 (satuan) (ribu)",
+		"meaning": "1000",
 		"is_single": true,
 		"example_of": [
 			12
@@ -864,13 +864,13 @@
 	{
 		"id": 57,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "10000.png",
 		"rune": "万",
 		"spelling": [
 			"ま",
 			"ん"
 		],
-		"meaning": "10.000 (satuan) (puluh ribu)",
+		"meaning": "10.000",
 		"is_single": true,
 		"example_of": [
 			13
@@ -912,54 +912,6 @@
 	},
 	{
 		"id": 60,
-		"chapter": 1,
-		"image": "30kr1n.png",
-		"rune": "年",
-		"spelling": [
-			"と",
-			"し"
-		],
-		"meaning": "Tahun",
-		"is_single": true,
-		"example_of": [
-			14
-		]
-	},
-	{
-		"id": 61,
-		"chapter": 1,
-		"image": "30kr1n.png",
-		"rune": "来年",
-		"spelling": [
-			"ら",
-			"い",
-			"ね",
-			"ん"
-		],
-		"meaning": "Tahun depan",
-		"example_of": [
-			14,
-			76
-		]
-	},
-	{
-		"id": 62,
-		"chapter": 1,
-		"image": "30kr1n.png",
-		"rune": "去年",
-		"spelling": [
-			"き",
-			"ょ",
-			"ね",
-			"ん"
-		],
-		"meaning": "Tahun lalu",
-		"example_of": [
-			14
-		]
-	},
-	{
-		"id": 63,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "日",
@@ -973,12 +925,12 @@
 		]
 	},
 	{
-		"id": 64,
+		"id": 61,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "日曜日",
 		"spelling": [
-			"い",
+			"に",
 			"ち",
 			"よ",
 			"う",
@@ -990,17 +942,13 @@
 		]
 	},
 	{
-		"id": 65,
+		"id": 62,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "日本",
 		"spelling": [
 			"に",
 			"ほ",
-			"ん",
-			"／",
-			"に",
-			"ぽ",
 			"ん"
 		],
 		"meaning": "Jepang",
@@ -1009,7 +957,7 @@
 		]
 	},
 	{
-		"id": 66,
+		"id": 63,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "月",
@@ -1024,7 +972,7 @@
 		]
 	},
 	{
-		"id": 67,
+		"id": 64,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "月曜日",
@@ -1041,7 +989,7 @@
 		]
 	},
 	{
-		"id": 68,
+		"id": 65,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "木",
@@ -1055,7 +1003,7 @@
 		]
 	},
 	{
-		"id": 69,
+		"id": 66,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "土木",
@@ -1071,7 +1019,7 @@
 		]
 	},
 	{
-		"id": 70,
+		"id": 67,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "木曜日",
@@ -1088,7 +1036,7 @@
 		]
 	},
 	{
-		"id": 71,
+		"id": 68,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "山",
@@ -1103,7 +1051,7 @@
 		]
 	},
 	{
-		"id": 72,
+		"id": 69,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "火山",
@@ -1119,7 +1067,7 @@
 		]
 	},
 	{
-		"id": 73,
+		"id": 70,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "川",
@@ -1134,7 +1082,7 @@
 		]
 	},
 	{
-		"id": 74,
+		"id": 71,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "小川",
@@ -1143,14 +1091,14 @@
 			"が",
 			"わ"
 		],
-		"meaning": "Anak sungai",
+		"meaning": "Sungai Kecil",
 		"example_of": [
 			19,
 			39
 		]
 	},
 	{
-		"id": 75,
+		"id": 72,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "田",
@@ -1164,24 +1112,7 @@
 		]
 	},
 	{
-		"id": 76,
-		"chapter": 2,
-		"image": "30kr1n.png",
-		"rune": "水田",
-		"spelling": [
-			"す",
-			"い",
-			"で",
-			"ん"
-		],
-		"meaning": "Sawah",
-		"example_of": [
-			20,
-			26
-		]
-	},
-	{
-		"id": 77,
+		"id": 73,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "人",
@@ -1196,7 +1127,7 @@
 		]
 	},
 	{
-		"id": 78,
+		"id": 74,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "一人",
@@ -1205,13 +1136,13 @@
 			"と",
 			"り"
 		],
-		"meaning": "Satu orang / seorang",
+		"meaning": "Satu orang",
 		"example_of": [
 			1
 		]
 	},
 	{
-		"id": 79,
+		"id": 75,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "日本人",
@@ -1228,7 +1159,7 @@
 		]
 	},
 	{
-		"id": 80,
+		"id": 76,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "口",
@@ -1243,7 +1174,7 @@
 		]
 	},
 	{
-		"id": 81,
+		"id": 77,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "入口",
@@ -1259,7 +1190,7 @@
 		]
 	},
 	{
-		"id": 82,
+		"id": 78,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "出口",
@@ -1274,23 +1205,7 @@
 		]
 	},
 	{
-		"id": 83,
-		"chapter": 2,
-		"image": "30kr1n.png",
-		"rune": "人口",
-		"spelling": [
-			"じ",
-			"ん",
-			"こ",
-			"う"
-		],
-		"meaning": "Populasi",
-		"example_of": [
-			22
-		]
-	},
-	{
-		"id": 84,
+		"id": 79,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "車",
@@ -1306,7 +1221,7 @@
 		]
 	},
 	{
-		"id": 85,
+		"id": 80,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "自動車",
@@ -1316,13 +1231,13 @@
 			"う",
 			"しゃ"
 		],
-		"meaning": "Mobil/Otomotif",
+		"meaning": "Otomotif",
 		"example_of": [
 			23
 		]
 	},
 	{
-		"id": 86,
+		"id": 81,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "電車",
@@ -1337,7 +1252,7 @@
 		]
 	},
 	{
-		"id": 87,
+		"id": 82,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "水車",
@@ -1353,7 +1268,7 @@
 		]
 	},
 	{
-		"id": 88,
+		"id": 83,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "門",
@@ -1368,7 +1283,7 @@
 		]
 	},
 	{
-		"id": 89,
+		"id": 84,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "専門",
@@ -1378,13 +1293,13 @@
 			"も",
 			"ん"
 		],
-		"meaning": "Bidang/Keahlian khusus (speciality)",
+		"meaning": "Keahlian khusus/ Spesialis",
 		"example_of": [
 			24
 		]
 	},
 	{
-		"id": 90,
+		"id": 85,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "火",
@@ -1398,7 +1313,7 @@
 		]
 	},
 	{
-		"id": 91,
+		"id": 86,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "火曜日",
@@ -1414,7 +1329,23 @@
 		]
 	},
 	{
-		"id": 92,
+		"id": 87,
+		"chapter": 3,
+		"image": "30kr1n.png",
+		"rune": "火山",
+		"spelling": [
+			"か",
+			"ざ",
+			"ん"
+		],
+		"meaning": "Gunung Berapi",
+		"example_of": [
+			18,
+			25
+		]
+	},
+	{
+		"id": 88,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "火事",
@@ -1422,13 +1353,13 @@
 			"か",
 			"じ"
 		],
-		"meaning": "Kebakaran ( Accident )",
+		"meaning": "Kebakaran",
 		"example_of": [
 			25
 		]
 	},
 	{
-		"id": 93,
+		"id": 89,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "水",
@@ -1443,7 +1374,7 @@
 		]
 	},
 	{
-		"id": 94,
+		"id": 90,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "水曜日",
@@ -1460,7 +1391,7 @@
 		]
 	},
 	{
-		"id": 95,
+		"id": 91,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "金",
@@ -1475,7 +1406,7 @@
 		]
 	},
 	{
-		"id": 96,
+		"id": 92,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "お金",
@@ -1491,7 +1422,7 @@
 		]
 	},
 	{
-		"id": 97,
+		"id": 93,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "金曜日",
@@ -1508,7 +1439,7 @@
 		]
 	},
 	{
-		"id": 98,
+		"id": 94,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "土",
@@ -1523,7 +1454,7 @@
 		]
 	},
 	{
-		"id": 99,
+		"id": 95,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "土曜日",
@@ -1539,7 +1470,58 @@
 		]
 	},
 	{
-		"id": 100,
+		"id": 96,
+		"chapter": 3,
+		"image": "30kr1n.png",
+		"rune": "子",
+		"spelling": [
+			"こ",
+			"ど",
+			"も"
+		],
+		"meaning": "Anak",
+		"is_single": true,
+		"example_of": [
+			30
+		]
+	},
+	{
+		"id": 97,
+		"chapter": 3,
+		"image": "30kr1n.png",
+		"rune": "女の子",
+		"spelling": [
+			"お",
+			"ん",
+			"な",
+			"の",
+			"こ"
+		],
+		"meaning": "Anak Perempuan",
+		"example_of": [
+			30
+		]
+	},
+	{
+		"id": 98,
+		"chapter": 3,
+		"image": "30kr1n.png",
+		"rune": "男の子",
+		"spelling": [
+			"お",
+			"と",
+			"こ",
+			"の",
+			"こ"
+		],
+		"meaning": "Anak Laki-laki",
+		"example_of": [
+			30,
+			51
+		]
+	},
+	{
+		"id": 99,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "女",
@@ -1555,7 +1537,7 @@
 		]
 	},
 	{
-		"id": 101,
+		"id": 100,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "女の人",
@@ -1573,7 +1555,7 @@
 		]
 	},
 	{
-		"id": 102,
+		"id": 101,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "彼女",
@@ -1588,76 +1570,7 @@
 		]
 	},
 	{
-		"id": 103,
-		"chapter": 3,
-		"image": "30kr1n.png",
-		"rune": "子ども",
-		"spelling": [
-			"こ",
-			"ど",
-			"も"
-		],
-		"meaning": "Anak",
-		"is_single": true,
-		"example_of": [
-			30
-		]
-	},
-	{
-		"id": 104,
-		"chapter": 3,
-		"image": "30kr1n.png",
-		"rune": "女の子",
-		"spelling": [
-			"お",
-			"ん",
-			"な",
-			"の",
-			"こ"
-		],
-		"meaning": "Anak perempuan",
-		"example_of": [
-			30
-		]
-	},
-	{
-		"id": 105,
-		"chapter": 3,
-		"image": "30kr1n.png",
-		"rune": "男の子",
-		"spelling": [
-			"お",
-			"と",
-			"こ",
-			"の",
-			"こ"
-		],
-		"meaning": "Anak laki-laki",
-		"example_of": [
-			30,
-			51
-		]
-	},
-	{
-		"id": 106,
-		"chapter": 3,
-		"image": "30kr1n.png",
-		"rune": "女子大学",
-		"spelling": [
-			"じょ",
-			"し",
-			"が",
-			"く",
-			"せ",
-			"い"
-		],
-		"meaning": "Murid perempuan",
-		"example_of": [
-			30
-		]
-	},
-	{
-		"id": 107,
+		"id": 102,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "学生",
@@ -1673,7 +1586,7 @@
 		]
 	},
 	{
-		"id": 108,
+		"id": 103,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "大学",
@@ -1690,7 +1603,7 @@
 		]
 	},
 	{
-		"id": 109,
+		"id": 104,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "学校",
@@ -1706,7 +1619,7 @@
 		]
 	},
 	{
-		"id": 110,
+		"id": 105,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "生きる",
@@ -1722,7 +1635,7 @@
 		]
 	},
 	{
-		"id": 111,
+		"id": 106,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "生まれる",
@@ -1733,12 +1646,28 @@
 			"る"
 		],
 		"meaning": "Lahir",
+		"is_single": true,
 		"example_of": [
 			32
 		]
 	},
 	{
-		"id": 112,
+		"id": 107,
+		"chapter": 3,
+		"image": "30kr1n.png",
+		"rune": "先",
+		"spelling": [
+			"さ",
+			"き"
+		],
+		"meaning": "Lebih dahulu",
+		"is_single": true,
+		"example_of": [
+			33
+		]
+	},
+	{
+		"id": 108,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "先生",
@@ -1755,22 +1684,7 @@
 		]
 	},
 	{
-		"id": 113,
-		"chapter": 3,
-		"image": "30kr1n.png",
-		"rune": "先",
-		"spelling": [
-			"さ",
-			"き"
-		],
-		"meaning": "Lebih dahulu",
-		"is_single": true,
-		"example_of": [
-			33
-		]
-	},
-	{
-		"id": 114,
+		"id": 109,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "先週",
@@ -1786,7 +1700,7 @@
 		]
 	},
 	{
-		"id": 115,
+		"id": 110,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "先月",
@@ -1802,7 +1716,7 @@
 		]
 	},
 	{
-		"id": 116,
+		"id": 111,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "私",
@@ -1811,14 +1725,14 @@
 			"た",
 			"し"
 		],
-		"meaning": "Aku/Saya",
+		"meaning": "Saya",
 		"is_single": true,
 		"example_of": [
 			34
 		]
 	},
 	{
-		"id": 117,
+		"id": 112,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "私立大学",
