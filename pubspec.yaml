@@ -40,6 +40,8 @@ dependencies:
   sqflite: ^2.0.1
   flutter_local_notifications: ^9.2.0
   timezone: ^0.8.0
+  path_provider: ^2.0.8
+  permission_handler: ^8.3.0
 
 
 dev_dependencies:

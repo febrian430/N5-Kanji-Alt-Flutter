@@ -82,7 +82,7 @@ class AppHeader extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(
-            flex: 2,
+            flex: 5,
             child: withBack ? AppBackButton(context) : SizedBox(),
           ),
           Expanded(
@@ -112,7 +112,7 @@ class AppHeader extends StatelessWidget {
             ), 
           ),
           Flexible(
-            flex: 2,
+            flex: 5,
             child: topRight == null ? SizedBox() : topRight!
           ) 
         ],

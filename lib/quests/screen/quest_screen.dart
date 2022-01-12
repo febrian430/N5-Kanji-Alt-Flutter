@@ -14,6 +14,7 @@ import 'package:kanji_memory_hint/menu_screens/quest_screen_layout.dart';
 import 'package:kanji_memory_hint/quests/mastery.dart';
 import 'package:kanji_memory_hint/quests/practice_quest.dart';
 import 'package:kanji_memory_hint/quests/quiz_quest.dart';
+import 'package:kanji_memory_hint/quests/screen/gold.dart';
 import 'package:kanji_memory_hint/quests/screen/quest_obj.dart';
 import 'package:kanji_memory_hint/reward/reward_screen.dart';
 import 'package:kanji_memory_hint/theme.dart';
@@ -149,7 +150,13 @@ class _QuestWidgetState extends State<QuestMenuWidget> {
           children: [
             Flexible(
               flex: 2,
-              child: _gold(context)
+              child: Row(
+                children: [
+                  Expanded(flex: 1, child: SizedBox()),
+                  Expanded(flex: 1, child: SizedBox()),
+                  Expanded(flex: 1, child: GoldWidget(gold: gold,))
+                ]
+              )
             ),
             Flexible(
               flex: 10,

@@ -13,8 +13,9 @@ class Menu extends StatelessWidget {
   final String title;
   final String japanese;
   final Widget child;
+  final Widget? topRight;
 
-  const Menu({Key? key, required this.title, required this.japanese, required this.child}) : super(key: key);
+  const Menu({Key? key, required this.title, required this.japanese, required this.child, this.topRight}) : super(key: key);
 
   
 
@@ -26,6 +27,7 @@ class Menu extends StatelessWidget {
           title: title,
           japanese: japanese,
           withBack: true,
+          topRight: topRight,
         ), 
         footer: EmptyWidget, 
         child: child

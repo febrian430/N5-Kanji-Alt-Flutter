@@ -22,6 +22,11 @@ rootProject.buildDir = '../build'
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
     project.evaluationDependsOn(':app')
+    afterEvaluate { project ->
+        android {
+            compileSdkVersion 30
+        }
+    }
 }
 
 task clean(type: Delete) {
