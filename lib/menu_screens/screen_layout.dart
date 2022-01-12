@@ -1,15 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kanji_memory_hint/const.dart';
 
 class ScreenLayout extends StatelessWidget {
 
   final Widget header;
   final Widget child;
-  final Widget footer;
+  final Widget? footer;
   final bool verticalPadding;
   final bool horizontalPadding;
 
-  const ScreenLayout({Key? key, required this.header, required this.footer, required this.child, this.verticalPadding = true, this.horizontalPadding = true}) : super(key: key);
+  const ScreenLayout({Key? key, 
+    required this.header, 
+    this.footer, 
+    required this.child, 
+    this.verticalPadding = true, 
+    this.horizontalPadding = true
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +44,12 @@ class ScreenLayout extends StatelessWidget {
                   flex: 8,
                   child: child
                 ),
-                Flexible(
+                footer != null ? Flexible(
                   flex: 1,
-                  child: footer
+                  child: footer!
                 )
+                :
+                EmptyWidget
               ],
             )
           )

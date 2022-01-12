@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
+import 'package:kanji_memory_hint/database/example.dart';
+import 'package:kanji_memory_hint/database/repository.dart';
 import 'package:kanji_memory_hint/menu_screens/menu.dart';
 import 'package:kanji_memory_hint/quests/screen/gold.dart';
+import 'package:kanji_memory_hint/reward/reward_screen_layout.dart';
+import 'package:kanji_memory_hint/reward/topic_reward.dart';
 import 'package:kanji_memory_hint/theme.dart';
 
 class RewardScreen extends StatefulWidget {
@@ -15,11 +19,19 @@ class RewardScreen extends StatefulWidget {
 }
 
 class _RewardScreenState extends State<RewardScreen> {
+  late Future<List<Example>> examples;
+
+  @override
+  void initState() {
+    super.initState();
+
+    examples = SQLRepo.examples.all();
+  }
 
   Widget screen(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Container(
-      height: size.height*0.8,
+      height: size.height,
       width: size.width,
       decoration: BoxDecoration(
         border: Border.all(
@@ -27,21 +39,34 @@ class _RewardScreenState extends State<RewardScreen> {
         ),
         color: AppColors.primary
       ),
-      child: Column(
+      child: PageView(
+        controller: PageController(
+          viewportFraction: 1,
+        ),
         children: [
-          SizedBox(),
+          Padding(
+            padding: EdgeInsets.all(20),
+            child: TopicRewards()
+          ),
+          Padding(
+            padding: EdgeInsets.all(20),
+            child: TopicRewards()
+          ),
+          Padding(
+            padding: EdgeInsets.all(20),
+            child: TopicRewards()
+          ),
         ],
       )
+      
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Menu(
-      title: "Reward", 
-      japanese: "褒美", 
+    return RewardScreenLayout(
       child: screen(context),
-      topRight: GoldWidget(gold: 0,),
+      gold: GoldWidget(gold: 0,),
     ); 
   }
 }

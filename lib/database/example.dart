@@ -83,6 +83,12 @@ class ExampleProvider {
     }
   }
 
+  Future<List<Example>> all() async {
+    var rows = await db.query(_tableExample);
+
+    return Example.fromRows(rows);
+  }
+
   Future<List<Example>> examplesOf(int kanjiId) async {
     var rows = await db.rawQuery('''
       select e.*
