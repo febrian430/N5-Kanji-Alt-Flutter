@@ -80,7 +80,8 @@ class ChapterSelect extends StatelessWidget {
   ChapterSelect({Key? key}) : super(key: key);
 
   static const route = '/chapter-select';
-  static const List<int> chapters = [1,2,3]; 
+  // static const List<int> chapters = [1,2,3]; 
+  static const List<int> chapters = [1,2,3,4,5,6,7,8]; 
   late PracticeGameArguments param;
 
   Widget _build(BuildContext context) {

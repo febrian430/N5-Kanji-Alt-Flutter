@@ -89,7 +89,7 @@ class _KanjiWidget extends StatelessWidget {
                   kanji.rune, 
                   style: TextStyle(
                     fontFamily: _fontStyle,
-                    fontSize: 90
+                    fontSize: 80
                   ),
                 ),
               ),
@@ -110,7 +110,8 @@ class _KanjiWidget extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const Text("くん・よみ"),
-                            Text(kanji.kunyomi.join("／"))
+                            // Text(kanji.kunyomi.join("／"))
+                            Text(kanji.kunyomi)
                           ]
                         )
                       ),
@@ -121,7 +122,8 @@ class _KanjiWidget extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const Text("おん・よみ"),
-                            Text(kanji.onyomi.join("／"))
+                            // Text(kanji.onyomi.join("／"))
+                            Text(kanji.onyomi)
                           ],
                         )
                       )
@@ -159,7 +161,7 @@ class _KanjiWidget extends StatelessWidget {
               crossAxisCount: 2,
               childAspectRatio: 3/4,
               shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
+              // physics: const NeverScrollableScrollPhysics(),
               children: kanji.examples.map((example) => ExampleContainer(example: example)).toList()
             )
           )

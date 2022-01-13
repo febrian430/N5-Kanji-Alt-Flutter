@@ -2,7 +2,7 @@
 	{
 		"id": 1,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "1.png",
 		"rune": "一",
 		"spelling": [
 			"い",
@@ -92,7 +92,7 @@
 	{
 		"id": 6,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "2.png",
 		"rune": "二",
 		"spelling": [
 			"に"
@@ -179,7 +179,7 @@
 	{
 		"id": 11,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "3.png",
 		"rune": "三",
 		"spelling": [
 			"さ",
@@ -269,7 +269,7 @@
 	{
 		"id": 16,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "4.png",
 		"rune": "四",
 		"spelling": [
 			"よ",
@@ -358,7 +358,7 @@
 	{
 		"id": 21,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "5.png",
 		"rune": "五",
 		"spelling": [
 			"ご"
@@ -445,7 +445,7 @@
 	{
 		"id": 26,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "6.png",
 		"rune": "六",
 		"spelling": [
 			"ろ",
@@ -535,7 +535,7 @@
 	{
 		"id": 31,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "7.png",
 		"rune": "七",
 		"spelling": [
 			"な",
@@ -625,7 +625,7 @@
 	{
 		"id": 36,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "8.png",
 		"rune": "八",
 		"spelling": [
 			"は",
@@ -715,7 +715,7 @@
 	{
 		"id": 41,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "9.png",
 		"rune": "九",
 		"spelling": [
 			"きゅ",
@@ -806,7 +806,7 @@
 	{
 		"id": 46,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "10.png",
 		"rune": "十",
 		"spelling": [
 			"じゅ",
@@ -881,7 +881,7 @@
 	{
 		"id": 50,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "100.png",
 		"rune": "百",
 		"spelling": [
 			"ひゃ",
@@ -954,7 +954,7 @@
 	{
 		"id": 54,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "1000.png",
 		"rune": "千",
 		"spelling": [
 			"え",
@@ -1008,7 +1008,7 @@
 	{
 		"id": 57,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "10000.png",
 		"rune": "万",
 		"spelling": [
 			"ま",

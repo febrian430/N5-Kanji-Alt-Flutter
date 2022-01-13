@@ -14,8 +14,8 @@ class KanjiList extends StatefulWidget {
   KanjiList({Key? key}) : super(key: key);
 
   static const route = "/list";
-  // final List<int> chapters = [1,2,3,4,5,6,7,8];
-  final List<int> chapters = [1,2,3];
+  final List<int> chapters = [1,2,3,4,5,6,7,8];
+  // final List<int> chapters = [1,2,3];
   
   Future<List<Kanji>> _getList() async {
     return SQLRepo.kanjis.all();

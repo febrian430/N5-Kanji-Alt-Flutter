@@ -23,30 +23,37 @@ class Kanji {
   String rune;
   int chapter;
   int mastery;
-  List<String> onyomi = [];
-  List<String> kunyomi = [];
+  String onyomi;
+  String kunyomi;
+  // List<String> onyomi = [];
+  // List<String> kunyomi = [];
   List<Example> examples = [];
 
   Kanji.fromMap(Map<String, dynamic> map) :
       id = map[_columnId] as int,
       rune = map[_columnRune] as String,
       chapter = map[_columnChapter] as int,
-      mastery = map[_columnMastery] as int
-  {
-    var onyomiDb = map[_columnOnyomi] as String;
-    var kunyomiDb = map[_columnKunyomi] as String;
+      mastery = map[_columnMastery] as int,
+      onyomi = map[_columnOnyomi] as String,
+      kunyomi = map[_columnKunyomi] as String;
+  
+    // var onyomiDb = map[_columnOnyomi] as String;
+    // var kunyomiDb = map[_columnKunyomi] as String;
 
-    onyomi = onyomiDb.split('/');
-    kunyomi = kunyomiDb.split('/');
-  }
+    
+    // onyomi = onyomiDb.split('/');
+    // kunyomi = kunyomiDb.split('/');
+  
 
   Map<String, Object?> toMap() {
     return <String, Object?> {
       _columnId: id,
       _columnRune: rune,
       _columnChapter: chapter,
-      _columnOnyomi: onyomi.join("/"),
-      _columnKunyomi: kunyomi.join("/"),
+      _columnOnyomi: onyomi,
+      _columnKunyomi: kunyomi,
+      // _columnOnyomi: onyomi.join("/"),
+      // _columnKunyomi: kunyomi.join("/"),
     };
   }
 
@@ -55,14 +62,16 @@ class Kanji {
         // id = json['id'],
         rune = json['rune'],
         chapter = json['chapter'],
+        kunyomi = json['kunyomi'],
+        onyomi = json['onyomi'],
         mastery = 0
   {
-    for (var _kunyomi in json['kunyomi'] as List) {
-      kunyomi.add(_kunyomi as String);
-    }
-    for (var _onyomi in json['onyomi'] as List) {
-      onyomi.add(_onyomi as String);
-    }
+    // for (var _kunyomi in json['kunyomi'] as String) {
+    //   kunyomi.add(_kunyomi as String);
+    // }
+    // for (var _onyomi in json['onyomi'] as List) {
+    //   onyomi.add(_onyomi as String);
+    // }
   }
 
   static List<Kanji> fromRows(List<Map<String, dynamic>> rows) {
