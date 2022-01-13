@@ -89,22 +89,7 @@ class _QuizScreenState extends State<QuizScreen> {
     } else if(widget.footer != null){
       return widget.footer!; 
     }else {
-      return PauseButton(
-        onPause: () {
-          setState(() {
-            isPaused = true;
-          });
-          widget.onPause();
-        },
-        onContinue: () {
-          setState(() {
-            isPaused = false;
-          });
-          widget.onContinue();
-        },
-        onRestart: widget.onRestart,
-        withChart: false,
-      );
+      return SizedBox();
     }
   }
 
@@ -118,9 +103,20 @@ class _QuizScreenState extends State<QuizScreen> {
           Expanded(
             flex: 2, 
             child: PauseButton(
-              onRestart: widget.onRestart, 
-              onContinue: widget.onContinue, 
-              onPause: widget.onPause
+              onPause: () {
+                setState(() {
+                  isPaused = true;
+                });
+                widget.onPause();
+              },
+              onContinue: () {
+                setState(() {
+                  isPaused = false;
+                });
+                widget.onContinue();
+              },
+              onRestart: widget.onRestart,
+              withChart: false,
             )
           ),
           

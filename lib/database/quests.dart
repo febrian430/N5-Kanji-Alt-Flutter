@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/database/repository.dart';
 import 'package:kanji_memory_hint/jumble/game.dart';
+import 'package:kanji_memory_hint/mix-match/game.dart';
 import 'package:kanji_memory_hint/pick-drop/game.dart';
 import 'package:kanji_memory_hint/scoring/report.dart';
 import 'package:sqflite/sqflite.dart';
@@ -67,28 +68,36 @@ class QuestProvider {
           mode: null,
           chapter: 1,
           requiresPerfect: 0,
-          total: 5,
-          goldReward: 25
+          total: 1,
+          goldReward: 5
+      ),
+      PracticeQuest(
+          game: MixMatchGame.name,
+          mode: null,
+          chapter: null,
+          requiresPerfect: 0,
+          total: 1,
+          goldReward: 5
       ),
       PracticeQuest(
           game: PickDrop.name,
           mode: GAME_MODE.imageMeaning,
           chapter: 1,
           requiresPerfect: 0,
-          total: 2,
+          total: 1,
           goldReward: 10
       ),
       QuizQuest(
           chapter: 1,
           requiresPerfect: 0,
-          total: 2,
+          total: 1,
           goldReward: 10
       ),
       QuizQuest(
-          chapter: 1,
+          chapter: 2,
           requiresPerfect: 0,
-          total: 5,
-          goldReward: 5
+          total: 3,
+          goldReward: 25
       ),
       ...masteryQuests
     ];
@@ -224,13 +233,18 @@ class MasteryQuest extends Quest {
       _columnType: _enumMastery,
     };
   }
+
+  String toString() {
+    return "Master $total kanjis";
+  }
 }
 
 class PracticeQuest extends GameQuest {
   final String game;
   GAME_MODE? mode;
 
-  PracticeQuest({required this.game, required this.mode, required int chapter, required int requiresPerfect, required int total, required int goldReward}) :
+
+  PracticeQuest({required this.game, required this.mode, int? chapter, required int requiresPerfect, required int total, required int goldReward}) :
         super(chapter: chapter, requiresPerfect: requiresPerfect, total: total, goldReward: goldReward);
 
   PracticeQuest.fromMap(Map<String, dynamic> map):
@@ -282,6 +296,29 @@ class PracticeQuest extends GameQuest {
     return true;
   }
 
+  String toString() {
+    String str = "Play $game";
+
+    if(chapter != null) {
+      str += " topic $chapter";
+    }
+
+    if(mode != null){
+      if(mode == GAME_MODE.imageMeaning) {
+        str += " with Image Meaning mode";
+      } else {
+        str += " with Reading mode";
+      }
+    }
+
+    str += " $total times";
+
+    if(requiresPerfect == 1) {
+      str += " perfectly";
+    }
+    return str;
+  }
+
   void claim() {
     if(status != QUEST_STATUS.CLAIMED && count >= total) {
       SQLRepo.userPoints.addGold(goldReward);
@@ -327,5 +364,19 @@ class QuizQuest extends GameQuest{
     }
     SQLRepo.quests.update(this);
     return true;
+  }
+
+  String toString() {
+    String str = "Play Quiz";
+    if(chapter != null) {
+      str += " topic $chapter";
+    }
+
+    str += " $total times";
+
+    if(requiresPerfect == 1) {
+      str += " perfectly";
+    }
+    return str;
   }
 }

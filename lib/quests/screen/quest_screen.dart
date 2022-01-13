@@ -129,10 +129,23 @@ class _QuestWidgetState extends State<QuestMenuWidget> {
             Flexible(
               flex: 2,
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(flex: 1, child: SizedBox()),
                   Expanded(flex: 1, child: SizedBox()),
-                  Expanded(flex: 1, child: GoldWidget(gold: gold,))
+                  Flexible(
+                    flex: 1, 
+                    child: Container(
+                      height: size.width*.1,
+                      width: size.width*.2,
+                      margin: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        border: Border.all(width: 2),
+                        color: AppColors.primary
+                      ),
+                      child: GoldWidget(gold: gold,)
+                    )
+                  )
                 ]
               )
             ),
@@ -388,7 +401,7 @@ class _PracticeQuestList extends StatelessWidget {
       itemBuilder: (BuildContext context, int index) {
         final quest = quests[index];
         return QuestWidget(
-          title: Text('Play ${quest.game} ${quest.mode == null ? '' :  quest.mode!.name + ' mode'}  with topic ${quest.chapter} ${quest.requiresPerfect == 1 ? "perfectly" : ""}'),
+          title: Text(quest.toString()),
           count: quest.count,
           total: quest.total,
           status: quest.status,
@@ -420,7 +433,7 @@ class _QuizQuestList extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           final quest = quests[index];
           return QuestWidget(
-            title: Text('Do ${quest.game} with topic ${quest.chapter}'),
+            title: Text(quest.toString()),
             count: quest.count,
             total: quest.total,
             status: quest.status,
@@ -453,7 +466,7 @@ class _MasteryQuestList extends StatelessWidget {
           final quest = quests[index];
           return QuestWidget(
             title: Text(
-              "Master ${quest.total} kanjis"
+              quest.toString()
             ),
             count: quest.count,
             total: quest.total,
