@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/components/dialogs/confirmation_dialog.dart';
+import 'package:kanji_memory_hint/components/dialogs/kana_dialog.dart';
 import 'package:kanji_memory_hint/icons.dart';
 import 'package:kanji_memory_hint/images.dart';
 import 'package:kanji_memory_hint/theme.dart';
@@ -14,16 +15,8 @@ class PauseDialog extends StatelessWidget {
 
   const PauseDialog({Key? key, required this.onContinue, required this.onRestart, this.withKanaChart = true}) : super(key: key);
 
-  Dialog showKanaDialog(BuildContext context) {
-      final size = MediaQuery.of(context).size;
-
-      return Dialog(
-        child: Container(
-          child: Image.asset(AppImages.kanaChart),
-          height: size.height * 0.75,
-          width: size.width * 0.75,
-        ),
-      );
+  Widget showKanaDialog(BuildContext context) {
+    return KanaDialog();
   }
 
   Widget _buildPracticePause(BuildContext context) {
