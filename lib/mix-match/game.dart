@@ -249,16 +249,17 @@ class _MixMatchGameState extends State<MixMatchGame> {
   }
 
   onRestart() {
-    setState(() {
-      roundsSolved = 0;
-      perfect = 0;
-      wrong = 0;
-      _questionSet = widget._getQuestionSet(widget.chapter, widget.mode);
-      restart = true;
-    });
+    // setState(() {
+    //   roundsSolved = 0;
+    //   perfect = 0;
+    //   wrong = 0;
+    //   _questionSet = widget._getQuestionSet(widget.chapter, widget.mode);
+    //   restart = true;
+    // });
 
-    _pageController.animateToPage(0, duration: Duration(milliseconds: 250), curve: Curves.linear);  
-    widget.stopwatch.reset();
+    // _pageController.animateToPage(0, duration: Duration(milliseconds: 250), curve: Curves.linear);  
+    // widget.stopwatch.reset();
+    onRestartFromResult();
   }
 }
 

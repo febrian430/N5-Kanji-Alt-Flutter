@@ -156,17 +156,6 @@ class _PickDropState extends State<PickDrop> {
     widget.stopwatch.stop();
   }
 
-  onRestart() {
-    setState(() {
-      index = 0;
-      wrongAttempts = 0;
-      perfect = 0;
-      solved = 0;
-      sets = widget._getQuestionSets();
-      restart = true;
-    });
-  }
-
   onContinue() {
     widget.stopwatch.start();
   }

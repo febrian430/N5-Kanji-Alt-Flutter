@@ -79,19 +79,20 @@ class _JumbleGameState extends State<JumbleGame> {
   }
 
   void onRestart() {
-    setState(() {
-      currentPage=0;
-      score = 0;
-      wrongCount = 0;
-      solved = 0;
-      perfect = 0;
-      solvedIdx = {};
-      slotsToFill = 0;
-      numOfQuestions = 10;
-      _questionSets =  widget._getQuestionSet();
-      restart = true;
-      _pageController.animateToPage(0, duration: const Duration(seconds: 0), curve: Curves.linear);
-    });
+    // setState(() {
+    //   currentPage=0;
+    //   score = 0;
+    //   wrongCount = 0;
+    //   solved = 0;
+    //   perfect = 0;
+    //   solvedIdx = {};
+    //   slotsToFill = 0;
+    //   numOfQuestions = 10;
+    //   _questionSets =  widget._getQuestionSet();
+    //   restart = true;
+    //   _pageController.animateToPage(0, duration: const Duration(seconds: 0), curve: Curves.linear);
+    // });
+    onRestartFromResult();
   }
 
   void onContinue() {
