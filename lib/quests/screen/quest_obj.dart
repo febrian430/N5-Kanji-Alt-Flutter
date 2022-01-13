@@ -89,7 +89,8 @@ class _QuestWidgetState extends State<QuestWidget> {
       );
     } else if(widget.count >= widget.total) {
       buttonStyle = TextButton.styleFrom(
-        backgroundColor: AppColors.correct
+        backgroundColor: AppColors.correct,
+        side: BorderSide.none
       );
       child = Text(
         "Tap to Claim", 
