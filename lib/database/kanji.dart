@@ -116,6 +116,12 @@ class KanjiProvider {
     return await db.insert(_tableKanjis, kanji.toMap());
   }
 
+  Future<List<Kanji>> byChapter(int chapter) async {
+    await _read();
+
+    return _kanjis.where((kanji) => kanji.chapter == chapter).toList();
+  }
+
   FutureOr<void> _read({bool forceRefresh = false}) async {
     if(_kanjis.isEmpty || forceRefresh) {
       var rows = await db.rawQuery(

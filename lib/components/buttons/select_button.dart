@@ -77,12 +77,17 @@ class SelectButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    Widget child = Text(title, style: titleStyle,);
+    bool onlyTitle = description == null && iconPath == null;
+    print("ONLY TITLE: $onlyTitle");
+    Widget child = Text(
+      title, 
+      style: titleStyle, 
+      textAlign: onlyTitle ? TextAlign.center : null,);
 
     child = _withDescription(context, child);
     child =  _withImage(context, child);
 
-    if(description == null && iconPath == null) {
+    if(onlyTitle) {
       child = Center(child: child,);
     }
 
