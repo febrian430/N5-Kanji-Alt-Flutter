@@ -439,9 +439,9 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
       child: Container(
         // height: MediaQuery.of(context).size.height - 120,
         decoration: BoxDecoration(
-          border: Border.all(
-            width: 1,
-          ),
+          // border: Border.all(
+          //   width: 1,
+          // ),
           color: roundColor
         ),
         //question
@@ -474,9 +474,9 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
               flex: 4,
               child: Container(
                 decoration: BoxDecoration(
-                  border: Border.all(
-                    width: 1
-                  )
+                  // border: Border.all(
+                  //   width: 1
+                  // )
                 ),
                 child: _optionsByColumn(context, widget.options)
               )

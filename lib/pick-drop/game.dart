@@ -115,7 +115,7 @@ class _PickDropState extends State<PickDrop> {
     });
   }
 
-  Widget _buildRound(QuestionSet set) {
+  Widget _buildRound(BuildContext context, List<QuestionSet> sets) {
     var resultButton = EmptyWidget;
 
     if(total == solved) {
@@ -136,19 +136,24 @@ class _PickDropState extends State<PickDrop> {
 
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 4.0),
-      child: Column(
-        children: [
-          Expanded(
-            child: PickDropRound(
-              question: set.question, 
-              options: set.options, 
-              onDrop: _handleOnDrop, 
-              isLast: index == total-1,
-              restartSrc: restart,
-            )
-          ),
-          resultButton
-        ]
+      child: IndexedStack(
+        index: index,
+        children: sets.map((set) {
+          return Column(
+            children: [
+              Expanded(
+                child: PickDropRound(
+                  question: set.question, 
+                  options: set.options, 
+                  onDrop: _handleOnDrop, 
+                  isLast: index == total-1,
+                  restartSrc: restart,
+                )
+              ),
+              resultButton
+            ]
+          );
+        }).toList(),
       )
     );
   }
@@ -160,8 +165,7 @@ class _PickDropState extends State<PickDrop> {
         if(snapshot.hasData){
           widget.stopwatch.start();
           total = snapshot.data!.length;
-          var set = snapshot.data!.elementAt(index);
-          return _buildRound(set);
+          return _buildRound(context, snapshot.data!);
         } else {
           return LoadingScreen();
         }
@@ -203,7 +207,7 @@ class _PickDropState extends State<PickDrop> {
       japanese: PickDrop.japanese, 
       game: _buildGame(context), 
       onPause: onPause, 
-      onRestart: onRestart, 
+      onRestart: onRestartFromResult, 
       onContinue: onContinue,
       onGuideOpen: onPause,
       prevVisible: index != 0,
@@ -248,6 +252,7 @@ class _PickDropRoundState extends State<PickDropRound> {
 
   bool isCorrect = false;
   bool isFirstTry = true;
+  bool isSolved = false;
 
   void restart() {
     setState(() {
@@ -260,52 +265,35 @@ class _PickDropRoundState extends State<PickDropRound> {
     final size = MediaQuery.of(context).size;
 
     final width = size.width*0.175;
+    final revealAnswer = isSolved && widget.question.key == opt.key;
 
-
-    return Draggable<Option>(
-      data: opt,
-      maxSimultaneousDrags: 1,
-      child: Container(
-        height: width,
-        width: width,
-        decoration: BoxDecoration(
-          border: Border.all(width: 3),
-          color: AppColors.primary
+    if(!isSolved) {
+      return Draggable<Option>(
+        data: opt,
+        maxSimultaneousDrags: 1,
+        child: _OptionWidget(
+          option: opt, 
+          answerKey: widget.question.key,
+          reveal: revealAnswer,
         ),
-        child: Center(
-          child: Text(
-          opt.value + (widget.question.key == opt.key ? " C" : ""),  
-            style: const TextStyle(
-              color: Colors.black,
-              fontSize: 20,
-            ),
-          )
-        )
-      ),
-      feedback: Container(
-        height: width,
-        width: width,
-        decoration: BoxDecoration(
-          border: Border.all(width: 3),
-          color: AppColors.primary
+        feedback: _OptionWidget(
+          option: opt, 
+          answerKey: widget.question.key, 
+          reveal: revealAnswer
         ),
-        child: Center(
-          child: Text(
-          opt.value,
-          style: const TextStyle(
-            color: Colors.black,
-            fontSize: 20,
-            decoration: TextDecoration.none
-            ),
-          )
-        )
-      ),
 
-      childWhenDragging: SizedBox(
-        height: width,
-        width: width,
-      )
-    );
+        childWhenDragging: SizedBox(
+          height: width,
+          width: width,
+        )
+      );
+    } else {
+      return _OptionWidget(
+        option: opt, 
+        answerKey: widget.question.key, 
+        reveal: revealAnswer
+      );
+    }
   }
 
   Column _optionsByColumn(BuildContext context, List<Option> opts) {
@@ -352,10 +340,16 @@ class _PickDropRoundState extends State<PickDropRound> {
                 return true;
               },
               onAccept: (opt) {
-                bool isCorrect = opt.key == widget.question.key;
-                widget.onDrop(isCorrect, isFirstTry);
-                if(!isCorrect) {
-                  isFirstTry = false;
+                if(!isSolved){
+                  bool isCorrect = opt.key == widget.question.key;
+                  widget.onDrop(isCorrect, isFirstTry);
+                  if(!isCorrect) {
+                    isFirstTry = false;
+                  } else {
+                    setState(() {
+                      isSolved = true;
+                    });
+                  }
                 }
               },
             ),
@@ -374,70 +368,34 @@ class _PickDropRoundState extends State<PickDropRound> {
   }
 }
 
-class _QuestionWidget extends StatelessWidget {
-  const _QuestionWidget({Key? key, required this.value, required this.isImage, required this.answerKey}) : super(key: key);
-  
-  final String value;
-  final bool isImage;
-  final String answerKey;
-
-  @override
-  Widget build(BuildContext context) {
-    if(isImage) {
-      return Container(
-          child: Image(
-            image: AssetImage(KANJI_IMAGE_FOLDER + value),
-            height: 250,
-            width: 250,
-            fit: BoxFit.fill,
-          ),
-          decoration: BoxDecoration(
-            border: Border.all(
-              width: 3,
-              color: Colors.black
-            )
-          ),
-        );
-    } else {
-      return Container(
-        child: Center(child: Text(value)),
-        height: 250,
-        width: 250,
-        decoration: BoxDecoration(
-          border: Border.all(
-            color: Colors.black,
-            width: 3
-          )
-        ),
-      );
-    }
-  }
-}
-
 class _OptionWidget extends StatelessWidget {
-  const _OptionWidget({Key? key, required this.value, required this.answerKey}) : super(key: key);
+  const _OptionWidget({Key? key, required this.option, required this.answerKey, required this.reveal}) : super(key: key);
 
-  final String value;
-  final int answerKey;
+  final Option option;
+  final String answerKey;
+  final bool reveal;
 
    @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width*0.175;
+
     return Container(
         child: Center(
           child: Text(
-            value,
+            option.value + (answerKey == option.key ? " C" : ""),
             style: TextStyle(
                 color: Colors.black,
                 fontSize: 20,
               ),
             )),
-        height: 50,
-        width: 50,
+        height: width,
+        width: width,
         decoration: BoxDecoration(
           border: Border.all(
             color: Colors.black,
             width: 3
-          )
+          ),
+          color: reveal ? AppColors.correct : AppColors.primary
         ),
       );
   }
