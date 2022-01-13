@@ -9,7 +9,12 @@
 			"ち"
 		],
 		"meaning": "Satu",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			1
+		]
 	},
 	{
 		"id": 2,
@@ -21,7 +26,12 @@
 			"と",
 			"つ"
 		],
-		"meaning": "Satu buah"
+		"meaning": "Satu buah",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			1
+		]
 	},
 	{
 		"id": 3,
@@ -33,7 +43,13 @@
 			"と",
 			"り"
 		],
-		"meaning": "Satu orang"
+		"meaning": "Satu orang",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			1,
+			20
+		]
 	},
 	{
 		"id": 4,
@@ -46,7 +62,13 @@
 			"が",
 			"つ"
 		],
-		"meaning": "Bulan Januari"
+		"meaning": "Bulan Januari",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			1,
+			15
+		]
 	},
 	{
 		"id": 5,
@@ -59,7 +81,13 @@
 			"た",
 			"ち"
 		],
-		"meaning": "Tanggal 1"
+		"meaning": "Tanggal 1",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			1,
+			14
+		]
 	},
 	{
 		"id": 6,
@@ -70,7 +98,12 @@
 			"に"
 		],
 		"meaning": "Dua",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			2
+		]
 	},
 	{
 		"id": 7,
@@ -82,7 +115,12 @@
 			"た",
 			"つ"
 		],
-		"meaning": "Dua buah"
+		"meaning": "Dua buah",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			2
+		]
 	},
 	{
 		"id": 8,
@@ -94,7 +132,13 @@
 			"た",
 			"り"
 		],
-		"meaning": "Dua orang"
+		"meaning": "Dua orang",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			2,
+			20
+		]
 	},
 	{
 		"id": 9,
@@ -106,7 +150,13 @@
 			"が",
 			"つ"
 		],
-		"meaning": "Bulan Februari"
+		"meaning": "Bulan Februari",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			2,
+			15
+		]
 	},
 	{
 		"id": 10,
@@ -118,7 +168,13 @@
 			"つ",
 			"か"
 		],
-		"meaning": "Tanggal 2"
+		"meaning": "Tanggal 2",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			2,
+			14
+		]
 	},
 	{
 		"id": 11,
@@ -130,7 +186,12 @@
 			"ん"
 		],
 		"meaning": "Tiga",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			3
+		]
 	},
 	{
 		"id": 12,
@@ -142,7 +203,12 @@
 			"っ",
 			"つ"
 		],
-		"meaning": "Tiga buah"
+		"meaning": "Tiga buah",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			3
+		]
 	},
 	{
 		"id": 13,
@@ -155,7 +221,13 @@
 			"に",
 			"ん"
 		],
-		"meaning": "Tiga orang"
+		"meaning": "Tiga orang",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			3,
+			20
+		]
 	},
 	{
 		"id": 14,
@@ -168,7 +240,13 @@
 			"が",
 			"つ"
 		],
-		"meaning": "Bulan Maret"
+		"meaning": "Bulan Maret",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			3,
+			15
+		]
 	},
 	{
 		"id": 15,
@@ -180,7 +258,13 @@
 			"っ",
 			"か"
 		],
-		"meaning": "Tanggal 3"
+		"meaning": "Tanggal 3",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			3,
+			14
+		]
 	},
 	{
 		"id": 16,
@@ -192,7 +276,12 @@
 			"ん"
 		],
 		"meaning": "Empat",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			4
+		]
 	},
 	{
 		"id": 17,
@@ -204,7 +293,12 @@
 			"っ",
 			"つ"
 		],
-		"meaning": "Empat buah"
+		"meaning": "Empat buah",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			4
+		]
 	},
 	{
 		"id": 18,
@@ -217,7 +311,13 @@
 			"に",
 			"ん"
 		],
-		"meaning": "Empat orang"
+		"meaning": "Empat orang",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			4,
+			20
+		]
 	},
 	{
 		"id": 19,
@@ -229,7 +329,13 @@
 			"が",
 			"つ"
 		],
-		"meaning": "Bulan April"
+		"meaning": "Bulan April",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			4,
+			15
+		]
 	},
 	{
 		"id": 20,
@@ -241,7 +347,13 @@
 			"っ",
 			"か"
 		],
-		"meaning": "Tanggal 4"
+		"meaning": "Tanggal 4",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			4,
+			14
+		]
 	},
 	{
 		"id": 21,
@@ -252,7 +364,12 @@
 			"ご"
 		],
 		"meaning": "Lima",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			5
+		]
 	},
 	{
 		"id": 22,
@@ -264,7 +381,12 @@
 			"つ",
 			"つ"
 		],
-		"meaning": "Lima buah"
+		"meaning": "Lima buah",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			5
+		]
 	},
 	{
 		"id": 23,
@@ -276,7 +398,13 @@
 			"に",
 			"ん"
 		],
-		"meaning": "Lima orang"
+		"meaning": "Lima orang",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			5,
+			20
+		]
 	},
 	{
 		"id": 24,
@@ -288,7 +416,13 @@
 			"が",
 			"つ"
 		],
-		"meaning": "Bulan Mei"
+		"meaning": "Bulan Mei",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			5,
+			15
+		]
 	},
 	{
 		"id": 25,
@@ -300,7 +434,13 @@
 			"つ",
 			"か"
 		],
-		"meaning": "Tanggal 5"
+		"meaning": "Tanggal 5",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			5,
+			14
+		]
 	},
 	{
 		"id": 26,
@@ -312,7 +452,12 @@
 			"く"
 		],
 		"meaning": "Enam",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			6
+		]
 	},
 	{
 		"id": 27,
@@ -324,7 +469,12 @@
 			"っ",
 			"つ"
 		],
-		"meaning": "Enam buah"
+		"meaning": "Enam buah",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			6
+		]
 	},
 	{
 		"id": 28,
@@ -337,7 +487,13 @@
 			"に",
 			"ん"
 		],
-		"meaning": "Enam orang"
+		"meaning": "Enam orang",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			6,
+			20
+		]
 	},
 	{
 		"id": 29,
@@ -350,7 +506,13 @@
 			"が",
 			"つ"
 		],
-		"meaning": "Bulan Juni"
+		"meaning": "Bulan Juni",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			6,
+			15
+		]
 	},
 	{
 		"id": 30,
@@ -358,11 +520,17 @@
 		"image": "30kr1n.png",
 		"rune": "六日",
 		"spelling": [
-			"み",
+			"む",
 			"い",
 			"か"
 		],
-		"meaning": "Tanggal 6"
+		"meaning": "Tanggal 6",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			6,
+			14
+		]
 	},
 	{
 		"id": 31,
@@ -374,7 +542,12 @@
 			"な"
 		],
 		"meaning": "Tujuh",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			7
+		]
 	},
 	{
 		"id": 32,
@@ -386,7 +559,12 @@
 			"な",
 			"つ"
 		],
-		"meaning": "Tujuh buah"
+		"meaning": "Tujuh buah",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			7
+		]
 	},
 	{
 		"id": 33,
@@ -399,7 +577,13 @@
 			"に",
 			"ん"
 		],
-		"meaning": "Tujuh orang"
+		"meaning": "Tujuh orang",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			7,
+			20
+		]
 	},
 	{
 		"id": 34,
@@ -412,7 +596,13 @@
 			"が",
 			"つ"
 		],
-		"meaning": "Bulan Juli"
+		"meaning": "Bulan Juli",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			7,
+			15
+		]
 	},
 	{
 		"id": 35,
@@ -424,7 +614,13 @@
 			"の",
 			"か"
 		],
-		"meaning": "Tanggal 7"
+		"meaning": "Tanggal 7",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			7,
+			14
+		]
 	},
 	{
 		"id": 36,
@@ -436,7 +632,12 @@
 			"ち"
 		],
 		"meaning": "Delapan",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			8
+		]
 	},
 	{
 		"id": 37,
@@ -448,7 +649,12 @@
 			"っ",
 			"つ"
 		],
-		"meaning": "Delapan buah"
+		"meaning": "Delapan buah",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			8
+		]
 	},
 	{
 		"id": 38,
@@ -461,7 +667,13 @@
 			"に",
 			"ん"
 		],
-		"meaning": "Delapan orang"
+		"meaning": "Delapan orang",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			8,
+			20
+		]
 	},
 	{
 		"id": 39,
@@ -474,7 +686,13 @@
 			"が",
 			"つ"
 		],
-		"meaning": "Bulan Agustus"
+		"meaning": "Bulan Agustus",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			8,
+			15
+		]
 	},
 	{
 		"id": 40,
@@ -486,7 +704,13 @@
 			"う",
 			"か"
 		],
-		"meaning": "Tanggal 8"
+		"meaning": "Tanggal 8",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			8,
+			14
+		]
 	},
 	{
 		"id": 41,
@@ -498,7 +722,12 @@
 			"う"
 		],
 		"meaning": "Sembilan",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			9
+		]
 	},
 	{
 		"id": 42,
@@ -511,7 +740,12 @@
 			"の",
 			"つ"
 		],
-		"meaning": "Sembilan buah"
+		"meaning": "Sembilan buah",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			9
+		]
 	},
 	{
 		"id": 43,
@@ -524,7 +758,13 @@
 			"に",
 			"ん"
 		],
-		"meaning": "Sembilan orang"
+		"meaning": "Sembilan orang",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			9,
+			20
+		]
 	},
 	{
 		"id": 44,
@@ -536,7 +776,13 @@
 			"が",
 			"つ"
 		],
-		"meaning": "Bulan September"
+		"meaning": "Bulan September",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			9,
+			15
+		]
 	},
 	{
 		"id": 45,
@@ -549,7 +795,13 @@
 			"の",
 			"か"
 		],
-		"meaning": "Tanggal 9"
+		"meaning": "Tanggal 9",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			9,
+			14
+		]
 	},
 	{
 		"id": 46,
@@ -561,7 +813,12 @@
 			"う"
 		],
 		"meaning": "Sepuluh",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			10
+		]
 	},
 	{
 		"id": 47,
@@ -574,7 +831,13 @@
 			"が",
 			"つ"
 		],
-		"meaning": "Bulan Oktober"
+		"meaning": "Bulan Oktober",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			10,
+			15
+		]
 	},
 	{
 		"id": 48,
@@ -588,7 +851,14 @@
 			"が",
 			"つ"
 		],
-		"meaning": "Bulan Desember"
+		"meaning": "Bulan Desember",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			2,
+			10,
+			15
+		]
 	},
 	{
 		"id": 49,
@@ -600,7 +870,13 @@
 			"う",
 			"か"
 		],
-		"meaning": "Tanggal  10"
+		"meaning": "Tanggal  10",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			10,
+			14
+		]
 	},
 	{
 		"id": 50,
@@ -612,7 +888,12 @@
 			"く"
 		],
 		"meaning": "100",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			11
+		]
 	},
 	{
 		"id": 51,
@@ -624,7 +905,13 @@
 			"ひゃ",
 			"く"
 		],
-		"meaning": "200"
+		"meaning": "200",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			2,
+			11
+		]
 	},
 	{
 		"id": 52,
@@ -637,7 +924,13 @@
 			"びゃ",
 			"く"
 		],
-		"meaning": "300"
+		"meaning": "300",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			3,
+			11
+		]
 	},
 	{
 		"id": 53,
@@ -650,7 +943,13 @@
 			"ぴゃ",
 			"く"
 		],
-		"meaning": "600"
+		"meaning": "600",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			6,
+			11
+		]
 	},
 	{
 		"id": 54,
@@ -661,8 +960,13 @@
 			"え",
 			"ん"
 		],
-		"meaning": "1000 (satuan) (ribu)",
-		"is_single": true
+		"meaning": "1000",
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			12
+		]
 	},
 	{
 		"id": 55,
@@ -675,7 +979,12 @@
 			"え",
 			"ん"
 		],
-		"meaning": "1000 Yen"
+		"meaning": "1000 Yen",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			12
+		]
 	},
 	{
 		"id": 56,
@@ -688,7 +997,13 @@
 			"ぜ",
 			"ん"
 		],
-		"meaning": "3000"
+		"meaning": "3000",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			3,
+			12
+		]
 	},
 	{
 		"id": 57,
@@ -699,8 +1014,13 @@
 			"ま",
 			"ん"
 		],
-		"meaning": "10.000 (satuan) (puluh ribu)",
-		"is_single": true
+		"meaning": "10.000",
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			13
+		]
 	},
 	{
 		"id": 58,
@@ -715,7 +1035,13 @@
 			"え",
 			"ん"
 		],
-		"meaning": "10.000 Yen"
+		"meaning": "10.000 Yen",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			1,
+			13
+		]
 	},
 	{
 		"id": 59,
@@ -728,48 +1054,16 @@
 			"ま",
 			"ん"
 		],
-		"meaning": "40.000"
+		"meaning": "40.000",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			4,
+			13
+		]
 	},
 	{
 		"id": 60,
-		"chapter": 1,
-		"image": "30kr1n.png",
-		"rune": "年",
-		"spelling": [
-			"と",
-			"し"
-		],
-		"meaning": "Tahun",
-		"is_single": true
-	},
-	{
-		"id": 61,
-		"chapter": 1,
-		"image": "30kr1n.png",
-		"rune": "来年",
-		"spelling": [
-			"ら",
-			"い",
-			"ね",
-			"ん"
-		],
-		"meaning": "Tahun depan"
-	},
-	{
-		"id": 62,
-		"chapter": 1,
-		"image": "30kr1n.png",
-		"rune": "去年",
-		"spelling": [
-			"き",
-			"ょ",
-			"ね",
-			"ん"
-		],
-		"meaning": "Tahun lalu"
-	},
-	{
-		"id": 63,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "日",
@@ -777,40 +1071,52 @@
 			"ひ"
 		],
 		"meaning": "Matahari",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			14
+		]
 	},
 	{
-		"id": 64,
+		"id": 61,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "日曜日",
 		"spelling": [
-			"い",
+			"に",
 			"ち",
 			"よ",
 			"う",
 			"び"
 		],
-		"meaning": "Hari Minggu"
+		"meaning": "Hari Minggu",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			14
+		]
 	},
 	{
-		"id": 65,
+		"id": 62,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "日本",
 		"spelling": [
 			"に",
 			"ほ",
-			"ん",
-			"／",
-			"に",
-			"ぽ",
 			"ん"
 		],
-		"meaning": "Jepang"
+		"meaning": "Jepang",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			14,
+			39
+		]
 	},
 	{
-		"id": 66,
+		"id": 63,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "月",
@@ -819,10 +1125,15 @@
 			"き"
 		],
 		"meaning": "Bulan",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			15
+		]
 	},
 	{
-		"id": 67,
+		"id": 64,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "月曜日",
@@ -833,10 +1144,16 @@
 			"う",
 			"び"
 		],
-		"meaning": "Hari Senin"
+		"meaning": "Hari Senin",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			14,
+			15
+		]
 	},
 	{
-		"id": 68,
+		"id": 65,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "木",
@@ -844,10 +1161,15 @@
 			"き"
 		],
 		"meaning": "Pohon",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			16
+		]
 	},
 	{
-		"id": 69,
+		"id": 66,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "土木",
@@ -856,10 +1178,16 @@
 			"ぼ",
 			"く"
 		],
-		"meaning": "Teknik Sipil"
+		"meaning": "Teknik Sipil",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			16,
+			27
+		]
 	},
 	{
-		"id": 70,
+		"id": 67,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "木曜日",
@@ -870,10 +1198,16 @@
 			"う",
 			"び"
 		],
-		"meaning": "Hari Kamis"
+		"meaning": "Hari Kamis",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			14,
+			16
+		]
 	},
 	{
-		"id": 71,
+		"id": 68,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "山",
@@ -882,10 +1216,15 @@
 			"ま"
 		],
 		"meaning": "Gunung",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			17
+		]
 	},
 	{
-		"id": 72,
+		"id": 69,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "火山",
@@ -894,10 +1233,16 @@
 			"ざ",
 			"ん"
 		],
-		"meaning": "Gunung Berapi"
+		"meaning": "Gunung Berapi",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			17,
+			24
+		]
 	},
 	{
-		"id": 73,
+		"id": 70,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "川",
@@ -906,10 +1251,15 @@
 			"わ"
 		],
 		"meaning": "Sungai",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			18
+		]
 	},
 	{
-		"id": 74,
+		"id": 71,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "小川",
@@ -918,10 +1268,16 @@
 			"が",
 			"わ"
 		],
-		"meaning": "Anak sungai"
+		"meaning": "Sungai Kecil",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			18,
+			38
+		]
 	},
 	{
-		"id": 75,
+		"id": 72,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "田",
@@ -929,23 +1285,15 @@
 			"た"
 		],
 		"meaning": "Sawah",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			19
+		]
 	},
 	{
-		"id": 76,
-		"chapter": 2,
-		"image": "30kr1n.png",
-		"rune": "水田",
-		"spelling": [
-			"す",
-			"い",
-			"で",
-			"ん"
-		],
-		"meaning": "Sawah"
-	},
-	{
-		"id": 77,
+		"id": 73,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "人",
@@ -954,10 +1302,15 @@
 			"と"
 		],
 		"meaning": "Orang",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			20
+		]
 	},
 	{
-		"id": 78,
+		"id": 74,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "一人",
@@ -966,10 +1319,16 @@
 			"と",
 			"り"
 		],
-		"meaning": "Satu orang"
+		"meaning": "Satu orang",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			1,
+			20
+		]
 	},
 	{
-		"id": 79,
+		"id": 75,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "日本人",
@@ -980,10 +1339,17 @@
 			"じ",
 			"ん"
 		],
-		"meaning": "Orang Jepang"
+		"meaning": "Orang Jepang",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			14,
+			20,
+			39
+		]
 	},
 	{
-		"id": 80,
+		"id": 76,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "口",
@@ -992,10 +1358,15 @@
 			"ち"
 		],
 		"meaning": "Mulut",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			21
+		]
 	},
 	{
-		"id": 81,
+		"id": 77,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "入口",
@@ -1005,10 +1376,15 @@
 			"ぐ",
 			"ち"
 		],
-		"meaning": "Pintu Masuk"
+		"meaning": "Pintu Masuk",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			21
+		]
 	},
 	{
-		"id": 82,
+		"id": 78,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "出口",
@@ -1017,23 +1393,15 @@
 			"ぐ",
 			"ち"
 		],
-		"meaning": "Pintu Keluar"
+		"meaning": "Pintu Keluar",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			21
+		]
 	},
 	{
-		"id": 83,
-		"chapter": 2,
-		"image": "30kr1n.png",
-		"rune": "人口",
-		"spelling": [
-			"じ",
-			"ん",
-			"こ",
-			"う"
-		],
-		"meaning": "Populasi"
-	},
-	{
-		"id": 84,
+		"id": 79,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "車",
@@ -1043,10 +1411,15 @@
 			"ま"
 		],
 		"meaning": "Mobil",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			22
+		]
 	},
 	{
-		"id": 85,
+		"id": 80,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "自動車",
@@ -1056,10 +1429,15 @@
 			"う",
 			"しゃ"
 		],
-		"meaning": "Otomotif"
+		"meaning": "Otomotif",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			22
+		]
 	},
 	{
-		"id": 86,
+		"id": 81,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "電車",
@@ -1068,10 +1446,15 @@
 			"ん",
 			"しゃ"
 		],
-		"meaning": "Kereta"
+		"meaning": "Kereta",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			22
+		]
 	},
 	{
-		"id": 87,
+		"id": 82,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "水車",
@@ -1080,10 +1463,16 @@
 			"い",
 			"しゃ"
 		],
-		"meaning": "Kincir air"
+		"meaning": "Kincir air",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			22,
+			25
+		]
 	},
 	{
-		"id": 88,
+		"id": 83,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "門",
@@ -1092,10 +1481,15 @@
 			"ん"
 		],
 		"meaning": "Gerbang",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			23
+		]
 	},
 	{
-		"id": 89,
+		"id": 84,
 		"chapter": 2,
 		"image": "30kr1n.png",
 		"rune": "専門",
@@ -1105,10 +1499,15 @@
 			"も",
 			"ん"
 		],
-		"meaning": "Keahlian khusus"
+		"meaning": "Keahlian khusus/ Spesialis",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			23
+		]
 	},
 	{
-		"id": 90,
+		"id": 85,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "火",
@@ -1116,10 +1515,15 @@
 			"ひ"
 		],
 		"meaning": "Api",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			24
+		]
 	},
 	{
-		"id": 91,
+		"id": 86,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "火曜日",
@@ -1129,10 +1533,34 @@
 			"う",
 			"び"
 		],
-		"meaning": "Hari Selasa"
+		"meaning": "Hari Selasa",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			14,
+			24
+		]
 	},
 	{
-		"id": 92,
+		"id": 87,
+		"chapter": 3,
+		"image": "30kr1n.png",
+		"rune": "火山",
+		"spelling": [
+			"か",
+			"ざ",
+			"ん"
+		],
+		"meaning": "Gunung Berapi",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			17,
+			24
+		]
+	},
+	{
+		"id": 88,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "火事",
@@ -1140,10 +1568,15 @@
 			"か",
 			"じ"
 		],
-		"meaning": "Kebakaran ( Accident )"
+		"meaning": "Kebakaran",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			24
+		]
 	},
 	{
-		"id": 93,
+		"id": 89,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "水",
@@ -1152,10 +1585,15 @@
 			"ず"
 		],
 		"meaning": "Air",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			25
+		]
 	},
 	{
-		"id": 94,
+		"id": 90,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "水曜日",
@@ -1166,10 +1604,16 @@
 			"う",
 			"び"
 		],
-		"meaning": "Hari Rabu"
+		"meaning": "Hari Rabu",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			14,
+			25
+		]
 	},
 	{
-		"id": 95,
+		"id": 91,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "金",
@@ -1178,10 +1622,15 @@
 			"ん"
 		],
 		"meaning": "Emas",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			26
+		]
 	},
 	{
-		"id": 96,
+		"id": 92,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "お金",
@@ -1191,10 +1640,15 @@
 			"ね"
 		],
 		"meaning": "Uang",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			26
+		]
 	},
 	{
-		"id": 97,
+		"id": 93,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "金曜日",
@@ -1205,10 +1659,16 @@
 			"う",
 			"び"
 		],
-		"meaning": "Hari Jumat"
+		"meaning": "Hari Jumat",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			14,
+			26
+		]
 	},
 	{
-		"id": 98,
+		"id": 94,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "土",
@@ -1217,10 +1677,15 @@
 			"ち"
 		],
 		"meaning": "Tanah",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			27
+		]
 	},
 	{
-		"id": 99,
+		"id": 95,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "土曜日",
@@ -1230,10 +1695,74 @@
 			"う",
 			"び"
 		],
-		"meaning": "Hari Sabtu"
+		"meaning": "Hari Sabtu",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			14,
+			27
+		]
 	},
 	{
-		"id": 100,
+		"id": 96,
+		"chapter": 3,
+		"image": "30kr1n.png",
+		"rune": "子",
+		"spelling": [
+			"こ",
+			"ど",
+			"も"
+		],
+		"meaning": "Anak",
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			29
+		]
+	},
+	{
+		"id": 97,
+		"chapter": 3,
+		"image": "30kr1n.png",
+		"rune": "女の子",
+		"spelling": [
+			"お",
+			"ん",
+			"な",
+			"の",
+			"こ"
+		],
+		"meaning": "Anak Perempuan",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			28,
+			29
+		]
+	},
+	{
+		"id": 98,
+		"chapter": 3,
+		"image": "30kr1n.png",
+		"rune": "男の子",
+		"spelling": [
+			"お",
+			"と",
+			"こ",
+			"の",
+			"こ"
+		],
+		"meaning": "Anak Laki-laki",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			29,
+			50
+		]
+	},
+	{
+		"id": 99,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "女",
@@ -1243,10 +1772,15 @@
 			"な"
 		],
 		"meaning": "Perempuan",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			28
+		]
 	},
 	{
-		"id": 101,
+		"id": 100,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "女の人",
@@ -1258,10 +1792,16 @@
 			"ひ",
 			"と"
 		],
-		"meaning": "Orang perempuan"
+		"meaning": "Orang perempuan",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			20,
+			28
+		]
 	},
 	{
-		"id": 102,
+		"id": 101,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "彼女",
@@ -1270,66 +1810,15 @@
 			"の",
 			"じょ"
 		],
-		"meaning": "Dia (perempuan)"
+		"meaning": "Dia (perempuan)",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			28
+		]
 	},
 	{
-		"id": 103,
-		"chapter": 3,
-		"image": "30kr1n.png",
-		"rune": "子ども",
-		"spelling": [
-			"こ",
-			"ど",
-			"も"
-		],
-		"meaning": "Anak",
-		"is_single": true
-	},
-	{
-		"id": 104,
-		"chapter": 3,
-		"image": "30kr1n.png",
-		"rune": "女の子",
-		"spelling": [
-			"お",
-			"ん",
-			"な",
-			"の",
-			"こ"
-		],
-		"meaning": "Anak perempuan"
-	},
-	{
-		"id": 105,
-		"chapter": 3,
-		"image": "30kr1n.png",
-		"rune": "男の子",
-		"spelling": [
-			"お",
-			"と",
-			"こ",
-			"の",
-			"こ"
-		],
-		"meaning": "Anak laki-laki"
-	},
-	{
-		"id": 106,
-		"chapter": 3,
-		"image": "30kr1n.png",
-		"rune": "女子大学",
-		"spelling": [
-			"じょ",
-			"し",
-			"が",
-			"く",
-			"せ",
-			"い"
-		],
-		"meaning": "Murid perempuan"
-	},
-	{
-		"id": 107,
+		"id": 102,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "学生",
@@ -1339,10 +1828,16 @@
 			"せ",
 			"い"
 		],
-		"meaning": "Murid"
+		"meaning": "Murid",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			30,
+			31
+		]
 	},
 	{
-		"id": 108,
+		"id": 103,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "大学",
@@ -1352,10 +1847,16 @@
 			"が",
 			"く"
 		],
-		"meaning": "Universitas"
+		"meaning": "Universitas",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			30,
+			37
+		]
 	},
 	{
-		"id": 109,
+		"id": 104,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "学校",
@@ -1365,10 +1866,16 @@
 			"こ",
 			"う"
 		],
-		"meaning": "Sekolah"
+		"meaning": "Sekolah",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			30,
+			52
+		]
 	},
 	{
-		"id": 110,
+		"id": 105,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "生きる",
@@ -1378,10 +1885,15 @@
 			"る"
 		],
 		"meaning": "Hidup",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			31
+		]
 	},
 	{
-		"id": 111,
+		"id": 106,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "生まれる",
@@ -1391,10 +1903,33 @@
 			"れ",
 			"る"
 		],
-		"meaning": "Lahir"
+		"meaning": "Lahir",
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			31
+		]
 	},
 	{
-		"id": 112,
+		"id": 107,
+		"chapter": 3,
+		"image": "30kr1n.png",
+		"rune": "先",
+		"spelling": [
+			"さ",
+			"き"
+		],
+		"meaning": "Lebih dahulu",
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			32
+		]
+	},
+	{
+		"id": 108,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "先生",
@@ -1404,22 +1939,16 @@
 			"せ",
 			"い"
 		],
-		"meaning": "Guru"
+		"meaning": "Guru",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			31,
+			32
+		]
 	},
 	{
-		"id": 113,
-		"chapter": 3,
-		"image": "30kr1n.png",
-		"rune": "先",
-		"spelling": [
-			"さ",
-			"き"
-		],
-		"meaning": "Lebih dahulu",
-		"is_single": true
-	},
-	{
-		"id": 114,
+		"id": 109,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "先週",
@@ -1429,10 +1958,15 @@
 			"しゅ",
 			"う"
 		],
-		"meaning": "Minggu lalu"
+		"meaning": "Minggu lalu",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			32
+		]
 	},
 	{
-		"id": 115,
+		"id": 110,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "先月",
@@ -1442,10 +1976,16 @@
 			"げ",
 			"つ"
 		],
-		"meaning": "Bulan lalu"
+		"meaning": "Bulan lalu",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			15,
+			32
+		]
 	},
 	{
-		"id": 116,
+		"id": 111,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "私",
@@ -1455,10 +1995,15 @@
 			"し"
 		],
 		"meaning": "Saya",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			33
+		]
 	},
 	{
-		"id": 117,
+		"id": 112,
 		"chapter": 3,
 		"image": "30kr1n.png",
 		"rune": "私立大学",
@@ -1471,10 +2016,17 @@
 			"が",
 			"く"
 		],
-		"meaning": "Universitas Swasta"
+		"meaning": "Universitas Swasta",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			30,
+			33,
+			37
+		]
 	},
 	{
-		"id": 118,
+		"id": 113,
 		"chapter": 4,
 		"image": "30kr1n.png",
 		"rune": "上",
@@ -1483,10 +2035,15 @@
 			"え"
 		],
 		"meaning": "Atas",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			34
+		]
 	},
 	{
-		"id": 119,
+		"id": 114,
 		"chapter": 4,
 		"image": "30kr1n.png",
 		"rune": "上がる",
@@ -1495,10 +2052,15 @@
 			"が",
 			"る"
 		],
-		"meaning": "Mengangkat"
+		"meaning": "Naik/ Menaiki",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			34
+		]
 	},
 	{
-		"id": 120,
+		"id": 115,
 		"chapter": 4,
 		"image": "30kr1n.png",
 		"rune": "上手な",
@@ -1507,10 +2069,16 @@
 			"う",
 			"ず"
 		],
-		"meaning": "Mahir"
+		"meaning": "Mahir",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			34,
+			56
+		]
 	},
 	{
-		"id": 121,
+		"id": 116,
 		"chapter": 4,
 		"image": "30kr1n.png",
 		"rune": "下",
@@ -1519,10 +2087,15 @@
 			"た"
 		],
 		"meaning": "Bawah",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			35
+		]
 	},
 	{
-		"id": 122,
+		"id": 117,
 		"chapter": 4,
 		"image": "30kr1n.png",
 		"rune": "下がる",
@@ -1531,10 +2104,15 @@
 			"が",
 			"る"
 		],
-		"meaning": "Turun"
+		"meaning": "Turun/ Menurunkan",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			35
+		]
 	},
 	{
-		"id": 123,
+		"id": 118,
 		"chapter": 4,
 		"image": "30kr1n.png",
 		"rune": "地下",
@@ -1542,10 +2120,15 @@
 			"ち",
 			"か"
 		],
-		"meaning": "Bawah tanah"
+		"meaning": "Bawah Tanah",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			35
+		]
 	},
 	{
-		"id": 124,
+		"id": 119,
 		"chapter": 4,
 		"image": "30kr1n.png",
 		"rune": "中",
@@ -1554,10 +2137,15 @@
 			"か"
 		],
 		"meaning": "Dalam",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			36
+		]
 	},
 	{
-		"id": 125,
+		"id": 120,
 		"chapter": 4,
 		"image": "30kr1n.png",
 		"rune": "中学校",
@@ -1569,10 +2157,17 @@
 			"こ",
 			"う"
 		],
-		"meaning": "Sekolah Menengah Pertama"
+		"meaning": "Sekolah Menengah Pertama",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			30,
+			36,
+			52
+		]
 	},
 	{
-		"id": 126,
+		"id": 121,
 		"chapter": 4,
 		"image": "30kr1n.png",
 		"rune": "中学生",
@@ -1584,10 +2179,17 @@
 			"せ",
 			"い"
 		],
-		"meaning": "Murid SMP"
+		"meaning": "Murid SMP",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			30,
+			31,
+			36
+		]
 	},
 	{
-		"id": 127,
+		"id": 122,
 		"chapter": 4,
 		"image": "30kr1n.png",
 		"rune": "大きい",
@@ -1598,10 +2200,15 @@
 			"い"
 		],
 		"meaning": "Besar",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			37
+		]
 	},
 	{
-		"id": 128,
+		"id": 123,
 		"chapter": 4,
 		"image": "30kr1n.png",
 		"rune": "大人",
@@ -1610,10 +2217,16 @@
 			"と",
 			"な"
 		],
-		"meaning": "Orang dewasa"
+		"meaning": "Orang dewasa",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			20,
+			37
+		]
 	},
 	{
-		"id": 129,
+		"id": 124,
 		"chapter": 4,
 		"image": "30kr1n.png",
 		"rune": "小さい",
@@ -1624,10 +2237,15 @@
 			"い"
 		],
 		"meaning": "Kecil",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			38
+		]
 	},
 	{
-		"id": 130,
+		"id": 125,
 		"chapter": 4,
 		"image": "30kr1n.png",
 		"rune": "小学校",
@@ -1639,10 +2257,17 @@
 			"こ",
 			"う"
 		],
-		"meaning": "Sekolah Dasar"
+		"meaning": "Sekolah Dasar",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			30,
+			38,
+			52
+		]
 	},
 	{
-		"id": 131,
+		"id": 126,
 		"chapter": 4,
 		"image": "30kr1n.png",
 		"rune": "本",
@@ -1651,23 +2276,15 @@
 			"ん"
 		],
 		"meaning": "Buku",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			39
+		]
 	},
 	{
-		"id": 132,
-		"chapter": 4,
-		"image": "30kr1n.png",
-		"rune": "本日",
-		"spelling": [
-			"ほ",
-			"ん",
-			"じ",
-			"つ"
-		],
-		"meaning": "Hari ini (sangat formal)"
-	},
-	{
-		"id": 133,
+		"id": 127,
 		"chapter": 4,
 		"image": "30kr1n.png",
 		"rune": "本店",
@@ -1677,10 +2294,15 @@
 			"て",
 			"ん"
 		],
-		"meaning": "Kantor pusat"
+		"meaning": "Kantor pusat",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			39
+		]
 	},
 	{
-		"id": 134,
+		"id": 128,
 		"chapter": 4,
 		"image": "30kr1n.png",
 		"rune": "本屋",
@@ -1689,10 +2311,15 @@
 			"ん",
 			"や"
 		],
-		"meaning": "Toko buku"
+		"meaning": "Toko buku",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			39
+		]
 	},
 	{
-		"id": 135,
+		"id": 129,
 		"chapter": 4,
 		"image": "30kr1n.png",
 		"rune": "半分",
@@ -1702,24 +2329,36 @@
 			"ぶ",
 			"ん"
 		],
-		"meaning": "Setengah bagian"
+		"meaning": "Setengah bagian",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			40,
+			41
+		]
 	},
 	{
-		"id": 136,
+		"id": 130,
 		"chapter": 4,
 		"image": "30kr1n.png",
 		"rune": "三時半",
 		"spelling": [
-			"サ",
-			"ン",
+			"さ",
+			"ん",
 			"じ",
 			"は",
 			"ん"
 		],
-		"meaning": "Pukul 3.30"
+		"meaning": "Pukul 3.30",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			3,
+			40
+		]
 	},
 	{
-		"id": 137,
+		"id": 131,
 		"chapter": 4,
 		"image": "30kr1n.png",
 		"rune": "半年",
@@ -1729,23 +2368,15 @@
 			"と",
 			"し"
 		],
-		"meaning": "Setengah tahun"
+		"meaning": "Setengah tahun",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			40
+		]
 	},
 	{
-		"id": 138,
-		"chapter": 4,
-		"image": "30kr1n.png",
-		"rune": "半日",
-		"spelling": [
-			"は",
-			"ん",
-			"に",
-			"ち"
-		],
-		"meaning": "Setengah hari"
-	},
-	{
-		"id": 139,
+		"id": 132,
 		"chapter": 4,
 		"image": "30kr1n.png",
 		"rune": "分ける",
@@ -1754,10 +2385,15 @@
 			"け",
 			"る"
 		],
-		"meaning": "Membagi"
+		"meaning": "Membagi",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			41
+		]
 	},
 	{
-		"id": 140,
+		"id": 133,
 		"chapter": 4,
 		"image": "30kr1n.png",
 		"rune": "分かる",
@@ -1766,10 +2402,15 @@
 			"か",
 			"る"
 		],
-		"meaning": "Mengerti"
+		"meaning": "Mengerti",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			41
+		]
 	},
 	{
-		"id": 141,
+		"id": 134,
 		"chapter": 4,
 		"image": "30kr1n.png",
 		"rune": "五分",
@@ -1778,10 +2419,16 @@
 			"ふ",
 			"ん"
 		],
-		"meaning": "5 Menit"
+		"meaning": "5 Menit",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			5,
+			41
+		]
 	},
 	{
-		"id": 142,
+		"id": 135,
 		"chapter": 4,
 		"image": "30kr1n.png",
 		"rune": "六分",
@@ -1791,10 +2438,16 @@
 			"ぷ",
 			"ん"
 		],
-		"meaning": "6 Menit"
+		"meaning": "6 Menit",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			6,
+			41
+		]
 	},
 	{
-		"id": 143,
+		"id": 136,
 		"chapter": 4,
 		"image": "30kr1n.png",
 		"rune": "力",
@@ -1803,11 +2456,16 @@
 			"か",
 			"ら"
 		],
-		"meaning": "Tenaga",
-		"is_single": true
+		"meaning": "Kekuatan",
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			42
+		]
 	},
 	{
-		"id": 144,
+		"id": 137,
 		"chapter": 4,
 		"image": "30kr1n.png",
 		"rune": "水力",
@@ -1817,10 +2475,16 @@
 			"りょ",
 			"く"
 		],
-		"meaning": "Tenaga air"
+		"meaning": "Tenaga air",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			25,
+			42
+		]
 	},
 	{
-		"id": 145,
+		"id": 138,
 		"chapter": 4,
 		"image": "30kr1n.png",
 		"rune": "火力",
@@ -1829,10 +2493,16 @@
 			"りょ",
 			"く"
 		],
-		"meaning": "Tenaga panas"
+		"meaning": "Tenaga panas",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			24,
+			42
+		]
 	},
 	{
-		"id": 146,
+		"id": 139,
 		"chapter": 4,
 		"image": "30kr1n.png",
 		"rune": "何",
@@ -1841,10 +2511,15 @@
 			"に"
 		],
 		"meaning": "Apa?",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			43
+		]
 	},
 	{
-		"id": 147,
+		"id": 140,
 		"chapter": 4,
 		"image": "30kr1n.png",
 		"rune": "何ですか",
@@ -1855,10 +2530,15 @@
 			"す",
 			"か"
 		],
-		"meaning": "Apa itu?"
+		"meaning": "Apa itu?",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			43
+		]
 	},
 	{
-		"id": 148,
+		"id": 141,
 		"chapter": 4,
 		"image": "30kr1n.png",
 		"rune": "何人",
@@ -1868,10 +2548,16 @@
 			"に",
 			"ん"
 		],
-		"meaning": "Berapa orang?"
+		"meaning": "Berapa orang?",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			20,
+			43
+		]
 	},
 	{
-		"id": 149,
+		"id": 142,
 		"chapter": 4,
 		"image": "30kr1n.png",
 		"rune": "何年",
@@ -1881,10 +2567,15 @@
 			"ね",
 			"ん"
 		],
-		"meaning": "Tahun berapa?"
+		"meaning": "Tahun berapa?",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			43
+		]
 	},
 	{
-		"id": 150,
+		"id": 143,
 		"chapter": 5,
 		"image": "30kr1n.png",
 		"rune": "明るい",
@@ -1895,10 +2586,15 @@
 			"い"
 		],
 		"meaning": "Terang",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			44
+		]
 	},
 	{
-		"id": 151,
+		"id": 144,
 		"chapter": 5,
 		"image": "30kr1n.png",
 		"rune": "明日",
@@ -1907,10 +2603,16 @@
 			"し",
 			"た"
 		],
-		"meaning": "Besok"
+		"meaning": "Besok",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			14,
+			44
+		]
 	},
 	{
-		"id": 152,
+		"id": 145,
 		"chapter": 5,
 		"image": "30kr1n.png",
 		"rune": "説明する",
@@ -1922,10 +2624,15 @@
 			"す",
 			"る"
 		],
-		"meaning": "Menjelaskan"
+		"meaning": "Menjelaskan",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			44
+		]
 	},
 	{
-		"id": 153,
+		"id": 146,
 		"chapter": 5,
 		"image": "30kr1n.png",
 		"rune": "休む",
@@ -1935,10 +2642,15 @@
 			"む"
 		],
 		"meaning": "Beristirahat",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			45
+		]
 	},
 	{
-		"id": 154,
+		"id": 147,
 		"chapter": 5,
 		"image": "30kr1n.png",
 		"rune": "休日",
@@ -1948,10 +2660,16 @@
 			"じ",
 			"つ"
 		],
-		"meaning": "Hari libur"
+		"meaning": "Hari libur",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			14,
+			45
+		]
 	},
 	{
-		"id": 155,
+		"id": 148,
 		"chapter": 5,
 		"image": "30kr1n.png",
 		"rune": "体",
@@ -1961,10 +2679,15 @@
 			"だ"
 		],
 		"meaning": "Tubuh",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			46
+		]
 	},
 	{
-		"id": 156,
+		"id": 149,
 		"chapter": 5,
 		"image": "30kr1n.png",
 		"rune": "体力",
@@ -1974,10 +2697,16 @@
 			"りょ",
 			"く"
 		],
-		"meaning": "Kesehatan fisik"
+		"meaning": "Kesehatan fisik",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			42,
+			46
+		]
 	},
 	{
-		"id": 157,
+		"id": 150,
 		"chapter": 5,
 		"image": "30kr1n.png",
 		"rune": "体育",
@@ -1987,10 +2716,15 @@
 			"い",
 			"く"
 		],
-		"meaning": "Pendidikan Jasmani"
+		"meaning": "Pendidikan Jasmani",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			46
+		]
 	},
 	{
-		"id": 158,
+		"id": 151,
 		"chapter": 5,
 		"image": "30kr1n.png",
 		"rune": "好きな",
@@ -2000,10 +2734,15 @@
 			"な"
 		],
 		"meaning": "Suka",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			47
+		]
 	},
 	{
-		"id": 159,
+		"id": 152,
 		"chapter": 5,
 		"image": "30kr1n.png",
 		"rune": "林",
@@ -2013,10 +2752,15 @@
 			"し"
 		],
 		"meaning": "Pepohonan",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			48
+		]
 	},
 	{
-		"id": 160,
+		"id": 153,
 		"chapter": 5,
 		"image": "30kr1n.png",
 		"rune": "森林",
@@ -2026,10 +2770,16 @@
 			"り",
 			"ん"
 		],
-		"meaning": "Hutan rimba"
+		"meaning": "Hutan rimba",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			48,
+			49
+		]
 	},
 	{
-		"id": 161,
+		"id": 154,
 		"chapter": 5,
 		"image": "30kr1n.png",
 		"rune": "森",
@@ -2038,10 +2788,15 @@
 			"り"
 		],
 		"meaning": "Hutan",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			49
+		]
 	},
 	{
-		"id": 162,
+		"id": 155,
 		"chapter": 5,
 		"image": "30kr1n.png",
 		"rune": "男",
@@ -2051,10 +2806,15 @@
 			"こ"
 		],
 		"meaning": "Laki-laki",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			50
+		]
 	},
 	{
-		"id": 163,
+		"id": 156,
 		"chapter": 5,
 		"image": "30kr1n.png",
 		"rune": "男の人",
@@ -2066,10 +2826,16 @@
 			"ひ",
 			"と"
 		],
-		"meaning": "Orang laki-laki"
+		"meaning": "Orang laki-laki",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			20,
+			50
+		]
 	},
 	{
-		"id": 164,
+		"id": 157,
 		"chapter": 5,
 		"image": "30kr1n.png",
 		"rune": "長男",
@@ -2079,10 +2845,15 @@
 			"な",
 			"ん"
 		],
-		"meaning": "Anak putra tertua"
+		"meaning": "Anak putra tertua",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			50
+		]
 	},
 	{
-		"id": 165,
+		"id": 158,
 		"chapter": 5,
 		"image": "30kr1n.png",
 		"rune": "間",
@@ -2092,10 +2863,15 @@
 			"だ"
 		],
 		"meaning": "Di antara dua hal",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			51
+		]
 	},
 	{
-		"id": 166,
+		"id": 159,
 		"chapter": 5,
 		"image": "30kr1n.png",
 		"rune": "間に合う",
@@ -2105,10 +2881,15 @@
 			"あ",
 			"う"
 		],
-		"meaning": "Tepat waktu"
+		"meaning": "Tepat waktu",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			51
+		]
 	},
 	{
-		"id": 167,
+		"id": 160,
 		"chapter": 5,
 		"image": "30kr1n.png",
 		"rune": "一年間",
@@ -2120,10 +2901,16 @@
 			"か",
 			"ん"
 		],
-		"meaning": "1 tahun"
+		"meaning": "1 tahun",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			1,
+			51
+		]
 	},
 	{
-		"id": 168,
+		"id": 161,
 		"chapter": 5,
 		"image": "30kr1n.png",
 		"rune": "時間",
@@ -2132,10 +2919,15 @@
 			"か",
 			"ん"
 		],
-		"meaning": "Waktu"
+		"meaning": "Waktu",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			51
+		]
 	},
 	{
-		"id": 169,
+		"id": 162,
 		"chapter": 5,
 		"image": "30kr1n.png",
 		"rune": "高校",
@@ -2145,10 +2937,15 @@
 			"こ",
 			"う"
 		],
-		"meaning": "Sekolah Menengah Atas"
+		"meaning": "Sekolah Menengah Atas",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			52
+		]
 	},
 	{
-		"id": 170,
+		"id": 163,
 		"chapter": 5,
 		"image": "30kr1n.png",
 		"rune": "高校生",
@@ -2160,10 +2957,16 @@
 			"せ",
 			"い"
 		],
-		"meaning": "Murid SMA"
+		"meaning": "Murid SMA",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			31,
+			52
+		]
 	},
 	{
-		"id": 171,
+		"id": 164,
 		"chapter": 5,
 		"image": "30kr1n.png",
 		"rune": "校長",
@@ -2173,23 +2976,32 @@
 			"ちょ",
 			"う"
 		],
-		"meaning": "Kepala Sekolah"
+		"meaning": "Kepala Sekolah",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			52
+		]
 	},
 	{
-		"id": 172,
+		"id": 165,
 		"chapter": 5,
 		"image": "30kr1n.png",
 		"rune": "国",
 		"spelling": [
-			"は",
-			"た",
-			"け"
+			"く",
+			"に"
 		],
 		"meaning": "Negara",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			53
+		]
 	},
 	{
-		"id": 173,
+		"id": 166,
 		"chapter": 5,
 		"image": "30kr1n.png",
 		"rune": "外国人",
@@ -2201,10 +3013,16 @@
 			"じ",
 			"ん"
 		],
-		"meaning": "Orang asing"
+		"meaning": "Orang asing",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			20,
+			53
+		]
 	},
 	{
-		"id": 174,
+		"id": 167,
 		"chapter": 5,
 		"image": "30kr1n.png",
 		"rune": "中国",
@@ -2214,10 +3032,16 @@
 			"ご",
 			"く"
 		],
-		"meaning": "China"
+		"meaning": "Tiongkok",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			36,
+			53
+		]
 	},
 	{
-		"id": 175,
+		"id": 168,
 		"chapter": 6,
 		"image": "30kr1n.png",
 		"rune": "目",
@@ -2225,10 +3049,15 @@
 			"め"
 		],
 		"meaning": "Mata",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			54
+		]
 	},
 	{
-		"id": 176,
+		"id": 169,
 		"chapter": 6,
 		"image": "30kr1n.png",
 		"rune": "目次",
@@ -2237,10 +3066,15 @@
 			"く",
 			"じ"
 		],
-		"meaning": "Daftar isi"
+		"meaning": "Daftar isi",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			54
+		]
 	},
 	{
-		"id": 177,
+		"id": 170,
 		"chapter": 6,
 		"image": "30kr1n.png",
 		"rune": "耳",
@@ -2249,10 +3083,15 @@
 			"み"
 		],
 		"meaning": "Telinga",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			55
+		]
 	},
 	{
-		"id": 178,
+		"id": 171,
 		"chapter": 6,
 		"image": "30kr1n.png",
 		"rune": "手",
@@ -2260,10 +3099,15 @@
 			"て"
 		],
 		"meaning": "Tangan",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			56
+		]
 	},
 	{
-		"id": 179,
+		"id": 172,
 		"chapter": 6,
 		"image": "30kr1n.png",
 		"rune": "手紙",
@@ -2272,10 +3116,15 @@
 			"が",
 			"み"
 		],
-		"meaning": "Surat"
+		"meaning": "Surat",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			56
+		]
 	},
 	{
-		"id": 180,
+		"id": 173,
 		"chapter": 6,
 		"image": "30kr1n.png",
 		"rune": "歌手",
@@ -2283,22 +3132,15 @@
 			"か",
 			"しゅ"
 		],
-		"meaning": "Penyanyi"
+		"meaning": "Penyanyi",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			56
+		]
 	},
 	{
-		"id": 181,
-		"chapter": 6,
-		"image": "30kr1n.png",
-		"rune": "上手",
-		"spelling": [
-			"じょ",
-			"う",
-			"ず"
-		],
-		"meaning": "Mahir"
-	},
-	{
-		"id": 182,
+		"id": 174,
 		"chapter": 6,
 		"image": "30kr1n.png",
 		"rune": "足",
@@ -2307,23 +3149,15 @@
 			"し"
 		],
 		"meaning": "Kaki",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			57
+		]
 	},
 	{
-		"id": 183,
-		"chapter": 6,
-		"image": "30kr1n.png",
-		"rune": "二足",
-		"spelling": [
-			"に",
-			"そ",
-			"く"
-		],
-		"meaning": "2 Pasang",
-		"needs_check": true
-	},
-	{
-		"id": 184,
+		"id": 175,
 		"chapter": 6,
 		"image": "30kr1n.png",
 		"rune": "雨",
@@ -2332,10 +3166,15 @@
 			"め"
 		],
 		"meaning": "Hujan",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			58
+		]
 	},
 	{
-		"id": 185,
+		"id": 176,
 		"chapter": 6,
 		"image": "30kr1n.png",
 		"rune": "大雨",
@@ -2345,10 +3184,16 @@
 			"あ",
 			"め"
 		],
-		"meaning": "Hujan lebat"
+		"meaning": "Hujan lebat",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			37,
+			58
+		]
 	},
 	{
-		"id": 186,
+		"id": 177,
 		"chapter": 6,
 		"image": "30kr1n.png",
 		"rune": "雨天",
@@ -2357,10 +3202,15 @@
 			"て",
 			"ん"
 		],
-		"meaning": "Cuaca hujan"
+		"meaning": "Cuaca hujan",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			58
+		]
 	},
 	{
-		"id": 187,
+		"id": 178,
 		"chapter": 6,
 		"image": "30kr1n.png",
 		"rune": "竹",
@@ -2369,10 +3219,15 @@
 			"け"
 		],
 		"meaning": "Bambu",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			59
+		]
 	},
 	{
-		"id": 188,
+		"id": 179,
 		"chapter": 6,
 		"image": "30kr1n.png",
 		"rune": "竹の子",
@@ -2382,10 +3237,16 @@
 			"の",
 			"こ"
 		],
-		"meaning": "Tebu"
+		"meaning": "Tebu",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			29,
+			59
+		]
 	},
 	{
-		"id": 189,
+		"id": 180,
 		"chapter": 6,
 		"image": "30kr1n.png",
 		"rune": "米",
@@ -2394,10 +3255,15 @@
 			"め"
 		],
 		"meaning": "Beras",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			60
+		]
 	},
 	{
-		"id": 190,
+		"id": 181,
 		"chapter": 6,
 		"image": "30kr1n.png",
 		"rune": "新米",
@@ -2407,10 +3273,15 @@
 			"ま",
 			"い"
 		],
-		"meaning": "Beras baru"
+		"meaning": "Beras baru",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			60
+		]
 	},
 	{
-		"id": 191,
+		"id": 182,
 		"chapter": 6,
 		"image": "30kr1n.png",
 		"rune": "米国",
@@ -2420,10 +3291,16 @@
 			"こ",
 			"く"
 		],
-		"meaning": "Amerika Serikat"
+		"meaning": "Amerika Serikat",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			53,
+			60
+		]
 	},
 	{
-		"id": 192,
+		"id": 183,
 		"chapter": 6,
 		"image": "30kr1n.png",
 		"rune": "中米",
@@ -2433,10 +3310,16 @@
 			"べ",
 			"い"
 		],
-		"meaning": "Amerika tengah"
+		"meaning": "Amerika tengah",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			36,
+			60
+		]
 	},
 	{
-		"id": 193,
+		"id": 184,
 		"chapter": 6,
 		"image": "30kr1n.png",
 		"rune": "貝",
@@ -2445,10 +3328,15 @@
 			"い"
 		],
 		"meaning": "Kerang",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			61
+		]
 	},
 	{
-		"id": 194,
+		"id": 185,
 		"chapter": 6,
 		"image": "30kr1n.png",
 		"rune": "石",
@@ -2457,10 +3345,15 @@
 			"し"
 		],
 		"meaning": "Batu",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			62
+		]
 	},
 	{
-		"id": 195,
+		"id": 186,
 		"chapter": 6,
 		"image": "30kr1n.png",
 		"rune": "石油",
@@ -2469,10 +3362,15 @@
 			"き",
 			"ゆ"
 		],
-		"meaning": "Minyak bumi"
+		"meaning": "Minyak bumi",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			62
+		]
 	},
 	{
-		"id": 196,
+		"id": 187,
 		"chapter": 6,
 		"image": "30kr1n.png",
 		"rune": "化石",
@@ -2481,10 +3379,15 @@
 			"せ",
 			"き"
 		],
-		"meaning": "Fosil"
+		"meaning": "Fosil",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			62
+		]
 	},
 	{
-		"id": 197,
+		"id": 188,
 		"chapter": 6,
 		"image": "30kr1n.png",
 		"rune": "糸",
@@ -2493,22 +3396,15 @@
 			"と"
 		],
 		"meaning": "Benang",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			63
+		]
 	},
 	{
-		"id": 198,
-		"chapter": 6,
-		"image": "30kr1n.png",
-		"rune": "毛糸",
-		"spelling": [
-			"け",
-			"い",
-			"と"
-		],
-		"meaning": "Benang wol"
-	},
-	{
-		"id": 199,
+		"id": 189,
 		"chapter": 7,
 		"image": "30kr1n.png",
 		"rune": "花",
@@ -2517,10 +3413,15 @@
 			"な"
 		],
 		"meaning": "Bunga",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			64
+		]
 	},
 	{
-		"id": 200,
+		"id": 190,
 		"chapter": 7,
 		"image": "30kr1n.png",
 		"rune": "花火",
@@ -2529,10 +3430,16 @@
 			"な",
 			"び"
 		],
-		"meaning": "Kembang api"
+		"meaning": "Kembang api",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			24,
+			64
+		]
 	},
 	{
-		"id": 201,
+		"id": 191,
 		"chapter": 7,
 		"image": "30kr1n.png",
 		"rune": "お茶",
@@ -2541,10 +3448,15 @@
 			"ちゃ"
 		],
 		"meaning": "Teh",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			65
+		]
 	},
 	{
-		"id": 202,
+		"id": 192,
 		"chapter": 7,
 		"image": "30kr1n.png",
 		"rune": "紅茶",
@@ -2553,10 +3465,15 @@
 			"う",
 			"ちゃ"
 		],
-		"meaning": "Teh hitam"
+		"meaning": "Teh hitam",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			65
+		]
 	},
 	{
-		"id": 203,
+		"id": 193,
 		"chapter": 7,
 		"image": "30kr1n.png",
 		"rune": "肉",
@@ -2565,10 +3482,15 @@
 			"く"
 		],
 		"meaning": "Daging",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			66
+		]
 	},
 	{
-		"id": 204,
+		"id": 194,
 		"chapter": 7,
 		"image": "30kr1n.png",
 		"rune": "鳥肉",
@@ -2578,10 +3500,16 @@
 			"に",
 			"く"
 		],
-		"meaning": "Daging ayam"
+		"meaning": "Daging ayam",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			66,
+			72
+		]
 	},
 	{
-		"id": 205,
+		"id": 195,
 		"chapter": 7,
 		"image": "30kr1n.png",
 		"rune": "牛肉",
@@ -2591,10 +3519,16 @@
 			"に",
 			"く"
 		],
-		"meaning": "Daging sapi"
+		"meaning": "Daging sapi",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			66,
+			70
+		]
 	},
 	{
-		"id": 206,
+		"id": 196,
 		"chapter": 7,
 		"image": "30kr1n.png",
 		"rune": "赤い",
@@ -2604,10 +3538,15 @@
 			"い"
 		],
 		"meaning": "Merah",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			67
+		]
 	},
 	{
-		"id": 207,
+		"id": 197,
 		"chapter": 7,
 		"image": "30kr1n.png",
 		"rune": "赤ちゃん",
@@ -2617,10 +3556,15 @@
 			"ちゃ",
 			"ん"
 		],
-		"meaning": "Bayi"
+		"meaning": "Bayi",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			67
+		]
 	},
 	{
-		"id": 208,
+		"id": 198,
 		"chapter": 7,
 		"image": "30kr1n.png",
 		"rune": "白い",
@@ -2630,10 +3574,15 @@
 			"い"
 		],
 		"meaning": "Putih",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			68
+		]
 	},
 	{
-		"id": 209,
+		"id": 199,
 		"chapter": 7,
 		"image": "30kr1n.png",
 		"rune": "白米",
@@ -2643,10 +3592,16 @@
 			"ま",
 			"い"
 		],
-		"meaning": "Beras putih"
+		"meaning": "Beras putih",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			60,
+			68
+		]
 	},
 	{
-		"id": 210,
+		"id": 200,
 		"chapter": 7,
 		"image": "30kr1n.png",
 		"rune": "物",
@@ -2654,11 +3609,16 @@
 			"も",
 			"の"
 		],
-		"meaning": "Hal",
-		"is_single": true
+		"meaning": "Barang",
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			69
+		]
 	},
 	{
-		"id": 211,
+		"id": 201,
 		"chapter": 7,
 		"image": "30kr1n.png",
 		"rune": "買い物",
@@ -2668,10 +3628,16 @@
 			"も",
 			"の"
 		],
-		"meaning": "Belanjaan"
+		"meaning": "Belanjaan",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			69,
+			83
+		]
 	},
 	{
-		"id": 212,
+		"id": 202,
 		"chapter": 7,
 		"image": "30kr1n.png",
 		"rune": "荷物",
@@ -2680,10 +3646,15 @@
 			"も",
 			"つ"
 		],
-		"meaning": "Koper Bawaan"
+		"meaning": "Barang bawaan",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			69
+		]
 	},
 	{
-		"id": 213,
+		"id": 203,
 		"chapter": 7,
 		"image": "30kr1n.png",
 		"rune": "牛",
@@ -2692,10 +3663,15 @@
 			"し"
 		],
 		"meaning": "Sapi",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			70
+		]
 	},
 	{
-		"id": 214,
+		"id": 204,
 		"chapter": 7,
 		"image": "30kr1n.png",
 		"rune": "子牛",
@@ -2704,10 +3680,16 @@
 			"う",
 			"し"
 		],
-		"meaning": "Anak sapi"
+		"meaning": "Anak sapi",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			29,
+			70
+		]
 	},
 	{
-		"id": 215,
+		"id": 205,
 		"chapter": 7,
 		"image": "30kr1n.png",
 		"rune": "牛乳",
@@ -2717,10 +3699,15 @@
 			"にゅ",
 			"う"
 		],
-		"meaning": "Susu"
+		"meaning": "Susu",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			70
+		]
 	},
 	{
-		"id": 216,
+		"id": 206,
 		"chapter": 7,
 		"image": "30kr1n.png",
 		"rune": "馬",
@@ -2729,10 +3716,15 @@
 			"ま"
 		],
 		"meaning": "Kuda",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			71
+		]
 	},
 	{
-		"id": 217,
+		"id": 207,
 		"chapter": 7,
 		"image": "30kr1n.png",
 		"rune": "馬車",
@@ -2740,10 +3732,16 @@
 			"ば",
 			"しゃ"
 		],
-		"meaning": "Kereta Kuda"
+		"meaning": "Kereta Kuda",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			22,
+			71
+		]
 	},
 	{
-		"id": 218,
+		"id": 208,
 		"chapter": 7,
 		"image": "30kr1n.png",
 		"rune": "鳥",
@@ -2751,11 +3749,16 @@
 			"と",
 			"り"
 		],
-		"meaning": "Burung",
-		"is_single": true
+		"meaning": "Burung/ Unggas",
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			72
+		]
 	},
 	{
-		"id": 219,
+		"id": 209,
 		"chapter": 7,
 		"image": "30kr1n.png",
 		"rune": "焼き鳥",
@@ -2765,10 +3768,15 @@
 			"と",
 			"り"
 		],
-		"meaning": "Ayam bakar"
+		"meaning": "Ayam bakar",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			72
+		]
 	},
 	{
-		"id": 220,
+		"id": 210,
 		"chapter": 7,
 		"image": "30kr1n.png",
 		"rune": "白鳥",
@@ -2778,10 +3786,16 @@
 			"ちょ",
 			"う"
 		],
-		"meaning": "Angsa"
+		"meaning": "Angsa",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			68,
+			72
+		]
 	},
 	{
-		"id": 221,
+		"id": 211,
 		"chapter": 7,
 		"image": "30kr1n.png",
 		"rune": "魚",
@@ -2791,10 +3805,15 @@
 			"な"
 		],
 		"meaning": "Ikan",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			73
+		]
 	},
 	{
-		"id": 222,
+		"id": 212,
 		"chapter": 7,
 		"image": "30kr1n.png",
 		"rune": "魚屋",
@@ -2804,10 +3823,15 @@
 			"な",
 			"や"
 		],
-		"meaning": "Toko ikan"
+		"meaning": "Toko ikan",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			73
+		]
 	},
 	{
-		"id": 223,
+		"id": 213,
 		"chapter": 7,
 		"image": "30kr1n.png",
 		"rune": "焼き魚",
@@ -2818,10 +3842,15 @@
 			"か",
 			"な"
 		],
-		"meaning": "Ikan bakar"
+		"meaning": "Ikan bakar",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			73
+		]
 	},
 	{
-		"id": 224,
+		"id": 214,
 		"chapter": 7,
 		"image": "30kr1n.png",
 		"rune": "金魚",
@@ -2830,25 +3859,33 @@
 			"ん",
 			"ぎょ"
 		],
-		"meaning": "Ikan mas"
+		"meaning": "Ikan mas",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			26,
+			73
+		]
 	},
 	{
-		"id": 225,
+		"id": 215,
 		"chapter": 8,
 		"image": "30kr1n.png",
 		"rune": "行く",
 		"spelling": [
-			"あ",
-			"た",
-			"ら",
-			"し",
-			"い"
+			"い",
+			"く"
 		],
 		"meaning": "Pergi",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			74
+		]
 	},
 	{
-		"id": 226,
+		"id": 216,
 		"chapter": 8,
 		"image": "30kr1n.png",
 		"rune": "旅行する",
@@ -2859,10 +3896,15 @@
 			"す",
 			"る"
 		],
-		"meaning": "Bepergian"
+		"meaning": "Bepergian",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			74
+		]
 	},
 	{
-		"id": 227,
+		"id": 217,
 		"chapter": 8,
 		"image": "30kr1n.png",
 		"rune": "来る",
@@ -2871,10 +3913,15 @@
 			"る"
 		],
 		"meaning": "Datang",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			75
+		]
 	},
 	{
-		"id": 228,
+		"id": 218,
 		"chapter": 8,
 		"image": "30kr1n.png",
 		"rune": "来月",
@@ -2884,10 +3931,34 @@
 			"げ",
 			"つ"
 		],
-		"meaning": "Bulan depan"
+		"meaning": "Bulan depan",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			15,
+			75
+		]
 	},
 	{
-		"id": 229,
+		"id": 219,
+		"chapter": 8,
+		"image": "30kr1n.png",
+		"rune": "来年",
+		"spelling": [
+			"ら",
+			"い",
+			"ね",
+			"ん"
+		],
+		"meaning": "Tahun depan",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			75
+		]
+	},
+	{
+		"id": 220,
 		"chapter": 8,
 		"image": "30kr1n.png",
 		"rune": "食べる",
@@ -2897,10 +3968,15 @@
 			"る"
 		],
 		"meaning": "Makan",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			76
+		]
 	},
 	{
-		"id": 230,
+		"id": 221,
 		"chapter": 8,
 		"image": "30kr1n.png",
 		"rune": "食べ物",
@@ -2910,10 +3986,16 @@
 			"も",
 			"の"
 		],
-		"meaning": "Makanan"
+		"meaning": "Makanan",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			69,
+			76
+		]
 	},
 	{
-		"id": 231,
+		"id": 222,
 		"chapter": 8,
 		"image": "30kr1n.png",
 		"rune": "食事",
@@ -2922,10 +4004,15 @@
 			"く",
 			"じ"
 		],
-		"meaning": "Makanan (meal)"
+		"meaning": "Makanan (meal)",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			76
+		]
 	},
 	{
-		"id": 232,
+		"id": 223,
 		"chapter": 8,
 		"image": "30kr1n.png",
 		"rune": "飲む",
@@ -2934,10 +4021,15 @@
 			"む"
 		],
 		"meaning": "Minum",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			77
+		]
 	},
 	{
-		"id": 233,
+		"id": 224,
 		"chapter": 8,
 		"image": "30kr1n.png",
 		"rune": "飲み物",
@@ -2947,10 +4039,16 @@
 			"も",
 			"の"
 		],
-		"meaning": "Minuman"
+		"meaning": "Minuman",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			69,
+			77
+		]
 	},
 	{
-		"id": 234,
+		"id": 225,
 		"chapter": 8,
 		"image": "30kr1n.png",
 		"rune": "見る",
@@ -2959,10 +4057,15 @@
 			"る"
 		],
 		"meaning": "Lihat",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			78
+		]
 	},
 	{
-		"id": 235,
+		"id": 226,
 		"chapter": 8,
 		"image": "30kr1n.png",
 		"rune": "見せる",
@@ -2971,10 +4074,15 @@
 			"せ",
 			"る"
 		],
-		"meaning": "Memperlihatkan"
+		"meaning": "Memperlihatkan",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			78
+		]
 	},
 	{
-		"id": 236,
+		"id": 227,
 		"chapter": 8,
 		"image": "30kr1n.png",
 		"rune": "意見",
@@ -2983,10 +4091,15 @@
 			"け",
 			"ん"
 		],
-		"meaning": "Pendapat"
+		"meaning": "Pendapat",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			78
+		]
 	},
 	{
-		"id": 237,
+		"id": 228,
 		"chapter": 8,
 		"image": "30kr1n.png",
 		"rune": "見物する",
@@ -2998,10 +4111,16 @@
 			"す",
 			"る"
 		],
-		"meaning": "Melihat-lihat"
+		"meaning": "Melihat-lihat",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			69,
+			78
+		]
 	},
 	{
-		"id": 238,
+		"id": 229,
 		"chapter": 8,
 		"image": "30kr1n.png",
 		"rune": "聞く",
@@ -3010,10 +4129,15 @@
 			"く"
 		],
 		"meaning": "Dengar",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			79
+		]
 	},
 	{
-		"id": 239,
+		"id": 230,
 		"chapter": 8,
 		"image": "30kr1n.png",
 		"rune": "聞こえる",
@@ -3023,10 +4147,15 @@
 			"え",
 			"る"
 		],
-		"meaning": "Terdengar"
+		"meaning": "Terdengar",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			79
+		]
 	},
 	{
-		"id": 240,
+		"id": 231,
 		"chapter": 8,
 		"image": "30kr1n.png",
 		"rune": "新聞",
@@ -3036,10 +4165,15 @@
 			"ぶ",
 			"ん"
 		],
-		"meaning": "Koran"
+		"meaning": "Koran",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			79
+		]
 	},
 	{
-		"id": 241,
+		"id": 232,
 		"chapter": 8,
 		"image": "30kr1n.png",
 		"rune": "読む",
@@ -3048,10 +4182,15 @@
 			"む"
 		],
 		"meaning": "Baca",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			80
+		]
 	},
 	{
-		"id": 242,
+		"id": 233,
 		"chapter": 8,
 		"image": "30kr1n.png",
 		"rune": "読書",
@@ -3060,10 +4199,16 @@
 			"く",
 			"しょ"
 		],
-		"meaning": "Membaca"
+		"meaning": "Membaca",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			80,
+			81
+		]
 	},
 	{
-		"id": 243,
+		"id": 234,
 		"chapter": 8,
 		"image": "30kr1n.png",
 		"rune": "読者",
@@ -3072,10 +4217,15 @@
 			"く",
 			"しゃ"
 		],
-		"meaning": "Pembaca"
+		"meaning": "Pembaca",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			80
+		]
 	},
 	{
-		"id": 244,
+		"id": 235,
 		"chapter": 8,
 		"image": "30kr1n.png",
 		"rune": "書く",
@@ -3084,10 +4234,15 @@
 			"く"
 		],
 		"meaning": "Menulis",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			81
+		]
 	},
 	{
-		"id": 245,
+		"id": 236,
 		"chapter": 8,
 		"image": "30kr1n.png",
 		"rune": "下書き",
@@ -3097,10 +4252,16 @@
 			"が",
 			"き"
 		],
-		"meaning": "Draft"
+		"meaning": "Draft",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			35,
+			81
+		]
 	},
 	{
-		"id": 246,
+		"id": 237,
 		"chapter": 8,
 		"image": "30kr1n.png",
 		"rune": "書道",
@@ -3109,10 +4270,15 @@
 			"ど",
 			"う"
 		],
-		"meaning": "Kaligrafi"
+		"meaning": "Kaligrafi",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			81
+		]
 	},
 	{
-		"id": 247,
+		"id": 238,
 		"chapter": 8,
 		"image": "30kr1n.png",
 		"rune": "話す",
@@ -3122,10 +4288,15 @@
 			"す"
 		],
 		"meaning": "Berbicara",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			82
+		]
 	},
 	{
-		"id": 248,
+		"id": 239,
 		"chapter": 8,
 		"image": "30kr1n.png",
 		"rune": "会話",
@@ -3134,10 +4305,15 @@
 			"い",
 			"わ"
 		],
-		"meaning": "Percakapan"
+		"meaning": "Percakapan",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			82
+		]
 	},
 	{
-		"id": 249,
+		"id": 240,
 		"chapter": 8,
 		"image": "30kr1n.png",
 		"rune": "電話",
@@ -3146,10 +4322,15 @@
 			"ん",
 			"わ"
 		],
-		"meaning": "Telepon"
+		"meaning": "Telepon",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			82
+		]
 	},
 	{
-		"id": 250,
+		"id": 241,
 		"chapter": 8,
 		"image": "30kr1n.png",
 		"rune": "買う",
@@ -3158,10 +4339,15 @@
 			"う"
 		],
 		"meaning": "Membeli",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			83
+		]
 	},
 	{
-		"id": 251,
+		"id": 242,
 		"chapter": 8,
 		"image": "30kr1n.png",
 		"rune": "帰る",
@@ -3171,10 +4357,15 @@
 			"る"
 		],
 		"meaning": "Pulang ke tempat tinggal",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			84
+		]
 	},
 	{
-		"id": 252,
+		"id": 243,
 		"chapter": 8,
 		"image": "30kr1n.png",
 		"rune": "帰国する",
@@ -3185,10 +4376,16 @@
 			"す",
 			"る"
 		],
-		"meaning": "Pulang ke negara asal"
+		"meaning": "Pulang ke negara asal",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			53,
+			84
+		]
 	},
 	{
-		"id": 253,
+		"id": 244,
 		"chapter": 8,
 		"image": "30kr1n.png",
 		"rune": "教える",
@@ -3199,34 +4396,47 @@
 			"る"
 		],
 		"meaning": "Mengajar",
-		"is_single": true
+		"is_single": true,
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			85
+		]
 	},
 	{
-		"id": 254,
+		"id": 245,
 		"chapter": 8,
 		"image": "30kr1n.png",
 		"rune": "教室",
 		"spelling": [
-			"き",
-			"ょ",
+			"きょ",
 			"う",
 			"し",
 			"つ"
 		],
-		"meaning": "Ruang kelas"
+		"meaning": "Ruang kelas",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			85
+		]
 	},
 	{
-		"id": 255,
+		"id": 246,
 		"chapter": 8,
 		"image": "30kr1n.png",
 		"rune": "教会",
 		"spelling": [
-			"き",
-			"ょ",
+			"きょ",
 			"う",
 			"か",
 			"い"
 		],
-		"meaning": "Gereja"
+		"meaning": "Gereja",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			85
+		]
 	}
 ]

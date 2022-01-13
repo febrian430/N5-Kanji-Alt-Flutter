@@ -2,4489 +2,596 @@
 	{
 		"rune": "一",
 		"chapter": 1,
-		"kunyomi": [
-			"ひと-つ/ひと"
-		],
-		"onyomi": [
-			"イチ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "一",
-				"spelling": [
-					"い",
-					"ち"
-				],
-				"meaning": "Satu"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "一つ",
-				"spelling": [
-					"ひ",
-					"と",
-					"つ"
-				],
-				"meaning": "Satu buah"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "一人",
-				"spelling": [
-					"ひ",
-					"と",
-					"り"
-				],
-				"meaning": "Satu orang"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "一月",
-				"spelling": [
-					"い",
-					"ち",
-					"が",
-					"つ"
-				],
-				"meaning": "Bulan Januari"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "一日",
-				"spelling": [
-					"つ",
-					"い",
-					"た",
-					"ち"
-				],
-				"meaning": "Tanggal 1"
-			}
-		]
+		"kunyomi": "ひ",
+		"onyomi": "イ",
+		"id": 1
 	},
 	{
 		"rune": "二",
 		"chapter": 1,
-		"kunyomi": [
-			"ふた-つ/ふた"
-		],
-		"onyomi": [
-			"ニ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "二",
-				"spelling": [
-					"に"
-				],
-				"meaning": "Dua"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "二つ",
-				"spelling": [
-					"ふ",
-					"た",
-					"つ"
-				],
-				"meaning": "Dua buah"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "二人",
-				"spelling": [
-					"ふ",
-					"た",
-					"り"
-				],
-				"meaning": "Dua orang"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "二月",
-				"spelling": [
-					"に",
-					"が",
-					"つ"
-				],
-				"meaning": "Bulan Februari"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "二日",
-				"spelling": [
-					"ふ",
-					"つ",
-					"か"
-				],
-				"meaning": "Tanggal 2"
-			}
-		]
+		"kunyomi": "ふ",
+		"onyomi": "ニ",
+		"id": 2
 	},
 	{
 		"rune": "三",
 		"chapter": 1,
-		"kunyomi": [
-			"みっ-つ"
-		],
-		"onyomi": [
-			"サン"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "三",
-				"spelling": [
-					"さ",
-					"ん"
-				],
-				"meaning": "Tiga"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "三つ",
-				"spelling": [
-					"み",
-					"っ",
-					"つ"
-				],
-				"meaning": "Tiga buah"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "三人",
-				"spelling": [
-					"さ",
-					"ん",
-					"に",
-					"ん"
-				],
-				"meaning": "Tiga orang"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "三月",
-				"spelling": [
-					"さ",
-					"ん",
-					"が",
-					"つ"
-				],
-				"meaning": "Bulan Maret"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "三日",
-				"spelling": [
-					"み",
-					"っ",
-					"か"
-				],
-				"meaning": "Tanggal 3"
-			}
-		]
+		"kunyomi": "み",
+		"onyomi": "サ",
+		"id": 3
 	},
 	{
 		"rune": "四",
 		"chapter": 1,
-		"kunyomi": [
-			"よっ-つ/よん/よ"
-		],
-		"onyomi": [
-			"シ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "四",
-				"spelling": [
-					"よ",
-					"ん"
-				],
-				"meaning": "Empat"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "四つ",
-				"spelling": [
-					"よ",
-					"っ",
-					"つ"
-				],
-				"meaning": "Empat buah"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "四人",
-				"spelling": [
-					"よ",
-					"ん",
-					"に",
-					"ん"
-				],
-				"meaning": "Empat orang"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "四月",
-				"spelling": [
-					"し",
-					"が",
-					"つ"
-				],
-				"meaning": "Bulan April"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "四日",
-				"spelling": [
-					"よ",
-					"っ",
-					"か"
-				],
-				"meaning": "Tanggal 4"
-			}
-		]
+		"kunyomi": "よ",
+		"onyomi": "シ",
+		"id": 4
 	},
 	{
 		"rune": "五",
 		"chapter": 1,
-		"kunyomi": [
-			"いつ-つ/いつ"
-		],
-		"onyomi": [
-			"ゴ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "五",
-				"spelling": [
-					"ご"
-				],
-				"meaning": "Lima"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "五つ",
-				"spelling": [
-					"い",
-					"つ",
-					"つ"
-				],
-				"meaning": "Lima buah"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "五人",
-				"spelling": [
-					"ご",
-					"に",
-					"ん"
-				],
-				"meaning": "Lima orang"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "五月",
-				"spelling": [
-					"ご",
-					"が",
-					"つ"
-				],
-				"meaning": "Bulan Mei"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "五日",
-				"spelling": [
-					"い",
-					"つ",
-					"か"
-				],
-				"meaning": "Tanggal 5"
-			}
-		]
+		"kunyomi": "い",
+		"onyomi": "ゴ",
+		"id": 5
 	},
 	{
 		"rune": "六",
 		"chapter": 1,
-		"kunyomi": [
-			"むっ-つ"
-		],
-		"onyomi": [
-			"ロク"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "六",
-				"spelling": [
-					"ろ",
-					"く"
-				],
-				"meaning": "Enam"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "六つ",
-				"spelling": [
-					"む",
-					"っ",
-					"つ"
-				],
-				"meaning": "Enam buah"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "六人",
-				"spelling": [
-					"ろ",
-					"く",
-					"に",
-					"ん"
-				],
-				"meaning": "Enam orang"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "六月",
-				"spelling": [
-					"ろ",
-					"く",
-					"が",
-					"つ"
-				],
-				"meaning": "Bulan Juni"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "⋆六日",
-				"spelling": [
-					"み",
-					"い",
-					"か"
-				],
-				"meaning": "Tanggal 6"
-			}
-		]
+		"kunyomi": "む",
+		"onyomi": "ロ",
+		"id": 6
 	},
 	{
 		"rune": "七",
 		"chapter": 1,
-		"kunyomi": [
-			"なな-つ/なな"
-		],
-		"onyomi": [
-			"シチ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "七",
-				"spelling": [
-					"な",
-					"な"
-				],
-				"meaning": "Tujuh"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "七つ",
-				"spelling": [
-					"な",
-					"な",
-					"つ"
-				],
-				"meaning": "Tujuh buah"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "七人",
-				"spelling": [
-					"な",
-					"な",
-					"に",
-					"ん"
-				],
-				"meaning": "Tujuh orang"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "七月",
-				"spelling": [
-					"し",
-					"ち",
-					"が",
-					"つ"
-				],
-				"meaning": "Bulan Juli"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "⋆七日",
-				"spelling": [
-					"な",
-					"の",
-					"か"
-				],
-				"meaning": "Tanggal 7"
-			}
-		]
+		"kunyomi": "な",
+		"onyomi": "シ",
+		"id": 7
 	},
 	{
 		"rune": "八",
 		"chapter": 1,
-		"kunyomi": [
-			"やっ-つ"
-		],
-		"onyomi": [
-			"ハチ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "八",
-				"spelling": [
-					"は",
-					"ち"
-				],
-				"meaning": "Delapan"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "八つ",
-				"spelling": [
-					"や",
-					"っ",
-					"つ"
-				],
-				"meaning": "Delapan buah"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "八人",
-				"spelling": [
-					"は",
-					"ち",
-					"に",
-					"ん"
-				],
-				"meaning": "Delapan orang"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "八月",
-				"spelling": [
-					"は",
-					"ち",
-					"が",
-					"つ"
-				],
-				"meaning": "Bulan Agustus"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "⋆八日",
-				"spelling": [
-					"よ",
-					"う",
-					"か"
-				],
-				"meaning": "Tanggal 8"
-			}
-		]
+		"kunyomi": "や",
+		"onyomi": "ハ",
+		"id": 8
 	},
 	{
 		"rune": "九",
 		"chapter": 1,
-		"kunyomi": [
-			"ここの-つ/ここの"
-		],
-		"onyomi": [
-			"ク/キュウ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "九",
-				"spelling": [
-					"き",
-					"ゅ",
-					"う"
-				],
-				"meaning": "Sembilan"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "九つ",
-				"spelling": [
-					"こ",
-					"こ",
-					"の",
-					"つ"
-				],
-				"meaning": "Sembilan buah"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "九人",
-				"spelling": [
-					"き",
-					"ゅ",
-					"う",
-					"に",
-					"ん"
-				],
-				"meaning": "Sembilan orang"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "九月",
-				"spelling": [
-					"く",
-					"が",
-					"つ"
-				],
-				"meaning": "Bulan September"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "九日",
-				"spelling": [
-					"こ",
-					"こ",
-					"の",
-					"か"
-				],
-				"meaning": "Tanggal 9"
-			}
-		]
+		"kunyomi": "こ",
+		"onyomi": "ク",
+		"id": 9
 	},
 	{
 		"rune": "十",
 		"chapter": 1,
-		"kunyomi": [
-			"とう"
-		],
-		"onyomi": [
-			"ジュウ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "十",
-				"spelling": [
-					"じ",
-					"ゅ",
-					"う"
-				],
-				"meaning": "Sepuluh"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "十月",
-				"spelling": [
-					"じ",
-					"ゅ",
-					"う",
-					"が",
-					"つ"
-				],
-				"meaning": "Bulan Oktober"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "十二月",
-				"spelling": [
-					"じ",
-					"ゅ",
-					"う",
-					"に",
-					"が",
-					"つ"
-				],
-				"meaning": "Bulan Desember"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "十日",
-				"spelling": [
-					"と",
-					"う",
-					"か"
-				],
-				"meaning": "Tanggal  10"
-			}
-		]
+		"kunyomi": "と",
+		"onyomi": "ジ",
+		"id": 10
 	},
 	{
 		"rune": "百",
 		"chapter": 1,
-		"kunyomi": [
-			"ー"
-		],
-		"onyomi": [
-			"ヒャク/-ビャク/-ピャク"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "百",
-				"spelling": [
-					"ひ",
-					"ゃ",
-					"く"
-				],
-				"meaning": "100",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "二百",
-				"spelling": [
-					"に",
-					"ひ",
-					"ゃ",
-					"く"
-				],
-				"meaning": "200"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "三百",
-				"spelling": [
-					"さ",
-					"ん",
-					"び",
-					"ゃ",
-					"く"
-				],
-				"meaning": "300"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "六百",
-				"spelling": [
-					"ろ",
-					"っ",
-					"ぴ",
-					"ゃ",
-					"く"
-				],
-				"meaning": "600"
-			}
-		]
+		"kunyomi": "ー",
+		"onyomi": "ヒ",
+		"id": 11
 	},
 	{
 		"rune": "千",
 		"chapter": 1,
-		"kunyomi": [
-			"ち"
-		],
-		"onyomi": [
-			"セン/-ゼン"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "千",
-				"spelling": [
-					"え",
-					"ん"
-				],
-				"meaning": "1000 (satuan) (ribu)",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "千円",
-				"spelling": [
-					"せ",
-					"ん",
-					"え",
-					"ん"
-				],
-				"meaning": "1000 Yen"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "三千",
-				"spelling": [
-					"さ",
-					"ん",
-					"ぜ",
-					"ん"
-				],
-				"meaning": "3000"
-			}
-		]
+		"kunyomi": "ち",
+		"onyomi": "セ",
+		"id": 12
 	},
 	{
 		"rune": "万",
 		"chapter": 1,
-		"kunyomi": [
-			"ー"
-		],
-		"onyomi": [
-			"マン"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "万",
-				"spelling": [
-					"ま",
-					"ん"
-				],
-				"meaning": "10.000 (satuan) (puluh ribu)",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "一万円",
-				"spelling": [
-					"い",
-					"ち",
-					"ま",
-					"ん",
-					"え",
-					"ん"
-				],
-				"meaning": "10.000 Yen"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "四万",
-				"spelling": [
-					"よ",
-					"ん",
-					"ま",
-					"ん"
-				],
-				"meaning": "40.000"
-			}
-		]
-	},
-	{
-		"rune": "年",
-		"chapter": 1,
-		"kunyomi": [
-			"とし"
-		],
-		"onyomi": [
-			"ネン"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "年",
-				"spelling": [
-					"と",
-					"し"
-				],
-				"meaning": "Tahun",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "来年",
-				"spelling": [
-					"ら",
-					"い",
-					"ね",
-					"ん"
-				],
-				"meaning": "Tahun depan"
-			},
-			{
-				"id": 1,
-				"chapter": 1,
-				"image": "30kr1n.png",
-				"rune": "去年",
-				"spelling": [
-					"き",
-					"ょ",
-					"ね",
-					"ん"
-				],
-				"meaning": "Tahun lalu"
-			}
-		]
+		"kunyomi": "ー",
+		"onyomi": "マ",
+		"id": 13
 	},
 	{
 		"rune": "日",
 		"chapter": 2,
-		"kunyomi": [
-			"ひ/-び"
-		],
-		"onyomi": [
-			"ニチ/ニ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 2,
-				"image": "30kr1n.png",
-				"rune": "日",
-				"spelling": [
-					"ひ"
-				],
-				"meaning": "Matahari",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 2,
-				"image": "30kr1n.png",
-				"rune": "三日",
-				"spelling": [
-					"み",
-					"っ",
-					"か"
-				],
-				"meaning": "Tanggal 3"
-			},
-			{
-				"id": 1,
-				"chapter": 2,
-				"image": "30kr1n.png",
-				"rune": "日曜日",
-				"spelling": [
-					"い",
-					"ち",
-					"よ",
-					"う",
-					"び"
-				],
-				"meaning": "Hari Minggu"
-			},
-			{
-				"id": 1,
-				"chapter": 2,
-				"image": "30kr1n.png",
-				"rune": "日本",
-				"spelling": [
-					"に",
-					"ほ",
-					"ん",
-					"/",
-					"に",
-					"ぽ",
-					"ん"
-				],
-				"meaning": "Jepang"
-			}
-		]
+		"kunyomi": "ひ",
+		"onyomi": "ニ",
+		"id": 14
 	},
 	{
 		"rune": "月",
 		"chapter": 2,
-		"kunyomi": [
-			"つき"
-		],
-		"onyomi": [
-			"ゲツ/ガツ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 2,
-				"image": "30kr1n.png",
-				"rune": "月",
-				"spelling": [
-					"つ",
-					"き"
-				],
-				"meaning": "Bulan",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 2,
-				"image": "30kr1n.png",
-				"rune": "一月",
-				"spelling": [
-					"い",
-					"ち",
-					"が",
-					"つ"
-				],
-				"meaning": "Bulan Januari"
-			},
-			{
-				"id": 1,
-				"chapter": 2,
-				"image": "30kr1n.png",
-				"rune": "月曜日",
-				"spelling": [
-					"げ",
-					"つ",
-					"よ",
-					"う",
-					"び"
-				],
-				"meaning": "Hari Senin"
-			}
-		]
+		"kunyomi": "つ",
+		"onyomi": "ゲ",
+		"id": 15
 	},
 	{
 		"rune": "木",
 		"chapter": 2,
-		"kunyomi": [
-			"き"
-		],
-		"onyomi": [
-			"モク（ボク）"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 2,
-				"image": "30kr1n.png",
-				"rune": "木",
-				"spelling": [
-					"き"
-				],
-				"meaning": "Pohon",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 2,
-				"image": "30kr1n.png",
-				"rune": "土木",
-				"spelling": [
-					"ど",
-					"ぼ",
-					"く"
-				],
-				"meaning": "Teknik Sipil"
-			},
-			{
-				"id": 1,
-				"chapter": 2,
-				"image": "30kr1n.png",
-				"rune": "木曜日",
-				"spelling": [
-					"も",
-					"く",
-					"よ",
-					"う",
-					"び"
-				],
-				"meaning": "Hari Kamis"
-			}
-		]
+		"kunyomi": "き",
+		"onyomi": "モ",
+		"id": 16
 	},
 	{
 		"rune": "山",
 		"chapter": 2,
-		"kunyomi": [
-			"やま"
-		],
-		"onyomi": [
-			"サン/-ザン"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 2,
-				"image": "30kr1n.png",
-				"rune": "山",
-				"spelling": [
-					"や",
-					"ま"
-				],
-				"meaning": "Gunung",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 2,
-				"image": "30kr1n.png",
-				"rune": "火山",
-				"spelling": [
-					"か",
-					"ざ",
-					"ん"
-				],
-				"meaning": "Gunung Berapi"
-			}
-		]
+		"kunyomi": "や",
+		"onyomi": "サ",
+		"id": 17
 	},
 	{
 		"rune": "川",
 		"chapter": 2,
-		"kunyomi": [
-			"かわ/-がわ"
-		],
-		"onyomi": [
-			"（セン）"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 2,
-				"image": "30kr1n.png",
-				"rune": "川",
-				"spelling": [
-					"か",
-					"わ"
-				],
-				"meaning": "Sungai",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 2,
-				"image": "30kr1n.png",
-				"rune": "小川",
-				"spelling": [
-					"お",
-					"が",
-					"わ"
-				],
-				"meaning": "Anak sungai"
-			}
-		]
+		"kunyomi": "か",
+		"onyomi": "（",
+		"id": 18
 	},
 	{
 		"rune": "田",
 		"chapter": 2,
-		"kunyomi": [
-			"た/-だ"
-		],
-		"onyomi": [
-			"デン"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 2,
-				"image": "30kr1n.png",
-				"rune": "田",
-				"spelling": [
-					"た"
-				],
-				"meaning": "Sawah",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 2,
-				"image": "30kr1n.png",
-				"rune": "水田",
-				"spelling": [
-					"す",
-					"い",
-					"で",
-					"ん"
-				],
-				"meaning": "Sawah"
-			}
-		]
+		"kunyomi": "た",
+		"onyomi": "デ",
+		"id": 19
 	},
 	{
 		"rune": "人",
 		"chapter": 2,
-		"kunyomi": [
-			"ひと"
-		],
-		"onyomi": [
-			"ジン/ニン"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 2,
-				"image": "30kr1n.png",
-				"rune": "人",
-				"spelling": [
-					"ひ",
-					"と"
-				],
-				"meaning": "Orang",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 2,
-				"image": "30kr1n.png",
-				"rune": "⋆一人",
-				"spelling": [
-					"ひ",
-					"と",
-					"り"
-				],
-				"meaning": "Satu orang / seorang"
-			},
-			{
-				"id": 1,
-				"chapter": 2,
-				"image": "30kr1n.png",
-				"rune": "日本人",
-				"spelling": [
-					"に",
-					"ほ",
-					"ん",
-					"じ",
-					"ん"
-				],
-				"meaning": "Orang Jepang"
-			},
-			{
-				"id": 1,
-				"chapter": 2,
-				"image": "30kr1n.png",
-				"rune": "三人",
-				"spelling": [
-					"さ",
-					"ん",
-					"に",
-					"ん"
-				],
-				"meaning": "Tiga orang"
-			}
-		]
+		"kunyomi": "ひ",
+		"onyomi": "ジ",
+		"id": 20
 	},
 	{
 		"rune": "口",
 		"chapter": 2,
-		"kunyomi": [
-			"くち/-ぐち"
-		],
-		"onyomi": [
-			"コウ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 2,
-				"image": "30kr1n.png",
-				"rune": "口",
-				"spelling": [
-					"く",
-					"ち"
-				],
-				"meaning": "Mulut",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 2,
-				"image": "30kr1n.png",
-				"rune": "入口",
-				"spelling": [
-					"い",
-					"り",
-					"ぐ",
-					"ち"
-				],
-				"meaning": "Pintu Masuk"
-			},
-			{
-				"id": 1,
-				"chapter": 2,
-				"image": "30kr1n.png",
-				"rune": "出口",
-				"spelling": [
-					"で",
-					"ぐ",
-					"ち"
-				],
-				"meaning": "Pintu Keluar"
-			},
-			{
-				"id": 1,
-				"chapter": 2,
-				"image": "30kr1n.png",
-				"rune": "人口",
-				"spelling": [
-					"じ",
-					"ん",
-					"こ",
-					"う"
-				],
-				"meaning": "Populasi"
-			}
-		]
+		"kunyomi": "く",
+		"onyomi": "コ",
+		"id": 21
 	},
 	{
 		"rune": "車",
 		"chapter": 2,
-		"kunyomi": [
-			"くるま"
-		],
-		"onyomi": [
-			"シャ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 2,
-				"image": "30kr1n.png",
-				"rune": "車",
-				"spelling": [
-					"く",
-					"る",
-					"ま"
-				],
-				"meaning": "Mobil",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 2,
-				"image": "30kr1n.png",
-				"rune": "自動車",
-				"spelling": [
-					"じ",
-					"ど",
-					"う",
-					"し",
-					"ゃ"
-				],
-				"meaning": "Mobil/Otomotif"
-			},
-			{
-				"id": 1,
-				"chapter": 2,
-				"image": "30kr1n.png",
-				"rune": "電車",
-				"spelling": [
-					"で",
-					"ん",
-					"し",
-					"ゃ"
-				],
-				"meaning": "Kereta"
-			},
-			{
-				"id": 1,
-				"chapter": 2,
-				"image": "30kr1n.png",
-				"rune": "水車",
-				"spelling": [
-					"す",
-					"い",
-					"し",
-					"ゃ"
-				],
-				"meaning": "Kincir air"
-			}
-		]
+		"kunyomi": "く",
+		"onyomi": "シ",
+		"id": 22
 	},
 	{
 		"rune": "門",
 		"chapter": 2,
-		"kunyomi": [
-			"（かど）"
-		],
-		"onyomi": [
-			"モン"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 2,
-				"image": "30kr1n.png",
-				"rune": "門",
-				"spelling": [
-					"も",
-					"ん"
-				],
-				"meaning": "Gerbang",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 2,
-				"image": "30kr1n.png",
-				"rune": "専門",
-				"spelling": [
-					"せ",
-					"ん",
-					"も",
-					"ん"
-				],
-				"meaning": "Bidang/Keahlian khusus (speciality)"
-			}
-		]
+		"kunyomi": "（",
+		"onyomi": "モ",
+		"id": 23
 	},
 	{
 		"rune": "火",
 		"chapter": 3,
-		"kunyomi": [
-			"ひ"
-		],
-		"onyomi": [
-			"カ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 3,
-				"image": "30kr1n.png",
-				"rune": "火",
-				"spelling": [
-					"ひ"
-				],
-				"meaning": "Api",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 3,
-				"image": "30kr1n.png",
-				"rune": "火曜日",
-				"spelling": [
-					"か",
-					"よ",
-					"う",
-					"び"
-				],
-				"meaning": "Hari Selasa"
-			},
-			{
-				"id": 1,
-				"chapter": 3,
-				"image": "30kr1n.png",
-				"rune": "火山",
-				"spelling": [
-					"か",
-					"ざ",
-					"ん"
-				],
-				"meaning": "Gunung Berapi"
-			},
-			{
-				"id": 1,
-				"chapter": 3,
-				"image": "30kr1n.png",
-				"rune": "火事",
-				"spelling": [
-					"か",
-					"じ"
-				],
-				"meaning": "Kebakaran ( Accident )"
-			}
-		]
+		"kunyomi": "ひ",
+		"onyomi": "カ",
+		"id": 24
 	},
 	{
 		"rune": "水",
 		"chapter": 3,
-		"kunyomi": [
-			"みず"
-		],
-		"onyomi": [
-			"スイ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 3,
-				"image": "30kr1n.png",
-				"rune": "水",
-				"spelling": [
-					"み",
-					"ず"
-				],
-				"meaning": "Air",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 3,
-				"image": "30kr1n.png",
-				"rune": "水曜日",
-				"spelling": [
-					"す",
-					"い",
-					"よ",
-					"う",
-					"び"
-				],
-				"meaning": "Hari Rabu"
-			},
-			{
-				"id": 1,
-				"chapter": 3,
-				"image": "30kr1n.png",
-				"rune": "水田",
-				"spelling": [
-					"す",
-					"い",
-					"で",
-					"ん"
-				],
-				"meaning": "Sawah"
-			},
-			{
-				"id": 1,
-				"chapter": 3,
-				"image": "30kr1n.png",
-				"rune": "水車",
-				"spelling": [
-					"す",
-					"い",
-					"し",
-					"ゃ"
-				],
-				"meaning": "Kincir air"
-			}
-		]
+		"kunyomi": "み",
+		"onyomi": "ス",
+		"id": 25
 	},
 	{
 		"rune": "金",
 		"chapter": 3,
-		"kunyomi": [
-			"かね"
-		],
-		"onyomi": [
-			"キン"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 3,
-				"image": "30kr1n.png",
-				"rune": "金",
-				"spelling": [
-					"き",
-					"ん"
-				],
-				"meaning": "Emas",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 3,
-				"image": "30kr1n.png",
-				"rune": "お金",
-				"spelling": [
-					"お",
-					"か",
-					"ね"
-				],
-				"meaning": "Uang",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 3,
-				"image": "30kr1n.png",
-				"rune": "金曜日",
-				"spelling": [
-					"き",
-					"ん",
-					"よ",
-					"う",
-					"び"
-				],
-				"meaning": "Hari Jumat"
-			}
-		]
+		"kunyomi": "か",
+		"onyomi": "キ",
+		"id": 26
 	},
 	{
 		"rune": "土",
 		"chapter": 3,
-		"kunyomi": [
-			"つち"
-		],
-		"onyomi": [
-			"ド"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 3,
-				"image": "30kr1n.png",
-				"rune": "土",
-				"spelling": [
-					"つ",
-					"ち"
-				],
-				"meaning": "Tanah",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 3,
-				"image": "30kr1n.png",
-				"rune": "土曜日",
-				"spelling": [
-					"ど",
-					"よ",
-					"う",
-					"び"
-				],
-				"meaning": "Hari Sabtu"
-			},
-			{
-				"id": 1,
-				"chapter": 3,
-				"image": "30kr1n.png",
-				"rune": "土木",
-				"spelling": [
-					"ど",
-					"ぼ",
-					"く"
-				],
-				"meaning": "Teknik Sipil"
-			}
-		]
+		"kunyomi": "つ",
+		"onyomi": "ド",
+		"id": 27
 	},
 	{
 		"rune": "女",
 		"chapter": 3,
-		"kunyomi": [
-			"おんな"
-		],
-		"onyomi": [
-			"ジョ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 3,
-				"image": "30kr1n.png",
-				"rune": "女",
-				"spelling": [
-					"お",
-					"ん",
-					"な"
-				],
-				"meaning": "Perempuan",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 3,
-				"image": "30kr1n.png",
-				"rune": "女の人",
-				"spelling": [
-					"お",
-					"ん",
-					"な",
-					"の",
-					"ひ",
-					"と"
-				],
-				"meaning": "Orang perempuan"
-			},
-			{
-				"id": 1,
-				"chapter": 3,
-				"image": "30kr1n.png",
-				"rune": "彼女",
-				"spelling": [
-					"か",
-					"の",
-					"じ",
-					"ょ"
-				],
-				"meaning": "Dia (perempuan)"
-			}
-		]
+		"kunyomi": "お",
+		"onyomi": "ジ",
+		"id": 28
 	},
 	{
 		"rune": "子",
 		"chapter": 3,
-		"kunyomi": [
-			"こ"
-		],
-		"onyomi": [
-			"シ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 3,
-				"image": "30kr1n.png",
-				"rune": "子ども",
-				"spelling": [
-					"こ",
-					"ど",
-					"も"
-				],
-				"meaning": "Anak",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 3,
-				"image": "30kr1n.png",
-				"rune": "女の子",
-				"spelling": [
-					"お",
-					"ん",
-					"な",
-					"の",
-					"こ"
-				],
-				"meaning": "Anak perempuan"
-			},
-			{
-				"id": 1,
-				"chapter": 3,
-				"image": "30kr1n.png",
-				"rune": "男の子",
-				"spelling": [
-					"お",
-					"と",
-					"こ",
-					"の",
-					"こ"
-				],
-				"meaning": "Anak laki-laki"
-			},
-			{
-				"id": 1,
-				"chapter": 3,
-				"image": "30kr1n.png",
-				"rune": "女子大学",
-				"spelling": [
-					"じ",
-					"ょ",
-					"し",
-					"が",
-					"く",
-					"せ",
-					"い"
-				],
-				"meaning": "Murid perempuan"
-			}
-		]
+		"kunyomi": "こ",
+		"onyomi": "シ",
+		"id": 29
 	},
 	{
 		"rune": "学",
 		"chapter": 3,
-		"kunyomi": [
-			"まな-ぶ"
-		],
-		"onyomi": [
-			"ガク/ガッ-"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 3,
-				"image": "30kr1n.png",
-				"rune": "学生",
-				"spelling": [
-					"が",
-					"く",
-					"せ",
-					"い"
-				],
-				"meaning": "Murid"
-			},
-			{
-				"id": 1,
-				"chapter": 3,
-				"image": "30kr1n.png",
-				"rune": "大学",
-				"spelling": [
-					"だ",
-					"い",
-					"が",
-					"く"
-				],
-				"meaning": "Universitas"
-			},
-			{
-				"id": 1,
-				"chapter": 3,
-				"image": "30kr1n.png",
-				"rune": "学校",
-				"spelling": [
-					"が",
-					"っ",
-					"こ",
-					"う"
-				],
-				"meaning": "Sekolah"
-			}
-		]
+		"kunyomi": "ま",
+		"onyomi": "ガ",
+		"id": 30
 	},
 	{
 		"rune": "生",
 		"chapter": 3,
-		"kunyomi": [
-			"い-きる/う-まれる"
-		],
-		"onyomi": [
-			"セイ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 3,
-				"image": "30kr1n.png",
-				"rune": "生きる",
-				"spelling": [
-					"い",
-					"き",
-					"る"
-				],
-				"meaning": "Hidup",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 3,
-				"image": "30kr1n.png",
-				"rune": "生まれる",
-				"spelling": [
-					"う",
-					"ま",
-					"れ",
-					"る"
-				],
-				"meaning": "Lahir"
-			},
-			{
-				"id": 1,
-				"chapter": 3,
-				"image": "30kr1n.png",
-				"rune": "先生",
-				"spelling": [
-					"せ",
-					"ん",
-					"せ",
-					"い"
-				],
-				"meaning": "Guru"
-			}
-		]
+		"kunyomi": "い",
+		"onyomi": "セ",
+		"id": 31
 	},
 	{
 		"rune": "先",
 		"chapter": 3,
-		"kunyomi": [
-			"さき"
-		],
-		"onyomi": [
-			"セン"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 3,
-				"image": "30kr1n.png",
-				"rune": "先",
-				"spelling": [
-					"さ",
-					"き"
-				],
-				"meaning": "Lebih dahulu",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 3,
-				"image": "30kr1n.png",
-				"rune": "先生",
-				"spelling": [
-					"せ",
-					"ん",
-					"せ",
-					"い"
-				],
-				"meaning": "Guru"
-			},
-			{
-				"id": 1,
-				"chapter": 3,
-				"image": "30kr1n.png",
-				"rune": "先週",
-				"spelling": [
-					"せ",
-					"ん",
-					"し",
-					"ゅ",
-					"う"
-				],
-				"meaning": "Minggu lalu"
-			},
-			{
-				"id": 1,
-				"chapter": 3,
-				"image": "30kr1n.png",
-				"rune": "先月",
-				"spelling": [
-					"せ",
-					"ん",
-					"げ",
-					"つ"
-				],
-				"meaning": "Bulan lalu"
-			}
-		]
+		"kunyomi": "さ",
+		"onyomi": "セ",
+		"id": 32
 	},
 	{
 		"rune": "私",
 		"chapter": 3,
-		"kunyomi": [
-			"わたし/わたくし"
-		],
-		"onyomi": [
-			"し"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 3,
-				"image": "30kr1n.png",
-				"rune": "私",
-				"spelling": [
-					"わ",
-					"た",
-					"し"
-				],
-				"meaning": "Aku/Saya",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 3,
-				"image": "30kr1n.png",
-				"rune": "私立大学",
-				"spelling": [
-					"し",
-					"り",
-					"つ",
-					"だ",
-					"い",
-					"が",
-					"く"
-				],
-				"meaning": "Universitas Swasta"
-			}
-		]
+		"kunyomi": "わ",
+		"onyomi": "し",
+		"id": 33
 	},
 	{
 		"rune": "上",
 		"chapter": 4,
-		"kunyomi": [
-			"うえ/あ-がる/あ-げう"
-		],
-		"onyomi": [
-			"ジョウ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 4,
-				"image": "30kr1n.png",
-				"rune": "上",
-				"spelling": [
-					"う",
-					"え"
-				],
-				"meaning": "Atas",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 4,
-				"image": "30kr1n.png",
-				"rune": "上がる",
-				"spelling": [
-					"あ",
-					"が",
-					"る"
-				],
-				"meaning": "Naik/Mengangkat"
-			},
-			{
-				"id": 1,
-				"chapter": 4,
-				"image": "30kr1n.png",
-				"rune": "上手な",
-				"spelling": [
-					"じ",
-					"ょ",
-					"う",
-					"ず"
-				],
-				"meaning": "Mahir"
-			}
-		]
+		"kunyomi": "う",
+		"onyomi": "ジ",
+		"id": 34
 	},
 	{
 		"rune": "下",
 		"chapter": 4,
-		"kunyomi": [
-			"した/さ-がる/さ-げる"
-		],
-		"onyomi": [
-			"カ/ゲ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 4,
-				"image": "30kr1n.png",
-				"rune": "下",
-				"spelling": [
-					"し",
-					"た"
-				],
-				"meaning": "Bawah",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 4,
-				"image": "30kr1n.png",
-				"rune": "下がる",
-				"spelling": [
-					"さ",
-					"が",
-					"る"
-				],
-				"meaning": "Turun"
-			},
-			{
-				"id": 1,
-				"chapter": 4,
-				"image": "30kr1n.png",
-				"rune": "地下",
-				"spelling": [
-					"ち",
-					"か"
-				],
-				"meaning": "Bawah tanah"
-			}
-		]
+		"kunyomi": "し",
+		"onyomi": "カ",
+		"id": 35
 	},
 	{
 		"rune": "中",
 		"chapter": 4,
-		"kunyomi": [
-			"なか"
-		],
-		"onyomi": [
-			"チュウ/-ジュウ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 4,
-				"image": "30kr1n.png",
-				"rune": "中",
-				"spelling": [
-					"な",
-					"か"
-				],
-				"meaning": "Tengah/Dalam",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 4,
-				"image": "30kr1n.png",
-				"rune": "中学校",
-				"spelling": [
-					"ち",
-					"ゅ",
-					"う",
-					"が",
-					"っ",
-					"こ",
-					"う"
-				],
-				"meaning": "Sekolah Menengah Pertama"
-			},
-			{
-				"id": 1,
-				"chapter": 4,
-				"image": "30kr1n.png",
-				"rune": "中学生",
-				"spelling": [
-					"ち",
-					"ゅ",
-					"う",
-					"が",
-					"く",
-					"せ",
-					"い"
-				],
-				"meaning": "Murid SMP"
-			}
-		]
+		"kunyomi": "な",
+		"onyomi": "チ",
+		"id": 36
 	},
 	{
 		"rune": "大",
 		"chapter": 4,
-		"kunyomi": [
-			"おお-きい"
-		],
-		"onyomi": [
-			"ダイ/タイ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 4,
-				"image": "30kr1n.png",
-				"rune": "大きい",
-				"spelling": [
-					"お",
-					"お",
-					"き",
-					"い"
-				],
-				"meaning": "Besar",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 4,
-				"image": "30kr1n.png",
-				"rune": "大学",
-				"spelling": [
-					"だ",
-					"い",
-					"が",
-					"く"
-				],
-				"meaning": "Universitas"
-			},
-			{
-				"id": 1,
-				"chapter": 4,
-				"image": "30kr1n.png",
-				"rune": "⋆大人",
-				"spelling": [
-					"お",
-					"と",
-					"な"
-				],
-				"meaning": "Orang dewasa"
-			}
-		]
+		"kunyomi": "お",
+		"onyomi": "ダ",
+		"id": 37
 	},
 	{
 		"rune": "小",
 		"chapter": 4,
-		"kunyomi": [
-			"ちい-さい/こ/お"
-		],
-		"onyomi": [
-			"ジョウ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 4,
-				"image": "30kr1n.png",
-				"rune": "小さい",
-				"spelling": [
-					"ち",
-					"い",
-					"さ",
-					"い"
-				],
-				"meaning": "Kecil",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 4,
-				"image": "30kr1n.png",
-				"rune": "小川",
-				"spelling": [
-					"お",
-					"が",
-					"わ"
-				],
-				"meaning": "Anak sungai"
-			},
-			{
-				"id": 1,
-				"chapter": 4,
-				"image": "30kr1n.png",
-				"rune": "小学校",
-				"spelling": [
-					"し",
-					"ょ",
-					"う",
-					"が",
-					"っ",
-					"こ",
-					"う"
-				],
-				"meaning": "Sekolah Dasar"
-			}
-		]
+		"kunyomi": "ち",
+		"onyomi": "ジ",
+		"id": 38
 	},
 	{
 		"rune": "本",
 		"chapter": 4,
-		"kunyomi": [
-			"もと"
-		],
-		"onyomi": [
-			"ホン"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 4,
-				"image": "30kr1n.png",
-				"rune": "本",
-				"spelling": [
-					"ほ",
-					"ん"
-				],
-				"meaning": "Buku",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 4,
-				"image": "30kr1n.png",
-				"rune": "本日",
-				"spelling": [
-					"ほ",
-					"ん",
-					"じ",
-					"つ"
-				],
-				"meaning": "Hari ini (sangat formal)"
-			},
-			{
-				"id": 1,
-				"chapter": 4,
-				"image": "30kr1n.png",
-				"rune": "本店",
-				"spelling": [
-					"ほ",
-					"ん",
-					"て",
-					"ん"
-				],
-				"meaning": "Toko utama / Kantor pusat"
-			},
-			{
-				"id": 1,
-				"chapter": 4,
-				"image": "30kr1n.png",
-				"rune": "本屋",
-				"spelling": [
-					"ほ",
-					"ん",
-					"や"
-				],
-				"meaning": "Toko buku"
-			}
-		]
+		"kunyomi": "も",
+		"onyomi": "ホ",
+		"id": 39
 	},
 	{
 		"rune": "半",
 		"chapter": 4,
-		"kunyomi": [
-			"（なか-ば）"
-		],
-		"onyomi": [
-			"ハン"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 4,
-				"image": "30kr1n.png",
-				"rune": "半分",
-				"spelling": [
-					"は",
-					"ん",
-					"ぶ",
-					"ん"
-				],
-				"meaning": "Setengah bagian"
-			},
-			{
-				"id": 1,
-				"chapter": 4,
-				"image": "30kr1n.png",
-				"rune": "三時半",
-				"spelling": [
-					"サ",
-					"ン",
-					"じ",
-					"は",
-					"ん"
-				],
-				"meaning": "Pukul 3.30"
-			},
-			{
-				"id": 1,
-				"chapter": 4,
-				"image": "30kr1n.png",
-				"rune": "半年",
-				"spelling": [
-					"は",
-					"ん",
-					"と",
-					"し"
-				],
-				"meaning": "Setengah tahun"
-			},
-			{
-				"id": 1,
-				"chapter": 4,
-				"image": "30kr1n.png",
-				"rune": "半日",
-				"spelling": [
-					"は",
-					"ん",
-					"に",
-					"ち"
-				],
-				"meaning": "Setengah hari"
-			}
-		]
+		"kunyomi": "（",
+		"onyomi": "ハ",
+		"id": 40
 	},
 	{
 		"rune": "分",
 		"chapter": 4,
-		"kunyomi": [
-			"わ-かる/わ-ける"
-		],
-		"onyomi": [
-			"ブン/フン/-プン"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 4,
-				"image": "30kr1n.png",
-				"rune": "分ける",
-				"spelling": [
-					"わ",
-					"け",
-					"る"
-				],
-				"meaning": "Membagi"
-			},
-			{
-				"id": 1,
-				"chapter": 4,
-				"image": "30kr1n.png",
-				"rune": "分かる",
-				"spelling": [
-					"わ",
-					"か",
-					"る"
-				],
-				"meaning": "Mengerti"
-			},
-			{
-				"id": 1,
-				"chapter": 4,
-				"image": "30kr1n.png",
-				"rune": "五分",
-				"spelling": [
-					"ご",
-					"ふ",
-					"ん"
-				],
-				"meaning": "5 Menit"
-			},
-			{
-				"id": 1,
-				"chapter": 4,
-				"image": "30kr1n.png",
-				"rune": "六分",
-				"spelling": [
-					"ろ",
-					"っ",
-					"ぷ",
-					"ん"
-				],
-				"meaning": "6 Menit"
-			}
-		]
+		"kunyomi": "わ",
+		"onyomi": "ブ",
+		"id": 41
 	},
 	{
 		"rune": "力",
 		"chapter": 4,
-		"kunyomi": [
-			"ちから"
-		],
-		"onyomi": [
-			"リョク/リキ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 4,
-				"image": "30kr1n.png",
-				"rune": "力",
-				"spelling": [
-					"ち",
-					"か",
-					"ら"
-				],
-				"meaning": "Kekuatan / tenaga (power)",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 4,
-				"image": "30kr1n.png",
-				"rune": "水力",
-				"spelling": [
-					"す",
-					"い",
-					"り",
-					"ょ",
-					"く"
-				],
-				"meaning": "Tenaga air"
-			},
-			{
-				"id": 1,
-				"chapter": 4,
-				"image": "30kr1n.png",
-				"rune": "火力",
-				"spelling": [
-					"か",
-					"り",
-					"ょ",
-					"く"
-				],
-				"meaning": "Tenaga panas"
-			}
-		]
+		"kunyomi": "ち",
+		"onyomi": "リ",
+		"id": 42
 	},
 	{
 		"rune": "何",
 		"chapter": 4,
-		"kunyomi": [
-			"なに/なん"
-		],
-		"onyomi": [
-			"ー"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 4,
-				"image": "30kr1n.png",
-				"rune": "何",
-				"spelling": [
-					"な",
-					"に"
-				],
-				"meaning": "Apa?",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 4,
-				"image": "30kr1n.png",
-				"rune": "何ですか",
-				"spelling": [
-					"な",
-					"ん",
-					"で",
-					"す",
-					"か"
-				],
-				"meaning": "Apa itu?"
-			},
-			{
-				"id": 1,
-				"chapter": 4,
-				"image": "30kr1n.png",
-				"rune": "何人",
-				"spelling": [
-					"な",
-					"ん",
-					"に",
-					"ん"
-				],
-				"meaning": "Berapa orang?"
-			},
-			{
-				"id": 1,
-				"chapter": 4,
-				"image": "30kr1n.png",
-				"rune": "何年",
-				"spelling": [
-					"な",
-					"ん",
-					"ね",
-					"ん"
-				],
-				"meaning": "Tahun berapa?"
-			}
-		]
+		"kunyomi": "な",
+		"onyomi": "ー",
+		"id": 43
 	},
 	{
 		"rune": "明",
 		"chapter": 5,
-		"kunyomi": [
-			"あか-るい"
-		],
-		"onyomi": [
-			"メイ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 5,
-				"image": "30kr1n.png",
-				"rune": "明るい",
-				"spelling": [
-					"あ",
-					"か",
-					"る",
-					"い"
-				],
-				"meaning": "Terang",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 5,
-				"image": "30kr1n.png",
-				"rune": "⋆明日",
-				"spelling": [
-					"あ",
-					"し",
-					"た"
-				],
-				"meaning": "Besok"
-			},
-			{
-				"id": 1,
-				"chapter": 5,
-				"image": "30kr1n.png",
-				"rune": "説明する",
-				"spelling": [
-					"せ",
-					"つ",
-					"め",
-					"い",
-					"す",
-					"る"
-				],
-				"meaning": "Menjelaskan"
-			}
-		]
+		"kunyomi": "あ",
+		"onyomi": "メ",
+		"id": 44
 	},
 	{
 		"rune": "休",
 		"chapter": 5,
-		"kunyomi": [
-			"やす-む"
-		],
-		"onyomi": [
-			"キュウ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 5,
-				"image": "30kr1n.png",
-				"rune": "休む",
-				"spelling": [
-					"や",
-					"す",
-					"む"
-				],
-				"meaning": "Beristirahat",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 5,
-				"image": "30kr1n.png",
-				"rune": "休日",
-				"spelling": [
-					"き",
-					"ゅ",
-					"う",
-					"じ",
-					"つ"
-				],
-				"meaning": "Hari libur"
-			}
-		]
+		"kunyomi": "や",
+		"onyomi": "キ",
+		"id": 45
 	},
 	{
 		"rune": "体",
 		"chapter": 5,
-		"kunyomi": [
-			"からだ"
-		],
-		"onyomi": [
-			"タイ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 5,
-				"image": "30kr1n.png",
-				"rune": "体",
-				"spelling": [
-					"か",
-					"ら",
-					"だ"
-				],
-				"meaning": "Tubuh",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 5,
-				"image": "30kr1n.png",
-				"rune": "体力",
-				"spelling": [
-					"た",
-					"い",
-					"り",
-					"ょ",
-					"く"
-				],
-				"meaning": "Kesehatan fisik"
-			},
-			{
-				"id": 1,
-				"chapter": 5,
-				"image": "30kr1n.png",
-				"rune": "体育",
-				"spelling": [
-					"た",
-					"い",
-					"い",
-					"く"
-				],
-				"meaning": "Pendidikan Jasmani"
-			}
-		]
+		"kunyomi": "か",
+		"onyomi": "タ",
+		"id": 46
 	},
 	{
 		"rune": "好",
 		"chapter": 5,
-		"kunyomi": [
-			"す-きな"
-		],
-		"onyomi": [
-			"ー"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 5,
-				"image": "30kr1n.png",
-				"rune": "好きな",
-				"spelling": [
-					"す",
-					"き",
-					"な"
-				],
-				"meaning": "Suka",
-				"is_single": true
-			}
-		]
+		"kunyomi": "す",
+		"onyomi": "ー",
+		"id": 47
 	},
 	{
 		"rune": "林",
 		"chapter": 5,
-		"kunyomi": [
-			"はやし"
-		],
-		"onyomi": [
-			"リン"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 5,
-				"image": "30kr1n.png",
-				"rune": "林",
-				"spelling": [
-					"は",
-					"や",
-					"し"
-				],
-				"meaning": "Pepohonan",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 5,
-				"image": "30kr1n.png",
-				"rune": "森林",
-				"spelling": [
-					"し",
-					"ん",
-					"り",
-					"ん"
-				],
-				"meaning": "Hutan rimba"
-			}
-		]
+		"kunyomi": "は",
+		"onyomi": "リ",
+		"id": 48
 	},
 	{
 		"rune": "森",
 		"chapter": 5,
-		"kunyomi": [
-			"もり"
-		],
-		"onyomi": [
-			"シン"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 5,
-				"image": "30kr1n.png",
-				"rune": "森",
-				"spelling": [
-					"も",
-					"り"
-				],
-				"meaning": "Hutan",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 5,
-				"image": "30kr1n.png",
-				"rune": "森林",
-				"spelling": [
-					"し",
-					"ん",
-					"り",
-					"ん"
-				],
-				"meaning": "Hutan Rimba"
-			}
-		]
+		"kunyomi": "も",
+		"onyomi": "シ",
+		"id": 49
 	},
 	{
 		"rune": "男",
 		"chapter": 5,
-		"kunyomi": [
-			"おとこ"
-		],
-		"onyomi": [
-			"ダン/ナン"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 5,
-				"image": "30kr1n.png",
-				"rune": "男",
-				"spelling": [
-					"お",
-					"と",
-					"こ"
-				],
-				"meaning": "Laki-laki",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 5,
-				"image": "30kr1n.png",
-				"rune": "男の人",
-				"spelling": [
-					"お",
-					"と",
-					"こ",
-					"の",
-					"ひ",
-					"と"
-				],
-				"meaning": "Orang laki-laki"
-			},
-			{
-				"id": 1,
-				"chapter": 5,
-				"image": "30kr1n.png",
-				"rune": "男の子",
-				"spelling": [
-					"お",
-					"と",
-					"こ",
-					"の",
-					"こ"
-				],
-				"meaning": "Anak laki-laki"
-			},
-			{
-				"id": 1,
-				"chapter": 5,
-				"image": "30kr1n.png",
-				"rune": "長男",
-				"spelling": [
-					"ち",
-					"ょ",
-					"う",
-					"な",
-					"ん"
-				],
-				"meaning": "Anak putra tertua"
-			}
-		]
+		"kunyomi": "お",
+		"onyomi": "ダ",
+		"id": 50
 	},
 	{
 		"rune": "間",
 		"chapter": 5,
-		"kunyomi": [
-			"あいだ/ま"
-		],
-		"onyomi": [
-			"カン"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 5,
-				"image": "30kr1n.png",
-				"rune": "間",
-				"spelling": [
-					"あ",
-					"い",
-					"だ"
-				],
-				"meaning": "Di antara dua hal",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 5,
-				"image": "30kr1n.png",
-				"rune": "間に合う",
-				"spelling": [
-					"ま",
-					"に",
-					"あ",
-					"う"
-				],
-				"meaning": "Tepat waktu"
-			},
-			{
-				"id": 1,
-				"chapter": 5,
-				"image": "30kr1n.png",
-				"rune": "一年間",
-				"spelling": [
-					"い",
-					"ち",
-					"ね",
-					"ん",
-					"か",
-					"ん"
-				],
-				"meaning": "1 tahun"
-			},
-			{
-				"id": 1,
-				"chapter": 5,
-				"image": "30kr1n.png",
-				"rune": "時間",
-				"spelling": [
-					"じ",
-					"か",
-					"ん"
-				],
-				"meaning": "Waktu"
-			}
-		]
+		"kunyomi": "あ",
+		"onyomi": "カ",
+		"id": 51
 	},
 	{
 		"rune": "校",
 		"chapter": 5,
-		"kunyomi": [
-			"ー"
-		],
-		"onyomi": [
-			"コウ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 5,
-				"image": "30kr1n.png",
-				"rune": "高校",
-				"spelling": [
-					"こ",
-					"う",
-					"こ",
-					"う"
-				],
-				"meaning": "Sekolah Menengah Atas"
-			},
-			{
-				"id": 1,
-				"chapter": 5,
-				"image": "30kr1n.png",
-				"rune": "高校生",
-				"spelling": [
-					"こ",
-					"う",
-					"こ",
-					"う",
-					"せ",
-					"い"
-				],
-				"meaning": "Murid SMA"
-			},
-			{
-				"id": 1,
-				"chapter": 5,
-				"image": "30kr1n.png",
-				"rune": "校長",
-				"spelling": [
-					"こ",
-					"う",
-					"ち",
-					"ょ",
-					"う"
-				],
-				"meaning": "Kepala Sekolah"
-			}
-		]
+		"kunyomi": "ー",
+		"onyomi": "コ",
+		"id": 52
 	},
 	{
 		"rune": "国",
 		"chapter": 5,
-		"kunyomi": [
-			"くに"
-		],
-		"onyomi": [
-			"コク"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 5,
-				"image": "30kr1n.png",
-				"rune": "国",
-				"spelling": [
-					"は",
-					"た",
-					"け"
-				],
-				"meaning": "Negara",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 5,
-				"image": "30kr1n.png",
-				"rune": "外国人",
-				"spelling": [
-					"が",
-					"い",
-					"こ",
-					"く",
-					"じ",
-					"ん"
-				],
-				"meaning": "Orang asing"
-			},
-			{
-				"id": 1,
-				"chapter": 5,
-				"image": "30kr1n.png",
-				"rune": "中国",
-				"spelling": [
-					"ち",
-					"ゅ",
-					"う",
-					"ご",
-					"く"
-				],
-				"meaning": "China"
-			}
-		]
+		"kunyomi": "く",
+		"onyomi": "コ",
+		"id": 53
 	},
 	{
 		"rune": "目",
 		"chapter": 6,
-		"kunyomi": [
-			"め"
-		],
-		"onyomi": [
-			"モク"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 6,
-				"image": "30kr1n.png",
-				"rune": "目",
-				"spelling": [
-					"め"
-				],
-				"meaning": "Mata",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 6,
-				"image": "30kr1n.png",
-				"rune": "目次",
-				"spelling": [
-					"も",
-					"く",
-					"じ"
-				],
-				"meaning": "Daftar isi"
-			}
-		]
+		"kunyomi": "め",
+		"onyomi": "モ",
+		"id": 54
 	},
 	{
 		"rune": "耳",
 		"chapter": 6,
-		"kunyomi": [
-			"みみ"
-		],
-		"onyomi": [
-			"ジ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 6,
-				"image": "30kr1n.png",
-				"rune": "耳",
-				"spelling": [
-					"み",
-					"み"
-				],
-				"meaning": "Telinga",
-				"is_single": true
-			}
-		]
+		"kunyomi": "み",
+		"onyomi": "ジ",
+		"id": 55
 	},
 	{
 		"rune": "手",
 		"chapter": 6,
-		"kunyomi": [
-			"て"
-		],
-		"onyomi": [
-			"シュ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 6,
-				"image": "30kr1n.png",
-				"rune": "手",
-				"spelling": [
-					"て"
-				],
-				"meaning": "Tangan",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 6,
-				"image": "30kr1n.png",
-				"rune": "手紙",
-				"spelling": [
-					"て",
-					"が",
-					"み"
-				],
-				"meaning": "Surat"
-			},
-			{
-				"id": 1,
-				"chapter": 6,
-				"image": "30kr1n.png",
-				"rune": "歌手",
-				"spelling": [
-					"か",
-					"し",
-					"ゅ"
-				],
-				"meaning": "Penyanyi"
-			},
-			{
-				"id": 1,
-				"chapter": 6,
-				"image": "30kr1n.png",
-				"rune": "⋆上手",
-				"spelling": [
-					"じ",
-					"ょ",
-					"う",
-					"ず"
-				],
-				"meaning": "Mahir"
-			}
-		]
+		"kunyomi": "て",
+		"onyomi": "シ",
+		"id": 56
 	},
 	{
 		"rune": "足",
 		"chapter": 6,
-		"kunyomi": [
-			"あし"
-		],
-		"onyomi": [
-			"ソク"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 6,
-				"image": "30kr1n.png",
-				"rune": "足",
-				"spelling": [
-					"あ",
-					"し"
-				],
-				"meaning": "Kaki",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 6,
-				"image": "30kr1n.png",
-				"rune": "二足",
-				"spelling": [
-					"に",
-					"そ",
-					"く"
-				],
-				"meaning": "2 Pasang",
-				"needs_check": true
-			}
-		]
+		"kunyomi": "あ",
+		"onyomi": "ソ",
+		"id": 57
 	},
 	{
 		"rune": "雨",
 		"chapter": 6,
-		"kunyomi": [
-			"あめ"
-		],
-		"onyomi": [
-			"ウ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 6,
-				"image": "30kr1n.png",
-				"rune": "雨",
-				"spelling": [
-					"あ",
-					"め"
-				],
-				"meaning": "Hujan",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 6,
-				"image": "30kr1n.png",
-				"rune": "大雨",
-				"spelling": [
-					"お",
-					"お",
-					"あ",
-					"め"
-				],
-				"meaning": "Hujan lebat"
-			},
-			{
-				"id": 1,
-				"chapter": 6,
-				"image": "30kr1n.png",
-				"rune": "雨天",
-				"spelling": [
-					"う",
-					"て",
-					"ん"
-				],
-				"meaning": "Cuaca hujan"
-			}
-		]
+		"kunyomi": "あ",
+		"onyomi": "ウ",
+		"id": 58
 	},
 	{
 		"rune": "竹",
 		"chapter": 6,
-		"kunyomi": [
-			"たけ"
-		],
-		"onyomi": [
-			"（チク）"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 6,
-				"image": "30kr1n.png",
-				"rune": "竹",
-				"spelling": [
-					"た",
-					"け"
-				],
-				"meaning": "Bambu",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 6,
-				"image": "30kr1n.png",
-				"rune": "竹の子",
-				"spelling": [
-					"た",
-					"け",
-					"の",
-					"こ"
-				],
-				"meaning": "Tebu"
-			}
-		]
+		"kunyomi": "た",
+		"onyomi": "（",
+		"id": 59
 	},
 	{
 		"rune": "米",
 		"chapter": 6,
-		"kunyomi": [
-			"こめ"
-		],
-		"onyomi": [
-			"マイ/ベイ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 6,
-				"image": "30kr1n.png",
-				"rune": "米",
-				"spelling": [
-					"こ",
-					"め"
-				],
-				"meaning": "Beras",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 6,
-				"image": "30kr1n.png",
-				"rune": "新米",
-				"spelling": [
-					"し",
-					"ん",
-					"ま",
-					"い"
-				],
-				"meaning": "Beras baru"
-			},
-			{
-				"id": 1,
-				"chapter": 6,
-				"image": "30kr1n.png",
-				"rune": "米国",
-				"spelling": [
-					"べ",
-					"い",
-					"こ",
-					"く"
-				],
-				"meaning": "Amerika Serikat"
-			},
-			{
-				"id": 1,
-				"chapter": 6,
-				"image": "30kr1n.png",
-				"rune": "中米",
-				"spelling": [
-					"ち",
-					"ゅ",
-					"う",
-					"べ",
-					"い"
-				],
-				"meaning": "Amerika tengah"
-			}
-		]
+		"kunyomi": "こ",
+		"onyomi": "マ",
+		"id": 60
 	},
 	{
 		"rune": "貝",
 		"chapter": 6,
-		"kunyomi": [
-			"かい"
-		],
-		"onyomi": [
-			"ー"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 6,
-				"image": "30kr1n.png",
-				"rune": "貝",
-				"spelling": [
-					"か",
-					"い"
-				],
-				"meaning": "Kerang",
-				"is_single": true
-			}
-		]
+		"kunyomi": "か",
+		"onyomi": "ー",
+		"id": 61
 	},
 	{
 		"rune": "石",
 		"chapter": 6,
-		"kunyomi": [
-			"いし"
-		],
-		"onyomi": [
-			"セキ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 6,
-				"image": "30kr1n.png",
-				"rune": "石",
-				"spelling": [
-					"い",
-					"し"
-				],
-				"meaning": "Batu",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 6,
-				"image": "30kr1n.png",
-				"rune": "石油",
-				"spelling": [
-					"せ",
-					"き",
-					"ゆ"
-				],
-				"meaning": "Minyak bumi"
-			},
-			{
-				"id": 1,
-				"chapter": 6,
-				"image": "30kr1n.png",
-				"rune": "化石",
-				"spelling": [
-					"か",
-					"せ",
-					"き"
-				],
-				"meaning": "Fosil"
-			}
-		]
+		"kunyomi": "い",
+		"onyomi": "セ",
+		"id": 62
 	},
 	{
 		"rune": "糸",
 		"chapter": 6,
-		"kunyomi": [
-			"いと"
-		],
-		"onyomi": [
-			"（シ）"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 6,
-				"image": "30kr1n.png",
-				"rune": "糸",
-				"spelling": [
-					"い",
-					"と"
-				],
-				"meaning": "Benang",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 6,
-				"image": "30kr1n.png",
-				"rune": "毛糸",
-				"spelling": [
-					"け",
-					"い",
-					"と"
-				],
-				"meaning": "Benang wol"
-			}
-		]
+		"kunyomi": "い",
+		"onyomi": "（",
+		"id": 63
 	},
 	{
 		"rune": "花",
 		"chapter": 7,
-		"kunyomi": [
-			"はな"
-		],
-		"onyomi": [
-			"カ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 7,
-				"image": "30kr1n.png",
-				"rune": "花",
-				"spelling": [
-					"は",
-					"な"
-				],
-				"meaning": "Bunga",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 7,
-				"image": "30kr1n.png",
-				"rune": "花火",
-				"spelling": [
-					"は",
-					"な",
-					"び"
-				],
-				"meaning": "Kembang api"
-			}
-		]
+		"kunyomi": "は",
+		"onyomi": "カ",
+		"id": 64
 	},
 	{
 		"rune": "茶",
 		"chapter": 7,
-		"kunyomi": [
-			"ー"
-		],
-		"onyomi": [
-			"チャ/サ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 7,
-				"image": "30kr1n.png",
-				"rune": "お茶",
-				"spelling": [
-					"お",
-					"ち",
-					"ゃ"
-				],
-				"meaning": "Teh",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 7,
-				"image": "30kr1n.png",
-				"rune": "紅茶",
-				"spelling": [
-					"こ",
-					"う",
-					"ち",
-					"ゃ"
-				],
-				"meaning": "Teh hitam"
-			}
-		]
+		"kunyomi": "ー",
+		"onyomi": "チ",
+		"id": 65
 	},
 	{
 		"rune": "肉",
 		"chapter": 7,
-		"kunyomi": [
-			"ー"
-		],
-		"onyomi": [
-			"ニク"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 7,
-				"image": "30kr1n.png",
-				"rune": "肉",
-				"spelling": [
-					"に",
-					"く"
-				],
-				"meaning": "Daging",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 7,
-				"image": "30kr1n.png",
-				"rune": "鳥肉",
-				"spelling": [
-					"と",
-					"り",
-					"に",
-					"く"
-				],
-				"meaning": "Daging ayam"
-			},
-			{
-				"id": 1,
-				"chapter": 7,
-				"image": "30kr1n.png",
-				"rune": "牛肉",
-				"spelling": [
-					"ぎ",
-					"ゅ",
-					"う",
-					"に",
-					"く"
-				],
-				"meaning": "Daging sapi"
-			}
-		]
+		"kunyomi": "ー",
+		"onyomi": "ニ",
+		"id": 66
 	},
 	{
 		"rune": "赤",
 		"chapter": 7,
-		"kunyomi": [
-			"あか-い"
-		],
-		"onyomi": [
-			"セキ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 7,
-				"image": "30kr1n.png",
-				"rune": "赤い",
-				"spelling": [
-					"あ",
-					"か",
-					"い"
-				],
-				"meaning": "Merah",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 7,
-				"image": "30kr1n.png",
-				"rune": "赤ちゃん",
-				"spelling": [
-					"あ",
-					"か",
-					"ち",
-					"ゃ",
-					"ん"
-				],
-				"meaning": "Bayi"
-			}
-		]
+		"kunyomi": "あ",
+		"onyomi": "セ",
+		"id": 67
 	},
 	{
 		"rune": "白",
 		"chapter": 7,
-		"kunyomi": [
-			"しろ-い/しら"
-		],
-		"onyomi": [
-			"ハク/パク"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 7,
-				"image": "30kr1n.png",
-				"rune": "白い",
-				"spelling": [
-					"し",
-					"ろ",
-					"い"
-				],
-				"meaning": "Putih",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 7,
-				"image": "30kr1n.png",
-				"rune": "白米",
-				"spelling": [
-					"は",
-					"く",
-					"ま",
-					"い"
-				],
-				"meaning": "Beras putih"
-			}
-		]
+		"kunyomi": "し",
+		"onyomi": "ハ",
+		"id": 68
 	},
 	{
 		"rune": "物",
 		"chapter": 7,
-		"kunyomi": [
-			"もの"
-		],
-		"onyomi": [
-			"ブツ/モツ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 7,
-				"image": "30kr1n.png",
-				"rune": "物",
-				"spelling": [
-					"も",
-					"の"
-				],
-				"meaning": "Benda / hal",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 7,
-				"image": "30kr1n.png",
-				"rune": "買い物",
-				"spelling": [
-					"か",
-					"い",
-					"も",
-					"の"
-				],
-				"meaning": "Belanjaan"
-			},
-			{
-				"id": 1,
-				"chapter": 7,
-				"image": "30kr1n.png",
-				"rune": "荷物",
-				"spelling": [
-					"に",
-					"も",
-					"つ"
-				],
-				"meaning": "Luggage / Koper bawaan"
-			}
-		]
+		"kunyomi": "も",
+		"onyomi": "ブ",
+		"id": 69
 	},
 	{
 		"rune": "牛",
 		"chapter": 7,
-		"kunyomi": [
-			"うし"
-		],
-		"onyomi": [
-			"ギュウ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 7,
-				"image": "30kr1n.png",
-				"rune": "牛",
-				"spelling": [
-					"う",
-					"し"
-				],
-				"meaning": "Sapi",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 7,
-				"image": "30kr1n.png",
-				"rune": "子牛",
-				"spelling": [
-					"こ",
-					"う",
-					"し"
-				],
-				"meaning": "Anak sapi"
-			},
-			{
-				"id": 1,
-				"chapter": 7,
-				"image": "30kr1n.png",
-				"rune": "牛肉",
-				"spelling": [
-					"ぎ",
-					"ゅ",
-					"う",
-					"に",
-					"く"
-				],
-				"meaning": "Daging sapi"
-			},
-			{
-				"id": 1,
-				"chapter": 7,
-				"image": "30kr1n.png",
-				"rune": "牛乳",
-				"spelling": [
-					"ぎ",
-					"ゅ",
-					"う",
-					"に",
-					"ゅ",
-					"う"
-				],
-				"meaning": "Susu"
-			}
-		]
+		"kunyomi": "う",
+		"onyomi": "ギ",
+		"id": 70
 	},
 	{
 		"rune": "馬",
 		"chapter": 7,
-		"kunyomi": [
-			"うま"
-		],
-		"onyomi": [
-			"バ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 7,
-				"image": "30kr1n.png",
-				"rune": "馬",
-				"spelling": [
-					"う",
-					"ま"
-				],
-				"meaning": "Kuda",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 7,
-				"image": "30kr1n.png",
-				"rune": "馬車",
-				"spelling": [
-					"ば",
-					"し",
-					"ゃ"
-				],
-				"meaning": "Kereta Kuda"
-			}
-		]
+		"kunyomi": "う",
+		"onyomi": "バ",
+		"id": 71
 	},
 	{
 		"rune": "鳥",
 		"chapter": 7,
-		"kunyomi": [
-			"とり"
-		],
-		"onyomi": [
-			"チョウ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 7,
-				"image": "30kr1n.png",
-				"rune": "鳥",
-				"spelling": [
-					"と",
-					"り"
-				],
-				"meaning": "Burung/Ayam",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 7,
-				"image": "30kr1n.png",
-				"rune": "焼き鳥",
-				"spelling": [
-					"や",
-					"き",
-					"と",
-					"り"
-				],
-				"meaning": "Ayam bakar"
-			},
-			{
-				"id": 1,
-				"chapter": 7,
-				"image": "30kr1n.png",
-				"rune": "白鳥",
-				"spelling": [
-					"は",
-					"く",
-					"ち",
-					"ょ",
-					"う"
-				],
-				"meaning": "Angsa"
-			}
-		]
+		"kunyomi": "と",
+		"onyomi": "チ",
+		"id": 72
 	},
 	{
 		"rune": "魚",
 		"chapter": 7,
-		"kunyomi": [
-			"さかな"
-		],
-		"onyomi": [
-			"ギョ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 7,
-				"image": "30kr1n.png",
-				"rune": "魚",
-				"spelling": [
-					"さ",
-					"か",
-					"な"
-				],
-				"meaning": "Ikan",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 7,
-				"image": "30kr1n.png",
-				"rune": "魚屋",
-				"spelling": [
-					"さ",
-					"か",
-					"な",
-					"や"
-				],
-				"meaning": "Toko ikan"
-			},
-			{
-				"id": 1,
-				"chapter": 7,
-				"image": "30kr1n.png",
-				"rune": "焼き魚",
-				"spelling": [
-					"や",
-					"き",
-					"ざ",
-					"か",
-					"な"
-				],
-				"meaning": "Ikan bakar"
-			},
-			{
-				"id": 1,
-				"chapter": 7,
-				"image": "30kr1n.png",
-				"rune": "金魚",
-				"spelling": [
-					"き",
-					"ん",
-					"ぎ",
-					"ょ"
-				],
-				"meaning": "Ikan mas"
-			}
-		]
+		"kunyomi": "さ",
+		"onyomi": "ギ",
+		"id": 73
 	},
 	{
 		"rune": "行",
 		"chapter": 8,
-		"kunyomi": [
-			"い-く/おこな-う"
-		],
-		"onyomi": [
-			"コウ/ギョウ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 8,
-				"image": "30kr1n.png",
-				"rune": "行く",
-				"spelling": [
-					"あ",
-					"た",
-					"ら",
-					"し",
-					"い"
-				],
-				"meaning": "Pergi",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 8,
-				"image": "30kr1n.png",
-				"rune": "旅行する",
-				"spelling": [
-					"り",
-					"ょ",
-					"こ",
-					"う",
-					"す",
-					"る"
-				],
-				"meaning": "Travelling / bepergian"
-			}
-		]
+		"kunyomi": "い",
+		"onyomi": "コ",
+		"id": 74
 	},
 	{
 		"rune": "来",
 		"chapter": 8,
-		"kunyomi": [
-			"く-る/き-ます/こ-ない"
-		],
-		"onyomi": [
-			"ライ "
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 8,
-				"image": "30kr1n.png",
-				"rune": "来る",
-				"spelling": [
-					"く",
-					"る"
-				],
-				"meaning": "Datang",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 8,
-				"image": "30kr1n.png",
-				"rune": "来月",
-				"spelling": [
-					"ら",
-					"い",
-					"げ",
-					"つ"
-				],
-				"meaning": "Bulan depan"
-			},
-			{
-				"id": 1,
-				"chapter": 8,
-				"image": "30kr1n.png",
-				"rune": "来年",
-				"spelling": [
-					"ら",
-					"い",
-					"ね",
-					"ん"
-				],
-				"meaning": "Tahun depan"
-			}
-		]
+		"kunyomi": "く",
+		"onyomi": "ラ",
+		"id": 75
 	},
 	{
 		"rune": "食",
 		"chapter": 8,
-		"kunyomi": [
-			"たべ-る"
-		],
-		"onyomi": [
-			"ショク"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 8,
-				"image": "30kr1n.png",
-				"rune": "食べる",
-				"spelling": [
-					"た",
-					"べ",
-					"る"
-				],
-				"meaning": "Makan",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 8,
-				"image": "30kr1n.png",
-				"rune": "食べ物",
-				"spelling": [
-					"た",
-					"べ",
-					"も",
-					"の"
-				],
-				"meaning": "Makanan"
-			},
-			{
-				"id": 1,
-				"chapter": 8,
-				"image": "30kr1n.png",
-				"rune": "食事",
-				"spelling": [
-					"し",
-					"ょ",
-					"く",
-					"じ"
-				],
-				"meaning": "Makanan (meal)"
-			}
-		]
+		"kunyomi": "た",
+		"onyomi": "シ",
+		"id": 76
 	},
 	{
 		"rune": "飲",
 		"chapter": 8,
-		"kunyomi": [
-			"の-む"
-		],
-		"onyomi": [
-			"イン "
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 8,
-				"image": "30kr1n.png",
-				"rune": "飲む",
-				"spelling": [
-					"の",
-					"む"
-				],
-				"meaning": "Minum",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 8,
-				"image": "30kr1n.png",
-				"rune": "飲み物",
-				"spelling": [
-					"の",
-					"み",
-					"も",
-					"の"
-				],
-				"meaning": "Minuman"
-			}
-		]
+		"kunyomi": "の",
+		"onyomi": "イ",
+		"id": 77
 	},
 	{
 		"rune": "見",
 		"chapter": 8,
-		"kunyomi": [
-			"み-る/み-せる/み-える"
-		],
-		"onyomi": [
-			"ケン "
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 8,
-				"image": "30kr1n.png",
-				"rune": "見る",
-				"spelling": [
-					"み",
-					"る"
-				],
-				"meaning": "Lihat/Melihat",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 8,
-				"image": "30kr1n.png",
-				"rune": "見せる",
-				"spelling": [
-					"み",
-					"せ",
-					"る"
-				],
-				"meaning": "Memperlihatkan"
-			},
-			{
-				"id": 1,
-				"chapter": 8,
-				"image": "30kr1n.png",
-				"rune": "意見",
-				"spelling": [
-					"い",
-					"け",
-					"ん"
-				],
-				"meaning": "Pendapat"
-			},
-			{
-				"id": 1,
-				"chapter": 8,
-				"image": "30kr1n.png",
-				"rune": "見物する",
-				"spelling": [
-					"け",
-					"ん",
-					"ぶ",
-					"つ",
-					"す",
-					"る"
-				],
-				"meaning": "Melihat-lihat"
-			}
-		]
+		"kunyomi": "み",
+		"onyomi": "ケ",
+		"id": 78
 	},
 	{
 		"rune": "聞",
 		"chapter": 8,
-		"kunyomi": [
-			"き-く/き-こえる"
-		],
-		"onyomi": [
-			"ブン "
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 8,
-				"image": "30kr1n.png",
-				"rune": "聞く",
-				"spelling": [
-					"き",
-					"く"
-				],
-				"meaning": "Dengar",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 8,
-				"image": "30kr1n.png",
-				"rune": "聞こえる",
-				"spelling": [
-					"き",
-					"こ",
-					"え",
-					"る"
-				],
-				"meaning": "Terdengar"
-			},
-			{
-				"id": 1,
-				"chapter": 8,
-				"image": "30kr1n.png",
-				"rune": "新聞",
-				"spelling": [
-					"し",
-					"ん",
-					"ぶ",
-					"ん"
-				],
-				"meaning": "Koran"
-			}
-		]
+		"kunyomi": "き",
+		"onyomi": "ブ",
+		"id": 79
 	},
 	{
 		"rune": "読",
 		"chapter": 8,
-		"kunyomi": [
-			"よ-む"
-		],
-		"onyomi": [
-			"ドク "
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 8,
-				"image": "30kr1n.png",
-				"rune": "読む",
-				"spelling": [
-					"よ",
-					"む"
-				],
-				"meaning": "Baca/Membaca",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 8,
-				"image": "30kr1n.png",
-				"rune": "読書",
-				"spelling": [
-					"ど",
-					"く",
-					"し",
-					"ょ"
-				],
-				"meaning": "Membaca"
-			},
-			{
-				"id": 1,
-				"chapter": 8,
-				"image": "30kr1n.png",
-				"rune": "読者",
-				"spelling": [
-					"ど",
-					"く",
-					"し",
-					"ゃ"
-				],
-				"meaning": "Pembaca"
-			}
-		]
+		"kunyomi": "よ",
+		"onyomi": "ド",
+		"id": 80
 	},
 	{
 		"rune": "書",
 		"chapter": 8,
-		"kunyomi": [
-			"か-く"
-		],
-		"onyomi": [
-			"ショ "
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 8,
-				"image": "30kr1n.png",
-				"rune": "書く",
-				"spelling": [
-					"か",
-					"く"
-				],
-				"meaning": "Menulis",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 8,
-				"image": "30kr1n.png",
-				"rune": "下書き",
-				"spelling": [
-					"し",
-					"た",
-					"が",
-					"き"
-				],
-				"meaning": "Draft"
-			},
-			{
-				"id": 1,
-				"chapter": 8,
-				"image": "30kr1n.png",
-				"rune": "書道",
-				"spelling": [
-					"し",
-					"ょ",
-					"ど",
-					"う"
-				],
-				"meaning": "Kaligrafi"
-			}
-		]
+		"kunyomi": "か",
+		"onyomi": "シ",
+		"id": 81
 	},
 	{
 		"rune": "話",
 		"chapter": 8,
-		"kunyomi": [
-			"はな-す/はなし"
-		],
-		"onyomi": [
-			"ワ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 8,
-				"image": "30kr1n.png",
-				"rune": "話す",
-				"spelling": [
-					"は",
-					"な",
-					"す"
-				],
-				"meaning": "Berbicara",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 8,
-				"image": "30kr1n.png",
-				"rune": "会話",
-				"spelling": [
-					"か",
-					"い",
-					"わ"
-				],
-				"meaning": "Percakapan"
-			},
-			{
-				"id": 1,
-				"chapter": 8,
-				"image": "30kr1n.png",
-				"rune": "電話",
-				"spelling": [
-					"で",
-					"ん",
-					"わ"
-				],
-				"meaning": "Telepon"
-			}
-		]
+		"kunyomi": "は",
+		"onyomi": "ワ",
+		"id": 82
 	},
 	{
 		"rune": "買",
 		"chapter": 8,
-		"kunyomi": [
-			"か-う"
-		],
-		"onyomi": [
-			"ー"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 8,
-				"image": "30kr1n.png",
-				"rune": "買う",
-				"spelling": [
-					"か",
-					"う"
-				],
-				"meaning": "Membeli",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 8,
-				"image": "30kr1n.png",
-				"rune": "買い物",
-				"spelling": [
-					"か",
-					"い",
-					"も",
-					"の"
-				],
-				"meaning": "Belanjaan"
-			}
-		]
+		"kunyomi": "か",
+		"onyomi": "ー",
+		"id": 83
 	},
 	{
 		"rune": "帰",
 		"chapter": 8,
-		"kunyomi": [
-			"かえ-る/かえ-す"
-		],
-		"onyomi": [
-			"キ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 8,
-				"image": "30kr1n.png",
-				"rune": "帰る",
-				"spelling": [
-					"か",
-					"え",
-					"る"
-				],
-				"meaning": "Pulang ke tempat tinggal",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 8,
-				"image": "30kr1n.png",
-				"rune": "帰国する",
-				"spelling": [
-					"き",
-					"こ",
-					"く",
-					"す",
-					"る"
-				],
-				"meaning": "Pulang ke negara asal"
-			}
-		]
+		"kunyomi": "か",
+		"onyomi": "キ",
+		"id": 84
 	},
 	{
 		"rune": "教",
 		"chapter": 8,
-		"kunyomi": [
-			"おし-える"
-		],
-		"onyomi": [
-			"キョウ"
-		],
-		"examples": [
-			{
-				"id": 1,
-				"chapter": 8,
-				"image": "30kr1n.png",
-				"rune": "教える",
-				"spelling": [
-					"お",
-					"し",
-					"え",
-					"る"
-				],
-				"meaning": "Mengajar",
-				"is_single": true
-			},
-			{
-				"id": 1,
-				"chapter": 8,
-				"image": "30kr1n.png",
-				"rune": "教室",
-				"spelling": [
-					"き",
-					"ょ",
-					"う",
-					"し",
-					"つ"
-				],
-				"meaning": "Ruang kelas"
-			},
-			{
-				"id": 1,
-				"chapter": 8,
-				"image": "30kr1n.png",
-				"rune": "教会",
-				"spelling": [
-					"き",
-					"ょ",
-					"う",
-					"か",
-					"い"
-				],
-				"meaning": "Gereja"
-			}
-		]
+		"kunyomi": "お",
+		"onyomi": "キ",
+		"id": 85
 	}
 ]
