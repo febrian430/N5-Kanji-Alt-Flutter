@@ -58,6 +58,7 @@ class AppHeader extends StatelessWidget {
   final String japanese;
 
   Widget? topRight;
+  Widget? topLeft;
   bool withBack;
   
   AppHeader({
@@ -65,10 +66,19 @@ class AppHeader extends StatelessWidget {
     required this.title, 
     required this.japanese, 
     this.withBack = false, 
-    this.topRight
+    this.topRight,
+    this.topLeft
   }) : super(key: key);
 
-  
+  Widget _topLeft(BuildContext context) {
+    if(withBack){
+      return AppBackButton(context);
+    } else if(topLeft != null) {
+      return topLeft!;
+    } else {
+      return SizedBox();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +93,7 @@ class AppHeader extends StatelessWidget {
         children: [
           Expanded(
             flex: 5,
-            child: withBack ? AppBackButton(context) : SizedBox(),
+            child: _topLeft(context),
           ),
           Expanded(
             flex: 8,

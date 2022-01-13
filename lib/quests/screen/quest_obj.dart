@@ -82,6 +82,7 @@ class _QuestWidgetState extends State<QuestWidget> {
               style: TextStyle(
                 color: AppColors.correct,
                 fontSize: 14,
+                fontWeight: FontWeight.bold
               ),
             ),
           )

@@ -90,7 +90,7 @@ class _MultipleChoiceGameState extends State<MultipleChoiceGame> {
           //   visible: gameOver && solved == numOfQuestions, 
           //   param: ResultParam(wrongCount: wrong, decreaseFactor: 100, stopwatch: widget.stopwatch)
           // ),
-          SubmitButton(
+          VisibleButton(
             visible: !gameOver && solved == numOfQuestions, 
             onTap: () {
               setState(() {
@@ -98,6 +98,7 @@ class _MultipleChoiceGameState extends State<MultipleChoiceGame> {
                 widget.stopwatch.stop();
               });
             },
+            title: "Next",
           ),
       ],) 
     );

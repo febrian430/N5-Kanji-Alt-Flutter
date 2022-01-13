@@ -90,8 +90,7 @@ class _GameScreenState extends State<GameScreen> {
           ), 
           child: widget.game,
           horizontalPadding: false,
-          topPadding: false,
-          bottomPadding: false,
+          topPadding: true,
         )
       )
     );

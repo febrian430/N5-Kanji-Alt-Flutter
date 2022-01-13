@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class SubmitButton extends StatelessWidget  {
-  const SubmitButton({Key? key, required this.visible, required this.onTap}) : super(key: key);
+class VisibleButton extends StatelessWidget  {
+  const VisibleButton({Key? key, required this.visible, required this.onTap, required this.title}) : super(key: key);
   
+  final String title;
   final bool visible;
   final Function() onTap;
 
@@ -11,11 +12,11 @@ class SubmitButton extends StatelessWidget  {
   Widget build(BuildContext context) {
     return Visibility(
         visible: visible,
-        child: ElevatedButton(
+        child: TextButton(
           onPressed: onTap, 
-          child: const Center(
+          child: Center(
             child: Text(
-              'Submit answers'
+              title
             )
           )
         )

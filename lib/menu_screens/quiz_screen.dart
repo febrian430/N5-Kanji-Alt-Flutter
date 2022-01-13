@@ -16,6 +16,7 @@ class QuizScreen extends StatefulWidget {
   final String japanese;
   final Widget game;
   final Widget footerWhenOver;
+  final Widget? footer;
 
   final Function() onPause;
   final Function() onContinue;
@@ -27,7 +28,20 @@ class QuizScreen extends StatefulWidget {
   final bool isOver;
 
 
-  QuizScreen({Key? key, required this.title, required this.japanese, required this.game, required this.onPause, required this.onRestart, required this.onContinue, this.guide, this.onGuideOpen, required this.isOver, required this.footerWhenOver, }) : super(key: key);
+  QuizScreen({
+    Key? key, 
+    required this.title, 
+    required this.japanese, 
+    required this.game, 
+    required this.onPause, 
+    required this.onRestart, 
+    required this.onContinue, 
+    this.guide, 
+    this.onGuideOpen, 
+    required this.isOver, 
+    required this.footerWhenOver, 
+    this.footer
+  }) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _QuizScreenState();
@@ -68,9 +82,9 @@ class _QuizScreenState extends State<QuizScreen> {
   Widget _getFooter(BuildContext context) {    
     if(widget.isOver) {
       return widget.footerWhenOver;
-    } else if(widget.guide == null) {
-      return SizedBox();
-    } else {
+    } else if(widget.footer != null){
+      return widget.footer!; 
+    }else {
       return PauseButton(
         onPause: () {
           setState(() {
@@ -104,12 +118,17 @@ class _QuizScreenState extends State<QuizScreen> {
             title: widget.title, 
             japanese: widget.japanese,
             withBack: false,
+            topLeft: widget.isOver ? SizedBox() : PauseButton(
+              onRestart: widget.onRestart, 
+              onContinue: widget.onContinue, 
+              onPause: widget.onPause
+            ),
             topRight: _guideButton(context)
           ), 
           footer: _getFooter(context),
           child: widget.game,
           horizontalPadding: false,
-          topPadding: false,
+          topPadding: true,
           bottomPadding: false,
         ),
       )

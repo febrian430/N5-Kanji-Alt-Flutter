@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:kanji_memory_hint/components/empty_flex.dart';
+import 'package:kanji_memory_hint/components/submit_button.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/models/question_set.dart';
 import 'package:kanji_memory_hint/multiple-choice/game.dart';
@@ -81,14 +83,24 @@ class _MultipleChoiceGameState extends State<MultipleChoiceQuizGame> {
             ),
           ),
           Expanded(
-            flex: 1,
-            child: NextQuizRoundButton(
-              onTap: () {
-                var correctKanjis = correctIndexes.map((index) => widget.questionSets[index].fromKanji).toList();
-                widget.onSubmit(correct, wrong+unanswered, correctKanjis);
-                wasSubmitted = true;
-              }, 
-              visible: !widget.quizOver && solved == totalQuestion
+            flex: 2,
+            child: Row(
+              children: [
+                EmptyFlex(flex: 1),
+                Expanded(
+                  flex: 2,
+                  child: VisibleButton(
+                    onTap: () {
+                      var correctKanjis = correctIndexes.map((index) => widget.questionSets[index].fromKanji).toList();
+                      widget.onSubmit(correct, wrong+unanswered, correctKanjis);
+                      wasSubmitted = true;
+                    }, 
+                    visible: !widget.quizOver && solved == totalQuestion,
+                    title: "Next",
+                  )
+                ),
+                EmptyFlex(flex: 1)
+              ]
             )
           )
         ]

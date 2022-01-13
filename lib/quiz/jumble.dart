@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:kanji_memory_hint/components/empty_flex.dart';
 import 'package:kanji_memory_hint/components/submit_button.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/jumble/model.dart';
@@ -13,7 +14,13 @@ class JumbleQuizGame extends StatefulWidget {
   final Function(int correct, int hits, int misses, List<List<int>> score) onSubmit;
   final bool restartSource;
 
-  const JumbleQuizGame({Key? key, required this.mode, required this.questionSets, required this.onSubmit, this.quizOver = false, required this.restartSource}) : super(key: key);
+  const JumbleQuizGame({Key? key, 
+    required this.mode, 
+    required this.questionSets, 
+    required this.onSubmit, 
+    this.quizOver = false, 
+    required this.restartSource, 
+  }) : super(key: key);
   
   @override
   State<StatefulWidget> createState() => _JumbleQuizGameState();
@@ -115,18 +122,30 @@ class _JumbleQuizGameState extends State<JumbleQuizGame> {
             }).toList(),
           )
         ),
-        Flexible(
-          flex: 1,
-          child: SubmitButton(
-              visible: (!isGameOver || !widget.quizOver) && solved == totalQuestion, 
-              onTap: () {
-                setState(() {
-                  widget.onSubmit(correct, hits, misses, correctKanjis);
-                  isGameOver = true;
-                });
-              }
+        
+
+        Expanded(
+            flex: 2,
+            child: Row(
+              children: [
+                EmptyFlex(flex: 1),
+                Flexible(
+                  flex: 2,
+                  child: VisibleButton(
+                      visible: (!isGameOver || !widget.quizOver) && solved == totalQuestion, 
+                      onTap: () {
+                        setState(() {
+                          widget.onSubmit(correct, hits, misses, correctKanjis);
+                          isGameOver = true;
+                        });
+                      },
+                      title: "Finish",
+                    )
+                ),
+                EmptyFlex(flex: 1)
+              ]
             )
-        )
+          )
       ]
     );
   }

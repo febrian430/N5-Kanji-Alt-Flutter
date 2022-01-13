@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:quiver/async.dart';
 
 class Countdown {
@@ -69,12 +70,36 @@ class Countdown {
 }
 
 class CountdownWidget extends StatelessWidget {
-  CountdownWidget({Key? key, required this.seconds}) : super(key: key);
+  CountdownWidget({Key? key, required this.seconds, required this.initial}) : super(key: key);
 
   final int seconds;
+  final int initial;
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text(seconds.toString()));
+    // return Center(child: Text(seconds.toString()+'/'+initial.toString()));
+    final width = MediaQuery.of(context).size.width;
+    return SizedBox(
+      width: width*.1,
+      height: width*.1,
+      child: Stack(
+        children: [
+          Center(
+            child: Text(seconds.toString(),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold
+                ),
+              )
+            ),
+          Center(
+            child: CircularProgressIndicator(
+              value: seconds/initial,
+              backgroundColor: Colors.transparent,
+              color: Colors.white,
+            )
+          )
+        ]
+      )
+    );
   } 
 }

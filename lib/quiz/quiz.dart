@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/components/backgrounds/practice_background.dart';
 import 'package:kanji_memory_hint/components/dialogs/guide.dart';
+import 'package:kanji_memory_hint/components/empty_flex.dart';
 import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/countdown.dart';
@@ -83,7 +84,8 @@ class _QuizState extends State<Quiz> {
     2: result
   };
 
-  int secondsLeft = 30;
+  int initTime = 7200;
+  late int secondsLeft = initTime;
   int score = 0;
 
   int mulchoiceCorrect = 0;
@@ -233,12 +235,15 @@ class _QuizState extends State<Quiz> {
 
     return Column(
       children: [
+        // Flexible(
+        //   flex: 1,
+        //   child: CountdownWidget(
+        //     seconds: secondsLeft,
+        //     initial: initTime,
+        //   )
+        // ),
         Flexible(
-          flex: 1,
-          child: CountdownWidget(seconds: secondsLeft)
-        ),
-        Flexible(
-          flex: 10,
+          // flex: 10,
           child: IndexedStack(
             index: gameIndex,
             children: [
@@ -315,6 +320,32 @@ class _QuizState extends State<Quiz> {
       guide: screen.dialog,
       onGuideOpen: screen.onDialogOpen,
       isOver: isOver,
+      footer: IndexedStack(
+        index: gameIndex,
+        children: [
+          Row(
+            children: [
+              Expanded(flex: 1, child: CountdownWidget(initial: initTime, seconds: secondsLeft,)),
+              EmptyFlex(flex: 1),
+              EmptyFlex(flex: 1)
+            ],
+          ),
+          Row(
+            children: [
+              Expanded(flex: 1, child: CountdownWidget(initial: initTime, seconds: secondsLeft,)),
+              EmptyFlex(flex: 1),
+              EmptyFlex(flex: 1)
+            ],
+          ),
+          Row(
+            children: [
+              Expanded(flex: 1, child: CountdownWidget(initial: initTime, seconds: secondsLeft,)),
+              EmptyFlex(flex: 1),
+              EmptyFlex(flex: 1)
+            ],
+          ),
+        ]
+      ),
       footerWhenOver: Row(
         children: [
           Expanded(
