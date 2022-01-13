@@ -35,6 +35,23 @@ class GameQuestionProvider {
     return _exampleProvider.byChapter(chapter, single: single, hasImage: hasImage);
   }
 
+  Future<List<String>> distinctExampleRune(int chapter) async {
+    var examples = await byChapter(chapter);
+    Set<String> seen = {};
+    List<String> distinct = [];
+
+
+    for(var example in examples) {
+      for(var rune in example.rune.split('')){
+        if(!seen.contains(rune)) {
+          distinct.add(rune);
+          seen.add(rune);
+        }
+      }
+    }
+    return distinct;
+  }
+
   Future<List<String>> distinctSyllables(int chapter) async {
     Set<String> seen = <String>{};
     List<String> distinct = [];

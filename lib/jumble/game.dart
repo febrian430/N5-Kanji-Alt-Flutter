@@ -301,7 +301,7 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
     setState(() {
       print("question during restart setState ${widget.index}:${widget.question.key.length}");
       selected = widget.question.key.map((_) => SENTINEL).toList();
-      roundColor = AppColors.primary;
+      roundColor = Colors.transparent;
       selectCount = 0;
       misses = 0;
       isFirstTry = true;
@@ -367,7 +367,7 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
         isFirstTry = false;
         Future.delayed(const Duration(milliseconds: 500), () {
             setState(() {
-              roundColor = AppColors.primary;
+              roundColor = Colors.transparent;
             });
         });
       }

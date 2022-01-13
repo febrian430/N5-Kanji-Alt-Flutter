@@ -37,10 +37,10 @@ class JumbleQuestionMaker {
   static Future<List<JumbleQuestionSet>> _build(List<Example> kanjis, GAME_MODE mode) async {
 
     if(mode == GAME_MODE.imageMeaning) {
-      var optionCandidates = await SQLRepo.gameQuestions.random(startChapter: 1, endChapter: 8);
 
+      var distinctRunes = await SQLRepo.gameQuestions.distinctExampleRune(kanjis[0].chapter);
       return kanjis.map((kanji) {
-        return _makeImageMeaning(kanji, optionCandidates, mode);
+        return _makeImageMeaning(kanji, distinctRunes, mode);
       }).toList();
     } else {
       List<JumbleQuestionSet> sets = [];
@@ -81,27 +81,25 @@ class JumbleQuestionMaker {
     return JumbleQuestionSet(question: question, options: options);
   }
 
-  static JumbleQuestionSet _makeImageMeaning(Example kanji, List<Example> optionCandidates, GAME_MODE mode) {
-
-    String questionVal = "";
-    List<String> optionVals = [];
-
-    List<String> correctKeys = [];
-
-
-    correctKeys = kanji.rune.split("");
-    questionVal = kanji.image;
-
+  static List<String> _makeImageMeaningOptions(Example kanji,  List<String> distinctRunes) {
+    var correctKeys = kanji.rune.split('');
     final keysToTake = TOTAL_OPTIONS - correctKeys.length;
-    optionCandidates.shuffle();
-    var chosens = optionCandidates.take(keysToTake);
+    var possible = distinctRunes.where((rune) => !correctKeys.contains(rune)).toList();
+    possible.shuffle();
+    var chosens = possible.take(keysToTake).toList();
 
-    chosens.forEach((chosen) {
-      optionVals += chosen.rune.split("");
-    });
+    var options = correctKeys + chosens;
+    options.shuffle();
+    return options;
+  }
 
-    optionVals = correctKeys + optionVals.take(keysToTake).toList();
-    optionVals.shuffle();
+  static JumbleQuestionSet _makeImageMeaning(Example kanji, List<String> distinctRunes, GAME_MODE mode) {
+
+    String questionVal = kanji.image;
+
+    List<String> correctKeys = kanji.rune.split("");
+
+    List<String> optionVals = _makeImageMeaningOptions(kanji, distinctRunes);
 
     JumbleQuestion question = JumbleQuestion(value: questionVal, key: correctKeys, isImage: GAME_MODE.imageMeaning == mode);
     List<Option> options = optionVals.mapIndexed((value, i) {
