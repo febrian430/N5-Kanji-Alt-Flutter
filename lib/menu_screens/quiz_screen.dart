@@ -7,7 +7,9 @@ import 'package:kanji_memory_hint/components/backgrounds/quiz_background.dart';
 import 'package:kanji_memory_hint/components/buttons/pause_button.dart';
 import 'package:kanji_memory_hint/components/dialogs/confirmation_dialog.dart';
 import 'package:kanji_memory_hint/components/dialogs/guide.dart';
+import 'package:kanji_memory_hint/components/empty_flex.dart';
 import 'package:kanji_memory_hint/components/header.dart';
+import 'package:kanji_memory_hint/countdown.dart';
 import 'package:kanji_memory_hint/menu_screens/screen_layout.dart';
 
 class QuizScreen extends StatefulWidget {
@@ -17,6 +19,7 @@ class QuizScreen extends StatefulWidget {
   final Widget game;
   final Widget footerWhenOver;
   final Widget? footer;
+  final CountdownWidget countdownWidget;
 
   final Function() onPause;
   final Function() onContinue;
@@ -40,7 +43,8 @@ class QuizScreen extends StatefulWidget {
     this.onGuideOpen, 
     required this.isOver, 
     required this.footerWhenOver, 
-    this.footer
+    this.footer, 
+    required this.countdownWidget
   }) : super(key: key);
 
   @override
@@ -104,6 +108,31 @@ class _QuizScreenState extends State<QuizScreen> {
     }
   }
 
+  Widget _getTopLeft(BuildContext context){
+    if(widget.isOver) {
+      return SizedBox();
+     } else { 
+      return Row( 
+        children: [
+          EmptyFlex(flex: 1),
+          Expanded(
+            flex: 2, 
+            child: PauseButton(
+              onRestart: widget.onRestart, 
+              onContinue: widget.onContinue, 
+              onPause: widget.onPause
+            )
+          ),
+          
+          Expanded(
+            flex: 2,
+            child: widget.countdownWidget
+          )
+        ]
+      );
+     }
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -118,11 +147,7 @@ class _QuizScreenState extends State<QuizScreen> {
             title: widget.title, 
             japanese: widget.japanese,
             withBack: false,
-            topLeft: widget.isOver ? SizedBox() : PauseButton(
-              onRestart: widget.onRestart, 
-              onContinue: widget.onContinue, 
-              onPause: widget.onPause
-            ),
+            topLeft: _getTopLeft(context),
             topRight: _guideButton(context)
           ), 
           footer: _getFooter(context),
