@@ -4,7 +4,10 @@ import 'package:kanji_memory_hint/components/backgrounds/menu_background.dart';
 import 'package:kanji_memory_hint/components/backgrounds/practice_background.dart';
 import 'package:kanji_memory_hint/components/buttons/icon_button.dart';
 import 'package:kanji_memory_hint/components/dialogs/reminder.dart';
+import 'package:kanji_memory_hint/components/loading_screen.dart';
+import 'package:kanji_memory_hint/components/progress_bar.dart';
 import 'package:kanji_memory_hint/icons.dart';
+import 'package:kanji_memory_hint/levelling/levels.dart';
 import 'package:kanji_memory_hint/main.dart';
 import 'package:kanji_memory_hint/menu_screens/menu.dart';
 import 'package:kanji_memory_hint/route_param.dart';
@@ -17,44 +20,75 @@ class ResultScreen extends StatelessWidget{
 
   static const route = "/result";
 
+  Widget _givePadding(BuildContext context, Widget widget, double size) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: size),
+      child: widget 
+    );
+  }
+
   Widget _rowOfButtons(BuildContext context, Function() onRestart) {
     return Padding(
       padding: EdgeInsets.all(6),
       child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        AppIconButton(
-          onTap: onRestart, 
-          iconPath: AppIcons.retry, 
-          height: 50, 
-          width: 50, 
-          backgroundColor: AppColors.primary
+        Flexible(
+            flex: 1,
+            child:Padding(
+              padding: EdgeInsets.symmetric(horizontal: 6),
+              child:  AppIconButton(
+                onTap: onRestart, 
+                iconPath: AppIcons.retry, 
+                height: 50, 
+                width: 50, 
+                backgroundColor: AppColors.primary
+            ),
+          ),
         ),
-        AppIconButton(
-          onTap: (){Navigator.of(context).popUntil(ModalRoute.withName("/game"));}, 
-          iconPath: AppIcons.viewResult, 
-          height: 50, 
-          width: 50, 
-          backgroundColor: AppColors.primary
+        Flexible(
+            flex: 1,
+            child:Padding(
+              padding: EdgeInsets.symmetric(horizontal: 6),
+              child: AppIconButton(
+                onTap: (){Navigator.of(context).popUntil(ModalRoute.withName("/game"));}, 
+                iconPath: AppIcons.viewResult, 
+                height: 50, 
+                width: 50, 
+                backgroundColor: AppColors.primary
+              ),
+            ),
         ),
-        AppIconButton(
-          onTap: (){
-            showDialog(context: context, builder: (context){
-              return ReminderDialog();
-            });
-          }, 
-          iconPath: AppIcons.reminderSmall, 
-          height: 50, 
-          width: 50, 
-          backgroundColor: AppColors.primary
+        Flexible(
+            flex: 1,
+            child:Padding(
+              padding: EdgeInsets.symmetric(horizontal: 6),
+              child: AppIconButton(
+                onTap: (){
+                  showDialog(context: context, builder: (context){
+                    return ReminderDialog();
+                  });
+                }, 
+                iconPath: AppIcons.reminderSmall, 
+                height: 50, 
+                width: 50, 
+                backgroundColor: AppColors.primary
+            ),
+          ),
         ),
-        AppIconButton(
-          onTap: (){Navigator.of(context).popUntil(ModalRoute.withName("/game"));}, 
-          iconPath: AppIcons.exit, 
-          height: 50, 
-          width: 50, 
-          backgroundColor: AppColors.wrong
-        )
+        Flexible(
+            flex: 1,
+            child:Padding(
+              padding: EdgeInsets.symmetric(horizontal: 6),
+              child: AppIconButton(
+                onTap: (){Navigator.of(context).popUntil(ModalRoute.withName("/game"));}, 
+                iconPath: AppIcons.exit, 
+                height: 50, 
+                width: 50, 
+                backgroundColor: AppColors.wrong
+            )
+          ),
+        ),
       ],
       )
     );
@@ -85,7 +119,7 @@ class ResultScreen extends StatelessWidget{
         children: [
           Expanded(flex: 2, child: Center(child: Text("やった!", style: TextStyle(fontSize: 36)))),
           Expanded(flex: 6, child: _DetailWidget(param: param, stopwatch: stopwatch)),
-          Flexible(flex: 1, child: _rowOfButtons(context, param.onRestart))
+          Flexible(flex: 2, child: _rowOfButtons(context, param.onRestart))
         ]
           )
           )
@@ -173,7 +207,33 @@ class _DetailWidget extends StatelessWidget {
             ],
           )
         ),
-        Text("Exp gained: ${param.result.expGained}"),
+        FutureBuilder(
+          future: Levels.current(),
+          builder: (context, AsyncSnapshot<List<int>> snapshot) {
+            if(snapshot.hasData){  
+              final level = snapshot.data![0];
+              final remaining = snapshot.data![1];
+              final nextLevel = Levels.next(level) ?? remaining;
+              final nextNextLevel = Levels.next(level+1) ?? remaining;
+
+              return Column(
+                children: [
+                  ProgressBar(
+                    from: remaining, 
+                    gain: param.result.expGained, 
+                    levelupReq: nextLevel, 
+                    nextLevel: nextNextLevel, 
+                    onLevelup: (){
+                      print("level up!");
+                  }),
+                  Text('+${param.result.expGained.toString()} exp', style: TextStyle(fontSize: 14),)
+                ]
+              );
+            } else {
+              return LoadingScreen();
+            }
+          }
+        )
         
       ],
     );

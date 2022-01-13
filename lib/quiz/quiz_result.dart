@@ -51,41 +51,62 @@ class QuizResult extends StatelessWidget {
       child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        AppIconButton(
-          onTap: onRestart, 
-          iconPath: AppIcons.retry, 
-          height: 50, 
-          width: 50, 
-          backgroundColor: AppColors.primary
+        Flexible(
+            flex: 1,
+            child:Padding(
+              padding: EdgeInsets.symmetric(horizontal: 6),
+              child:  AppIconButton(
+                onTap: onRestart, 
+                iconPath: AppIcons.retry, 
+                height: 50, 
+                width: 50, 
+                backgroundColor: AppColors.primary
+            ),
+          ),
         ),
-        AppIconButton(
-          onTap: (){Navigator.of(context).popUntil(ModalRoute.withName("/start-select"));}, 
-          iconPath: AppIcons.viewResult, 
-          height: 50, 
-          width: 50, 
-          backgroundColor: AppColors.primary
+        Flexible(
+            flex: 1,
+            child:Padding(
+              padding: EdgeInsets.symmetric(horizontal: 6),
+              child: AppIconButton(
+                onTap: (){Navigator.of(context).popUntil(ModalRoute.withName("/game"));}, 
+                iconPath: AppIcons.viewResult, 
+                height: 50, 
+                width: 50, 
+                backgroundColor: AppColors.primary
+              ),
+            ),
         ),
-        AppIconButton(
-          onTap: (){
-            showDialog(
-              context: context, 
-              builder: (context) {
-                return ReminderDialog();
-              }
-            );
-          }, 
-          iconPath: AppIcons.reminderSmall, 
-          height: 50, 
-          width: 50, 
-          backgroundColor: AppColors.primary
+        Flexible(
+            flex: 1,
+            child:Padding(
+              padding: EdgeInsets.symmetric(horizontal: 6),
+              child: AppIconButton(
+                onTap: (){
+                  showDialog(context: context, builder: (context){
+                    return ReminderDialog();
+                  });
+                }, 
+                iconPath: AppIcons.reminderSmall, 
+                height: 50, 
+                width: 50, 
+                backgroundColor: AppColors.primary
+            ),
+          ),
         ),
-        AppIconButton(
-          onTap: (){Navigator.of(context).popUntil(ModalRoute.withName("/start-select"));}, 
-          iconPath: AppIcons.exit, 
-          height: 50, 
-          width: 50, 
-          backgroundColor: AppColors.wrong
-        )
+        Flexible(
+            flex: 1,
+            child:Padding(
+              padding: EdgeInsets.symmetric(horizontal: 6),
+              child: AppIconButton(
+                  onTap: (){Navigator.of(context).popUntil(ModalRoute.withName("/game"));}, 
+                  iconPath: AppIcons.exit, 
+                  height: 50, 
+                  width: 50, 
+                  backgroundColor: AppColors.wrong
+            )
+          ),
+        ),
       ],
       )
     );
@@ -228,8 +249,8 @@ class _DetailWidget extends StatelessWidget {
                 text: gains.pointsGained.toString(),
                 style: TextStyle(
                   fontSize: 70,
-                  color: Colors.amber
-                  
+                  color: Colors.amber,
+
                 ),
               ),
               TextSpan(text: 'pts', style: TextStyle(fontWeight: FontWeight.bold)),
