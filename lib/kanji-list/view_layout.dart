@@ -22,10 +22,10 @@ class KanjiLayout extends StatelessWidget {
         header: AppHeader(title: "Topic $topic", japanese: "トピック $topic", withBack: true,),
         child: child,
         footer: SizedBox(),
-        floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterFloat,
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: Container(
           height: 70,
-          width: 170,
+          width: 180,
           child: SelectButton(title: "Kana Chart", onTap: (){
             showDialog(context: context, builder: (context) => KanaDialog());
           }), ),
