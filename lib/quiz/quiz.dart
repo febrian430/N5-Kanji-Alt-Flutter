@@ -36,7 +36,7 @@ class Quiz extends StatefulWidget {
   
 
   Future<List> _getQuizQuestionSet() async {
-    return QuizQuestionMaker.makeQuestionSet(10, chapter, mode);
+    return QuizQuestionMaker.makeQuestionSet(5, chapter, mode);
   }
 
   @override
@@ -58,7 +58,7 @@ class _QuizState extends State<Quiz> {
     "Quiz", "クイズ",
     dialog: GuideDialog(
       game: MultipleChoiceGame.name,
-      description: "Your classic kanji multiple choice game. Choose the correct kanji based on the image",
+      description: "Your classic multiple choice game. Choose the correct kanji based on the image",
       guideImage: AppImages.guideMultipleChoice,
       onClose: onContinue,
     ),
@@ -83,7 +83,7 @@ class _QuizState extends State<Quiz> {
     2: result
   };
 
-  int secondsLeft = 7200;
+  int secondsLeft = 30;
   int score = 0;
 
   int mulchoiceCorrect = 0;
@@ -135,20 +135,22 @@ class _QuizState extends State<Quiz> {
   }
 
   void postQuizHook() async {
-    var result  = QuizScoring.evaluate(multipleChoiceScore, jumbleScore);
-
-    report = QuizReport(
-      multiple: multipleChoiceScore, 
-      jumble: jumbleScore,
-      chapter: widget.chapter,
-      gains: result
-    );
+    
 
     Future.delayed(Duration(milliseconds: 200), () async {
+      var result  = QuizScoring.evaluate(multipleChoiceScore, jumbleScore);
+
+      report = QuizReport(
+        multiple: multipleChoiceScore, 
+        jumble: jumbleScore,
+        chapter: widget.chapter,
+        gains: result
+      );
       print("mulchoice during quiz ${report.multiple.correctlyAnsweredKanji.join(",")}");
       print("jumble during quiz ${report.jumble.correctlyAnsweredKanji.join(",")}");
       await MasteryHandler.addMasteryFromQuiz(report);
       await QuizQuestHandler.checkForQuests(report);
+      print("EXP GAINED FROM QUIZ: ${result.expGained}");
       await SQLRepo.userPoints.addExp(result.expGained);
     });
 

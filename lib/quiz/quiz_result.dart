@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/components/buttons/icon_button.dart';
+import 'package:kanji_memory_hint/components/dialogs/reminder.dart';
 import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/components/progress_bar.dart';
 import 'package:kanji_memory_hint/countdown.dart';
@@ -65,7 +66,14 @@ class QuizResult extends StatelessWidget {
           backgroundColor: AppColors.primary
         ),
         AppIconButton(
-          onTap: (){Navigator.of(context).popUntil(ModalRoute.withName("/start-select"));}, 
+          onTap: (){
+            showDialog(
+              context: context, 
+              builder: (context) {
+                return ReminderDialog();
+              }
+            );
+          }, 
           iconPath: AppIcons.reminderSmall, 
           height: 50, 
           width: 50, 

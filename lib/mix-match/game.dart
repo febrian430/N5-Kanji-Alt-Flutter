@@ -90,6 +90,7 @@ class _MixMatchGameState extends State<MixMatchGame> {
       PracticeQuestHandler.checkForQuests(report);
       Levels.addExp(result.expGained);
     } else {
+      _showDialog();
       _pageController.animateToPage(
         _pageController.page!.floor() + 1, 
         duration: Duration(milliseconds: 500), 
@@ -207,6 +208,30 @@ class _MixMatchGameState extends State<MixMatchGame> {
       ),
     );   
   }
+
+  void _showDialog() {
+    showDialog<String>(
+      context: context,
+      builder: (BuildContext context) {
+        return BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+          child: AlertDialog(
+            title: const Text('Round one over'),
+            content: Text('Beginning round two'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context, 'OK');
+                } ,
+                child: const Text('Continue'),
+              ),
+            ],
+          )
+        );
+      }
+    );
+  }
+  
 
   onContinue() {
     widget.stopwatch.start();
@@ -335,6 +360,12 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
     }
   }
 
+  void _isGameOver() {
+    if(solved.length == numOfQuestions){
+      widget.onRoundOver(true, score, wrong);
+    }
+  }
+
   void _deselect(Question opt) {
     setState(() {
       selected = null;
@@ -351,31 +382,7 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
     print("select " + opt.value.toString());
   }
 
-  void _isGameOver() async {
-    if(solved.length == numOfQuestions){
-      showDialog<String>(
-        context: context,
-        builder: (BuildContext context) {
-          return BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-            child: AlertDialog(
-              title: const Text('Round one over'),
-              content: Text('Beginning round two'),
-              actions: <Widget>[
-                TextButton(
-                  onPressed: () {
-                    Navigator.pop(context, 'OK');
-                    widget.onRoundOver(true, score, wrong);
-                  } ,
-                  child: const Text('Continue'),
-                ),
-              ],
-            )
-          );
-        }
-      );
-    }
-  }
+
 
   void _evaluate(Question opt) {
     if(selected?.key == opt.key) {
