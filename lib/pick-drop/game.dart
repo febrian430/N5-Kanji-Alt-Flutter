@@ -50,7 +50,7 @@ class _PickDropState extends State<PickDrop> {
   int solved = 0;
   bool restart = false;
 
-  late int total;
+  late int total = GameNumOfRounds;
   late PracticeScore score;
   late GameResult result;
   late PracticeGameReport report;
@@ -206,6 +206,18 @@ class _PickDropState extends State<PickDrop> {
       onRestart: onRestart, 
       onContinue: onContinue,
       onGuideOpen: onPause,
+      prevVisible: index != 0,
+      nextVisible: index != (total-1),
+      onNext: (){
+        setState(() {
+          index++;
+        });
+      },
+      onPrev: (){
+        setState(() {
+          index--;
+        });
+      },
       guide: GuideDialog(
         game: PickDrop.name,
         description: "Pick and drag the correct answer to the image",

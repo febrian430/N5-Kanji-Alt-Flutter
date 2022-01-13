@@ -7,7 +7,9 @@ import 'package:kanji_memory_hint/components/backgrounds/quiz_background.dart';
 import 'package:kanji_memory_hint/components/buttons/pause_button.dart';
 import 'package:kanji_memory_hint/components/dialogs/confirmation_dialog.dart';
 import 'package:kanji_memory_hint/components/dialogs/guide.dart';
+import 'package:kanji_memory_hint/components/empty_flex.dart';
 import 'package:kanji_memory_hint/components/header.dart';
+import 'package:kanji_memory_hint/icons.dart';
 import 'package:kanji_memory_hint/menu_screens/screen_layout.dart';
 
 class GameScreen extends StatefulWidget {
@@ -16,14 +18,34 @@ class GameScreen extends StatefulWidget {
   final String japanese;
   final Widget game;
   final GuideDialog guide;
+  final Widget? footer;
 
   final Function() onPause;
   final Function() onContinue;
   final Function() onRestart;
   final Function() onGuideOpen;
 
+  final bool prevVisible;
+  final bool nextVisible;
+  final Function()? onPrev;
+  final Function()? onNext;
 
-  GameScreen({Key? key, required this.title, required this.japanese, required this.game, required this.onPause, required this.onRestart, required this.onContinue, required this.guide, required this.onGuideOpen, }) : super(key: key);
+
+  GameScreen({Key? key, 
+    required this.title, 
+    required this.japanese, 
+    required this.game, 
+    required this.onPause, 
+    required this.onRestart, 
+    required this.onContinue, 
+    required this.guide, 
+    required this.onGuideOpen, 
+    this.prevVisible = false, 
+    this.nextVisible = false, 
+    this.onPrev, 
+    this.onNext, 
+    this.footer, 
+  }) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _GameScreenState();
@@ -54,6 +76,36 @@ class _GameScreenState extends State<GameScreen> {
     return exit;
   }
 
+  Widget _footerWithPrevNext(BuildContext context) {
+    return Row(
+      children: [
+        widget.prevVisible ? Expanded(
+          child: TextButton(
+            child: Image.asset(AppIcons.retry),
+            onPressed: widget.onPrev,
+            style: TextButton.styleFrom(
+              side: BorderSide.none,
+              backgroundColor: Colors.transparent
+            ),
+          )
+        ) : EmptyFlex(flex: 1),
+        widget.footer == null ? EmptyFlex(flex: 1)
+        :
+        Expanded(flex: 1, child: widget.footer!),
+        widget.nextVisible ? Expanded(
+          child: TextButton(
+            child: Image.asset(AppIcons.resume),
+            onPressed: widget.onNext,
+            style: TextButton.styleFrom(
+              side: BorderSide.none,
+              backgroundColor: Colors.transparent
+            ),
+          )
+        ) : EmptyFlex(flex: 1),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -72,8 +124,7 @@ class _GameScreenState extends State<GameScreen> {
               guide: widget.guide,
               onOpen: widget.onGuideOpen,
             ),
-          ), 
-          footer: PauseButton(
+            topLeft: PauseButton(
             onPause: () {
               setState(() {
                 isPaused = true;
@@ -88,6 +139,8 @@ class _GameScreenState extends State<GameScreen> {
             },
             onRestart: widget.onRestart,
           ), 
+          ), 
+          footer: _footerWithPrevNext(context), 
           child: widget.game,
           horizontalPadding: false,
           topPadding: true,

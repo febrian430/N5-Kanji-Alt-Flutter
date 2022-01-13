@@ -44,7 +44,10 @@ class JumbleGame extends StatefulWidget {
 }
 
 class _JumbleGameState extends State<JumbleGame> {
-  final PageController _pageController =  PageController(viewportFraction: 1,);
+  final PageController _pageController =  PageController(
+    viewportFraction: 1,
+    initialPage: 0  
+  );
 
   int score = 0;
   int wrongCount = 0;
@@ -52,9 +55,10 @@ class _JumbleGameState extends State<JumbleGame> {
   int perfect = 0;
   Set<int> solvedIdx = {};
   List<int> perfectRoundsSlots = [];
+  int currentPage = 0;
 
   late int slotsToFill;
-  int? numOfQuestions;
+  int numOfQuestions = 10;
 
   bool restart = false;
 
@@ -76,15 +80,17 @@ class _JumbleGameState extends State<JumbleGame> {
 
   void onRestart() {
     setState(() {
+      currentPage=0;
       score = 0;
       wrongCount = 0;
       solved = 0;
       perfect = 0;
       solvedIdx = {};
       slotsToFill = 0;
-      numOfQuestions = null;
+      numOfQuestions = 10;
       _questionSets =  widget._getQuestionSet();
       restart = true;
+      _pageController.animateToPage(0, duration: const Duration(seconds: 0), curve: Curves.linear);
     });
   }
 
@@ -244,6 +250,18 @@ class _JumbleGameState extends State<JumbleGame> {
       onRestart: onRestart, 
       onContinue: onContinue,
       onGuideOpen: onPause,
+      prevVisible: currentPage != 0,
+      nextVisible: currentPage != (numOfQuestions!-1),
+      onNext: (){
+        setState(() {
+          _pageController.animateToPage(++currentPage, duration: const Duration(milliseconds: 200), curve: Curves.linear);  
+        });
+      },
+      onPrev: (){
+        setState(() {
+          _pageController.animateToPage(--currentPage, duration: const Duration(milliseconds: 200), curve: Curves.linear);
+        });
+      },
       guide: GuideDialog(
         game: JumbleGame.name,
         description: "Select the correct hiragana in the correct order",

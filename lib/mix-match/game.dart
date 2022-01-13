@@ -42,7 +42,8 @@ class MixMatchGame extends StatefulWidget {
 
 class _MixMatchGameState extends State<MixMatchGame> {
   var _questionSet;
-
+  
+  int currentPage = 0;
   int roundsSolved = 0;
   int perfect = 0;
   int wrong = 0;
@@ -91,6 +92,7 @@ class _MixMatchGameState extends State<MixMatchGame> {
       Levels.addExp(result.expGained);
     } else {
       _showDialog();
+      currentPage++;
       _pageController.animateToPage(
         _pageController.page!.floor() + 1, 
         duration: Duration(milliseconds: 500), 
@@ -200,6 +202,18 @@ class _MixMatchGameState extends State<MixMatchGame> {
       onContinue: onContinue,
       onPause: onPause,
       onGuideOpen: onPause,
+      prevVisible: currentPage != 0,
+      nextVisible: currentPage != 1,
+      onNext: (){
+        setState(() {
+          _pageController.animateToPage(++currentPage, duration: const Duration(milliseconds: 200), curve: Curves.linear);  
+        });
+      },
+      onPrev: (){
+        setState(() {
+          _pageController.animateToPage(--currentPage, duration: const Duration(milliseconds: 200), curve: Curves.linear);
+        });
+      },
       guide: GuideDialog(
         game: MixMatchGame.name,
         description: "Match the Kanji with the image or spelling based on its appropriate meaning",
