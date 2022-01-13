@@ -118,42 +118,21 @@ class _PickDropState extends State<PickDrop> {
   Widget _buildRound(BuildContext context, List<QuestionSet> sets) {
     var resultButton = EmptyWidget;
 
-    if(total == solved) {
-      resultButton = ResultButton(
-        param: ResultParam(
-          onRestart: onRestartFromResult,
-          route: PickDrop.route,
-          score: score, 
-          result: result, 
-          stopwatch: widget.stopwatch,
-          chapter: widget.chapter,
-          game: PickDrop.name,
-          mode: widget.mode
-        ),
-        visible: total == solved,
-      );
-    }
+    
 
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 4.0),
       child: IndexedStack(
         index: index,
         children: sets.map((set) {
-          return Column(
-            children: [
-              Expanded(
-                child: PickDropRound(
-                  question: set.question, 
-                  options: set.options, 
-                  onDrop: _handleOnDrop, 
-                  isLast: index == total-1,
-                  restartSrc: restart,
-                )
-              ),
-              resultButton
-            ]
+          return PickDropRound(
+            question: set.question,   
+            options: set.options, 
+            onDrop: _handleOnDrop, 
+            isLast: index == total-1,
+            restartSrc: restart,
           );
-        }).toList(),
+        }).toList()
       )
     );
   }
@@ -222,6 +201,20 @@ class _PickDropState extends State<PickDrop> {
           index--;
         });
       },
+      footer: total == solved ? ResultButton(
+        param: ResultParam(
+          onRestart: onRestartFromResult,
+          route: PickDrop.route,
+          score: score, 
+          result: result, 
+          stopwatch: widget.stopwatch,
+          chapter: widget.chapter,
+          game: PickDrop.name,
+          mode: widget.mode
+        ),
+        visible: total == solved,
+      ) : SizedBox()
+    ,
       guide: GuideDialog(
         game: PickDrop.name,
         description: "Pick and drag the correct answer to the image",

@@ -180,28 +180,7 @@ class _JumbleGameState extends State<JumbleGame> {
   }
 
   Widget _buildGame(BuildContext context) {
-    var resultButton = EmptyWidget;
-    
-    if(solved == numOfQuestions) {
-      resultButton = ResultButton(
-        param: ResultParam(
-          onRestart: onRestartFromResult,
-          route: JumbleGame.route,
-          score: endScore, 
-          result: result, 
-          stopwatch: widget.stopwatch,
-          chapter: widget.chapter,
-          game: JumbleGame.name,
-          mode: widget.mode
-        ),
-        visible: numOfQuestions == solved,
-      );
-    }
-    return Column(
-      children: [
-        Flexible(
-          flex: 15,
-          child: FutureBuilder(
+    return FutureBuilder(
             future: _questionSets,
             builder: (context, AsyncSnapshot<List<JumbleQuestionSet>> snapshot) {
               if(snapshot.hasData) {
@@ -210,6 +189,11 @@ class _JumbleGameState extends State<JumbleGame> {
                 int sum = 0;
                 var screen =  PageView.builder(
                   controller: _pageController,
+                  onPageChanged: (int page) {
+                    setState(() {
+                      currentPage = page;
+                    });
+                  },
                   itemCount: snapshot.data?.length,
                   itemBuilder: (BuildContext context, int itemIndex) {
                     sum += snapshot.data![itemIndex].question.key.length;
@@ -222,10 +206,6 @@ class _JumbleGameState extends State<JumbleGame> {
                 return LoadingScreen();
               }
             }
-          ), 
-        ),
-        Flexible(flex: 1, child: resultButton)
-      ]
     );
   }
 
@@ -262,6 +242,20 @@ class _JumbleGameState extends State<JumbleGame> {
           _pageController.animateToPage(--currentPage, duration: const Duration(milliseconds: 200), curve: Curves.linear);
         });
       },
+      footer: numOfQuestions == solved ? 
+      ResultButton(
+        param: ResultParam(
+          onRestart: onRestartFromResult,
+          route: JumbleGame.route,
+          score: endScore, 
+          result: result, 
+          stopwatch: widget.stopwatch,
+          chapter: widget.chapter,
+          game: JumbleGame.name,
+          mode: widget.mode
+        ),
+        visible: numOfQuestions == solved,
+      ) : SizedBox(),
       guide: GuideDialog(
         game: JumbleGame.name,
         description: "Select the correct hiragana in the correct order",

@@ -91,7 +91,7 @@ class _MixMatchGameState extends State<MixMatchGame> {
       PracticeQuestHandler.checkForQuests(report);
       Levels.addExp(result.expGained);
     } else {
-      _showDialog();
+      // _showDialog();
       currentPage++;
       _pageController.animateToPage(
         _pageController.page!.floor() + 1, 
@@ -135,52 +135,29 @@ class _MixMatchGameState extends State<MixMatchGame> {
   }
 
   Widget _buildGame(BuildContext context) {
-    Widget resultButton = EmptyWidget;
-    if(widget.numOfRounds == roundsSolved) {
-      resultButton = ResultButton(
-        param: ResultParam(
-          onRestart: onRestartFromResult,
-          route: MixMatchGame.route,
-          chapter: widget.chapter,
-          game: MixMatchGame.name,
-          mode: widget.mode,
-          result: result, 
-          score: score, 
-          stopwatch: widget.stopwatch
-        ),
-        visible: widget.numOfRounds == roundsSolved,
-      );
-    }
-    return Column(
-      children: [
-        Flexible(
-          flex: 15,
-          child: Center(
-            child: FutureBuilder(
-              future: _questionSet,
-              builder: (context, AsyncSnapshot<List<List<Question>>> snapshot) {
-                if(snapshot.hasData) {
-                  widget.stopwatch.start();
-
-                  return PageView.builder(
-                    controller: _pageController,
-                    itemCount: snapshot.data?.length,
-                    itemBuilder: (BuildContext context, int itemIndex) {
-                      return _buildRound(context, itemIndex, snapshot.data!);
-                    }
-                  );
-                } else {
-                  return LoadingScreen();
-                }
+    return Center(
+      child: FutureBuilder(
+        future: _questionSet,
+        builder: (context, AsyncSnapshot<List<List<Question>>> snapshot) {
+          if(snapshot.hasData) {
+            widget.stopwatch.start();
+            return PageView.builder(
+              controller: _pageController,
+              onPageChanged: (int page){
+                setState(() {
+                  currentPage = page;
+                });
+              },
+              itemCount: snapshot.data?.length,
+              itemBuilder: (BuildContext context, int itemIndex) {
+                return _buildRound(context, itemIndex, snapshot.data!);
               }
-            )
-          )
-        ),
-        Flexible(
-          flex: 1,
-          child: resultButton
-        )
-      ]
+            );
+          } else {
+            return LoadingScreen();
+          }
+        }
+      )
     );
   }
 
@@ -206,14 +183,30 @@ class _MixMatchGameState extends State<MixMatchGame> {
       nextVisible: currentPage != 1,
       onNext: (){
         setState(() {
-          _pageController.animateToPage(++currentPage, duration: const Duration(milliseconds: 200), curve: Curves.linear);  
+          currentPage++;
+          _pageController.animateToPage(currentPage, duration: const Duration(milliseconds: 200), curve: Curves.linear);  
         });
       },
       onPrev: (){
         setState(() {
-          _pageController.animateToPage(--currentPage, duration: const Duration(milliseconds: 200), curve: Curves.linear);
+          --currentPage;
+          _pageController.animateToPage(currentPage, duration: const Duration(milliseconds: 200), curve: Curves.linear);
         });
       },
+      footer: widget.numOfRounds == roundsSolved ? 
+      ResultButton(
+        param: ResultParam(
+          onRestart: onRestartFromResult,
+          route: MixMatchGame.route,
+          chapter: widget.chapter,
+          game: MixMatchGame.name,
+          mode: widget.mode,
+          result: result, 
+          score: score, 
+          stopwatch: widget.stopwatch
+        ),
+        visible: widget.numOfRounds == roundsSolved,
+      ) : SizedBox(),
       guide: GuideDialog(
         game: MixMatchGame.name,
         description: "Match the Kanji with the image or spelling based on its appropriate meaning",

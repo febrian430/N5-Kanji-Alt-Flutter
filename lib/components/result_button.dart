@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kanji_memory_hint/components/buttons/select_button.dart';
 import 'package:kanji_memory_hint/result_screen/practice.dart';
 import 'package:kanji_memory_hint/route_param.dart';
 
@@ -12,19 +13,15 @@ class ResultButton extends StatelessWidget  {
   @override
   Widget build(BuildContext context) {
     return Visibility(
-        visible: visible,
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.pushNamed(context, ResultScreen.route, 
-              arguments: param
-            );
-          }, 
-          child: const Center(
-            child: Text(
-              'See result'
-            )
-          )
-        )
-      );
+      visible: visible,
+      child: SelectButton(
+        onTap: () {
+          Navigator.pushNamed(context, ResultScreen.route, 
+            arguments: param
+          );
+        }, 
+        title: 'Result' 
+      )
+    );
   }
 }

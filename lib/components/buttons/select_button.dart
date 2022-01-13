@@ -82,7 +82,8 @@ class SelectButton extends StatelessWidget {
     Widget child = Text(
       title, 
       style: titleStyle, 
-      textAlign: onlyTitle ? TextAlign.center : null,);
+      textAlign: onlyTitle ? TextAlign.center : null,
+    );
 
     child = _withDescription(context, child);
     child =  _withImage(context, child);
@@ -101,7 +102,7 @@ class SelectButton extends StatelessWidget {
               vertical: 4,
               horizontal: 7
             ),
-            child: description == null  && iconPath == null ? 
+            child: onlyTitle ? 
               Center(child: child) : child,
           ),
           constraints: description == null ? BoxConstraints(

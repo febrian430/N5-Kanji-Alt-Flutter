@@ -51,7 +51,7 @@ class ResultScreen extends StatelessWidget{
             child:Padding(
               padding: EdgeInsets.symmetric(horizontal: 6),
               child: AppIconButton(
-                onTap: (){Navigator.of(context).popUntil(ModalRoute.withName("/game"));}, 
+                onTap: (){Navigator.of(context).pop();}, 
                 iconPath: AppIcons.viewResult, 
                 height: 50, 
                 width: 50, 
