@@ -79,7 +79,7 @@ class _MyAppState extends State<MyApp> {
         textTheme: TextTheme(
           button: TextStyle(
             color: Colors.black,
-            
+            fontFamily: 'NotoSansJP',
             fontSize: 18
           )
         ),
@@ -89,18 +89,26 @@ class _MyAppState extends State<MyApp> {
         textButtonTheme: TextButtonThemeData(
           style: TextButton.styleFrom(
             backgroundColor: AppColors.primary,
-            side: const BorderSide(width: 2, color: Colors.black)
+            side: const BorderSide(width: 2, color: Colors.black),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.zero
+            ),
+            textStyle: TextStyle(
+              color: Colors.black,
+              fontSize: 18,
+              fontFamily: 'NotoSansJP'
+            )
           )
         )
       ),
       initialRoute: '/',
       routes: { 
         '/': (context) => const MainScreen(),
-        '/list': (context) => KanjiMenu(),
+        '/list': (context) => KanjiList(),
         '/list/view': (context) => KanjiView(),
         '/game': (context) => GameSelect(),
         '/start-select': (context) => StartSelect(),
-        '/chapter-select': (context) => ChapterSelect2(),
+        '/chapter-select': (context) => ChapterSelect(),
         '/mode-select': (context) => const ModeSelect(),
         '/result': (context) => ResultScreen(),
         '/quests': (context) => QuestScreen(),

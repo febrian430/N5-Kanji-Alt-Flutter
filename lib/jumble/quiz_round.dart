@@ -187,12 +187,16 @@ class _JumbleQuizRoundState extends State<JumbleQuizRound> with AutomaticKeepAli
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       mainAxisSize: MainAxisSize.min,
                       children: selected.mapIndexed((select, i) {
-                          return _QuizSelectWidget(
-                            option: select, 
-                            isOver: widget.isOver, 
-                            isCorrect: widget.question.key[i] == select.value, 
-                            disabled: widget.isOver, 
-                            onTap: () { _handleSelectTap(select, i); });
+                          return Container(
+                            margin: EdgeInsets.only(left: 4, right: 4),
+                            child: _QuizSelectWidget(
+                              option: select, 
+                              isOver: widget.isOver, 
+                              isCorrect: widget.question.key[i] == select.value, 
+                              disabled: widget.isOver, 
+                              onTap: () { _handleSelectTap(select, i); }
+                            )
+                          );
                         }).toList(),
                     ),
                   ),
@@ -245,7 +249,6 @@ class _QuizSelectWidget extends StatelessWidget {
     }
 
     return GestureDetector( 
-
       child: Container(
           height: height*0.06,
           child: AspectRatio(
@@ -253,7 +256,11 @@ class _QuizSelectWidget extends StatelessWidget {
             child: Container(
               width: width*1,
             decoration: BoxDecoration(
-              color: bgColor
+              color: bgColor,
+              border: Border.all(
+                width: 1,
+                color: Colors.grey
+              )
             ),
             child: Center(
               child: Text(

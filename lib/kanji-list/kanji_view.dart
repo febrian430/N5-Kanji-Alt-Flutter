@@ -28,7 +28,7 @@ class KanjiView extends StatelessWidget {
         itemBuilder: (context, index) {
           return _KanjiContainer(kanji: kanjis[index]);
         }
-      )
+      ),
     );
   }
 }
@@ -87,9 +87,11 @@ class _KanjiWidget extends StatelessWidget {
                 flex: 4,
                 child: Text(
                   kanji.rune, 
+                  textAlign: TextAlign.center,
                   style: TextStyle(
+                    
                     fontFamily: _fontStyle,
-                    fontSize: 80
+                    fontSize: 70
                   ),
                 ),
               ),

@@ -10,6 +10,8 @@ class ScreenLayout extends StatelessWidget {
   final bool topPadding;
   final bool bottomPadding;
   final bool horizontalPadding;
+  final Widget? floatingActionButton;
+  final FloatingActionButtonLocation? floatingActionButtonLocation;
 
   const ScreenLayout({Key? key, 
     required this.header, 
@@ -17,13 +19,17 @@ class ScreenLayout extends StatelessWidget {
     required this.child, 
     this.topPadding = true, 
     this.bottomPadding = true, 
-    this.horizontalPadding = true
+    this.horizontalPadding = true,
+    this.floatingActionButton,
+    this.floatingActionButtonLocation
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
+      floatingActionButton: floatingActionButton,
+      floatingActionButtonLocation: floatingActionButtonLocation,
       body: SafeArea(
         child: Container(
           decoration: BoxDecoration(

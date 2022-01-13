@@ -50,7 +50,7 @@ class GameSelect extends StatelessWidget {
                     arguments: PracticeGameArguments(selectedGame: JumbleGame.route, gameType: GAME_TYPE.PRACTICE));
                   },
                   title: 'Jumble',
-                  description: "Choose the correct answer",
+                  description: "Fill the blank spots in order",
                   iconPath: AppIcons.jumble,
                 ),
               ),
@@ -67,7 +67,7 @@ class GameSelect extends StatelessWidget {
                       ));
                   },
                   title: 'Pick and Drag',
-                  description: "Pick and Drag the correct kanji",
+                  description: "Hold and drag the correct kanji to the image",
                   iconPath: AppIcons.pickdrop,
                 ),
               ),

@@ -5,6 +5,7 @@ import 'package:kanji_memory_hint/components/buttons/select_button.dart';
 import 'package:kanji_memory_hint/components/dialogs/chapter_select_dialog.dart';
 import 'package:kanji_memory_hint/components/empty_flex.dart';
 import 'package:kanji_memory_hint/components/loading_screen.dart';
+import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/database/kanji.dart';
 import 'package:kanji_memory_hint/database/repository.dart';
 import 'package:kanji_memory_hint/icons.dart';
@@ -133,6 +134,7 @@ class ChapterSelect extends StatelessWidget {
       japanese: "トピックを選択", 
       child: screen,
       type: param.gameType,
+      footer: EmptyWidget,
     );
   }
 

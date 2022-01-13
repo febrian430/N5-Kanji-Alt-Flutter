@@ -11,9 +11,11 @@ class KanaDialog extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return Dialog(
       child: Container(
-        child: Image.asset(AppImages.kanaChart),
-        height: size.height * 0.75,
-        width: size.width * 0.75,
+        child: Image.asset(AppImages.kanaChart,
+          fit: BoxFit.contain,
+        ),
+        height: size.height * 0.80,
+        width: size.width * 0.80,
       ),
     );
   }

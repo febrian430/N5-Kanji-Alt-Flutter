@@ -232,7 +232,7 @@ class _JumbleGameState extends State<JumbleGame> {
       onContinue: onContinue,
       onGuideOpen: onPause,
       prevVisible: currentPage != 0,
-      nextVisible: currentPage != (numOfQuestions!-1),
+      nextVisible: currentPage != (numOfQuestions-1),
       onNext: (){
         setState(() {
           _pageController.animateToPage(++currentPage, duration: const Duration(milliseconds: 200), curve: Curves.linear);  
@@ -562,23 +562,30 @@ class OptionWidget extends StatelessWidget {
     }
 
     return TextButton(
-      onPressed: () {
-        if(!disabled) {
-          onTap();
-        }
-      },
-      child: Center(
-        child: Text(
-          option.value,
-          style: TextStyle(
-            color: textColor,
-            fontSize: 30
-          )
+        onPressed: () {
+          if(!disabled) {
+            onTap();
+          }
+        },
+        child: Container(
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            // border: Border.all(
+            //   // width: 1
+            // )
+          ),
+          
+          child: Text(
+            option.value,
+            style: TextStyle(
+              color: textColor,
+              fontSize: 30,
+            )
+          ),
         ),
-      ),
-      style: TextButton.styleFrom(
-        backgroundColor: boxColor
-      ),
+        style: TextButton.styleFrom(
+          backgroundColor: boxColor
+        ),
     );
   }
 
