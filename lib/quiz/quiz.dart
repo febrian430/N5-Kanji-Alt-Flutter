@@ -319,33 +319,35 @@ class _QuizState extends State<Quiz> {
       game: _buildQuiz(context),
       guide: screen.dialog,
       onGuideOpen: screen.onDialogOpen,
+      countdownWidget: CountdownWidget(initial: initTime, seconds: secondsLeft,),
       isOver: isOver,
-      footer: IndexedStack(
-        index: gameIndex,
-        children: [
-          Row(
-            children: [
-              Expanded(flex: 1, child: CountdownWidget(initial: initTime, seconds: secondsLeft,)),
-              EmptyFlex(flex: 1),
-              EmptyFlex(flex: 1)
-            ],
-          ),
-          Row(
-            children: [
-              Expanded(flex: 1, child: CountdownWidget(initial: initTime, seconds: secondsLeft,)),
-              EmptyFlex(flex: 1),
-              EmptyFlex(flex: 1)
-            ],
-          ),
-          Row(
-            children: [
-              Expanded(flex: 1, child: CountdownWidget(initial: initTime, seconds: secondsLeft,)),
-              EmptyFlex(flex: 1),
-              EmptyFlex(flex: 1)
-            ],
-          ),
-        ]
-      ),
+      footer: EmptyWidget,
+      // IndexedStack(
+      //   index: gameIndex,
+      //   children: [
+      //     Row(
+      //       children: [
+      //         Expanded(flex: 1, child: CountdownWidget(initial: initTime, seconds: secondsLeft,)),
+      //         EmptyFlex(flex: 1),
+      //         EmptyFlex(flex: 1)
+      //       ],
+      //     ),
+      //     Row(
+      //       children: [
+      //         Expanded(flex: 1, child: CountdownWidget(initial: initTime, seconds: secondsLeft,)),
+      //         EmptyFlex(flex: 1),
+      //         EmptyFlex(flex: 1)
+      //       ],
+      //     ),
+      //     Row(
+      //       children: [
+      //         Expanded(flex: 1, child: CountdownWidget(initial: initTime, seconds: secondsLeft,)),
+      //         EmptyFlex(flex: 1),
+      //         EmptyFlex(flex: 1)
+      //       ],
+      //     ),
+      //   ]
+      // ),
       footerWhenOver: Row(
         children: [
           Expanded(

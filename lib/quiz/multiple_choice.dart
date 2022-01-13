@@ -4,7 +4,6 @@ import 'package:kanji_memory_hint/components/submit_button.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/models/question_set.dart';
 import 'package:kanji_memory_hint/multiple-choice/game.dart';
-import 'package:kanji_memory_hint/quiz/next_button.dart';
 
 class MultipleChoiceQuizGame extends StatefulWidget {
   const MultipleChoiceQuizGame({Key? key, required this.mode, required this.questionSets, required this.onSubmit, this.quizOver = false, required this.restartSource}) : super(key: key);

@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/components/dialogs/confirmation_dialog.dart';
 import 'package:kanji_memory_hint/icons.dart';
+import 'package:kanji_memory_hint/images.dart';
 import 'package:kanji_memory_hint/theme.dart';
 
 class PauseDialog extends StatelessWidget {
@@ -18,7 +19,7 @@ class PauseDialog extends StatelessWidget {
 
       return Dialog(
         child: Container(
-          child: Text("Kana image here"),
+          child: Image.asset(AppImages.kanaChart),
           height: size.height * 0.75,
           width: size.width * 0.75,
         ),

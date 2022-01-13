@@ -10,4 +10,5 @@ class AppImages {
   static const guidePickDrop = APP_IMAGE_FOLDER + 'tutorial_pickdrag.png';
   static const guideMultipleChoice = APP_IMAGE_FOLDER + 'tutorial_mulchoice.png';
 
+  static const kanaChart = APP_IMAGE_FOLDER + 'kana_chart_img.png';
 }
