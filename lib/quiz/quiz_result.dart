@@ -7,6 +7,7 @@ import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/components/progress_bar.dart';
 import 'package:kanji_memory_hint/countdown.dart';
 import 'package:kanji_memory_hint/database/repository.dart';
+import 'package:kanji_memory_hint/humanize.dart';
 import 'package:kanji_memory_hint/icons.dart';
 import 'package:kanji_memory_hint/levelling/levels.dart';
 import 'package:kanji_memory_hint/scoring/quiz/quiz.dart';
@@ -226,14 +227,6 @@ class _DetailWidget extends StatelessWidget {
   final Countdown countdown;
 
   const _DetailWidget({Key? key, required this.countdown, required this.multipleChoice, required this.jumble, required this.gains}) : super(key: key);
-
-  String humanize(Duration duration) {
-    var seconds = duration.inSeconds;
-
-    var minutes = (seconds/60).floor();
-    var remaining = seconds % 60;
-    return "${minutes > 0 ?  minutes.toString() + " min " : ""}$remaining sec";
-  }
 
   @override
   Widget build(BuildContext context) {
