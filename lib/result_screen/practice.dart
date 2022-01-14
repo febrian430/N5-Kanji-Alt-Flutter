@@ -117,7 +117,7 @@ class ResultScreen extends StatelessWidget{
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Expanded(flex: 2, child: Center(child: Text("やった!", style: TextStyle(fontSize: 36)))),
+          Expanded(flex: 2, child: Center(child: Text("やった!", style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold)))),
           Expanded(flex: 6, child: _DetailWidget(param: param, stopwatch: stopwatch)),
           Flexible(flex: 2, child: _rowOfButtons(context, param.onRestart))
         ]
@@ -169,7 +169,7 @@ class _DetailWidget extends StatelessWidget {
                 text: param.result.pointsGained.toString(),
                 style: TextStyle(
                   fontSize: 70,
-                  color: Colors.amber
+                  color: AppColors.secondary
                   
                 ),
               ),

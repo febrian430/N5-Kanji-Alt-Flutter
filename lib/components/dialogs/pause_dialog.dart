@@ -49,10 +49,10 @@ class PauseDialog extends StatelessWidget {
             showDialog(context: context, builder: showKanaDialog);
           }),
         _QuitButton(
-            icon: AppIcons.exit, 
+            icon: AppIcons.home, 
             onPressed: (){
               // Navigator.of(context).pushNamedAndRemoveUntil(newRouteName, (route) => false)
-              Navigator.of(context).popUntil(ModalRoute.withName('/start-select'));
+              Navigator.of(context).popUntil(ModalRoute.withName('/'));
             }
           )
         ],

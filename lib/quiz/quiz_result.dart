@@ -249,11 +249,13 @@ class _DetailWidget extends StatelessWidget {
                 text: gains.pointsGained.toString(),
                 style: TextStyle(
                   fontSize: 70,
-                  color: Colors.amber,
-
+                  color: AppColors.secondary,
                 ),
               ),
-              TextSpan(text: 'pts', style: TextStyle(fontWeight: FontWeight.bold)),
+              TextSpan(text: 'pts', 
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                )),
             ],
           ),
         ),

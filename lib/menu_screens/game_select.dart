@@ -50,7 +50,7 @@ class GameSelect extends StatelessWidget {
                     arguments: PracticeGameArguments(selectedGame: JumbleGame.route, gameType: GAME_TYPE.PRACTICE));
                   },
                   title: 'Jumble',
-                  description: "Fill the blank spots in order",
+                  description: "Fill the blank spots in order with the answer",
                   iconPath: AppIcons.jumble,
                 ),
               ),
