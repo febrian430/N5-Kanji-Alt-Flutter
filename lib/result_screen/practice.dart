@@ -151,7 +151,7 @@ class _DetailWidget extends StatelessWidget {
 
     var minutes = (seconds/60).floor();
     var remaining = seconds % 60;
-    return "${minutes > 0 ?  minutes.toString() + " min" : ""}$remaining seconds";
+    return "${minutes > 0 ?  minutes.toString() + " min " : ""}$remaining sec";
   }
 
   @override
@@ -177,7 +177,16 @@ class _DetailWidget extends StatelessWidget {
             ],
           ),
         ),
-        Text(humanize(stopwatch)),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Flexible(flex: 1, child: Image.asset(AppIcons.time, height: 20, width: 20, fit: BoxFit.contain,),),
+            Flexible(flex: 3, child: Text(humanize(stopwatch))),
+          ]
+        ),
+        SizedBox(
+          height: 25,
+        ),
         Text(param.game),
         SizedBox( 
           width: 50,
@@ -207,6 +216,9 @@ class _DetailWidget extends StatelessWidget {
             ],
           )
         ),
+        SizedBox(
+          height: 25,
+        ),
         FutureBuilder(
           future: Levels.current(),
           builder: (context, AsyncSnapshot<List<int>> snapshot) {
@@ -226,7 +238,6 @@ class _DetailWidget extends StatelessWidget {
                     onLevelup: (){
                       print("level up!");
                   }),
-                  Text('+${param.result.expGained.toString()} exp', style: TextStyle(fontSize: 14),)
                 ]
               );
             } else {

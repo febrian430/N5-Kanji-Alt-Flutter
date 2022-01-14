@@ -61,9 +61,9 @@ class _JumbleQuizGameState extends State<JumbleQuizGame> {
   Widget _buildRound(BuildContext context, int index, JumbleQuizQuestionSet set) {
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(
-          width: 1
-        )
+        // border: Border.all(
+        //   width: 1
+        // )
       ),
       child: JumbleQuizRound(
         index: index,

@@ -166,9 +166,9 @@ class _JumbleQuizRoundState extends State<JumbleQuizRound> with AutomaticKeepAli
       child: Container(
         // height: MediaQuery.of(context).size.height - 120,
         decoration: BoxDecoration(
-          border: Border.all(
-            width: 1,
-          ),
+          // border: Border.all(
+          //   width: 1,
+          // ),
         ),
         //question
         child: Column(
@@ -176,7 +176,7 @@ class _JumbleQuizRoundState extends State<JumbleQuizRound> with AutomaticKeepAli
             Expanded(
               flex: 12,
               child: Container(
-          decoration: BoxDecoration(border: Border.all(width: 1)),
+                // decoration: BoxDecoration(border: Border.all(width: 1)),
                 child: Column(
                 children: [
                   Expanded(flex: 12, child: QuestionWidget(mode: widget.mode, questionStr: widget.question.value)),
@@ -209,9 +209,9 @@ class _JumbleQuizRoundState extends State<JumbleQuizRound> with AutomaticKeepAli
               flex: 6,
               child: Container(
                 decoration: BoxDecoration(
-                  border: Border.all(
-                    width: 1
-                  )
+                  // border: Border.all(
+                  //   width: 1
+                  // )
                 ),
                 child: _optionsByColumn(context, widget.options)
               )
