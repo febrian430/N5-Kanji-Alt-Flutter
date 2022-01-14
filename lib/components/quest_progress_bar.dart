@@ -15,7 +15,7 @@ class QuestProgressBar extends StatelessWidget {
         Text("$count/$total", style: TextStyle(fontWeight: FontWeight.bold),),
         LinearProgressIndicator(
           value: count/total,
-          backgroundColor: AppColors.primary,
+          backgroundColor: AppColors.selected,
           color: AppColors.secondary,
           minHeight: 5,
         )
