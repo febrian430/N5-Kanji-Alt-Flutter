@@ -19,7 +19,7 @@
 	{
 		"id": 2,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "1 buah.png",
 		"rune": "一つ",
 		"spelling": [
 			"ひ",
@@ -36,7 +36,7 @@
 	{
 		"id": 3,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "1 orang.png",
 		"rune": "一人",
 		"spelling": [
 			"ひ",
@@ -108,7 +108,7 @@
 	{
 		"id": 7,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "2 buah.png",
 		"rune": "二つ",
 		"spelling": [
 			"ふ",
@@ -125,7 +125,7 @@
 	{
 		"id": 8,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "2 orang.png",
 		"rune": "二人",
 		"spelling": [
 			"ふ",
@@ -196,7 +196,7 @@
 	{
 		"id": 12,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "3 buah.png",
 		"rune": "三つ",
 		"spelling": [
 			"み",
@@ -213,7 +213,7 @@
 	{
 		"id": 13,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "3 orang.png",
 		"rune": "三人",
 		"spelling": [
 			"さ",
@@ -286,7 +286,7 @@
 	{
 		"id": 17,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "4 buah.png",
 		"rune": "四つ",
 		"spelling": [
 			"よ",
@@ -303,7 +303,7 @@
 	{
 		"id": 18,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "4 orang.png",
 		"rune": "四人",
 		"spelling": [
 			"よ",
@@ -374,7 +374,7 @@
 	{
 		"id": 22,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "5 buah.png",
 		"rune": "五つ",
 		"spelling": [
 			"い",
@@ -391,7 +391,7 @@
 	{
 		"id": 23,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "5 orang.png",
 		"rune": "五人",
 		"spelling": [
 			"ご",
@@ -462,7 +462,7 @@
 	{
 		"id": 27,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "6 buah.png",
 		"rune": "六つ",
 		"spelling": [
 			"む",
@@ -479,7 +479,7 @@
 	{
 		"id": 28,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "6 orang.png",
 		"rune": "六人",
 		"spelling": [
 			"ろ",
@@ -552,7 +552,7 @@
 	{
 		"id": 32,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "7 buah.png",
 		"rune": "七つ",
 		"spelling": [
 			"な",
@@ -569,7 +569,7 @@
 	{
 		"id": 33,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "7 orang.png",
 		"rune": "七人",
 		"spelling": [
 			"な",
@@ -642,7 +642,7 @@
 	{
 		"id": 37,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "8 buah.png",
 		"rune": "八つ",
 		"spelling": [
 			"や",
@@ -659,7 +659,7 @@
 	{
 		"id": 38,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "8 orang.png",
 		"rune": "八人",
 		"spelling": [
 			"は",
@@ -732,7 +732,7 @@
 	{
 		"id": 42,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "9 buah.png",
 		"rune": "九つ",
 		"spelling": [
 			"こ",
@@ -750,7 +750,7 @@
 	{
 		"id": 43,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "9 orang.png",
 		"rune": "九人",
 		"spelling": [
 			"きゅ",
@@ -898,7 +898,7 @@
 	{
 		"id": 51,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "200.png",
 		"rune": "二百",
 		"spelling": [
 			"に",
@@ -916,7 +916,7 @@
 	{
 		"id": 52,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "300.png",
 		"rune": "三百",
 		"spelling": [
 			"さ",
@@ -935,7 +935,7 @@
 	{
 		"id": 53,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "600.png",
 		"rune": "六百",
 		"spelling": [
 			"ろ",
@@ -989,7 +989,7 @@
 	{
 		"id": 56,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "3000.png",
 		"rune": "三千",
 		"spelling": [
 			"さ",
@@ -1046,7 +1046,7 @@
 	{
 		"id": 59,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "40000.png",
 		"rune": "四万",
 		"spelling": [
 			"よ",
@@ -1306,24 +1306,6 @@
 		"cost": 1,
 		"reward_status": "AVAILABLE",
 		"example_of": [
-			20
-		]
-	},
-	{
-		"id": 74,
-		"chapter": 2,
-		"image": "30kr1n.png",
-		"rune": "一人",
-		"spelling": [
-			"ひ",
-			"と",
-			"り"
-		],
-		"meaning": "Satu orang",
-		"cost": 1,
-		"reward_status": "AVAILABLE",
-		"example_of": [
-			1,
 			20
 		]
 	},
