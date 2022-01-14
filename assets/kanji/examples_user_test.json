@@ -12,7 +12,9 @@
 		"is_single": true,
 		"example_of": [
 			1
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 2,
@@ -27,7 +29,9 @@
 		"meaning": "Satu buah",
 		"example_of": [
 			1
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 3,
@@ -42,7 +46,9 @@
 		"meaning": "Satu orang",
 		"example_of": [
 			1
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 4,
@@ -59,7 +65,9 @@
 		"example_of": [
 			1,
 			16
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 5,
@@ -75,7 +83,9 @@
 		"meaning": "Tanggal 1",
 		"example_of": [
 			1
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 6,
@@ -89,7 +99,9 @@
 		"is_single": true,
 		"example_of": [
 			2
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 7,
@@ -104,7 +116,9 @@
 		"meaning": "Dua buah",
 		"example_of": [
 			2
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 8,
@@ -119,7 +133,9 @@
 		"meaning": "Dua orang",
 		"example_of": [
 			2
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 9,
@@ -134,7 +150,9 @@
 		"meaning": "Bulan Februari",
 		"example_of": [
 			2
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 10,
@@ -149,7 +167,9 @@
 		"meaning": "Tanggal 2",
 		"example_of": [
 			2
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 11,
@@ -164,7 +184,9 @@
 		"is_single": true,
 		"example_of": [
 			3
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 12,
@@ -179,7 +201,9 @@
 		"meaning": "Tiga buah",
 		"example_of": [
 			3
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 13,
@@ -196,7 +220,9 @@
 		"example_of": [
 			3,
 			21
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 14,
@@ -212,7 +238,9 @@
 		"meaning": "Bulan Maret",
 		"example_of": [
 			3
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 15,
@@ -228,7 +256,9 @@
 		"example_of": [
 			3,
 			15
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 16,
@@ -243,7 +273,9 @@
 		"is_single": true,
 		"example_of": [
 			4
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 17,
@@ -258,7 +290,9 @@
 		"meaning": "Empat buah",
 		"example_of": [
 			4
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 18,
@@ -274,7 +308,9 @@
 		"meaning": "Empat orang",
 		"example_of": [
 			4
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 19,
@@ -289,7 +325,9 @@
 		"meaning": "Bulan April",
 		"example_of": [
 			4
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 20,
@@ -304,7 +342,9 @@
 		"meaning": "Tanggal 4",
 		"example_of": [
 			4
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 21,
@@ -318,7 +358,9 @@
 		"is_single": true,
 		"example_of": [
 			5
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 22,
@@ -333,7 +375,9 @@
 		"meaning": "Lima buah",
 		"example_of": [
 			5
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 23,
@@ -348,7 +392,9 @@
 		"meaning": "Lima orang",
 		"example_of": [
 			5
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 24,
@@ -363,7 +409,9 @@
 		"meaning": "Bulan Mei",
 		"example_of": [
 			5
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 25,
@@ -378,7 +426,9 @@
 		"meaning": "Tanggal 5",
 		"example_of": [
 			5
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 26,
@@ -393,7 +443,9 @@
 		"is_single": true,
 		"example_of": [
 			6
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 27,
@@ -408,7 +460,9 @@
 		"meaning": "Enam buah",
 		"example_of": [
 			6
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 28,
@@ -424,7 +478,9 @@
 		"meaning": "Enam orang",
 		"example_of": [
 			6
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 29,
@@ -440,7 +496,9 @@
 		"meaning": "Bulan Juni",
 		"example_of": [
 			6
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 30,
@@ -455,7 +513,9 @@
 		"meaning": "Tanggal 6",
 		"example_of": [
 			6
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 31,
@@ -470,7 +530,9 @@
 		"is_single": true,
 		"example_of": [
 			7
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 32,
@@ -485,7 +547,9 @@
 		"meaning": "Tujuh buah",
 		"example_of": [
 			7
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 33,
@@ -501,7 +565,9 @@
 		"meaning": "Tujuh orang",
 		"example_of": [
 			7
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 34,
@@ -517,7 +583,9 @@
 		"meaning": "Bulan Juli",
 		"example_of": [
 			7
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 35,
@@ -532,7 +600,9 @@
 		"meaning": "Tanggal 7",
 		"example_of": [
 			7
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 36,
@@ -547,7 +617,9 @@
 		"is_single": true,
 		"example_of": [
 			8
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 37,
@@ -562,7 +634,9 @@
 		"meaning": "Delapan buah",
 		"example_of": [
 			8
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 38,
@@ -578,7 +652,9 @@
 		"meaning": "Delapan orang",
 		"example_of": [
 			8
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 39,
@@ -594,7 +670,9 @@
 		"meaning": "Bulan Agustus",
 		"example_of": [
 			8
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 40,
@@ -609,7 +687,9 @@
 		"meaning": "Tanggal 8",
 		"example_of": [
 			8
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 41,
@@ -624,7 +704,9 @@
 		"is_single": true,
 		"example_of": [
 			9
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 42,
@@ -640,7 +722,9 @@
 		"meaning": "Sembilan buah",
 		"example_of": [
 			9
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 43,
@@ -656,7 +740,9 @@
 		"meaning": "Sembilan orang",
 		"example_of": [
 			9
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 44,
@@ -671,7 +757,9 @@
 		"meaning": "Bulan September",
 		"example_of": [
 			9
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 45,
@@ -687,7 +775,9 @@
 		"meaning": "Tanggal 9",
 		"example_of": [
 			9
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 46,
@@ -702,7 +792,9 @@
 		"is_single": true,
 		"example_of": [
 			10
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 47,
@@ -718,7 +810,9 @@
 		"meaning": "Bulan Oktober",
 		"example_of": [
 			10
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 48,
@@ -735,7 +829,9 @@
 		"meaning": "Bulan Desember",
 		"example_of": [
 			10
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 49,
@@ -750,7 +846,9 @@
 		"meaning": "Tanggal  10",
 		"example_of": [
 			10
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 50,
@@ -765,7 +863,9 @@
 		"is_single": true,
 		"example_of": [
 			11
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 51,
@@ -780,7 +880,9 @@
 		"meaning": "200",
 		"example_of": [
 			11
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 52,
@@ -796,7 +898,9 @@
 		"meaning": "300",
 		"example_of": [
 			11
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 53,
@@ -812,7 +916,9 @@
 		"meaning": "600",
 		"example_of": [
 			11
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 54,
@@ -827,7 +933,9 @@
 		"is_single": true,
 		"example_of": [
 			12
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 55,
@@ -843,7 +951,9 @@
 		"meaning": "1000 Yen",
 		"example_of": [
 			12
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 56,
@@ -859,7 +969,9 @@
 		"meaning": "3000",
 		"example_of": [
 			12
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 57,
@@ -874,7 +986,9 @@
 		"is_single": true,
 		"example_of": [
 			13
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 58,
@@ -892,7 +1006,9 @@
 		"meaning": "10.000 Yen",
 		"example_of": [
 			13
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 59,
@@ -908,7 +1024,9 @@
 		"meaning": "40.000",
 		"example_of": [
 			13
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 60,
@@ -922,7 +1040,9 @@
 		"is_single": true,
 		"example_of": [
 			15
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 61,
@@ -939,7 +1059,9 @@
 		"meaning": "Hari Minggu",
 		"example_of": [
 			15
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 62,
@@ -954,7 +1076,9 @@
 		"meaning": "Jepang",
 		"example_of": [
 			15
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 63,
@@ -969,7 +1093,9 @@
 		"is_single": true,
 		"example_of": [
 			16
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 64,
@@ -986,7 +1112,9 @@
 		"meaning": "Hari Senin",
 		"example_of": [
 			16
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 65,
@@ -1000,7 +1128,9 @@
 		"is_single": true,
 		"example_of": [
 			17
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 66,
@@ -1016,7 +1146,9 @@
 		"example_of": [
 			17,
 			28
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 67,
@@ -1033,7 +1165,9 @@
 		"meaning": "Hari Kamis",
 		"example_of": [
 			17
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 68,
@@ -1048,7 +1182,9 @@
 		"is_single": true,
 		"example_of": [
 			18
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 69,
@@ -1064,7 +1200,9 @@
 		"example_of": [
 			18,
 			25
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 70,
@@ -1079,7 +1217,9 @@
 		"is_single": true,
 		"example_of": [
 			19
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 71,
@@ -1095,7 +1235,9 @@
 		"example_of": [
 			19,
 			39
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 72,
@@ -1109,7 +1251,9 @@
 		"is_single": true,
 		"example_of": [
 			20
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 73,
@@ -1124,7 +1268,9 @@
 		"is_single": true,
 		"example_of": [
 			21
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 74,
@@ -1139,7 +1285,9 @@
 		"meaning": "Satu orang",
 		"example_of": [
 			1
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 75,
@@ -1156,7 +1304,9 @@
 		"meaning": "Orang Jepang",
 		"example_of": [
 			21
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 76,
@@ -1171,7 +1321,9 @@
 		"is_single": true,
 		"example_of": [
 			22
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 77,
@@ -1187,7 +1339,9 @@
 		"meaning": "Pintu Masuk",
 		"example_of": [
 			22
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 78,
@@ -1202,7 +1356,9 @@
 		"meaning": "Pintu Keluar",
 		"example_of": [
 			22
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 79,
@@ -1218,7 +1374,9 @@
 		"is_single": true,
 		"example_of": [
 			23
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 80,
@@ -1234,7 +1392,9 @@
 		"meaning": "Otomotif",
 		"example_of": [
 			23
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 81,
@@ -1249,7 +1409,9 @@
 		"meaning": "Kereta",
 		"example_of": [
 			23
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 82,
@@ -1265,7 +1427,9 @@
 		"example_of": [
 			23,
 			26
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 83,
@@ -1280,7 +1444,9 @@
 		"is_single": true,
 		"example_of": [
 			24
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 84,
@@ -1296,7 +1462,9 @@
 		"meaning": "Keahlian khusus/ Spesialis",
 		"example_of": [
 			24
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 85,
@@ -1310,7 +1478,9 @@
 		"is_single": true,
 		"example_of": [
 			25
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 86,
@@ -1326,7 +1496,9 @@
 		"meaning": "Hari Selasa",
 		"example_of": [
 			25
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 87,
@@ -1342,7 +1514,9 @@
 		"example_of": [
 			18,
 			25
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 88,
@@ -1356,7 +1530,9 @@
 		"meaning": "Kebakaran",
 		"example_of": [
 			25
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 89,
@@ -1371,7 +1547,9 @@
 		"is_single": true,
 		"example_of": [
 			26
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 90,
@@ -1388,7 +1566,9 @@
 		"meaning": "Hari Rabu",
 		"example_of": [
 			26
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 91,
@@ -1403,7 +1583,9 @@
 		"is_single": true,
 		"example_of": [
 			27
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 92,
@@ -1419,7 +1601,9 @@
 		"is_single": true,
 		"example_of": [
 			27
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 93,
@@ -1436,7 +1620,9 @@
 		"meaning": "Hari Jumat",
 		"example_of": [
 			27
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 94,
@@ -1451,7 +1637,9 @@
 		"is_single": true,
 		"example_of": [
 			28
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 95,
@@ -1467,7 +1655,9 @@
 		"meaning": "Hari Sabtu",
 		"example_of": [
 			28
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 96,
@@ -1483,7 +1673,9 @@
 		"is_single": true,
 		"example_of": [
 			30
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 97,
@@ -1500,7 +1692,9 @@
 		"meaning": "Anak Perempuan",
 		"example_of": [
 			30
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 98,
@@ -1518,7 +1712,9 @@
 		"example_of": [
 			30,
 			51
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 99,
@@ -1534,7 +1730,9 @@
 		"is_single": true,
 		"example_of": [
 			29
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 100,
@@ -1552,7 +1750,9 @@
 		"meaning": "Orang perempuan",
 		"example_of": [
 			29
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 101,
@@ -1567,7 +1767,9 @@
 		"meaning": "Dia (perempuan)",
 		"example_of": [
 			29
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 102,
@@ -1583,7 +1785,9 @@
 		"meaning": "Murid",
 		"example_of": [
 			31
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 103,
@@ -1600,7 +1804,9 @@
 		"example_of": [
 			31,
 			38
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 104,
@@ -1616,7 +1822,9 @@
 		"meaning": "Sekolah",
 		"example_of": [
 			31
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 105,
@@ -1632,7 +1840,9 @@
 		"is_single": true,
 		"example_of": [
 			32
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 106,
@@ -1649,7 +1859,9 @@
 		"is_single": true,
 		"example_of": [
 			32
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 107,
@@ -1664,7 +1876,9 @@
 		"is_single": true,
 		"example_of": [
 			33
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 108,
@@ -1681,7 +1895,9 @@
 		"example_of": [
 			32,
 			33
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 109,
@@ -1697,7 +1913,9 @@
 		"meaning": "Minggu lalu",
 		"example_of": [
 			33
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 110,
@@ -1713,7 +1931,9 @@
 		"meaning": "Bulan lalu",
 		"example_of": [
 			33
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 111,
@@ -1729,7 +1949,9 @@
 		"is_single": true,
 		"example_of": [
 			34
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	},
 	{
 		"id": 112,
@@ -1748,6 +1970,8 @@
 		"meaning": "Universitas Swasta",
 		"example_of": [
 			34
-		]
+		],
+		"cost": 1,
+		"reward_status": "AVAILABLE"
 	}
 ]

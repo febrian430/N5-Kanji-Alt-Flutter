@@ -339,7 +339,7 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
       } else if(isSolved) {
         deco = BoxDecoration(
             border: Border.all(
-              color: defaultBorderColor,
+              color: AppColors.correct,
               width: 2
             ),
             color: solvedBackgroundColor

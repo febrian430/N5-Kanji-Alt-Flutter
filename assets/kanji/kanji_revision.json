@@ -1,0 +1,512 @@
+[
+	{
+		"rune": "一",
+		"chapter": 1,
+		"kunyomi": "ひと-つ/ひと",
+		"onyomi": "イチ"
+	},
+	{
+		"rune": "二",
+		"chapter": 1,
+		"kunyomi": "ふた-つ/ふた",
+		"onyomi": "ニ"
+	},
+	{
+		"rune": "三",
+		"chapter": 1,
+		"kunyomi": "みっ-つ",
+		"onyomi": "サン"
+	},
+	{
+		"rune": "四",
+		"chapter": 1,
+		"kunyomi": "よっ-つ/よん/よ",
+		"onyomi": "シ"
+	},
+	{
+		"rune": "五",
+		"chapter": 1,
+		"kunyomi": "いつ-つ/いつ",
+		"onyomi": "ゴ"
+	},
+	{
+		"rune": "六",
+		"chapter": 1,
+		"kunyomi": "むっ-つ",
+		"onyomi": "ロク"
+	},
+	{
+		"rune": "七",
+		"chapter": 1,
+		"kunyomi": "なな-つ/なな",
+		"onyomi": "シチ"
+	},
+	{
+		"rune": "八",
+		"chapter": 1,
+		"kunyomi": "やっ-つ",
+		"onyomi": "ハチ"
+	},
+	{
+		"rune": "九",
+		"chapter": 1,
+		"kunyomi": "ここの-つ/ここの",
+		"onyomi": "ク/キュウ"
+	},
+	{
+		"rune": "十",
+		"chapter": 1,
+		"kunyomi": "とう",
+		"onyomi": "ジュウ"
+	},
+	{
+		"rune": "百",
+		"chapter": 1,
+		"kunyomi": "ー",
+		"onyomi": "ヒャク/-ビャク/-ピャク"
+	},
+	{
+		"rune": "千",
+		"chapter": 1,
+		"kunyomi": "ち",
+		"onyomi": "セン/-ゼン"
+	},
+	{
+		"rune": "万",
+		"chapter": 1,
+		"kunyomi": "ー",
+		"onyomi": "マン"
+	},
+	{
+		"rune": "日",
+		"chapter": 2,
+		"kunyomi": "ひ/-び",
+		"onyomi": "ニチ/ニ"
+	},
+	{
+		"rune": "月",
+		"chapter": 2,
+		"kunyomi": "つき",
+		"onyomi": "ゲツ/ガツ"
+	},
+	{
+		"rune": "木",
+		"chapter": 2,
+		"kunyomi": "き",
+		"onyomi": "モク（ボク）"
+	},
+	{
+		"rune": "山",
+		"chapter": 2,
+		"kunyomi": "やま",
+		"onyomi": "サン/-ザン"
+	},
+	{
+		"rune": "川",
+		"chapter": 2,
+		"kunyomi": "かわ/-がわ",
+		"onyomi": "（セン）"
+	},
+	{
+		"rune": "田",
+		"chapter": 2,
+		"kunyomi": "た/-だ",
+		"onyomi": "デン"
+	},
+	{
+		"rune": "人",
+		"chapter": 2,
+		"kunyomi": "ひと",
+		"onyomi": "ジン/ニン"
+	},
+	{
+		"rune": "口",
+		"chapter": 2,
+		"kunyomi": "くち/-ぐち",
+		"onyomi": "コウ"
+	},
+	{
+		"rune": "車",
+		"chapter": 2,
+		"kunyomi": "くるま",
+		"onyomi": "シャ"
+	},
+	{
+		"rune": "門",
+		"chapter": 2,
+		"kunyomi": "（かど）",
+		"onyomi": "モン"
+	},
+	{
+		"rune": "火",
+		"chapter": 3,
+		"kunyomi": "ひ",
+		"onyomi": "カ"
+	},
+	{
+		"rune": "水",
+		"chapter": 3,
+		"kunyomi": "みず",
+		"onyomi": "スイ"
+	},
+	{
+		"rune": "金",
+		"chapter": 3,
+		"kunyomi": "かね",
+		"onyomi": "キン"
+	},
+	{
+		"rune": "土",
+		"chapter": 3,
+		"kunyomi": "つち",
+		"onyomi": "ド"
+	},
+	{
+		"rune": "女",
+		"chapter": 3,
+		"kunyomi": "おんな",
+		"onyomi": "ジョ"
+	},
+	{
+		"rune": "子",
+		"chapter": 3,
+		"kunyomi": "こ",
+		"onyomi": "シ"
+	},
+	{
+		"rune": "学",
+		"chapter": 3,
+		"kunyomi": "まな-ぶ",
+		"onyomi": "ガク/ガッ-"
+	},
+	{
+		"rune": "生",
+		"chapter": 3,
+		"kunyomi": "い-きる/う-まれる",
+		"onyomi": "セイ"
+	},
+	{
+		"rune": "先",
+		"chapter": 3,
+		"kunyomi": "さき",
+		"onyomi": "セン"
+	},
+	{
+		"rune": "私",
+		"chapter": 3,
+		"kunyomi": "わたし/わたくし",
+		"onyomi": "し"
+	},
+	{
+		"rune": "上",
+		"chapter": 4,
+		"kunyomi": "うえ/あ-がる/あ-げう",
+		"onyomi": "ジョウ"
+	},
+	{
+		"rune": "下",
+		"chapter": 4,
+		"kunyomi": "した/さ-がる/さ-げる",
+		"onyomi": "カ/ゲ"
+	},
+	{
+		"rune": "中",
+		"chapter": 4,
+		"kunyomi": "なか",
+		"onyomi": "チュウ/-ジュウ"
+	},
+	{
+		"rune": "大",
+		"chapter": 4,
+		"kunyomi": "おお-きい",
+		"onyomi": "ダイ/タイ"
+	},
+	{
+		"rune": "小",
+		"chapter": 4,
+		"kunyomi": "ちい-さい/こ/お",
+		"onyomi": "ジョウ"
+	},
+	{
+		"rune": "本",
+		"chapter": 4,
+		"kunyomi": "もと",
+		"onyomi": "ホン"
+	},
+	{
+		"rune": "半",
+		"chapter": 4,
+		"kunyomi": "（なか-ば）",
+		"onyomi": "ハン"
+	},
+	{
+		"rune": "分",
+		"chapter": 4,
+		"kunyomi": "わ-かる/わ-ける",
+		"onyomi": "ブン/フン/-プン"
+	},
+	{
+		"rune": "力",
+		"chapter": 4,
+		"kunyomi": "ちから",
+		"onyomi": "リョク/リキ"
+	},
+	{
+		"rune": "何",
+		"chapter": 4,
+		"kunyomi": "なに/なん",
+		"onyomi": "ー"
+	},
+	{
+		"rune": "明",
+		"chapter": 5,
+		"kunyomi": "あか-るい",
+		"onyomi": "メイ"
+	},
+	{
+		"rune": "休",
+		"chapter": 5,
+		"kunyomi": "やす-む",
+		"onyomi": "キュウ"
+	},
+	{
+		"rune": "体",
+		"chapter": 5,
+		"kunyomi": "からだ",
+		"onyomi": "タイ"
+	},
+	{
+		"rune": "好",
+		"chapter": 5,
+		"kunyomi": "す-きな",
+		"onyomi": "ー"
+	},
+	{
+		"rune": "林",
+		"chapter": 5,
+		"kunyomi": "はやし",
+		"onyomi": "リン"
+	},
+	{
+		"rune": "森",
+		"chapter": 5,
+		"kunyomi": "もり",
+		"onyomi": "シン"
+	},
+	{
+		"rune": "男",
+		"chapter": 5,
+		"kunyomi": "おとこ",
+		"onyomi": "ダン/ナン"
+	},
+	{
+		"rune": "間",
+		"chapter": 5,
+		"kunyomi": "あいだ/ま",
+		"onyomi": "カン"
+	},
+	{
+		"rune": "校",
+		"chapter": 5,
+		"kunyomi": "ー",
+		"onyomi": "コウ"
+	},
+	{
+		"rune": "国",
+		"chapter": 5,
+		"kunyomi": "くに",
+		"onyomi": "コク"
+	},
+	{
+		"rune": "目",
+		"chapter": 6,
+		"kunyomi": "め",
+		"onyomi": "モク"
+	},
+	{
+		"rune": "耳",
+		"chapter": 6,
+		"kunyomi": "みみ",
+		"onyomi": "ジ"
+	},
+	{
+		"rune": "手",
+		"chapter": 6,
+		"kunyomi": "て",
+		"onyomi": "シュ"
+	},
+	{
+		"rune": "足",
+		"chapter": 6,
+		"kunyomi": "あし",
+		"onyomi": "ソク"
+	},
+	{
+		"rune": "雨",
+		"chapter": 6,
+		"kunyomi": "あめ",
+		"onyomi": "ウ"
+	},
+	{
+		"rune": "竹",
+		"chapter": 6,
+		"kunyomi": "たけ",
+		"onyomi": "（チク）"
+	},
+	{
+		"rune": "米",
+		"chapter": 6,
+		"kunyomi": "こめ",
+		"onyomi": "マイ/ベイ"
+	},
+	{
+		"rune": "貝",
+		"chapter": 6,
+		"kunyomi": "かい",
+		"onyomi": "ー"
+	},
+	{
+		"rune": "石",
+		"chapter": 6,
+		"kunyomi": "いし",
+		"onyomi": "セキ"
+	},
+	{
+		"rune": "糸",
+		"chapter": 6,
+		"kunyomi": "いと",
+		"onyomi": "（シ）"
+	},
+	{
+		"rune": "花",
+		"chapter": 7,
+		"kunyomi": "はな",
+		"onyomi": "カ"
+	},
+	{
+		"rune": "茶",
+		"chapter": 7,
+		"kunyomi": "ー",
+		"onyomi": "チャ/サ"
+	},
+	{
+		"rune": "肉",
+		"chapter": 7,
+		"kunyomi": "ー",
+		"onyomi": "ニク"
+	},
+	{
+		"rune": "赤",
+		"chapter": 7,
+		"kunyomi": "あか-い",
+		"onyomi": "セキ"
+	},
+	{
+		"rune": "白",
+		"chapter": 7,
+		"kunyomi": "しろ-い/しら",
+		"onyomi": "ハク/パク"
+	},
+	{
+		"rune": "物",
+		"chapter": 7,
+		"kunyomi": "もの",
+		"onyomi": "ブツ/モツ"
+	},
+	{
+		"rune": "牛",
+		"chapter": 7,
+		"kunyomi": "うし",
+		"onyomi": "ギュウ"
+	},
+	{
+		"rune": "馬",
+		"chapter": 7,
+		"kunyomi": "うま",
+		"onyomi": "バ"
+	},
+	{
+		"rune": "鳥",
+		"chapter": 7,
+		"kunyomi": "とり",
+		"onyomi": "チョウ"
+	},
+	{
+		"rune": "魚",
+		"chapter": 7,
+		"kunyomi": "さかな",
+		"onyomi": "ギョ"
+	},
+	{
+		"rune": "行",
+		"chapter": 8,
+		"kunyomi": "い-く/おこな-う",
+		"onyomi": "コウ/ギョウ"
+	},
+	{
+		"rune": "来",
+		"chapter": 8,
+		"kunyomi": "く-る/き-ます/こ-ない",
+		"onyomi": "ライ "
+	},
+	{
+		"rune": "食",
+		"chapter": 8,
+		"kunyomi": "たべ-る",
+		"onyomi": "ショク"
+	},
+	{
+		"rune": "飲",
+		"chapter": 8,
+		"kunyomi": "の-む",
+		"onyomi": "イン "
+	},
+	{
+		"rune": "見",
+		"chapter": 8,
+		"kunyomi": "み-る/み-せる/み-える",
+		"onyomi": "ケン "
+	},
+	{
+		"rune": "聞",
+		"chapter": 8,
+		"kunyomi": "き-く/き-こえる",
+		"onyomi": "ブン "
+	},
+	{
+		"rune": "読",
+		"chapter": 8,
+		"kunyomi": "よ-む",
+		"onyomi": "ドク "
+	},
+	{
+		"rune": "書",
+		"chapter": 8,
+		"kunyomi": "か-く",
+		"onyomi": "ショ "
+	},
+	{
+		"rune": "話",
+		"chapter": 8,
+		"kunyomi": "はな-す/はなし",
+		"onyomi": "ワ"
+	},
+	{
+		"rune": "買",
+		"chapter": 8,
+		"kunyomi": "か-う",
+		"onyomi": "ー"
+	},
+	{
+		"rune": "帰",
+		"chapter": 8,
+		"kunyomi": "かえ-る/かえ-す",
+		"onyomi": "キ"
+	},
+	{
+		"rune": "教",
+		"chapter": 8,
+		"kunyomi": "おし-える",
+		"onyomi": "キョウ"
+	}
+]

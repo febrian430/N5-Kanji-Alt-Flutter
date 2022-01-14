@@ -136,7 +136,7 @@ class QuizResult extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Expanded(flex: 2, child: Center(child: Text("やった!", style: TextStyle(fontSize: 36)))),
+                Expanded(flex: 2, child: Center(child: Text("やった!", style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold)))),
                 Expanded(
                   flex: 8, 
                   child: _DetailWidget(
