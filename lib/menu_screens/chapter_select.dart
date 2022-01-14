@@ -88,31 +88,31 @@ class ChapterSelect extends StatelessWidget {
   Widget _build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return  ListView(
-        padding: EdgeInsets.only(top: size.height*.05),
-      children: chapters.map((chapter){
-          return Padding(
-            padding: EdgeInsets.symmetric(vertical: size.height*.0062),
-            child: Row(
-              children: [
-                EmptyFlex(flex: 2),
-                Flexible(
-                  flex: 8,
-                  child: SelectButton(
-                  title: 'Topic $chapter', 
-                  onTap: (){
-                    showDialog(
-                      context: context, 
-                      builder: (context){
-                        return ChapterSelectDialog(param: param, chapter: chapter);
-                      }
-                    );
-                  }),
-                ),
-                EmptyFlex(flex: 2)
-              ]
-          )
-          );
-        }).toList(),
+        padding: EdgeInsets.only(top: size.height*0),
+        children: chapters.map((chapter){
+            return Padding(
+              padding: EdgeInsets.symmetric(vertical: size.height*.0062),
+              child: Row(
+                children: [
+                  EmptyFlex(flex: 3),
+                  Flexible(
+                    flex: 8,
+                    child: SelectButton(
+                    title: 'Topic $chapter', 
+                    onTap: (){
+                      showDialog(
+                        context: context, 
+                        builder: (context){
+                          return ChapterSelectDialog(param: param, chapter: chapter);
+                        }
+                      );
+                    }),
+                  ),
+                  EmptyFlex(flex: 3)
+                ]
+            )
+            );
+          }).toList(),
       //       )
       //     )
       //   );
@@ -134,7 +134,7 @@ class ChapterSelect extends StatelessWidget {
       japanese: "トピックを選択", 
       child: screen,
       type: param.gameType,
-      footer: EmptyWidget,
+      footer: null,
     );
   }
 }
