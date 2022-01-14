@@ -25,4 +25,9 @@ class AppIcons {
   static const sound = APP_IMAGE_FOLDER + 'sound.png';
   static const reminder = APP_IMAGE_FOLDER + 'reminder.png';
   static const retry  = APP_IMAGE_FOLDER + 'retry.png';
+
+  static const home = APP_IMAGE_FOLDER + 'home.png';
+  static const prev = APP_IMAGE_FOLDER + 'previous.png';
+  static const next = APP_IMAGE_FOLDER + 'next.png';
+  static const time = APP_IMAGE_FOLDER + 'time.png';
 }

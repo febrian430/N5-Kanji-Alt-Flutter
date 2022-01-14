@@ -81,7 +81,7 @@ class _GameScreenState extends State<GameScreen> {
       children: [
         widget.prevVisible ? Expanded(
           child: TextButton(
-            child: Image.asset(AppIcons.retry),
+            child: Image.asset(AppIcons.prev),
             onPressed: widget.onPrev,
             style: TextButton.styleFrom(
               side: BorderSide.none,
@@ -94,7 +94,7 @@ class _GameScreenState extends State<GameScreen> {
         Expanded(flex: 1, child: widget.footer!),
         widget.nextVisible ? Expanded(
           child: TextButton(
-            child: Image.asset(AppIcons.resume),
+            child: Image.asset(AppIcons.next),
             onPressed: widget.onNext,
             style: TextButton.styleFrom(
               side: BorderSide.none,
