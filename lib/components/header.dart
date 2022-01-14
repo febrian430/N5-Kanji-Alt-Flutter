@@ -56,7 +56,7 @@ class GuideDialogButton extends StatelessWidget {
 class AppHeader extends StatelessWidget {
   final String title;
   final String japanese;
-
+  Color? color;
   Widget? topRight;
   Widget? topLeft;
   bool withBack;
@@ -65,6 +65,7 @@ class AppHeader extends StatelessWidget {
     Key? key, 
     required this.title, 
     required this.japanese, 
+    this.color = Colors.black,
     this.withBack = false, 
     this.topRight,
     this.topLeft
@@ -105,7 +106,8 @@ class AppHeader extends StatelessWidget {
                     title,
                     style: TextStyle(
                       fontSize: 24,
-                      fontWeight: FontWeight.bold
+                      fontWeight: FontWeight.bold,
+                      color: color
                     ),
                   )
                 ),
@@ -114,7 +116,8 @@ class AppHeader extends StatelessWidget {
                     japanese,
                     style: TextStyle(
                       fontSize: 12,
-                      fontWeight: FontWeight.w500
+                      fontWeight: FontWeight.w500,
+                      color: color
                     ),
                   )
                 ),

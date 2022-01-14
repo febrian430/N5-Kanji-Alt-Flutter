@@ -11,6 +11,7 @@ import 'package:kanji_memory_hint/components/empty_flex.dart';
 import 'package:kanji_memory_hint/components/header.dart';
 import 'package:kanji_memory_hint/icons.dart';
 import 'package:kanji_memory_hint/menu_screens/screen_layout.dart';
+import 'package:kanji_memory_hint/theme.dart';
 
 class GameScreen extends StatefulWidget {
 
@@ -119,6 +120,7 @@ class _GameScreenState extends State<GameScreen> {
           header: AppHeader(
             title: widget.title, 
             japanese: widget.japanese,
+            color: AppColors.white,
             withBack: false,
             topRight: GuideDialogButton(
               guide: widget.guide,

@@ -11,6 +11,7 @@ import 'package:kanji_memory_hint/components/empty_flex.dart';
 import 'package:kanji_memory_hint/components/header.dart';
 import 'package:kanji_memory_hint/countdown.dart';
 import 'package:kanji_memory_hint/menu_screens/screen_layout.dart';
+import 'package:kanji_memory_hint/theme.dart';
 
 class QuizScreen extends StatefulWidget {
 
@@ -142,6 +143,7 @@ class _QuizScreenState extends State<QuizScreen> {
           header: AppHeader(
             title: widget.title, 
             japanese: widget.japanese,
+            color: AppColors.white,
             withBack: false,
             topLeft: _getTopLeft(context),
             topRight: _guideButton(context)
