@@ -137,7 +137,7 @@ class ChapterSelectDialog extends StatelessWidget {
                     iconPath: AppIcons.no, 
                     height: 125, 
                     width: 300, 
-                    backgroundColor: AppColors.wrong
+                    backgroundColor: AppColors.primary
                   )
                 )
               ),

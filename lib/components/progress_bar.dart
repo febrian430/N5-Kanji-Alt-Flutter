@@ -73,7 +73,7 @@ class _ProgressBarState extends State<ProgressBar>
                 value: controller.value,
                 minHeight: 8,
                 backgroundColor: AppColors.primary,
-                color: AppColors.correct,
+                color: AppColors.secondary,
                 semanticsLabel: 'Progress bar',
               ),
             ),
