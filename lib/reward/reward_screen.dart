@@ -5,11 +5,12 @@ import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/database/example.dart';
 import 'package:kanji_memory_hint/database/repository.dart';
 import 'package:kanji_memory_hint/database/user_point.dart';
-import 'package:kanji_memory_hint/menu_screens/menu.dart';
 import 'package:kanji_memory_hint/quests/screen/gold.dart';
 import 'package:kanji_memory_hint/reward/reward_screen_layout.dart';
 import 'package:kanji_memory_hint/reward/topic_reward.dart';
 import 'package:kanji_memory_hint/theme.dart';
+import 'package:kanji_memory_hint/map_indexed.dart';
+
 
 class RewardScreen extends StatefulWidget {
   
@@ -30,6 +31,13 @@ class _RewardScreenState extends State<RewardScreen> {
   bool goldLoaded = false;
   bool exampleLoaded = false;
   late List<Example> examples;
+  int currentPage = 0;
+
+  PageController _controller = PageController(
+    viewportFraction: 1,
+    initialPage: 0,
+    
+  );
 
   @override
   void initState() {
@@ -48,23 +56,42 @@ class _RewardScreenState extends State<RewardScreen> {
     }).toList();
 
     return PageView(
-      controller: PageController(
-        viewportFraction: 1,
-      ),
-      children: groupedPerChapter.map((examples) {
+      controller: _controller,
+      onPageChanged: (int page) {
+        currentPage = page;
+      },
+      children: groupedPerChapter.mapIndexed((examples, index) {
         return Padding(
           padding: EdgeInsets.symmetric(horizontal: size.width*0.062),
           child: TopicRewards(
             examples: examples, 
             gold: gold,
             onBuy: (int cost, int exampleId) {
-              
               setState(() {
                 gold -= cost;
-
                 // examples = examples.where((example) => example.id == exampleId).
               });
             },
+            onNext: index != groupedPerChapter.length-1 ? (){
+                int current = _controller.page!.floor();
+                currentPage = current+1;
+                _controller.animateToPage(currentPage, 
+                  duration: const Duration(milliseconds: 300), 
+                  curve: Curves.linear
+                );
+            } : null,
+
+
+            onPrev: index != 0 ? 
+              (){
+                  int current = _controller.page!.floor();
+                  currentPage = current-1;
+                  _controller.animateToPage(currentPage, 
+                    duration: const Duration(milliseconds: 300), 
+                    curve: Curves.linear
+                  );
+                
+              } : null
           )
         );
       }).toList(),

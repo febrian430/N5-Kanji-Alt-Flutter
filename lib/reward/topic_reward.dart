@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kanji_memory_hint/components/empty_flex.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/database/example.dart';
 import 'package:kanji_memory_hint/icons.dart';
@@ -10,12 +11,16 @@ class TopicRewards extends StatefulWidget {
   final List<Example> examples;
   final int gold;
   final Function(int, int) onBuy;
+  final Function()? onNext;
+  final Function()? onPrev;
 
   const TopicRewards({
     Key? key, 
     required this.examples,
     required this.gold,
-    required this.onBuy
+    required this.onBuy,
+    required this.onNext,
+    required this.onPrev
   }) : super(key: key);
   
   
@@ -35,11 +40,11 @@ class _TopicRewardsState extends State<TopicRewards> {
     return Column(
         children: [
           Expanded(
-            flex: 1,
+            flex: 2,
             child: _header(context)
           ),
           Expanded(
-            flex: 9,
+            flex: 10,
             child:  GridView.count(
                 crossAxisCount: 5,
                 crossAxisSpacing: 7,
@@ -71,7 +76,50 @@ class _TopicRewardsState extends State<TopicRewards> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text("Topic ${widget.examples[0].chapter}"),
+        EmptyFlex(flex: 1),
+        Expanded(
+          flex: 2,
+          child: widget.onPrev != null ?
+           TextButton(
+            child: Image.asset(AppIcons.prev),
+            onPressed: widget.onPrev,
+            style: TextButton.styleFrom(
+              side: BorderSide.none
+            ),
+          ) : SizedBox()
+        ),
+        EmptyFlex(flex: 1),
+        Expanded(
+          flex: 5,
+          child: Container(
+            padding: EdgeInsets.symmetric(vertical: 12),
+            decoration: BoxDecoration(
+              border: Border.all(width: 2)
+            ),
+            child: Text(
+              "Topic ${widget.examples[0].chapter}",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 18
+              ),
+            ),
+          )
+        ),
+        EmptyFlex(flex: 1),
+
+        Expanded(
+          flex: 2,
+          child: widget.onNext != null ? TextButton(
+            child: Image.asset(AppIcons.next),
+            onPressed: widget.onNext,
+            style: TextButton.styleFrom(
+              side: BorderSide.none
+            ),
+          ) : SizedBox()
+        ),
+        EmptyFlex(flex: 1),
+
       ],
     );
   }
