@@ -285,7 +285,7 @@ class _SelectBarState extends State<_SelectBar> {
                 });
                 widget.onTap(0);
               }, 
-              child: _title("Mastery", selected == 0),
+              child: _title("Kanji", selected == 0),
               style: noDecorationButton,
             ),
           ),

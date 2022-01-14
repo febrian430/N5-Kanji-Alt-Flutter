@@ -145,21 +145,21 @@ class _MyAppState extends State<MyApp> {
             final args = settings.arguments as PracticeGameArguments;
 
             return MaterialPageRoute(builder: (context) {
-                return MixMatchGame(mode: args.mode, chapter: args.chapter);
+                return MixMatchGame(mode: args.mode, chapter: args.chapter, prevQuestions: args.mixMatchRestart,);
             });
 
           case JumbleGame.route:
             final args = settings.arguments as PracticeGameArguments;
 
             return MaterialPageRoute(builder: (context) {
-                return JumbleGame(mode: args.mode, chapter: args.chapter);
+                return JumbleGame(mode: args.mode, chapter: args.chapter, prevQuestions: args.jumbleRestart,);
             });
           
           case PickDrop.route:
             final args = settings.arguments as PracticeGameArguments;
 
             return MaterialPageRoute(builder: (context) {
-                return PickDrop(mode: GAME_MODE.imageMeaning, chapter: args.chapter);
+                return PickDrop(mode: GAME_MODE.imageMeaning, chapter: args.chapter, prevQuestions: args.pickDropRestart,);
             });
           
           case Quiz.route:

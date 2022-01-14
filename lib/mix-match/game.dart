@@ -22,12 +22,13 @@ import 'package:kanji_memory_hint/theme.dart';
 typedef OnRoundOverCallback = Function(bool isCorrect, int correct, int wrongAttempts);
 
 class MixMatchGame extends StatefulWidget {
-  MixMatchGame({Key? key, required this.chapter, required this.mode}) : super(key: key);
+  MixMatchGame({Key? key, required this.chapter, required this.mode, this.prevQuestions}) : super(key: key);
 
   final int chapter;
   final GAME_MODE mode;
   final int numOfRounds = 2;
   final Stopwatch stopwatch = Stopwatch();
+  final List<List<Question>>? prevQuestions;
 
   static const route = '/game/mix-match';
   static const name = 'Mix and Match';
@@ -42,7 +43,9 @@ class MixMatchGame extends StatefulWidget {
 
 class _MixMatchGameState extends State<MixMatchGame> {
   var _questionSet;
-  
+
+  List<List<Question>> restartQuestions = [];
+
   int currentPage = 0;
   int roundsSolved = 0;
   int perfect = 0;
@@ -56,9 +59,9 @@ class _MixMatchGameState extends State<MixMatchGame> {
 
   @override
   void initState() {
-    super.initState();
-    // PracticeGameArguments arg = ModalRoute.of(context)!.settings.arguments as PracticeGameArguments;
+    super.initState();    
     _questionSet = widget._getQuestionSet(widget.chapter, widget.mode);
+
   }
 
   void _onRoundOver(bool isCorrect, int correct, int wrongAttempts) {
@@ -108,8 +111,11 @@ class _MixMatchGameState extends State<MixMatchGame> {
     );
     arg.chapter = widget.chapter;
     arg.mode = widget.mode;
-    
-    Navigator.of(context).pop(true);
+    if(restartQuestions.isEmpty) {
+      arg.mixMatchRestart = widget.prevQuestions;
+    } else {
+      arg.mixMatchRestart = restartQuestions;
+    }
 
     Navigator.of(context).popAndPushNamed(
       MixMatchGame.route, 
@@ -135,30 +141,53 @@ class _MixMatchGameState extends State<MixMatchGame> {
   }
 
   Widget _buildGame(BuildContext context) {
-    return Center(
-      child: FutureBuilder(
-        future: _questionSet,
-        builder: (context, AsyncSnapshot<List<List<Question>>> snapshot) {
-          if(snapshot.hasData) {
-            widget.stopwatch.start();
-            return PageView.builder(
-              controller: _pageController,
-              onPageChanged: (int page){
-                setState(() {
-                  currentPage = page;
-                });
-              },
-              itemCount: snapshot.data?.length,
-              itemBuilder: (BuildContext context, int itemIndex) {
-                return _buildRound(context, itemIndex, snapshot.data!);
-              }
-            );
-          } else {
-            return LoadingScreen();
+    var fromPrevGame = widget.prevQuestions;
+
+    if(fromPrevGame == null) {
+      return Center(
+        child: FutureBuilder(
+          future: _questionSet,
+          builder: (context, AsyncSnapshot<List<List<Question>>> snapshot) {
+            if(snapshot.hasData) {
+              widget.stopwatch.start();
+              if(restartQuestions.isEmpty) {
+                restartQuestions = snapshot.data!;
+              } 
+              return PageView.builder(
+                controller: _pageController,
+                onPageChanged: (int page){
+                  setState(() {
+                    currentPage = page;
+                  });
+                },
+                itemCount: snapshot.data?.length,
+                itemBuilder: (BuildContext context, int itemIndex) {
+                  return _buildRound(context, itemIndex, snapshot.data!);
+                }
+              );
+            } else {
+              return LoadingScreen();
+            }
           }
-        }
-      )
-    );
+        )
+      );
+    } else {
+      widget.stopwatch.start();
+      return Center(
+        child: PageView.builder(
+          controller: _pageController,
+          onPageChanged: (int page){
+            setState(() {
+              currentPage = page;
+            });
+          },
+          itemCount: fromPrevGame.length,
+          itemBuilder: (BuildContext context, int itemIndex) {
+            return _buildRound(context, itemIndex, fromPrevGame);
+          }
+        ),
+      );
+    }
   }
 
   @override

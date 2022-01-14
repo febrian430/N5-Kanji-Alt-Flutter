@@ -22,7 +22,7 @@ import 'package:kanji_memory_hint/theme.dart';
 
 class PickDrop extends StatefulWidget {
 
-  PickDrop({Key? key, required this.chapter, required this.mode}) : super(key: key);
+  PickDrop({Key? key, required this.chapter, required this.mode, this.prevQuestions}) : super(key: key);
 
   static const route = '/game/pick-drop';
   static const japanese = "ピックドラッグ";
@@ -31,6 +31,7 @@ class PickDrop extends StatefulWidget {
   final int chapter;
   final GAME_MODE mode;
   final Stopwatch stopwatch = Stopwatch();
+  final List<QuestionSet>? prevQuestions;
 
   Future<List<QuestionSet>> _getQuestionSets() {
     return PickDropQuestionMaker.makeQuestionSet(GameNumOfRounds, chapter, mode);
@@ -42,6 +43,8 @@ class PickDrop extends StatefulWidget {
 }
 
 class _PickDropState extends State<PickDrop> {
+
+  List<QuestionSet> restartQuestions = [];
 
   var sets;
   int index = 0;
@@ -68,8 +71,13 @@ class _PickDropState extends State<PickDrop> {
     );
     arg.chapter = widget.chapter;
     arg.mode = widget.mode;
+
+    if(restartQuestions.isEmpty) {
+      arg.pickDropRestart = widget.prevQuestions;
+    } else {
+      arg.pickDropRestart = restartQuestions;
+    }
     
-    Navigator.of(context).pop(true);
     Navigator.of(context).popAndPushNamed(
       PickDrop.route, 
       arguments: arg, 
@@ -118,8 +126,6 @@ class _PickDropState extends State<PickDrop> {
   Widget _buildRound(BuildContext context, List<QuestionSet> sets) {
     var resultButton = EmptyWidget;
 
-    
-
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 4.0),
       child: IndexedStack(
@@ -138,18 +144,29 @@ class _PickDropState extends State<PickDrop> {
   }
 
   Widget _buildGame(BuildContext context) {
-    return FutureBuilder(
-      future: sets,
-      builder: (context, AsyncSnapshot<List<QuestionSet>> snapshot){
-        if(snapshot.hasData){
-          widget.stopwatch.start();
-          total = snapshot.data!.length;
-          return _buildRound(context, snapshot.data!);
-        } else {
-          return LoadingScreen();
+    var fromPrev = widget.prevQuestions;
+
+    if(fromPrev == null) {
+      return FutureBuilder(
+        future: sets,
+        builder: (context, AsyncSnapshot<List<QuestionSet>> snapshot){
+          if(snapshot.hasData){
+            if(restartQuestions.isEmpty) {
+              restartQuestions = snapshot.data!;
+            }
+            widget.stopwatch.start();
+            total = snapshot.data!.length;
+            return _buildRound(context, snapshot.data!);
+          } else {
+            return LoadingScreen();
+          }
         }
-      }
-    );
+      );
+    } else {
+      widget.stopwatch.start();
+      total = fromPrev.length;
+      return _buildRound(context, fromPrev);
+    }
   }
 
   onPause() {

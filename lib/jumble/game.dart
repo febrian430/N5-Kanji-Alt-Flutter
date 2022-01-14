@@ -16,6 +16,7 @@ import 'package:kanji_memory_hint/menu_screens/game_screen.dart';
 import 'package:kanji_memory_hint/models/common.dart';
 import 'package:kanji_memory_hint/map_indexed.dart';
 import 'package:kanji_memory_hint/foreach_indexed.dart';
+import 'package:kanji_memory_hint/models/question_set.dart';
 import 'package:kanji_memory_hint/quests/practice_quest.dart';
 import 'package:kanji_memory_hint/route_param.dart';
 import 'package:kanji_memory_hint/scoring/practice/jumble.dart';
@@ -24,7 +25,7 @@ import 'package:kanji_memory_hint/theme.dart';
 
 
 class JumbleGame extends StatefulWidget {
-  JumbleGame({Key? key, required this.mode, required this.chapter}) : super(key: key);
+  JumbleGame({Key? key, required this.mode, required this.chapter, this.prevQuestions}) : super(key: key);
 
   static const route = '/game/jumble';
   static const name = 'Jumble';
@@ -33,9 +34,9 @@ class JumbleGame extends StatefulWidget {
   final int chapter;
   final bool isQuiz = false;
   final Stopwatch stopwatch = Stopwatch();
+  final List<JumbleQuestionSet>? prevQuestions;
 
   Future<List<JumbleQuestionSet>> _getQuestionSet() async {
-    print("Question fetch");
     return JumbleQuestionMaker.makeQuestionSet(GameNumOfRounds, chapter, mode);
   }
 
@@ -48,6 +49,8 @@ class _JumbleGameState extends State<JumbleGame> {
     viewportFraction: 1,
     initialPage: 0  
   );
+
+  List<JumbleQuestionSet> restartQuestions = [];
 
   int score = 0;
   int wrongCount = 0;
@@ -106,10 +109,13 @@ class _JumbleGameState extends State<JumbleGame> {
     );
     arg.chapter = widget.chapter;
     arg.mode = widget.mode;
-    
-    Navigator.of(context).pop(true);
+    if(restartQuestions.isEmpty) {
+      arg.jumbleRestart = widget.prevQuestions;
+    } else {
+      arg.jumbleRestart = restartQuestions;
+    }
 
-    Navigator.of(context).popAndPushNamed(
+    Navigator.of(context).pushReplacementNamed(
       JumbleGame.route, 
       arguments: arg
     );
@@ -181,38 +187,63 @@ class _JumbleGameState extends State<JumbleGame> {
   }
 
   Widget _buildGame(BuildContext context) {
-    return FutureBuilder(
-            future: _questionSets,
-            builder: (context, AsyncSnapshot<List<JumbleQuestionSet>> snapshot) {
-              if(snapshot.hasData) {
-                widget.stopwatch.start();
-                numOfQuestions = snapshot.data!.length;
-                int sum = 0;
-                var screen =  PageView.builder(
-                  controller: _pageController,
-                  onPageChanged: (int page) {
-                    setState(() {
-                      currentPage = page;
-                    });
-                  },
-                  itemCount: snapshot.data?.length,
-                  itemBuilder: (BuildContext context, int itemIndex) {
-                    sum += snapshot.data![itemIndex].question.key.length;
-                    return _buildRound(context, itemIndex, snapshot.data!);
-                  },
-                );
-                slotsToFill = sum;
-                return screen;
-              } else {
-                return LoadingScreen();
-              }
+    var fromPrevGame = widget.prevQuestions;
+    if(fromPrevGame == null) {
+      return FutureBuilder(
+        future: _questionSets,
+        builder: (context, AsyncSnapshot<List<JumbleQuestionSet>> snapshot) {
+          if(snapshot.hasData) {
+            if(restartQuestions.isEmpty) {
+              restartQuestions = snapshot.data!;
             }
-    );
+            widget.stopwatch.start();
+            numOfQuestions = snapshot.data!.length;
+            int sum = 0;
+            var screen =  PageView.builder(
+              controller: _pageController,
+              onPageChanged: (int page) {
+                setState(() {
+                  currentPage = page;
+                });
+              },
+              itemCount: snapshot.data?.length,
+              itemBuilder: (BuildContext context, int itemIndex) {
+                sum += snapshot.data![itemIndex].question.key.length;
+                return _buildRound(context, itemIndex, snapshot.data!);
+              },
+            );
+            slotsToFill = sum;
+            return screen;
+          } else {
+            return LoadingScreen();
+          }
+        }
+      );
+    } else {
+      widget.stopwatch.start();
+      numOfQuestions = fromPrevGame.length;
+      int sum = 0;
+        var screen =  PageView.builder(
+          controller: _pageController,
+          onPageChanged: (int page) {
+            setState(() {
+              currentPage = page;
+            });
+          },
+          itemCount: fromPrevGame.length,
+          itemBuilder: (BuildContext context, int itemIndex) {
+            sum += fromPrevGame[itemIndex].question.key.length;
+            return _buildRound(context, itemIndex, fromPrevGame);
+          },
+        );
+        slotsToFill = sum;
+        return screen;
+    }
+    
   }
 
   @override
   Widget build(BuildContext context) {
-    print("restart is $restart");
 
     WidgetsBinding.instance?.addPostFrameCallback((_){
       if(restart){
