@@ -248,11 +248,11 @@ class _QuizState extends State<Quiz> {
             index: gameIndex,
             children: [
               Container(
-                decoration: BoxDecoration(
-                    border: Border.all(
-                    width: 1,
-                  )
-                ),
+                // decoration: BoxDecoration(
+                //     border: Border.all(
+                //     width: 1,
+                //   )
+                // ),
                 child: MultipleChoiceQuizGame(
                   mode: widget.mode, 
                   questionSets: mcQuestionSets, 

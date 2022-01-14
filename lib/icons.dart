@@ -30,4 +30,6 @@ class AppIcons {
   static const prev = APP_IMAGE_FOLDER + 'previous.png';
   static const next = APP_IMAGE_FOLDER + 'next.png';
   static const time = APP_IMAGE_FOLDER + 'time.png';
+
+  static const tutorial = APP_IMAGE_FOLDER + 'tutorial.png';
 }

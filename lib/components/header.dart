@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/components/buttons/back_button.dart';
 import 'package:kanji_memory_hint/components/dialogs/guide.dart';
+import 'package:kanji_memory_hint/components/empty_flex.dart';
 import 'package:kanji_memory_hint/icons.dart';
 import 'package:kanji_memory_hint/theme.dart';
 
@@ -25,28 +26,25 @@ class GuideDialogButton extends StatelessWidget {
     final size = MediaQuery.of(context).size;
  
     return Container(
-      height: 30,
-      width: 30,
-      child: 
-      TextButton(
+      height: 40,
+      // aspectRatio: 1,
+      width: 40,
+      child: TextButton(
       onPressed: () {
         onOpen();
         showGuideDialog(context);
       },
-      style: TextButton.styleFrom(
-        shape: CircleBorder(
-          side: BorderSide(width: 1)
-        )
+      child: Image.asset(
+        AppIcons.tutorial,
+        height: 25,
+        width: 25,
+        fit: BoxFit.fill,
       ),
-      child:
-        Text(
-        "?",
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 13,
-          fontWeight: FontWeight.bold
-        ),
-      )
+      style: TextButton.styleFrom(
+        backgroundColor: Colors.transparent,
+        side: BorderSide.none
+      ),
+      
       )
     );  
   }
@@ -91,6 +89,7 @@ class AppHeader extends StatelessWidget {
       // ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
+        // mainAxisAlignment: MainAxisAlignment.,
         children: [
           Expanded(
             flex: 5,
@@ -124,8 +123,9 @@ class AppHeader extends StatelessWidget {
               ],
             ), 
           ),
+          EmptyFlex(flex: 1),
           Flexible(
-            flex: 5,
+            flex: 4,
             child: topRight == null ? SizedBox() : topRight!
           ) 
         ],
