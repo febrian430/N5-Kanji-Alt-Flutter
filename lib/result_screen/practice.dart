@@ -6,6 +6,7 @@ import 'package:kanji_memory_hint/components/buttons/icon_button.dart';
 import 'package:kanji_memory_hint/components/dialogs/reminder.dart';
 import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/components/progress_bar.dart';
+import 'package:kanji_memory_hint/humanize.dart';
 import 'package:kanji_memory_hint/icons.dart';
 import 'package:kanji_memory_hint/levelling/levels.dart';
 import 'package:kanji_memory_hint/main.dart';
@@ -97,32 +98,34 @@ class ResultScreen extends StatelessWidget{
   Widget _screen(BuildContext context, ResultParam param, Stopwatch stopwatch) {
     final size = MediaQuery.of(context).size;
 
-    return Container(
-      width: size.width*0.75,
-      height: size.height*0.60,
-      decoration: BoxDecoration(
-        border: Border.all(
-          width: 1
-        ),
-        color: AppColors.primary
-      ),
-      child: Padding(
-        padding: EdgeInsets.all(6),
-        child: Container(
-          decoration: BoxDecoration(
-            border: Border.all(
-              width: 1
-            )
+    return Center(
+      child: Container(
+        width: size.width*0.75,
+        height: size.height*0.65,
+        decoration: BoxDecoration(
+          border: Border.all(
+            width: 1
           ),
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Expanded(flex: 2, child: Center(child: Text("やった!", style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold)))),
-          Expanded(flex: 6, child: _DetailWidget(param: param, stopwatch: stopwatch)),
-          Flexible(flex: 2, child: _rowOfButtons(context, param.onRestart))
-        ]
+          color: AppColors.primary
+        ),
+        child: Padding(
+          padding: EdgeInsets.all(6),
+          child: Container(
+            decoration: BoxDecoration(
+              border: Border.all(
+                width: 1
+              )
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(flex: 2, child: Center(child: Text("やった!", style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold)))),
+                Expanded(flex: 8, child: _DetailWidget(param: param, stopwatch: stopwatch)),
+                Flexible(flex: 2, child: _rowOfButtons(context, param.onRestart))
+              ]
+            )
           )
-          )
+        )
       )
     );
   }
@@ -144,15 +147,6 @@ class _DetailWidget extends StatelessWidget {
   final Stopwatch stopwatch;
 
   const _DetailWidget({Key? key, required this.param, required this.stopwatch}) : super(key: key);
-
-  String humanize(Stopwatch stopwatch) {
-    var elapsed = stopwatch.elapsed;
-    var seconds = elapsed.inSeconds;
-
-    var minutes = (seconds/60).floor();
-    var remaining = seconds % 60;
-    return "${minutes > 0 ?  minutes.toString() + " min " : ""}$remaining sec";
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -180,14 +174,25 @@ class _DetailWidget extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Flexible(flex: 1, child: Image.asset(AppIcons.time, height: 20, width: 20, fit: BoxFit.contain,),),
-            Flexible(flex: 3, child: Text(humanize(stopwatch))),
+            Expanded(flex: 1, child: Image.asset(AppIcons.time, height: 20, width: 20, fit: BoxFit.contain,),),
+            Flexible(
+              flex: 3, 
+              child: Text(
+                humanize(stopwatch.elapsed),
+              )
+            ),
           ]
         ),
         SizedBox(
           height: 25,
         ),
-        Text(param.game),
+        Text(
+          param.game,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            // fontSize: 18
+          )
+        ),
         SizedBox( 
           width: 50,
           child: Row(
@@ -195,10 +200,16 @@ class _DetailWidget extends StatelessWidget {
             children: [
               Image.asset(
                 AppIcons.check,
-                height: 25,
-                width: 25,
+                height: 30,
+                width: 30,
               ),
-              Text(param.score.perfectRounds.toString())
+              Text(
+                param.score.perfectRounds.toString(),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18
+                )
+              )
             ],
           )
         ),
@@ -212,7 +223,13 @@ class _DetailWidget extends StatelessWidget {
                 height: 25,
                 width: 25,
               ),
-              Text(param.score.wrongAttempts.toString())
+              Text(
+                param.score.wrongAttempts.toString(),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18
+                )
+              )
             ],
           )
         ),

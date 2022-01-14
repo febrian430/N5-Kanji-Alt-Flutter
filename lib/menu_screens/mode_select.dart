@@ -21,35 +21,36 @@ class ModeSelect extends StatelessWidget {
     PracticeGameArguments param = ModalRoute.of(context)!.settings.arguments as PracticeGameArguments;
 
     Widget screen = Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SelectButton(
-              padding: EdgeInsets.symmetric(vertical: 5),
-              onTap: () {
-                param.mode = GAME_MODE.imageMeaning;
-                Navigator.pushNamed(context, ChapterSelect.route, arguments: param);
-              },
-              title: "Image Meaning",
-              description: "Match the Kanji with the image based on its appropriate meaning",
-            ),
-            SelectButton(
-              padding: EdgeInsets.symmetric(vertical: 5),
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        SelectButton(
+          padding: EdgeInsets.symmetric(vertical: 5),
+          onTap: () {
+            param.mode = GAME_MODE.imageMeaning;
+            Navigator.pushNamed(context, ChapterSelect.route, arguments: param);
+          },
+          title: "Image Meaning",
+          description: "Match the Kanji with the image based on its appropriate meaning",
+        ),
+        SelectButton(
+          padding: EdgeInsets.symmetric(vertical: 5),
+          onTap: () {
+            param.mode = GAME_MODE.reading;
+            Navigator.pushNamed(context, ChapterSelect.route, arguments: param);
+          },
+          title: "Reading",
+          description: "Choose the correct answer based on its spelling",
+        ),
+      ]
+    );
 
-              onTap: () {
-                param.mode = GAME_MODE.reading;
-                Navigator.pushNamed(context, ChapterSelect.route, arguments: param);
-              },
-              title: "Reading",
-              description: "Choose the correct answer based on its spelling",
-            ),
-          ]
-        );
     return GameMenu(
       title: "Choose Type", 
       japanese: "タイプを選択", 
       child: screen,
       type: param.gameType,
+      withBottomPadding: true,
     );
   }
 }

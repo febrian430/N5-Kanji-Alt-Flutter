@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/components/buttons/icon_button.dart';
 import 'package:kanji_memory_hint/components/dialogs/reminder.dart';
+import 'package:kanji_memory_hint/components/empty_flex.dart';
 import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/components/progress_bar.dart';
 import 'package:kanji_memory_hint/countdown.dart';
@@ -64,19 +65,19 @@ class QuizResult extends StatelessWidget {
             ),
           ),
         ),
-        // Flexible(
-        //     flex: 1,
-        //     child:Padding(
-        //       padding: EdgeInsets.symmetric(horizontal: 6),
-        //       child: AppIconButton(
-        //         onTap: (){Navigator.of(context).popUntil(ModalRoute.withName("/game"));}, 
-        //         iconPath: AppIcons.viewResult, 
-        //         height: 50, 
-        //         width: 50, 
-        //         backgroundColor: AppColors.primary
-        //       ),
-        //     ),
-        // ),
+        Flexible(
+            flex: 1,
+            child:Padding(
+              padding: EdgeInsets.symmetric(horizontal: 6),
+              child: AppIconButton(
+                onTap: (){Navigator.of(context).popUntil(ModalRoute.withName("/"));}, 
+                iconPath: AppIcons.viewResult, 
+                height: 50, 
+                width: 50, 
+                backgroundColor: AppColors.primary
+              ),
+            ),
+        ),
         Flexible(
             flex: 1,
             child:Padding(
@@ -263,29 +264,38 @@ class _DetailWidget extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Flexible(flex: 1, child: Image.asset(AppIcons.time, height: 20, width: 20, fit: BoxFit.contain,),),
+            Expanded(flex: 1, child: Image.asset(AppIcons.time, height: 25, width: 25, fit: BoxFit.contain,),),
             Flexible(flex: 3, child: Text(humanize(countdown.elapsed()))),
           ]
         ),
 
         Container(
-          width: 200,
+          // width: 200,
           padding: EdgeInsets.only(top: 10),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _GameScoreWidget(
-                game: "Multiple Choice", 
-                correct: multipleChoice.result.correct,
-                miss: multipleChoice.result.miss,
+              EmptyFlex(flex: 1),
+              Expanded(
+                flex: 3,
+                child: _GameScoreWidget(
+                  game: "Multiple Choice", 
+                  correct: multipleChoice.result.correct,
+                  miss: multipleChoice.result.miss,
+                )
               ),
-              _GameScoreWidget(
-                game: "Jumble", 
-                correct: jumble.result.correct,
-                miss: jumble.result.miss,
-                hits: jumble.result.hits
+              Expanded(
+                flex: 3,
+                child: _GameScoreWidget(
+                  game: "Jumble", 
+                  correct: jumble.result.correct,
+                  miss: jumble.result.miss,
+                  hits: jumble.result.hits
+                )
               ),
+              EmptyFlex(flex: 1),
+
             ],
           )
         ),
@@ -334,7 +344,13 @@ class _GameScoreWidget extends StatelessWidget {
 
     return Column(
       children: [
-        Text(game),
+        Text(
+          game,
+          style: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.bold
+          ),
+        ),
         SizedBox( 
           width: 50,
           child: Row(
@@ -342,10 +358,15 @@ class _GameScoreWidget extends StatelessWidget {
             children: [
               Image.asset(
                 AppIcons.check,
-                height: 25,
-                width: 25,
+                height: 30,
+                width: 30,
               ),
-              Text(correct.toString())
+              Text(
+                correct.toString(),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18
+                ),)
             ],
           )
         ),
@@ -357,10 +378,16 @@ class _GameScoreWidget extends StatelessWidget {
             children: [
               Image.asset(
                 AppIcons.yes,
-                height: 25,
-                width: 25,
+                height: 30,
+                width: 30,
               ),
-              Text(hits!.toString())
+              Text(
+                hits!.toString(),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18
+                ),
+              )
             ],
           )
         )
@@ -372,10 +399,16 @@ class _GameScoreWidget extends StatelessWidget {
             children: [
               Image.asset(
                 AppIcons.wrong,
-                height: 25,
-                width: 25,
+                height: 30,
+                width: 30,
               ),
-              Text(miss.toString())
+              Text(
+                miss.toString(),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18
+                ),
+              )
             ],
           )
         )

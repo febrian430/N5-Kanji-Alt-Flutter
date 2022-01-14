@@ -17,6 +17,7 @@ class GameMenu extends StatelessWidget {
   final GAME_TYPE type;
   final Widget child;
   final Widget? footer;
+  final bool withBottomPadding;
 
   const GameMenu({
     Key? key, 
@@ -24,7 +25,8 @@ class GameMenu extends StatelessWidget {
     required this.japanese, 
     required this.child, 
     required this.type,
-    this.footer
+    this.footer,
+    this.withBottomPadding = false
   }) : super(key: key);
 
   Widget backWidget(BuildContext context) {
@@ -47,8 +49,9 @@ class GameMenu extends StatelessWidget {
         japanese: japanese,
         withBack: true,
       ), 
-      footer: footer ?? EmptyWidget, 
-      child: child
+      footer: footer ?? null, 
+      child: child,
+      bottomPadding: withBottomPadding,
     );
     if(type == GAME_TYPE.PRACTICE) {
       return PracticeBackground(child: screen);
