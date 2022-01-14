@@ -170,7 +170,13 @@ class _RewardItem extends StatelessWidget {
                   )
                 ],
               ):
-              Text("Bought", style: TextStyle(color: AppColors.correct),)
+              Text(
+                "Bought", 
+                style: TextStyle(
+                  color: AppColors.bought,
+                  fontWeight: FontWeight.bold
+                ),
+              )
             ),
           )
         ]

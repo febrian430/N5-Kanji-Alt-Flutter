@@ -7,7 +7,14 @@ class GoldWidget extends StatelessWidget {
   final int gold;
   final Color color;
   final double fontSize;
-  const GoldWidget({Key? key, required this.gold, this.color = Colors.black, this.fontSize = 18}) : super(key: key);
+  final TextAlign? textAlign;
+  const GoldWidget({
+    Key? key, 
+    required this.gold, 
+    this.color = Colors.black, 
+    this.fontSize = 18, 
+    this.textAlign = TextAlign.center
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +25,7 @@ class GoldWidget extends StatelessWidget {
           flex: 2,
           child: Text(
             gold.toString(), 
-            textAlign: TextAlign.center,
+            textAlign: textAlign,
             style: TextStyle(
               fontSize: fontSize,
               fontWeight: FontWeight.bold,

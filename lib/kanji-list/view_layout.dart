@@ -6,6 +6,7 @@ import 'package:kanji_memory_hint/components/dialogs/kana_dialog.dart';
 import 'package:kanji_memory_hint/components/empty_flex.dart';
 import 'package:kanji_memory_hint/components/header.dart';
 import 'package:kanji_memory_hint/database/kanji.dart';
+import 'package:kanji_memory_hint/icons.dart';
 import 'package:kanji_memory_hint/menu_screens/screen_layout.dart';
 import 'package:kanji_memory_hint/theme.dart';
 
@@ -28,7 +29,10 @@ class KanjiLayout extends StatelessWidget {
           width: 180,
           child: SelectButton(title: "Kana Chart", onTap: (){
             showDialog(context: context, builder: (context) => KanaDialog());
-          }), ),
+          },
+          iconPath: AppIcons.kana,
+          ), 
+        ),
         // Container(
         //   width: 60,
         //   height: 60,

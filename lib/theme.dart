@@ -17,6 +17,7 @@ class AppColors {
   static final Color purple = HexColor.fromHex("D083A8");
   static final Color white = HexColor.fromHex("FFFBE6");
   static final Color darkGreen = HexColor.fromHex("4DB784");
+  static final Color bought = HexColor.fromHex("4BA76A");
 }
 
 class AppBackgrounds {

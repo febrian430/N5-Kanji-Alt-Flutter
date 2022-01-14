@@ -40,7 +40,7 @@ class _RewardDialogState extends State<RewardDialog> {
               children: [
                 Expanded(flex: 4, child: SizedBox(),),
                 Expanded(flex: 4, child: Text("Topic ${widget.example.chapter.toString()}", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))),
-                Expanded(flex: 3, child: GoldWidget(gold: gold))
+                Flexible(flex: 3, child: GoldWidget(gold: gold, textAlign: TextAlign.right,))
               ],
             )
           ),
@@ -108,7 +108,7 @@ class _RewardDialogState extends State<RewardDialog> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Flexible(child: Text("Buy", style: TextStyle(color: Colors.white),)),
-              Flexible(child: GoldWidget(gold: widget.example.cost, color: Colors.white,))    
+              Flexible(child: GoldWidget(gold: widget.example.cost, color: Colors.white, textAlign: TextAlign.right,))    
             ],
           )
         )
