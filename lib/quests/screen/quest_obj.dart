@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kanji_memory_hint/components/progress_bar.dart';
+import 'package:kanji_memory_hint/components/quest_progress_bar.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/icons.dart';
+import 'package:kanji_memory_hint/quests/screen/gold.dart';
 import 'package:kanji_memory_hint/theme.dart';
 
 class QuestWidget extends StatefulWidget {
@@ -34,26 +37,21 @@ class _QuestWidgetState extends State<QuestWidget> {
 
   Widget _description(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Row(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Expanded(flex: 8, child: widget.title),
-        Flexible(flex: 2, child: _reward(context))
+        Expanded(flex: 1, child: widget.title),
+        Expanded(
+          flex: 1, 
+          child: QuestProgressBar(
+            count: widget.count,
+            total: widget.total,
+          )
+        )
       ],
     );
   }
 
-  Widget _reward(BuildContext context) {
-    return Row(
-      children: [
-        Image.asset(
-          AppIcons.currency, 
-          height: 25,
-          width: 25,
-        ),
-        Text("x${widget.goldReward}")
-      ],
-    );
-  }
 
   Widget _claimButton(BuildContext context) {
     ButtonStyle buttonStyle = TextButton.styleFrom(
@@ -81,25 +79,40 @@ class _QuestWidgetState extends State<QuestWidget> {
               "Claimed",
               style: TextStyle(
                 color: AppColors.correct,
-                fontSize: 14,
+                fontSize: 12,
                 fontWeight: FontWeight.bold
               ),
             ),
           )
         ],
       );
-    } else if(widget.count >= widget.total) {
+    } else {
       buttonStyle = TextButton.styleFrom(
-        backgroundColor: AppColors.correct,
+        backgroundColor: widget.count < widget.total ? AppColors.selected:  AppColors.darkGreen,
         side: BorderSide.none
       );
-      child = Text(
-        "Tap to Claim", 
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 14,
-        ),
+      child = Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          GoldWidget(
+            gold: widget.goldReward, 
+            color: widget.count < widget.total ? Colors.black : Colors.white,
+            fontSize: 16,
+          ),
+          
+          widget.count < widget.total ?
+          SizedBox()
+          :
+          Text("Claim", 
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 14,
+              fontWeight: FontWeight.bold
+            )
+          ),
+        ]
+        
       );
     }
 
@@ -130,7 +143,7 @@ class _QuestWidgetState extends State<QuestWidget> {
       padding: EdgeInsets.symmetric(vertical: 6),
       decoration: BoxDecoration(
         border: Border(bottom: BorderSide(
-          width: 2
+          width: 1
         ))
       ),
       child: Row(
