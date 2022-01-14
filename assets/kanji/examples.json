@@ -54,7 +54,7 @@
 	{
 		"id": 4,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "Januari.png",
 		"rune": "一月",
 		"spelling": [
 			"い",
@@ -73,7 +73,7 @@
 	{
 		"id": 5,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "tanggal 1.png",
 		"rune": "一日",
 		"spelling": [
 			"つ",
@@ -143,7 +143,7 @@
 	{
 		"id": 9,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "Februari.png",
 		"rune": "二月",
 		"spelling": [
 			"に",
@@ -161,7 +161,7 @@
 	{
 		"id": 10,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "tanggal 2.png",
 		"rune": "二日",
 		"spelling": [
 			"ふ",
@@ -232,7 +232,7 @@
 	{
 		"id": 14,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "Maret.png",
 		"rune": "三月",
 		"spelling": [
 			"さ",
@@ -251,7 +251,7 @@
 	{
 		"id": 15,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "tanggal 3.png",
 		"rune": "三日",
 		"spelling": [
 			"み",
@@ -322,7 +322,7 @@
 	{
 		"id": 19,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "April.png",
 		"rune": "四月",
 		"spelling": [
 			"し",
@@ -340,7 +340,7 @@
 	{
 		"id": 20,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "tanggal 4.png",
 		"rune": "四日",
 		"spelling": [
 			"よ",
@@ -409,7 +409,7 @@
 	{
 		"id": 24,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "Mei.png",
 		"rune": "五月",
 		"spelling": [
 			"ご",
@@ -427,7 +427,7 @@
 	{
 		"id": 25,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "tanggal 5.png",
 		"rune": "五日",
 		"spelling": [
 			"い",
@@ -498,7 +498,7 @@
 	{
 		"id": 29,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "Juni.png",
 		"rune": "六月",
 		"spelling": [
 			"ろ",
@@ -517,7 +517,7 @@
 	{
 		"id": 30,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "tanggal 6.png",
 		"rune": "六日",
 		"spelling": [
 			"む",
@@ -588,7 +588,7 @@
 	{
 		"id": 34,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "Juli.png",
 		"rune": "七月",
 		"spelling": [
 			"し",
@@ -607,7 +607,7 @@
 	{
 		"id": 35,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "tanggal 7.png",
 		"rune": "七日",
 		"spelling": [
 			"な",
@@ -678,7 +678,7 @@
 	{
 		"id": 39,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "Agustus.png",
 		"rune": "八月",
 		"spelling": [
 			"は",
@@ -697,7 +697,7 @@
 	{
 		"id": 40,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "tanggal 8.png",
 		"rune": "八日",
 		"spelling": [
 			"よ",
@@ -769,7 +769,7 @@
 	{
 		"id": 44,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "September.png",
 		"rune": "九月",
 		"spelling": [
 			"く",
@@ -787,7 +787,7 @@
 	{
 		"id": 45,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "tanggal 9.png",
 		"rune": "九日",
 		"spelling": [
 			"こ",
@@ -823,7 +823,7 @@
 	{
 		"id": 47,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "Oktober.png",
 		"rune": "十月",
 		"spelling": [
 			"じゅ",
@@ -842,7 +842,7 @@
 	{
 		"id": 48,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "Desember.png",
 		"rune": "十二月",
 		"spelling": [
 			"じゅ",
@@ -863,7 +863,7 @@
 	{
 		"id": 49,
 		"chapter": 1,
-		"image": "30kr1n.png",
+		"image": "tanggal 10.png",
 		"rune": "十日",
 		"spelling": [
 			"と",

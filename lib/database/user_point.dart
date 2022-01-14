@@ -41,7 +41,7 @@ class UserPointProvider {
       $_goldColumn integer not null,
       $_expColumn integer not null)
     ''');
-    UserPoint userPoint = UserPoint(exp: 0, gold: 0);
+    UserPoint userPoint = UserPoint(exp: 0, gold: 5);
     await db.insert(_userPointsTable, userPoint.toMap());
   }
 
