@@ -40,9 +40,9 @@ class _QuestWidgetState extends State<QuestWidget> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Expanded(flex: 1, child: widget.title),
+        Expanded(flex: 3, child: widget.title),
         Expanded(
-          flex: 1, 
+          flex: 2, 
           child: QuestProgressBar(
             count: widget.count,
             total: widget.total,

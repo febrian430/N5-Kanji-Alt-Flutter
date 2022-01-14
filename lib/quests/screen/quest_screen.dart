@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:kanji_memory_hint/components/backgrounds/menu_background.dart';
 import 'package:kanji_memory_hint/components/buttons/select_button.dart';
+import 'package:kanji_memory_hint/components/containers/double_border_container.dart';
+import 'package:kanji_memory_hint/components/empty_flex.dart';
+import 'package:kanji_memory_hint/components/level_progress_bar.dart';
 import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/components/progress_bar.dart';
 import 'package:kanji_memory_hint/const.dart';
@@ -43,40 +46,56 @@ class _QuestScreenState extends State<QuestScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Expanded(
-              flex: 5,
-              child: _ProgressContainer(),
+              flex: 6,
+              child: Column(
+                children: [
+                  EmptyFlex(flex: 1),
+                  Expanded(flex: 3, child: _ProgressContainer(),),
+                  EmptyFlex(flex: 1)
+                ]
+              )
             ),
             Expanded(
-              flex: 13,
+              flex: 12,
               child: QuestMenuWidget()
             )
           ],
         ), 
-        footer: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        footerFlex: 2,
+        footer: Column(
           children: [
-            Flexible(
-              flex: 1,
-              child: SelectButton(
-                title: "Kanji List",
-                iconPath: AppIcons.list,
-                width: size.width*0.35,
-                onTap: (){
-                  Navigator.of(context).pushNamed(KanjiList.route);
-                },
+            EmptyFlex(flex: 1),
+            Expanded(
+              flex: 6,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Flexible(
+                    flex: 1,
+                    child: SelectButton(
+                      title: "Kanji List",
+                      iconPath: AppIcons.list,
+                      width: size.width*0.35,
+                      onTap: (){
+                        Navigator.of(context).pushNamed(KanjiList.route);
+                      },
+                    ),
+                  ),
+                  Flexible(
+                    flex: 1,
+                    child: SelectButton(
+                      title: "Rewards",
+                      iconPath: AppIcons.currency,
+                      width: size.width*0.35,
+                      onTap: (){
+                        Navigator.of(context).pushNamed(RewardScreen.route);
+                      },
+                    ),
+                  )
+                ]
               ),
             ),
-            Flexible(
-              flex: 1,
-              child: SelectButton(
-                title: "Rewards",
-                iconPath: AppIcons.currency,
-                width: size.width*0.35,
-                onTap: (){
-                  Navigator.of(context).pushNamed(RewardScreen.route);
-                },
-              ),
-            )
+            EmptyFlex(flex: 2)
           ]
         )
       )
@@ -198,6 +217,7 @@ class _ProgressContainer extends StatefulWidget {
 class _ProgressContainerState extends State<_ProgressContainer> {
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return FutureBuilder(
       future: Levels.current(),
       builder: (context, AsyncSnapshot<List<int>> snapshot) {
@@ -205,20 +225,47 @@ class _ProgressContainerState extends State<_ProgressContainer> {
           final level = snapshot.data![0];
           final remaining = snapshot.data![1];
           final toNextLevel = Levels.next(level);
-          return Column(
-            children: [
-              Text(level.toString(), style: TextStyle(fontSize: 50),),
-              ProgressBar(
-                from: remaining, 
-                gain: 0, 
-                levelupReq: toNextLevel ?? remaining, 
-                nextLevel: 999, 
-                onLevelup: (){
-                  print("huh");
-                }
-              ),
-              Text('${remaining.toString()}/${toNextLevel.toString()}'),
-            ],
+          return Container(
+            width: size.width*.8,
+            height: size.width*.1,
+            padding: EdgeInsets.fromLTRB(
+              10,
+              10,
+              10,
+              0
+            ),
+            decoration: BoxDecoration(
+              color: AppColors.primary,
+              border: Border.all(width: 2)
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  flex: 2, 
+                  child: Text(
+                    "Level "+ level.toString(),
+                    textAlign: TextAlign.start,
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold
+                    ),
+                  ),
+                ),
+                EmptyFlex(flex: 1),
+                Expanded(
+                  flex: 2, 
+                  child: LayoutBuilder(
+                    builder: (context, constraints) {
+                      return Container(
+
+                        child: LevelProgressBar(upperbound: toNextLevel ?? remaining, current: remaining)
+                      );
+                    }
+                  )
+                )
+              ]
+            ),
           );
         } else {
           return LoadingScreen();
@@ -237,7 +284,6 @@ class _SelectBar extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _SelectBarState();
 
-  
 }
 
 class _SelectBarState extends State<_SelectBar> {

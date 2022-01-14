@@ -24,4 +24,5 @@ class AppBackgrounds {
   static final String common = APP_IMAGE_FOLDER + 'main_menu.png';
   static final String quiz = APP_IMAGE_FOLDER + 'bg_quiz.png';
   static final String practice = APP_IMAGE_FOLDER + 'bg_practice.png';
+  static final String main = APP_IMAGE_FOLDER + 'bg_main.png';
 }

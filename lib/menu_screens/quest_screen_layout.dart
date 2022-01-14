@@ -5,8 +5,9 @@ import 'package:kanji_memory_hint/components/header.dart';
 class QuestScreenLayout extends StatelessWidget {
   final Widget content;
   final Widget footer;
+  final int footerFlex;
 
-  const QuestScreenLayout({Key? key, required this.content, required this.footer}) : super(key: key);
+  const QuestScreenLayout({Key? key, required this.content, required this.footer, this.footerFlex = 1}) : super(key: key);
   
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class QuestScreenLayout extends StatelessWidget {
                       child: AppHeader(title: "Quest", japanese: "クエスト", withBack: true,),
                     ),
                     Expanded(
-                      flex: 11,
+                      flex: 9,
                       child: content,
                     )
                   ],
@@ -45,7 +46,7 @@ class QuestScreenLayout extends StatelessWidget {
               //   )
               // ),
               Expanded(
-                flex: 1,
+                flex: footerFlex,
                 child: footer
               ),
             ],

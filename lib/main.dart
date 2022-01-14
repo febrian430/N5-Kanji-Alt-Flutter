@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:kanji_memory_hint/components/backgrounds/main_background.dart';
 import 'package:kanji_memory_hint/components/backgrounds/menu_background.dart';
 import 'package:kanji_memory_hint/components/buttons/icon_button.dart';
 import 'package:kanji_memory_hint/components/buttons/select_button.dart';
@@ -275,7 +276,7 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return MenuBackground(
+    return MainBackground(
       child: Scaffold(
         body: SafeArea(
           child: Padding(
