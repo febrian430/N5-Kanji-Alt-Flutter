@@ -170,7 +170,6 @@ class _JumbleGameState extends State<JumbleGame> {
 
 
   Widget _buildRound(BuildContext context, int itemIndex, List<JumbleQuestionSet> questionSets) {
-    print("building round at index $itemIndex: ${questionSets[itemIndex].question.key.length}");
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 4.0),
       child: JumbleRound(
@@ -329,6 +328,8 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
   int misses = 0;
   List<Option> selected = [];
 
+  List<int> wrongSelected = [];
+
   bool isFirstTry = true;
   bool isRoundOver = false;
   bool wasRestarted = false;
@@ -362,6 +363,8 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
     setState(() {
       selected = [...selected];
       selectCount -= indexes.length;
+
+      wrongSelected = [];
     });
   }
 
@@ -403,16 +406,17 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
         } else {
           setState(() {
             misses += diff.length;
-            roundColor = _wrongColor;
+            wrongSelected.addAll(diff);
+            print("DIFF: ${diff.join(",")}");
+            print("WRONG SELECTED ${wrongSelected.join(", ")}");
+            // roundColor = _wrongColor;
             widget.onComplete(false, diff.length, widget.index, widget.question.key.length, isFirstTry);
           });
-          _unselect(diff);
         }
         isFirstTry = false;
+
         Future.delayed(const Duration(milliseconds: 500), () {
-            setState(() {
-              roundColor = Colors.transparent;
-            });
+          _unselect(diff);
         });
       }
     }
@@ -458,9 +462,6 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
       });
     }
 
-    print("question  ${widget.index}: ${widget.question.key.length}");
-
-
     return Center(
       child: Container(
         // height: MediaQuery.of(context).size.height - 120,
@@ -468,7 +469,7 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
           // border: Border.all(
           //   width: 1,
           // ),
-          color: roundColor
+          color: Colors.transparent
         ),
         //question
         child: Column(
@@ -486,9 +487,17 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 mainAxisSize: MainAxisSize.min,
                 children: selected.mapIndexed((select, i) {
+                    print("${select.id} in wrong :  ${wrongSelected.contains(i)}");
                     return Container(
                       margin: EdgeInsets.only(left: 4, right: 4),
-                      child: SelectWidget(option: select, isRoundOver: isRoundOver, onTap: () { _handleSelectTap(select, i); },)
+                      child: SelectWidget(
+                        option: select, 
+                        isRoundOver: isRoundOver, 
+                        onTap: () { 
+                          _handleSelectTap(select, i); 
+                        },
+                        forceColor: wrongSelected.contains(i) ? AppColors.wrong : null,
+                      )
                     );
                   }).toList(),
               ),
@@ -517,11 +526,18 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
 typedef OnTapFunc = Function();
 
 class SelectWidget extends StatelessWidget {
-  const SelectWidget({Key? key, required this.option, required this.isRoundOver, required this.onTap}): super(key: key);
+  SelectWidget({
+    Key? key, 
+    required this.option, 
+    required this.isRoundOver, 
+    required this.onTap,
+    this.forceColor
+  }): super(key: key);
 
   final Option option;
   final bool isRoundOver;
   final OnTapFunc onTap;
+  Color? forceColor;
 
   bool _isSentinel() {
     return option.id == SENTINEL.id;
@@ -536,6 +552,8 @@ class SelectWidget extends StatelessWidget {
     if(isRoundOver) {
       bgColor = Colors.green;
     }
+
+    bgColor = forceColor ?? bgColor;
 
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
