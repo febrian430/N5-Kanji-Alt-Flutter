@@ -389,6 +389,15 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
 
   void _handleOptionTap(Option option) {
     if(!isRoundOver){
+
+      if(selected.contains(option)){
+        
+        var index = selected.indexOf(option);
+        print("UNSELECTING INDEX: $index");
+        _unselect([index]);
+        return;
+      }
+
       int firstEmpty = _firstEmptySlot();
       if(firstEmpty != -1){
         setState(() {
@@ -436,13 +445,13 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: opts.take(4).map((opt) {
-              return OptionWidget(option: opt, disabled: selected.contains(opt), onTap: () { _handleOptionTap(opt); },);
+              return OptionWidget(option: opt, selected: selected.contains(opt), disabled: false, onTap: () { _handleOptionTap(opt); },);
             }).toList(),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: opts.skip(4).map((opt) {
-              return OptionWidget(option: opt, disabled: selected.contains(opt), onTap: () { _handleOptionTap(opt); },);
+              return OptionWidget(option: opt, selected: selected.contains(opt), disabled: false, onTap: () { _handleOptionTap(opt); },);
             }).toList(),
           ),
         ]
@@ -533,7 +542,7 @@ class SelectWidget extends StatelessWidget {
     required this.option, 
     required this.isRoundOver, 
     required this.onTap,
-    this.forceColor
+    this.forceColor, 
   }): super(key: key);
 
   final Option option;
@@ -597,11 +606,18 @@ class SelectWidget extends StatelessWidget {
 }
 
 class OptionWidget extends StatelessWidget {
-  const OptionWidget({Key? key, required this.option, this.disabled = false, required this.onTap }) : super(key: key);
+  const OptionWidget({
+      Key? key, 
+      required this.option, 
+      this.disabled = false, 
+      required this.onTap,
+      required this.selected
+    }) : super(key: key);
   
   final Option option;
   final bool disabled;
   final OnTapFunc onTap;
+  final bool selected;
 
   Widget _draw(BuildContext context) {
     Color boxColor = AppColors.primary;
@@ -610,6 +626,9 @@ class OptionWidget extends StatelessWidget {
     if(disabled) {
       boxColor = AppColors.selected;
       textColor = AppColors.selected;
+    } else  if(selected) {
+      boxColor = AppColors.selected;
+      textColor = Colors.black;
     }
 
     return TextButton(

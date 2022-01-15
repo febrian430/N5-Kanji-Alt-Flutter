@@ -89,6 +89,13 @@ class _JumbleQuizRoundState extends State<JumbleQuizRound> with AutomaticKeepAli
 
   void _handleOptionTap(Option option) {
     if(!widget.isOver){
+      if(selected.contains(option)){
+        
+        var index = selected.indexOf(option);
+        _unselect([index]);
+        return;
+      }
+
       int firstEmpty = _firstEmptySlot();
         print(firstEmpty);
         if(firstEmpty != -1){
@@ -127,7 +134,13 @@ class _JumbleQuizRoundState extends State<JumbleQuizRound> with AutomaticKeepAli
             children: opts.take(4).map((opt) {
               return Padding(
                 padding: EdgeInsets.all(5),
-                child: OptionWidget(option: opt, disabled: selected.contains(opt), onTap: () { _handleOptionTap(opt); },));
+                child: OptionWidget(
+                  option: opt, 
+                  selected: selected.contains(opt),
+                  disabled: false, 
+                  onTap: () { _handleOptionTap(opt); },
+                )
+              );
             }).toList()
           ),
           Row(
@@ -135,7 +148,13 @@ class _JumbleQuizRoundState extends State<JumbleQuizRound> with AutomaticKeepAli
             children: opts.skip(4).map((opt) {
               return Padding(
                 padding: EdgeInsets.all(5),
-                child: OptionWidget(option: opt, disabled: selected.contains(opt), onTap: () { _handleOptionTap(opt); },));
+                child: OptionWidget(
+                  option: opt, 
+                  selected: selected.contains(opt),
+                  disabled: false, 
+                  onTap: () { _handleOptionTap(opt); },
+                )
+              );
             }).toList()
           ),
         ]
