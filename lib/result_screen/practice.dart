@@ -152,115 +152,129 @@ class _DetailWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        RichText(
-          text: TextSpan(
-            style: new TextStyle(
-              fontSize: 14.0,
-              color: Colors.black,
-            ),
-            children: <TextSpan>[
-              TextSpan(
-                text: param.result.pointsGained.toString(),
-                style: TextStyle(
-                  fontSize: 70,
-                  color: AppColors.secondary
-                  
-                ),
+        Expanded(
+          flex: 4,
+          child: RichText(
+            text: TextSpan(
+              style: new TextStyle(
+                fontSize: 14.0,
+                color: Colors.black,
               ),
-              TextSpan(text: 'pts', style: TextStyle(fontWeight: FontWeight.bold)),
-            ],
+              children: <TextSpan>[
+                TextSpan(
+                  text: param.result.pointsGained.toString(),
+                  style: TextStyle(
+                    fontSize: 70,
+                    color: AppColors.secondary
+                    
+                  ),
+                ),
+                TextSpan(text: 'pts', style: TextStyle(fontWeight: FontWeight.bold)),
+              ],
+            ),
           ),
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(flex: 1, child: Image.asset(AppIcons.time, height: 20, width: 20, fit: BoxFit.contain,),),
-            Flexible(
-              flex: 3, 
-              child: Text(
-                humanize(stopwatch.elapsed),
-              )
-            ),
-          ]
-        ),
-        SizedBox(
-          height: 25,
-        ),
-        Text(
-          param.game,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            // fontSize: 18
+        
+        Expanded(
+          flex: 1,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(flex: 1, child: Image.asset(AppIcons.time, height: 20, width: 20, fit: BoxFit.contain,),),
+              Flexible(
+                flex: 3, 
+                child: Text(
+                  humanize(stopwatch.elapsed),
+                )
+              ),
+            ]
           )
         ),
-        SizedBox( 
-          width: 50,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+       
+        Expanded(
+          flex: 4,
+          child: Column(
             children: [
-              Image.asset(
-                AppIcons.check,
-                height: 30,
-                width: 30,
-              ),
               Text(
-                param.score.perfectRounds.toString(),
+                param.game,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 18
+                  // fontSize: 18
                 )
-              )
-            ],
-          )
-        ),
-        SizedBox(
-          width: 50,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Image.asset(
-                AppIcons.wrong,
-                height: 25,
-                width: 25,
               ),
-              Text(
-                param.score.wrongAttempts.toString(),
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18
+              SizedBox( 
+                width: 50,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Image.asset(
+                      AppIcons.check,
+                      height: 30,
+                      width: 30,
+                    ),
+                    Text(
+                      param.score.perfectRounds.toString(),
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18
+                      )
+                    )
+                  ],
                 )
-              )
-            ],
+              ),
+              SizedBox(
+                width: 50,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Image.asset(
+                      AppIcons.wrong,
+                      height: 25,
+                      width: 25,
+                    ),
+                    Text(
+                      param.score.wrongAttempts.toString(),
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18
+                      )
+                    )
+                  ],
+                )
+              ),
+            ]
           )
         ),
-        SizedBox(
-          height: 25,
-        ),
-        FutureBuilder(
-          future: Levels.current(),
-          builder: (context, AsyncSnapshot<List<int>> snapshot) {
-            if(snapshot.hasData){  
-              final level = snapshot.data![0];
-              final remaining = snapshot.data![1];
-              final nextLevel = Levels.next(level) ?? remaining;
-              final nextNextLevel = Levels.next(level+1) ?? remaining;
+      
+        
+        Expanded(
+          flex: 5,
+          child: FutureBuilder(
+            future: Levels.current(),
+            builder: (context, AsyncSnapshot<List<int>> snapshot) {
+              if(snapshot.hasData){  
+                final level = snapshot.data![0];
+                final remaining = snapshot.data![1];
+                final nextLevel = Levels.next(level) ?? remaining;
+                final nextNextLevel = Levels.next(level+1) ?? remaining;
 
-              return Column(
-                children: [
-                  ProgressBar(
-                    from: remaining, 
-                    gain: param.result.expGained, 
-                    levelupReq: nextLevel, 
-                    nextLevel: nextNextLevel, 
-                    onLevelup: (){
-                      print("level up!");
-                  }),
-                ]
-              );
-            } else {
-              return LoadingScreen();
+                return Column(
+                  children: [
+                    ProgressBar(
+                      from: remaining, 
+                      gain: param.result.expGained, 
+                      levelupReq: nextLevel, 
+                      nextLevel: nextNextLevel, 
+                      onLevelup: (){
+                        print("level up!");
+                    }),
+                  ]
+                );
+              } else {
+                return LoadingScreen();
+              }
             }
-          }
+          )
         )
         
       ],
