@@ -6,7 +6,6 @@ import 'package:kanji_memory_hint/components/dialogs/guide.dart';
 import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/components/result_button.dart';
 import 'package:kanji_memory_hint/const.dart';
-import 'package:kanji_memory_hint/database/repository.dart';
 import 'package:kanji_memory_hint/game_components/question_widget.dart';
 import 'package:kanji_memory_hint/images.dart';
 import 'package:kanji_memory_hint/levelling/levels.dart';
@@ -253,6 +252,8 @@ class _PickDropRoundState extends State<PickDropRound> {
   bool isFirstTry = true;
   bool isSolved = false;
 
+  bool wrongOverlay = false;
+
   void restart() {
     setState(() {
       isCorrect = false;
@@ -332,7 +333,11 @@ class _PickDropRoundState extends State<PickDropRound> {
             flex: 5,
             child: DragTarget<Option>(
               builder: (context, candidateData, rejectedData) {
-                return QuestionWidget(questionStr: widget.question.value, mode: widget.mode);
+                return QuestionWidget(
+                  questionStr: widget.question.value, 
+                  mode: widget.mode,
+                  overlay: wrongOverlay,
+                );
               },
               onWillAccept: (opt) {
               //  return opt?.key == widget.question.key;
@@ -344,6 +349,14 @@ class _PickDropRoundState extends State<PickDropRound> {
                   widget.onDrop(isCorrect, isFirstTry);
                   if(!isCorrect) {
                     isFirstTry = false;
+                    setState(() {
+                      wrongOverlay = true;
+                    });
+                    Future.delayed(const Duration(milliseconds: 300), (){
+                      setState(() {
+                        wrongOverlay = false;
+                      });
+                    });
                   } else {
                     setState(() {
                       isSolved = true;

@@ -7,17 +7,44 @@ class QuestionWidget extends StatelessWidget {
   
   final GAME_MODE mode;
   final String questionStr;
+  bool overlay;
+  bool withShadow;
 
-  const QuestionWidget({Key? key, required this.mode, required this.questionStr}) : super(key: key);
+  QuestionWidget({
+    Key? key, 
+    required this.mode, 
+    required this.questionStr,
+    this.overlay = false,
+    this.withShadow = false
+  }) : super(key: key);
   
   Widget _getQuestionWidget() {
     if(mode == GAME_MODE.imageMeaning) {
-      return Image(
-        image: AssetImage(KANJI_IMAGE_FOLDER + questionStr),
+      double opacity = overlay ? .6 : 1;
+      Widget image = Container(
         height: 100,
         width: 100,
-        fit: BoxFit.fill,
+        decoration: BoxDecoration(
+          color: AppColors.wrong,
+          image: DecorationImage(
+            
+            image: AssetImage(KANJI_IMAGE_FOLDER + questionStr),
+            fit: BoxFit.contain,
+
+            colorFilter: ColorFilter.mode(Colors.red.withOpacity(opacity), BlendMode.dstATop)
+          )
+        ),
       );
+
+      return image;
+      
+      // return Image(
+      //   colorBlendMode: BlendMode.color,
+      //   image: AssetImage(KANJI_IMAGE_FOLDER + questionStr),
+      //   height: 100,
+      //   width: 100,
+      //   fit: BoxFit.fill, 
+      // );
     } else {
       return Center(
         child: Text(
