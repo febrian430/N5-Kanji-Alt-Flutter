@@ -307,57 +307,80 @@ class _SelectBarState extends State<_SelectBar> {
     );
   }
 
+  Widget _button(BuildContext context, int buttonIndex, String title, BorderRadius radius) {
+    final noDecorationButton = TextButton.styleFrom(
+      side: BorderSide.none,
+      backgroundColor: Colors.transparent
+    );
+
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return Container(
+          height: constraints.maxHeight,
+          decoration: BoxDecoration(
+            color: buttonIndex == selected ? AppColors.primary : AppColors.selected,
+            borderRadius: radius
+          ),
+          child: TextButton(
+            onPressed: () {
+              setState(() {
+                selected = buttonIndex;
+              });
+              widget.onTap(buttonIndex);
+            }, 
+            child: _title(title, selected == buttonIndex),
+            style: noDecorationButton 
+          ),
+        );
+      }
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
 
     final noDecorationButton = TextButton.styleFrom(
-      side: BorderSide.none
+      side: BorderSide.none,
     );
 
     return Container(
-      height: size.height*0.1,
+      height: size.height*0.075,
       width: size.width,
       child: Container(
         width: size.width*0.8,
+        color: AppColors.selected,
         child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Expanded(
-            child: TextButton(
-              onPressed: () {
-                setState(() {
-                  selected = 0;
-                });
-                widget.onTap(0);
-              }, 
-              child: _title("Kanji", selected == 0),
-              style: noDecorationButton,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Expanded(
+              child: _button(
+                context, 
+                0, 
+                "Kanji",
+                BorderRadius.only(topRight: Radius.circular(20))
+              )
             ),
-          ),
-          Expanded(child: TextButton(
-            onPressed: () {
-              setState(() {
-                  selected = 1;
-              });
-              widget.onTap(1);
-            }, 
-            child: _title("Practice", selected == 1),
-            style: noDecorationButton
+            Expanded(
+              child: _button(
+                context, 
+                1, 
+                "Practice",
+                BorderRadius.only(
+                  topLeft: Radius.circular(20), 
+                  topRight: Radius.circular(20)
+                )
+              )
             ),
-          ),
-          Expanded(child: TextButton(
-            onPressed: () {
-              setState(() {
-                  selected = 2;
-              });
-              widget.onTap(2);
-            }, 
-            child: _title("Quiz", selected == 2),
-            style: noDecorationButton
-            ),
-          )
-        ],
+            Expanded(
+              child: _button(
+                context, 
+                2, 
+                "Quiz",
+                BorderRadius.only(topLeft: Radius.circular(20))
+              )
+            )
+          ],
         )
       ),
     );
