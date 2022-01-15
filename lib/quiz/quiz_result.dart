@@ -364,28 +364,28 @@ class _GameScoreWidget extends StatelessWidget {
             ],
           )
         ),
-        hits == null ? SizedBox() :
-        SizedBox(
-          width: 50,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Image.asset(
-                AppIcons.yes,
-                height: 30,
-                width: 30,
-              ),
-              Text(
-                hits!.toString(),
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18
-                ),
-              )
-            ],
-          )
-        )
-        ,
+        // hits == null ? SizedBox() :
+        // SizedBox(
+        //   width: 50,
+        //   child: Row(
+        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //     children: [
+        //       Image.asset(
+        //         AppIcons.yes,
+        //         height: 30,
+        //         width: 30,
+        //       ),
+        //       Text(
+        //         hits!.toString(),
+        //         style: TextStyle(
+        //           fontWeight: FontWeight.bold,
+        //           fontSize: 18
+        //         ),
+        //       )
+        //     ],
+        //   )
+        // )
+        // ,
         SizedBox(
           width: 50,
           child: Row(
