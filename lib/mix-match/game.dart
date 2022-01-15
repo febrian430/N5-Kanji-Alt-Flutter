@@ -6,6 +6,7 @@ import 'package:kanji_memory_hint/components/dialogs/guide.dart';
 import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/components/result_button.dart';
 import 'package:kanji_memory_hint/const.dart';
+import 'package:kanji_memory_hint/icons.dart';
 import 'package:kanji_memory_hint/images.dart';
 import 'package:kanji_memory_hint/levelling/levels.dart';
 import 'package:kanji_memory_hint/menu_screens/game_screen.dart';
@@ -308,6 +309,9 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
   int score = 0;
   int wrong = 0;
   Question? selected;
+
+  List<Question> incorrectSelect = [];
+
   List<Question> solved = [];
 
   late int numOfQuestions; 
@@ -330,71 +334,100 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
     bool isSolved = solved.contains(opt);
 
     Color selectedBorderColor = AppColors.selected;
-    Color solvedBackgroundColor = AppColors.correct;
+    Color solvedBorderColor = AppColors.correct;
     Color defaultBorderColor = Colors.black;
     const int borderWidth = 2;
     final Color defaultBackgroundColor = (index + (index / 4).floor()) % 2 == 1 ? AppColors.primary : Colors.white;
 
     final boxSize = MediaQuery.of(context).size.width*0.20;
 
+    BoxDecoration? deco;
+    if(incorrectSelect.contains(opt)) {
+      deco = BoxDecoration(
+        border: Border.all(
+          color: AppColors.wrong,
+          width: 3,
+        ),
+        color: defaultBackgroundColor
+      );
+    }else if(isSelected) {
+      deco = BoxDecoration(
+          border: Border.all(
+            color: Colors.black,
+            width: 3
+          ),
+          color: defaultBackgroundColor
+        );
+    } else if(isSolved) {
+      deco = BoxDecoration(
+          border: Border.all(
+            color: solvedBorderColor,
+            width: 4
+          ),
+          color: defaultBackgroundColor
+        );
+    } else {
+      deco = BoxDecoration(
+          border: Border.all(
+            color: defaultBorderColor,
+            width: 2
+          ),
+          color: defaultBackgroundColor
+        );
+    }
+
     if(opt.isImage){
       double opacity = isSelected || isSolved ? 0.5 : 1;
-      return Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(KANJI_IMAGE_FOLDER + opt.value),
-            fit: BoxFit.fill,
-            colorFilter: ColorFilter.mode(Colors.black.withOpacity(opacity), BlendMode.dstATop)
+      
+      return Stack(
+        children: [
+          AspectRatio(
+            aspectRatio: 8/9,
+            child: Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(KANJI_IMAGE_FOLDER + opt.value),
+                  fit: BoxFit.contain,
+                  colorFilter: ColorFilter.mode(Colors.black.withOpacity(opacity), BlendMode.dstATop)
+                ),
+                border: deco.border,
+                color: Colors.white
+              ),
+              height: boxSize,
+              width: boxSize
+            ),
           ),
-          border: Border.all(
-            color:  isSelected ? selectedBorderColor : defaultBorderColor,
-            width: 2
-          )
-        ),
-        height: boxSize,
-        width: boxSize,
-      );
-    } else {
-    
-      BoxDecoration? deco;
-      if(isSelected) {
-        deco = BoxDecoration(
-            border: Border.all(
-              color: selectedBorderColor,
-              width: 2
-            ),
-            color: defaultBackgroundColor
-          );
-      } else if(isSolved) {
-        deco = BoxDecoration(
-            border: Border.all(
-              color: AppColors.correct,
-              width: 2
-            ),
-            color: solvedBackgroundColor
-          );
-      } else {
-        deco = BoxDecoration(
-            border: Border.all(
-              color: defaultBorderColor,
-              width: 2
-            ),
-            color: defaultBackgroundColor
-          );
-      }
+          isSolved ? Center(child: Image.asset(AppIcons.checkNoOutline),) : SizedBox()
 
-      final width = MediaQuery.of(context).size.width;
-      return AspectRatio(
-        aspectRatio: 12/8,
-        child: Container( 
-          child: Center(
-            child: Text(opt.value + " " + opt.key),
-          ),
-          decoration: deco,
-          width: width*0.2,
-        )
+        ]
+        
       );
     }
+
+      final width = MediaQuery.of(context).size.width;
+      return Stack(
+        children: [
+          AspectRatio(
+            aspectRatio: 8/9,
+            child: Container( 
+              child: Center(
+                child: Text(opt.value + " " + opt.key),
+              ),
+              decoration: deco,
+              width: width*0.2,
+            )
+          ),
+          isSolved ? 
+          Center(
+            child: Image.asset(
+                 AppIcons.checkNoOutline,
+                ),
+            ) 
+          : 
+          SizedBox()
+
+        ]
+      );
   }
 
   void _isGameOver() {
@@ -431,9 +464,16 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
       print("correct");
     } else {
       setState(() {
+        incorrectSelect = [selected!, opt];
         selected = null;
         wrong++;
       });
+
+      Future.delayed(const Duration(milliseconds: 300), () {
+          setState(() {
+            incorrectSelect = [];
+          });
+        });
       print("incorrect");
     }
   }

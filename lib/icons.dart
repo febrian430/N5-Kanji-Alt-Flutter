@@ -11,7 +11,12 @@ class AppIcons {
   static const jumble = APP_IMAGE_FOLDER + 'jumble.png';
   static const pause = APP_IMAGE_FOLDER + 'pause.png';
   static const currency = APP_IMAGE_FOLDER + 'ryo.png';
+
   static const check = APP_IMAGE_FOLDER + 'green_checkmark.png';
+  static const checkNoOutline = APP_IMAGE_FOLDER + 'checkmark_no_outline.png';
+  static const checkSmall = APP_IMAGE_FOLDER + 'checkmark_small.png';
+  static const checkmark = APP_IMAGE_FOLDER + 'checkmark.png';
+
   static const wrong = APP_IMAGE_FOLDER + 'wrong_checkmark.png';
   static const resume = APP_IMAGE_FOLDER + 'resume.png';
   static const exit = APP_IMAGE_FOLDER + 'exit.png';
