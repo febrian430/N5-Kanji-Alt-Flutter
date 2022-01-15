@@ -233,58 +233,39 @@ class _QuizState extends State<Quiz> {
     List<JumbleQuizQuestionSet> jumbleQuestionSets = items[1];
 
 
-    return Column(
+    return IndexedStack(
+      index: gameIndex,
       children: [
-        // Flexible(
-        //   flex: 1,
-        //   child: CountdownWidget(
-        //     seconds: secondsLeft,
-        //     initial: initTime,
-        //   )
-        // ),
-        Flexible(
-          // flex: 10,
-          child: IndexedStack(
-            index: gameIndex,
-            children: [
-              Container(
-                // decoration: BoxDecoration(
-                //     border: Border.all(
-                //     width: 1,
-                //   )
-                // ),
-                child: MultipleChoiceQuizGame(
-                  mode: widget.mode, 
-                  questionSets: mcQuestionSets, 
-                  quizOver: isOver,
-                  onSubmit: _handleMultipleChoiceSubmit,
-                  restartSource: restart,
-                )
-              ),
-              JumbleQuizGame(
-                mode: widget.mode,
-                questionSets: jumbleQuestionSets,
-                quizOver: isOver,
-                onSubmit: _handleJumbleSubmit,
-                restartSource: restart,
-              ),
-              QuizResult(
-                  onRestart: onRestart,
-                  onViewResult: _goMultipleChoice,
-                  countdown: _countdown,
-                  multipleChoice: QuizGameParam(
-                    result: multipleChoiceScore, 
-                    goHere: _goMultipleChoice
-                  ), 
-                  jumble: QuizJumbleGameParam(
-                    result: jumbleScore,
-                    goHere: _goJumble
-                  )
-              )
-            ],
+        Container(
+          child: MultipleChoiceQuizGame(
+            mode: widget.mode, 
+            questionSets: mcQuestionSets, 
+            quizOver: isOver,
+            onSubmit: _handleMultipleChoiceSubmit,
+            restartSource: restart,
           )
         ),
-      ]
+        JumbleQuizGame(
+          mode: widget.mode,
+          questionSets: jumbleQuestionSets,
+          quizOver: isOver,
+          onSubmit: _handleJumbleSubmit,
+          restartSource: restart,
+        ),
+        QuizResult(
+            onRestart: onRestart,
+            onViewResult: _goMultipleChoice,
+            countdown: _countdown,
+            multipleChoice: QuizGameParam(
+              result: multipleChoiceScore, 
+              goHere: _goMultipleChoice
+            ), 
+            jumble: QuizJumbleGameParam(
+              result: jumbleScore,
+              goHere: _goJumble
+            )
+        )
+      ],
     );
   }
 
@@ -322,7 +303,7 @@ class _QuizState extends State<Quiz> {
       onGuideOpen: screen.onDialogOpen,
       countdownWidget: CountdownWidget(initial: initTime, seconds: secondsLeft,),
       isOver: isOver,
-      footer: EmptyWidget,
+      footer: null,
       
       footerWhenOver: gameIndex != 2 ?
       Row(

@@ -131,6 +131,7 @@ class _QuizScreenState extends State<QuizScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return WillPopScope(
       onWillPop: () async {
         bool exit = await showConfirmationDialog(context);
@@ -151,7 +152,9 @@ class _QuizScreenState extends State<QuizScreen> {
           child: widget.game,
           horizontalPadding: false,
           topPadding: true,
-          bottomPadding: false,
+          bottomPadding: !widget.isOver,
+          customBottomPadding: !widget.isOver ? size.height*.032 : null,
+
         ),
       )
     );

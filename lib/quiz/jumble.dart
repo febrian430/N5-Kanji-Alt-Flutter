@@ -148,7 +148,7 @@ class _JumbleQuizGameState extends State<JumbleQuizGame> {
                   isGameOver = true;
                 });
               },
-              title: "test",
+              title: "Finish",
               current: currentPage,
               count: widget.questionSets.length,
               onNext: (){

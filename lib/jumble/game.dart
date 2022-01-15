@@ -574,14 +574,14 @@ class SelectWidget extends StatelessWidget {
               width: width*1,
               decoration: BoxDecoration(
                 color: bgColor,
-                border: Border.all(
-                  width: 1,
-                  color: Colors.grey
-                )
               ),
               child: Center(
                 child: Text(
-                  !_isSentinel() ? option.value : ""
+                  !_isSentinel() ? option.value : "",
+                  style: TextStyle(
+                    fontWeight: forceColor != null ? FontWeight.bold : null,
+                    color: forceColor != null ? Colors.white : null
+                  ),
                 )
               ),
             )
@@ -613,30 +613,31 @@ class OptionWidget extends StatelessWidget {
     }
 
     return TextButton(
-        onPressed: () {
-          if(!disabled) {
-            onTap();
-          }
-        },
-        child: Container(
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            // border: Border.all(
-            //   // width: 1
-            // )
-          ),
-          
-          child: Text(
-            option.value,
-            style: TextStyle(
-              color: textColor,
-              fontSize: 30,
-            )
-          ),
+      onPressed: () {
+        if(!disabled) {
+          onTap();
+        }
+      },
+      child: Container(
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          // border: Border.all(
+          //   // width: 1
+          // )
         ),
-        style: TextButton.styleFrom(
-          backgroundColor: boxColor
+        height: 45,
+        width: 60,
+        child: Text(  
+          option.value,
+          style: TextStyle(
+            color: textColor,
+            fontSize: 25,
+          )
         ),
+      ),
+      style: TextButton.styleFrom(
+        backgroundColor: boxColor
+      ),
     );
   }
 

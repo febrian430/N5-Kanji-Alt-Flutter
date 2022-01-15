@@ -390,7 +390,13 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
             aspectRatio: 8/9,
             child: Container( 
               child: Center(
-                child: Text(opt.value + " " + opt.key),
+                child: Text(opt.value,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
               decoration: deco,
               width: width*0.2,
