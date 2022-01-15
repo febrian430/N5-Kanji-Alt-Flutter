@@ -14,8 +14,16 @@ class Menu extends StatelessWidget {
   final String japanese;
   final Widget child;
   final Widget? topRight;
+  final bool withBottomPadding;
 
-  const Menu({Key? key, required this.title, required this.japanese, required this.child, this.topRight}) : super(key: key);
+  const Menu({
+    Key? key, 
+      required this.title, 
+      required this.japanese, 
+      required this.child, 
+      this.topRight,
+      this.withBottomPadding = true
+    }) : super(key: key);
 
   
 
@@ -29,8 +37,9 @@ class Menu extends StatelessWidget {
           withBack: true,
           topRight: topRight,
         ), 
-        footer: EmptyWidget, 
-        child: child
+        footer: withBottomPadding ? EmptyWidget : null, 
+        child: child,
+        bottomPadding: withBottomPadding,
       )
     );
   }

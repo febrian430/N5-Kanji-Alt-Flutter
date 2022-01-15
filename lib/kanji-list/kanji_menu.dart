@@ -136,6 +136,11 @@ class _MenuState extends State<KanjiList> {
       }
     );
 
-    return Menu(title: "Kanji List", japanese: "漢字 リスト", child: screen);
+    return Menu(
+      title: "Kanji List", 
+      japanese: "漢字 リスト", 
+      child: screen,
+      withBottomPadding: false,
+    );
   }
 }

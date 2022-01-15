@@ -91,7 +91,7 @@ class _KanjiWidget extends StatelessWidget {
                   style: TextStyle(
                     
                     fontFamily: _fontStyle,
-                    fontSize: 70
+                    fontSize: 76
                   ),
                 ),
               ),
@@ -111,7 +111,7 @@ class _KanjiWidget extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text("くん・よみ"),
+                            const Text("くん・よみ", style: TextStyle(fontWeight: FontWeight.bold),),
                             // Text(kanji.kunyomi.join("／"))
                             Text(kanji.kunyomi)
                           ]
@@ -123,7 +123,7 @@ class _KanjiWidget extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text("おん・よみ"),
+                            const Text("おん・よみ", style: TextStyle(fontWeight: FontWeight.bold)),
                             // Text(kanji.onyomi.join("／"))
                             Text(kanji.onyomi)
                           ],
@@ -162,6 +162,8 @@ class _KanjiWidget extends StatelessWidget {
             child: GridView.count(
               crossAxisCount: 2,
               childAspectRatio: 3/4,
+              crossAxisSpacing: 5,
+              mainAxisSpacing: 10,
               shrinkWrap: true,
               // physics: const NeverScrollableScrollPhysics(),
               children: kanji.examples.map((example) => ExampleContainer(example: example)).toList()
