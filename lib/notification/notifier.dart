@@ -51,7 +51,7 @@ class Notifier {
           channelDescription: "Shows you notification as a reminder at specified day and time you specified",
           importance: Importance.high,
     );
-
+    // _notificationPlugin.showWeeklyAtDayAndTime(id, title, body, day, notificationTime, notificationDetails)
     _notificationPlugin.initialize(initSettings,
       onSelectNotification: (String? payload) {
         MaterialPageRoute(
@@ -61,30 +61,35 @@ class Notifier {
       }
     );
   }
-
+  
   static Future createNotifier(TimeOfDay time, Set<int> days) async {
     _notificationPlugin.cancelAll();
 
     var reminder = Reminder(days.toSet(), TimeOfDay(hour: time.hour, minute: time.minute));
     SQLRepo.reminder.updateReminder(reminder);
-
-    _notificationPlugin.zonedSchedule(
-      0,
-      'Kantan Kanji',
-      "It's time to study",
-      _getScheduleTest(
-        time: Time(time.hour, time.minute), 
-        days: [...days]
-      ),
-      NotificationDetails(
-          android: _androidNotificationDetail
-      ),
-      androidAllowWhileIdle: true,
-      uiLocalNotificationDateInterpretation:
-        UILocalNotificationDateInterpretation.absoluteTime,
-      matchDateTimeComponents: DateTimeComponents.dayOfWeekAndTime
-    );
+    //loop over days to create more notification per day with differing id
+    int i = 1;
+    for(var day in days) {
+      _notificationPlugin.zonedSchedule(
+        i,
+        'Kantan Kanji',
+        "It's time to study",
+        _getScheduleTest(
+          time: Time(time.hour, time.minute), 
+          days: [day]
+        ),
+        NotificationDetails(
+            android: _androidNotificationDetail
+        ),
+        androidAllowWhileIdle: true,
+        uiLocalNotificationDateInterpretation:
+          UILocalNotificationDateInterpretation.absoluteTime,
+        matchDateTimeComponents: DateTimeComponents.dayOfWeekAndTime
+      );
+      i++;
+    }
   }
+    
 
   static Future<Reminder?> current() async {
     return await SQLRepo.reminder.getReminder();
