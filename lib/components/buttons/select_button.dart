@@ -79,18 +79,68 @@ class SelectButton extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     bool onlyTitle = description == null && iconPath == null;
     print("ONLY TITLE: $onlyTitle");
+
+
     Widget child = Text(
       title, 
       style: titleStyle, 
-      textAlign: onlyTitle ? TextAlign.center : null,
+      // textAlign: onlyTitle ? TextAlign.center : null,
     );
+
+    if(onlyTitle) {
+      child = Center(child: child);
+
+      return TextButton(
+        onPressed: onTap,
+        child: Container(
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              vertical: 4,
+              horizontal: 7
+            ),
+            child: child,
+          ),
+          constraints: description == null ? BoxConstraints(
+            minHeight: size.height*.070,
+          ) : null,
+          height: description != null ? size.height*.18 : null,
+          width: width ?? size.width*0.60,
+          decoration: BoxDecoration(
+            border: Border.all(
+              width: 2
+            ),
+          ),
+        )
+      );
+    }
 
     child = _withDescription(context, child);
     child =  _withImage(context, child);
 
-    if(onlyTitle) {
-      child = Center(child: child,);
-    }
+    // if(onlyTitle) {
+      // return TextButton(
+      //   onPressed: onTap,
+      //   child: Container(
+      //     child: Padding(
+      //       padding: EdgeInsets.symmetric(
+      //         vertical: 4,
+      //         horizontal: 7
+      //       ),
+      //       child: Center(child: child),
+      //     ),
+      //     constraints: description == null ? BoxConstraints(
+      //       minHeight: size.height*.070,
+      //     ) : null,
+      //     height: description != null ? size.height*.18 : null,
+      //     width: width ?? size.width*0.60,
+      //     decoration: BoxDecoration(
+      //       border: Border.all(
+      //         width: 2
+      //       ),
+      //     ),
+      //   )
+      // );
+    // }
 
     return Padding(
       padding: padding == null ? EdgeInsets.zero : padding!,
@@ -102,11 +152,10 @@ class SelectButton extends StatelessWidget {
               vertical: 4,
               horizontal: 7
             ),
-            child: onlyTitle ? 
-              Center(child: child) : child,
+            child: child,
           ),
           constraints: description == null ? BoxConstraints(
-            minHeight: size.height*.075,
+            minHeight: size.height*.070,
           ) : null,
           height: description != null ? size.height*.18 : null,
           width: width ?? size.width*0.60,
