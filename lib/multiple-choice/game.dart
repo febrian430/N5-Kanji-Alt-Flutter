@@ -290,8 +290,6 @@ class _QuizOption extends StatelessWidget {
   }
 
   Color _getBackgroundColor(BuildContext buildContext) {
-
-
     if(isOver) {
       return _afterQuizOver();
     }
@@ -301,8 +299,13 @@ class _QuizOption extends StatelessWidget {
   TextStyle? _getTextStyle(BuildContext buildContext) {
     if(isSelected) {
       return const TextStyle(
-      color: Colors.black
-    );
+        color: Colors.black
+      );
+    }
+    if(isOver && correctKey == option.key) {
+      return const TextStyle(
+        color: Colors.white
+      );
     }
     return const TextStyle(
       color: Colors.black
@@ -318,11 +321,21 @@ class _QuizOption extends StatelessWidget {
         child: Center(
           child: Text(option.value + '\t' + option.key.toString(), style: _getTextStyle(context),),
         ),
-        width: 0.35*width,
+        width: 0.3*width,
         height: 0.1*width
       ),
       style: TextButton.styleFrom(
-        backgroundColor: _getBackgroundColor(context),      
+        backgroundColor: _getBackgroundColor(context),
+        shape: isOver && correctKey == option.key ? 
+        RoundedRectangleBorder(
+          side: BorderSide(
+            color: AppColors.correct,
+            width: 564,
+            style: BorderStyle.solid
+          ),
+          // borderRadius: BorderRadius.all(Radius.circular(10))
+          // borderRadius: BorderRadius.zero
+        ) : null     
       ),
     );
   }
