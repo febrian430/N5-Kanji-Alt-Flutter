@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/components/buttons/icon_button.dart';
+import 'package:kanji_memory_hint/components/empty_flex.dart';
 import 'package:kanji_memory_hint/icons.dart';
 import 'package:kanji_memory_hint/theme.dart';
 
@@ -19,7 +20,7 @@ class ConfirmationDialog extends StatelessWidget {
               side: BorderSide(color: Colors.black, width: 1)
           ),
           child: Container(
-            height: size.height * 0.25,
+            height: size.height * 0.30,
             width: size.width * 0.45,
             padding: EdgeInsets.all(6),
             child: Container(
@@ -33,7 +34,32 @@ class ConfirmationDialog extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Flexible(flex: 1, child: Text("Are you sure?"),),
+                  Flexible(
+                    flex: 2, 
+                    child: Column(
+                      children: [
+                        Flexible(
+                          flex: 2, 
+                          child: Text(
+                            "Are you sure?",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 18
+                            ),
+                          )
+                        ),
+                        EmptyFlex(flex: 1),
+                        Flexible(
+                          flex: 4,
+                          child: Text(
+                            "Your progress will not be saved if you exit the game now",
+                            textAlign: TextAlign.center,  
+                          ),
+                        )
+                      ]
+                    )
+                  ),
                   Flexible(
                     flex: 2,
                     child: Row(
