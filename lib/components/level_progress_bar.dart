@@ -14,7 +14,7 @@ class LevelProgressBar extends StatelessWidget {
     return Column(
       children: [
         LinearProgressIndicator(
-          backgroundColor: AppColors.selected,
+          backgroundColor: AppColors.cream,
           color: AppColors.secondary,
           value: current/upperbound,
           minHeight: 10,

@@ -315,7 +315,7 @@ class _SelectBarState extends State<_SelectBar> {
         return Container(
           height: constraints.maxHeight,
           decoration: BoxDecoration(
-            color: buttonIndex == selected ? AppColors.primary : AppColors.selected,
+            color: buttonIndex == selected ? AppColors.primary : AppColors.cream,
             borderRadius: radius
           ),
           child: TextButton(
@@ -346,7 +346,7 @@ class _SelectBarState extends State<_SelectBar> {
       width: size.width,
       child: Container(
         width: size.width*0.8,
-        color: AppColors.selected,
+        color: AppColors.cream,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [

@@ -80,7 +80,7 @@ class _ProgressBarState extends State<ProgressBar>
               child: LinearProgressIndicator(
                 value: controller.value,
                 minHeight: 5,
-                backgroundColor: AppColors.selected,
+                backgroundColor: AppColors.cream,
                 color: AppColors.secondary,
                 semanticsLabel: 'Progress bar',
               ),

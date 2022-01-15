@@ -55,7 +55,7 @@ class _QuestWidgetState extends State<QuestWidget> {
 
   Widget _claimButton(BuildContext context) {
     ButtonStyle buttonStyle = TextButton.styleFrom(
-      backgroundColor: AppColors.selected,
+      backgroundColor: AppColors.cream,
       side: BorderSide.none
     );
     Widget child = Text('${widget.count}/${widget.total}');
@@ -88,7 +88,7 @@ class _QuestWidgetState extends State<QuestWidget> {
       );
     } else {
       buttonStyle = TextButton.styleFrom(
-        backgroundColor: widget.count < widget.total ? AppColors.selected:  AppColors.darkGreen,
+        backgroundColor: widget.count < widget.total ? AppColors.cream:  AppColors.darkGreen,
         side: BorderSide.none
       );
       child = Column(
