@@ -20,6 +20,7 @@ class GameScreen extends StatefulWidget {
   final Widget game;
   final GuideDialog guide;
   final Widget? footer;
+  final String icon;
 
   final Function() onPause;
   final Function() onContinue;
@@ -41,6 +42,7 @@ class GameScreen extends StatefulWidget {
     required this.onContinue, 
     required this.guide, 
     required this.onGuideOpen, 
+    required this.icon,
     this.prevVisible = false, 
     this.nextVisible = false, 
     this.onPrev, 
@@ -109,6 +111,7 @@ class _GameScreenState extends State<GameScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return WillPopScope(
       onWillPop: () async {
         bool exit = await showConfirmationDialog(context);
@@ -126,26 +129,28 @@ class _GameScreenState extends State<GameScreen> {
               guide: widget.guide,
               onOpen: widget.onGuideOpen,
             ),
+            icon: widget.icon,
             topLeft: PauseButton(
-            onPause: () {
-              setState(() {
-                isPaused = true;
-              });
-              widget.onPause();
-            },
-            onContinue: () {
-              setState(() {
-                isPaused = false;
-              });
-              widget.onContinue();
-            },
-            onRestart: widget.onRestart,
-          ), 
+              onPause: () {
+                setState(() {
+                  isPaused = true;
+                });
+                widget.onPause();
+              },
+              onContinue: () {
+                setState(() {
+                  isPaused = false;
+                });
+                widget.onContinue();
+              },
+              onRestart: widget.onRestart,
+            ), 
           ), 
           footer: _footerWithPrevNext(context), 
           child: widget.game,
           horizontalPadding: false,
           topPadding: true,
+          // customTopPadding: size.height*.020,
         )
       )
     );

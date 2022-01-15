@@ -8,6 +8,7 @@ import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/database/repository.dart';
 import 'package:kanji_memory_hint/game_components/game_helper.dart';
 import 'package:kanji_memory_hint/game_components/question_widget.dart';
+import 'package:kanji_memory_hint/icons.dart';
 import 'package:kanji_memory_hint/images.dart';
 import 'package:kanji_memory_hint/jumble/model.dart';
 import 'package:kanji_memory_hint/jumble/repo.dart';
@@ -256,6 +257,7 @@ class _JumbleGameState extends State<JumbleGame> {
     return GameScreen(
       title: JumbleGame.name, 
       japanese: "ごちゃ混ぜ", 
+      icon: AppIcons.jumble,
       game: _buildGame(context), 
       onPause: onPause, 
       onRestart: onRestart, 

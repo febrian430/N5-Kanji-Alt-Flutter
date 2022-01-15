@@ -9,6 +9,9 @@ class ScreenLayout extends StatelessWidget {
   final Widget? footer;
   final bool topPadding;
   final bool bottomPadding;
+  final double? customTopPadding;
+  final double? customBottomPadding;
+  final double? customHorizontalPadding;
   final bool horizontalPadding;
   final Widget? floatingActionButton;
   final FloatingActionButtonLocation? floatingActionButtonLocation;
@@ -21,7 +24,10 @@ class ScreenLayout extends StatelessWidget {
     this.bottomPadding = true, 
     this.horizontalPadding = true,
     this.floatingActionButton,
-    this.floatingActionButtonLocation
+    this.floatingActionButtonLocation,
+    this.customBottomPadding,
+    this.customTopPadding,
+    this.customHorizontalPadding
   }) : super(key: key);
 
   @override
@@ -38,10 +44,10 @@ class ScreenLayout extends StatelessWidget {
             )
           ),
           padding: EdgeInsets.only(
-            top: topPadding ? size.height*.045 : 0,
-            bottom: bottomPadding ? size.height*.045 : 0,
-            right: horizontalPadding ? size.width*.032 : 0,
-            left: horizontalPadding ? size.width*.032 : 0
+            top: topPadding ? (customTopPadding ?? size.height*.045) : 0,
+            bottom: bottomPadding ? (customBottomPadding ?? size.height*.045) : 0,
+            right: horizontalPadding ? (customHorizontalPadding ?? size.width*.032) : 0,
+            left: horizontalPadding ? (customHorizontalPadding ?? size.width*.032) : 0
           ),
           child: Container(
             child: Column(

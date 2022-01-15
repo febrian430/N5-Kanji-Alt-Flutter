@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/components/buttons/back_button.dart';
 import 'package:kanji_memory_hint/components/dialogs/guide.dart';
 import 'package:kanji_memory_hint/components/empty_flex.dart';
+import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/icons.dart';
 import 'package:kanji_memory_hint/theme.dart';
 
@@ -55,6 +56,7 @@ class AppHeader extends StatelessWidget {
   final String title;
   final String japanese;
   Color? color;
+  String? icon;
   Widget? topRight;
   Widget? topLeft;
   bool withBack;
@@ -66,7 +68,8 @@ class AppHeader extends StatelessWidget {
     this.color = Colors.black,
     this.withBack = false, 
     this.topRight,
-    this.topLeft
+    this.topLeft,
+    this.icon
   }) : super(key: key);
 
   Widget _topLeft(BuildContext context) {
@@ -99,29 +102,43 @@ class AppHeader extends StatelessWidget {
             flex: 8,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Center(
-                  child: Text(
-                    title,
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: color
-                    ),
-                  )
-                ),
-                Center(
-                  child: Text(
-                    japanese,
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500,
-                      color: color
-                    ),
-                  )
-                ),
-              ],
-            ), 
+              children: [ 
+                // Flexible(
+                  // flex: 2,
+                  // child: icon != null ? Image.asset(icon!) : EmptyWidget
+                  // child: SizedBox()
+                  // child: Image.asset(AppIcons.mixmatch)
+                // ),
+                Flexible(
+                  flex: 2, 
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Center(
+                        child: Text(
+                          title,
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: color
+                          ),
+                        )
+                      ),
+                      Center(
+                        child: Text(
+                          japanese,
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                            color: color
+                          ),
+                        )
+                      ),
+                    ],
+                  ),
+                )
+              ]
+            ) 
           ),
           EmptyFlex(flex: 1),
           Flexible(

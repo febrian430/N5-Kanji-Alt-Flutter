@@ -211,6 +211,7 @@ class _MixMatchGameState extends State<MixMatchGame> {
       onGuideOpen: onPause,
       prevVisible: currentPage != 0,
       nextVisible: currentPage != 1,
+      icon: AppIcons.mixmatch,
       onNext: (){
         setState(() {
           currentPage++;
@@ -246,28 +247,6 @@ class _MixMatchGameState extends State<MixMatchGame> {
     );   
   }
 
-  void _showDialog() {
-    showDialog<String>(
-      context: context,
-      builder: (BuildContext context) {
-        return BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-          child: AlertDialog(
-            title: const Text('Round one over'),
-            content: Text('Beginning round two'),
-            actions: <Widget>[
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context, 'OK');
-                } ,
-                child: const Text('Continue'),
-              ),
-            ],
-          )
-        );
-      }
-    );
-  }
   
 
   onContinue() {

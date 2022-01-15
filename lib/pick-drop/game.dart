@@ -7,6 +7,7 @@ import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/components/result_button.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/game_components/question_widget.dart';
+import 'package:kanji_memory_hint/icons.dart';
 import 'package:kanji_memory_hint/images.dart';
 import 'package:kanji_memory_hint/levelling/levels.dart';
 import 'package:kanji_memory_hint/menu_screens/game_screen.dart';
@@ -189,6 +190,7 @@ class _PickDropState extends State<PickDrop> {
     return GameScreen(
       title: PickDrop.name, 
       japanese: PickDrop.japanese, 
+      icon: AppIcons.pickdrop,
       game: _buildGame(context), 
       onPause: onPause, 
       onRestart: onRestartFromResult, 
