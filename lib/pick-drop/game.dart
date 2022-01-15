@@ -253,6 +253,7 @@ class _PickDropRoundState extends State<PickDropRound> {
   bool isSolved = false;
 
   bool wrongOverlay = false;
+  bool correctOverlay = false;
 
   void restart() {
     setState(() {
@@ -337,16 +338,17 @@ class _PickDropRoundState extends State<PickDropRound> {
                   questionStr: widget.question.value, 
                   mode: widget.mode,
                   overlay: wrongOverlay,
+                  correctBorder: correctOverlay,
                 );
               },
               onWillAccept: (opt) {
               //  return opt?.key == widget.question.key;
                 return true;
               },
-              onAccept: (opt) {
+              onAccept: (opt) async {
                 if(!isSolved){
                   bool isCorrect = opt.key == widget.question.key;
-                  widget.onDrop(isCorrect, isFirstTry);
+                  bool tempFirstTry = isFirstTry;
                   if(!isCorrect) {
                     isFirstTry = false;
                     setState(() {
@@ -360,8 +362,17 @@ class _PickDropRoundState extends State<PickDropRound> {
                   } else {
                     setState(() {
                       isSolved = true;
+                      correctOverlay = true;
+                    });
+                    await Future.delayed(const Duration(milliseconds: 300), (){
+                      setState(() {
+                        correctOverlay = false;
+                      });
                     });
                   }
+
+                  widget.onDrop(isCorrect, tempFirstTry);
+
                 }
               },
             ),

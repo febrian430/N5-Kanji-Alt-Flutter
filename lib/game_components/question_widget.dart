@@ -9,13 +9,15 @@ class QuestionWidget extends StatelessWidget {
   final String questionStr;
   bool overlay;
   bool withShadow;
+  bool correctBorder;
 
   QuestionWidget({
     Key? key, 
     required this.mode, 
     required this.questionStr,
     this.overlay = false,
-    this.withShadow = false
+    this.withShadow = false,
+    this.correctBorder = false
   }) : super(key: key);
   
   Widget _getQuestionWidget() {
@@ -65,8 +67,8 @@ class QuestionWidget extends StatelessWidget {
           child: _getQuestionWidget(),
           decoration: BoxDecoration(
             border: Border.all(
-              color: Colors.black,
-              width: 3,
+              color: correctBorder ? AppColors.correct: Colors.black,
+              width: correctBorder ? 5 : 3,
             ),
             color: AppColors.primary
           ),
