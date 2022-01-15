@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/components/buttons/icon_button.dart';
 import 'package:kanji_memory_hint/components/dialogs/reminder.dart';
 import 'package:kanji_memory_hint/components/empty_flex.dart';
+import 'package:kanji_memory_hint/components/level_widget.dart';
 import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/components/progress_bar.dart';
 import 'package:kanji_memory_hint/countdown.dart';
@@ -233,93 +234,77 @@ class _DetailWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        RichText(
-          text: TextSpan(
-            style: new TextStyle(
-              fontSize: 14.0,
-              color: Colors.black,
-            ),
-            children: <TextSpan>[
-              TextSpan(
-                text: gains.pointsGained.toString(),
-                style: TextStyle(
-                  fontSize: 70,
-                  color: AppColors.secondary,
-                ),
+        Expanded(
+          flex: 4,
+          child: RichText(
+            text: TextSpan(
+              style: new TextStyle(
+                fontSize: 14.0,
+                color: Colors.black,
               ),
-              TextSpan(text: 'pts', 
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                )),
-            ],
-          ),
+              children: <TextSpan>[
+                TextSpan(
+                  text: gains.pointsGained.toString(),
+                  style: TextStyle(
+                    fontSize: 70,
+                    color: AppColors.secondary,
+                  ),
+                ),
+                TextSpan(text: 'pts', 
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  )),
+              ],
+            ),
+          )
         ),
         
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(flex: 1, child: Image.asset(AppIcons.time, height: 25, width: 25, fit: BoxFit.contain,),),
-            Flexible(flex: 3, child: Text(humanize(countdown.elapsed()))),
-          ]
-        ),
-
-        Container(
-          // width: 200,
-          padding: EdgeInsets.only(top: 10),
+        Expanded(
+          flex: 1,
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              EmptyFlex(flex: 1),
-              Expanded(
-                flex: 3,
-                child: _GameScoreWidget(
-                  game: "Multiple Choice", 
-                  correct: multipleChoice.result.correct,
-                  miss: multipleChoice.result.miss,
-                )
-              ),
-              Expanded(
-                flex: 3,
-                child: _GameScoreWidget(
-                  game: "Jumble", 
-                  correct: jumble.result.correct,
-                  miss: jumble.result.miss,
-                  hits: jumble.result.hits
-                )
-              ),
-              EmptyFlex(flex: 1),
-
-            ],
+              Expanded(flex: 1, child: Image.asset(AppIcons.time, height: 25, width: 25, fit: BoxFit.contain,),),
+              Flexible(flex: 3, child: Text(humanize(countdown.elapsed()))),
+            ]
           )
         ),
 
-        FutureBuilder(
-          future: Levels.current(),
-          builder: (context, AsyncSnapshot<List<int>> snapshot) {
-            if(snapshot.hasData){  
-              final level = snapshot.data![0];
-              final remaining = snapshot.data![1];
-              final nextLevel = Levels.next(level) ?? remaining;
-              final nextNextLevel = Levels.next(level+1) ?? remaining;
+        Expanded(
+          flex: 4,
+          child: Container(
+          // width: 200,
+            padding: EdgeInsets.only(top: 2),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                EmptyFlex(flex: 1),
+                Expanded(
+                  flex: 3,
+                  child: _GameScoreWidget(
+                    game: "Multiple Choice", 
+                    correct: multipleChoice.result.correct,
+                    miss: multipleChoice.result.miss,
+                  )
+                ),
+                Expanded(
+                  flex: 3,
+                  child: _GameScoreWidget(
+                    game: "Jumble", 
+                    correct: jumble.result.correct,
+                    miss: jumble.result.miss,
+                    hits: jumble.result.hits
+                  )
+                ),
+                EmptyFlex(flex: 1),
 
-              return Column(
-                children: [
-                  ProgressBar(
-                    from: remaining, 
-                    gain: gains.expGained, 
-                    levelupReq: nextLevel, 
-                    nextLevel: nextNextLevel, 
-                    onLevelup: (){
-                      print("level up!");
-                  }),
-                ]
-              );
-            } else {
-              return LoadingScreen();
-            }
-          }
-        )
+              ],
+            )
+          )
+        ),
+
+        Expanded(flex: 5, child: LevelWidget(increase: gains.expGained))
       ],
     );
   }

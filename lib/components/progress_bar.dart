@@ -1,14 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kanji_memory_hint/components/empty_flex.dart';
 import 'package:kanji_memory_hint/theme.dart';
 
 class ProgressBar extends StatefulWidget {
-  const ProgressBar({Key? key, required this.from, required this.gain, required this.levelupReq, required this.nextLevel, required this.onLevelup, }) : super(key: key);
+  const ProgressBar({
+    Key? key, 
+    required this.current, 
+    required this.gain, 
+    required this.upperbound, 
+    required this.nextUpperbound, 
+    required this.onLevelup, 
+  }) : super(key: key);
   
-  final int from;
+  final int current;
   final int gain;
-  final int levelupReq;
-  final int nextLevel; 
+  final int upperbound;
+  final int? nextUpperbound; 
 
   final Function() onLevelup;
 
@@ -19,7 +27,7 @@ class ProgressBar extends StatefulWidget {
 class _ProgressBarState extends State<ProgressBar>
     with TickerProviderStateMixin {
   late AnimationController controller;
-  late int upperbound = widget.levelupReq;
+  late int upperbound = widget.upperbound;
 
   @override
   void initState() {
@@ -36,17 +44,17 @@ class _ProgressBarState extends State<ProgressBar>
   }
 
   void animate() async {
-    controller.value = widget.from/widget.levelupReq;
-    await controller.animateTo((widget.from+widget.gain)/widget.levelupReq, duration: const Duration(seconds: 1));
-    
-    if(widget.gain > widget.levelupReq) {
-      upperbound = widget.nextLevel;
+    controller.value = widget.current/widget.upperbound;
+    await controller.animateTo((widget.current+widget.gain)/widget.upperbound, duration: const Duration(seconds: 1));
+    if(widget.gain > widget.upperbound) {
+      upperbound = widget.nextUpperbound ?? widget.current;
       widget.onLevelup();
-      controller.value = 0;
-      final remaining = widget.gain - widget.levelupReq;
-      await controller.animateTo(remaining/widget.nextLevel);
+
+      final remaining = widget.gain - widget.upperbound;
+      controller.value = widget.nextUpperbound == null ? remaining.toDouble() : 0;
+
+      await controller.animateTo(remaining/upperbound);
     }
-    
   }
 
   @override
@@ -58,7 +66,7 @@ class _ProgressBarState extends State<ProgressBar>
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(5.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
@@ -71,8 +79,8 @@ class _ProgressBarState extends State<ProgressBar>
               ),
               child: LinearProgressIndicator(
                 value: controller.value,
-                minHeight: 8,
-                backgroundColor: AppColors.primary,
+                minHeight: 5,
+                backgroundColor: AppColors.selected,
                 color: AppColors.secondary,
                 semanticsLabel: 'Progress bar',
               ),
@@ -80,14 +88,19 @@ class _ProgressBarState extends State<ProgressBar>
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Flexible(child: SizedBox()),
-                Flexible(
-                  child: widget.gain == 0 ?
-                    SizedBox()
-                    :
-                    Text('+${widget.gain.toString()} exp', style: TextStyle(fontSize: 14),),),
+                EmptyFlex(flex: 1),
+                Expanded(
+                  flex: 1,
+                  child: Text(
+                    '+${widget.gain.toString()} exp', 
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 14),),
+                ),
 
-                Flexible(child: Text(upperbound.toString())),
+                Expanded(flex: 1, child: Text(upperbound.toString(),
+                    textAlign: TextAlign.right,
+                  )
+                ),
               ],
             )
             // TextButton(

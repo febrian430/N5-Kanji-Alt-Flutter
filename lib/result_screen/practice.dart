@@ -4,6 +4,7 @@ import 'package:kanji_memory_hint/components/backgrounds/menu_background.dart';
 import 'package:kanji_memory_hint/components/backgrounds/practice_background.dart';
 import 'package:kanji_memory_hint/components/buttons/icon_button.dart';
 import 'package:kanji_memory_hint/components/dialogs/reminder.dart';
+import 'package:kanji_memory_hint/components/level_widget.dart';
 import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/components/progress_bar.dart';
 import 'package:kanji_memory_hint/humanize.dart';
@@ -245,36 +246,10 @@ class _DetailWidget extends StatelessWidget {
             ]
           )
         ),
-      
-        
+    
         Expanded(
           flex: 5,
-          child: FutureBuilder(
-            future: Levels.current(),
-            builder: (context, AsyncSnapshot<List<int>> snapshot) {
-              if(snapshot.hasData){  
-                final level = snapshot.data![0];
-                final remaining = snapshot.data![1];
-                final nextLevel = Levels.next(level) ?? remaining;
-                final nextNextLevel = Levels.next(level+1) ?? remaining;
-
-                return Column(
-                  children: [
-                    ProgressBar(
-                      from: remaining, 
-                      gain: param.result.expGained, 
-                      levelupReq: nextLevel, 
-                      nextLevel: nextNextLevel, 
-                      onLevelup: (){
-                        print("level up!");
-                    }),
-                  ]
-                );
-              } else {
-                return LoadingScreen();
-              }
-            }
-          )
+          child: LevelWidget(increase: param.result.expGained,)
         )
         
       ],

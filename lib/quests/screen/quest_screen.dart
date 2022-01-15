@@ -3,12 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:kanji_memory_hint/components/backgrounds/menu_background.dart';
 import 'package:kanji_memory_hint/components/buttons/select_button.dart';
-import 'package:kanji_memory_hint/components/containers/double_border_container.dart';
 import 'package:kanji_memory_hint/components/empty_flex.dart';
 import 'package:kanji_memory_hint/components/level_progress_bar.dart';
 import 'package:kanji_memory_hint/components/loading_screen.dart';
-import 'package:kanji_memory_hint/components/progress_bar.dart';
-import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/database/quests.dart';
 import 'package:kanji_memory_hint/database/repository.dart';
 import 'package:kanji_memory_hint/database/user_point.dart';
@@ -358,7 +355,7 @@ class _SelectBarState extends State<_SelectBar> {
                 context, 
                 0, 
                 "Kanji",
-                BorderRadius.only(topRight: Radius.circular(20))
+                BorderRadius.only(topRight: Radius.circular(10))
               )
             ),
             Expanded(
@@ -367,8 +364,8 @@ class _SelectBarState extends State<_SelectBar> {
                 1, 
                 "Practice",
                 BorderRadius.only(
-                  topLeft: Radius.circular(20), 
-                  topRight: Radius.circular(20)
+                  topLeft: Radius.circular(10), 
+                  topRight: Radius.circular(10)
                 )
               )
             ),
@@ -377,7 +374,10 @@ class _SelectBarState extends State<_SelectBar> {
                 context, 
                 2, 
                 "Quiz",
-                BorderRadius.only(topLeft: Radius.circular(20))
+                BorderRadius.only(
+                  topLeft: Radius.circular(10),
+                  
+                )
               )
             )
           ],
