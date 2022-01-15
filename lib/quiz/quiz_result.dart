@@ -28,8 +28,9 @@ class QuizJumbleGameParam {
 }
 
 class QuizResult extends StatelessWidget {
-  const QuizResult({Key? key, required this.multipleChoice, required this.jumble, required this.onRestart, required this.countdown}) : super(key: key);
+  const QuizResult({Key? key, required this.multipleChoice, required this.jumble, required this.onRestart, required this.onViewResult, required this.countdown}) : super(key: key);
   final Function() onRestart;
+  final Function() onViewResult;
   final QuizGameParam multipleChoice;
   final QuizJumbleGameParam jumble;
   final Countdown countdown;
@@ -71,7 +72,7 @@ class QuizResult extends StatelessWidget {
             child:Padding(
               padding: EdgeInsets.symmetric(horizontal: 6),
               child: AppIconButton(
-                onTap: (){Navigator.of(context).popUntil(ModalRoute.withName("/"));}, 
+                onTap: onViewResult, 
                 iconPath: AppIcons.viewResult, 
                 height: 50, 
                 width: 50, 

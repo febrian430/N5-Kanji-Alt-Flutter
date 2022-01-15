@@ -84,7 +84,7 @@ class _QuizState extends State<Quiz> {
     2: result
   };
 
-  int initTime = 180;
+  int initTime = 7200;
   late int secondsLeft = initTime;
   int score = 0;
 
@@ -270,6 +270,7 @@ class _QuizState extends State<Quiz> {
               ),
               QuizResult(
                   onRestart: onRestart,
+                  onViewResult: _goMultipleChoice,
                   countdown: _countdown,
                   multipleChoice: QuizGameParam(
                     result: multipleChoiceScore, 
@@ -289,14 +290,14 @@ class _QuizState extends State<Quiz> {
 
   Widget _buildQuiz(BuildContext context) {
     return FutureBuilder(
-          future: quizQuestionSet,
-          builder: (context, AsyncSnapshot<List> snapshot) {
-            if(snapshot.hasData) {
-              return _build(context, snapshot.data!);
-            } else {
-              return LoadingScreen();
-            }
-          }
+      future: quizQuestionSet,
+      builder: (context, AsyncSnapshot<List> snapshot) {
+        if(snapshot.hasData) {
+          return _build(context, snapshot.data!);
+        } else {
+          return LoadingScreen();
+        }
+      }
     );
   }
 
@@ -322,33 +323,9 @@ class _QuizState extends State<Quiz> {
       countdownWidget: CountdownWidget(initial: initTime, seconds: secondsLeft,),
       isOver: isOver,
       footer: EmptyWidget,
-      // IndexedStack(
-      //   index: gameIndex,
-      //   children: [
-      //     Row(
-      //       children: [
-      //         Expanded(flex: 1, child: CountdownWidget(initial: initTime, seconds: secondsLeft,)),
-      //         EmptyFlex(flex: 1),
-      //         EmptyFlex(flex: 1)
-      //       ],
-      //     ),
-      //     Row(
-      //       children: [
-      //         Expanded(flex: 1, child: CountdownWidget(initial: initTime, seconds: secondsLeft,)),
-      //         EmptyFlex(flex: 1),
-      //         EmptyFlex(flex: 1)
-      //       ],
-      //     ),
-      //     Row(
-      //       children: [
-      //         Expanded(flex: 1, child: CountdownWidget(initial: initTime, seconds: secondsLeft,)),
-      //         EmptyFlex(flex: 1),
-      //         EmptyFlex(flex: 1)
-      //       ],
-      //     ),
-      //   ]
-      // ),
-      footerWhenOver: Row(
+      
+      footerWhenOver: gameIndex != 2 ?
+      Row(
         children: [
           Expanded(
             flex: 1,
@@ -372,7 +349,9 @@ class _QuizState extends State<Quiz> {
             )
           ),
         ],
-      )
+      ) 
+      :
+      SizedBox()
     );
   }
 

@@ -11,15 +11,23 @@ class VisibleButton extends StatelessWidget  {
   @override
   Widget build(BuildContext context) {
     return Visibility(
-        visible: visible,
-        child: TextButton(
-          onPressed: onTap, 
-          child: Center(
-            child: Text(
-              title
+      visible: visible,
+      child: TextButton(
+        onPressed: onTap, 
+        child: Container(
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            border: Border.all(width: 2)
+          ),
+          child:  Text(
+              title,
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold
+              ),
             )
-          )
+          ),
         )
-      );
+    );
   }
 }

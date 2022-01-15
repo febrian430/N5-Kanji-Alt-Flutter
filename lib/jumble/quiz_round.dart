@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kanji_memory_hint/components/empty_flex.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/game_components/question_widget.dart';
 import 'package:kanji_memory_hint/jumble/game.dart';
@@ -125,7 +126,7 @@ class _JumbleQuizRoundState extends State<JumbleQuizRound> with AutomaticKeepAli
             mainAxisAlignment: MainAxisAlignment.center,
             children: opts.take(4).map((opt) {
               return Padding(
-                padding: EdgeInsets.all(10),
+                padding: EdgeInsets.all(5),
                 child: OptionWidget(option: opt, disabled: selected.contains(opt), onTap: () { _handleOptionTap(opt); },));
             }).toList()
           ),
@@ -133,7 +134,7 @@ class _JumbleQuizRoundState extends State<JumbleQuizRound> with AutomaticKeepAli
             mainAxisAlignment: MainAxisAlignment.center,
             children: opts.skip(4).map((opt) {
               return Padding(
-                padding: EdgeInsets.all(10),
+                padding: EdgeInsets.all(5),
                 child: OptionWidget(option: opt, disabled: selected.contains(opt), onTap: () { _handleOptionTap(opt); },));
             }).toList()
           ),
@@ -174,13 +175,14 @@ class _JumbleQuizRoundState extends State<JumbleQuizRound> with AutomaticKeepAli
         child: Column(
           children: [
             Expanded(
-              flex: 12,
+              flex: 14,
               child: Container(
                 // decoration: BoxDecoration(border: Border.all(width: 1)),
                 child: Column(
                 children: [
-                  Expanded(flex: 12, child: QuestionWidget(mode: widget.mode, questionStr: widget.question.value)),
+                  Expanded(flex: 14, child: QuestionWidget(mode: widget.mode, questionStr: widget.question.value)),
                   Flexible(flex: 1, child: Text('Answer: ${widget.question.key.join(" ")}')),
+                  // EmptyFlex(flex: 1),
                   Flexible(
                     flex: 2,
                     child: Row(
@@ -257,14 +259,18 @@ class _QuizSelectWidget extends StatelessWidget {
               width: width*1,
             decoration: BoxDecoration(
               color: bgColor,
-              border: Border.all(
-                width: 1,
-                color: Colors.grey
-              )
+              // border: Border.all(
+              //   width: 1,
+              // )
             ),
             child: Center(
               child: Text(
-                !_isSentinel() ? option.value : ""
+                !_isSentinel() ? option.value : "",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold
+                ),
               )
             ),
           )

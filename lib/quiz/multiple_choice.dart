@@ -4,6 +4,7 @@ import 'package:kanji_memory_hint/components/submit_button.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/models/question_set.dart';
 import 'package:kanji_memory_hint/multiple-choice/game.dart';
+import 'package:kanji_memory_hint/quiz/buttons.dart';
 
 class MultipleChoiceQuizGame extends StatefulWidget {
   const MultipleChoiceQuizGame({Key? key, required this.mode, required this.questionSets, required this.onSubmit, this.quizOver = false, required this.restartSource}) : super(key: key);
@@ -29,7 +30,14 @@ class _MultipleChoiceGameState extends State<MultipleChoiceQuizGame> {
   bool restart = false;
   bool wasSubmitted = false;
   
-  late int totalQuestion = widget.questionSets.length; 
+  late int totalQuestion = widget.questionSets.length;
+
+  int currentPage = 0;
+  PageController _controller = PageController(
+    viewportFraction: 1,
+    initialPage: 0,
+    keepPage: false,
+  );
 
   void onRestart() {
     setState(() {
@@ -63,69 +71,69 @@ class _MultipleChoiceGameState extends State<MultipleChoiceQuizGame> {
       });
   }
 
+  void animateToPage(int target) {
+    _controller.animateToPage(
+      target, 
+      duration: const Duration(milliseconds: 300), 
+      curve: Curves.linear
+    );
+  }
+
   Widget _buildMultipleChoiceRound(BuildContext context, int index, QuizQuestionSet set) {
-    final unanswered = totalQuestion - solved;
-    return Container(
-      child: Column(
-        children: [
-          Expanded(
-            flex: 15,
-            child: MultipleChoiceRound(
-              mode: widget.mode,
-              question: set.question,
-              options: set.options,
-              index: index,
-              onSelect: _handleOnSelectQuiz,
-              quiz: true,
-              isOver: widget.quizOver,
-              restartSource: restart,
-            ),
-          ),
-          Expanded(
-            flex: 2,
-            child: Row(
-              children: [
-                EmptyFlex(flex: 1),
-                Expanded(
-                  flex: 2,
-                  child: VisibleButton(
-                    onTap: () {
-                      var correctKanjis = correctIndexes.map((index) => widget.questionSets[index].fromKanji).toList();
-                      widget.onSubmit(correct, wrong+unanswered, correctKanjis);
-                      wasSubmitted = true;
-                    }, 
-                    visible: !widget.quizOver && solved == totalQuestion,
-                    title: "Next",
-                  )
-                ),
-                EmptyFlex(flex: 1)
-              ]
-            )
-          )
-        ]
-      )
+    return MultipleChoiceRound(
+      mode: widget.mode,
+      question: set.question,
+      options: set.options,
+      index: index,
+      onSelect: _handleOnSelectQuiz,
+      quiz: true,
+      isOver: widget.quizOver,
+      restartSource: restart,     
     );
   }
 
   Widget _build(BuildContext context, List<QuizQuestionSet> items) {
+    final unanswered = totalQuestion - solved;
+
     return Column(
       children: [
         Flexible(
-          flex: 9,
+          flex: 15,
           child: PageView.builder(
               // store this controller in a State to save the carousel scroll position
             pageSnapping: true,
-            controller: PageController(
-              viewportFraction: 1,
-              initialPage: 0,
-              keepPage: false,
-            ),
+            onPageChanged: (int page) {
+              setState(() {
+                currentPage = page;
+              });
+            },
+            controller: _controller,
             itemCount: items.length,
             itemBuilder: (BuildContext context, int index) {
-              return _buildMultipleChoiceRound(context, index, items[index]);
+              return  _buildMultipleChoiceRound(context, index, items[index]);
             },
           ),
         ),
+        Expanded(
+          flex: 2,
+          child: GameButtons(
+            buttonVisible: !widget.quizOver && solved == totalQuestion, 
+            onPrev: (){
+              animateToPage(currentPage-1);
+            }, 
+            onNext: (){
+              animateToPage(currentPage+1);
+            }, 
+            onButtonClick: (){
+              var correctKanjis = correctIndexes.map((index) => widget.questionSets[index].fromKanji).toList();
+              widget.onSubmit(correct, wrong+unanswered, correctKanjis);
+              wasSubmitted = true;
+            }, 
+            title: "Start Jumble", 
+            count: totalQuestion, 
+            current: currentPage
+          )
+        )
       ]
     );
   }

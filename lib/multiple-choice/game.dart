@@ -213,7 +213,7 @@ class _MultipleChoiceRoundState extends State<MultipleChoiceRound> with Automati
             mainAxisAlignment: MainAxisAlignment.center,
             children: opts.take(2).map((opt) {
               return Padding(
-                padding: EdgeInsets.all(10),
+                padding: EdgeInsets.all(5),
                 child: _buildOption(context, opt)
               );
             }).toList(),
@@ -222,7 +222,7 @@ class _MultipleChoiceRoundState extends State<MultipleChoiceRound> with Automati
             mainAxisAlignment: MainAxisAlignment.center,
             children: opts.skip(2).map((opt) {
               return Padding(
-                padding: EdgeInsets.all(10),
+                padding: EdgeInsets.all(5),
                 child: _buildOption(context, opt)
               );
             }).toList(),
@@ -240,7 +240,7 @@ class _MultipleChoiceRoundState extends State<MultipleChoiceRound> with Automati
         child: Column(
           children: [
             Expanded(
-              flex: 10,
+              flex: 13,
               child: QuestionWidget(mode: widget.mode, questionStr: widget.question.value),
             ),
             Flexible(
@@ -283,7 +283,7 @@ class _QuizOption extends StatelessWidget {
     if(correctKey == option.key) {
       return AppColors.correct;
     } else if (isSelected) {
-      return AppColors.wrong;
+      return AppColors.selected;
     } else {
       return AppColors.primary;
     }

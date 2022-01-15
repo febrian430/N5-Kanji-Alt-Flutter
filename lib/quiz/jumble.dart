@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/components/empty_flex.dart';
 import 'package:kanji_memory_hint/components/submit_button.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/jumble/model.dart';
 import 'package:kanji_memory_hint/map_indexed.dart';
 import 'package:kanji_memory_hint/jumble/quiz_round.dart';
+import 'package:kanji_memory_hint/quiz/buttons.dart';
 
 class JumbleQuizGame extends StatefulWidget {
 
@@ -37,6 +39,12 @@ class _JumbleQuizGameState extends State<JumbleQuizGame> {
   int loaded = 0;
   List<List<int>> correctKanjis = [];
 
+  int currentPage = 0;
+  PageController _controller = PageController(
+    viewportFraction: 1,
+    initialPage: 0,
+  );
+
   bool restart = false;
 
   late List<int> lengthOfRound = []; 
@@ -56,6 +64,13 @@ class _JumbleQuizGameState extends State<JumbleQuizGame> {
 
       restart = true;
     });
+  }
+
+  void animateToPage(int target) {
+    _controller.animateToPage(target, 
+      duration: const Duration(milliseconds: 300), 
+      curve: Curves.linear
+    );
   }
 
   Widget _buildRound(BuildContext context, int index, JumbleQuizQuestionSet set) {
@@ -109,11 +124,11 @@ class _JumbleQuizGameState extends State<JumbleQuizGame> {
               if(lengthOfRound[0] != 0) {
                 lengthOfRound[0] = 0;
               }
+              setState(() {
+                currentPage = index;
+              });
             },
-            controller: PageController(
-              viewportFraction: 1,
-              initialPage: 0,
-            ),
+            controller: _controller,
             children: items.mapIndexed((questionSet, index) {
               if(initialBuild){
                 lengthOfRound.add(questionSet.question.key.length);
@@ -122,28 +137,26 @@ class _JumbleQuizGameState extends State<JumbleQuizGame> {
             }).toList(),
           )
         ),
-        
 
         Expanded(
             flex: 2,
-            child: Row(
-              children: [
-                EmptyFlex(flex: 1),
-                Flexible(
-                  flex: 2,
-                  child: VisibleButton(
-                      visible: (!isGameOver || !widget.quizOver) && solved == totalQuestion, 
-                      onTap: () {
-                        setState(() {
-                          widget.onSubmit(correct, hits, misses, correctKanjis);
-                          isGameOver = true;
-                        });
-                      },
-                      title: "Finish",
-                    )
-                ),
-                EmptyFlex(flex: 1)
-              ]
+            child: GameButtons(
+              buttonVisible: (!isGameOver || !widget.quizOver) && solved == totalQuestion,
+              onButtonClick: (){
+                setState(() { 
+                  widget.onSubmit(correct, hits, misses, correctKanjis);
+                  isGameOver = true;
+                });
+              },
+              title: "test",
+              current: currentPage,
+              count: widget.questionSets.length,
+              onNext: (){
+                animateToPage(currentPage+1);
+              },
+              onPrev: (){
+                animateToPage(currentPage-1);
+              },
             )
           )
       ]

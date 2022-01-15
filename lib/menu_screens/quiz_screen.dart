@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:kanji_memory_hint/components/backgrounds/practice_background.dart';
 import 'package:kanji_memory_hint/components/backgrounds/quiz_background.dart';
 import 'package:kanji_memory_hint/components/buttons/pause_button.dart';
 import 'package:kanji_memory_hint/components/dialogs/confirmation_dialog.dart';
@@ -84,13 +83,13 @@ class _QuizScreenState extends State<QuizScreen> {
     ) : null;
   }
 
-  Widget _getFooter(BuildContext context) {    
+  Widget? _getFooter(BuildContext context) {    
     if(widget.isOver) {
       return widget.footerWhenOver;
     } else if(widget.footer != null){
       return widget.footer!; 
     }else {
-      return SizedBox();
+      return null;
     }
   }
 
