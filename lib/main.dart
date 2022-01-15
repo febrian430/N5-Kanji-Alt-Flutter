@@ -14,6 +14,7 @@ import 'package:kanji_memory_hint/kanji-list/kanji_view.dart';
 import 'package:kanji_memory_hint/menu_screens/chapter_select.dart';
 import 'package:kanji_memory_hint/menu_screens/mode_select.dart';
 import 'package:kanji_memory_hint/notification/notifier.dart';
+import 'package:kanji_memory_hint/quests/screen/quest_screen_alt.dart';
 import 'package:kanji_memory_hint/result_screen/practice.dart';
 import 'package:kanji_memory_hint/menu_screens/start_select.dart';
 import 'package:kanji_memory_hint/multiple-choice/game.dart';
@@ -112,7 +113,7 @@ class _MyAppState extends State<MyApp> {
         '/chapter-select': (context) => ChapterSelect(),
         '/mode-select': (context) => const ModeSelect(),
         '/result': (context) => ResultScreen(),
-        '/quests': (context) => QuestScreen(),
+        '/quests': (context) => QuestScreenAlt(),
         '/rewards': (context) => RewardScreen(),
         '/test': (context) => Test()
 
