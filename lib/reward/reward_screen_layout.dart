@@ -20,7 +20,7 @@ class RewardScreenLayout extends StatelessWidget {
           withBack: true,
         ),
         child: child,
-        footer: EmptyWidget,
+        footer: null,
         horizontalPadding: false,
         bottomPadding: false,
       )
