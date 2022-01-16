@@ -136,14 +136,12 @@ class _MixMatchGameState extends State<MixMatchGame> {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 4.0),
       child: 
-        Container(
-          height: size.height*0.85,
-          child: _MixMatchRound( 
+         _MixMatchRound( 
             options: data[index], 
             onRoundOver: _onRoundOver,
             restartSrc: restart,
           )
-        ),
+        
     );
   }
 
@@ -216,6 +214,7 @@ class _MixMatchGameState extends State<MixMatchGame> {
       onContinue: onContinue,
       onPause: onPause,
       onGuideOpen: onPause,
+      gameFlex: 8,
       prevVisible: currentPage != 0,
       nextVisible: currentPage != 1,
       icon: AppIcons.mixmatch,
@@ -378,7 +377,7 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
       return Stack(
         children: [
           AspectRatio(
-            aspectRatio: 8/9,
+            aspectRatio: 8/11,
             child: Container(
               decoration: BoxDecoration(
                 image: DecorationImage(
@@ -405,19 +404,23 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
       return Stack(
         children: [
           AspectRatio(
-            aspectRatio: 8/9,
+            aspectRatio: 9/11,
             child: Container( 
+              // padding: EdgeInsets.symmetric(
+              //   horizontal: 5
+              // ),
               child: Center(
-                child: Text(opt.value + opt.key,
+                child: Text(opt.value + opt.value[0],
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+                    fontSize: 25,
+                    fontWeight: FontWeight.w600,
+                    height: 1.3
                   ),
                 ),
               ),
               decoration: deco,
-              width: width*0.2,
+              width: width*0.25,
             )
           ),
           isSolved ? 
@@ -538,10 +541,10 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
     return Center(
       child: GridView.count(
         crossAxisCount: 4,
-        childAspectRatio: 8/9,
+        childAspectRatio: 8/11,
         shrinkWrap: true,
-        crossAxisSpacing: 10,
-        mainAxisSpacing: 10,
+        crossAxisSpacing: 5,
+        mainAxisSpacing: 5,
         physics: const NeverScrollableScrollPhysics(),
         children: questions.mapIndexed((opt, index) {
           return _buildQuestion(context, index, opt);

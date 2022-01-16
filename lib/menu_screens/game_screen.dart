@@ -34,6 +34,8 @@ class GameScreen extends StatefulWidget {
   final Function()? onPrev;
   final Function()? onNext;
 
+  final int? gameFlex;
+
 
   GameScreen({Key? key, 
     required this.title, 
@@ -50,7 +52,8 @@ class GameScreen extends StatefulWidget {
     this.onPrev, 
     this.onNext, 
     this.footer, 
-    this.withHorizontalPadding = false
+    this.withHorizontalPadding = false,
+    this.gameFlex
   }) : super(key: key);
 
   @override
@@ -152,6 +155,7 @@ class _GameScreenState extends State<GameScreen> {
             ), 
           ), 
           footer: _footerWithPrevNext(context), 
+          childFlex: widget.gameFlex,
           child: widget.game,
           horizontalPadding: widget.withHorizontalPadding,
           topPadding: true,

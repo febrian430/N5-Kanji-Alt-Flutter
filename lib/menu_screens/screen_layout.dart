@@ -6,6 +6,8 @@ class ScreenLayout extends StatelessWidget {
 
   final Widget header;
   final Widget child;
+  final int? childFlex;
+
   final Widget? footer;
   final bool topPadding;
   final bool bottomPadding;
@@ -27,7 +29,8 @@ class ScreenLayout extends StatelessWidget {
     this.floatingActionButtonLocation,
     this.customBottomPadding,
     this.customTopPadding,
-    this.customHorizontalPadding
+    this.customHorizontalPadding,
+    this.childFlex = 8
   }) : super(key: key);
 
   @override
@@ -57,7 +60,7 @@ class ScreenLayout extends StatelessWidget {
                   child: header,
                 ),
                 Expanded(
-                  flex: 8,
+                  flex: childFlex ?? 8,
                   child: child
                 ),
                 footer != null ? Flexible(
