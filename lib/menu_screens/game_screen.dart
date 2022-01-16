@@ -21,6 +21,7 @@ class GameScreen extends StatefulWidget {
   final GuideDialog guide;
   final Widget? footer;
   final String icon;
+  final bool isGameOver;
 
   final bool withHorizontalPadding;
 
@@ -53,7 +54,8 @@ class GameScreen extends StatefulWidget {
     this.onNext, 
     this.footer, 
     this.withHorizontalPadding = false,
-    this.gameFlex
+    this.gameFlex,
+    this.isGameOver = false
   }) : super(key: key);
 
   @override
@@ -122,9 +124,13 @@ class _GameScreenState extends State<GameScreen> {
     final size = MediaQuery.of(context).size;
     return WillPopScope(
       onWillPop: () async {
-        bool exit = await showConfirmationDialog(context);
-        print("EXIT FROM GAME SCREEN $exit");
-        return exit;
+        if(!widget.isGameOver) {
+          bool exit = await showConfirmationDialog(context);
+          print("EXIT FROM GAME SCREEN $exit");
+          return exit;
+        }
+        Navigator.of(context).popUntil(ModalRoute.withName("/"));
+        return widget.isGameOver;
       },
       child: PracticeBackground(
         child: ScreenLayout(
@@ -138,7 +144,7 @@ class _GameScreenState extends State<GameScreen> {
               onOpen: widget.onGuideOpen,
             ),
             icon: widget.icon,
-            topLeft: PauseButton(
+            topLeft: !widget.isGameOver ?  PauseButton(
               onPause: () {
                 setState(() {
                   isPaused = true;
@@ -152,7 +158,7 @@ class _GameScreenState extends State<GameScreen> {
                 widget.onContinue();
               },
               onRestart: widget.onRestart,
-            ), 
+            ) : SizedBox(), 
           ), 
           footer: _footerWithPrevNext(context), 
           childFlex: widget.gameFlex,

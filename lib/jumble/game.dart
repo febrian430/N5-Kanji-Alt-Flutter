@@ -66,7 +66,7 @@ class _JumbleGameState extends State<JumbleGame> {
   int currentPage = 0;
 
   late int slotsToFill;
-  int numOfQuestions = 10;
+  int numOfQuestions = GameNumOfRounds;
 
   bool restart = false;
 
@@ -267,6 +267,7 @@ class _JumbleGameState extends State<JumbleGame> {
       title: JumbleGame.name, 
       japanese: "ごちゃ混ぜ", 
       icon: AppIcons.jumble,
+      isGameOver: solved == numOfQuestions,
       game: _buildGame(context), 
       onPause: onPause, 
       onRestart: onRestart, 

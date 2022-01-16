@@ -214,6 +214,7 @@ class _MixMatchGameState extends State<MixMatchGame> {
       onContinue: onContinue,
       onPause: onPause,
       onGuideOpen: onPause,
+      isGameOver: roundsSolved == widget.numOfRounds,
       gameFlex: 8,
       prevVisible: currentPage != 0,
       nextVisible: currentPage != 1,
@@ -377,7 +378,7 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
       return Stack(
         children: [
           AspectRatio(
-            aspectRatio: 8/11,
+            aspectRatio: 8/9.8,
             child: Container(
               decoration: BoxDecoration(
                 image: DecorationImage(
@@ -410,7 +411,7 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
               //   horizontal: 5
               // ),
               child: Center(
-                child: Text(opt.value + opt.value[0],
+                child: Text(opt.value + opt.key,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 25,
@@ -450,11 +451,9 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
         .map((opt) => attempts[opt]).toList();
 
         var attemptsWithKey = max(optionsWithKey[0]!, optionsWithKey[1]!);
-        print("attempts with key $key is $attemptsWithKey");
         sumByKey.add(attemptsWithKey);
       }
 
-      print("SUM IS $sum WHILE WRONG IS $wrong");
       widget.onRoundOver(true, sumByKey, wrong);
     }
   }

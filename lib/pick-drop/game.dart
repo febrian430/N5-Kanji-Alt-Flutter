@@ -195,6 +195,7 @@ class _PickDropState extends State<PickDrop> {
       title: PickDrop.name, 
       japanese: PickDrop.japanese, 
       icon: AppIcons.pickdrop,
+      isGameOver: total == solved,
       game: _buildGame(context), 
       onPause: onPause, 
       onRestart: onRestartFromResult, 

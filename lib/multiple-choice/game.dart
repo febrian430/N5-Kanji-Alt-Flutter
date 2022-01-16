@@ -297,16 +297,17 @@ class _QuizOption extends StatelessWidget {
   }
 
   TextStyle? _getTextStyle(BuildContext buildContext) {
-    if(isSelected) {
-      return const TextStyle(
-        color: Colors.black
-      );
-    }
     if(isOver && correctKey == option.key) {
       return const TextStyle(
         color: Colors.white
       );
     }
+    if(isSelected) {
+      return const TextStyle(
+        color: Colors.black
+      );
+    }
+    
     return const TextStyle(
       color: Colors.black
     );
@@ -314,19 +315,23 @@ class _QuizOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool overAndSelected = isOver && correctKey == option.key;
     final width = MediaQuery.of(context).size.width;
     return TextButton(
       onPressed: () => disabled ? null : onSelect(option),
       child: Container(
         child: Center(
-          child: Text(option.value + '\t' + option.key.toString(), style: _getTextStyle(context),),
+          child: Text(
+            option.value + '\t' + option.key.toString(), 
+            style: _getTextStyle(context),
+          ),
         ),
         width: 0.3*width,
         height: 0.1*width
       ),
       style: TextButton.styleFrom(
         backgroundColor: _getBackgroundColor(context),
-        shape: isOver && correctKey == option.key ? 
+        shape: overAndSelected ? 
         RoundedRectangleBorder(
           side: BorderSide(
             color: AppColors.correct,
