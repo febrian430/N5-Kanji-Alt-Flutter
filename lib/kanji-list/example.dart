@@ -29,7 +29,7 @@ class ExampleContainer extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Text(example.rune),
+                      Text(example.rune, style: TextStyle(fontWeight: FontWeight.bold),),
                       Text('( ${example.spelling.join('')} )'),
                     ],
                   )

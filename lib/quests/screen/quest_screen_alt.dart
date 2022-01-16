@@ -155,7 +155,7 @@ class _QuestWidgetState extends State<QuestMenuWidget> {
               )
             ),
             Flexible(
-              flex: 10,
+              flex: 11,
               child: Container(
                 decoration: BoxDecoration(
                   color: AppColors.primary
@@ -174,7 +174,7 @@ class _QuestWidgetState extends State<QuestMenuWidget> {
                       ),
                     ),
                     Flexible(
-                      flex: 8, 
+                      flex: 16, 
                       child: _QuestList(
                         onClaimQuest: onQuestClaim,
                         index: questIndex,
