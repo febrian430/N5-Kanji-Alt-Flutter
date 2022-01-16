@@ -134,9 +134,12 @@ class _QuizScreenState extends State<QuizScreen> {
     final size = MediaQuery.of(context).size;
     return WillPopScope(
       onWillPop: () async {
-        bool exit = await showConfirmationDialog(context);
-        print("EXIT FROM GAME SCREEN $exit");
-        return exit;
+        if(!widget.isOver){
+          bool exit = await showConfirmationDialog(context);
+          return exit;
+        }
+        Navigator.of(context).popUntil(ModalRoute.withName("/"));
+        return widget.isOver;
       },
       child: QuizBackground(
         child: ScreenLayout(
