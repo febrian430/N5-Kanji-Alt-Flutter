@@ -52,10 +52,17 @@ class ConfirmationDialog extends StatelessWidget {
                         EmptyFlex(flex: 1),
                         Flexible(
                           flex: 4,
-                          child: Text(
-                            "Your progress will not be saved if you exit the game now",
-                            textAlign: TextAlign.center,  
-                          ),
+                          child: LayoutBuilder(
+                            builder: (context, constraints) {
+                              return Container(
+                                width: constraints.maxWidth*.80,
+                                child: Text(
+                                  "Your progress will not be saved if you exit the game now",
+                                  textAlign: TextAlign.center,  
+                                ),
+                              );
+                            }
+                          )
                         )
                       ]
                     )
