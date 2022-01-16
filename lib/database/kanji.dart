@@ -13,6 +13,7 @@ const _columnChapter = "chapter";
 const _columnOnyomi = "onyomi";
 const _columnKunyomi = "kunyomi";
 const _columnMastery = "mastery";
+const _columnStrokeOrder = "stroke_order";
 
 const _tableMastery = "masteries";
 const _columnKanjiId = "kanji_id";
@@ -25,6 +26,7 @@ class Kanji {
   int mastery;
   String onyomi;
   String kunyomi;
+  String strokeOrder;
   // List<String> onyomi = [];
   // List<String> kunyomi = [];
   List<Example> examples = [];
@@ -35,7 +37,8 @@ class Kanji {
       chapter = map[_columnChapter] as int,
       mastery = map[_columnMastery] as int,
       onyomi = map[_columnOnyomi] as String,
-      kunyomi = map[_columnKunyomi] as String;
+      kunyomi = map[_columnKunyomi] as String,
+      strokeOrder = map[_columnStrokeOrder] as String;
   
     // var onyomiDb = map[_columnOnyomi] as String;
     // var kunyomiDb = map[_columnKunyomi] as String;
@@ -52,6 +55,7 @@ class Kanji {
       _columnChapter: chapter,
       _columnOnyomi: onyomi,
       _columnKunyomi: kunyomi,
+      _columnStrokeOrder: strokeOrder
       // _columnOnyomi: onyomi.join("/"),
       // _columnKunyomi: kunyomi.join("/"),
     };
@@ -64,6 +68,7 @@ class Kanji {
         chapter = json['chapter'],
         kunyomi = json['kunyomi'],
         onyomi = json['onyomi'],
+        strokeOrder = json['stroke_order'],
         mastery = 0
   {
     // for (var _kunyomi in json['kunyomi'] as String) {
@@ -98,7 +103,8 @@ class KanjiProvider {
         $_columnRune text not null,
         $_columnChapter int not null,
         $_columnKunyomi text not null,
-        $_columnOnyomi text not null
+        $_columnOnyomi text not null,
+        $_columnStrokeOrder text not null
       )
     ''');
 
@@ -134,7 +140,7 @@ class KanjiProvider {
   FutureOr<void> _read({bool forceRefresh = false}) async {
     if(_kanjis.isEmpty || forceRefresh) {
       var rows = await db.rawQuery(
-          '''SELECT $_columnId, $_columnRune, $_columnChapter, $_columnKunyomi, $_columnOnyomi,
+          '''SELECT $_columnId, $_columnRune, $_columnChapter, $_columnKunyomi, $_columnOnyomi, $_columnStrokeOrder,
           COUNT($_tableMastery.$_columnKanjiId) as $_columnMastery
           from $_tableKanjis left join $_tableMastery on $_tableKanjis.$_columnId = $_tableMastery.$_columnKanjiId
           group by $_tableKanjis.$_columnId

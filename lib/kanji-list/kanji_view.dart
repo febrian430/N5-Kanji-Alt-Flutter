@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:kanji_memory_hint/components/empty_flex.dart';
+import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/database/kanji.dart';
 import 'package:kanji_memory_hint/kanji-list/example.dart';
 import 'package:kanji_memory_hint/kanji-list/parameter.dart';
@@ -140,7 +141,15 @@ class _KanjiWidget extends StatelessWidget {
         EmptyFlex(flex: 1),
         Expanded(
           flex: 8,
-          child: Container(decoration: BoxDecoration(border: Border.all(width: 1)),)
+          child: Container(
+            decoration: BoxDecoration(
+              border: Border.all(width: 1)
+            ),
+            child: Image.asset(
+              STROKE_ORDER_FOLDER+kanji.strokeOrder,
+              fit: BoxFit.contain,
+            ),
+          )
         )
       ],
     );
@@ -148,6 +157,15 @@ class _KanjiWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    kanji.examples.sort((a, b) {
+      if(a.hasImage == b.hasImage) {
+        return 0;
+      } else if(a.hasImage){
+        return -1;
+      } else {
+        return 1;
+      }
+    });
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: 8,
@@ -169,7 +187,8 @@ class _KanjiWidget extends StatelessWidget {
               mainAxisSpacing: 10,
               shrinkWrap: true,
               // physics: const NeverScrollableScrollPhysics(),
-              children: kanji.examples.map((example) => ExampleContainer(example: example)).toList()
+              children: 
+              kanji.examples.map((example) => ExampleContainer(example: example, kanji: kanji,)).toList()
             )
           )
         ],

@@ -25,8 +25,8 @@ class KanjiLayout extends StatelessWidget {
         footer: SizedBox(),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: Container(
-          height: 70,
-          width: 180,
+          height: 80,
+          width: 200,
           child: SelectButton(title: "Kana Chart", onTap: (){
             showDialog(context: context, builder: (context) => KanaDialog());
           },
