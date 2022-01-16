@@ -28,7 +28,7 @@ class GameButtons extends StatelessWidget {
     return Row(
       children: [
         current != 0 ? Expanded(
-          flex: 2,
+          flex: 1,
           child: TextButton(
             onPressed: onPrev,
             child: Image.asset(AppIcons.prev),
@@ -39,11 +39,11 @@ class GameButtons extends StatelessWidget {
           )
         )
         :
-        EmptyFlex(flex: 2),
-
         EmptyFlex(flex: 1),
+
+        // EmptyFlex(flex: 1),
         Expanded(
-          flex: 4,
+          flex: 2,
           child: VisibleButton(
               visible: buttonVisible, 
               onTap: onButtonClick,
@@ -51,9 +51,9 @@ class GameButtons extends StatelessWidget {
             )
         ),
 
-        EmptyFlex(flex: 1),
+        // EmptyFlex(flex: 1),
         current != count-1 ? Expanded(
-          flex: 2,
+          flex: 1,
           child: TextButton(
             onPressed: onNext,
             child: Image.asset(AppIcons.next),
@@ -64,7 +64,7 @@ class GameButtons extends StatelessWidget {
           )
         )
         :
-        EmptyFlex(flex: 2),
+        EmptyFlex(flex: 1),
       ]
     );
   }
