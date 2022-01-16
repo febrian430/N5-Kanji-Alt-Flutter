@@ -117,8 +117,9 @@ class AppHeader extends StatelessWidget {
                       Center(
                         child: Text(
                           title,
+                          textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: 24,
+                            fontSize: 22,
                             fontWeight: FontWeight.bold,
                             color: color
                           ),
@@ -127,6 +128,7 @@ class AppHeader extends StatelessWidget {
                       Center(
                         child: Text(
                           japanese,
+                          textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w500,

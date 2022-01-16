@@ -425,10 +425,12 @@ class _OptionWidget extends StatelessWidget {
             style: TextStyle(
                 color: Colors.black,
                 fontSize: 20,
-              ),
-            )),
-        height: width,
-        width: width,
+                decoration: TextDecoration.none
+            ),
+          )
+        ),
+        height: width+15,
+        width: width+20,
         decoration: BoxDecoration(
           border: Border.all(
             color: Colors.black,

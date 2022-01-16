@@ -22,6 +22,8 @@ class GameScreen extends StatefulWidget {
   final Widget? footer;
   final String icon;
 
+  final bool withHorizontalPadding;
+
   final Function() onPause;
   final Function() onContinue;
   final Function() onRestart;
@@ -48,6 +50,7 @@ class GameScreen extends StatefulWidget {
     this.onPrev, 
     this.onNext, 
     this.footer, 
+    this.withHorizontalPadding = false
   }) : super(key: key);
 
   @override
@@ -150,7 +153,7 @@ class _GameScreenState extends State<GameScreen> {
           ), 
           footer: _footerWithPrevNext(context), 
           child: widget.game,
-          horizontalPadding: false,
+          horizontalPadding: widget.withHorizontalPadding,
           topPadding: true,
           // customTopPadding: size.height*.020,
         )

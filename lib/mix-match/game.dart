@@ -210,6 +210,7 @@ class _MixMatchGameState extends State<MixMatchGame> {
     return GameScreen(
       game: _buildGame(context),
       title: MixMatchGame.name,
+      withHorizontalPadding: true,
       japanese: "ミックスマッチ",
       onRestart: onRestart,
       onContinue: onContinue,
