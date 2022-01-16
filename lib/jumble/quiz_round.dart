@@ -202,8 +202,8 @@ class _JumbleQuizRoundState extends State<JumbleQuizRound> with AutomaticKeepAli
                 child: Column(
                 children: [
                   Expanded(flex: 14, child: QuestionWidget(mode: widget.mode, questionStr: widget.question.value)),
-                  Flexible(flex: 1, child: Text('Answer: ${widget.question.key.join(" ")}')),
-                  // EmptyFlex(flex: 1),
+                  // Flexible(flex: 1, child: Text('Answer: ${widget.question.key.join(" ")}')),
+                  EmptyFlex(flex: 1),
                   Flexible(
                     flex: 2,
                     child: Row(
