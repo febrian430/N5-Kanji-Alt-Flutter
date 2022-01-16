@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:kanji_memory_hint/components/loading_screen.dart';
+import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/database/example.dart';
 import 'package:kanji_memory_hint/database/repository.dart';
 import 'package:kanji_memory_hint/database/user_point.dart';
@@ -14,7 +15,7 @@ class RewardScreen extends StatefulWidget {
   
   static const route = '/rewards';
   static const name = 'Reward';
-  final chapters = [1,2,3];
+  final chapters = USE_CHAPTERS;
 
   RewardScreen({Key? key}) : super(key: key);
 
@@ -34,7 +35,6 @@ class _RewardScreenState extends State<RewardScreen> {
   PageController _controller = PageController(
     viewportFraction: 1,
     initialPage: 0,
-    
   );
 
   @override
@@ -49,7 +49,7 @@ class _RewardScreenState extends State<RewardScreen> {
     final size = MediaQuery.of(context).size;
 
     List<List<Example>> groupedPerChapter = widget.chapters.map((chapter){
-      var examplesOfChapter = examples.where((example) => example.chapter == chapter);
+      var examplesOfChapter = examples.where((example) => example.chapter == chapter && example.hasImage);
       return examplesOfChapter.toList();
     }).toList();
 
@@ -138,7 +138,7 @@ class _RewardScreenState extends State<RewardScreen> {
           }
           return RewardScreenLayout(
             child: screen(context),
-            gold: GoldWidget(gold: gold,)
+            gold: GoldWidget(gold: gold, textAlign: TextAlign.right,)
           );
         }
     ); 
