@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:kanji_memory_hint/components/empty_flex.dart';
 import 'package:kanji_memory_hint/database/kanji.dart';
 import 'package:kanji_memory_hint/kanji-list/example.dart';
 import 'package:kanji_memory_hint/kanji-list/parameter.dart';
@@ -79,7 +80,7 @@ class _KanjiWidget extends StatelessWidget {
     return Column(
       children: [
         Flexible(
-          flex: 4,
+          flex: 16,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -136,8 +137,9 @@ class _KanjiWidget extends StatelessWidget {
             ]
           )
         ),
+        EmptyFlex(flex: 1),
         Expanded(
-          flex: 2,
+          flex: 8,
           child: Container(decoration: BoxDecoration(border: Border.all(width: 1)),)
         )
       ],
@@ -154,11 +156,12 @@ class _KanjiWidget extends StatelessWidget {
       child: Column(
         children: [
           Expanded(
-            flex: 1,
+            flex: 5,
             child: _header(context),
           ),
+          EmptyFlex(flex: 1),
           Expanded(
-            flex: 3,
+            flex: 13,
             child: GridView.count(
               crossAxisCount: 2,
               childAspectRatio: 3/4,

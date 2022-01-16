@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/components/loading_screen.dart';
+import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/database/kanji.dart';
 import 'package:kanji_memory_hint/database/repository.dart';
 import 'package:kanji_memory_hint/kanji-list/parameter.dart';
@@ -14,7 +15,7 @@ class KanjiList extends StatefulWidget {
   KanjiList({Key? key}) : super(key: key);
 
   static const route = "/list";
-  final List<int> chapters = [1,2,3,4,5,6,7,8];
+  final List<int> chapters = USE_CHAPTERS;
   // final List<int> chapters = [1,2,3];
   
   Future<List<Kanji>> _getList() async {

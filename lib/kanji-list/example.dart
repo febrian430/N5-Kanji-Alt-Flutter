@@ -49,7 +49,7 @@ class ExampleContainer extends StatelessWidget {
           ),
           Expanded(
             flex: 1,
-            child: Text(example.meaning),
+            child: Text(example.meaning, textAlign: TextAlign.center,),
           )
         ],
       ),

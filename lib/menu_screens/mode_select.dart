@@ -21,7 +21,7 @@ class ModeSelect extends StatelessWidget {
     PracticeGameArguments param = ModalRoute.of(context)!.settings.arguments as PracticeGameArguments;
 
     Widget screen = Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SelectButton(
