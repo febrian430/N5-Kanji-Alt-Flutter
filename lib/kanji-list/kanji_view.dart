@@ -23,7 +23,7 @@ class KanjiView extends StatelessWidget {
       child: PageView.builder(
         controller: PageController(
           initialPage: index,
-          viewportFraction: 0.7
+          viewportFraction: 0.8
         ),
         itemCount: kanjis.length,
         itemBuilder: (context, index) {
