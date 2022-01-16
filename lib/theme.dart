@@ -19,6 +19,7 @@ class AppColors {
   static final Color darkGreen = HexColor.fromHex("4DB784");
   static final Color bought = HexColor.fromHex("4BA76A");
   static final Color cream = HexColor.fromHex("DDD2B5");
+  static final Color blue = HexColor.fromHex("4081BD");
 }
 
 class AppBackgrounds {

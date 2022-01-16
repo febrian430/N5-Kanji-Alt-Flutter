@@ -189,7 +189,7 @@
 		"kunyomi": "ひ",
 		"onyomi": "カ",
 		"id": 24,
-		"stroke_order": "test.png"
+		"stroke_order": "火.png"
 	},
 	{
 		"rune": "水",
@@ -197,7 +197,7 @@
 		"kunyomi": "みず",
 		"onyomi": "スイ",
 		"id": 25,
-		"stroke_order": "test.png"
+		"stroke_order": "水.png"
 	},
 	{
 		"rune": "金",
@@ -205,7 +205,7 @@
 		"kunyomi": "かね",
 		"onyomi": "キン",
 		"id": 26,
-		"stroke_order": "test.png"
+		"stroke_order": "金.png"
 	},
 	{
 		"rune": "土",
@@ -213,7 +213,7 @@
 		"kunyomi": "つち",
 		"onyomi": "ド",
 		"id": 27,
-		"stroke_order": "test.png"
+		"stroke_order": "土.png"
 	},
 	{
 		"rune": "女",

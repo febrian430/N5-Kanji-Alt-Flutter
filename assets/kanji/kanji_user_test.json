@@ -1,240 +1,242 @@
 [
 	{
-		"rune": "一",
-		"chapter": 1,
-		"kunyomi": "ひと-つ/ひと",
-		"onyomi": "イチ",
-		"id": 1
-	},
-	{
-		"rune": "二",
-		"chapter": 1,
-		"kunyomi": "ふた-つ/ふた",
-		"onyomi": "ニ",
-		"id": 2
-	},
-	{
-		"rune": "三",
-		"chapter": 1,
-		"kunyomi": "みっ-つ",
-		"onyomi": "サン",
-		"id": 3
-	},
-	{
-		"rune": "四",
-		"chapter": 1,
-		"kunyomi": "よっ-つ/よん/よ",
-		"onyomi": "シ",
-		"id": 4
-	},
-	{
-		"rune": "五",
-		"chapter": 1,
-		"kunyomi": "いつ-つ/いつ",
-		"onyomi": "ゴ",
-		"id": 5
-	},
-	{
-		"rune": "六",
-		"chapter": 1,
-		"kunyomi": "むっ-つ",
-		"onyomi": "ロク",
-		"id": 6
-	},
-	{
-		"rune": "七",
-		"chapter": 1,
-		"kunyomi": "なな-つ/なな",
-		"onyomi": "シチ",
-		"id": 7
-	},
-	{
-		"rune": "八",
-		"chapter": 1,
-		"kunyomi": "やっ-つ",
-		"onyomi": "ハチ",
-		"id": 8
-	},
-	{
-		"rune": "九",
-		"chapter": 1,
-		"kunyomi": "ここの-つ/ここの",
-		"onyomi": "ク/キュウ",
-		"id": 9
-	},
-	{
-		"rune": "十",
-		"chapter": 1,
-		"kunyomi": "とう",
-		"onyomi": "ジュウ",
-		"id": 10
-	},
-	{
-		"rune": "百",
-		"chapter": 1,
-		"kunyomi": "ー",
-		"onyomi": "ヒャク/-ビャク/-ピャク",
-		"id": 11
-	},
-	{
-		"rune": "千",
-		"chapter": 1,
-		"kunyomi": "ち",
-		"onyomi": "セン/-ゼン",
-		"id": 12
-	},
-	{
-		"rune": "万",
-		"chapter": 1,
-		"kunyomi": "ー",
-		"onyomi": "マン",
-		"id": 13
-	},
-	{
-		"rune": "年",
-		"chapter": 1,
-		"kunyomi": "とし",
-		"onyomi": "ネン",
-		"id": 14
-	},
-	{
-		"rune": "日",
-		"chapter": 2,
-		"kunyomi": "ひ/-び",
-		"onyomi": "ニチ/ニ",
-		"id": 15
-	},
-	{
-		"rune": "月",
-		"chapter": 2,
-		"kunyomi": "つき",
-		"onyomi": "ゲツ/ガツ",
-		"id": 16
-	},
-	{
-		"rune": "木",
-		"chapter": 2,
-		"kunyomi": "き",
-		"onyomi": "モク（ボク）",
-		"id": 17
-	},
-	{
-		"rune": "山",
-		"chapter": 2,
-		"kunyomi": "やま",
-		"onyomi": "サン/-ザン",
-		"id": 18
-	},
-	{
-		"rune": "川",
-		"chapter": 2,
-		"kunyomi": "かわ/-がわ",
-		"onyomi": "（セン）",
-		"id": 19
-	},
-	{
-		"rune": "田",
-		"chapter": 2,
-		"kunyomi": "た/-だ",
-		"onyomi": "デン",
-		"id": 20
-	},
-	{
-		"rune": "人",
-		"chapter": 2,
-		"kunyomi": "ひと",
-		"onyomi": "ジン/ニン",
-		"id": 21
-	},
-	{
-		"rune": "口",
-		"chapter": 2,
-		"kunyomi": "くち/-ぐち",
-		"onyomi": "コウ",
-		"id": 22
-	},
-	{
-		"rune": "車",
-		"chapter": 2,
-		"kunyomi": "くるま",
-		"onyomi": "シャ",
-		"id": 23
-	},
-	{
-		"rune": "門",
-		"chapter": 2,
-		"kunyomi": "（かど）",
-		"onyomi": "モン",
-		"id": 24
-	},
-	{
 		"rune": "火",
 		"chapter": 3,
 		"kunyomi": "ひ",
 		"onyomi": "カ",
-		"id": 25
+		"id": 24,
+		"stroke_order": "test.png"
 	},
 	{
 		"rune": "水",
 		"chapter": 3,
 		"kunyomi": "みず",
 		"onyomi": "スイ",
-		"id": 26
+		"id": 25,
+		"stroke_order": "test.png"
 	},
 	{
 		"rune": "金",
 		"chapter": 3,
 		"kunyomi": "かね",
 		"onyomi": "キン",
-		"id": 27
+		"id": 26,
+		"stroke_order": "Uang.png"
 	},
 	{
 		"rune": "土",
 		"chapter": 3,
 		"kunyomi": "つち",
 		"onyomi": "ド",
-		"id": 28
+		"id": 27,
+		"stroke_order": "test.png"
 	},
 	{
 		"rune": "女",
 		"chapter": 3,
 		"kunyomi": "おんな",
 		"onyomi": "ジョ",
-		"id": 29
+		"id": 28,
+		"stroke_order": "test.png"
 	},
 	{
 		"rune": "子",
 		"chapter": 3,
 		"kunyomi": "こ",
 		"onyomi": "シ",
-		"id": 30
+		"id": 29,
+		"stroke_order": "test.png"
 	},
 	{
 		"rune": "学",
 		"chapter": 3,
 		"kunyomi": "まな-ぶ",
 		"onyomi": "ガク/ガッ-",
-		"id": 31
+		"id": 30,
+		"stroke_order": "test.png"
 	},
 	{
 		"rune": "生",
 		"chapter": 3,
 		"kunyomi": "い-きる/う-まれる",
 		"onyomi": "セイ",
-		"id": 32
+		"id": 31,
+		"stroke_order": "test.png"
 	},
 	{
 		"rune": "先",
 		"chapter": 3,
 		"kunyomi": "さき",
 		"onyomi": "セン",
-		"id": 33
+		"id": 32,
+		"stroke_order": "test.png"
 	},
 	{
 		"rune": "私",
 		"chapter": 3,
 		"kunyomi": "わたし/わたくし",
 		"onyomi": "し",
-		"id": 34
+		"id": 33,
+		"stroke_order": "test.png"
+	},
+	{
+		"rune": "上",
+		"chapter": 4,
+		"kunyomi": "うえ/あ-がる/あ-げう",
+		"onyomi": "ジョウ",
+		"id": 34,
+		"stroke_order": "test.png"
+	},
+	{
+		"rune": "下",
+		"chapter": 4,
+		"kunyomi": "した/さ-がる/さ-げる",
+		"onyomi": "カ/ゲ",
+		"id": 35,
+		"stroke_order": "test.png"
+	},
+	{
+		"rune": "中",
+		"chapter": 4,
+		"kunyomi": "なか",
+		"onyomi": "チュウ/-ジュウ",
+		"id": 36,
+		"stroke_order": "test.png"
+	},
+	{
+		"rune": "大",
+		"chapter": 4,
+		"kunyomi": "おお-きい",
+		"onyomi": "ダイ/タイ",
+		"id": 37,
+		"stroke_order": "test.png"
+	},
+	{
+		"rune": "小",
+		"chapter": 4,
+		"kunyomi": "ちい-さい/こ/お",
+		"onyomi": "ジョウ",
+		"id": 38,
+		"stroke_order": "test.png"
+	},
+	{
+		"rune": "本",
+		"chapter": 4,
+		"kunyomi": "もと",
+		"onyomi": "ホン",
+		"id": 39,
+		"stroke_order": "test.png"
+	},
+	{
+		"rune": "半",
+		"chapter": 4,
+		"kunyomi": "（なか-ば）",
+		"onyomi": "ハン",
+		"id": 40,
+		"stroke_order": "test.png"
+	},
+	{
+		"rune": "分",
+		"chapter": 4,
+		"kunyomi": "わ-かる/わ-ける",
+		"onyomi": "ブン/フン/-プン",
+		"id": 41,
+		"stroke_order": "test.png"
+	},
+	{
+		"rune": "力",
+		"chapter": 4,
+		"kunyomi": "ちから",
+		"onyomi": "リョク/リキ",
+		"id": 42,
+		"stroke_order": "test.png"
+	},
+	{
+		"rune": "何",
+		"chapter": 4,
+		"kunyomi": "なに/なん",
+		"onyomi": "ー",
+		"id": 43,
+		"stroke_order": "test.png"
+	},
+	{
+		"rune": "明",
+		"chapter": 5,
+		"kunyomi": "あか-るい",
+		"onyomi": "メイ",
+		"id": 44,
+		"stroke_order": "test.png"
+	},
+	{
+		"rune": "休",
+		"chapter": 5,
+		"kunyomi": "やす-む",
+		"onyomi": "キュウ",
+		"id": 45,
+		"stroke_order": "test.png"
+	},
+	{
+		"rune": "体",
+		"chapter": 5,
+		"kunyomi": "からだ",
+		"onyomi": "タイ",
+		"id": 46,
+		"stroke_order": "test.png"
+	},
+	{
+		"rune": "好",
+		"chapter": 5,
+		"kunyomi": "す-きな",
+		"onyomi": "ー",
+		"id": 47,
+		"stroke_order": "test.png"
+	},
+	{
+		"rune": "林",
+		"chapter": 5,
+		"kunyomi": "はやし",
+		"onyomi": "リン",
+		"id": 48,
+		"stroke_order": "test.png"
+	},
+	{
+		"rune": "森",
+		"chapter": 5,
+		"kunyomi": "もり",
+		"onyomi": "シン",
+		"id": 49,
+		"stroke_order": "test.png"
+	},
+	{
+		"rune": "男",
+		"chapter": 5,
+		"kunyomi": "おとこ",
+		"onyomi": "ダン/ナン",
+		"id": 50,
+		"stroke_order": "test.png"
+	},
+	{
+		"rune": "間",
+		"chapter": 5,
+		"kunyomi": "あいだ/ま",
+		"onyomi": "カン",
+		"id": 51,
+		"stroke_order": "test.png"
+	},
+	{
+		"rune": "校",
+		"chapter": 5,
+		"kunyomi": "ー",
+		"onyomi": "コウ",
+		"id": 52,
+		"stroke_order": "test.png"
+	},
+	{
+		"rune": "国",
+		"chapter": 5,
+		"kunyomi": "くに",
+		"onyomi": "コク",
+		"id": 53,
+		"stroke_order": "test.png"
 	}
 ]

@@ -138,19 +138,7 @@ class _KanjiWidget extends StatelessWidget {
             ]
           )
         ),
-        EmptyFlex(flex: 1),
-        Expanded(
-          flex: 8,
-          child: Container(
-            decoration: BoxDecoration(
-              border: Border.all(width: 1)
-            ),
-            child: Image.asset(
-              STROKE_ORDER_FOLDER+kanji.strokeOrder,
-              fit: BoxFit.contain,
-            ),
-          )
-        )
+        EmptyFlex(flex: 5)
       ],
     );
   }
@@ -174,9 +162,26 @@ class _KanjiWidget extends StatelessWidget {
       child: Column(
         children: [
           Expanded(
-            flex: 5,
+            flex: 4,
             child: _header(context),
           ),
+          Expanded(
+          flex: 3,
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              return Container(
+                // decoration: BoxDecoration(
+                //   border: Border.all(width: 1)
+                // ),
+                width: constraints.maxWidth,
+                child: Image.asset(
+                  STROKE_ORDER_FOLDER+kanji.strokeOrder,
+                  fit: BoxFit.contain,
+                ),
+              );
+            }
+          )
+        ),
           EmptyFlex(flex: 1),
           Expanded(
             flex: 13,
