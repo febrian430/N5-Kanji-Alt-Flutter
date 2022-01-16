@@ -38,11 +38,11 @@ class ScreenLayout extends StatelessWidget {
       floatingActionButtonLocation: floatingActionButtonLocation,
       body: SafeArea(
         child: Container(
-          decoration: BoxDecoration(
-            border: Border.all(
-              width: 1
-            )
-          ),
+          // decoration: BoxDecoration(
+          //   border: Border.all(
+          //     width: 1
+          //   )
+          // ),
           padding: EdgeInsets.only(
             top: topPadding ? (customTopPadding ?? size.height*.045) : 0,
             bottom: bottomPadding ? (customBottomPadding ?? size.height*.045) : 0,

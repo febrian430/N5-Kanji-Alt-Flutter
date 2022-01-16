@@ -4,6 +4,7 @@ import 'package:kanji_memory_hint/components/backgrounds/menu_background.dart';
 import 'package:kanji_memory_hint/components/backgrounds/practice_background.dart';
 import 'package:kanji_memory_hint/components/buttons/icon_button.dart';
 import 'package:kanji_memory_hint/components/dialogs/reminder.dart';
+import 'package:kanji_memory_hint/components/empty_flex.dart';
 import 'package:kanji_memory_hint/components/level_widget.dart';
 import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/components/progress_bar.dart';
@@ -30,69 +31,74 @@ class ResultScreen extends StatelessWidget{
   }
 
   Widget _rowOfButtons(BuildContext context, Function() onRestart) {
-    return Padding(
-      padding: EdgeInsets.all(6),
-      child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Flexible(
-            flex: 1,
-            child:Padding(
-              padding: EdgeInsets.symmetric(horizontal: 6),
-              child:  AppIconButton(
-                onTap: onRestart, 
-                iconPath: AppIcons.retry, 
-                height: 50, 
-                width: 50, 
-                backgroundColor: AppColors.primary
-            ),
-          ),
-        ),
-        Flexible(
-            flex: 1,
-            child:Padding(
-              padding: EdgeInsets.symmetric(horizontal: 6),
-              child: AppIconButton(
-                onTap: (){Navigator.of(context).pop();}, 
-                iconPath: AppIcons.viewResult, 
-                height: 50, 
-                width: 50, 
-                backgroundColor: AppColors.primary
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return Container(
+          width: constraints.maxWidth*.9,
+          padding: EdgeInsets.only(top: 5),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Flexible(
+                  flex: 1,
+                  child:Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 3),
+                    child:  AppIconButton(
+                      onTap: onRestart, 
+                      iconPath: AppIcons.retry, 
+                      height: 50, 
+                      width: 50, 
+                      backgroundColor: AppColors.primary
+                  ),
+                ),
               ),
-            ),
-        ),
-        Flexible(
-            flex: 1,
-            child:Padding(
-              padding: EdgeInsets.symmetric(horizontal: 6),
-              child: AppIconButton(
-                onTap: (){
-                  showDialog(context: context, builder: (context){
-                    return ReminderDialog();
-                  });
-                }, 
-                iconPath: AppIcons.reminderSmall, 
-                height: 50, 
-                width: 50, 
-                backgroundColor: AppColors.primary
-            ),
-          ),
-        ),
-        Flexible(
-            flex: 1,
-            child:Padding(
-              padding: EdgeInsets.symmetric(horizontal: 6),
-              child: AppIconButton(
-                onTap: (){Navigator.of(context).popUntil(ModalRoute.withName("/"));}, 
-                iconPath: AppIcons.home, 
-                height: 50, 
-                width: 50, 
-                backgroundColor: AppColors.wrong
-            )
-          ),
-        ),
-      ],
-      )
+              Flexible(
+                  flex: 1,
+                  child:Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 3),
+                    child: AppIconButton(
+                      onTap: (){Navigator.of(context).pop();}, 
+                      iconPath: AppIcons.viewResult, 
+                      height: 50, 
+                      width: 50, 
+                      backgroundColor: AppColors.primary
+                    ),
+                  ),
+              ),
+              Flexible(
+                  flex: 1,
+                  child:Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 3),
+                    child: AppIconButton(
+                      onTap: (){
+                        showDialog(context: context, builder: (context){
+                          return ReminderDialog();
+                        });
+                      }, 
+                      iconPath: AppIcons.reminderSmall, 
+                      height: 50, 
+                      width: 50, 
+                      backgroundColor: AppColors.primary
+                  ),
+                ),
+              ),
+              Flexible(
+                  flex: 1,
+                  child:Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 3),
+                    child: AppIconButton(
+                      onTap: (){Navigator.of(context).popUntil(ModalRoute.withName("/"));}, 
+                      iconPath: AppIcons.home, 
+                      height: 50, 
+                      width: 50, 
+                      backgroundColor: AppColors.wrong
+                  )
+                ),
+              ),
+            ],
+          )
+        );
+      }
     );
   }
 
@@ -120,7 +126,7 @@ class ResultScreen extends StatelessWidget{
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Expanded(flex: 2, child: Center(child: Text("やった!", style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold)))),
+                Expanded(flex: 2, child: Center(child: Text("やった!", style: TextStyle(fontSize: 44, fontWeight: FontWeight.bold)))),
                 Expanded(flex: 8, child: _DetailWidget(param: param, stopwatch: stopwatch)),
                 Flexible(flex: 2, child: _rowOfButtons(context, param.onRestart))
               ]
@@ -154,8 +160,9 @@ class _DetailWidget extends StatelessWidget {
     return Column(
       children: [
         Expanded(
-          flex: 4,
+          flex: 6,
           child: RichText(
+
             text: TextSpan(
               style: new TextStyle(
                 fontSize: 14.0,
@@ -167,17 +174,19 @@ class _DetailWidget extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 70,
                     color: AppColors.secondary
-                    
                   ),
                 ),
-                TextSpan(text: 'pts', style: TextStyle(fontWeight: FontWeight.bold)),
+                TextSpan(
+                  text: 'pts', 
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
               ],
             ),
           ),
         ),
         
         Expanded(
-          flex: 1,
+          flex: 2,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -191,9 +200,9 @@ class _DetailWidget extends StatelessWidget {
             ]
           )
         ),
-       
+        EmptyFlex(flex: 1),
         Expanded(
-          flex: 4,
+          flex: 8,
           child: Column(
             children: [
               Text(
@@ -203,7 +212,8 @@ class _DetailWidget extends StatelessWidget {
                   // fontSize: 18
                 )
               ),
-              SizedBox( 
+              SizedBox(height: 5,),
+              SizedBox(
                 width: 50,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -248,8 +258,16 @@ class _DetailWidget extends StatelessWidget {
         ),
     
         Expanded(
-          flex: 5,
-          child: LevelWidget(increase: param.result.expGained,)
+          flex: 10,
+          child: LayoutBuilder(
+            builder:(context, constraints) { 
+              return LevelWidget(
+                increase: param.result.expGained,
+                width: constraints.maxWidth*.9,
+                height: constraints.maxWidth*.1,
+              );
+            }
+          )
         )
         
       ],

@@ -256,6 +256,7 @@ class _QuizState extends State<Quiz> {
             onRestart: onRestart,
             onViewResult: _goMultipleChoice,
             countdown: _countdown,
+            animate: isOver,
             multipleChoice: QuizGameParam(
               result: multipleChoiceScore, 
               goHere: _goMultipleChoice

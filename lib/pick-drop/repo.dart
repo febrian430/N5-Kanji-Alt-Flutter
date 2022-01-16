@@ -6,7 +6,7 @@ import 'package:kanji_memory_hint/models/question_set.dart';
 
 class PickDropQuestionMaker {
   static Future<List<QuestionSet>> makeQuestionSet(int n, int chapter, GAME_MODE mode) async {
-    var kanjis = await SQLRepo.gameQuestions.byChapterForQuestion(chapter, n, 1/2, false);
+    var kanjis = await SQLRepo.gameQuestions.byChapterForQuestion(chapter, n, 1/2, false, mode);
     List<QuestionSet> questionSets = [];
     var optionKanjis = await SQLRepo.gameQuestions.byChapter(chapter);
 

@@ -8,13 +8,13 @@ import 'package:kanji_memory_hint/map_indexed.dart';
 
 class MultipleChoiceQuestionMaker {
   static Future<List<QuestionSet>> makeQuestionSet(int n, int chapter, GAME_MODE mode) async {
-    var kanjis = await SQLRepo.gameQuestions.byChapterForQuestion(chapter, n, 1/2, false);
+    var kanjis = await SQLRepo.gameQuestions.byChapterForQuestion(chapter, n, 1/2, false, mode);
 
     return _makeQuestionSetsFrom(kanjis, mode);
   }
 
   static Future<List<QuizQuestionSet>> makeQuizQuestionSet(int n, int chapter, GAME_MODE mode) async {
-    var examples = await SQLRepo.gameQuestions.byChapterForQuestion(chapter, n, 1/2, true);
+    var examples = await SQLRepo.gameQuestions.byChapterForQuestion(chapter, n, 1/2, true, mode);
 
     List<List<int>> fromKanjiIds = examples.map((e) => e.exampleOf).toList();
 
@@ -29,14 +29,15 @@ class MultipleChoiceQuestionMaker {
   }
 
   static Future<List<QuestionSet>> _makeQuestionSetsFrom(List<Example> kanjis, GAME_MODE mode) async {
+    var exampleOptions = await SQLRepo.gameQuestions.byChapter(kanjis[0].chapter);
     List<QuestionSet> questionSets = [];
     for (var i = 0; i < kanjis.length; i++) {
-      questionSets.add(await _makeQuestionSet(kanjis[i], mode));
+      questionSets.add(await _makeQuestionSet(kanjis[i], mode, exampleOptions));
     }
     return questionSets;
   }
 
-  static Future<QuestionSet> _makeQuestionSet(Example kanji, GAME_MODE mode) async {
+  static Future<QuestionSet> _makeQuestionSet(Example kanji, GAME_MODE mode, List<Example> exampleOptions) async {
     Question question;
     List<Option> options;
     if(mode == GAME_MODE.imageMeaning){
@@ -44,16 +45,15 @@ class MultipleChoiceQuestionMaker {
     } else {
       question = Question(key: kanji.id.toString(), isImage: false, value: kanji.rune);
     }
-    options = await _findOptionsFor(kanji, mode);
+    options = await _findOptionsFor(kanji, mode, exampleOptions);
 
     return QuestionSet(question: question, options: options);
   }
 
-  static Future<List<Option>> _findOptionsFor(Example question, GAME_MODE mode) async {
+  static Future<List<Option>> _findOptionsFor(Example question, GAME_MODE mode, List<Example> exampleOptions) async {
     List<Option> options;
 
-    var kanjis = await SQLRepo.gameQuestions.random(n: 5, startChapter: question.chapter-1, endChapter: question.chapter+1);
-    var otherOptions = kanjis.where((kanji) => kanji.id != question.id).toList();
+    var otherOptions = exampleOptions.where((kanji) => kanji.id != question.id).toList();
     otherOptions.shuffle();
     otherOptions = otherOptions.take(3).toList();
     if(mode == GAME_MODE.imageMeaning) {

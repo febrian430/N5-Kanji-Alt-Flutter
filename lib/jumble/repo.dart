@@ -13,13 +13,13 @@ const TOTAL_OPTIONS = 8;
 
 class JumbleQuestionMaker {
   static Future<List<JumbleQuestionSet>> makeQuestionSet(int n, int chapter, GAME_MODE mode) async {
-    var examples = await SQLRepo.gameQuestions.byChapterForQuestion(chapter, n, 1/2, false);
+    var examples = await SQLRepo.gameQuestions.byChapterForQuestion(chapter, n, 1/2, false, mode);
 
     return _build(examples, mode);
   }
 
   static Future<List<JumbleQuizQuestionSet>> makeQuizQuestionSet(int n, int chapter, GAME_MODE mode) async {
-    var examples = await SQLRepo.gameQuestions.byChapterForQuestion(chapter, n, 1/2, false);
+    var examples = await SQLRepo.gameQuestions.byChapterForQuestion(chapter, n, 1/2, true, mode);
     List<List<int>> fromKanji = examples.map((e) => e.exampleOf).toList();
 
     var basicQuestionSet = await _build(examples, mode);

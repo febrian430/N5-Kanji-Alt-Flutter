@@ -11,12 +11,14 @@ class ProgressBar extends StatefulWidget {
     required this.upperbound, 
     required this.nextUpperbound, 
     required this.onLevelup, 
+    this.animate = true
   }) : super(key: key);
   
   final int current;
   final int gain;
   final int upperbound;
   final int? nextUpperbound; 
+  final bool animate;
 
   final Function() onLevelup;
 
@@ -39,7 +41,9 @@ class _ProgressBarState extends State<ProgressBar>
         
       });
     });
-    animate();
+    if(widget.animate){
+      animate();
+    } 
     super.initState();
   }
 

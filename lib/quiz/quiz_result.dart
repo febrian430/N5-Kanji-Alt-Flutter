@@ -29,90 +29,91 @@ class QuizJumbleGameParam {
 }
 
 class QuizResult extends StatelessWidget {
-  const QuizResult({Key? key, required this.multipleChoice, required this.jumble, required this.onRestart, required this.onViewResult, required this.countdown}) : super(key: key);
+  const QuizResult({
+    Key? key, 
+    required this.multipleChoice, 
+    required this.jumble, 
+    required this.onRestart, 
+    required this.onViewResult, 
+    required this.countdown,
+    required this.animate
+  }) : super(key: key);
   final Function() onRestart;
   final Function() onViewResult;
   final QuizGameParam multipleChoice;
   final QuizJumbleGameParam jumble;
   final Countdown countdown;
-
-  Widget _header() {
-    return const SizedBox(
-      child: Center(
-        child: Text(
-          "Result",
-          style: TextStyle(
-            fontSize: 40,
-          ),
-        ),
-      ),
-    );
-  }
+  final bool animate;
 
   Widget _rowOfButtons(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(6),
-      child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Flexible(
-            flex: 1,
-            child:Padding(
-              padding: EdgeInsets.symmetric(horizontal: 6),
-              child:  AppIconButton(
-                onTap: onRestart, 
-                iconPath: AppIcons.retry, 
-                height: 50, 
-                width: 50, 
-                backgroundColor: AppColors.primary
-            ),
-          ),
-        ),
-        Flexible(
-            flex: 1,
-            child:Padding(
-              padding: EdgeInsets.symmetric(horizontal: 6),
-              child: AppIconButton(
-                onTap: onViewResult, 
-                iconPath: AppIcons.viewResult, 
-                height: 50, 
-                width: 50, 
-                backgroundColor: AppColors.primary
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return Container(
+          padding: EdgeInsets.only(top: 5),
+          width: constraints.maxWidth*.9,
+          child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Flexible(
+                flex: 1,
+                child:Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 3),
+                  child:  AppIconButton(
+                    onTap: onRestart, 
+                    iconPath: AppIcons.retry, 
+                    height: 50, 
+                    width: 50, 
+                    backgroundColor: AppColors.primary
+                ),
               ),
             ),
-        ),
-        Flexible(
-            flex: 1,
-            child:Padding(
-              padding: EdgeInsets.symmetric(horizontal: 6),
-              child: AppIconButton(
-                onTap: (){
-                  showDialog(context: context, builder: (context){
-                    return ReminderDialog();
-                  });
-                }, 
-                iconPath: AppIcons.reminderSmall, 
-                height: 50, 
-                width: 50, 
-                backgroundColor: AppColors.primary
+            Flexible(
+                flex: 1,
+                child:Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 3),
+                  child: AppIconButton(
+                    onTap: onViewResult, 
+                    iconPath: AppIcons.viewResult, 
+                    height: 50, 
+                    width: 50, 
+                    backgroundColor: AppColors.primary
+                  ),
+                ),
             ),
-          ),
-        ),
-        Flexible(
-            flex: 1,
-            child:Padding(
-              padding: EdgeInsets.symmetric(horizontal: 6),
-              child: AppIconButton(
-                  onTap: (){Navigator.of(context).popUntil(ModalRoute.withName("/"));}, 
-                  iconPath: AppIcons.home, 
-                  height: 50, 
-                  width: 50, 
-                  backgroundColor: AppColors.wrong
-            )
-          ),
-        ),
-      ],
-      )
+            Flexible(
+                flex: 1,
+                child:Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 3),
+                  child: AppIconButton(
+                    onTap: (){
+                      showDialog(context: context, builder: (context){
+                        return ReminderDialog();
+                      });
+                    }, 
+                    iconPath: AppIcons.reminderSmall, 
+                    height: 50, 
+                    width: 50, 
+                    backgroundColor: AppColors.primary
+                ),
+              ),
+            ),
+            Flexible(
+                flex: 1,
+                child:Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 3),
+                  child: AppIconButton(
+                      onTap: (){Navigator.of(context).popUntil(ModalRoute.withName("/"));}, 
+                      iconPath: AppIcons.home, 
+                      height: 50, 
+                      width: 50, 
+                      backgroundColor: AppColors.wrong
+                )
+              ),
+            ),
+          ],
+        )
+        );
+      }
     );
   }
 
@@ -147,7 +148,8 @@ class QuizResult extends StatelessWidget {
                     jumble: jumble,
                     multipleChoice: multipleChoice, 
                     countdown: countdown,
-                    gains: result
+                    gains: result,
+                    animate: animate,
                   )
                 ),
                 Flexible(flex: 2, child: _rowOfButtons(context))
@@ -227,15 +229,23 @@ class _DetailWidget extends StatelessWidget {
   final QuizJumbleGameParam jumble;
   final GameResult gains;
   final Countdown countdown;
+  final bool animate;
 
-  const _DetailWidget({Key? key, required this.countdown, required this.multipleChoice, required this.jumble, required this.gains}) : super(key: key);
+  const _DetailWidget({
+    Key? key, 
+    required this.countdown, 
+    required this.multipleChoice, 
+    required this.jumble, 
+    required this.gains, 
+    this.animate = false
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Expanded(
-          flex: 4,
+          flex: 6,
           child: RichText(
             text: TextSpan(
               style: new TextStyle(
@@ -260,18 +270,18 @@ class _DetailWidget extends StatelessWidget {
         ),
         
         Expanded(
-          flex: 1,
+          flex: 2,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Expanded(flex: 1, child: Image.asset(AppIcons.time, height: 25, width: 25, fit: BoxFit.contain,),),
+              Expanded(flex: 1, child: Image.asset(AppIcons.time, height: 20, width: 20, fit: BoxFit.contain,),),
               Flexible(flex: 3, child: Text(humanize(countdown.elapsed()))),
             ]
           )
         ),
-
+        EmptyFlex(flex: 1),
         Expanded(
-          flex: 4,
+          flex: 8,
           child: Container(
           // width: 200,
             padding: EdgeInsets.only(top: 2),
@@ -281,7 +291,7 @@ class _DetailWidget extends StatelessWidget {
               children: [
                 EmptyFlex(flex: 1),
                 Expanded(
-                  flex: 3,
+                  flex: 5,
                   child: _GameScoreWidget(
                     game: "Multiple Choice", 
                     correct: multipleChoice.result.correct,
@@ -289,7 +299,7 @@ class _DetailWidget extends StatelessWidget {
                   )
                 ),
                 Expanded(
-                  flex: 3,
+                  flex: 5,
                   child: _GameScoreWidget(
                     game: "Jumble", 
                     correct: jumble.result.correct,
@@ -304,7 +314,19 @@ class _DetailWidget extends StatelessWidget {
           )
         ),
 
-        Expanded(flex: 5, child: LevelWidget(increase: gains.expGained))
+        Expanded(
+          flex: 8, 
+          child: LayoutBuilder(
+            builder:(context, constraints) { 
+              return LevelWidget(
+                increase: gains.expGained,
+                animate: animate,
+                width: constraints.maxWidth*.9,
+                height: constraints.maxWidth*.1,
+              );
+            }
+          )
+        )
       ],
     );
   }
@@ -323,17 +345,18 @@ class _GameScoreWidget extends StatelessWidget {
 
     return Column(
       children: [
-        Text(
-          game,
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.bold
+        Flexible(
+          child: Text(
+            game,
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.bold
+            ),
           ),
         ),
-        SizedBox( 
-          width: 50,
+        Flexible( 
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Image.asset(
                 AppIcons.check,
@@ -349,6 +372,25 @@ class _GameScoreWidget extends StatelessWidget {
             ],
           )
         ),
+        Flexible(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Image.asset(
+                AppIcons.wrong,
+                height: 30,
+                width: 30,
+              ),
+              Text(
+                miss.toString(),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18
+                ),
+              )
+            ],
+          )
+        )
         // hits == null ? SizedBox() :
         // SizedBox(
         //   width: 50,
@@ -371,26 +413,7 @@ class _GameScoreWidget extends StatelessWidget {
         //   )
         // )
         // ,
-        SizedBox(
-          width: 50,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Image.asset(
-                AppIcons.wrong,
-                height: 30,
-                width: 30,
-              ),
-              Text(
-                miss.toString(),
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18
-                ),
-              )
-            ],
-          )
-        )
+        
       ]
     );
   }
