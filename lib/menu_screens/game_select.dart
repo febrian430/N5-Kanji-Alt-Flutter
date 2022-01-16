@@ -25,6 +25,7 @@ class GameSelect extends StatelessWidget {
     //     child: 
     Widget screen = Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Center(
                 child: SelectButton(

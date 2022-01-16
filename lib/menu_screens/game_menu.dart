@@ -49,7 +49,7 @@ class GameMenu extends StatelessWidget {
         japanese: japanese,
         withBack: true,
       ), 
-      footer: footer ?? null, 
+      footer: footer ?? EmptyWidget, 
       child: child,
       bottomPadding: withBottomPadding,
     );
