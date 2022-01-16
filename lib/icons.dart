@@ -37,4 +37,6 @@ class AppIcons {
   static const time = APP_IMAGE_FOLDER + 'time.png';
 
   static const tutorial = APP_IMAGE_FOLDER + 'tutorial.png';
+
+  static const mastery = APP_IMAGE_FOLDER + 'mastery.png';
 }

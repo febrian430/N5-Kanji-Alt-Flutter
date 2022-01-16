@@ -4,6 +4,7 @@ import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/database/kanji.dart';
 import 'package:kanji_memory_hint/database/repository.dart';
+import 'package:kanji_memory_hint/icons.dart';
 import 'package:kanji_memory_hint/kanji-list/parameter.dart';
 import 'package:kanji_memory_hint/kanji-list/tile_alt.dart';
 import 'package:kanji_memory_hint/menu_screens/menu.dart';
@@ -42,24 +43,56 @@ class _MenuState extends State<KanjiList> {
   }
 
   Widget buildKanji(BuildContext context, List<Kanji> kanjis, int index) {
+    var mastered = kanjis[index].mastery >= 5;
     return Container(
         decoration: BoxDecoration(
           border: Border.all(
             width: 1
           )
         ),
-        child: TextButton(
-          child: Text(
-            kanjis[index].rune,
-            style: TextStyle(
-              color: Colors.black
-            ),
-          ),
-          onPressed: () {
-            Navigator.of(context).pushNamed("/list/view",
-              arguments: KanjiViewParam(kanjis, index));
-          }
-        ),
+        child: Stack(
+            children: [
+              LayoutBuilder(
+                builder: (context, constraints) {
+                  return Center(
+                    child: Container(
+                      height: constraints.maxHeight,
+                      width: constraints.maxWidth,
+                      decoration: BoxDecoration(
+                        border: Border.all(width: 1),
+                        color: AppColors.primary
+                      ),
+                      child: mastered ? 
+                        Image.asset(
+                          AppIcons.mastery,
+                          fit: BoxFit.contain,
+                        )
+                        :
+                        SizedBox(),
+                    ),
+                  );
+                }
+              ),
+              TextButton(
+                child: Center(
+                    child: Text(
+                    kanjis[index].rune,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: mastered ? Colors.white : Colors.black
+                    ),
+                  )
+                ),
+                onPressed: () {
+                  Navigator.of(context).pushNamed("/list/view",
+                    arguments: KanjiViewParam(kanjis, index));
+                },
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.transparent
+                ),
+              ),
+            ]
+        )
     );
   }
 
