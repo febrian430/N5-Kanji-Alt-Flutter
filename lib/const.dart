@@ -80,7 +80,7 @@ const KANJI_IMAGE_FOLDER = 'assets/images/kanji/';
 const APP_IMAGE_FOLDER = 'assets/images/app/';
 const STROKE_ORDER_FOLDER = 'assets/images/stroke_order/';
 
-const GameNumOfRounds = 3;
+const GameNumOfRounds = 15;
 const CHAPTERS = 3;
 const USE_CHAPTERS = [3,4,5];
 

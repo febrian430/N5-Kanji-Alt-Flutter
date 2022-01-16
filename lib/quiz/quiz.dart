@@ -84,7 +84,7 @@ class _QuizState extends State<Quiz> {
     2: result
   };
 
-  int initTime = 7200;
+  int initTime = 20;
   late int secondsLeft = initTime;
   int score = 0;
 
@@ -141,6 +141,7 @@ class _QuizState extends State<Quiz> {
     
 
     Future.delayed(Duration(milliseconds: 200), () async {
+      print("JUMBLE SCORE IN HOOK IS : "+ jumbleScore.correctRoundSlots.join(","));
       var result  = QuizScoring.evaluate(multipleChoiceScore, jumbleScore);
 
       report = QuizReport(
@@ -192,7 +193,7 @@ class _QuizState extends State<Quiz> {
         gameIndex = 2;
       } else {
         gameIndex = 1;
-      }
+      } 
       isMcReady = true;
     });
   }
@@ -206,7 +207,7 @@ class _QuizState extends State<Quiz> {
         miss: misses, 
         correctlyAnsweredKanji: correctKanjis
       );
-
+      print("set jumble score");
       jumbleCorrect = correct;
       jumbleMisses = misses;
       isOver = true;

@@ -18,6 +18,9 @@ class QuizScoring {
 
   static int _getExpForJumble(QuizJumbleScore score) {
     double expPerSlot = 150/score.totalSlots;
+    if(score.correctRoundSlots.isEmpty){
+      return 0;
+    }
     var sumCorrectSlots = score.correctRoundSlots.reduce((sum, value) => sum+value);
     print("SLOTS CORRECT $sumCorrectSlots");
     
@@ -26,6 +29,9 @@ class QuizScoring {
 
   static int _getScoreForJumble(QuizJumbleScore score) {
     double pointsPerSlot = 50/score.totalSlots;
+    if(score.correctRoundSlots.isEmpty){
+      return 0;
+    }
     var sumCorrectSlots = score.correctRoundSlots.reduce((sum, value) => sum+value);
 
     return (sumCorrectSlots*pointsPerSlot).ceil();

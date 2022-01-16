@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/components/backgrounds/practice_background.dart';
+import 'package:kanji_memory_hint/components/empty_flex.dart';
 import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/components/submit_button.dart';
 import 'package:kanji_memory_hint/const.dart';
@@ -243,10 +244,7 @@ class _MultipleChoiceRoundState extends State<MultipleChoiceRound> with Automati
               flex: 13,
               child: QuestionWidget(mode: widget.mode, questionStr: widget.question.value),
             ),
-            Flexible(
-              flex: 1,
-              child: Center(child: Text((widget.question.key.toString())),),
-            ),
+            EmptyFlex(flex: 1),
             Expanded(
               flex: 8,
               child: _optionsByColumn(context, widget.options)
@@ -322,7 +320,7 @@ class _QuizOption extends StatelessWidget {
       child: Container(
         child: Center(
           child: Text(
-            option.value + '\t' + option.key.toString(), 
+            option.value, 
             style: _getTextStyle(context),
           ),
         ),

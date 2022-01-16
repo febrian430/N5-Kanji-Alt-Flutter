@@ -422,7 +422,7 @@ class _OptionWidget extends StatelessWidget {
     return Container(
         child: Center(
           child: Text(
-            option.value + (answerKey == option.key ? " C" : ""),
+            option.value,
             style: TextStyle(
                 color: Colors.black,
                 fontSize: 20,
