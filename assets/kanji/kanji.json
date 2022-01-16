@@ -221,7 +221,7 @@
 		"kunyomi": "おんな",
 		"onyomi": "ジョ",
 		"id": 28,
-		"stroke_order": "test.png"
+		"stroke_order": "女.png"
 	},
 	{
 		"rune": "子",
@@ -229,7 +229,7 @@
 		"kunyomi": "こ",
 		"onyomi": "シ",
 		"id": 29,
-		"stroke_order": "test.png"
+		"stroke_order": "子.png"
 	},
 	{
 		"rune": "学",
@@ -237,7 +237,7 @@
 		"kunyomi": "まな-ぶ",
 		"onyomi": "ガク/ガッ-",
 		"id": 30,
-		"stroke_order": "test.png"
+		"stroke_order": "学.png"
 	},
 	{
 		"rune": "生",
@@ -245,7 +245,7 @@
 		"kunyomi": "い-きる/う-まれる",
 		"onyomi": "セイ",
 		"id": 31,
-		"stroke_order": "test.png"
+		"stroke_order": "生.png"
 	},
 	{
 		"rune": "先",
@@ -253,7 +253,7 @@
 		"kunyomi": "さき",
 		"onyomi": "セン",
 		"id": 32,
-		"stroke_order": "test.png"
+		"stroke_order": "先.png"
 	},
 	{
 		"rune": "私",
@@ -261,7 +261,7 @@
 		"kunyomi": "わたし/わたくし",
 		"onyomi": "し",
 		"id": 33,
-		"stroke_order": "test.png"
+		"stroke_order": "私.png"
 	},
 	{
 		"rune": "上",
@@ -269,7 +269,7 @@
 		"kunyomi": "うえ/あ-がる/あ-げう",
 		"onyomi": "ジョウ",
 		"id": 34,
-		"stroke_order": "test.png"
+		"stroke_order": "上.png"
 	},
 	{
 		"rune": "下",
@@ -277,7 +277,7 @@
 		"kunyomi": "した/さ-がる/さ-げる",
 		"onyomi": "カ/ゲ",
 		"id": 35,
-		"stroke_order": "test.png"
+		"stroke_order": "下.png"
 	},
 	{
 		"rune": "中",
@@ -285,7 +285,7 @@
 		"kunyomi": "なか",
 		"onyomi": "チュウ/-ジュウ",
 		"id": 36,
-		"stroke_order": "test.png"
+		"stroke_order": "中.png"
 	},
 	{
 		"rune": "大",
@@ -293,7 +293,7 @@
 		"kunyomi": "おお-きい",
 		"onyomi": "ダイ/タイ",
 		"id": 37,
-		"stroke_order": "test.png"
+		"stroke_order": "大.png"
 	},
 	{
 		"rune": "小",
@@ -301,7 +301,7 @@
 		"kunyomi": "ちい-さい/こ/お",
 		"onyomi": "ジョウ",
 		"id": 38,
-		"stroke_order": "test.png"
+		"stroke_order": "小.png"
 	},
 	{
 		"rune": "本",
@@ -309,15 +309,15 @@
 		"kunyomi": "もと",
 		"onyomi": "ホン",
 		"id": 39,
-		"stroke_order": "test.png"
+		"stroke_order": "本.png"
 	},
 	{
 		"rune": "半",
 		"chapter": 4,
-		"kunyomi": "（なか-ば）",
+		"kunyomi": "なか-ば",
 		"onyomi": "ハン",
 		"id": 40,
-		"stroke_order": "test.png"
+		"stroke_order": "半.png"
 	},
 	{
 		"rune": "分",
@@ -325,7 +325,7 @@
 		"kunyomi": "わ-かる/わ-ける",
 		"onyomi": "ブン/フン/-プン",
 		"id": 41,
-		"stroke_order": "test.png"
+		"stroke_order": "分.png"
 	},
 	{
 		"rune": "力",
@@ -333,7 +333,7 @@
 		"kunyomi": "ちから",
 		"onyomi": "リョク/リキ",
 		"id": 42,
-		"stroke_order": "test.png"
+		"stroke_order": "力.png"
 	},
 	{
 		"rune": "何",
@@ -341,7 +341,7 @@
 		"kunyomi": "なに/なん",
 		"onyomi": "ー",
 		"id": 43,
-		"stroke_order": "test.png"
+		"stroke_order": "何.png"
 	},
 	{
 		"rune": "明",
@@ -349,7 +349,7 @@
 		"kunyomi": "あか-るい",
 		"onyomi": "メイ",
 		"id": 44,
-		"stroke_order": "test.png"
+		"stroke_order": "明.png"
 	},
 	{
 		"rune": "休",
@@ -357,7 +357,7 @@
 		"kunyomi": "やす-む",
 		"onyomi": "キュウ",
 		"id": 45,
-		"stroke_order": "test.png"
+		"stroke_order": "休.png"
 	},
 	{
 		"rune": "体",
@@ -365,7 +365,7 @@
 		"kunyomi": "からだ",
 		"onyomi": "タイ",
 		"id": 46,
-		"stroke_order": "test.png"
+		"stroke_order": "体.png"
 	},
 	{
 		"rune": "好",
@@ -373,7 +373,7 @@
 		"kunyomi": "す-きな",
 		"onyomi": "ー",
 		"id": 47,
-		"stroke_order": "test.png"
+		"stroke_order": "好.png"
 	},
 	{
 		"rune": "林",
@@ -381,7 +381,7 @@
 		"kunyomi": "はやし",
 		"onyomi": "リン",
 		"id": 48,
-		"stroke_order": "test.png"
+		"stroke_order": "林.png"
 	},
 	{
 		"rune": "森",
@@ -389,7 +389,7 @@
 		"kunyomi": "もり",
 		"onyomi": "シン",
 		"id": 49,
-		"stroke_order": "test.png"
+		"stroke_order": "森.png"
 	},
 	{
 		"rune": "男",
@@ -397,7 +397,7 @@
 		"kunyomi": "おとこ",
 		"onyomi": "ダン/ナン",
 		"id": 50,
-		"stroke_order": "test.png"
+		"stroke_order": "男.png"
 	},
 	{
 		"rune": "間",
@@ -405,7 +405,7 @@
 		"kunyomi": "あいだ/ま",
 		"onyomi": "カン",
 		"id": 51,
-		"stroke_order": "test.png"
+		"stroke_order": "間.png"
 	},
 	{
 		"rune": "校",
@@ -413,7 +413,7 @@
 		"kunyomi": "ー",
 		"onyomi": "コウ",
 		"id": 52,
-		"stroke_order": "test.png"
+		"stroke_order": "校.png"
 	},
 	{
 		"rune": "国",
@@ -421,7 +421,7 @@
 		"kunyomi": "くに",
 		"onyomi": "コク",
 		"id": 53,
-		"stroke_order": "test.png"
+		"stroke_order": "国.png"
 	},
 	{
 		"rune": "目",
