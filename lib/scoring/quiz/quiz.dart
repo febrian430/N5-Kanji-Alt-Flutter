@@ -11,37 +11,31 @@ class QuizScoring {
     var scoreJumble = _getScoreForJumble(jumble);
 
     return GameResult(
-      expGained: min(expMC+expJumble+30, 400),
+      expGained: min(expMC+expJumble, 300),
       pointsGained: scoreMC+scoreJumble
     );
   }
 
   static int _getExpForJumble(QuizJumbleScore score) {
-    int correct = score.correct*20;
+    double expPerSlot = 150/score.totalSlots;
+    var sumCorrectSlots = score.correctRoundSlots.reduce((sum, value) => sum+value);
+    print("SLOTS CORRECT $sumCorrectSlots");
     
-    int hitScore = 0;
-    score.correctlyAnsweredKanji.forEach((slots) {
-      hitScore += slots.length;
-    });
-    return correct+hitScore;
+    return (sumCorrectSlots*expPerSlot).ceil();
   }
 
   static int _getScoreForJumble(QuizJumbleScore score) {
-    int correct = score.correct*20;
-    
-    int hitScore = 0;
-    score.correctlyAnsweredKanji.forEach((slots) {
-      hitScore += slots.length;
-    });
+    double pointsPerSlot = 50/score.totalSlots;
+    var sumCorrectSlots = score.correctRoundSlots.reduce((sum, value) => sum+value);
 
-    return correct+hitScore;
+    return (sumCorrectSlots*pointsPerSlot).ceil();
   }
 
   static int _getExpForMC(QuizScore score) {
-    return score.correct*20;
+    return score.correct*15;
   }
   
   static int _getScoreForMC(QuizScore score) {
-    return score.correct*20;
+    return (score.correct*15*2/3/2).ceil();
   }
 }

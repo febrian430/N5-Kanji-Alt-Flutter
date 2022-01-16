@@ -78,6 +78,7 @@ enum GAME_TYPE { PRACTICE, QUIZ }
 
 const KANJI_IMAGE_FOLDER = 'assets/images/kanji/';
 const APP_IMAGE_FOLDER = 'assets/images/app/';
+const STROKE_ORDER_FOLDER = 'assets/images/stroke_order/';
 
 const GameNumOfRounds = 3;
 const CHAPTERS = 3;

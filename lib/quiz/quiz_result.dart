@@ -119,46 +119,51 @@ class QuizResult extends StatelessWidget {
 
   Widget _build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final result = QuizScoring.evaluate(multipleChoice.result, jumble.result);
-    return Center(
-      child: Container(
-        width: size.width*0.75,
-        height: size.height*0.65,
-        decoration: BoxDecoration(
-          border: Border.all(
-            width: 1
-          ),
-          color: AppColors.primary
-        ),
-        child: Padding(
-          padding: EdgeInsets.all(6),
-          child: Container(
-            decoration: BoxDecoration(
-              border: Border.all(
-                width: 1
-              )
+    if(animate) {
+      final result = QuizScoring.evaluate(multipleChoice.result, jumble.result);
+      return Center(
+        child: Container(
+          width: size.width*0.75,
+          height: size.height*0.65,
+          decoration: BoxDecoration(
+            border: Border.all(
+              width: 1
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(flex: 2, child: Center(child: Text("やった!", style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold)))),
-                Expanded(
-                  flex: 8, 
-                  child: _DetailWidget(
-                    jumble: jumble,
-                    multipleChoice: multipleChoice, 
-                    countdown: countdown,
-                    gains: result,
-                    animate: animate,
-                  )
-                ),
-                Flexible(flex: 2, child: _rowOfButtons(context))
-              ]
+            color: AppColors.primary
+          ),
+          child: Padding(
+            padding: EdgeInsets.all(6),
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  width: 1
+                )
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(flex: 2, child: Center(child: Text("やった!", style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold)))),
+                  Expanded(
+                    flex: 8, 
+                    child: _DetailWidget(
+                      jumble: jumble,
+                      multipleChoice: multipleChoice, 
+                      countdown: countdown,
+                      gains: result,
+                      animate: animate,
+                    )
+                  ),
+                  Flexible(flex: 2, child: _rowOfButtons(context))
+                ]
+              )
             )
           )
         )
-      )
-    );
+      );
+    } else {
+      return LoadingScreen();
+    }
+    
   }
 
   @override
@@ -304,7 +309,6 @@ class _DetailWidget extends StatelessWidget {
                     game: "Jumble", 
                     correct: jumble.result.correct,
                     miss: jumble.result.miss,
-                    hits: jumble.result.hits
                   )
                 ),
                 EmptyFlex(flex: 1),

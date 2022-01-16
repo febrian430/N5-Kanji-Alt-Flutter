@@ -99,11 +99,12 @@ class _QuizState extends State<Quiz> {
   bool initial = true;
   bool isMcReady = false;
   bool isJumbleReady = false;
+  bool reportReady = false;
 
   bool restart = false;
 
   QuizScore multipleChoiceScore = QuizScore(correct: 0, miss: 0, correctlyAnsweredKanji: []);
-  QuizJumbleScore jumbleScore = QuizJumbleScore(correct: 0, hits: 0, miss: 0, correctlyAnsweredKanji: []); 
+  QuizJumbleScore jumbleScore = QuizJumbleScore(correct: 0, correctRoundSlots: [], totalSlots: 0, miss: 0, correctlyAnsweredKanji: []); 
 
   late QuizReport report;
 
@@ -148,11 +149,13 @@ class _QuizState extends State<Quiz> {
         chapter: widget.chapter,
         gains: result
       );
+      setState(() {
+        reportReady = true;
+      });
       print("mulchoice during quiz ${report.multiple.correctlyAnsweredKanji.join(",")}");
       print("jumble during quiz ${report.jumble.correctlyAnsweredKanji.join(",")}");
       await MasteryHandler.addMasteryFromQuiz(report);
       await QuizQuestHandler.checkForQuests(report);
-      print("EXP GAINED FROM QUIZ: ${result.expGained}");
       await SQLRepo.userPoints.addExp(result.expGained);
     });
 
@@ -194,11 +197,12 @@ class _QuizState extends State<Quiz> {
     });
   }
 
-  void _handleJumbleSubmit(int correct, int hits, int misses, List<List<int>> correctKanjis) {
+  void _handleJumbleSubmit(int correct, List<int> correctRoundSlots, int totalSlots, int misses, List<List<int>> correctKanjis) {
     setState(() {
       jumbleScore = QuizJumbleScore(
         correct: correct,
-        hits: hits,
+        correctRoundSlots: correctRoundSlots,
+        totalSlots: totalSlots,
         miss: misses, 
         correctlyAnsweredKanji: correctKanjis
       );
@@ -256,7 +260,7 @@ class _QuizState extends State<Quiz> {
             onRestart: onRestart,
             onViewResult: _goMultipleChoice,
             countdown: _countdown,
-            animate: isOver,
+            animate:  isOver && (isMcReady && isJumbleReady) && reportReady,
             multipleChoice: QuizGameParam(
               result: multipleChoiceScore, 
               goHere: _goMultipleChoice
@@ -287,6 +291,7 @@ class _QuizState extends State<Quiz> {
   Widget build(BuildContext context) {
     WidgetsBinding.instance?.addPostFrameCallback((_) {
       if(isOver && initial && (isMcReady && isJumbleReady)) {
+        print("WHY U HERE?");
         postQuizHook();
       }
      });

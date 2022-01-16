@@ -47,9 +47,12 @@ class QuizScore {
 
 class QuizJumbleScore {
   final int correct;
-  final int hits;
   final int miss;
   final List<List<int>> correctlyAnsweredKanji;
+
+  final List<int> correctRoundSlots;
+  final int totalSlots;
+
   
-  QuizJumbleScore({required this.correct, required this.hits, required this.miss, required this.correctlyAnsweredKanji});
+  QuizJumbleScore({required this.correct, required this.correctRoundSlots, required this.totalSlots, required this.miss, required this.correctlyAnsweredKanji});
 }
