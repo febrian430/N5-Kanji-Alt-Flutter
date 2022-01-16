@@ -53,7 +53,7 @@ class MultipleChoiceQuestionMaker {
   static Future<List<Option>> _findOptionsFor(Example question, GAME_MODE mode, List<Example> exampleOptions) async {
     List<Option> options;
 
-    var otherOptions = exampleOptions.where((kanji) => kanji.id != question.id).toList();
+    var otherOptions = exampleOptions.where((kanji) => kanji.id != question.id && question.isSingle == kanji.isSingle).toList();
     otherOptions.shuffle();
     otherOptions = otherOptions.take(3).toList();
     if(mode == GAME_MODE.imageMeaning) {

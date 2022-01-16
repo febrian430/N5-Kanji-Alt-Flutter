@@ -27,7 +27,10 @@ class PickDropQuestionMaker {
   static Future<List<Option>> _findOptionsFor(int n, Example question, GAME_MODE mode, List<Example> optionKanjis) async {
     List<Option> options;
 
-    var otherOptions = optionKanjis.where((kanji) => kanji.id != question.id).toList();
+    var otherOptions = optionKanjis.where((kanji) {
+      return kanji.id != question.id && (question.isSingle == kanji.isSingle);
+    }).toList();
+
     otherOptions.shuffle();
     otherOptions = otherOptions.take(n-1).toList();
     
