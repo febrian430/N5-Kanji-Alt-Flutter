@@ -83,7 +83,7 @@ class _MixMatchGameState extends State<MixMatchGame> {
     if(roundsSolved == widget.numOfRounds){
       widget.stopwatch.stop();
       score = PracticeScore(
-        perfectRounds: perfect, 
+        perfectRounds: attempts.where((attempt) => attempt == 0).length, 
         wrongAttempts: wrong,
         attemptsPerRound: attempts,
         chapter: widget.chapter,

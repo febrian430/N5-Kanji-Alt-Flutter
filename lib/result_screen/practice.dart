@@ -214,7 +214,7 @@ class _DetailWidget extends StatelessWidget {
               ),
               SizedBox(height: 5,),
               SizedBox(
-                width: 50,
+                width: 70,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -234,7 +234,7 @@ class _DetailWidget extends StatelessWidget {
                 )
               ),
               SizedBox(
-                width: 50,
+                width: 70,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
