@@ -61,44 +61,99 @@ class PauseDialog extends StatelessWidget {
 
   Widget _buildQuizPause(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Flexible(
-          child: Row(
-            children: [
-              Padding(
-                padding: EdgeInsets.all(5),
-                child: _DialogButton(
-                icon: AppIcons.resume, 
-                onPressed: () {
-                  onContinue();
-                  Navigator.pop(context);
-                },
-              ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(5),
-                child: _DialogButton(
-                icon: AppIcons.retry, 
-                onPressed: () {
-                  Navigator.pop(context);
-                  onRestart();
-                },
-              ),)
-            ],
-          ),
-        ),
-        Flexible(
-          child: Center(
-            child: Padding(
-              padding: EdgeInsets.all(5),
-              child: _QuitButton(
-              icon: AppIcons.exit, 
-              onPressed: (){
-                Navigator.of(context).popUntil(ModalRoute.withName('/start-select'));
-              }
-            )
+          child: 
+          // GridView.count(
+          //   crossAxisCount: 2,
+          //   crossAxisSpacing: 5,
+          //   mainAxisSpacing: 5,
+          //   children: [
+          //     Padding(
+          //       padding: EdgeInsets.all(5),
+          //       child: _DialogButton(
+          //       icon: AppIcons.resume, 
+          //       onPressed: () {
+          //         onContinue();
+          //         Navigator.pop(context);
+          //       },
+          //     ),
+          //     ),
+          //     Padding(
+          //       padding: EdgeInsets.all(5),
+          //       child: _DialogButton(
+          //       icon: AppIcons.retry, 
+          //       onPressed: () {
+          //         Navigator.pop(context);
+          //         onRestart();
+          //       },
+          //     ),),
+          //     Padding(
+          //       padding: EdgeInsets.all(5),
+          //         child: _QuitButton(
+          //         icon: AppIcons.home, 
+          //         onPressed: (){
+          //           Navigator.of(context).popUntil(ModalRoute.withName('/'));
+          //         }
+          //       )
+          //     )
+              
+          //   ]
+          // ),
+
+          LayoutBuilder(
+            builder: (context, constraints){
+              return Wrap(
+                spacing: 10,
+                runSpacing: 10,
+                alignment: WrapAlignment.center,
+                crossAxisAlignment: WrapCrossAlignment.center,
+                children: [
+                  Container(
+                    width: constraints.maxWidth*.5-5,
+                    child: Padding(
+                      padding: EdgeInsets.all(0),
+                      child: _DialogButton(
+                        icon: AppIcons.resume, 
+                        onPressed: () {
+                          onContinue();
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: constraints.maxWidth*.5-5,
+                    child: Padding(
+                    padding: EdgeInsets.all(0),
+                      child: _DialogButton(
+                        icon: AppIcons.retry, 
+                        onPressed: () {
+                          Navigator.pop(context);
+                          onRestart();
+                        },
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: constraints.maxWidth*.5-5,
+                    child: Padding(
+                      padding: EdgeInsets.all(0),
+                        child: _QuitButton(
+                          icon: AppIcons.home, 
+                          onPressed: (){
+                            Navigator.of(context).popUntil(ModalRoute.withName('/'));
+                          }
+                        )
+                      )
+                  )
+                  
+                  
+                ],
+              );
+            }
           )
-        )
         )
       ],
     );
@@ -143,17 +198,21 @@ class PauseDialog extends StatelessWidget {
                 ),
                 Flexible(
                   flex: 8,
-                  child: withKanaChart ? 
-                    SizedBox(
-                      width: size.width*0.5,
-                      child:
-                        _buildPracticePause(context) 
-                    ) 
-                    :
-                    SizedBox(
-                      width: size.width*0.52,
-                      child: _buildQuizPause(context) 
-                    )
+                  child: LayoutBuilder(
+                    builder: (context, constraints) {
+                      return withKanaChart ? 
+                        SizedBox(
+                          width: constraints.maxWidth*.85,
+                          child:
+                            _buildPracticePause(context) 
+                        ) 
+                        :
+                        SizedBox(
+                          width: constraints.maxWidth*.85,
+                          child: _buildQuizPause(context) 
+                        );
+                    }
+                  )
                 )
               ]
               )
@@ -193,6 +252,7 @@ class _DialogButton extends  StatelessWidget {
               icon,
               height: 50,
               width: 50,
+              fit: BoxFit.contain
             )
           )
           )
@@ -239,7 +299,7 @@ class _QuitButton extends  StatelessWidget {
   
       decoration: BoxDecoration(
         border: Border.all(
-          width: 2
+          width: 1
         )
       ),
       child: TextButton(
@@ -258,6 +318,7 @@ class _QuitButton extends  StatelessWidget {
               icon,
               height: 50,
               width: 50,
+              fit: BoxFit.contain
             )
           )
         )
