@@ -31,7 +31,7 @@ class QuestionWidget extends StatelessWidget {
           image: DecorationImage(
             
             image: AssetImage(KANJI_IMAGE_FOLDER + questionStr),
-            fit: BoxFit.contain,
+            fit: BoxFit.fill,
 
             colorFilter: ColorFilter.mode(Colors.red.withOpacity(opacity), BlendMode.dstATop)
           )
