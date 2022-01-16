@@ -153,7 +153,7 @@ class _JumbleGameState extends State<JumbleGame> {
           chapter: widget.chapter,
           mode: widget.mode
         );
-        result = JumbleScoring.evaluate(endScore, slotsToFill, perfectRoundsSlots);
+        result = JumbleScoring.evaluate(endScore, slots, perfectRoundsSlots);
         report = PracticeGameReport(
           game: JumbleGame.name,
           chapter: widget.chapter,
