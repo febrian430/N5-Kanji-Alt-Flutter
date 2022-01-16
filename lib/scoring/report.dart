@@ -17,9 +17,10 @@ class PracticeGameReport {
 }
 
 class PracticeScore {
-  const PracticeScore({required this.mode, required this.chapter, required this.perfectRounds, required this.wrongAttempts});
+  const PracticeScore({required this.attemptsPerRound, required this.mode, required this.chapter, required this.perfectRounds, required this.wrongAttempts});
   final int perfectRounds;
   final int wrongAttempts;
+  final List<int> attemptsPerRound;
   final GAME_MODE mode;
   final int chapter;
   // final Stopwatch

@@ -59,6 +59,10 @@ class _JumbleGameState extends State<JumbleGame> {
   int perfect = 0;
   Set<int> solvedIdx = {};
   List<int> perfectRoundsSlots = [];
+
+  List<int> slots = [];
+  List<int> attempts = [];
+
   int currentPage = 0;
 
   late int slotsToFill;
@@ -122,13 +126,17 @@ class _JumbleGameState extends State<JumbleGame> {
     );
   }
 
-  void _handleRoundOver(bool isCorrect, int misses, int index, int slotsToFill, bool initialAnswer) {
+  void _handleRoundOver(bool isCorrect, int misses, int index, int slotsToFill, int wrongAttempts) {
     setState(() {
       if(isCorrect) {
-        if(initialAnswer) {
+        if(wrongAttempts == 0) {
           perfect++;
           perfectRoundsSlots.add(slotsToFill);
         }
+
+        slots.add(slotsToFill);
+        attempts.add(wrongAttempts);
+        
         solved++;
         solvedIdx.add(index);
         _slideToNextQuestion(index, solvedIdx);
@@ -141,6 +149,7 @@ class _JumbleGameState extends State<JumbleGame> {
         endScore = PracticeScore(
           perfectRounds: perfect, 
           wrongAttempts: wrongCount,
+          attemptsPerRound: attempts,
           chapter: widget.chapter,
           mode: widget.mode
         );
@@ -309,7 +318,7 @@ class JumbleRound extends StatefulWidget {
   final List<Option> options;
   final GAME_MODE mode;
   final bool restartSource;
-  final Function(bool isCorrect, int misses, int index, int slotsToFill, bool initialAnswer) onComplete;
+  final Function(bool isCorrect, int misses, int index, int slotsToFill, int wrongAttempts) onComplete;
 
   @override
   State<StatefulWidget> createState() => _JumbleRoundState();
@@ -332,7 +341,7 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
 
   List<int> wrongSelected = [];
 
-  bool isFirstTry = true;
+  int attempts = 0;
   bool isRoundOver = false;
   bool wasRestarted = false;
 
@@ -351,7 +360,7 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
       roundColor = Colors.transparent;
       selectCount = 0;
       misses = 0;
-      isFirstTry = true;
+      attempts = 0;
       isRoundOver = false;
       wasRestarted = true;
     });
@@ -412,7 +421,7 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
           setState(() {
             isRoundOver = true;
             roundColor = _correctColor;
-            widget.onComplete(true, 0, widget.index, widget.question.key.length, isFirstTry);
+            widget.onComplete(true, 0, widget.index, widget.question.key.length, attempts);
           });
         } else {
           setState(() {
@@ -421,10 +430,10 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
             print("DIFF: ${diff.join(",")}");
             print("WRONG SELECTED ${wrongSelected.join(", ")}");
             // roundColor = _wrongColor;
-            widget.onComplete(false, diff.length, widget.index, widget.question.key.length, isFirstTry);
+            widget.onComplete(false, diff.length, widget.index, widget.question.key.length, attempts);
           });
         }
-        isFirstTry = false;
+        attempts++;
 
         Future.delayed(const Duration(milliseconds: 500), () {
           _unselect(diff);

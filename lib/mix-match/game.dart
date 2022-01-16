@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
@@ -20,7 +21,6 @@ import 'package:kanji_memory_hint/map_indexed.dart';
 import 'package:kanji_memory_hint/theme.dart';
 
 
-typedef OnRoundOverCallback = Function(bool isCorrect, int correct, int wrongAttempts);
 
 class MixMatchGame extends StatefulWidget {
   MixMatchGame({Key? key, required this.chapter, required this.mode, this.prevQuestions}) : super(key: key);
@@ -54,6 +54,8 @@ class _MixMatchGameState extends State<MixMatchGame> {
   bool restart = false;
   var _pageController = PageController(viewportFraction: 1,);
 
+  List<int> attempts = [];
+
   late PracticeScore score;
   late GameResult result;
   late PracticeGameReport report;
@@ -65,7 +67,7 @@ class _MixMatchGameState extends State<MixMatchGame> {
 
   }
 
-  void _onRoundOver(bool isCorrect, int correct, int wrongAttempts) {
+  void _onRoundOver(bool isCorrect, List<int> attemptsByKey, int wrongAttempts) {
     wrong += wrongAttempts;
     if(wrongAttempts == 0) {
       perfect++;
@@ -75,11 +77,15 @@ class _MixMatchGameState extends State<MixMatchGame> {
       roundsSolved++;    
     });
 
+    attempts.addAll(attemptsByKey);
+
+
     if(roundsSolved == widget.numOfRounds){
       widget.stopwatch.stop();
       score = PracticeScore(
         perfectRounds: perfect, 
         wrongAttempts: wrong,
+        attemptsPerRound: attempts,
         chapter: widget.chapter,
         mode: widget.mode
       );
@@ -272,6 +278,8 @@ class _MixMatchGameState extends State<MixMatchGame> {
   }
 }
 
+typedef OnRoundOverCallback = Function(bool isCorrect, List<int> attemptsMap, int wrongAttempts);
+
 class _MixMatchRound extends StatefulWidget {
   
   _MixMatchRound({Key? key, required this.options, required this.onRoundOver, required this.restartSrc}): super(key: key);
@@ -290,11 +298,18 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
   Question? selected;
 
   List<Question> incorrectSelect = [];
-
   List<Question> solved = [];
+  Map<Question, int> attempts = <Question, int> {};
+  Map<String, int> attemptsByKey = <String, int> {};
+  Set<String> keys = {};
+  bool attemptsLoaded = false;
 
   late int numOfQuestions; 
 
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   bool get wantKeepAlive => true;
@@ -390,7 +405,7 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
             aspectRatio: 8/9,
             child: Container( 
               child: Center(
-                child: Text(opt.value,
+                child: Text(opt.value + opt.key,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 18,
@@ -417,7 +432,24 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
 
   void _isGameOver() {
     if(solved.length == numOfQuestions){
-      widget.onRoundOver(true, score, wrong);
+      var sum  = 0;
+      List<int> sumByKey = [];
+      for (var opt in widget.options) {
+        sum += attempts[opt]!;
+      }
+
+      for(var key in keys) {
+        var optionsWithKey = widget.options
+        .where((opt) => opt.key == key)
+        .map((opt) => attempts[opt]).toList();
+
+        var attemptsWithKey = max(optionsWithKey[0]!, optionsWithKey[1]!);
+        print("attempts with key $key is $attemptsWithKey");
+        sumByKey.add(attemptsWithKey);
+      }
+
+      print("SUM IS $sum WHILE WRONG IS $wrong");
+      widget.onRoundOver(true, sumByKey, wrong);
     }
   }
 
@@ -446,13 +478,23 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
         selected = null;
       });
       _isGameOver();
-      print("correct");
     } else {
+      attempts[selected!] = attempts[selected!]! + 1;
+      // attempts[opt] = attempts[opt]! + 1;
+
+      attemptsByKey[selected!.key] = attemptsByKey[selected!.key]! + 1;
+      // attemptsByKey[opt.key] = attemptsByKey[opt.key]! + 1;
+
+      print("${opt.value} is now ${attempts[opt]} ");
+      // print("${selected!.value} is now ${attempts[selected!]} ");
+
       setState(() {
         incorrectSelect = [selected!, opt];
         selected = null;
         wrong++;
       });
+
+      
 
       Future.delayed(const Duration(milliseconds: 300), () {
           setState(() {
@@ -477,15 +519,15 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
 
   Widget _buildQuestion(BuildContext context, int index, Question opt) {
     return GestureDetector(
-            child: Container(
-              child: _drawQuestionWidget(context, index, opt)
-            ),
-            onTap:() {
-              setState(() {
-                _handleTap(opt);
-             });
-            },
-          );
+      child: Container(
+        child: _drawQuestionWidget(context, index, opt)
+      ),
+      onTap:() {
+        setState(() {
+          _handleTap(opt);
+       });
+      },
+    );
   }
 
   Widget _getGameUI(BuildContext context, List<Question> questions) {
@@ -511,6 +553,14 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
     WidgetsBinding.instance?.addPostFrameCallback((_){
       if(widget.restartSrc) {
         restart();
+      }
+      if(!attemptsLoaded) {
+        for(int i = 0; i < widget.options.length; i++) {
+          attempts[widget.options[i]] = 0;
+          attemptsByKey[widget.options[i].key] = 0;
+          keys.add(widget.options[i].key);
+        }
+        attemptsLoaded = true;
       }
     });
     return _getGameUI(context, widget.options);

@@ -53,6 +53,8 @@ class _PickDropState extends State<PickDrop> {
   int solved = 0;
   bool restart = false;
 
+  List<int> attempts = [];
+
   late int total = GameNumOfRounds;
   late PracticeScore score;
   late GameResult result;
@@ -85,14 +87,17 @@ class _PickDropState extends State<PickDrop> {
     );
   }
 
-  void _handleOnDrop(bool isCorrect, bool isFirstTry) {
+  void _handleOnDrop(bool isCorrect, int roundAttempts) {
     setState(() {
       if (isCorrect) {
         solved++;
 
-        if(isFirstTry) {
+        if(roundAttempts == 0) {
           perfect++;
         }
+
+        wrongAttempts += roundAttempts;
+        attempts.add(roundAttempts);
 
         if (index < total-1) {
           index++;
@@ -101,6 +106,7 @@ class _PickDropState extends State<PickDrop> {
           score = PracticeScore(
             perfectRounds: perfect, 
             wrongAttempts: wrongAttempts,
+            attemptsPerRound: attempts,
             chapter: widget.chapter,
             mode: widget.mode
           );
@@ -117,8 +123,6 @@ class _PickDropState extends State<PickDrop> {
           PracticeQuestHandler.checkForQuests(report);
           Levels.addExp(result.expGained);
         }
-      } else {
-        wrongAttempts++;
       }
     });
   }
@@ -232,10 +236,17 @@ class _PickDropState extends State<PickDrop> {
   }
 }
 
-typedef OnDropCallback = Function(bool isCorrect, bool isFirstTry);
+typedef OnDropCallback = Function(bool isCorrect, int attempts);
 
 class PickDropRound extends StatefulWidget {
-  const PickDropRound({Key? key, required this.question, required this.options, required this.onDrop, required this.isLast, required this.restartSrc}) : super(key: key);
+  const PickDropRound({
+    Key? key, 
+    required this.question, 
+    required this.options, 
+    required this.onDrop, 
+    required this.isLast, 
+    required this.restartSrc
+  }) : super(key: key);
 
   final Question question;
   final List<Option> options;
@@ -256,6 +267,8 @@ class _PickDropRoundState extends State<PickDropRound> {
 
   bool wrongOverlay = false;
   bool correctOverlay = false;
+
+  int attempts = 0;
 
   void restart() {
     setState(() {
@@ -353,6 +366,7 @@ class _PickDropRoundState extends State<PickDropRound> {
                   bool tempFirstTry = isFirstTry;
                   if(!isCorrect) {
                     isFirstTry = false;
+                    attempts++;
                     setState(() {
                       wrongOverlay = true;
                     });
@@ -373,7 +387,7 @@ class _PickDropRoundState extends State<PickDropRound> {
                     });
                   }
 
-                  widget.onDrop(isCorrect, tempFirstTry);
+                  widget.onDrop(isCorrect, attempts);
 
                 }
               },
