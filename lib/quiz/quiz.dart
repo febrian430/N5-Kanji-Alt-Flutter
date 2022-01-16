@@ -84,7 +84,7 @@ class _QuizState extends State<Quiz> {
     2: result
   };
 
-  int initTime = 20;
+  int initTime = 180;
   late int secondsLeft = initTime;
   int score = 0;
 
