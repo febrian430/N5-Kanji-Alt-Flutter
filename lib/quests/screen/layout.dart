@@ -25,6 +25,7 @@ class QuestScreenLayoutAlt extends StatelessWidget {
           children: [
             SizedBox(
               height: size.height*.85,
+              // width: size.width,
               child: SingleChildScrollView(
                 child: Column(
                   children: [
@@ -44,7 +45,7 @@ class QuestScreenLayoutAlt extends StatelessWidget {
                       child: progressWidget
                     ),
                     SizedBox(
-                      height: size.height*.5,
+                      height: size.height*.76,
                       width: size.width,
 
                       child: questWidget

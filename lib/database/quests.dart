@@ -235,7 +235,7 @@ class MasteryQuest extends Quest {
   }
 
   String toString() {
-    return "Master $total kanjis";
+    return "Get $total Kanjis right in Quiz five times";
   }
 }
 
