@@ -37,7 +37,7 @@ class Quiz extends StatefulWidget {
   
 
   Future<List> _getQuizQuestionSet() async {
-    return QuizQuestionMaker.makeQuestionSet(5, chapter, mode);
+    return QuizQuestionMaker.makeQuestionSet(10, chapter, mode);
   }
 
   @override

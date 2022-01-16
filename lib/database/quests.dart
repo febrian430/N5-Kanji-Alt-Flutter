@@ -57,19 +57,18 @@ class QuestProvider {
       }
       counts.add(84);
 
-      return counts.map((count) => MasteryQuest(goldReward: count, total: count)).toList();
+      return counts.map((count) => MasteryQuest(goldReward: 10, total: count)).toList();
   }
 
-  Future seed() async {
-    var masteryQuests = _getMasterySeed();
-    List<Quest> quests = [
+  List<PracticeQuest> _getPracticeSeed() {
+    return [
       PracticeQuest(
           game: JumbleGame.name,
           mode: null,
-          chapter: 1,
+          chapter: null,
           requiresPerfect: 0,
           total: 1,
-          goldReward: 5
+          goldReward: 1
       ),
       PracticeQuest(
           game: MixMatchGame.name,
@@ -77,28 +76,115 @@ class QuestProvider {
           chapter: null,
           requiresPerfect: 0,
           total: 1,
+          goldReward: 1
+      ),
+      PracticeQuest(
+          game: PickDrop.name,
+          mode: null,
+          chapter: null,
+          requiresPerfect: 0,
+          total: 1,
+          goldReward: 1
+      ),
+      PracticeQuest(
+          game: JumbleGame.name,
+          mode: null,
+          chapter: null,
+          requiresPerfect: 0,
+          total: 3,
+          goldReward: 3
+      ),
+      PracticeQuest(
+          game: MixMatchGame.name,
+          mode: null,
+          chapter: null,
+          requiresPerfect: 0,
+          total: 3,
+          goldReward: 3
+      ),
+      PracticeQuest(
+          game: PickDrop.name,
+          mode: null,
+          chapter: null,
+          requiresPerfect: 0,
+          total: 3,
+          goldReward: 3
+      ),
+      PracticeQuest(
+          game: JumbleGame.name,
+          mode: GAME_MODE.reading,
+          chapter: 3,
+          requiresPerfect: 1,
+          total: 1,
+          goldReward: 5
+      ),
+      PracticeQuest(
+          game: MixMatchGame.name,
+          mode: GAME_MODE.imageMeaning,
+          chapter: 4,
+          requiresPerfect: 1,
+          total: 1,
           goldReward: 5
       ),
       PracticeQuest(
           game: PickDrop.name,
           mode: GAME_MODE.imageMeaning,
-          chapter: 1,
-          requiresPerfect: 0,
+          chapter: 5,
+          requiresPerfect: 1,
           total: 1,
-          goldReward: 10
+          goldReward: 5
+      ),
+    ];
+  }
+
+  List<QuizQuest> _getQuizSeed(){
+    return [
+      QuizQuest(
+        chapter: 3, 
+        requiresPerfect: 0, 
+        total: 5, 
+        goldReward: 30
       ),
       QuizQuest(
-          chapter: 1,
-          requiresPerfect: 0,
-          total: 1,
-          goldReward: 10
+        chapter: 3, 
+        requiresPerfect: 1, 
+        total: 1, 
+        goldReward: 15
       ),
       QuizQuest(
-          chapter: 2,
-          requiresPerfect: 0,
-          total: 3,
-          goldReward: 25
+          chapter: 4,
+          requiresPerfect: 1,
+          total: 1,
+          goldReward: 15
       ),
+      QuizQuest(
+          chapter: 4,
+          requiresPerfect: 0,
+          total: 5,
+          goldReward: 30
+      ),
+      QuizQuest(
+          chapter: 5,
+          requiresPerfect: 1,
+          total: 1,
+          goldReward: 15
+      ),
+      QuizQuest(
+          chapter: 5,
+          requiresPerfect: 0,
+          total: 5,
+          goldReward: 30
+      ),
+    ];
+  }
+
+  Future seed() async {
+    var masteryQuests = _getMasterySeed();
+    var practiceQuests = _getPracticeSeed();
+    var quizQuests = _getQuizSeed();
+    List<Quest> quests = [
+      ...practiceQuests,
+      ...quizQuests,
       ...masteryQuests
     ];
 
@@ -121,29 +207,59 @@ class QuestProvider {
   }
 
   Future<List<PracticeQuest>> getOnGoingPractice() async {
-    var raw = await db.query(_tableQuests,
-      where: '$_columnType = ?',
+    var readyToClaim = await db.query(_tableQuests,
+      where: '$_columnType = ? AND $_columnCount >= $_columnTotal',
       whereArgs: [_enumPractice]
     );
-
+    var onGoing = await db.query(_tableQuests,
+      where: '$_columnType = ? AND $_columnStatus = ?',
+      whereArgs: [_enumPractice, QUEST_STATUS.ONGOING.name]
+    );
+    var claimed = await db.query(_tableQuests,
+      where: '$_columnType = ? AND $_columnStatus = ?',
+      whereArgs: [_enumPractice, QUEST_STATUS.CLAIMED.name]
+    );
+    var raw = [...readyToClaim, ...onGoing, ...claimed];
     return raw.map((questRaw) => PracticeQuest.fromMap(questRaw)).toList();
   }
 
   Future<List<QuizQuest>> getOnGoingQuiz() async {
-    var raw = await db.query(_tableQuests,
-        where: '$_columnType = ?',
+    var readyToClaim = await db.query(_tableQuests,
+        where: '$_columnType = ? AND $_columnCount >= $_columnTotal',
         whereArgs: [_enumQuiz]
     );
+    var onGoing = await db.query(_tableQuests,
+        where: '$_columnType = ? AND $_columnStatus = ?',
+        whereArgs: [_enumQuiz, QUEST_STATUS.ONGOING.name]
+    );
+    var claimed = await db.query(_tableQuests,
+        where: '$_columnType = ? AND $_columnStatus = ?',
+        whereArgs: [_enumQuiz, QUEST_STATUS.CLAIMED.name]
+    );
+
+    var raw = [];
+    raw.addAll(readyToClaim);
+    raw.addAll(onGoing);
+    raw.addAll(claimed);
 
     return raw.map((questRaw) => QuizQuest.fromMap(questRaw)).toList();
   }
 
   Future<List<MasteryQuest>> getOnGoingMasteryQuests() async {
     await updateAndSyncForMastery();
-    var raw = await db.query(_tableQuests,
-      where: '$_columnType = ?',
+    var readyToClaim = await db.query(_tableQuests,
+      where: '$_columnType = ? AND $_columnCount >= $_columnTotal',
       whereArgs: [_enumMastery]
     );
+    var onGoing = await db.query(_tableQuests,
+      where: '$_columnType = ? AND $_columnStatus = ?',
+      whereArgs: [_enumMastery, QUEST_STATUS.ONGOING.name]
+    );
+    var claimed = await db.query(_tableQuests,
+      where: '$_columnType = ? AND $_columnStatus = ?',
+      whereArgs: [_enumMastery, QUEST_STATUS.CLAIMED.name]
+    );
+    var raw = [...readyToClaim, ...onGoing, ...claimed];
 
     return raw.map((questRaw) => MasteryQuest.fromMap(questRaw)).toList();
   }
@@ -284,7 +400,7 @@ class PracticeQuest extends GameQuest {
       return false;
     }
 
-    if(requiresPerfect == 1 && report.result.perfectRounds != GameNumOfRounds) {
+    if(requiresPerfect == 1 && report.result.wrongAttempts == 0) {
       return false;
     }
 
@@ -354,7 +470,7 @@ class QuizQuest extends GameQuest{
       return false;
     }
 
-    if(requiresPerfect == 1 && (report.multiple.miss != 0 || report.jumble.miss == 0)) {
+    if(requiresPerfect == 1 && (report.multiple.miss != 0 || report.jumble.miss != 0)) {
       return false;
     }
 

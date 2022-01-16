@@ -38,10 +38,11 @@ class JumbleScoring {
       // }
     
       // return max(100, max(0, exp) + expForPerfect + 20);
+      print(score.attemptsPerRound.join(","));
       var expGained = score.attemptsPerRound
         .map((attempt) {
-          var numerator = max(1, _NUM_OF_OPTIONS - attempt);
-          return (_NUM_OF_OPTIONS-numerator)*10/_NUM_OF_OPTIONS;
+          var numerator = max(1, (_NUM_OF_OPTIONS - attempt));
+          return (numerator)*10/_NUM_OF_OPTIONS;
         })
         .reduce((sum, value) => sum+value);
 

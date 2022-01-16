@@ -70,7 +70,7 @@ class _RewardDialogState extends State<RewardDialog> {
 
   Widget saveImageDialog(BuildContext context) {
     return AlertDialog(
-      title: Text("Image saved!"),
+      title: Text("Image saved!", textAlign: TextAlign.center),
       actions: [
         TextButton(
           onPressed: (){
@@ -79,7 +79,10 @@ class _RewardDialogState extends State<RewardDialog> {
           child: Text("OK")
         )
       ],
-      content: Text("Image has been saved to your Download folder under kantan_kanji_library folder"),
+      content: Text(
+        "Image has been saved to your Download folder under kantan_kanji_library folder",
+        textAlign: TextAlign.center
+      ),
     );
   }
 
@@ -95,6 +98,27 @@ class _RewardDialogState extends State<RewardDialog> {
             example.rewardStatus = REWARD_STATUS.CLAIMED;
             widget.onBuy(widget.example.cost, widget.example.cost);
           });
+        } else {
+          showDialog(
+            context: context, 
+            builder: (context) {
+              return AlertDialog(
+                title: Text("Insufficient Ryo", textAlign: TextAlign.center),
+                content: Text(
+                  "You got insufficient Ryo. Finish quests to get more Ryo!",
+                  textAlign: TextAlign.center
+                ),
+                actions: [          
+                  TextButton(
+                    onPressed: (){
+                      Navigator.pop(context);
+                    }, 
+                    child: Text("OK")
+                  )
+                ],
+              );
+            }
+          );
         }
       }, 
       style: TextButton.styleFrom(
