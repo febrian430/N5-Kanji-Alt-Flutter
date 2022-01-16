@@ -81,5 +81,6 @@ const APP_IMAGE_FOLDER = 'assets/images/app/';
 
 const GameNumOfRounds = 3;
 const CHAPTERS = 3;
+const USE_CHAPTERS = [3,4,5];
 
 const Widget EmptyWidget = Visibility(child: Text(""), visible: false,);

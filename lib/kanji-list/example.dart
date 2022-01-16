@@ -27,7 +27,7 @@ class ExampleContainer extends StatelessWidget {
                     border: Border(bottom: BorderSide(width: 1))
                   ),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Text(example.rune),
                       Text('( ${example.spelling.join('')} )'),
@@ -41,9 +41,14 @@ class ExampleContainer extends StatelessWidget {
             flex: 4,
             child: AspectRatio(
               aspectRatio: 1,
-              child: Image.asset(
-                KANJI_IMAGE_FOLDER+example.image,
-                fit: BoxFit.cover,
+              child: Container(
+                child: Image.asset(
+                  KANJI_IMAGE_FOLDER+example.image,
+                  fit: BoxFit.contain,
+                ),
+                decoration: BoxDecoration(
+                  border: Border(bottom: BorderSide(width: 1))
+                ),
               ),
             )
           ),

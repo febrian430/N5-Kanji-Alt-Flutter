@@ -164,7 +164,7 @@ class _KanjiWidget extends StatelessWidget {
             flex: 13,
             child: GridView.count(
               crossAxisCount: 2,
-              childAspectRatio: 3/4,
+              childAspectRatio: 3/5,
               crossAxisSpacing: 5,
               mainAxisSpacing: 10,
               shrinkWrap: true,
