@@ -1,8 +1,8 @@
-[	
+[
 	{
 		"id": 85,
 		"chapter": 3,
-		"image": "",
+		"image": "Api.png",
 		"rune": "火",
 		"spelling": [
 			"ひ"
@@ -18,7 +18,7 @@
 	{
 		"id": 86,
 		"chapter": 3,
-		"image": "30kr1n.png",
+		"image": "Hari Selasa.png",
 		"rune": "火曜日",
 		"spelling": [
 			"か",
@@ -30,14 +30,13 @@
 		"cost": 1,
 		"reward_status": "AVAILABLE",
 		"example_of": [
-			14,
 			24
 		]
 	},
 	{
 		"id": 87,
 		"chapter": 3,
-		"image": "30kr1n.png",
+		"image": "Gunung Berapi.png",
 		"rune": "火山",
 		"spelling": [
 			"か",
@@ -48,14 +47,13 @@
 		"cost": 1,
 		"reward_status": "AVAILABLE",
 		"example_of": [
-			17,
 			24
 		]
 	},
 	{
 		"id": 88,
 		"chapter": 3,
-		"image": "30kr1n.png",
+		"image": "Kebakaran.png",
 		"rune": "火事",
 		"spelling": [
 			"か",
@@ -71,7 +69,7 @@
 	{
 		"id": 89,
 		"chapter": 3,
-		"image": "30kr1n.png",
+		"image": "Air.png",
 		"rune": "水",
 		"spelling": [
 			"み",
@@ -88,7 +86,7 @@
 	{
 		"id": 90,
 		"chapter": 3,
-		"image": "30kr1n.png",
+		"image": "Hari Rabu.png",
 		"rune": "水曜日",
 		"spelling": [
 			"す",
@@ -101,14 +99,13 @@
 		"cost": 1,
 		"reward_status": "AVAILABLE",
 		"example_of": [
-			14,
 			25
 		]
 	},
 	{
 		"id": 91,
 		"chapter": 3,
-		"image": "30kr1n.png",
+		"image": "Emas.png",
 		"rune": "金",
 		"spelling": [
 			"き",
@@ -125,7 +122,7 @@
 	{
 		"id": 92,
 		"chapter": 3,
-		"image": "30kr1n.png",
+		"image": "Uang.png",
 		"rune": "お金",
 		"spelling": [
 			"お",
@@ -143,7 +140,7 @@
 	{
 		"id": 93,
 		"chapter": 3,
-		"image": "30kr1n.png",
+		"image": "Hari Jumat.png",
 		"rune": "金曜日",
 		"spelling": [
 			"き",
@@ -156,14 +153,13 @@
 		"cost": 1,
 		"reward_status": "AVAILABLE",
 		"example_of": [
-			14,
 			26
 		]
 	},
 	{
 		"id": 94,
 		"chapter": 3,
-		"image": "30kr1n.png",
+		"image": "Tanah.png",
 		"rune": "土",
 		"spelling": [
 			"つ",
@@ -180,7 +176,7 @@
 	{
 		"id": 95,
 		"chapter": 3,
-		"image": "30kr1n.png",
+		"image": "Hari Sabtu.png",
 		"rune": "土曜日",
 		"spelling": [
 			"ど",
@@ -192,14 +188,13 @@
 		"cost": 1,
 		"reward_status": "AVAILABLE",
 		"example_of": [
-			14,
 			27
 		]
 	},
 	{
 		"id": 96,
 		"chapter": 3,
-		"image": "30kr1n.png",
+		"image": "Anak.png",
 		"rune": "子",
 		"spelling": [
 			"こ",
@@ -217,7 +212,7 @@
 	{
 		"id": 97,
 		"chapter": 3,
-		"image": "30kr1n.png",
+		"image": "Anak Perempuan.png",
 		"rune": "女の子",
 		"spelling": [
 			"お",
@@ -237,7 +232,7 @@
 	{
 		"id": 98,
 		"chapter": 3,
-		"image": "30kr1n.png",
+		"image": "Anak Laki-laki.png",
 		"rune": "男の子",
 		"spelling": [
 			"お",
@@ -257,7 +252,7 @@
 	{
 		"id": 99,
 		"chapter": 3,
-		"image": "30kr1n.png",
+		"image": "Perempuan.png",
 		"rune": "女",
 		"spelling": [
 			"お",
@@ -275,7 +270,7 @@
 	{
 		"id": 100,
 		"chapter": 3,
-		"image": "30kr1n.png",
+		"image": "Orang Perempuan.png",
 		"rune": "女の人",
 		"spelling": [
 			"お",
@@ -289,14 +284,13 @@
 		"cost": 1,
 		"reward_status": "AVAILABLE",
 		"example_of": [
-			20,
 			28
 		]
 	},
 	{
 		"id": 101,
 		"chapter": 3,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "彼女",
 		"spelling": [
 			"か",
@@ -313,7 +307,7 @@
 	{
 		"id": 102,
 		"chapter": 3,
-		"image": "30kr1n.png",
+		"image": "Murid.png",
 		"rune": "学生",
 		"spelling": [
 			"が",
@@ -332,7 +326,7 @@
 	{
 		"id": 103,
 		"chapter": 3,
-		"image": "30kr1n.png",
+		"image": "Universitas.png",
 		"rune": "大学",
 		"spelling": [
 			"だ",
@@ -351,7 +345,7 @@
 	{
 		"id": 104,
 		"chapter": 3,
-		"image": "30kr1n.png",
+		"image": "Sekolah.png",
 		"rune": "学校",
 		"spelling": [
 			"が",
@@ -370,7 +364,7 @@
 	{
 		"id": 105,
 		"chapter": 3,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "生きる",
 		"spelling": [
 			"い",
@@ -388,7 +382,7 @@
 	{
 		"id": 106,
 		"chapter": 3,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "生まれる",
 		"spelling": [
 			"う",
@@ -407,7 +401,7 @@
 	{
 		"id": 107,
 		"chapter": 3,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "先",
 		"spelling": [
 			"さ",
@@ -424,7 +418,7 @@
 	{
 		"id": 108,
 		"chapter": 3,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "先生",
 		"spelling": [
 			"せ",
@@ -443,7 +437,7 @@
 	{
 		"id": 109,
 		"chapter": 3,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "先週",
 		"spelling": [
 			"せ",
@@ -461,7 +455,7 @@
 	{
 		"id": 110,
 		"chapter": 3,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "先月",
 		"spelling": [
 			"せ",
@@ -473,14 +467,13 @@
 		"cost": 1,
 		"reward_status": "AVAILABLE",
 		"example_of": [
-			15,
 			32
 		]
 	},
 	{
 		"id": 111,
 		"chapter": 3,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "私",
 		"spelling": [
 			"わ",
@@ -498,7 +491,7 @@
 	{
 		"id": 112,
 		"chapter": 3,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "私立大学",
 		"spelling": [
 			"し",
@@ -521,7 +514,7 @@
 	{
 		"id": 113,
 		"chapter": 4,
-		"image": "30kr1n.png",
+		"image": "Atas.png",
 		"rune": "上",
 		"spelling": [
 			"う",
@@ -538,14 +531,14 @@
 	{
 		"id": 114,
 		"chapter": 4,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "上がる",
 		"spelling": [
 			"あ",
 			"が",
 			"る"
 		],
-		"meaning": "Naik/ Menaiki",
+		"meaning": "Naik",
 		"cost": 1,
 		"reward_status": "AVAILABLE",
 		"example_of": [
@@ -555,7 +548,7 @@
 	{
 		"id": 115,
 		"chapter": 4,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "上手な",
 		"spelling": [
 			"じょ",
@@ -566,14 +559,13 @@
 		"cost": 1,
 		"reward_status": "AVAILABLE",
 		"example_of": [
-			34,
-			56
+			34
 		]
 	},
 	{
 		"id": 116,
 		"chapter": 4,
-		"image": "30kr1n.png",
+		"image": "Bawah.png",
 		"rune": "下",
 		"spelling": [
 			"し",
@@ -590,7 +582,7 @@
 	{
 		"id": 117,
 		"chapter": 4,
-		"image": "30kr1n.png",
+		"image": "Turun.png",
 		"rune": "下がる",
 		"spelling": [
 			"さ",
@@ -607,7 +599,7 @@
 	{
 		"id": 118,
 		"chapter": 4,
-		"image": "30kr1n.png",
+		"image": "Bawah Tanah.png",
 		"rune": "地下",
 		"spelling": [
 			"ち",
@@ -623,7 +615,7 @@
 	{
 		"id": 119,
 		"chapter": 4,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "中",
 		"spelling": [
 			"な",
@@ -640,7 +632,7 @@
 	{
 		"id": 120,
 		"chapter": 4,
-		"image": "30kr1n.png",
+		"image": "SMP.png",
 		"rune": "中学校",
 		"spelling": [
 			"ちゅ",
@@ -662,7 +654,7 @@
 	{
 		"id": 121,
 		"chapter": 4,
-		"image": "30kr1n.png",
+		"image": "Murid SMP.png",
 		"rune": "中学生",
 		"spelling": [
 			"ちゅ",
@@ -684,7 +676,7 @@
 	{
 		"id": 122,
 		"chapter": 4,
-		"image": "30kr1n.png",
+		"image": "Besar.png",
 		"rune": "大きい",
 		"spelling": [
 			"お",
@@ -703,7 +695,7 @@
 	{
 		"id": 123,
 		"chapter": 4,
-		"image": "30kr1n.png",
+		"image": "Orang Dewasa.png",
 		"rune": "大人",
 		"spelling": [
 			"お",
@@ -714,14 +706,13 @@
 		"cost": 1,
 		"reward_status": "AVAILABLE",
 		"example_of": [
-			20,
 			37
 		]
 	},
 	{
 		"id": 124,
 		"chapter": 4,
-		"image": "30kr1n.png",
+		"image": "Kecil.png",
 		"rune": "小さい",
 		"spelling": [
 			"ち",
@@ -740,7 +731,7 @@
 	{
 		"id": 125,
 		"chapter": 4,
-		"image": "30kr1n.png",
+		"image": "SD.png",
 		"rune": "小学校",
 		"spelling": [
 			"しょ",
@@ -762,7 +753,7 @@
 	{
 		"id": 126,
 		"chapter": 4,
-		"image": "30kr1n.png",
+		"image": "Buku.png",
 		"rune": "本",
 		"spelling": [
 			"ほ",
@@ -779,7 +770,7 @@
 	{
 		"id": 127,
 		"chapter": 4,
-		"image": "30kr1n.png",
+		"image": "Toko Utama.png",
 		"rune": "本店",
 		"spelling": [
 			"ほ",
@@ -787,7 +778,7 @@
 			"て",
 			"ん"
 		],
-		"meaning": "Kantor pusat",
+		"meaning": "Toko pusat",
 		"cost": 1,
 		"reward_status": "AVAILABLE",
 		"example_of": [
@@ -797,7 +788,7 @@
 	{
 		"id": 128,
 		"chapter": 4,
-		"image": "30kr1n.png",
+		"image": "Toko Buku.png",
 		"rune": "本屋",
 		"spelling": [
 			"ほ",
@@ -814,7 +805,7 @@
 	{
 		"id": 129,
 		"chapter": 4,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "半分",
 		"spelling": [
 			"は",
@@ -833,7 +824,7 @@
 	{
 		"id": 130,
 		"chapter": 4,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "三時半",
 		"spelling": [
 			"さ",
@@ -846,14 +837,13 @@
 		"cost": 1,
 		"reward_status": "AVAILABLE",
 		"example_of": [
-			3,
 			40
 		]
 	},
 	{
 		"id": 131,
 		"chapter": 4,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "半年",
 		"spelling": [
 			"は",
@@ -871,7 +861,7 @@
 	{
 		"id": 132,
 		"chapter": 4,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "分ける",
 		"spelling": [
 			"わ",
@@ -888,7 +878,7 @@
 	{
 		"id": 133,
 		"chapter": 4,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "分かる",
 		"spelling": [
 			"わ",
@@ -905,7 +895,7 @@
 	{
 		"id": 134,
 		"chapter": 4,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "五分",
 		"spelling": [
 			"ご",
@@ -916,14 +906,13 @@
 		"cost": 1,
 		"reward_status": "AVAILABLE",
 		"example_of": [
-			5,
 			41
 		]
 	},
 	{
 		"id": 135,
 		"chapter": 4,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "六分",
 		"spelling": [
 			"ろ",
@@ -935,14 +924,13 @@
 		"cost": 1,
 		"reward_status": "AVAILABLE",
 		"example_of": [
-			6,
 			41
 		]
 	},
 	{
 		"id": 136,
 		"chapter": 4,
-		"image": "30kr1n.png",
+		"image": "Kekuatan.png",
 		"rune": "力",
 		"spelling": [
 			"ち",
@@ -960,7 +948,7 @@
 	{
 		"id": 137,
 		"chapter": 4,
-		"image": "30kr1n.png",
+		"image": "Kekuatan Air.png",
 		"rune": "水力",
 		"spelling": [
 			"す",
@@ -979,7 +967,7 @@
 	{
 		"id": 138,
 		"chapter": 4,
-		"image": "30kr1n.png",
+		"image": "Kekuatan Api.png",
 		"rune": "火力",
 		"spelling": [
 			"か",
@@ -997,7 +985,7 @@
 	{
 		"id": 139,
 		"chapter": 4,
-		"image": "30kr1n.png",
+		"image": "Apa.png",
 		"rune": "何",
 		"spelling": [
 			"な",
@@ -1014,7 +1002,7 @@
 	{
 		"id": 140,
 		"chapter": 4,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "何ですか",
 		"spelling": [
 			"な",
@@ -1033,7 +1021,7 @@
 	{
 		"id": 141,
 		"chapter": 4,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "何人",
 		"spelling": [
 			"な",
@@ -1045,14 +1033,13 @@
 		"cost": 1,
 		"reward_status": "AVAILABLE",
 		"example_of": [
-			20,
 			43
 		]
 	},
 	{
 		"id": 142,
 		"chapter": 4,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "何年",
 		"spelling": [
 			"な",
@@ -1070,7 +1057,7 @@
 	{
 		"id": 143,
 		"chapter": 5,
-		"image": "30kr1n.png",
+		"image": "Terang.png",
 		"rune": "明るい",
 		"spelling": [
 			"あ",
@@ -1089,7 +1076,7 @@
 	{
 		"id": 144,
 		"chapter": 5,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "明日",
 		"spelling": [
 			"あ",
@@ -1100,14 +1087,13 @@
 		"cost": 1,
 		"reward_status": "AVAILABLE",
 		"example_of": [
-			14,
 			44
 		]
 	},
 	{
 		"id": 145,
 		"chapter": 5,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "説明する",
 		"spelling": [
 			"せ",
@@ -1127,14 +1113,14 @@
 	{
 		"id": 146,
 		"chapter": 5,
-		"image": "30kr1n.png",
+		"image": "Istirahat.png",
 		"rune": "休む",
 		"spelling": [
 			"や",
 			"す",
 			"む"
 		],
-		"meaning": "Beristirahat",
+		"meaning": "Istirahat",
 		"is_single": true,
 		"cost": 1,
 		"reward_status": "AVAILABLE",
@@ -1145,7 +1131,7 @@
 	{
 		"id": 147,
 		"chapter": 5,
-		"image": "30kr1n.png",
+		"image": "Hari Libur.png",
 		"rune": "休日",
 		"spelling": [
 			"きゅ",
@@ -1157,14 +1143,13 @@
 		"cost": 1,
 		"reward_status": "AVAILABLE",
 		"example_of": [
-			14,
 			45
 		]
 	},
 	{
 		"id": 148,
 		"chapter": 5,
-		"image": "30kr1n.png",
+		"image": "Tubuh.png",
 		"rune": "体",
 		"spelling": [
 			"か",
@@ -1182,7 +1167,7 @@
 	{
 		"id": 149,
 		"chapter": 5,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "体力",
 		"spelling": [
 			"た",
@@ -1201,7 +1186,7 @@
 	{
 		"id": 150,
 		"chapter": 5,
-		"image": "30kr1n.png",
+		"image": "Pendidikan Jasmani.png",
 		"rune": "体育",
 		"spelling": [
 			"た",
@@ -1219,7 +1204,7 @@
 	{
 		"id": 151,
 		"chapter": 5,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "好きな",
 		"spelling": [
 			"す",
@@ -1237,7 +1222,7 @@
 	{
 		"id": 152,
 		"chapter": 5,
-		"image": "30kr1n.png",
+		"image": "Pepohonan.png",
 		"rune": "林",
 		"spelling": [
 			"は",
@@ -1255,7 +1240,7 @@
 	{
 		"id": 153,
 		"chapter": 5,
-		"image": "30kr1n.png",
+		"image": "Hutan Rimba.png",
 		"rune": "森林",
 		"spelling": [
 			"し",
@@ -1274,7 +1259,7 @@
 	{
 		"id": 154,
 		"chapter": 5,
-		"image": "30kr1n.png",
+		"image": "Hutan.png",
 		"rune": "森",
 		"spelling": [
 			"も",
@@ -1291,7 +1276,7 @@
 	{
 		"id": 155,
 		"chapter": 5,
-		"image": "30kr1n.png",
+		"image": "Laki-laki.png",
 		"rune": "男",
 		"spelling": [
 			"お",
@@ -1309,7 +1294,7 @@
 	{
 		"id": 156,
 		"chapter": 5,
-		"image": "30kr1n.png",
+		"image": "Orang Laki laki.png",
 		"rune": "男の人",
 		"spelling": [
 			"お",
@@ -1323,14 +1308,13 @@
 		"cost": 1,
 		"reward_status": "AVAILABLE",
 		"example_of": [
-			20,
 			50
 		]
 	},
 	{
 		"id": 157,
 		"chapter": 5,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "長男",
 		"spelling": [
 			"ちょ",
@@ -1348,14 +1332,14 @@
 	{
 		"id": 158,
 		"chapter": 5,
-		"image": "30kr1n.png",
+		"image": "Tengah.png",
 		"rune": "間",
 		"spelling": [
 			"あ",
 			"い",
 			"だ"
 		],
-		"meaning": "Di antara dua hal",
+		"meaning": "Tengah",
 		"is_single": true,
 		"cost": 1,
 		"reward_status": "AVAILABLE",
@@ -1366,7 +1350,7 @@
 	{
 		"id": 159,
 		"chapter": 5,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "間に合う",
 		"spelling": [
 			"ま",
@@ -1384,7 +1368,7 @@
 	{
 		"id": 160,
 		"chapter": 5,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "一年間",
 		"spelling": [
 			"い",
@@ -1398,14 +1382,13 @@
 		"cost": 1,
 		"reward_status": "AVAILABLE",
 		"example_of": [
-			1,
 			51
 		]
 	},
 	{
 		"id": 161,
 		"chapter": 5,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "時間",
 		"spelling": [
 			"じ",
@@ -1422,7 +1405,7 @@
 	{
 		"id": 162,
 		"chapter": 5,
-		"image": "30kr1n.png",
+		"image": "SMA.png",
 		"rune": "高校",
 		"spelling": [
 			"こ",
@@ -1440,7 +1423,7 @@
 	{
 		"id": 163,
 		"chapter": 5,
-		"image": "30kr1n.png",
+		"image": "Murid SMA.png",
 		"rune": "高校生",
 		"spelling": [
 			"こ",
@@ -1461,7 +1444,7 @@
 	{
 		"id": 164,
 		"chapter": 5,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "校長",
 		"spelling": [
 			"こ",
@@ -1479,7 +1462,7 @@
 	{
 		"id": 165,
 		"chapter": 5,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "国",
 		"spelling": [
 			"く",
@@ -1496,7 +1479,7 @@
 	{
 		"id": 166,
 		"chapter": 5,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "外国人",
 		"spelling": [
 			"が",
@@ -1510,14 +1493,13 @@
 		"cost": 1,
 		"reward_status": "AVAILABLE",
 		"example_of": [
-			20,
 			53
 		]
 	},
 	{
 		"id": 167,
 		"chapter": 5,
-		"image": "30kr1n.png",
+		"image": "Tiongkok.png",
 		"rune": "中国",
 		"spelling": [
 			"ちゅ",

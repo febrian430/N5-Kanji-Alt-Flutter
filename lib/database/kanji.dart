@@ -63,7 +63,7 @@ class Kanji {
 
   Kanji.fromJson(Map<String, dynamic> json)
       :
-        // id = json['id'],
+        id = json['id'],
         rune = json['rune'],
         chapter = json['chapter'],
         kunyomi = json['kunyomi'],
