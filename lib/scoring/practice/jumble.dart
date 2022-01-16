@@ -8,17 +8,17 @@ import 'package:kanji_memory_hint/scoring/report.dart';
 class JumbleScoring {
   static const _NUM_OF_OPTIONS = 8;
   static GameResult evaluate(PracticeScore score, List<int> slots, List<int> perfectRoundsSlots) {
-    var points = _getPoints(score);
     var exp = _getExp(score, slots, perfectRoundsSlots);
+    var points = (exp*2/3).floor();
 
     return GameResult(expGained: exp, pointsGained: points);
   }
 
-  static int _getPoints(PracticeScore score) {
-    var pointsForPerfect = (5*score.perfectRounds).floor();
-    var points = (5-(score.wrongAttempts*0.5)).floor();
-    return max(0, points) + pointsForPerfect + 5;
-  }
+  // static int _getPoints(PracticeScore score) {
+  //   var pointsForPerfect = (5*score.perfectRounds).floor();
+  //   var points = (5-(score.wrongAttempts*0.5)).floor();
+  //   return max(0, points) + pointsForPerfect + 5;
+  // }
 
   static int _getExp(PracticeScore score, List<int> slotsToFill, List<int> perfectRoundsSlots) {
       // int expForPerfect = 0;

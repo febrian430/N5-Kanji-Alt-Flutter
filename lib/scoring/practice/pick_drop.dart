@@ -6,17 +6,17 @@ class PickDropScoring {
   static const _NUM_OF_OPTS = 8;
 
   static GameResult evaluate(PracticeScore score) {
-    var points = _getPoints(score);
     var exp = _getExp(score);
+    var points = (2/3*exp).floor();
 
     return GameResult(expGained: exp, pointsGained: points);
   }
 
-  static int _getPoints(PracticeScore score) {
-    var pointsForPerfect = 5*score.perfectRounds;
-    var points = (score.perfectRounds*0.5).floor();
-    return max(0, points) + pointsForPerfect + 5;
-  }
+  // static int _getPoints(PracticeScore score) {
+  //   var pointsForPerfect = 5*score.perfectRounds;
+  //   var points = (score.perfectRounds*0.5).floor();
+  //   return max(0, points) + pointsForPerfect + 5;
+  // }
 // base exp: 100
 // exp: 150-(wrongAttempts * 10)
   static int _getExp(PracticeScore score) {

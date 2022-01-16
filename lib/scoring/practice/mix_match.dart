@@ -9,16 +9,17 @@ class MixMatchScoring {
   static const _NUM_OF_OPTIONS = 16;
 
   static GameResult evaluate(PracticeScore score) {
-    var points = _getPoints(score);
     var exp = _getExp(score);
+    var points = (exp*2/3).floor();;
+
     return GameResult(expGained: exp, pointsGained: points);
   }
 
-  static int _getPoints(PracticeScore score) {
-    var pointsForPerfect = 5*score.perfectRounds;
-    var points = (5-(score.wrongAttempts*0.5)).floor();
-    return max(0, points) + pointsForPerfect + 5;
-  }
+  // static int _getPoints(PracticeScore score) {
+  //   var pointsForPerfect = 5*score.perfectRounds;
+  //   var points = (5-(score.wrongAttempts*0.5)).floor();
+  //   return max(0, points) + pointsForPerfect + 5;
+  // }
 
 // all perfect = 200
 // amount of questions: 32
