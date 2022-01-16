@@ -9,8 +9,8 @@ class MixMatchQuestionMaker {
 
     List<List<Question>> options = [];
 
-    var singles = await SQLRepo.gameQuestions.byChapter(chapter, single: true);
-    var doubles = await SQLRepo.gameQuestions.byChapter(chapter, single: false);
+    var singles = await SQLRepo.gameQuestions.byChapter(chapter, single: true, hasImage: mode == GAME_MODE.imageMeaning ? true : null);
+    var doubles = await SQLRepo.gameQuestions.byChapter(chapter, single: false, hasImage: mode == GAME_MODE.imageMeaning ? true : null);
 
     singles = singles.take(n).toList();
     doubles = doubles.take(n).toList();

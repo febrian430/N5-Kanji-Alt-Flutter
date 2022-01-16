@@ -332,7 +332,8 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
     Color solvedBorderColor = AppColors.correct;
     Color defaultBorderColor = Colors.black;
     const int borderWidth = 2;
-    final Color defaultBackgroundColor = (index + (index / 4).floor()) % 2 == 1 ? AppColors.primary : Colors.white;
+    // final Color defaultBackgroundColor = (index + (index / 4).floor()) % 2 == 1 ? AppColors.primary : Colors.white;
+    final Color defaultBackgroundColor = AppColors.primary;
 
     final boxSize = MediaQuery.of(context).size.width*0.20;
 
@@ -351,7 +352,7 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
             color: Colors.black,
             width: 3
           ),
-          color: defaultBackgroundColor
+          color: AppColors.selected
         );
     } else if(isSolved) {
       deco = BoxDecoration(
@@ -372,7 +373,7 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
     }
 
     if(opt.isImage){
-      double opacity = isSelected || isSolved ? 0.5 : 1;
+      double opacity = isSelected ? .4 : 1;
       
       return Stack(
         children: [
@@ -383,10 +384,11 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
                 image: DecorationImage(
                   image: AssetImage(KANJI_IMAGE_FOLDER + opt.value),
                   fit: BoxFit.contain,
-                  colorFilter: ColorFilter.mode(Colors.black.withOpacity(opacity), BlendMode.dstATop)
+                  
+                  colorFilter: ColorFilter.mode(AppColors.selected.withOpacity(opacity), BlendMode.dstATop)
                 ),
                 border: deco.border,
-                color: Colors.white
+                color: isSelected ? AppColors.selected : Colors.white
               ),
               height: boxSize,
               width: boxSize
