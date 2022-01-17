@@ -350,11 +350,33 @@ class _PickDropRoundState extends State<PickDropRound> {
             flex: 5,
             child: DragTarget<Option>(
               builder: (context, candidateData, rejectedData) {
-                return QuestionWidget(
-                  questionStr: widget.question.value, 
-                  mode: widget.mode,
-                  overlay: wrongOverlay,
-                  correctBorder: correctOverlay,
+                return Stack(
+                  children: [
+                    Center(
+                      child:QuestionWidget(
+                        questionStr: widget.question.value, 
+                        mode: widget.mode,
+                        overlay: wrongOverlay,
+                        correctBorder: correctOverlay,
+                      )
+                    ),
+                    correctOverlay ? 
+                    Center(
+                      child: LayoutBuilder(
+                        builder: (context, constraints) {
+                          return Image.asset(
+                            AppIcons.checkNoOutline,
+                            height: constraints.maxHeight/4,
+                            width: constraints.maxWidth/4,
+                            fit: BoxFit.contain,
+                          );
+                        },
+                      ) 
+                      
+                    )
+                    :
+                    SizedBox()
+                  ]
                 );
               },
               onWillAccept: (opt) {
@@ -371,7 +393,7 @@ class _PickDropRoundState extends State<PickDropRound> {
                     setState(() {
                       wrongOverlay = true;
                     });
-                    Future.delayed(const Duration(milliseconds: 300), (){
+                    Future.delayed(const Duration(milliseconds: 500), (){
                       setState(() {
                         wrongOverlay = false;
                       });
@@ -381,7 +403,7 @@ class _PickDropRoundState extends State<PickDropRound> {
                       isSolved = true;
                       correctOverlay = true;
                     });
-                    await Future.delayed(const Duration(milliseconds: 300), (){
+                    await Future.delayed(const Duration(milliseconds: 500), (){
                       setState(() {
                         correctOverlay = false;
                       });
@@ -423,10 +445,11 @@ class _OptionWidget extends StatelessWidget {
         child: Center(
           child: Text(
             option.value,
+            textAlign: TextAlign.center,
             style: TextStyle(
                 color: Colors.black,
                 fontSize: 20,
-                decoration: TextDecoration.none
+                decoration: TextDecoration.none,
             ),
           )
         ),

@@ -91,7 +91,6 @@ class _KanjiWidget extends StatelessWidget {
                   kanji.rune, 
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    
                     fontFamily: _fontStyle,
                     fontSize: 76
                   ),
@@ -107,29 +106,31 @@ class _KanjiWidget extends StatelessWidget {
                 child: Container(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       //kunyomi
                       Flexible(
-                        flex: 2,
+                        flex: 4,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text("くん・よみ", style: TextStyle(fontWeight: FontWeight.bold),),
+                            Flexible(flex: 1, child: const Text("くん・よみ", style: TextStyle(fontWeight: FontWeight.bold),),),
                             // Text(kanji.kunyomi.join("／"))
-                            Text(kanji.kunyomi)
+                            Expanded(flex: 1, child: Text(kanji.kunyomi))
                           ]
                         )
                       ),
-
+                      // EmptyFlex(flex: 1),
+                      // SizedBox(height: 50,),
                       // onyomi
                       Flexible(
-                        flex: 2,
+                        flex: 4,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text("おん・よみ", style: TextStyle(fontWeight: FontWeight.bold)),
+                            Flexible(flex: 1, child: const Text("おん・よみ", style: TextStyle(fontWeight: FontWeight.bold)),),
                             // Text(kanji.onyomi.join("／"))
-                            Text(kanji.onyomi)
+                            Expanded(flex: 1, child:Text(kanji.onyomi))
                           ],
                         )
                       )
@@ -140,7 +141,7 @@ class _KanjiWidget extends StatelessWidget {
             ]
           )
         ),
-        EmptyFlex(flex: 5)
+        EmptyFlex(flex: 1)
       ],
     );
   }
@@ -164,8 +165,13 @@ class _KanjiWidget extends StatelessWidget {
       child: Column(
         children: [
           Expanded(
-            flex: 5,
-            child: _header(context),
+            flex: 4,
+            child: Container(
+              // decoration: BoxDecoration(
+              //     border: Border.all(width: 1)
+              //   ),
+              child: _header(context),
+            )
           ),
           Expanded(
           flex: 3,
@@ -186,7 +192,7 @@ class _KanjiWidget extends StatelessWidget {
         ),
           EmptyFlex(flex: 1),
           Expanded(
-            flex: 13,
+            flex: 15,
             child: GridView.count(
               crossAxisCount: 2,
               childAspectRatio: 3/6,

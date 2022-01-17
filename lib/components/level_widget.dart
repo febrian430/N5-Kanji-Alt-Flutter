@@ -48,63 +48,68 @@ class _LevelWidgetState extends State<LevelWidget> {
             } else if((widget.increase + remaining) >= nextLevel) {
               levelUpWidget = Text("Level up!", textAlign: TextAlign.center,);
             } 
-            return Container(
-              width: widget.width,
-              height: widget.height,
-              padding: EdgeInsets.fromLTRB(
-                10,
-                10,
-                10,
-                0
-              ),
-              decoration: BoxDecoration(
-                color: AppColors.primary,
-                border: Border.all(width: 2)
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    flex: 2, 
-                    child: Text(
-                      "Level "+ level.toString(),
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold
+            return GestureDetector(
+              onTap: (){
+                Navigator.of(context).pushNamedAndRemoveUntil("/quests", ModalRoute.withName("/"));
+              },
+              child: Container(
+                width: widget.width,
+                height: widget.height,
+                padding: EdgeInsets.fromLTRB(
+                  10,
+                  10,
+                  10,
+                  0
+                ),
+                decoration: BoxDecoration(
+                  color: AppColors.primary,
+                  border: Border.all(width: 2)
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      flex: 2, 
+                      child: Text(
+                        "Level "+ level.toString(),
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold
+                        ),
                       ),
                     ),
-                  ),
-                  Flexible(
-                    flex: 1,
-                    child: Row(
-                      children: [
-                        EmptyFlex(flex: 1),
-                        Flexible(flex: 1, child: levelUpWidget),
-                        EmptyFlex(flex: 1)
-                      ]
+                    Flexible(
+                      flex: 1,
+                      child: Row(
+                        children: [
+                          EmptyFlex(flex: 1),
+                          Flexible(flex: 1, child: levelUpWidget),
+                          EmptyFlex(flex: 1)
+                        ]
+                      )
+                    ),
+                    Expanded(
+                      flex: 3,
+                      child: ProgressBar(
+                        current: remaining, 
+                        gain: widget.increase, 
+                        upperbound: nextLevel ?? remaining, 
+                        nextUpperbound: nextNextLevel, 
+                        animate: widget.animate,
+                        onLevelup: (){
+                          String msg = "You are now level $nextLevel";
+                          if(nextNextLevel == null) {
+                            msg = "You reached max level";
+                          }
+                          final snackbar = SnackBar(
+                            content: Text(msg),
+                          );
+                          ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                      }),
                     )
-                  ),
-                  Expanded(
-                    flex: 3,
-                    child: ProgressBar(
-                      current: remaining, 
-                      gain: widget.increase, 
-                      upperbound: nextLevel ?? remaining, 
-                      nextUpperbound: nextNextLevel, 
-                      animate: widget.animate,
-                      onLevelup: (){
-                        String msg = "You are now level $nextLevel";
-                        if(nextNextLevel == null) {
-                          msg = "You reached max level";
-                        }
-                        final snackbar = SnackBar(
-                          content: Text(msg),
-                        );
-                        ScaffoldMessenger.of(context).showSnackBar(snackbar);
-                    }),
-                  )
-                ]
+                  ]
+                )
               )
             );
           } else {
