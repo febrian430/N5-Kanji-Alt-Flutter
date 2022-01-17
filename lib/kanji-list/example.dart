@@ -12,7 +12,7 @@ class ExampleContainer extends StatelessWidget {
     return Column(
         children: [
           Flexible(
-            flex: 2, 
+            flex: 4, 
             child: LayoutBuilder(
               builder: (context, constraints) {
                 return Container(
@@ -32,30 +32,33 @@ class ExampleContainer extends StatelessWidget {
             )
           ),
           Expanded(
-            flex: 4,
+            flex: 8,
             child: LayoutBuilder(
               builder: (context, constraints) {
-                return Container(
-                  width: constraints.maxWidth,
-                  decoration: BoxDecoration(
-                    border: Border(bottom: BorderSide(width: 1))
-                  ),
-                  alignment: Alignment.center,
-                  child: Text(
-                    kanji.rune,
-                    style: TextStyle(
-                      fontSize: 50,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'MsMincho'
+                return AspectRatio(
+                  aspectRatio: 5/4,
+                  child: Container(
+                    width: constraints.maxWidth,
+                    decoration: BoxDecoration(
+                      border: Border(bottom: BorderSide(width: 1))
                     ),
-                  ),
+                    alignment: Alignment.center,
+                    child: Text(
+                      kanji.rune,
+                      style: TextStyle(
+                        fontSize: 50,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'MsMincho'
+                      ),
+                    ),
+                  )
                 );
               }
             )
           ),
           Expanded(
             flex: 2,
-            child: Text(example.meaning, textAlign: TextAlign.center,),
+            child: Center(child: Text(example.meaning, textAlign: TextAlign.center,)),
           )
         ],
       );
