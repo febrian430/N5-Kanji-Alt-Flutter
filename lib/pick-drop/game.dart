@@ -6,6 +6,7 @@ import 'package:kanji_memory_hint/components/dialogs/guide.dart';
 import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/components/result_button.dart';
 import 'package:kanji_memory_hint/const.dart';
+import 'package:kanji_memory_hint/game_components/game_helper.dart';
 import 'package:kanji_memory_hint/game_components/question_widget.dart';
 import 'package:kanji_memory_hint/icons.dart';
 import 'package:kanji_memory_hint/images.dart';
@@ -19,6 +20,7 @@ import 'package:kanji_memory_hint/route_param.dart';
 import 'package:kanji_memory_hint/scoring/report.dart';
 import 'package:kanji_memory_hint/scoring/practice/pick_drop.dart';
 import 'package:kanji_memory_hint/theme.dart';
+import 'package:kanji_memory_hint/map_indexed.dart';
 
 class PickDrop extends StatefulWidget {
 
@@ -51,6 +53,7 @@ class _PickDropState extends State<PickDrop> {
   int wrongAttempts = 0;
   int perfect = 0;
   int solved = 0;
+  Set<int> answered = {};
   bool restart = false;
 
   List<int> attempts = [];
@@ -87,7 +90,7 @@ class _PickDropState extends State<PickDrop> {
     );
   }
 
-  void _handleOnDrop(bool isCorrect, int roundAttempts) {
+  void _handleOnDrop(bool isCorrect, int roundAttempts, int idx) {
     setState(() {
       if (isCorrect) {
         solved++;
@@ -99,8 +102,12 @@ class _PickDropState extends State<PickDrop> {
         wrongAttempts += roundAttempts;
         attempts.add(roundAttempts);
 
-        if (index < total-1) {
-          index++;
+        answered.add(idx);
+
+        var nearestAnswerable = GameHelper.nearestUnansweredIndex(index, answered, total-1);
+        if (nearestAnswerable != null) {
+          print(nearestAnswerable);
+          index = nearestAnswerable;
         } else {
           widget.stopwatch.stop();
           score = PracticeScore(
@@ -134,8 +141,9 @@ class _PickDropState extends State<PickDrop> {
       padding: EdgeInsets.symmetric(horizontal: 4.0),
       child: IndexedStack(
         index: index,
-        children: sets.map((set) {
+        children: sets.mapIndexed((set, index) {
           return PickDropRound(
+            index: index,
             question: set.question,   
             options: set.options, 
             onDrop: _handleOnDrop, 
@@ -237,11 +245,12 @@ class _PickDropState extends State<PickDrop> {
   }
 }
 
-typedef OnDropCallback = Function(bool isCorrect, int attempts);
+typedef OnDropCallback = Function(bool isCorrect, int attempts, int index);
 
 class PickDropRound extends StatefulWidget {
   const PickDropRound({
     Key? key, 
+    required this.index,
     required this.question, 
     required this.options, 
     required this.onDrop, 
@@ -255,6 +264,7 @@ class PickDropRound extends StatefulWidget {
   final GAME_MODE mode = GAME_MODE.imageMeaning;
   final bool isLast;
   final bool restartSrc;
+  final int index;
 
   @override
   State<StatefulWidget> createState() => _PickDropRoundState();
@@ -410,7 +420,7 @@ class _PickDropRoundState extends State<PickDropRound> {
                     });
                   }
 
-                  widget.onDrop(isCorrect, attempts);
+                  widget.onDrop(isCorrect, attempts, widget.index);
 
                 }
               },

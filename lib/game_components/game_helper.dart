@@ -4,10 +4,10 @@ class GameHelper {
     int right = fromIndex;
 
     while (left >= 0 && right <= n) {
-      if(!answered.contains(left)){
-        return left;
-      } else if(!answered.contains(right)) {
+      if(!answered.contains(right)){
         return right;
+      } else if(!answered.contains(left)) {
+        return left;
       }
       left--;
       right++;
