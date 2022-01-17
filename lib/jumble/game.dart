@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/components/dialogs/guide.dart';
+import 'package:kanji_memory_hint/components/empty_flex.dart';
 import 'package:kanji_memory_hint/components/header.dart';
 import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/components/result_button.dart';
@@ -497,14 +498,14 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
         child: Column(
           children: [
             Flexible(
-              flex:7,
+              flex:17,
               child: QuestionWidget(mode: widget.mode, questionStr: widget.question.value),
             ),
-            Text(widget.question.key.join('')),
-
+            // Text(widget.question.key.join('')),
+            EmptyFlex(flex: 1),
             //selected box
             Flexible(
-              flex: 2,
+              flex: 3,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 mainAxisSize: MainAxisSize.min,
@@ -524,11 +525,11 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
                   }).toList(),
               ),
             ),
-
+            EmptyFlex(flex: 1),
             //options
             // Expanded(
             Flexible(
-              flex: 4,
+              flex: 8,
               child: Container(
                 decoration: BoxDecoration(
                   // border: Border.all(
