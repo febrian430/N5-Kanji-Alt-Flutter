@@ -28,6 +28,7 @@ class AppIcons {
   static const no = APP_IMAGE_FOLDER + 'cross.png';
 
   static const sound = APP_IMAGE_FOLDER + 'sound.png';
+  static const soundMute = APP_IMAGE_FOLDER + 'sound_mute.png';
   static const reminder = APP_IMAGE_FOLDER + 'reminder.png';
   static const retry  = APP_IMAGE_FOLDER + 'retry.png';
 

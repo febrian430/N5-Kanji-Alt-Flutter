@@ -54,7 +54,7 @@ class ExampleContainer extends StatelessWidget {
             )
           ),
           Expanded(
-            flex: 1,
+            flex: 2,
             child: Text(example.meaning, textAlign: TextAlign.center,),
           )
         ],
@@ -86,9 +86,11 @@ class ExampleContainer extends StatelessWidget {
           ),
           Expanded(
             flex: 4,
-            child: AspectRatio(
+            child: 
+            AspectRatio(
               aspectRatio: 1,
-              child: Container(
+              child: 
+              Container(
                 child: Image.asset(
                   KANJI_IMAGE_FOLDER+example.image,
                   fit: BoxFit.contain,

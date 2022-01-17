@@ -260,7 +260,7 @@ class MainScreen extends StatelessWidget {
               ),
               AppIconButton(
                 onTap: (){}, 
-                iconPath: AppIcons.sound, 
+                iconPath: AppIcons.soundMute, 
                 height: 40, 
                 width: 40,
                 ratio: 1, 
