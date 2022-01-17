@@ -21,41 +21,52 @@ class PauseDialog extends StatelessWidget {
 
   Widget _buildPracticePause(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return  GridView(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        mainAxisSpacing: 10,
-        crossAxisSpacing: 10,
-      ),
-      children: [
-        _DialogButton(
-            icon: AppIcons.resume, 
-            onPressed: () {
-              onContinue();
-              Navigator.pop(context);
-            },
+    return LayoutBuilder(
+      builder: (context, constraints){
+        return Container(
+          width: constraints.maxWidth,
+          height: constraints.maxHeight,
+          child: GridView(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            mainAxisSpacing: 10,
+            crossAxisSpacing: 10,
+            childAspectRatio: 1,
           ),
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          children: [
+            _DialogButton(
+                icon: AppIcons.resume, 
+                onPressed: () {
+                  onContinue();
+                  Navigator.pop(context);
+                },
+              ),
 
-        _DialogButton(
-          icon: AppIcons.retry, 
-          onPressed: () {
-            Navigator.pop(context);
-            onRestart();
-          },
-          ),
-        _DialogButton(
-          icon: AppIcons.kana, 
-          onPressed: (){
-            showDialog(context: context, builder: showKanaDialog);
-          }),
-        _QuitButton(
-            icon: AppIcons.home, 
-            onPressed: (){
-              // Navigator.of(context).pushNamedAndRemoveUntil(newRouteName, (route) => false)
-              Navigator.of(context).popUntil(ModalRoute.withName('/'));
-            }
-          )
-        ],
+            _DialogButton(
+              icon: AppIcons.retry, 
+              onPressed: () {
+                Navigator.pop(context);
+                onRestart();
+              },
+              ),
+            _DialogButton(
+              icon: AppIcons.kana, 
+              onPressed: (){
+                showDialog(context: context, builder: showKanaDialog);
+              }),
+            _QuitButton(
+                icon: AppIcons.home, 
+                onPressed: (){
+                  // Navigator.of(context).pushNamedAndRemoveUntil(newRouteName, (route) => false)
+                  Navigator.of(context).popUntil(ModalRoute.withName('/'));
+                }
+              )
+            ],
+        )
+      );
+      }
     );
   }
 
@@ -202,13 +213,13 @@ class PauseDialog extends StatelessWidget {
                     builder: (context, constraints) {
                       return withKanaChart ? 
                         SizedBox(
-                          width: constraints.maxWidth*.85,
+                          width: constraints.maxWidth*.80,
                           child:
                             _buildPracticePause(context) 
                         ) 
                         :
                         SizedBox(
-                          width: constraints.maxWidth*.85,
+                          width: constraints.maxWidth*.80,
                           child: _buildQuizPause(context) 
                         );
                     }
