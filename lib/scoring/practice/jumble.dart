@@ -42,7 +42,10 @@ class JumbleScoring {
       var expGained = score.attemptsPerRound
         .map((attempt) {
           var numerator = max(1, (_NUM_OF_OPTIONS - attempt));
-          return (numerator)*10/_NUM_OF_OPTIONS;
+          var exp = (numerator)*10/_NUM_OF_OPTIONS;
+
+
+          return exp;
         })
         .reduce((sum, value) => sum+value);
 

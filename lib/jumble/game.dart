@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/components/dialogs/guide.dart';
@@ -374,14 +376,14 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
 
     setState(() {
       selected = [...selected];
-      selectCount -= indexes.length;
+      selectCount = max(0, selectCount -= indexes.length);
 
       wrongSelected = [];
     });
   }
 
   void _handleSelectTap(Option option, int index) {
-    if(!isRoundOver){
+    if(!isRoundOver && wrongSelected.isEmpty){
       _unselect([index]);
     }
   }
@@ -398,13 +400,14 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
   }
 
   void _handleOptionTap(Option option) {
-    if(!isRoundOver){
+    if(!isRoundOver && wrongSelected.isEmpty){
 
       if(selected.contains(option)){
         
         var index = selected.indexOf(option);
         print("UNSELECTING INDEX: $index");
         _unselect([index]);
+        
         return;
       }
 
@@ -415,7 +418,7 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
           selectCount++;
         });
       }
-
+      print("sel count$selectCount : total length ${widget.question.key.length}");
       if(selectCount == widget.question.key.length) {
         var diff = _differentIndexes();
         if(diff.length == 0) {
@@ -428,8 +431,6 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
           setState(() {
             misses += diff.length;
             wrongSelected.addAll(diff);
-            print("DIFF: ${diff.join(",")}");
-            print("WRONG SELECTED ${wrongSelected.join(", ")}");
             // roundColor = _wrongColor;
             widget.onComplete(false, diff.length, widget.index, widget.question.key.length, attempts);
           });

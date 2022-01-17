@@ -26,7 +26,8 @@ class PickDropScoring {
 
     var expGained = score.attemptsPerRound.map((attempts){
       var numerator = max(1, _NUM_OF_OPTS-attempts);
-      return (numerator/_NUM_OF_OPTS)*10;
+      var exp = (numerator/_NUM_OF_OPTS)*10;
+      return exp;
     })
     .reduce((sum, value) => sum+value);
     return expGained.floor();
