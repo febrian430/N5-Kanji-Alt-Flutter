@@ -491,7 +491,7 @@
 	{
 		"id": 111,
 		"chapter": 3,
-		"image": "",
+		"image": "Saya.png",
 		"rune": "私",
 		"spelling": [
 			"わ",
@@ -1111,7 +1111,7 @@
 	{
 		"id": 145,
 		"chapter": 5,
-		"image": "",
+		"image": "Menjelaskan.png",
 		"rune": "説明する",
 		"spelling": [
 			"せ",
@@ -1350,14 +1350,14 @@
 	{
 		"id": 158,
 		"chapter": 5,
-		"image": "Tengah.png",
+		"image": "Diantara.png",
 		"rune": "間",
 		"spelling": [
 			"あ",
 			"い",
 			"だ"
 		],
-		"meaning": "Tengah",
+		"meaning": "Di antara",
 		"is_single": true,
 		"cost": 1,
 		"reward_status": "AVAILABLE",
