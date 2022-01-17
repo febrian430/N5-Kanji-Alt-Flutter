@@ -14,17 +14,24 @@ class GameQuestionProvider {
   Future<List<Example>> byChapterForQuestion(int chapter, int n, double ratio, bool quiz, GAME_MODE mode) async {
     int singleCount = (n * ratio).floor();
     int doubleCount = n - singleCount;
-
+    var singleFutures = _exampleProvider.byChapter(chapter, single: true);
+    var doubleFutures = _exampleProvider.byChapter(chapter, single: false);
     var futures = await Future.wait(
-        [_exampleProvider.byChapter(chapter, single: true), _exampleProvider.byChapter(chapter, single: false)]);
+        [singleFutures, doubleFutures]);
+
+    futures[0].shuffle(); 
+    futures[1].shuffle();
 
     if(mode == GAME_MODE.imageMeaning) {
       futures[0] = futures[0].where((example) => example.hasImage).toList();
       futures[1] = futures[1].where((example) => example.hasImage).toList();
     }
+
+
       
     futures[0].shuffle();
     futures[1].shuffle();
+
     var combined = [
       ...futures[0].take(singleCount),
       ...futures[1].take(doubleCount)

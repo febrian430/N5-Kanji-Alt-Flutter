@@ -411,7 +411,7 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
               //   horizontal: 5
               // ),
               child: Center(
-                child: Text(opt.value,
+                child: Text(opt.value + opt.key,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 25,
