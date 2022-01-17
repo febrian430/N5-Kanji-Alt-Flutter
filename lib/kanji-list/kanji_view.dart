@@ -110,6 +110,7 @@ class _KanjiWidget extends StatelessWidget {
                     children: [
                       //kunyomi
                       Flexible(
+                        flex: 2,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -122,6 +123,7 @@ class _KanjiWidget extends StatelessWidget {
 
                       // onyomi
                       Flexible(
+                        flex: 2,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -162,7 +164,7 @@ class _KanjiWidget extends StatelessWidget {
       child: Column(
         children: [
           Expanded(
-            flex: 4,
+            flex: 5,
             child: _header(context),
           ),
           Expanded(
