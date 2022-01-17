@@ -1,5 +1,23 @@
 [
 	{
+		"id": 71,
+		"chapter": 4,
+		"image": "Sungai Kecil.png",
+		"rune": "小川",
+		"spelling": [
+			"お",
+			"が",
+			"わ"
+		],
+		"meaning": "Sungai Kecil",
+		"cost": 1,
+		"reward_status": "AVAILABLE",
+		"example_of": [
+			18,
+			38
+		]
+	},
+	{
 		"id": 85,
 		"chapter": 3,
 		"image": "Api.png",
