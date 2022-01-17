@@ -1,8 +1,12 @@
+import 'dart:math';
+
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/database/example.dart';
 import 'package:kanji_memory_hint/database/repository.dart';
 import 'package:kanji_memory_hint/models/common.dart';
 import 'package:kanji_memory_hint/map_indexed.dart';
+import 'package:quiver/testing/src/time/time.dart';
 
 class MixMatchQuestionMaker {
   static Future<List<List<Question>>> makeOptions(int n, int chapter, GAME_MODE mode) async {
@@ -11,6 +15,9 @@ class MixMatchQuestionMaker {
 
     var singles = await SQLRepo.gameQuestions.byChapter(chapter, single: true, hasImage: mode == GAME_MODE.imageMeaning ? true : null);
     var doubles = await SQLRepo.gameQuestions.byChapter(chapter, single: false, hasImage: mode == GAME_MODE.imageMeaning ? true : null);
+
+    singles.shuffle();
+    doubles.shuffle();
 
     singles = singles.take(n).toList();
     doubles = doubles.take(n).toList();
