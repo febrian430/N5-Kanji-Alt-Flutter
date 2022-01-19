@@ -207,61 +207,36 @@ class QuestProvider {
   }
 
   Future<List<PracticeQuest>> getOnGoingPractice() async {
-    var readyToClaim = await db.query(_tableQuests,
-      where: '$_columnType = ? AND $_columnCount >= $_columnTotal',
-      whereArgs: [_enumPractice]
+    var rows = await db.query(_tableQuests,
+      where: '$_columnType = ?',
+      whereArgs: [_enumPractice],
+      orderBy: '$_columnStatus DESC'
     );
-    var onGoing = await db.query(_tableQuests,
-      where: '$_columnType = ? AND $_columnStatus = ?',
-      whereArgs: [_enumPractice, QUEST_STATUS.ONGOING.name]
-    );
-    var claimed = await db.query(_tableQuests,
-      where: '$_columnType = ? AND $_columnStatus = ?',
-      whereArgs: [_enumPractice, QUEST_STATUS.CLAIMED.name]
-    );
-    var raw = [...readyToClaim, ...onGoing, ...claimed];
-    return raw.map((questRaw) => PracticeQuest.fromMap(questRaw)).toList();
+    
+    
+    return rows.map((questRaw) => PracticeQuest.fromMap(questRaw)).toList();
   }
 
   Future<List<QuizQuest>> getOnGoingQuiz() async {
-    var readyToClaim = await db.query(_tableQuests,
-        where: '$_columnType = ? AND $_columnCount >= $_columnTotal',
-        whereArgs: [_enumQuiz]
+    var rows = await db.query(_tableQuests,
+        where: '$_columnType = ?',
+        whereArgs: [_enumQuiz],
+        orderBy: '$_columnStatus DESC'
     );
-    var onGoing = await db.query(_tableQuests,
-        where: '$_columnType = ? AND $_columnStatus = ?',
-        whereArgs: [_enumQuiz, QUEST_STATUS.ONGOING.name]
-    );
-    var claimed = await db.query(_tableQuests,
-        where: '$_columnType = ? AND $_columnStatus = ?',
-        whereArgs: [_enumQuiz, QUEST_STATUS.CLAIMED.name]
-    );
+  
 
-    var raw = [];
-    raw.addAll(readyToClaim);
-    raw.addAll(onGoing);
-    raw.addAll(claimed);
-
-    return raw.map((questRaw) => QuizQuest.fromMap(questRaw)).toList();
+    return rows.map((questRaw) => QuizQuest.fromMap(questRaw)).toList();
   }
 
   Future<List<MasteryQuest>> getOnGoingMasteryQuests() async {
     await updateAndSyncForMastery();
-    var readyToClaim = await db.query(_tableQuests,
-      where: '$_columnType = ? AND $_columnCount >= $_columnTotal',
-      whereArgs: [_enumMastery]
+    var rows = await db.query(_tableQuests,
+      where: '$_columnType = ?',
+      whereArgs: [_enumMastery],
+      orderBy: '$_columnStatus DESC'
     );
-    var onGoing = await db.query(_tableQuests,
-      where: '$_columnType = ? AND $_columnStatus = ?',
-      whereArgs: [_enumMastery, QUEST_STATUS.ONGOING.name]
-    );
-    var claimed = await db.query(_tableQuests,
-      where: '$_columnType = ? AND $_columnStatus = ?',
-      whereArgs: [_enumMastery, QUEST_STATUS.CLAIMED.name]
-    );
-    var raw = [...readyToClaim, ...onGoing, ...claimed];
 
-    return raw.map((questRaw) => MasteryQuest.fromMap(questRaw)).toList();
+    return rows.map((questRaw) => MasteryQuest.fromMap(questRaw)).toList();
   }
 
   Future<int> updateAndSyncForMastery() async {
