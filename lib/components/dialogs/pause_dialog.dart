@@ -60,7 +60,7 @@ class PauseDialog extends StatelessWidget {
                 icon: AppIcons.home, 
                 onPressed: (){
                   // Navigator.of(context).pushNamedAndRemoveUntil(newRouteName, (route) => false)
-                  Navigator.of(context).popUntil(ModalRoute.withName('/'));
+                  Navigator.of(context).pushNamedAndRemoveUntil("/", ModalRoute.withName('/'));
                 }
               )
             ],
@@ -154,7 +154,7 @@ class PauseDialog extends StatelessWidget {
                         child: _QuitButton(
                           icon: AppIcons.home, 
                           onPressed: (){
-                            Navigator.of(context).popUntil(ModalRoute.withName('/'));
+                            Navigator.of(context).pushNamedAndRemoveUntil("/", ModalRoute.withName('/'));
                           }
                         )
                       )

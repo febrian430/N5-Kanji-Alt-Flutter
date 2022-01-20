@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:kanji_memory_hint/audio_repository/audio.dart';
 import 'package:kanji_memory_hint/components/backgrounds/main_background.dart';
 import 'package:kanji_memory_hint/components/backgrounds/menu_background.dart';
 import 'package:kanji_memory_hint/components/buttons/icon_button.dart';
@@ -54,7 +55,6 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
-
     return MaterialApp(
       title: 'N5 Kanji',
       theme: ThemeData( 
@@ -182,6 +182,7 @@ class _MyAppState extends State<MyApp> {
 class MainScreen extends StatelessWidget {
   const MainScreen({Key? key}) : super(key: key);
 
+
   Widget _mainButtons(BuildContext context) {
     return Row(
       children: [
@@ -259,7 +260,9 @@ class MainScreen extends StatelessWidget {
                 noBorder: true,
               ),
               AppIconButton(
-                onTap: (){}, 
+                onTap: (){
+                  AudioManager.toggleMute();
+                }, 
                 iconPath: AppIcons.soundMute, 
                 height: 40, 
                 width: 40,
@@ -276,6 +279,8 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AudioManager.playMenu();
+
     final size = MediaQuery.of(context).size;
     return MainBackground(
       child: Scaffold(

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:kanji_memory_hint/audio_repository/audio.dart';
 import 'package:kanji_memory_hint/components/backgrounds/menu_background.dart';
 import 'package:kanji_memory_hint/components/buttons/select_button.dart';
 import 'package:kanji_memory_hint/components/empty_flex.dart';
@@ -37,6 +38,7 @@ class _QuestScreenState extends State<QuestScreenAlt> {
 
   @override
   Widget build(BuildContext context) {
+    AudioManager.playMenu();
     final size = MediaQuery.of(context).size;
     return MenuBackground(
       child: QuestScreenLayoutAlt(

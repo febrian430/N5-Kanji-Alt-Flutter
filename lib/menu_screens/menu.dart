@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kanji_memory_hint/audio_repository/audio.dart';
 import 'package:kanji_memory_hint/color_hex.dart';
 import 'package:kanji_memory_hint/components/backgrounds/menu_background.dart';
 import 'package:kanji_memory_hint/components/buttons/back_button.dart';
@@ -29,6 +30,7 @@ class Menu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AudioManager.playMenu();
     return MenuBackground(
       child: ScreenLayout(
         header: AppHeader(

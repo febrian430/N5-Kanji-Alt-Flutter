@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kanji_memory_hint/audio_repository/audio.dart';
 import 'package:kanji_memory_hint/components/backgrounds/quiz_background.dart';
 import 'package:kanji_memory_hint/components/buttons/pause_button.dart';
 import 'package:kanji_memory_hint/components/dialogs/confirmation_dialog.dart';
@@ -56,10 +57,18 @@ class _QuizScreenState extends State<QuizScreen> {
 
   bool isPaused = false;
 
+  @override
+  void initState(){
+    super.initState();
+    AudioManager.playGame();
+  }
+
   Widget buildConfirmationDialog(BuildContext context) {
     return ConfirmationDialog(
       onConfirm: (){
-        Navigator.of(context, rootNavigator: true).popUntil(ModalRoute.withName("/start-select"));
+        // AudioManager.playMenu();
+        // Navigator.of(context, rootNavigator: true).popUntil(ModalRoute.withName("/"));
+        Navigator.of(context, rootNavigator: true).pushNamedAndRemoveUntil("/", ModalRoute.withName("/"));
       },
       onCancel: (){
         Navigator.of(context, rootNavigator: true).pop(false);
@@ -136,9 +145,13 @@ class _QuizScreenState extends State<QuizScreen> {
       onWillPop: () async {
         if(!widget.isOver){
           bool exit = await showConfirmationDialog(context);
+          if(exit) {
+            AudioManager.playMenu();
+          }
           return exit;
         }
         Navigator.of(context).popUntil(ModalRoute.withName("/"));
+        AudioManager.playMenu();
         return widget.isOver;
       },
       child: QuizBackground(
