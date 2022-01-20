@@ -426,14 +426,14 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
           setState(() {
             isRoundOver = true;
             roundColor = _correctColor;
-            widget.onComplete(true, 0, widget.index, widget.question.key.length, attempts);
+            widget.onComplete(true, 0, widget.index, widget.question.key.length-1, attempts);
           });
         } else {
           setState(() {
             misses += diff.length;
             wrongSelected.addAll(diff);
             // roundColor = _wrongColor;
-            widget.onComplete(false, diff.length, widget.index, widget.question.key.length, attempts);
+            widget.onComplete(false, diff.length, widget.index, widget.question.key.length-1, attempts);
           });
         }
         attempts++;

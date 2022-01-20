@@ -22,7 +22,7 @@ class JumbleQuizRound extends StatefulWidget {
   final GAME_MODE mode;
   final bool isOver;
   final bool restartSource;
-  final Function(bool isCorrect, int slotsToFill, int misses, bool initial) onComplete;
+  final Function(bool isCorrect, int slotsToFill, int misses, bool initial, int index) onComplete;
   final Function(bool isCorrect, int slotsToFill, int misses, int index) onSubmit;
 
   @override
@@ -111,10 +111,10 @@ class _JumbleQuizRoundState extends State<JumbleQuizRound> with AutomaticKeepAli
         var diff = _differentIndexes();
         setState(() {
           if(diff.isEmpty) {
-            widget.onComplete(true, answerLength, misses, initial);
+            widget.onComplete(true, answerLength, misses, initial, widget.index);
           } else {
             misses += diff.length;
-            widget.onComplete(false, answerLength-misses, misses, initial);
+            widget.onComplete(false, answerLength-misses, misses, initial, widget.index);
           }
           initial = false;
         });

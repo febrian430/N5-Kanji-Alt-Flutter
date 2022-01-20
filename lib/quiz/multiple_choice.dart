@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:kanji_memory_hint/components/empty_flex.dart';
 import 'package:kanji_memory_hint/components/submit_button.dart';
 import 'package:kanji_memory_hint/const.dart';
+import 'package:kanji_memory_hint/game_components/game_helper.dart';
 import 'package:kanji_memory_hint/models/question_set.dart';
 import 'package:kanji_memory_hint/multiple-choice/game.dart';
 import 'package:kanji_memory_hint/quiz/buttons.dart';
@@ -29,6 +30,8 @@ class _MultipleChoiceGameState extends State<MultipleChoiceQuizGame> {
 
   bool restart = false;
   bool wasSubmitted = false;
+
+  Set<int> answeredIndexes = {};
   
   late int totalQuestion = widget.questionSets.length;
 
@@ -67,8 +70,14 @@ class _MultipleChoiceGameState extends State<MultipleChoiceQuizGame> {
 
         if(wasCorrect == null) {
           solved++;
+          answeredIndexes.add(index);
         }
       });
+
+      var unansweredIndex = GameHelper.nearestUnansweredIndex(index, answeredIndexes, widget.questionSets.length-1);
+      if(unansweredIndex != null) {
+        animateToPage(unansweredIndex);
+      }
   }
 
   void animateToPage(int target) {

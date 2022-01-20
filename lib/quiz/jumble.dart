@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/components/empty_flex.dart';
 import 'package:kanji_memory_hint/components/submit_button.dart';
 import 'package:kanji_memory_hint/const.dart';
+import 'package:kanji_memory_hint/game_components/game_helper.dart';
 import 'package:kanji_memory_hint/jumble/model.dart';
 import 'package:kanji_memory_hint/map_indexed.dart';
 import 'package:kanji_memory_hint/jumble/quiz_round.dart';
@@ -40,6 +41,8 @@ class _JumbleQuizGameState extends State<JumbleQuizGame> {
   int loaded = 0;
   List<List<int>> correctKanjis = [];
   List<int> correctRoundSlots = [];
+
+  Set<int> answeredIndexes = {};
 
   late final int totalSlots = widget.questionSets.map((set){
     return set.question.key.length;
@@ -93,12 +96,17 @@ class _JumbleQuizGameState extends State<JumbleQuizGame> {
         question: set.question, 
         options: set.options, 
         isOver: isGameOver || widget.quizOver,
-        onComplete: (bool isCorrect, int slotsToFill, int misses, bool init) {
+        onComplete: (bool isCorrect, int slotsToFill, int misses, bool init, int index) {
           setState(() {
             if(init) {
               solved++;
+              answeredIndexes.add(index);
             }
           });
+          var jumpTo = GameHelper.nearestUnansweredIndex(index, answeredIndexes, widget.questionSets.length-1);
+          if(jumpTo != null) {
+            animateToPage(jumpTo);
+          }
         },
         onSubmit: (bool isCorrect, int slotsToFill, int miss, int index) {
           setState(() {
