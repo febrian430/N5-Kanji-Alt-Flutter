@@ -21,6 +21,7 @@ import 'package:kanji_memory_hint/scoring/report.dart';
 import 'package:kanji_memory_hint/scoring/practice/pick_drop.dart';
 import 'package:kanji_memory_hint/theme.dart';
 import 'package:kanji_memory_hint/map_indexed.dart';
+import 'package:kanji_memory_hint/user_games/games_played.dart';
 
 class PickDrop extends StatefulWidget {
 
@@ -191,11 +192,23 @@ class _PickDropState extends State<PickDrop> {
 
   @override
   Widget build(BuildContext context) {
+    GuideDialog guide = GuideDialog(
+      game: PickDrop.name,
+      description: "Pick and drag the correct answer to the image",
+      guideImage: AppImages.guidePickDrop,
+      onClose: onContinue,
+    );
+
     WidgetsBinding.instance?.addPostFrameCallback((_) {
       if(restart) {
         setState(() {
           restart = false;
         });
+      }
+
+      if(!GamesPlayed.pickdrop) {
+        showDialog(context: context, builder: (context) => guide);
+        GamesPlayed.setPickDropTrue();
       }
     });
 
@@ -235,12 +248,7 @@ class _PickDropState extends State<PickDrop> {
         visible: total == solved,
       ) : SizedBox()
     ,
-      guide: GuideDialog(
-        game: PickDrop.name,
-        description: "Pick and drag the correct answer to the image",
-        guideImage: AppImages.guidePickDrop,
-        onClose: onContinue,
-      ),
+      guide: guide
     );
   }
 }

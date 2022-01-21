@@ -30,11 +30,14 @@ import 'package:kanji_memory_hint/reward/reward_screen.dart';
 import 'package:kanji_memory_hint/route_param.dart';
 import 'package:kanji_memory_hint/test.dart';
 import 'package:kanji_memory_hint/theme.dart';
+import 'package:kanji_memory_hint/user_games/games_played.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Notifier.initialize();
   await SQLRepo.open();
+  await GamesPlayed.initialize();
+
 
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
     .then((_) {
@@ -55,8 +58,9 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+    
     return MaterialApp(
-      title: 'N5 Kanji',
+      title: 'Kantan Kanji',
       theme: ThemeData( 
         // This is the theme of your application.
         //

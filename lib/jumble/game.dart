@@ -4,11 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/components/dialogs/guide.dart';
 import 'package:kanji_memory_hint/components/empty_flex.dart';
-import 'package:kanji_memory_hint/components/header.dart';
 import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/components/result_button.dart';
 import 'package:kanji_memory_hint/const.dart';
-import 'package:kanji_memory_hint/database/repository.dart';
 import 'package:kanji_memory_hint/game_components/game_helper.dart';
 import 'package:kanji_memory_hint/game_components/question_widget.dart';
 import 'package:kanji_memory_hint/icons.dart';
@@ -20,12 +18,12 @@ import 'package:kanji_memory_hint/menu_screens/game_screen.dart';
 import 'package:kanji_memory_hint/models/common.dart';
 import 'package:kanji_memory_hint/map_indexed.dart';
 import 'package:kanji_memory_hint/foreach_indexed.dart';
-import 'package:kanji_memory_hint/models/question_set.dart';
 import 'package:kanji_memory_hint/quests/practice_quest.dart';
 import 'package:kanji_memory_hint/route_param.dart';
 import 'package:kanji_memory_hint/scoring/practice/jumble.dart';
 import 'package:kanji_memory_hint/scoring/report.dart';
 import 'package:kanji_memory_hint/theme.dart';
+import 'package:kanji_memory_hint/user_games/games_played.dart';
 
 
 class JumbleGame extends StatefulWidget {
@@ -257,11 +255,23 @@ class _JumbleGameState extends State<JumbleGame> {
   @override
   Widget build(BuildContext context) {
 
+    GuideDialog guide = GuideDialog(
+      game: JumbleGame.name,
+      description: "Select the correct hiragana in the correct order",
+      guideImage: AppImages.guideJumble,
+      onClose: onContinue,
+    );
+
     WidgetsBinding.instance?.addPostFrameCallback((_){
       if(restart){
         setState(() {
           restart = false;
         });
+      }
+
+      if(!GamesPlayed.jumble){
+        showDialog(context: context, builder: (context) => guide);
+        GamesPlayed.setJumbleTrue();
       }
     });
 
@@ -302,12 +312,7 @@ class _JumbleGameState extends State<JumbleGame> {
         ),
         visible: numOfQuestions == solved,
       ) : SizedBox(),
-      guide: GuideDialog(
-        game: JumbleGame.name,
-        description: "Select the correct hiragana in the correct order",
-        guideImage: AppImages.guideJumble,
-        onClose: onContinue,
-      ),
+      guide: guide
     );
   }
 }

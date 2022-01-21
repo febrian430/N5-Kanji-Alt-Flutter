@@ -19,6 +19,7 @@ import 'package:kanji_memory_hint/scoring/practice/mix_match.dart';
 import 'package:kanji_memory_hint/scoring/report.dart';
 import 'package:kanji_memory_hint/map_indexed.dart';
 import 'package:kanji_memory_hint/theme.dart';
+import 'package:kanji_memory_hint/user_games/games_played.dart';
 
 
 
@@ -197,7 +198,19 @@ class _MixMatchGameState extends State<MixMatchGame> {
 
   @override
   Widget build(BuildContext context) {
+    GuideDialog guide = GuideDialog(
+      game: MixMatchGame.name,
+      description: "Match the Kanji with the image or spelling based on its appropriate meaning",
+      guideImage: AppImages.guideMixMatch,
+      onClose: onContinue,
+    );
+
     WidgetsBinding.instance?.addPostFrameCallback((_) {
+      if(!GamesPlayed.mixmatch) {
+        showDialog(context: context, builder: (context) => guide);
+        GamesPlayed.setMixMatchTrue();
+      }
+
       if(restart) {
         setState(() {
           restart = false;
@@ -245,12 +258,7 @@ class _MixMatchGameState extends State<MixMatchGame> {
         ),
         visible: widget.numOfRounds == roundsSolved,
       ) : SizedBox(),
-      guide: GuideDialog(
-        game: MixMatchGame.name,
-        description: "Match the Kanji with the image or spelling based on its appropriate meaning",
-        guideImage: AppImages.guideMixMatch,
-        onClose: onContinue,
-      ),
+      guide: guide
     );   
   }
 
