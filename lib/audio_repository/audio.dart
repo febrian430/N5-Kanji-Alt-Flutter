@@ -26,7 +26,7 @@ class AudioBit {
 class AudioManager {
   static final _game = AudioBit(_gameMusic, 1);
   static final _menu = AudioBit(_menuMusic, 2);
-  static AudioBit? _current = null;
+  static AudioBit? _current;
   static bool _mute = false;
 
   static void _play(AudioBit audio) {
