@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:kanji_memory_hint/audio_repository/audio.dart';
+import 'package:kanji_memory_hint/audio_repository/audio_widget.dart';
 import 'package:kanji_memory_hint/components/backgrounds/main_background.dart';
 import 'package:kanji_memory_hint/components/backgrounds/menu_background.dart';
 import 'package:kanji_memory_hint/components/buttons/icon_button.dart';
@@ -37,6 +38,7 @@ void main() async {
   await Notifier.initialize();
   await SQLRepo.open();
   await GamesPlayed.initialize();
+  await AudioManager.initialize();
 
 
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
@@ -263,17 +265,7 @@ class MainScreen extends StatelessWidget {
                 backgroundColor: Colors.transparent,
                 noBorder: true,
               ),
-              AppIconButton(
-                onTap: (){
-                  AudioManager.toggleMute();
-                }, 
-                iconPath: AppIcons.soundMute, 
-                height: 40, 
-                width: 40,
-                ratio: 1, 
-                backgroundColor: Colors.transparent,
-                noBorder: true,
-              )
+              AudioWidget()
             ],
           ),
         )

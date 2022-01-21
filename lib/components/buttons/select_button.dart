@@ -78,7 +78,6 @@ class SelectButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     bool onlyTitle = description == null && iconPath == null;
-    print("ONLY TITLE: $onlyTitle");
 
 
     Widget child = Text(

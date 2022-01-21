@@ -1,4 +1,5 @@
 import 'package:just_audio/just_audio.dart';
+import 'package:kanji_memory_hint/database/repository.dart';
 
 const String _menuMusic = "assets/audio/sakuya.mp3";
 const String _gameMusic = "assets/audio/miyako.mp3";
@@ -29,6 +30,15 @@ class AudioManager {
   static AudioBit? _current;
   static bool _mute = false;
 
+  static Future initialize() async {
+    var flags = await SQLRepo.userFlags.get();
+    _mute = flags.muted;
+  }
+
+  static bool get isMuted {
+    return _mute;
+  }
+
   static void _play(AudioBit audio) {
     print(_current == _menu);
     if(!_mute && (_current == null || _current?.id != audio.id)) {
@@ -46,14 +56,16 @@ class AudioManager {
     _play(_game);
   }
 
-  static void toggleMute() {
+  static bool toggleMute() {
     if(!_mute){
       _current?.stop();
       _mute = true;
+      SQLRepo.userFlags.setMute(true);
     } else {
       _current?.play();
       _mute = false;
+      SQLRepo.userFlags.setMute(false);
     }
-
+    return _mute;
   }
 }

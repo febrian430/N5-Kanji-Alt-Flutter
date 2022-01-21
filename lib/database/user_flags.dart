@@ -25,10 +25,10 @@ class UserFlagsProvider {
     ''');
     
     var flags = {
-      _columnMixMatch: false,
-      _columnJumble: false,
-      _columnPickDrop: false,
-      _columnMute: false
+      _columnMixMatch: 0,
+      _columnJumble: 0,
+      _columnPickDrop: 0,
+      _columnMute: 0
     };
     await db.insert(_tableUserFlags, flags);
   }
