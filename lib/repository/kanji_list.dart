@@ -6,7 +6,7 @@ List<Kanji> _kanjis = [];
 
 Future<List<Kanji>> _all() async {
   // const source = 'assets/kanji/kanji.json';
-  const source = 'assets/kanji/kanji_user_test.json';
+  const source = 'assets/kanji/kanji.json';
 
   final jsonData = await rootBundle.loadString(source);
   var data = jsonDecode(jsonData);

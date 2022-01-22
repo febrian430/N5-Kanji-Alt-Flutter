@@ -5,7 +5,7 @@
 		"kunyomi": "ひと-つ/ひと",
 		"onyomi": "イチ",
 		"id": 1,
-		"stroke_order": "test.png"
+		"stroke_order": "一.png"
 	},
 	{
 		"rune": "二",
@@ -13,7 +13,7 @@
 		"kunyomi": "ふた-つ/ふた",
 		"onyomi": "ニ",
 		"id": 2,
-		"stroke_order": "test.png"
+		"stroke_order": "二.png"
 	},
 	{
 		"rune": "三",
@@ -21,7 +21,7 @@
 		"kunyomi": "みっ-つ",
 		"onyomi": "サン",
 		"id": 3,
-		"stroke_order": "test.png"
+		"stroke_order": "三.png"
 	},
 	{
 		"rune": "四",
@@ -29,7 +29,7 @@
 		"kunyomi": "よっ-つ/よん/よ",
 		"onyomi": "シ",
 		"id": 4,
-		"stroke_order": "test.png"
+		"stroke_order": "四.png"
 	},
 	{
 		"rune": "五",
@@ -37,7 +37,7 @@
 		"kunyomi": "いつ-つ/いつ",
 		"onyomi": "ゴ",
 		"id": 5,
-		"stroke_order": "test.png"
+		"stroke_order": "五.png"
 	},
 	{
 		"rune": "六",
@@ -45,7 +45,7 @@
 		"kunyomi": "むっ-つ",
 		"onyomi": "ロク",
 		"id": 6,
-		"stroke_order": "test.png"
+		"stroke_order": "六.png"
 	},
 	{
 		"rune": "七",
@@ -53,7 +53,7 @@
 		"kunyomi": "なな-つ/なな",
 		"onyomi": "シチ",
 		"id": 7,
-		"stroke_order": "test.png"
+		"stroke_order": "七.png"
 	},
 	{
 		"rune": "八",
@@ -61,7 +61,7 @@
 		"kunyomi": "やっ-つ",
 		"onyomi": "ハチ",
 		"id": 8,
-		"stroke_order": "test.png"
+		"stroke_order": "八.png"
 	},
 	{
 		"rune": "九",
@@ -69,7 +69,7 @@
 		"kunyomi": "ここの-つ/ここの",
 		"onyomi": "ク/キュウ",
 		"id": 9,
-		"stroke_order": "test.png"
+		"stroke_order": "九.png"
 	},
 	{
 		"rune": "十",
@@ -77,7 +77,7 @@
 		"kunyomi": "とう",
 		"onyomi": "ジュウ",
 		"id": 10,
-		"stroke_order": "test.png"
+		"stroke_order": "十.png"
 	},
 	{
 		"rune": "百",
@@ -85,7 +85,7 @@
 		"kunyomi": "ー",
 		"onyomi": "ヒャク/-ビャク/-ピャク",
 		"id": 11,
-		"stroke_order": "test.png"
+		"stroke_order": "百.png"
 	},
 	{
 		"rune": "千",
@@ -93,7 +93,7 @@
 		"kunyomi": "ち",
 		"onyomi": "セン/-ゼン",
 		"id": 12,
-		"stroke_order": "test.png"
+		"stroke_order": "千.png"
 	},
 	{
 		"rune": "万",
@@ -101,7 +101,7 @@
 		"kunyomi": "ー",
 		"onyomi": "マン",
 		"id": 13,
-		"stroke_order": "test.png"
+		"stroke_order": "万.png"
 	},
 	{
 		"rune": "日",
@@ -109,7 +109,7 @@
 		"kunyomi": "ひ/-び",
 		"onyomi": "ニチ/ニ",
 		"id": 14,
-		"stroke_order": "test.png"
+		"stroke_order": "日.png"
 	},
 	{
 		"rune": "月",
@@ -117,15 +117,15 @@
 		"kunyomi": "つき",
 		"onyomi": "ゲツ/ガツ",
 		"id": 15,
-		"stroke_order": "test.png"
+		"stroke_order": "月.png"
 	},
 	{
 		"rune": "木",
 		"chapter": 2,
 		"kunyomi": "き",
-		"onyomi": "モク（ボク）",
+		"onyomi": "モク/ボク",
 		"id": 16,
-		"stroke_order": "test.png"
+		"stroke_order": "木.png"
 	},
 	{
 		"rune": "山",
@@ -133,15 +133,15 @@
 		"kunyomi": "やま",
 		"onyomi": "サン/-ザン",
 		"id": 17,
-		"stroke_order": "test.png"
+		"stroke_order": "山.png"
 	},
 	{
 		"rune": "川",
 		"chapter": 2,
 		"kunyomi": "かわ/-がわ",
-		"onyomi": "（セン）",
+		"onyomi": "セン",
 		"id": 18,
-		"stroke_order": "test.png"
+		"stroke_order": "川.png"
 	},
 	{
 		"rune": "田",
@@ -149,7 +149,7 @@
 		"kunyomi": "た/-だ",
 		"onyomi": "デン",
 		"id": 19,
-		"stroke_order": "test.png"
+		"stroke_order": "田.png"
 	},
 	{
 		"rune": "人",
@@ -157,7 +157,7 @@
 		"kunyomi": "ひと",
 		"onyomi": "ジン/ニン",
 		"id": 20,
-		"stroke_order": "test.png"
+		"stroke_order": "人.png"
 	},
 	{
 		"rune": "口",
@@ -165,7 +165,7 @@
 		"kunyomi": "くち/-ぐち",
 		"onyomi": "コウ",
 		"id": 21,
-		"stroke_order": "test.png"
+		"stroke_order": "口.png"
 	},
 	{
 		"rune": "車",
@@ -173,15 +173,15 @@
 		"kunyomi": "くるま",
 		"onyomi": "シャ",
 		"id": 22,
-		"stroke_order": "test.png"
+		"stroke_order": "車.png"
 	},
 	{
 		"rune": "門",
 		"chapter": 2,
-		"kunyomi": "（かど）",
+		"kunyomi": "かど",
 		"onyomi": "モン",
 		"id": 23,
-		"stroke_order": "test.png"
+		"stroke_order": "門.png"
 	},
 	{
 		"rune": "火",
@@ -467,7 +467,7 @@
 		"rune": "竹",
 		"chapter": 6,
 		"kunyomi": "たけ",
-		"onyomi": "（チク）",
+		"onyomi": "チク",
 		"id": 59,
 		"stroke_order": "test.png"
 	},
@@ -499,7 +499,7 @@
 		"rune": "糸",
 		"chapter": 6,
 		"kunyomi": "いと",
-		"onyomi": "（シ）",
+		"onyomi": "シ",
 		"id": 63,
 		"stroke_order": "test.png"
 	},

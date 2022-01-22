@@ -17,7 +17,7 @@ Future<List<Example>> kanjiExamples() async {
     return _distincts;
   }
   // const source = 'assets/kanji/examples.json';
-  const source = 'assets/kanji/examples_user_test.json';
+  const source = 'assets/kanji/examples.json';
   // const source = 'distinct.json';
   final jsonData = await rootBundle.loadString(source);
   var data = jsonDecode(jsonData);
