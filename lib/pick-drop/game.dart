@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:kanji_memory_hint/audio_repository/audio.dart';
 import 'package:kanji_memory_hint/components/dialogs/guide.dart';
 import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/components/result_button.dart';
@@ -95,7 +96,6 @@ class _PickDropState extends State<PickDrop> {
     setState(() {
       if (isCorrect) {
         solved++;
-
         if(roundAttempts == 0) {
           perfect++;
         }
@@ -418,6 +418,8 @@ class _PickDropRoundState extends State<PickDropRound> {
                     });
                   } else {
                     setState(() {
+                      SoundFX.correct();
+
                       isSolved = true;
                       correctOverlay = true;
                     });

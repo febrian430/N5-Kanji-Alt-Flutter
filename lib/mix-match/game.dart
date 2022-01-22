@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kanji_memory_hint/audio_repository/audio.dart';
 import 'package:kanji_memory_hint/components/dialogs/guide.dart';
 import 'package:kanji_memory_hint/components/loading_screen.dart';
 import 'package:kanji_memory_hint/components/result_button.dart';
@@ -491,6 +492,7 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
         solved = [...solved, opt, selected!];
         selected = null;
       });
+      SoundFX.correct();
       _isGameOver();
     } else {
       attempts[selected!] = attempts[selected!]! + 1;

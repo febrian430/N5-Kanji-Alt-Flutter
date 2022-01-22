@@ -25,7 +25,6 @@ import 'package:kanji_memory_hint/kanji-list/kanji_menu.dart';
 import 'package:kanji_memory_hint/menu_screens/game_select.dart';
 import 'package:kanji_memory_hint/mix-match/game.dart';
 import 'package:kanji_memory_hint/pick-drop/game.dart';
-import 'package:kanji_memory_hint/quests/screen/quest_screen.dart';
 import 'package:kanji_memory_hint/quiz/quiz.dart';
 import 'package:kanji_memory_hint/reward/reward_screen.dart';
 import 'package:kanji_memory_hint/route_param.dart';
@@ -39,6 +38,7 @@ void main() async {
   await SQLRepo.open();
   await GamesPlayed.initialize();
   await AudioManager.initialize();
+  await SoundFX.initialize();
 
 
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
