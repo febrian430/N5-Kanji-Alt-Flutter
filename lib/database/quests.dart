@@ -8,6 +8,7 @@ import 'package:kanji_memory_hint/jumble/game.dart';
 import 'package:kanji_memory_hint/mix-match/game.dart';
 import 'package:kanji_memory_hint/pick-drop/game.dart';
 import 'package:kanji_memory_hint/scoring/report.dart';
+import 'package:kanji_memory_hint/map_indexed.dart';
 import 'package:sqflite/sqflite.dart';
 
 const _tableQuests = "quests";
@@ -26,6 +27,9 @@ const _enumQuiz = "quiz";
 const _enumPractice = "practice";
 const _enumMastery = "mastery";
 
+Iterable<PracticeQuest> _practiceQuestReducer(Iterable<PracticeQuest> sum, Iterable<PracticeQuest> value) {
+  return [...sum, ...value];
+}
 
 class QuestProvider {
   final Database db;
@@ -56,126 +60,101 @@ class QuestProvider {
         counts.add(i);
       }
       counts.add(84);
-
+      print("mastery quests total reward ${counts.length * 5}");
       return counts.map((count) => MasteryQuest(goldReward: 10, total: count)).toList();
   }
 
   List<PracticeQuest> _getPracticeSeed() {
+
+    const games = [MixMatchGame.name, JumbleGame.name, PickDrop.name];
+
+    const noPerfectTotals = [1, 10, 20];
+    const noPerfectRewards = [1,10, 10];
+
+    const totals = [1,3,5];
+    const reward = [5,10,10];
+    const modes = [GAME_MODE.imageMeaning, GAME_MODE.reading];
+    const chapters = USE_CHAPTERS;
+
+    int totalRewardPractice = 0;
+
+    final noPerfectQuests = noPerfectTotals.mapIndexed((total, index){
+      return games.map((game) {
+
+        totalRewardPractice += noPerfectRewards[index];
+        
+        return PracticeQuest(
+          game: game, 
+          mode: null, 
+          requiresPerfect: 0, 
+          total: total, 
+          goldReward: noPerfectRewards[index]
+        );
+      });
+    }).reduce(_practiceQuestReducer).toList();
+
+    final quests = chapters.map((chapter) {
+      return totals.mapIndexed((total, index) {
+        return games.map((game) {
+          totalRewardPractice += noPerfectRewards[index];
+
+          if(game == PickDrop.name) {
+            return [
+              PracticeQuest(
+                game: game, 
+                mode: GAME_MODE.imageMeaning, 
+                requiresPerfect: 1, 
+                total: total, 
+                goldReward: reward[index]
+              )
+            ];
+          } else {
+            return modes.map((mode) {
+              return PracticeQuest(
+                game: game, 
+                mode: mode, 
+                requiresPerfect: 1, 
+                total: total, 
+                goldReward: reward[index]
+              );
+            });
+          }
+        }).reduce(_practiceQuestReducer);
+      }).reduce(_practiceQuestReducer);
+    }).reduce(_practiceQuestReducer).toList();
+
+    print("Total reward practice $totalRewardPractice");
+
     return [
-      PracticeQuest(
-          game: JumbleGame.name,
-          mode: null,
-          chapter: null,
-          requiresPerfect: 0,
-          total: 1,
-          goldReward: 1
-      ),
-      PracticeQuest(
-          game: MixMatchGame.name,
-          mode: null,
-          chapter: null,
-          requiresPerfect: 0,
-          total: 1,
-          goldReward: 1
-      ),
-      PracticeQuest(
-          game: PickDrop.name,
-          mode: null,
-          chapter: null,
-          requiresPerfect: 0,
-          total: 1,
-          goldReward: 1
-      ),
-      PracticeQuest(
-          game: JumbleGame.name,
-          mode: null,
-          chapter: null,
-          requiresPerfect: 0,
-          total: 3,
-          goldReward: 3
-      ),
-      PracticeQuest(
-          game: MixMatchGame.name,
-          mode: null,
-          chapter: null,
-          requiresPerfect: 0,
-          total: 3,
-          goldReward: 3
-      ),
-      PracticeQuest(
-          game: PickDrop.name,
-          mode: null,
-          chapter: null,
-          requiresPerfect: 0,
-          total: 3,
-          goldReward: 3
-      ),
-      PracticeQuest(
-          game: JumbleGame.name,
-          mode: GAME_MODE.reading,
-          chapter: 3,
-          requiresPerfect: 1,
-          total: 1,
-          goldReward: 5
-      ),
-      PracticeQuest(
-          game: MixMatchGame.name,
-          mode: GAME_MODE.imageMeaning,
-          chapter: 4,
-          requiresPerfect: 1,
-          total: 1,
-          goldReward: 5
-      ),
-      PracticeQuest(
-          game: PickDrop.name,
-          mode: GAME_MODE.imageMeaning,
-          chapter: 5,
-          requiresPerfect: 1,
-          total: 1,
-          goldReward: 5
-      ),
+      ...noPerfectQuests,
+      ...quests
     ];
   }
 
   List<QuizQuest> _getQuizSeed(){
-    return [
-      QuizQuest(
-        chapter: 3, 
-        requiresPerfect: 0, 
-        total: 5, 
-        goldReward: 30
-      ),
-      QuizQuest(
-        chapter: 3, 
-        requiresPerfect: 1, 
-        total: 1, 
-        goldReward: 15
-      ),
-      QuizQuest(
-          chapter: 4,
-          requiresPerfect: 1,
-          total: 1,
-          goldReward: 15
-      ),
-      QuizQuest(
-          chapter: 4,
-          requiresPerfect: 0,
-          total: 5,
-          goldReward: 30
-      ),
-      QuizQuest(
-          chapter: 5,
-          requiresPerfect: 1,
-          total: 1,
-          goldReward: 15
-      ),
-      QuizQuest(
-          chapter: 5,
-          requiresPerfect: 0,
-          total: 5,
-          goldReward: 30
-      ),
-    ];
+
+    const totals = [1,3,5];
+    const rewards = [10, 20, 20];
+    const chapters = USE_CHAPTERS;
+
+    int totalReward = 0;
+
+    var quests = chapters.map((chapter) {
+      return totals.mapIndexed((total, index) {
+        totalReward += rewards[index];
+        
+        return QuizQuest(
+          chapter: chapter, 
+          requiresPerfect: 1, 
+          total: total, 
+          goldReward: rewards[index]
+        );
+      });
+    }).reduce((sum, value) => [...sum, ...value]).toList();
+
+    print("quiz total reward $totalReward");
+
+    return quests;
   }
 
   Future seed() async {
@@ -354,6 +333,7 @@ class PracticeQuest extends GameQuest {
       _columnGame: game, 
       _columnMode: mode?.name,
       _columnGoldReward: goldReward, 
+      _columnIsPerfect: requiresPerfect,
       _columnCount: count, 
       _columnTotal: total, 
       _columnStatus: status.name,
@@ -402,11 +382,13 @@ class PracticeQuest extends GameQuest {
       }
     }
 
+    if(requiresPerfect == 1) {
+       str += " perfectly";
+    }
+
     str += " $total times";
 
-    if(requiresPerfect == 1) {
-      str += " perfectly";
-    }
+    
     return str;
   }
 
@@ -463,11 +445,13 @@ class QuizQuest extends GameQuest{
       str += " topic $chapter";
     }
 
-    str += " $total times";
-
     if(requiresPerfect == 1) {
       str += " perfectly";
     }
+
+    str += " $total times";
+
+    
     return str;
   }
 }

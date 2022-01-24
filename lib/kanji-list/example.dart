@@ -23,7 +23,13 @@ class ExampleContainer extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Text(example.rune, style: TextStyle(fontWeight: FontWeight.bold),),
+                      Text(
+                        example.rune, 
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
+                      ),
                       Text('( ${example.spelling.join('')} )'),
                     ],
                   )
@@ -79,7 +85,13 @@ class ExampleContainer extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Text(example.rune, style: TextStyle(fontWeight: FontWeight.bold),),
+                      Text(
+                        example.rune, 
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18
+                        )
+                      ),
                       Text('( ${example.spelling.join('')} )'),
                     ],
                   )
