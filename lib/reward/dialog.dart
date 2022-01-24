@@ -9,11 +9,13 @@ import 'package:kanji_memory_hint/theme.dart';
 
 class RewardDialog extends StatefulWidget {
   final Example example;
+  final int chapter;
   final int gold;
   final Function(int, int) onBuy;
 
   RewardDialog({
     Key? key, 
+    required this.chapter,
     required this.example, 
     required this.gold,
     required this.onBuy
@@ -39,7 +41,7 @@ class _RewardDialogState extends State<RewardDialog> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Expanded(flex: 4, child: SizedBox(),),
-                Expanded(flex: 4, child: Text("Topic ${widget.example.chapter.toString()}", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))),
+                Expanded(flex: 4, child: Text("Topic ${widget.chapter.toString()}", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))),
                 Flexible(flex: 3, child: GoldWidget(gold: gold, textAlign: TextAlign.right,))
               ],
             )

@@ -16,6 +16,7 @@ const _columnChapter = "chapter";
 const _columnImage = "image";
 const _columnIsSingle = "is_single";
 const _columnExampleOf = "example_of";
+const _columnKanjiChapters = "chapters";
 const _columnCost = "cost";
 const _columnRewardStatus = "reward_status";
 
@@ -32,11 +33,12 @@ class ExampleProvider {
 
   static Future migrate(Database db) async {
     log("CREATING EXAMPLE TABLE");
+    // $_columnChapter int not null,
     await db.execute('''
       create table $_tableExample ( 
         $_columnId integer primary key,
         $_columnRune text not null,
-        $_columnChapter int not null,
+        
         $_columnMeaning text not null,
         $_columnSpelling text not null,
         $_columnImage text not null,
@@ -68,6 +70,22 @@ class ExampleProvider {
     }
   }
 
+  Future<void> _readFromJoinTable({bool forceRefresh = false}) async {
+    if(_examples.isEmpty || forceRefresh) {
+      var rows = await db.rawQuery(''' 
+        select e.*, 
+          group_concat(ke.$_columnKanjiId, '#') as $_columnExampleOf,
+          group_concat(k.$_columnChapter, '#') as $_columnKanjiChapters
+        from $_tableExample e
+        join $_tableKanjiExample ke on e.$_columnId = ke.$_columnExampleId
+        join $_tableKanji k on k.$_columnId = ke.$_columnKanjiId
+        group by e.$_columnId
+      ''');
+
+      _examples = Example.fromRows(rows);
+    }
+  }
+
   Future<int> create(Example example, List<int> kanjiIds) async {
     int id = await db.insert(_tableExample, example.toMap());
 
@@ -90,9 +108,10 @@ class ExampleProvider {
   }
 
   Future<List<Example>> all() async {
-    var rows = await db.query(_tableExample);
+    await _readFromJoinTable();
+    // var rows = await db.query(_tableExample);
 
-    return Example.fromRows(rows);
+    return _examples;
   }
 
   Future claimReward(Example example) async {
@@ -114,9 +133,12 @@ class ExampleProvider {
 
   Future<List<Example>> examplesOf(int kanjiId) async {
     var rows = await db.rawQuery('''
-      select e.*
+      select e.*,
+      group_concat(k.$_columnChapter, '#') as $_columnKanjiChapters
       from examples e join kanji_examples ke on e.id = ke.example_id
-      where ke.kanji_id = ?
+      join $_tableKanji k on k.$_columnId = ke.$_columnKanjiId
+      where ke.kanji_id = ? 
+      group by e.id
       ''',
       [kanjiId]
     );
@@ -124,7 +146,7 @@ class ExampleProvider {
   }
 
   Future<List<Example>> byChapter(int chapter, {bool? single, bool? hasImage}) async {
-    await _read();
+    await _readFromJoinTable();
     return _examples.where((example) {
       if(single != null && example.isSingle != single) {
         return false;
@@ -133,8 +155,8 @@ class ExampleProvider {
       if(hasImage != null && example.hasImage != hasImage) {
         return false;
       } 
-
-      return example.chapter == chapter;
+      print(example.chapters);
+      return example.chapters.contains(chapter);
     }).toList();
   }
 }
@@ -146,7 +168,7 @@ class Example {
   String image;
   late List<String> spelling;
   late bool isSingle;
-  int chapter;
+  List<int> chapters;
   int cost;
   REWARD_STATUS rewardStatus;
 
@@ -163,7 +185,7 @@ class Example {
       meaning = map[_columnMeaning] as String,
       image = map[_columnImage] as String,
       isSingle = (map[_columnIsSingle] as int) == 1,
-      chapter = map[_columnChapter] as int,
+      chapters = (map[_columnKanjiChapters] as String).split("#").map((e) => int.parse(e)).toList(),
       spelling = map[_columnSpelling].toString().split("#"),
       cost = map[_columnCost] as int,
       rewardStatus = REWARD_STATUS_MAP.fromString(map[_columnRewardStatus])!,
@@ -184,7 +206,7 @@ class Example {
       _columnRune: rune,
       _columnMeaning: meaning,
       _columnImage: image,
-      _columnChapter: chapter,
+      // _columnChapter: chapters.join("#"),
       _columnSpelling: spelling.join("#"),
       _columnIsSingle: isSingle ? 1 : 0,
       _columnCost: cost,
@@ -198,7 +220,8 @@ class Example {
         rune = json['rune'],
         meaning = json['meaning'],
         image = json['image'],
-        chapter = json['chapter'] as int,
+        // chapter = json['chapter'] as int,
+        chapters = [0],
         hasImage = (json['image'] as String).isNotEmpty,
         cost = json['cost'] as int,
         rewardStatus = REWARD_STATUS_MAP.fromString(json['reward_status'] as String)!

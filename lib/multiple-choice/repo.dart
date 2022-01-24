@@ -10,7 +10,7 @@ class MultipleChoiceQuestionMaker {
   static Future<List<QuestionSet>> makeQuestionSet(int n, int chapter, GAME_MODE mode) async {
     var kanjis = await SQLRepo.gameQuestions.byChapterForQuestion(chapter, n, 1/2, false, mode);
 
-    return _makeQuestionSetsFrom(kanjis, mode);
+    return _makeQuestionSetsFrom(kanjis, mode, chapter);
   }
 
   static Future<List<QuizQuestionSet>> makeQuizQuestionSet(int n, int chapter, GAME_MODE mode) async {
@@ -18,7 +18,7 @@ class MultipleChoiceQuestionMaker {
 
     List<List<int>> fromKanjiIds = examples.map((e) => e.exampleOf).toList();
 
-    var basicQuestionSets = await _makeQuestionSetsFrom(examples, mode);
+    var basicQuestionSets = await _makeQuestionSetsFrom(examples, mode, chapter);
     return basicQuestionSets.mapIndexed((basic, i) {
       return QuizQuestionSet(
         question: basic.question,
@@ -28,8 +28,8 @@ class MultipleChoiceQuestionMaker {
     }).toList();
   }
 
-  static Future<List<QuestionSet>> _makeQuestionSetsFrom(List<Example> kanjis, GAME_MODE mode) async {
-    var exampleOptions = await SQLRepo.gameQuestions.byChapter(kanjis[0].chapter);
+  static Future<List<QuestionSet>> _makeQuestionSetsFrom(List<Example> kanjis, GAME_MODE mode, int chapter) async {
+    var exampleOptions = await SQLRepo.gameQuestions.byChapter(chapter);
     List<QuestionSet> questionSets = [];
     for (var i = 0; i < kanjis.length; i++) {
       questionSets.add(await _makeQuestionSet(kanjis[i], mode, exampleOptions));

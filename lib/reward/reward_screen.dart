@@ -49,7 +49,7 @@ class _RewardScreenState extends State<RewardScreen> {
     final size = MediaQuery.of(context).size;
 
     List<List<Example>> groupedPerChapter = widget.chapters.map((chapter){
-      var examplesOfChapter = examples.where((example) => example.chapter == chapter && example.hasImage);
+      var examplesOfChapter = examples.where((example) => example.chapters.contains(chapter) && example.hasImage);
       return examplesOfChapter.toList();
     }).toList();
 
@@ -62,6 +62,7 @@ class _RewardScreenState extends State<RewardScreen> {
         return Padding(
           padding: EdgeInsets.symmetric(horizontal: size.width*0.062),
           child: TopicRewards(
+            chapter: index+1,
             examples: examples, 
             gold: gold,
             onBuy: (int cost, int exampleId) {

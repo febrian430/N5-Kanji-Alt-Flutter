@@ -8,15 +8,19 @@ import 'package:kanji_memory_hint/reward/dialog.dart';
 import 'package:kanji_memory_hint/theme.dart';
 
 class TopicRewards extends StatefulWidget {
+  final int chapter;
   final List<Example> examples;
   final int gold;
   final Function(int, int) onBuy;
   final Function()? onNext;
   final Function()? onPrev;
 
+  
+
   const TopicRewards({
     Key? key, 
     required this.examples,
+    required this.chapter,
     required this.gold,
     required this.onBuy,
     required this.onNext,
@@ -57,6 +61,7 @@ class _TopicRewardsState extends State<TopicRewards> {
                         context: context, 
                         builder: (context) {
                           return RewardDialog(
+                            chapter: widget.chapter,
                             example: example,
                             gold: widget.gold,
                             onBuy: widget.onBuy,
@@ -97,7 +102,7 @@ class _TopicRewardsState extends State<TopicRewards> {
               border: Border.all(width: 2)
             ),
             child: Text(
-              "Topic ${widget.examples[0].chapter}",
+              "Topic ${widget.chapter}",
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontWeight: FontWeight.bold,

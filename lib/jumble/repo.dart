@@ -15,14 +15,14 @@ class JumbleQuestionMaker {
   static Future<List<JumbleQuestionSet>> makeQuestionSet(int n, int chapter, GAME_MODE mode) async {
     var examples = await SQLRepo.gameQuestions.byChapterForQuestion(chapter, n, 1/2, false, mode);
 
-    return _build(examples, mode);
+    return _build(examples, mode, chapter);
   }
 
   static Future<List<JumbleQuizQuestionSet>> makeQuizQuestionSet(int n, int chapter, GAME_MODE mode) async {
     var examples = await SQLRepo.gameQuestions.byChapterForQuestion(chapter, n, 1/2, true, mode);
     List<List<int>> fromKanji = examples.map((e) => e.exampleOf).toList();
 
-    var basicQuestionSet = await _build(examples, mode);
+    var basicQuestionSet = await _build(examples, mode, chapter);
 
     return basicQuestionSet.mapIndexed((basic, i) {
       return JumbleQuizQuestionSet(
@@ -34,17 +34,17 @@ class JumbleQuestionMaker {
   }
 
 
-  static Future<List<JumbleQuestionSet>> _build(List<Example> kanjis, GAME_MODE mode) async {
+  static Future<List<JumbleQuestionSet>> _build(List<Example> kanjis, GAME_MODE mode, int chapter) async {
 
     if(mode == GAME_MODE.imageMeaning) {
 
-      var distinctRunes = await SQLRepo.gameQuestions.distinctExampleRune(kanjis[0].chapter);
+      var distinctRunes = await SQLRepo.gameQuestions.distinctExampleRune(chapter);
       return kanjis.map((kanji) {
         return _makeImageMeaning(kanji, distinctRunes, mode);
       }).toList();
     } else {
       List<JumbleQuestionSet> sets = [];
-      var charsInChapter = await SQLRepo.gameQuestions.distinctSyllables(kanjis[0].chapter);
+      var charsInChapter = await SQLRepo.gameQuestions.distinctSyllables(chapter);
       for (var kanji in kanjis) {
         sets.add(await _makeReading(kanji, charsInChapter));
       }

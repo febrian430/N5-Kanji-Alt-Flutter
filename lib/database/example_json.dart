@@ -32,7 +32,7 @@ Future<List<Example>> kanjiExamples() async {
 
 Future<List<Example>> ByChapter(int chapter) async {
   var data = await kanjiExamples();
-  return data.where((Example kanji) => kanji.chapter == chapter).toList();
+  return data.where((Example kanji) => kanji.chapters.contains(chapter)).toList();
 }
 
 Future<List<Example>> ByChapterWithSingle(int chapter, bool isSingle) async {
