@@ -52,7 +52,7 @@ class Levels {
   }
 
   static int? next(int level) {
-    return (level+1)*_baseAndDifference;
+    return (level)*_baseAndDifference;
   }
 
   static Future addExp(int exp) async {
