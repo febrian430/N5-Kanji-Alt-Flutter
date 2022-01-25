@@ -3370,7 +3370,7 @@
 	{
 		"id": 189,
 		"chapter": 7,
-		"image": "30kr1n.png",
+		"image": "Bunga.png",
 		"rune": "花",
 		"spelling": [
 			"は",
@@ -3387,7 +3387,7 @@
 	{
 		"id": 190,
 		"chapter": 7,
-		"image": "30kr1n.png",
+		"image": "Kembang Api.png",
 		"rune": "花火",
 		"spelling": [
 			"は",
@@ -3405,7 +3405,7 @@
 	{
 		"id": 191,
 		"chapter": 7,
-		"image": "30kr1n.png",
+		"image": "Teh.png",
 		"rune": "お茶",
 		"spelling": [
 			"お",
@@ -3422,7 +3422,7 @@
 	{
 		"id": 192,
 		"chapter": 7,
-		"image": "30kr1n.png",
+		"image": "Teh Hitam.png",
 		"rune": "紅茶",
 		"spelling": [
 			"こ",
@@ -3439,7 +3439,7 @@
 	{
 		"id": 193,
 		"chapter": 7,
-		"image": "30kr1n.png",
+		"image": "Daging.png",
 		"rune": "肉",
 		"spelling": [
 			"に",
@@ -3456,7 +3456,7 @@
 	{
 		"id": 194,
 		"chapter": 7,
-		"image": "30kr1n.png",
+		"image": "Daging Ayam.png",
 		"rune": "鳥肉",
 		"spelling": [
 			"と",
@@ -3475,7 +3475,7 @@
 	{
 		"id": 195,
 		"chapter": 7,
-		"image": "30kr1n.png",
+		"image": "Daging Sapi.png",
 		"rune": "牛肉",
 		"spelling": [
 			"ぎゅ",
@@ -3494,7 +3494,7 @@
 	{
 		"id": 196,
 		"chapter": 7,
-		"image": "30kr1n.png",
+		"image": "Merah.png",
 		"rune": "赤い",
 		"spelling": [
 			"あ",
@@ -3512,7 +3512,7 @@
 	{
 		"id": 197,
 		"chapter": 7,
-		"image": "30kr1n.png",
+		"image": "Bayi.png",
 		"rune": "赤ちゃん",
 		"spelling": [
 			"あ",
@@ -3530,7 +3530,7 @@
 	{
 		"id": 198,
 		"chapter": 7,
-		"image": "30kr1n.png",
+		"image": "Putih.png",
 		"rune": "白い",
 		"spelling": [
 			"し",
@@ -3549,7 +3549,7 @@
 		"id": 199,
 		"chapter": 7,
 		"image": "",
-		"rune": "白米",
+		"rune": "Beras Putih",
 		"spelling": [
 			"は",
 			"く",
@@ -3584,7 +3584,7 @@
 	{
 		"id": 201,
 		"chapter": 7,
-		"image": "30kr1n.png",
+		"image": "Belanjaan.png",
 		"rune": "買い物",
 		"spelling": [
 			"か",
@@ -3603,7 +3603,7 @@
 	{
 		"id": 202,
 		"chapter": 7,
-		"image": "30kr1n.png",
+		"image": "Barang Bawaan.png",
 		"rune": "荷物",
 		"spelling": [
 			"に",
@@ -3620,7 +3620,7 @@
 	{
 		"id": 203,
 		"chapter": 7,
-		"image": "30kr1n.png",
+		"image": "Sapi.png",
 		"rune": "牛",
 		"spelling": [
 			"う",
@@ -3637,7 +3637,7 @@
 	{
 		"id": 204,
 		"chapter": 7,
-		"image": "30kr1n.png",
+		"image": "Anak Sapi.png",
 		"rune": "子牛",
 		"spelling": [
 			"こ",
@@ -3655,7 +3655,7 @@
 	{
 		"id": 205,
 		"chapter": 7,
-		"image": "30kr1n.png",
+		"image": "Susu.png",
 		"rune": "牛乳",
 		"spelling": [
 			"ぎゅ",
@@ -3673,7 +3673,7 @@
 	{
 		"id": 206,
 		"chapter": 7,
-		"image": "30kr1n.png",
+		"image": "Kuda.png",
 		"rune": "馬",
 		"spelling": [
 			"う",
@@ -3690,7 +3690,7 @@
 	{
 		"id": 207,
 		"chapter": 7,
-		"image": "30kr1n.png",
+		"image": "Kereta Kuda.png",
 		"rune": "馬車",
 		"spelling": [
 			"ば",
@@ -3724,7 +3724,7 @@
 	{
 		"id": 209,
 		"chapter": 7,
-		"image": "30kr1n.png",
+		"image": "Ayam Bakar.png",
 		"rune": "焼き鳥",
 		"spelling": [
 			"や",
@@ -3742,7 +3742,7 @@
 	{
 		"id": 210,
 		"chapter": 7,
-		"image": "30kr1n.png",
+		"image": "Angsa.png",
 		"rune": "白鳥",
 		"spelling": [
 			"は",
@@ -3761,7 +3761,7 @@
 	{
 		"id": 211,
 		"chapter": 7,
-		"image": "30kr1n.png",
+		"image": "Ikan.png",
 		"rune": "魚",
 		"spelling": [
 			"さ",
@@ -3779,7 +3779,7 @@
 	{
 		"id": 212,
 		"chapter": 7,
-		"image": "30kr1n.png",
+		"image": "Toko Ikan.png",
 		"rune": "魚屋",
 		"spelling": [
 			"さ",
@@ -3797,7 +3797,7 @@
 	{
 		"id": 213,
 		"chapter": 7,
-		"image": "30kr1n.png",
+		"image": "Ikan Bakar.png",
 		"rune": "焼き魚",
 		"spelling": [
 			"や",
@@ -3816,7 +3816,7 @@
 	{
 		"id": 214,
 		"chapter": 7,
-		"image": "30kr1n.png",
+		"image": "Ikan Mas.png",
 		"rune": "金魚",
 		"spelling": [
 			"き",
@@ -4121,7 +4121,7 @@
 	{
 		"id": 231,
 		"chapter": 8,
-		"image": "30kr1n.png",
+		"image": "Koran.png",
 		"rune": "新聞",
 		"spelling": [
 			"し",
