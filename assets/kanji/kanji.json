@@ -589,7 +589,7 @@
 		"kunyomi": "い-く/おこな-う",
 		"onyomi": "コウ/ギョウ",
 		"id": 74,
-		"stroke_order": "test.png"
+		"stroke_order": "行.png"
 	},
 	{
 		"rune": "来",
@@ -597,7 +597,7 @@
 		"kunyomi": "く-る/き-ます/こ-ない",
 		"onyomi": "ライ ",
 		"id": 75,
-		"stroke_order": "test.png"
+		"stroke_order": "来.png"
 	},
 	{
 		"rune": "食",
@@ -605,7 +605,7 @@
 		"kunyomi": "たべ-る",
 		"onyomi": "ショク",
 		"id": 76,
-		"stroke_order": "test.png"
+		"stroke_order": "食.png"
 	},
 	{
 		"rune": "飲",
@@ -613,7 +613,7 @@
 		"kunyomi": "の-む",
 		"onyomi": "イン ",
 		"id": 77,
-		"stroke_order": "test.png"
+		"stroke_order": "飲.png"
 	},
 	{
 		"rune": "見",
@@ -621,7 +621,7 @@
 		"kunyomi": "み-る/み-せる/み-える",
 		"onyomi": "ケン ",
 		"id": 78,
-		"stroke_order": "test.png"
+		"stroke_order": "見.png"
 	},
 	{
 		"rune": "聞",
@@ -629,7 +629,7 @@
 		"kunyomi": "き-く/き-こえる",
 		"onyomi": "ブン ",
 		"id": 79,
-		"stroke_order": "test.png"
+		"stroke_order": "聞.png"
 	},
 	{
 		"rune": "読",
@@ -637,7 +637,7 @@
 		"kunyomi": "よ-む",
 		"onyomi": "ドク ",
 		"id": 80,
-		"stroke_order": "test.png"
+		"stroke_order": "読.png"
 	},
 	{
 		"rune": "書",
@@ -645,7 +645,7 @@
 		"kunyomi": "か-く",
 		"onyomi": "ショ ",
 		"id": 81,
-		"stroke_order": "test.png"
+		"stroke_order": "書.png"
 	},
 	{
 		"rune": "話",
@@ -653,7 +653,7 @@
 		"kunyomi": "はな-す/はなし",
 		"onyomi": "ワ",
 		"id": 82,
-		"stroke_order": "test.png"
+		"stroke_order": "話.png"
 	},
 	{
 		"rune": "買",
@@ -661,7 +661,7 @@
 		"kunyomi": "か-う",
 		"onyomi": "ー",
 		"id": 83,
-		"stroke_order": "test.png"
+		"stroke_order": "買.png"
 	},
 	{
 		"rune": "帰",
@@ -669,7 +669,7 @@
 		"kunyomi": "かえ-る/かえ-す",
 		"onyomi": "キ",
 		"id": 84,
-		"stroke_order": "test.png"
+		"stroke_order": "帰.png"
 	},
 	{
 		"rune": "教",
@@ -677,6 +677,6 @@
 		"kunyomi": "おし-える",
 		"onyomi": "キョウ",
 		"id": 85,
-		"stroke_order": "test.png"
+		"stroke_order": "教.png"
 	}
 ]
