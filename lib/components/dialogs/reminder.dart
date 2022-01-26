@@ -59,12 +59,12 @@ class _ReminderDialogState extends State<ReminderDialog> {
       children: [
         Expanded(flex: 1, child: Text("Reminder", style: Theme.of(context).textTheme.headline5,)),
         Expanded(
-          flex: 1,
+          flex: 2,
           child: Column(
             children: [
               Expanded(flex: 1, child: Text("Every:")),
               Expanded(
-                flex: 2,
+                flex: 3,
                 child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -140,29 +140,32 @@ class _ReminderDialogState extends State<ReminderDialog> {
         Expanded(
           flex: 2,
           child: Padding(
-            padding: EdgeInsets.only(top: 18),
+            padding: EdgeInsets.only(top: 0),
             child: Column(
-            children: [
-              Text("At:"),
-              TextButton(
-                style: TextButton.styleFrom(
-                  side: BorderSide.none
-                ),
-                child: Text(
-                  time.format(context),
-                  style: TextStyle(
-                    fontSize: 19,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold
-                  ),
-                ),
-                onPressed: ()  {
-                  onTimeSelect(context);
-                },
-              )
-            ],
-          )
-        ),
+              children: [
+                Expanded(flex:1, child: Text("At:")),
+                Flexible(
+                  flex: 3,
+                  child: TextButton(
+                    style: TextButton.styleFrom(
+                      side: BorderSide.none
+                    ),
+                    child: Text(
+                      time.format(context),
+                      style: TextStyle(
+                        fontSize: 19,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold
+                      ),
+                    ),
+                    onPressed: ()  {
+                      onTimeSelect(context);
+                    },
+                  )
+                )
+              ],
+            )
+          ),
         )
       ],
     );
