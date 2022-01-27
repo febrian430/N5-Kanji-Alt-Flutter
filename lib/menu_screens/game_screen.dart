@@ -79,7 +79,7 @@ class _GameScreenState extends State<GameScreen> {
   Widget buildConfirmationDialog(BuildContext context) {
     return ConfirmationDialog(
       onConfirm: (){
-        Navigator.of(context, rootNavigator: true).popUntil(ModalRoute.withName("/start-select",));
+        Navigator.of(context, rootNavigator: true).pushNamedAndRemoveUntil("/", ModalRoute.withName("/",));
       },
       onCancel: (){
         Navigator.of(context, rootNavigator: true).pop(false);
