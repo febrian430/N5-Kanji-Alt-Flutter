@@ -3834,7 +3834,7 @@
 	{
 		"id": 215,
 		"chapter": 8,
-		"image": "30kr1n.png",
+		"image": "Pergi.png",
 		"rune": "行く",
 		"spelling": [
 			"い",
@@ -3851,7 +3851,7 @@
 	{
 		"id": 216,
 		"chapter": 8,
-		"image": "30kr1n.png",
+		"image": "Berpergian.png",
 		"rune": "旅行する",
 		"spelling": [
 			"りょ",
@@ -3860,7 +3860,7 @@
 			"す",
 			"る"
 		],
-		"meaning": "Bepergian",
+		"meaning": "Berpergian",
 		"cost": 4,
 		"reward_status": "AVAILABLE",
 		"example_of": [
@@ -3924,7 +3924,7 @@
 	{
 		"id": 220,
 		"chapter": 8,
-		"image": "30kr1n.png",
+		"image": "Makan.png",
 		"rune": "食べる",
 		"spelling": [
 			"た",
@@ -3942,7 +3942,7 @@
 	{
 		"id": 221,
 		"chapter": 8,
-		"image": "30kr1n.png",
+		"image": "Makanan (Food).png",
 		"rune": "食べ物",
 		"spelling": [
 			"た",
@@ -3950,7 +3950,7 @@
 			"も",
 			"の"
 		],
-		"meaning": "Makanan",
+		"meaning": "Makanan (Food)",
 		"cost": 4,
 		"reward_status": "AVAILABLE",
 		"example_of": [
@@ -3961,14 +3961,14 @@
 	{
 		"id": 222,
 		"chapter": 8,
-		"image": "30kr1n.png",
+		"image": "Makanan (Meal).png",
 		"rune": "食事",
 		"spelling": [
 			"しょ",
 			"く",
 			"じ"
 		],
-		"meaning": "Makanan",
+		"meaning": "Makanan (Meal)",
 		"cost": 4,
 		"reward_status": "AVAILABLE",
 		"example_of": [
@@ -3978,7 +3978,7 @@
 	{
 		"id": 223,
 		"chapter": 8,
-		"image": "30kr1n.png",
+		"image": "Minum.png",
 		"rune": "飲む",
 		"spelling": [
 			"の",
@@ -3995,7 +3995,7 @@
 	{
 		"id": 224,
 		"chapter": 8,
-		"image": "30kr1n.png",
+		"image": "Minuman.png",
 		"rune": "飲み物",
 		"spelling": [
 			"の",
@@ -4014,7 +4014,7 @@
 	{
 		"id": 225,
 		"chapter": 8,
-		"image": "30kr1n.png",
+		"image": "Lihat.png",
 		"rune": "見る",
 		"spelling": [
 			"み",
@@ -4086,7 +4086,7 @@
 	{
 		"id": 229,
 		"chapter": 8,
-		"image": "30kr1n.png",
+		"image": "Dengar.png",
 		"rune": "聞く",
 		"spelling": [
 			"き",
@@ -4156,7 +4156,7 @@
 	{
 		"id": 233,
 		"chapter": 8,
-		"image": "30kr1n.png",
+		"image": "Membaca.png",
 		"rune": "読書",
 		"spelling": [
 			"ど",
@@ -4191,7 +4191,7 @@
 	{
 		"id": 235,
 		"chapter": 8,
-		"image": "30kr1n.png",
+		"image": "Tulis.png",
 		"rune": "書く",
 		"spelling": [
 			"か",
@@ -4227,7 +4227,7 @@
 	{
 		"id": 237,
 		"chapter": 8,
-		"image": "30kr1n.png",
+		"image": "Kaligrafi.png",
 		"rune": "書道",
 		"spelling": [
 			"しょ",
@@ -4244,7 +4244,7 @@
 	{
 		"id": 238,
 		"chapter": 8,
-		"image": "30kr1n.png",
+		"image": "Berbicara.png",
 		"rune": "話す",
 		"spelling": [
 			"は",
@@ -4262,7 +4262,7 @@
 	{
 		"id": 239,
 		"chapter": 8,
-		"image": "30kr1n.png",
+		"image": "Konversasi.png",
 		"rune": "会話",
 		"spelling": [
 			"か",
@@ -4279,7 +4279,7 @@
 	{
 		"id": 240,
 		"chapter": 8,
-		"image": "30kr1n.png",
+		"image": "Telepon.png",
 		"rune": "電話",
 		"spelling": [
 			"で",
@@ -4296,7 +4296,7 @@
 	{
 		"id": 241,
 		"chapter": 8,
-		"image": "30kr1n.png",
+		"image": "Beli.png",
 		"rune": "買う",
 		"spelling": [
 			"か",
@@ -4313,7 +4313,7 @@
 	{
 		"id": 242,
 		"chapter": 8,
-		"image": "30kr1n.png",
+		"image": "Pulang.png",
 		"rune": "帰る",
 		"spelling": [
 			"か",
@@ -4351,7 +4351,7 @@
 	{
 		"id": 244,
 		"chapter": 8,
-		"image": "30kr1n.png",
+		"image": "Mengajar.png",
 		"rune": "教える",
 		"spelling": [
 			"お",
@@ -4370,7 +4370,7 @@
 	{
 		"id": 245,
 		"chapter": 8,
-		"image": "30kr1n.png",
+		"image": "Ruang Kelas.png",
 		"rune": "教室",
 		"spelling": [
 			"きょ",
@@ -4388,7 +4388,7 @@
 	{
 		"id": 246,
 		"chapter": 8,
-		"image": "30kr1n.png",
+		"image": "Gereja.png",
 		"rune": "教会",
 		"spelling": [
 			"きょ",
