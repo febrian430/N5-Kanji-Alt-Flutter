@@ -28,8 +28,8 @@ class AudioBit {
 class SoundFX {
   static final _player = AudioPlayer();
   static const String _correct = "assets/audio/correct2.wav";
-  static const String _ado = "assets/audio/nice.wav";
   static const String _wrong = "assets/audio/wrong2.wav";
+  static const String _result = "assets/audio/result.mp3";
 
   static Future initialize() async {
     await _player.setAsset(_correct);
@@ -37,18 +37,22 @@ class SoundFX {
     
   }
 
-  static void correct() async {
-    await _player.setAsset(_correct);
-    await _player.setVolume(1.0);
+  static void _play(String audioPath) async {
+    await _player.setAsset(audioPath);
     _player.seek(const Duration(seconds: 0));
     _player.play();
   }
 
+  static void correct() async {
+    _play(_correct);
+  }
+
   static void wrong() async {
-    await _player.setAsset(_wrong);
-    await _player.setVolume(1.0);
-    _player.seek(const Duration(seconds: 0));
-    _player.play();
+    _play(_wrong);
+  }
+
+  static void result() async {
+    _play(_result);
   }
 }
 
