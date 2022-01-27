@@ -3,7 +3,6 @@ import 'package:kanji_memory_hint/database/repository.dart';
 
 const String _menuMusic = "assets/audio/sakuya.mp3";
 const String _gameMusic = "assets/audio/miyako.mp3";
-const String _correct2 = "assets/audio/nice.wav";
 
 
 
@@ -28,13 +27,27 @@ class AudioBit {
 
 class SoundFX {
   static final _player = AudioPlayer();
+  static const String _correct = "assets/audio/correct2.wav";
+  static const String _ado = "assets/audio/nice.wav";
+  static const String _wrong = "assets/audio/wrong2.wav";
 
   static Future initialize() async {
-    await _player.setAsset(_correct2);
+    await _player.setAsset(_correct);
+    await _player.setVolume(2.0);
+    
   }
 
   static void correct() async {
-    _player.seek(Duration(seconds: 0));
+    await _player.setAsset(_correct);
+    await _player.setVolume(1.0);
+    _player.seek(const Duration(seconds: 0));
+    _player.play();
+  }
+
+  static void wrong() async {
+    await _player.setAsset(_wrong);
+    await _player.setVolume(1.0);
+    _player.seek(const Duration(seconds: 0));
     _player.play();
   }
 }

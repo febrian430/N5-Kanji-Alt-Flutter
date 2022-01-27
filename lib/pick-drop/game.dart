@@ -406,6 +406,7 @@ class _PickDropRoundState extends State<PickDropRound> {
                   bool isCorrect = opt.key == widget.question.key;
                   bool tempFirstTry = isFirstTry;
                   if(!isCorrect) {
+                    SoundFX.wrong();
                     isFirstTry = false;
                     attempts++;
                     setState(() {

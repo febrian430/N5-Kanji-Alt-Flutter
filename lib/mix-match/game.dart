@@ -495,6 +495,7 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
       SoundFX.correct();
       _isGameOver();
     } else {
+      SoundFX.wrong();
       attempts[selected!] = attempts[selected!]! + 1;
       // attempts[opt] = attempts[opt]! + 1;
 

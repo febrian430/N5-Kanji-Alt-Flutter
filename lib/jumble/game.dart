@@ -436,6 +436,7 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
             widget.onComplete(true, 0, widget.index, widget.question.key.length-1, attempts);
           });
         } else {
+          SoundFX.wrong();
           setState(() {
             misses += diff.length;
             wrongSelected.addAll(diff);
