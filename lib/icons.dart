@@ -40,4 +40,7 @@ class AppIcons {
   static const tutorial = APP_IMAGE_FOLDER + 'tutorial.png';
 
   static const mastery = APP_IMAGE_FOLDER + 'mastery.png';
+
+  static const credits = APP_IMAGE_FOLDER + 'credits.png';
+
 }

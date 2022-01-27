@@ -6,6 +6,7 @@ import 'package:kanji_memory_hint/components/backgrounds/main_background.dart';
 import 'package:kanji_memory_hint/components/backgrounds/menu_background.dart';
 import 'package:kanji_memory_hint/components/buttons/icon_button.dart';
 import 'package:kanji_memory_hint/components/buttons/select_button.dart';
+import 'package:kanji_memory_hint/components/dialogs/credit_dialog.dart';
 import 'package:kanji_memory_hint/components/dialogs/reminder.dart';
 import 'package:kanji_memory_hint/const.dart';
 import 'package:kanji_memory_hint/database/repository.dart';
@@ -16,6 +17,7 @@ import 'package:kanji_memory_hint/kanji-list/kanji_view.dart';
 import 'package:kanji_memory_hint/menu_screens/chapter_select.dart';
 import 'package:kanji_memory_hint/menu_screens/mode_select.dart';
 import 'package:kanji_memory_hint/notification/notifier.dart';
+import 'package:kanji_memory_hint/quests/screen/quest_screen.dart';
 import 'package:kanji_memory_hint/quests/screen/quest_screen_alt.dart';
 import 'package:kanji_memory_hint/result_screen/practice.dart';
 import 'package:kanji_memory_hint/menu_screens/start_select.dart';
@@ -119,7 +121,7 @@ class _MyAppState extends State<MyApp> {
         '/chapter-select': (context) => ChapterSelect(),
         '/mode-select': (context) => const ModeSelect(),
         '/result': (context) => ResultScreen(),
-        '/quests': (context) => QuestScreenAlt(),
+        '/quests': (context) => QuestScreen(),
         '/rewards': (context) => RewardScreen(),
         '/test': (context) => Test()
 
@@ -241,14 +243,25 @@ class MainScreen extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-          flex: 3,
+          flex: 2,
           child: SizedBox(),
         ),
         Flexible(
-          flex: 2,
+          flex: 3,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
+              AppIconButton(
+                onTap: (){
+                  showDialog(context: context, builder: (context) => CreditsDialog());
+                },
+                iconPath: AppIcons.credits,
+                noBorder: true, 
+                height: 40, 
+                width: 40, 
+                ratio: 1,
+                backgroundColor: Colors.transparent
+              ),
               AppIconButton(
                 onTap: (){
                   showDialog(
