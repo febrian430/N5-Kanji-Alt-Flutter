@@ -1385,7 +1385,7 @@
 	{
 		"id": 79,
 		"chapter": 2,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "車",
 		"spelling": [
 			"く",
@@ -1403,7 +1403,7 @@
 	{
 		"id": 80,
 		"chapter": 2,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "自動車",
 		"spelling": [
 			"じ",
@@ -1473,7 +1473,7 @@
 	{
 		"id": 84,
 		"chapter": 2,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "専門",
 		"spelling": [
 			"せ",
@@ -1767,7 +1767,7 @@
 	{
 		"id": 101,
 		"chapter": 3,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "彼女",
 		"spelling": [
 			"か",
@@ -3567,7 +3567,7 @@
 	{
 		"id": 200,
 		"chapter": 7,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "物",
 		"spelling": [
 			"も",
@@ -3707,7 +3707,7 @@
 	{
 		"id": 208,
 		"chapter": 7,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "鳥",
 		"spelling": [
 			"と",
@@ -3870,7 +3870,7 @@
 	{
 		"id": 217,
 		"chapter": 8,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "来る",
 		"spelling": [
 			"く",
@@ -3906,7 +3906,7 @@
 	{
 		"id": 219,
 		"chapter": 8,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "来年",
 		"spelling": [
 			"ら",
@@ -4031,7 +4031,7 @@
 	{
 		"id": 226,
 		"chapter": 8,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "見せる",
 		"spelling": [
 			"み",
@@ -4048,7 +4048,7 @@
 	{
 		"id": 227,
 		"chapter": 8,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "意見",
 		"spelling": [
 			"い",
@@ -4065,7 +4065,7 @@
 	{
 		"id": 228,
 		"chapter": 8,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "見物する",
 		"spelling": [
 			"け",
@@ -4103,7 +4103,7 @@
 	{
 		"id": 230,
 		"chapter": 8,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "聞こえる",
 		"spelling": [
 			"き",
@@ -4139,7 +4139,7 @@
 	{
 		"id": 232,
 		"chapter": 8,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "読む",
 		"spelling": [
 			"よ",
@@ -4174,7 +4174,7 @@
 	{
 		"id": 234,
 		"chapter": 8,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "読者",
 		"spelling": [
 			"ど",
@@ -4208,7 +4208,7 @@
 	{
 		"id": 236,
 		"chapter": 8,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "下書き",
 		"spelling": [
 			"し",
@@ -4331,7 +4331,7 @@
 	{
 		"id": 243,
 		"chapter": 8,
-		"image": "30kr1n.png",
+		"image": "",
 		"rune": "帰国する",
 		"spelling": [
 			"き",
