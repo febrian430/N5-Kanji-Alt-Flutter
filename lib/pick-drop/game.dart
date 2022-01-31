@@ -51,7 +51,7 @@ class _PickDropState extends State<PickDrop> {
   List<QuestionSet> restartQuestions = [];
 
   var sets;
-  int index = 0;
+  int page = 0;
   int wrongAttempts = 0;
   int perfect = 0;
   int solved = 0;
@@ -59,6 +59,11 @@ class _PickDropState extends State<PickDrop> {
   bool restart = false;
 
   List<int> attempts = [];
+
+  PageController _controller = PageController(
+    initialPage: 0,
+    viewportFraction: 1
+  );
 
   late int total = GameNumOfRounds;
   late PracticeScore score;
@@ -105,10 +110,9 @@ class _PickDropState extends State<PickDrop> {
 
         answered.add(idx);
 
-        var nearestAnswerable = GameHelper.nearestUnansweredIndex(index, answered, total-1);
+        var nearestAnswerable = GameHelper.nearestUnansweredIndex(page, answered, total-1);
         if (nearestAnswerable != null) {
-          print(nearestAnswerable);
-          index = nearestAnswerable;
+          animateToPage(nearestAnswerable);
         } else {
           widget.stopwatch.stop();
           score = PracticeScore(
@@ -140,8 +144,13 @@ class _PickDropState extends State<PickDrop> {
 
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 4.0),
-      child: IndexedStack(
-        index: index,
+      child: PageView(
+        controller: _controller,
+        onPageChanged: (int now) {
+          setState(() {
+            page = now;
+          });
+        },
         children: sets.mapIndexed((set, index) {
           return PickDropRound(
             index: index,
@@ -190,6 +199,13 @@ class _PickDropState extends State<PickDrop> {
     widget.stopwatch.start();
   }
 
+  void animateToPage(int page) {
+    _controller.animateToPage(page, 
+      duration: const Duration(milliseconds: 300), 
+      curve: Curves.linear
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     GuideDialog guide = GuideDialog(
@@ -212,6 +228,8 @@ class _PickDropState extends State<PickDrop> {
       }
     });
 
+    
+
     return GameScreen(
       title: PickDrop.name, 
       japanese: PickDrop.japanese, 
@@ -222,17 +240,13 @@ class _PickDropState extends State<PickDrop> {
       onRestart: onRestartFromResult, 
       onContinue: onContinue,
       onGuideOpen: onPause,
-      prevVisible: index != 0,
-      nextVisible: index != (total-1),
+      prevVisible: page != 0,
+      nextVisible: page != (total-1),
       onNext: (){
-        setState(() {
-          index++;
-        });
+        animateToPage(page+1);
       },
       onPrev: (){
-        setState(() {
-          index--;
-        });
+        animateToPage(page-1);
       },
       footer: total == solved ? ResultButton(
         param: ResultParam(

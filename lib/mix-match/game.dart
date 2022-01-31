@@ -104,13 +104,16 @@ class _MixMatchGameState extends State<MixMatchGame> {
       Levels.addExp(result.expGained);
     } else {
       // _showDialog();
-      currentPage++;
-      _pageController.animateToPage(
-        _pageController.page!.floor() + 1, 
-        duration: Duration(milliseconds: 500), 
+      animateToPage(currentPage+1);
+    }
+  }
+
+  void animateToPage(int page) {
+    _pageController.animateToPage(
+        page,
+        duration: Duration(milliseconds: 300), 
         curve: Curves.linear
       );
-    }
   }
 
   void onRestartFromResult() {
@@ -236,13 +239,13 @@ class _MixMatchGameState extends State<MixMatchGame> {
       onNext: (){
         setState(() {
           currentPage++;
-          _pageController.animateToPage(currentPage, duration: const Duration(milliseconds: 200), curve: Curves.linear);  
+          animateToPage(currentPage);  
         });
       },
       onPrev: (){
         setState(() {
           --currentPage;
-          _pageController.animateToPage(currentPage, duration: const Duration(milliseconds: 200), curve: Curves.linear);
+          animateToPage(currentPage);
         });
       },
       footer: widget.numOfRounds == roundsSolved ? 

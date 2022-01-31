@@ -171,11 +171,15 @@ class _JumbleGameState extends State<JumbleGame> {
     });
   }
 
+  void animateToPage(int page) {
+      _pageController.animateToPage(page, duration: const Duration(milliseconds: 300), curve: Curves.linear);
+  } 
+  
   void _slideToNextQuestion(int fromIndex, Set<int> answered) async {
     Future.delayed(const Duration(milliseconds: 500), () {
       int? next = GameHelper.nearestUnansweredIndex(fromIndex, answered, GameNumOfRounds);
       if(next != null){
-        _pageController.animateToPage(next, duration: const Duration(milliseconds: 200), curve: Curves.linear);
+        animateToPage(next);
       }
     });
   }
@@ -291,12 +295,12 @@ class _JumbleGameState extends State<JumbleGame> {
       nextVisible: currentPage != (numOfQuestions-1),
       onNext: (){
         setState(() {
-          _pageController.animateToPage(++currentPage, duration: const Duration(milliseconds: 200), curve: Curves.linear);  
+          animateToPage(++currentPage);
         });
       },
       onPrev: (){
         setState(() {
-          _pageController.animateToPage(--currentPage, duration: const Duration(milliseconds: 200), curve: Curves.linear);
+          animateToPage(--currentPage);
         });
       },
       footer: numOfQuestions == solved ? 
