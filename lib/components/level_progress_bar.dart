@@ -13,12 +13,6 @@ class LevelProgressBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        LinearProgressIndicator(
-          backgroundColor: AppColors.cream,
-          color: AppColors.secondary,
-          value: current/upperbound,
-          minHeight: 10,
-        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
 
@@ -27,7 +21,13 @@ class LevelProgressBar extends StatelessWidget {
             Expanded(child: Text(current.toString(), textAlign: TextAlign.center,)),
             Expanded(child: Text(upperbound.toString(), textAlign: TextAlign.end,))
           ],
-        )
+        ),
+        LinearProgressIndicator(
+          backgroundColor: AppColors.cream,
+          color: AppColors.secondary,
+          value: current/upperbound,
+          minHeight: 10,
+        ),
       ],
     );
   }
