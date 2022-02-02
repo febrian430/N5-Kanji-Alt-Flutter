@@ -1,23 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:kanji_memory_hint/components/backgrounds/menu_background.dart';
-import 'package:kanji_memory_hint/components/backgrounds/practice_background.dart';
 import 'package:kanji_memory_hint/components/buttons/icon_button.dart';
 import 'package:kanji_memory_hint/components/dialogs/reminder.dart';
 import 'package:kanji_memory_hint/components/empty_flex.dart';
 import 'package:kanji_memory_hint/components/level_widget.dart';
-import 'package:kanji_memory_hint/components/loading_screen.dart';
-import 'package:kanji_memory_hint/components/progress_bar.dart';
 import 'package:kanji_memory_hint/humanize.dart';
 import 'package:kanji_memory_hint/icons.dart';
-import 'package:kanji_memory_hint/levelling/levels.dart';
-import 'package:kanji_memory_hint/main.dart';
 import 'package:kanji_memory_hint/menu_screens/menu.dart';
 import 'package:kanji_memory_hint/route_param.dart';
 import 'package:kanji_memory_hint/theme.dart';
 
-class ResultScreen extends StatelessWidget{
-
+class ResultScreen extends StatelessWidget {
 
   ResultScreen({Key? key}) : super(key: key);
 
@@ -269,7 +262,6 @@ class _DetailWidget extends StatelessWidget {
             }
           )
         )
-        
       ],
     );
   }

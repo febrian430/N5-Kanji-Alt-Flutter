@@ -5,12 +5,9 @@ import 'package:kanji_memory_hint/components/dialogs/reminder.dart';
 import 'package:kanji_memory_hint/components/empty_flex.dart';
 import 'package:kanji_memory_hint/components/level_widget.dart';
 import 'package:kanji_memory_hint/components/loading_screen.dart';
-import 'package:kanji_memory_hint/components/progress_bar.dart';
 import 'package:kanji_memory_hint/countdown.dart';
-import 'package:kanji_memory_hint/database/repository.dart';
 import 'package:kanji_memory_hint/humanize.dart';
 import 'package:kanji_memory_hint/icons.dart';
-import 'package:kanji_memory_hint/levelling/levels.dart';
 import 'package:kanji_memory_hint/scoring/quiz/quiz.dart';
 import 'package:kanji_memory_hint/scoring/report.dart';
 import 'package:kanji_memory_hint/theme.dart';
@@ -29,6 +26,7 @@ class QuizJumbleGameParam {
 }
 
 class QuizResult extends StatelessWidget {
+
   const QuizResult({
     Key? key, 
     required this.multipleChoice, 
@@ -36,8 +34,11 @@ class QuizResult extends StatelessWidget {
     required this.onRestart, 
     required this.onViewResult, 
     required this.countdown,
-    required this.animate
+    required this.animate, 
+    required this.onMount
   }) : super(key: key);
+
+  final Function() onMount;
   final Function() onRestart;
   final Function() onViewResult;
   final QuizGameParam multipleChoice;
@@ -120,6 +121,9 @@ class QuizResult extends StatelessWidget {
   Widget _build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     if(animate) {
+      WidgetsBinding.instance?.addPostFrameCallback((_){
+        onMount();
+      });
       final result = QuizScoring.evaluate(multipleChoice.result, jumble.result);
       return Center(
         child: Container(

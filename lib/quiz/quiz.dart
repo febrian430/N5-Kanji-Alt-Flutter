@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kanji_memory_hint/audio_repository/audio.dart';
 import 'package:kanji_memory_hint/components/backgrounds/practice_background.dart';
 import 'package:kanji_memory_hint/components/dialogs/guide.dart';
 import 'package:kanji_memory_hint/components/empty_flex.dart';
@@ -37,7 +38,7 @@ class Quiz extends StatefulWidget {
   
 
   Future<List> _getQuizQuestionSet() async {
-    return QuizQuestionMaker.makeQuestionSet(10, chapter, mode);
+    return QuizQuestionMaker.makeQuestionSet(3, chapter, mode);
   }
 
   @override
@@ -93,6 +94,8 @@ class _QuizState extends State<Quiz> {
   
   int jumbleCorrect = 0;
   int jumbleMisses = 0;
+
+  bool withResultSound = true;
   
   int gameIndex = 0;
   bool isOver = false;
@@ -269,7 +272,14 @@ class _QuizState extends State<Quiz> {
             jumble: QuizJumbleGameParam(
               result: jumbleScore,
               goHere: _goJumble
-            )
+            ),
+            onMount: (){
+              if(withResultSound) {
+                SoundFX.result();
+                withResultSound = false;
+                AudioManager.playMenu();
+              }
+            },
         )
       ],
     );
