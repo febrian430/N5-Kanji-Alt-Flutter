@@ -185,22 +185,34 @@ class QuestProvider {
     ) > 0;
   }
 
+  String _orderByStatus() {
+    return '''
+      case $_columnStatus
+        when '${QUEST_STATUS.COMPLETE.name}' then 3
+        when '${QUEST_STATUS.ONGOING.name}' then 2
+        when '${QUEST_STATUS.CLAIMED.name}' then 1
+      end DESC
+      ''';
+  }
+
   Future<List<PracticeQuest>> getOnGoingPractice() async {
     var rows = await db.query(_tableQuests,
       where: '$_columnType = ?',
       whereArgs: [_enumPractice],
-      orderBy: '$_columnStatus DESC'
+      orderBy: _orderByStatus()
     );
     
     
     return rows.map((questRaw) => PracticeQuest.fromMap(questRaw)).toList();
   }
 
+  
+
   Future<List<QuizQuest>> getOnGoingQuiz() async {
     var rows = await db.query(_tableQuests,
         where: '$_columnType = ?',
         whereArgs: [_enumQuiz],
-        orderBy: '$_columnStatus DESC'
+        orderBy: _orderByStatus()
     );
   
 
@@ -212,7 +224,7 @@ class QuestProvider {
     var rows = await db.query(_tableQuests,
       where: '$_columnType = ?',
       whereArgs: [_enumMastery],
-      orderBy: '$_columnStatus DESC'
+      orderBy: _orderByStatus()
     );
 
     return rows.map((questRaw) => MasteryQuest.fromMap(questRaw)).toList();
