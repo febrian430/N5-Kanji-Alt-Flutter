@@ -101,7 +101,16 @@ class ChapterSelectDialog extends StatelessWidget {
   Widget _buttons(BuildContext context) {
     return Column(
       children: [
-        Expanded(flex: 2, child: Text("Confirm?", style: TextStyle(fontSize: 18),),),
+        Expanded(
+          flex: 2, 
+          child: Text(
+            "Confirm?", 
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold
+            ),
+          ),
+        ),
         Expanded(flex: 6,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -157,7 +166,7 @@ class ChapterSelectDialog extends StatelessWidget {
     return Dialog(
       child: TwoBorderContainer(
         width: size.width*.75,
-        height: size.height*.6,
+        height: size.height*.47,
         padding: EdgeInsets.all(10),
         child: FutureBuilder(
           future: SQLRepo.kanjis.byChapter(chapter),
@@ -170,7 +179,7 @@ class ChapterSelectDialog extends StatelessWidget {
                     child: _header(context)
                   ),
                   Flexible(
-                    flex: 8, 
+                    flex: 5, 
                     child: _topic(context, snapshot.data!),
                   ),
                   Expanded(
