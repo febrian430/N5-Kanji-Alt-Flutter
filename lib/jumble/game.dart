@@ -72,6 +72,8 @@ class _JumbleGameState extends State<JumbleGame> {
 
   bool restart = false;
 
+  bool withResultSound = true;
+
   late PracticeScore endScore;
   late GameResult result;
   late PracticeGameReport report;
@@ -315,6 +317,12 @@ class _JumbleGameState extends State<JumbleGame> {
           game: JumbleGame.name,
           mode: widget.mode
         ),
+        onTap: (){
+          if(withResultSound){
+            SoundFX.result();
+            withResultSound = false;
+          }  
+        },
         visible: numOfQuestions == solved,
       ) : SizedBox(),
       guide: guide

@@ -65,6 +65,8 @@ class _PickDropState extends State<PickDrop> {
     viewportFraction: 1
   );
 
+  bool withResultSound = true;
+
   late int total = GameNumOfRounds;
   late PracticeScore score;
   late GameResult result;
@@ -257,9 +259,15 @@ class _PickDropState extends State<PickDrop> {
           stopwatch: widget.stopwatch,
           chapter: widget.chapter,
           game: PickDrop.name,
-          mode: widget.mode
+          mode: widget.mode,
         ),
         visible: total == solved,
+        onTap: () {
+          if(withResultSound) {
+            SoundFX.result();
+            withResultSound = false;
+          }
+        },
       ) : SizedBox()
     ,
       guide: guide

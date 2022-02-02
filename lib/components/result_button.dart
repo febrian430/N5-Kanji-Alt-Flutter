@@ -5,8 +5,15 @@ import 'package:kanji_memory_hint/result_screen/practice.dart';
 import 'package:kanji_memory_hint/route_param.dart';
 
 class ResultButton extends StatelessWidget  {
-  const ResultButton({Key? key, required this.visible, required this.param}) : super(key: key);
+  const ResultButton({
+    Key? key, 
+    required this.visible, 
+    required this.param,
+    required this.onTap
+  }) : super(key: key);
   
+  final Function() onTap;
+
   final bool visible;
   final ResultParam param;
 
@@ -16,6 +23,7 @@ class ResultButton extends StatelessWidget  {
       visible: visible,
       child: SelectButton(
         onTap: () {
+          onTap();
           Navigator.pushNamed(context, ResultScreen.route, 
             arguments: param
           );

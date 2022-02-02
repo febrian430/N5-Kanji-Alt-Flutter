@@ -58,6 +58,8 @@ class _MixMatchGameState extends State<MixMatchGame> {
 
   List<int> attempts = [];
 
+  bool withResultSound = true;
+
   late PracticeScore score;
   late GameResult result;
   late PracticeGameReport report;
@@ -260,6 +262,12 @@ class _MixMatchGameState extends State<MixMatchGame> {
           score: score, 
           stopwatch: widget.stopwatch
         ),
+        onTap: (){
+          if(withResultSound){
+            SoundFX.result();
+            withResultSound = false;
+          }
+        },
         visible: widget.numOfRounds == roundsSolved,
       ) : SizedBox(),
       guide: guide
