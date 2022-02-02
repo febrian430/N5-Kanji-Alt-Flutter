@@ -40,7 +40,11 @@ class ChapterSelectDialog extends StatelessWidget {
     final gameName = _getGameName(param.selectedGame);
     return Column(
       children: [
-        Text(param.gameType == GAME_TYPE.PRACTICE ? "Practice" : "Quiz"),
+        Text(param.gameType == GAME_TYPE.PRACTICE ? "Practice" : "Quiz",
+          style: TextStyle(
+            fontWeight: FontWeight.bold
+          ),
+        ),
         Text(gameName, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
       ]
     );
@@ -111,7 +115,8 @@ class ChapterSelectDialog extends StatelessWidget {
             ),
           ),
         ),
-        Expanded(flex: 6,
+        Expanded(
+          flex: 6,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -166,7 +171,7 @@ class ChapterSelectDialog extends StatelessWidget {
     return Dialog(
       child: TwoBorderContainer(
         width: size.width*.75,
-        height: size.height*.47,
+        height: size.height*.6,
         padding: EdgeInsets.all(10),
         child: FutureBuilder(
           future: SQLRepo.kanjis.byChapter(chapter),

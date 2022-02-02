@@ -264,7 +264,7 @@ class _PickDropState extends State<PickDrop> {
         visible: total == solved,
         onTap: () {
           if(withResultSound) {
-            SoundFX.result();
+            AudioManager.soundFx.result();
             withResultSound = false;
           }
         },
@@ -428,7 +428,7 @@ class _PickDropRoundState extends State<PickDropRound> {
                   bool isCorrect = opt.key == widget.question.key;
                   bool tempFirstTry = isFirstTry;
                   if(!isCorrect) {
-                    SoundFX.wrong();
+                    AudioManager.soundFx.wrong();
                     isFirstTry = false;
                     attempts++;
                     setState(() {
@@ -441,7 +441,7 @@ class _PickDropRoundState extends State<PickDropRound> {
                     });
                   } else {
                     setState(() {
-                      SoundFX.correct();
+                      AudioManager.soundFx.correct();
 
                       isSolved = true;
                       correctOverlay = true;
