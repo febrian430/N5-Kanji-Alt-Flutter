@@ -78,6 +78,7 @@ flutter:
     - assets/images/kanji/
     - assets/images/app/
     - assets/images/stroke_order/
+    - assets/images/levels/
     - assets/kanji/
     - assets/audio/
   #   - images/a_dot_ham.jpeg

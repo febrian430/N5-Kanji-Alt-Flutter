@@ -30,7 +30,7 @@ class QuestScreenLayout extends StatelessWidget {
                       child: AppHeader(title: "Quest", japanese: "クエスト", withBack: true,),
                     ),
                     Expanded(
-                      flex: 9,
+                      flex: 10,
                       child: content,
                     )
                   ],

@@ -79,9 +79,10 @@ enum GAME_TYPE { PRACTICE, QUIZ }
 const KANJI_IMAGE_FOLDER = 'assets/images/kanji/';
 const APP_IMAGE_FOLDER = 'assets/images/app/';
 const STROKE_ORDER_FOLDER = 'assets/images/stroke_order/';
+const LEVELS_FOLDER = 'assets/images/levels/';
 
-const GameNumOfRounds = 15;
+const GameNumOfRounds = 4;
 const CHAPTERS = 3;
-const USE_CHAPTERS = [3,4,5];
+const USE_CHAPTERS = [1,2,3,4,5,6,7,8];
 
 const Widget EmptyWidget = Visibility(child: Text(""), visible: false,);

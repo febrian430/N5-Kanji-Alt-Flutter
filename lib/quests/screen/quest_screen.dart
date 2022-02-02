@@ -33,6 +33,15 @@ class QuestScreen extends StatefulWidget {
 
 
 class _QuestScreenState extends State<QuestScreen> {
+  var userPoints;
+  int gold = 0;
+  bool goldLoaded = false;
+
+  @override
+  void initState() {
+    super.initState();
+    userPoints = Future.wait([SQLRepo.userPoints.get(), Levels.current()]);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,25 +52,93 @@ class _QuestScreenState extends State<QuestScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Expanded(
-              flex: 6,
-              child: Column(
-                children: [
-                  EmptyFlex(flex: 1),
-                  Expanded(flex: 3, child: _ProgressContainer(),),
-                  EmptyFlex(flex: 1)
-                ]
-              )
+              flex: 10,
+              child: FutureBuilder(
+                future: userPoints,
+                builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
+                  if(snapshot.hasData){
+                    if(!goldLoaded) {
+                      final points = snapshot.data![0] as UserPoint;
+                      gold = points.gold;
+                      goldLoaded=true;
+                    }
+                    final temp = snapshot.data![1] as List<int>;
+                    final level = temp[0];
+                    final remaining = temp[1];
+                    return Column(
+                      children: [
+                        EmptyFlex(flex: 1),
+                        Expanded(
+                          flex: 8, 
+                          child: _ProgressContainer(
+                            level: level,
+                            remaining: remaining,
+                            upperbound: Levels.next(level)!,
+                          ),
+                        ),
+                        Expanded(
+                          flex: 18,
+                          child: Stack(
+                            children: [
+                              Container(
+                                child: Image.asset(Levels.image(level)),
+                                alignment: Alignment.bottomCenter
+                              ),
+                              Column(
+                                children: [
+                                  EmptyFlex(flex: 8),
+                                  Expanded(
+                                    flex: 6,
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Expanded(flex: 1, child: SizedBox()),
+                                        Expanded(flex: 1, child: SizedBox()),
+                                        Flexible(
+                                          flex: 1, 
+                                          child: Container(
+                                            height: size.width*.1,
+                                            width: size.width*.2,
+                                            margin: EdgeInsets.all(10),
+                                            decoration: BoxDecoration(
+                                              border: Border.all(width: 2),
+                                              color: AppColors.primary
+                                            ),
+                                            child: GoldWidget(gold: gold,)
+                                          )
+                                        )
+                                      ]
+                                    )
+                                  )
+                                ],
+                              ),
+                            ],
+                          )
+                        )
+                      ]
+                    );
+                  } else {
+                    return LoadingScreen();
+                  }
+                }
+              ),
             ),
             Expanded(
               flex: 12,
-              child: QuestMenuWidget()
+              child: QuestMenuWidget(
+                onQuestClaim: (int goldClaimed) {
+                  setState(() {
+                    gold += goldClaimed;
+                  });
+                },
+              )
             )
           ],
         ), 
         footerFlex: 2,
         footer: Column(
           children: [
-            EmptyFlex(flex: 1),
+            EmptyFlex(flex: 2),
             Expanded(
               flex: 6,
               child: Row(
@@ -103,7 +180,12 @@ class _QuestScreenState extends State<QuestScreen> {
 
 
 class QuestMenuWidget extends StatefulWidget {
-  const QuestMenuWidget({Key? key}) : super(key: key);
+  const QuestMenuWidget({
+    Key? key, 
+    required this.onQuestClaim
+  }) : super(key: key);
+
+  final Function(int gold) onQuestClaim;
 
   @override
   State<StatefulWidget> createState() => _QuestWidgetState();
@@ -112,100 +194,52 @@ class QuestMenuWidget extends StatefulWidget {
 
 class _QuestWidgetState extends State<QuestMenuWidget> {
   int questIndex = 0;
-  bool loaded = false;
-  int gold = 0;
-  var points;
-
-  void onQuestClaim(int goldClaim) {
-    setState(() {
-      print("called");
-      gold+=goldClaim;
-    });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    points = SQLRepo.userPoints.get();
-  }
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    return FutureBuilder(
-      future: points,
-      builder: (context, AsyncSnapshot<UserPoint> snapshot){
-        if(snapshot.hasData && !loaded) {
-          gold = snapshot.data!.gold;
-          loaded=true;
-        }
-        return Column(
-          children: [
-            Flexible(
-              flex: 2,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(flex: 1, child: SizedBox()),
-                  Expanded(flex: 1, child: SizedBox()),
-                  Flexible(
-                    flex: 1, 
-                    child: Container(
-                      height: size.width*.1,
-                      width: size.width*.2,
-                      margin: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        border: Border.all(width: 2),
-                        color: AppColors.primary
-                      ),
-                      child: GoldWidget(gold: gold,)
-                    )
-                  )
-                ]
-              )
+    return Container(
+      decoration: BoxDecoration(
+        color: AppColors.primary
+      ),
+      child: Column(
+        children: [
+          Flexible(
+            flex: 3, 
+            child: _SelectBar(
+              index: questIndex,
+              onTap: (int index) {
+                setState(() {
+                  questIndex = index;
+                });
+              }
             ),
-            Flexible(
-              flex: 10,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: AppColors.primary
-                ),
-                child: Column(
-                  children: [
-                    Flexible(
-                      flex: 3, 
-                      child: _SelectBar(
-                        index: questIndex,
-                        onTap: (int index) {
-                          setState(() {
-                            questIndex = index;
-                          });
-                        }
-                      ),
-                    ),
-                    Expanded(
-                      flex: 8, 
-                      child: _QuestList(
-                        onClaimQuest: onQuestClaim,
-                        index: questIndex,
-                      )
-                    )
-                  ],
-                )
-              )
+          ),
+          Expanded(
+            flex: 8, 
+            child: _QuestList(
+              onClaimQuest: widget.onQuestClaim,
+              index: questIndex,
             )
-          ]
-        );
-      }
-      
+          )
+        ],
+      )
     );
-        
   }
-
 }
 
 class _ProgressContainer extends StatefulWidget {
+  final int level;
+  final int remaining;
+  final int upperbound;
+
+  const _ProgressContainer({
+    Key? key, 
+    required this.level, 
+    required this.remaining, 
+    required this.upperbound
+  }) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _ProgressContainerState();
@@ -224,13 +258,7 @@ class _ProgressContainerState extends State<_ProgressContainer> {
           final toNextLevel = Levels.next(level);
           return Container(
             width: size.width*.8,
-            height: size.width*.1,
-            padding: EdgeInsets.fromLTRB(
-              10,
-              10,
-              10,
-              0
-            ),
+            padding: EdgeInsets.all(8),
             decoration: BoxDecoration(
               color: AppColors.primary,
               border: Border.all(width: 2)
@@ -249,15 +277,11 @@ class _ProgressContainerState extends State<_ProgressContainer> {
                     ),
                   ),
                 ),
-                EmptyFlex(flex: 1),
                 Expanded(
-                  flex: 2, 
+                  flex: 3, 
                   child: LayoutBuilder(
                     builder: (context, constraints) {
-                      return Container(
-
-                        child: LevelProgressBar(upperbound: toNextLevel ?? remaining, current: remaining)
-                      );
+                      return  LevelProgressBar(upperbound: toNextLevel ?? remaining, current: remaining);
                     }
                   )
                 )
@@ -439,7 +463,7 @@ class _QuestList extends StatelessWidget {
     var size = MediaQuery.of(context).size;
 
     return Padding(
-      padding: EdgeInsets.fromLTRB(0, 10, 0, 4),
+      padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
       child: Container(
         width: size.width*0.85, 
         child: IndexedStack(
