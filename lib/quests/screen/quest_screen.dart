@@ -206,7 +206,7 @@ class _QuestWidgetState extends State<QuestMenuWidget> {
       child: Column(
         children: [
           Flexible(
-            flex: 3, 
+            flex: 2, 
             child: _SelectBar(
               index: questIndex,
               onTap: (int index) {
@@ -466,7 +466,7 @@ class _QuestList extends StatelessWidget {
     var size = MediaQuery.of(context).size;
 
     return Padding(
-      padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+      padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
       child: Container(
         width: size.width*0.85, 
         child: IndexedStack(
