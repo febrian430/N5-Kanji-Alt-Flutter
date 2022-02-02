@@ -79,6 +79,7 @@ class GameSelect extends StatelessWidget {
         japanese: "練習", 
         child: screen,
         type: GAME_TYPE.PRACTICE,
+        footer: EmptyWidget,
       );
   }
 }

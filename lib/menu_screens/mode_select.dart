@@ -12,8 +12,6 @@ class ModeSelect extends StatelessWidget {
 
   static const route = '/mode-select';
   static const List<int> chapters = [1,2,3,4,5,6,7,8]; 
-
-
   
   @override
   Widget build(BuildContext context) {
@@ -51,6 +49,7 @@ class ModeSelect extends StatelessWidget {
       child: screen,
       type: param.gameType,
       withBottomPadding: true,
+      footer: EmptyWidget,
     );
   }
 }
