@@ -354,7 +354,7 @@ class _JumbleRoundState extends State<JumbleRound> with AutomaticKeepAliveClient
   _JumbleRoundState();
 
   Color roundColor = Colors.transparent;
-  final Color _correctColor = Colors.green;
+  final Color _correctColor = AppColors.correct;
   final Color _wrongColor = Colors.red;
 
   int selectCount = 0;
@@ -593,7 +593,7 @@ class SelectWidget extends StatelessWidget {
       bgColor = AppColors.primary;
     } 
     if(isRoundOver) {
-      bgColor = Colors.green;
+      bgColor = AppColors.correct;
     }
 
     bgColor = forceColor ?? bgColor;
@@ -620,8 +620,9 @@ class SelectWidget extends StatelessWidget {
                 child: Text(
                   !_isSentinel() ? option.value : "",
                   style: TextStyle(
-                    fontWeight: forceColor != null ? FontWeight.bold : null,
-                    color: forceColor != null ? Colors.white : null
+                    fontSize: 18,
+                    fontWeight: forceColor != null || isRoundOver ? FontWeight.bold : null,
+                    color: forceColor != null || isRoundOver ? Colors.white : null
                   ),
                 )
               ),

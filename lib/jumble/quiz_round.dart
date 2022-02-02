@@ -339,7 +339,10 @@ class _QuizSelectWidget extends StatelessWidget {
             ),
             child: Center(
               child: Text(
-                !_isSentinel() ? option.value : ""
+                !_isSentinel() ? option.value : "",
+                style: TextStyle(
+                  fontSize: 18
+                ),
               )
             ),
           )
