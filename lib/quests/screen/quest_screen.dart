@@ -217,7 +217,7 @@ class _QuestWidgetState extends State<QuestMenuWidget> {
             ),
           ),
           Expanded(
-            flex: 8, 
+            flex: 11, 
             child: _QuestList(
               onClaimQuest: widget.onQuestClaim,
               index: questIndex,
@@ -311,20 +311,23 @@ class _SelectBarState extends State<_SelectBar> {
   int selected = 0;
 
   Widget _title(String title, bool selected) {
-    return Text(
-      title,
-      style: TextStyle(
-        shadows: [
-          Shadow(
-              color: Colors.black,
-              offset: Offset(0, -4))
-        ],
-        color: Colors.transparent,
-        decoration: selected ? TextDecoration.underline : null,
-        decorationThickness: selected ? 3 : null,
-        decorationColor: selected ? Colors.blue : null,
-        fontWeight: !selected ? FontWeight.normal : null
-      ),
+    return Padding(
+      padding: EdgeInsets.only(top: 5),
+      child: Text(
+        title,
+        style: TextStyle(
+          shadows: [
+            Shadow(
+                color: Colors.black,
+                offset: Offset(0, -4))
+          ],
+          color: Colors.transparent,
+          decoration: selected ? TextDecoration.underline : null,
+          decorationThickness: selected ? 3 : null,
+          decorationColor: selected ? Colors.blue : null,
+          fontWeight: !selected ? FontWeight.normal : null
+        ),
+      )
     );
   }
 

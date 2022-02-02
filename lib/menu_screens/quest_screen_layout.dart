@@ -22,7 +22,7 @@ class QuestScreenLayout extends StatelessWidget {
           child: Column(
             children: [
               Flexible(
-                flex: 12, 
+                flex: 13, 
                 child: Column(
                   children: [
                     Expanded(
