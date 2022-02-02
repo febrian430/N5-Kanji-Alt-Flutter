@@ -264,7 +264,7 @@ class _MixMatchGameState extends State<MixMatchGame> {
         ),
         onTap: (){
           if(withResultSound){
-            SoundFX.result();
+            AudioManager.soundFx.result();
             withResultSound = false;
           }
         },
@@ -503,10 +503,10 @@ class _MixMatchRoundState extends State<_MixMatchRound> with AutomaticKeepAliveC
         solved = [...solved, opt, selected!];
         selected = null;
       });
-      SoundFX.correct();
+      AudioManager.soundFx.correct();
       _isGameOver();
     } else {
-      SoundFX.wrong();
+      AudioManager.soundFx.wrong();
       attempts[selected!] = attempts[selected!]! + 1;
       // attempts[opt] = attempts[opt]! + 1;
 

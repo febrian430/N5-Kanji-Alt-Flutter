@@ -30,7 +30,7 @@ class Menu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AudioManager.playMenu();
+    AudioManager.music.menu();
     return MenuBackground(
       child: ScreenLayout(
         header: AppHeader(

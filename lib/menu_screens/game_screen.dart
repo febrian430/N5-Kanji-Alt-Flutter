@@ -1,17 +1,13 @@
-import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kanji_memory_hint/audio_repository/audio.dart';
 import 'package:kanji_memory_hint/components/backgrounds/practice_background.dart';
-import 'package:kanji_memory_hint/components/backgrounds/quiz_background.dart';
 import 'package:kanji_memory_hint/components/buttons/pause_button.dart';
 import 'package:kanji_memory_hint/components/dialogs/confirmation_dialog.dart';
 import 'package:kanji_memory_hint/components/dialogs/guide.dart';
 import 'package:kanji_memory_hint/components/empty_flex.dart';
 import 'package:kanji_memory_hint/components/header.dart';
 import 'package:kanji_memory_hint/icons.dart';
-import 'package:kanji_memory_hint/menu_screens/menu.dart';
 import 'package:kanji_memory_hint/menu_screens/screen_layout.dart';
 import 'package:kanji_memory_hint/theme.dart';
 
@@ -73,7 +69,7 @@ class _GameScreenState extends State<GameScreen> {
   void initState(){
     super.initState();
 
-    AudioManager.playGame();
+    AudioManager.music.game();
   }
 
   Widget buildConfirmationDialog(BuildContext context) {
@@ -137,7 +133,7 @@ class _GameScreenState extends State<GameScreen> {
           bool exit = await showConfirmationDialog(context);
           print("EXIT FROM GAME SCREEN $exit");
           if(exit) {
-            AudioManager.playMenu();
+            AudioManager.music.menu();
           }
           return exit;
         }

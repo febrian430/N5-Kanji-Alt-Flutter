@@ -60,7 +60,7 @@ class _QuizScreenState extends State<QuizScreen> {
   @override
   void initState(){
     super.initState();
-    AudioManager.playGame();
+    AudioManager.music.game();
   }
 
   Widget buildConfirmationDialog(BuildContext context) {
@@ -146,12 +146,13 @@ class _QuizScreenState extends State<QuizScreen> {
         if(!widget.isOver){
           bool exit = await showConfirmationDialog(context);
           if(exit) {
-            AudioManager.playMenu();
+            AudioManager.music.menu();
           }
           return exit;
         }
         Navigator.of(context).popUntil(ModalRoute.withName("/"));
-        AudioManager.playMenu();
+        AudioManager.music.menu();
+
         return widget.isOver;
       },
       child: QuizBackground(

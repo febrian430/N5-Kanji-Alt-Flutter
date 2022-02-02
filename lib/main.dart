@@ -40,7 +40,6 @@ void main() async {
   await SQLRepo.open();
   await GamesPlayed.initialize();
   await AudioManager.initialize();
-  await SoundFX.initialize();
 
 
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
@@ -288,7 +287,7 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AudioManager.playMenu();
+    AudioManager.music.menu();
 
     final size = MediaQuery.of(context).size;
     return MainBackground(

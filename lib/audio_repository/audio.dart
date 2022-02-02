@@ -26,78 +26,118 @@ class AudioBit {
 }
 
 class SoundFX {
-  static final _player = AudioPlayer();
-  static const String _correct = "assets/audio/correct2.wav";
-  static const String _wrong = "assets/audio/wrong2.wav";
-  static const String _result = "assets/audio/result.mp3";
+  final _player = AudioPlayer();
+  final String _correct = "assets/audio/correct2.wav";
+  final String _wrong = "assets/audio/wrong2.wav";
+  final String _result = "assets/audio/result.mp3";
 
-  static Future initialize() async {
-    await _player.setAsset(_correct);
-    await _player.setVolume(2.0);
-    
+  late bool _isMuted;
+
+  SoundFX(bool mute) {
+    _isMuted = mute;
   }
 
-  static void _play(String audioPath) async {
-    await _player.setAsset(audioPath);
-    _player.seek(const Duration(seconds: 0));
-    _player.play();
+  Future initialize() async {
+    await _player.setVolume(1.0); 
   }
 
-  static void correct() async {
+  void setMute(bool mute) {
+    _isMuted = mute;
+  }
+
+  void _play(String audioPath) async {
+    if(!_isMuted){
+      await _player.setAsset(audioPath);
+      _player.seek(const Duration(seconds: 0));
+      _player.play();
+    }
+  }
+
+  void correct() async {
     _play(_correct);
   }
 
-  static void wrong() async {
+  void wrong() async {
     _play(_wrong);
   }
 
-  static void result() async {
+  void result() async {
     _play(_result);
   }
 }
 
-class AudioManager {
-  static final _game = AudioBit(_gameMusic, 1);
-  static final _menu = AudioBit(_menuMusic, 2);
-  static AudioBit? _current;
-  static bool _mute = false;
+class Music {
+  final _game = AudioBit(_gameMusic, 1);
+  final _menu = AudioBit(_menuMusic, 2);
+  AudioBit? _current;
+  late bool _isMuted;
 
-  static Future initialize() async {
-    var flags = await SQLRepo.userFlags.get();
-    _mute = flags.muted;
+  Music(bool mute) {
+    _isMuted = mute;
   }
+
+  void setMute(bool mute) {
+    _isMuted = mute;
+  }
+
+  void _play(AudioBit audio) {
+    if(!_isMuted && (_current == null || _current?.id != audio.id)) {
+      _current = audio;
+      audio.play();
+    }
+  }
+
+  void menu() {
+    _play(_menu);
+  }
+
+  void game() {
+    _play(_game);
+  }
+
+  void current() {
+    _current?.play();
+  }
+
+  void stop() {
+    _current?.stop();
+  }
+
+}
+
+class AudioManager {
+  static late final Music music;
+  static late final SoundFX soundFx;
+
+  static bool _mute = false;
 
   static bool get isMuted {
     return _mute;
   }
 
-  static void _play(AudioBit audio) {
-    print(_current == _menu);
-    if(!_mute && (_current == null || _current?.id != audio.id)) {
-      _current = audio;
+  static Future initialize() async {
+    var flags = await SQLRepo.userFlags.get();
+    _mute = flags.muted;
 
-      audio.play();
-    }
+    music = Music(_mute);
+    soundFx = SoundFX(_mute);
   }
 
-  static void playMenu() {
-    _play(_menu);
-  }
-
-  static void playGame() {
-    _play(_game);
-  }
+  
 
   static bool toggleMute() {
     if(!_mute){
-      _current?.stop();
+      music.stop();
       _mute = true;
-      SQLRepo.userFlags.setMute(true);
     } else {
-      _current?.play();
+      music.current();
       _mute = false;
-      SQLRepo.userFlags.setMute(false);
     }
+
+    SQLRepo.userFlags.setMute(_mute);
+    music.setMute(_mute);
+    soundFx.setMute(_mute);
+
     return _mute;
   }
 }

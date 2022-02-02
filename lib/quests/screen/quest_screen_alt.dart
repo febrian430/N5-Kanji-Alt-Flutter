@@ -13,7 +13,6 @@ import 'package:kanji_memory_hint/database/user_point.dart';
 import 'package:kanji_memory_hint/icons.dart';
 import 'package:kanji_memory_hint/kanji-list/kanji_menu.dart';
 import 'package:kanji_memory_hint/levelling/levels.dart';
-import 'package:kanji_memory_hint/menu_screens/quest_screen_layout.dart';
 import 'package:kanji_memory_hint/quests/mastery.dart';
 import 'package:kanji_memory_hint/quests/practice_quest.dart';
 import 'package:kanji_memory_hint/quests/quiz_quest.dart';
@@ -38,7 +37,7 @@ class _QuestScreenState extends State<QuestScreenAlt> {
 
   @override
   Widget build(BuildContext context) {
-    AudioManager.playMenu();
+    AudioManager.music.menu();
     final size = MediaQuery.of(context).size;
     return MenuBackground(
       child: QuestScreenLayoutAlt(

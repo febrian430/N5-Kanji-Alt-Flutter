@@ -275,9 +275,9 @@ class _QuizState extends State<Quiz> {
             ),
             onMount: (){
               if(withResultSound) {
-                SoundFX.result();
+                AudioManager.soundFx.result();
                 withResultSound = false;
-                AudioManager.playMenu();
+                AudioManager.music.menu();
               }
             },
         )
