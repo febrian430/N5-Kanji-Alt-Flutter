@@ -184,7 +184,7 @@ class ChapterSelectDialog extends StatelessWidget {
                     child: _header(context)
                   ),
                   Flexible(
-                    flex: 5, 
+                    flex: 7, 
                     child: _topic(context, snapshot.data!),
                   ),
                   Expanded(
